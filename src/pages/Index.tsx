@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, ArrowRight, Mail } from "lucide-react";
+import Navigation from "@/components/Navigation";
 
 const Index = () => {
   const scrollToContact = () => {
@@ -9,6 +10,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-20 pb-32 md:pt-32 md:pb-40">
         <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -65,7 +67,7 @@ const Index = () => {
       </section>
 
       {/* Services */}
-      <section className="container mx-auto px-4 pb-20">
+      <section id="services" className="container mx-auto px-4 pb-20">
         <div className="max-w-5xl mx-auto space-y-20">
           {/* Service 1: Fix It */}
           <Card className="p-8 md:p-12 shadow-sm">
@@ -217,7 +219,7 @@ const Index = () => {
       </section>
 
       {/* Mini Cases */}
-      <section className="bg-muted/30 py-20">
+      <section id="projects" className="bg-muted/30 py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Recent Projects</h2>
@@ -247,7 +249,7 @@ const Index = () => {
       </section>
 
       {/* About Me */}
-      <section className="container mx-auto px-4 py-20">
+      <section id="about" className="container mx-auto px-4 py-20">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
           <div className="text-lg text-foreground/80 leading-relaxed space-y-4">
