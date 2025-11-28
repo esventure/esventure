@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
+import Logo from "@/components/Logo";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 
@@ -19,6 +20,9 @@ const Index = () => {
         <div className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             <div className="space-y-8 text-left">
+              <div className="mb-8">
+                <Logo />
+              </div>
               <h1 className="text-6xl md:text-8xl font-black text-foreground tracking-tight leading-[0.9]">
                 I help teams move forward — <span className="text-primary">fast.</span>
               </h1>
