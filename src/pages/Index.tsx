@@ -3,6 +3,8 @@ import { Card } from "@/components/ui/card";
 import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
+import estherBW from "@/assets/esther-bw.jpg";
+import estherYellow from "@/assets/esther-yellow.jpg";
 
 const Index = () => {
   const scrollToContact = () => {
@@ -13,44 +15,58 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-20 pb-32 md:pt-32 md:pb-40">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground tracking-tight">
-            I help teams move forward — fast.
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground">
-            Short-term projects. Clarity. Structure. Momentum.
-          </p>
-          <p className="text-lg md:text-xl text-foreground/70 italic">
-            Are you ready to go on an Es Venture?
-          </p>
-          <div className="pt-4">
-            <Button 
-              size="lg" 
-              className="text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
-              onClick={scrollToContact}
-            >
-              Let's talk
-            </Button>
+      <section className="relative overflow-hidden">
+        <div className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+            <div className="space-y-8 text-left">
+              <h1 className="text-6xl md:text-8xl font-black text-foreground tracking-tight leading-[0.9]">
+                I help teams move forward — <span className="text-primary">fast.</span>
+              </h1>
+              <p className="text-2xl md:text-3xl font-medium text-foreground/80">
+                Short-term projects. Clarity. Structure. Momentum.
+              </p>
+              <p className="text-xl md:text-2xl text-foreground/60 font-light italic">
+                Are you ready to go on an Es Venture?
+              </p>
+              <div className="pt-6">
+                <Button 
+                  size="lg" 
+                  className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all"
+                  onClick={scrollToContact}
+                >
+                  Let's talk
+                </Button>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src={estherYellow} 
+                  alt="Esther Woerdman" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary rounded-full blur-3xl opacity-50"></div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Why Es Venture */}
-      <section className="bg-muted/30 py-20">
+      <section className="bg-secondary py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-12">
               {[
                 { text: "Less noise" },
                 { text: "More direction" },
                 { text: "Things actually get done" }
               ].map((item, index) => (
-                <div key={index} className="flex items-center gap-3 text-lg font-medium">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Check className="w-4 h-4 text-primary" />
+                <div key={index} className="flex flex-col items-center text-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
+                    <Check className="w-8 h-8 text-secondary" strokeWidth={3} />
                   </div>
-                  <span>{item.text}</span>
+                  <span className="text-2xl font-bold text-secondary-foreground">{item.text}</span>
                 </div>
               ))}
             </div>
@@ -59,29 +75,29 @@ const Index = () => {
       </section>
 
       {/* What I Do Intro */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed">
-            Short-term, high-impact projects. Practical, clear and fast — always with a tangible result.
+      <section className="container mx-auto px-4 py-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-3xl md:text-4xl font-bold text-foreground leading-relaxed">
+            Short-term, high-impact projects. <span className="text-primary">Practical, clear and fast</span> — always with a tangible result.
           </p>
         </div>
       </section>
 
       {/* Services */}
-      <section id="services" className="container mx-auto px-4 pb-20">
-        <div className="max-w-5xl mx-auto space-y-20">
+      <section id="services" className="container mx-auto px-4 pb-24">
+        <div className="max-w-6xl mx-auto space-y-16">
           {/* Service 1: Fix It */}
           <FadeInOnScroll>
-            <Card className="p-8 md:p-12 shadow-sm">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Fix It</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <Card className="p-10 md:p-16 border-2 border-foreground shadow-xl hover:shadow-2xl transition-shadow">
+            <h2 className="text-4xl md:text-6xl font-black mb-6">Fix It</h2>
+            <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
               When something isn't getting done — I take it, own it, and finish it.
             </p>
             
-            <div className="space-y-8">
+            <div className="space-y-10">
               <div>
-                <h3 className="font-semibold text-lg mb-4">When you need this:</h3>
-                <ul className="space-y-2 text-muted-foreground">
+                <h3 className="font-bold text-xl mb-5 text-foreground">When you need this:</h3>
+                <ul className="space-y-3 text-foreground/70 text-lg">
                   <li>• A deliverable keeps slipping</li>
                   <li>• A project is half-done</li>
                   <li>• No clear owner → no progress</li>
@@ -91,8 +107,8 @@ const Index = () => {
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg mb-4">What I do:</h3>
-                <div className="space-y-3">
+                <h3 className="font-bold text-xl mb-5 text-foreground">What I do:</h3>
+                <div className="space-y-4">
                   {[
                     "Take full ownership",
                     "Get up to speed fast",
@@ -101,17 +117,17 @@ const Index = () => {
                     "Build whatever is required",
                     "Push it to the finish line"
                   ].map((step, index) => (
-                    <div key={index} className="flex items-center gap-3 text-foreground/80">
-                      <ArrowRight className="w-5 h-5 text-primary flex-shrink-0" />
+                    <div key={index} className="flex items-center gap-4 text-foreground text-lg font-medium">
+                      <ArrowRight className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={3} />
                       <span>{step}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-muted/50 p-6 rounded-lg">
-                <h3 className="font-semibold text-lg mb-2">What you get:</h3>
-                <p className="text-foreground/80">
+              <div className="bg-primary/10 p-8 rounded-xl border-2 border-primary/20">
+                <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
+                <p className="text-foreground text-lg font-medium leading-relaxed">
                   A deliverable that finally gets done.<br />
                   More headspace.<br />
                   Progress instead of stress.
@@ -123,16 +139,16 @@ const Index = () => {
 
           {/* Service 2: From Idea to Prototype */}
           <FadeInOnScroll delay={0.1}>
-            <Card className="p-8 md:p-12 shadow-sm">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">From Idea to Prototype</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <Card className="p-10 md:p-16 border-2 border-foreground shadow-xl hover:shadow-2xl transition-shadow">
+            <h2 className="text-4xl md:text-6xl font-black mb-6">From Idea to Prototype</h2>
+            <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
               From a rough idea → to a clickable prototype you can show, test or pitch.
             </p>
             
-            <div className="space-y-8">
+            <div className="space-y-10">
               <div>
-                <h3 className="font-semibold text-lg mb-4">When you need this:</h3>
-                <ul className="space-y-2 text-muted-foreground">
+                <h3 className="font-bold text-xl mb-5 text-foreground">When you need this:</h3>
+                <ul className="space-y-3 text-foreground/70 text-lg">
                   <li>• Your idea only exists in your head</li>
                   <li>• You need something visual for feedback or pitching</li>
                   <li>• You want clarity before building</li>
@@ -141,8 +157,8 @@ const Index = () => {
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg mb-4">What I do:</h3>
-                <div className="space-y-3">
+                <h3 className="font-bold text-xl mb-5 text-foreground">What I do:</h3>
+                <div className="space-y-4">
                   {[
                     "Sharpen the concept",
                     "Map user journey & UX flow",
@@ -151,17 +167,17 @@ const Index = () => {
                     "Optional: content, visuals, microcopy",
                     "Package everything for sharing or testing"
                   ].map((step, index) => (
-                    <div key={index} className="flex items-center gap-3 text-foreground/80">
-                      <ArrowRight className="w-5 h-5 text-primary flex-shrink-0" />
+                    <div key={index} className="flex items-center gap-4 text-foreground text-lg font-medium">
+                      <ArrowRight className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={3} />
                       <span>{step}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-muted/50 p-6 rounded-lg">
-                <h3 className="font-semibold text-lg mb-2">What you get:</h3>
-                <p className="text-foreground/80">
+              <div className="bg-primary/10 p-8 rounded-xl border-2 border-primary/20">
+                <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
+                <p className="text-foreground text-lg font-medium leading-relaxed">
                   A concept that clicks.<br />
                   A prototype that speaks for itself.<br />
                   Direction and confidence for next steps.
@@ -173,16 +189,16 @@ const Index = () => {
 
           {/* Service 3: Process, Structure, Overview */}
           <FadeInOnScroll delay={0.2}>
-            <Card className="p-8 md:p-12 shadow-sm">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Process, Structure, Overview</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <Card className="p-10 md:p-16 border-2 border-foreground shadow-xl hover:shadow-2xl transition-shadow">
+            <h2 className="text-4xl md:text-6xl font-black mb-6">Process, Structure, Overview</h2>
+            <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
               For teams who need clarity, alignment and a structure that actually holds.
             </p>
             
-            <div className="space-y-8">
+            <div className="space-y-10">
               <div>
-                <h3 className="font-semibold text-lg mb-4">When you need this:</h3>
-                <ul className="space-y-2 text-muted-foreground">
+                <h3 className="font-bold text-xl mb-5 text-foreground">When you need this:</h3>
+                <ul className="space-y-3 text-foreground/70 text-lg">
                   <li>• Unclear responsibilities</li>
                   <li>• Work is happening, but not together</li>
                   <li>• Processes missing or duplicated</li>
@@ -192,8 +208,8 @@ const Index = () => {
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg mb-4">What I do:</h3>
-                <div className="space-y-3">
+                <h3 className="font-bold text-xl mb-5 text-foreground">What I do:</h3>
+                <div className="space-y-4">
                   {[
                     "Map current workflows & gaps",
                     "Clarify scope, roles, responsibilities",
@@ -202,17 +218,17 @@ const Index = () => {
                     "Facilitate alignment (fast, no fluff)",
                     "Set up a structure the team can follow"
                   ].map((step, index) => (
-                    <div key={index} className="flex items-center gap-3 text-foreground/80">
-                      <ArrowRight className="w-5 h-5 text-primary flex-shrink-0" />
+                    <div key={index} className="flex items-center gap-4 text-foreground text-lg font-medium">
+                      <ArrowRight className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={3} />
                       <span>{step}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-muted/50 p-6 rounded-lg">
-                <h3 className="font-semibold text-lg mb-2">What you get:</h3>
-                <p className="text-foreground/80">
+              <div className="bg-primary/10 p-8 rounded-xl border-2 border-primary/20">
+                <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
+                <p className="text-foreground text-lg font-medium leading-relaxed">
                   A team on the same page.<br />
                   A project that feels organised.<br />
                   A structure that supports progress.<br />
@@ -226,11 +242,11 @@ const Index = () => {
       </section>
 
       {/* Mini Cases */}
-      <section id="projects" className="bg-muted/30 py-20">
+      <section id="projects" className="bg-secondary py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Recent Projects</h2>
-            <div className="grid md:grid-cols-3 gap-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-black text-center mb-16 text-secondary-foreground">Recent Projects</h2>
+            <div className="grid md:grid-cols-3 gap-10">
               {[
                 {
                   title: "Rainforest Alliance",
@@ -246,9 +262,9 @@ const Index = () => {
                 }
               ].map((project, index) => (
                 <FadeInOnScroll key={index} delay={index * 0.1}>
-                  <Card className="p-6 shadow-sm">
-                    <h3 className="font-semibold text-lg mb-3">{project.title}</h3>
-                    <p className="text-muted-foreground">{project.description}</p>
+                  <Card className="p-8 bg-background border-2 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-primary">
+                    <h3 className="font-bold text-2xl mb-4 text-foreground">{project.title}</h3>
+                    <p className="text-foreground/70 text-lg leading-relaxed">{project.description}</p>
                   </Card>
                 </FadeInOnScroll>
               ))}
@@ -258,44 +274,57 @@ const Index = () => {
       </section>
 
       {/* About Me */}
-      <section id="about" className="container mx-auto px-4 py-20">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
-          <div className="text-lg text-foreground/80 leading-relaxed space-y-4">
-            <p>
-              Hi, I'm Esther — product/implementation nerd, UX lover and structure enthusiast.
-            </p>
-            <p>
-              I keep things simple. I move fast. And I make sure projects actually get finished.
-            </p>
-            <p>
-              Teams bring me in when they're stuck, overwhelmed or unsure where to start.
-            </p>
-            <p>
-              I'm practical, direct and no-nonsense — no 70-page documents, just solutions that work.
-            </p>
+      <section id="about" className="container mx-auto px-4 py-24">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl md:text-6xl font-black mb-16 text-center">About Me</h2>
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="order-2 md:order-1">
+              <div className="text-xl text-foreground leading-relaxed space-y-6">
+                <p className="font-medium">
+                  Hi, I'm Esther — product/implementation nerd, UX lover and structure enthusiast.
+                </p>
+                <p>
+                  I keep things simple. I move fast. And I make sure projects actually get finished.
+                </p>
+                <p>
+                  Teams bring me in when they're stuck, overwhelmed or unsure where to start.
+                </p>
+                <p className="font-bold">
+                  I'm practical, direct and no-nonsense — no 70-page documents, just solutions that work.
+                </p>
+              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src={estherBW} 
+                  alt="Esther Woerdman - Creative Director" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section id="contact" className="bg-muted/30 py-20">
+      <section id="contact" className="bg-primary py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold">Ready to go on an Es Venture?</h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="max-w-4xl mx-auto text-center space-y-10">
+            <h2 className="text-5xl md:text-7xl font-black text-secondary">Ready to go on an Es Venture?</h2>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 
-                className="text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
+                className="text-xl px-12 py-8 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all shadow-2xl"
                 onClick={() => window.location.href = 'mailto:hello@esventure.com'}
               >
-                <Mail className="mr-2 w-5 h-5" />
+                <Mail className="mr-3 w-6 h-6" />
                 Let's talk
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="text-lg px-8 py-6 rounded-full"
+                className="text-xl px-12 py-8 font-bold border-4 border-secondary text-secondary hover:bg-secondary hover:text-primary transition-all"
                 onClick={() => window.location.href = 'mailto:hello@esventure.com'}
               >
                 Send an email
@@ -306,8 +335,10 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 text-center text-muted-foreground">
-        <p>© 2025 Es Venture. All rights reserved.</p>
+      <footer className="bg-secondary py-12">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-secondary-foreground font-medium text-lg">© 2025 Es Venture. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );
