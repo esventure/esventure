@@ -37,16 +37,16 @@ const Navigation = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-sm translate-y-0"
+            ? "bg-background/95 backdrop-blur-md shadow-lg translate-y-0"
             : "-translate-y-full"
         )}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-xl font-bold text-foreground hover:text-primary transition-colors"
+              className="text-2xl font-black text-foreground hover:text-primary transition-colors"
             >
               Es Venture
             </button>
@@ -57,7 +57,7 @@ const Navigation = () => {
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-foreground/70 hover:text-foreground transition-colors font-medium"
+                  className="text-foreground/80 hover:text-primary transition-colors font-bold"
                 >
                   {link.label}
                 </button>
@@ -65,7 +65,7 @@ const Navigation = () => {
               <Button
                 onClick={() => scrollToSection("contact")}
                 size="sm"
-                className="rounded-full"
+                className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold"
               >
                 Let's talk
               </Button>
@@ -105,7 +105,7 @@ const Navigation = () => {
             ))}
             <Button
               onClick={() => scrollToSection("contact")}
-              className="w-full rounded-full"
+              className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold"
             >
               Let's talk
             </Button>
