@@ -15,23 +15,23 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden bg-primary">
         <div className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             <div className="space-y-8 text-left">
-              <h1 className="text-6xl md:text-8xl font-black text-foreground tracking-tight leading-[0.9]">
-                I help teams move forward — <span className="text-primary">fast.</span>
+              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9]">
+                I help teams move forward — <span className="text-secondary">fast.</span>
               </h1>
-              <p className="text-2xl md:text-3xl font-medium text-foreground/80">
+              <p className="text-2xl md:text-3xl font-medium text-primary-foreground/90">
                 Short-term projects. Clarity. Structure. Momentum.
               </p>
-              <p className="text-xl md:text-2xl text-foreground/60 font-light italic">
+              <p className="text-xl md:text-2xl text-primary-foreground/70 font-light italic">
                 Are you ready to go on an Es Venture?
               </p>
               <div className="pt-6">
                 <Button 
                   size="lg" 
-                  className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all"
+                  className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full"
                   onClick={scrollToContact}
                 >
                   Let's talk
@@ -39,21 +39,21 @@ const Index = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
                 <img 
                   src={estherYellow} 
                   alt="Esther Woerdman" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary rounded-full blur-3xl opacity-50"></div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Why Es Venture */}
-      <section className="bg-secondary py-24">
+      <section className="bg-background py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-12">
@@ -63,10 +63,10 @@ const Index = () => {
                 { text: "Things actually get done" }
               ].map((item, index) => (
                 <div key={index} className="flex flex-col items-center text-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
-                    <Check className="w-8 h-8 text-secondary" strokeWidth={3} />
+                  <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
+                    <Check className="w-8 h-8 text-secondary-foreground" strokeWidth={3} />
                   </div>
-                  <span className="text-2xl font-bold text-secondary-foreground">{item.text}</span>
+                  <span className="text-2xl font-bold text-foreground">{item.text}</span>
                 </div>
               ))}
             </div>
@@ -74,22 +74,24 @@ const Index = () => {
         </div>
       </section>
 
-      {/* What I Do Intro */}
-      <section className="container mx-auto px-4 py-24">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-3xl md:text-4xl font-bold text-foreground leading-relaxed">
-            Short-term, high-impact projects. <span className="text-primary">Practical, clear and fast</span> — always with a tangible result.
-          </p>
-        </div>
-      </section>
 
       {/* Services */}
       <section id="services" className="container mx-auto px-4 pb-24">
-        <div className="max-w-6xl mx-auto space-y-16">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground">My Services</h2>
+          <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto">
+            Short-term, high-impact projects. <span className="text-primary font-bold">Practical, clear and fast</span> — always with a tangible result.
+          </p>
+          <div className="space-y-16">
           {/* Service 1: Fix It */}
           <FadeInOnScroll>
-            <Card className="p-10 md:p-16 border-2 border-foreground shadow-xl hover:shadow-2xl transition-shadow">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">Fix It</h2>
+            <Card className="p-10 md:p-16 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
+                <span className="text-3xl font-black text-primary-foreground">01</span>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-black text-foreground">Fix It</h3>
+            </div>
             <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
               When something isn't getting done — I take it, own it, and finish it.
             </p>
@@ -125,7 +127,7 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="bg-primary/10 p-8 rounded-xl border-2 border-primary/20">
+              <div className="bg-secondary/20 p-8 rounded-2xl border-2 border-secondary">
                 <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
                 <p className="text-foreground text-lg font-medium leading-relaxed">
                   A deliverable that finally gets done.<br />
@@ -139,8 +141,13 @@ const Index = () => {
 
           {/* Service 2: From Idea to Prototype */}
           <FadeInOnScroll delay={0.1}>
-            <Card className="p-10 md:p-16 border-2 border-foreground shadow-xl hover:shadow-2xl transition-shadow">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">From Idea to Prototype</h2>
+            <Card className="p-10 md:p-16 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
+                <span className="text-3xl font-black text-primary-foreground">02</span>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-black text-foreground">From Idea to Prototype</h3>
+            </div>
             <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
               From a rough idea → to a clickable prototype you can show, test or pitch.
             </p>
@@ -175,7 +182,7 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="bg-primary/10 p-8 rounded-xl border-2 border-primary/20">
+              <div className="bg-secondary/20 p-8 rounded-2xl border-2 border-secondary">
                 <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
                 <p className="text-foreground text-lg font-medium leading-relaxed">
                   A concept that clicks.<br />
@@ -189,8 +196,13 @@ const Index = () => {
 
           {/* Service 3: Process, Structure, Overview */}
           <FadeInOnScroll delay={0.2}>
-            <Card className="p-10 md:p-16 border-2 border-foreground shadow-xl hover:shadow-2xl transition-shadow">
-            <h2 className="text-4xl md:text-6xl font-black mb-6">Process, Structure, Overview</h2>
+            <Card className="p-10 md:p-16 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
+                <span className="text-3xl font-black text-primary-foreground">03</span>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-black text-foreground">Process, Structure, Overview</h3>
+            </div>
             <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
               For teams who need clarity, alignment and a structure that actually holds.
             </p>
@@ -226,7 +238,7 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="bg-primary/10 p-8 rounded-xl border-2 border-primary/20">
+              <div className="bg-secondary/20 p-8 rounded-2xl border-2 border-secondary">
                 <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
                 <p className="text-foreground text-lg font-medium leading-relaxed">
                   A team on the same page.<br />
@@ -238,14 +250,15 @@ const Index = () => {
             </div>
           </Card>
           </FadeInOnScroll>
+          </div>
         </div>
       </section>
 
       {/* Mini Cases */}
-      <section id="projects" className="bg-secondary py-24">
+      <section id="projects" className="bg-muted py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-black text-center mb-16 text-secondary-foreground">Recent Projects</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground">Recent Projects</h2>
             <div className="grid md:grid-cols-3 gap-10">
               {[
                 {
@@ -262,7 +275,7 @@ const Index = () => {
                 }
               ].map((project, index) => (
                 <FadeInOnScroll key={index} delay={index * 0.1}>
-                  <Card className="p-8 bg-background border-2 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-primary">
+                  <Card className="p-8 bg-background border-4 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-secondary rounded-2xl">
                     <h3 className="font-bold text-2xl mb-4 text-foreground">{project.title}</h3>
                     <p className="text-foreground/70 text-lg leading-relaxed">{project.description}</p>
                   </Card>
@@ -311,11 +324,11 @@ const Index = () => {
       <section id="contact" className="bg-primary py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-10">
-            <h2 className="text-5xl md:text-7xl font-black text-secondary">Ready to go on an Es Venture?</h2>
+            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground">Ready to go on an Es Venture?</h2>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 
-                className="text-xl px-12 py-8 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all shadow-2xl"
+                className="text-xl px-12 py-8 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all shadow-2xl rounded-full"
                 onClick={() => window.location.href = 'mailto:hello@esventure.com'}
               >
                 <Mail className="mr-3 w-6 h-6" />
@@ -324,7 +337,7 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="text-xl px-12 py-8 font-bold border-4 border-secondary text-secondary hover:bg-secondary hover:text-primary transition-all"
+                className="text-xl px-12 py-8 font-bold border-4 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all rounded-full"
                 onClick={() => window.location.href = 'mailto:hello@esventure.com'}
               >
                 Send an email
@@ -335,9 +348,9 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-secondary py-12">
+      <footer className="bg-foreground py-12">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-secondary-foreground font-medium text-lg">© 2025 Es Venture. All rights reserved.</p>
+          <p className="text-background font-medium text-lg">© 2025 Es Venture. All rights reserved.</p>
         </div>
       </footer>
     </div>
