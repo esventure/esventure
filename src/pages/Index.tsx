@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
+import FadeInOnScroll from "@/components/FadeInOnScroll";
 
 const Index = () => {
   const scrollToContact = () => {
@@ -70,7 +71,8 @@ const Index = () => {
       <section id="services" className="container mx-auto px-4 pb-20">
         <div className="max-w-5xl mx-auto space-y-20">
           {/* Service 1: Fix It */}
-          <Card className="p-8 md:p-12 shadow-sm">
+          <FadeInOnScroll>
+            <Card className="p-8 md:p-12 shadow-sm">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Fix It</h2>
             <p className="text-lg text-muted-foreground mb-8">
               When something isn't getting done — I take it, own it, and finish it.
@@ -117,9 +119,11 @@ const Index = () => {
               </div>
             </div>
           </Card>
+          </FadeInOnScroll>
 
           {/* Service 2: From Idea to Prototype */}
-          <Card className="p-8 md:p-12 shadow-sm">
+          <FadeInOnScroll delay={0.1}>
+            <Card className="p-8 md:p-12 shadow-sm">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">From Idea to Prototype</h2>
             <p className="text-lg text-muted-foreground mb-8">
               From a rough idea → to a clickable prototype you can show, test or pitch.
@@ -165,9 +169,11 @@ const Index = () => {
               </div>
             </div>
           </Card>
+          </FadeInOnScroll>
 
           {/* Service 3: Process, Structure, Overview */}
-          <Card className="p-8 md:p-12 shadow-sm">
+          <FadeInOnScroll delay={0.2}>
+            <Card className="p-8 md:p-12 shadow-sm">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Process, Structure, Overview</h2>
             <p className="text-lg text-muted-foreground mb-8">
               For teams who need clarity, alignment and a structure that actually holds.
@@ -215,6 +221,7 @@ const Index = () => {
               </div>
             </div>
           </Card>
+          </FadeInOnScroll>
         </div>
       </section>
 
@@ -238,10 +245,12 @@ const Index = () => {
                   description: "Concept → UX flow → clickable prototype in 1 week. Pitch-ready."
                 }
               ].map((project, index) => (
-                <Card key={index} className="p-6 shadow-sm">
-                  <h3 className="font-semibold text-lg mb-3">{project.title}</h3>
-                  <p className="text-muted-foreground">{project.description}</p>
-                </Card>
+                <FadeInOnScroll key={index} delay={index * 0.1}>
+                  <Card className="p-6 shadow-sm">
+                    <h3 className="font-semibold text-lg mb-3">{project.title}</h3>
+                    <p className="text-muted-foreground">{project.description}</p>
+                  </Card>
+                </FadeInOnScroll>
               ))}
             </div>
           </div>
