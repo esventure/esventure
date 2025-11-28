@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Logo from "./Logo";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,9 +46,9 @@ const Navigation = () => {
             {/* Logo */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="hover:opacity-80 transition-opacity"
+              className="text-xl font-bold text-foreground hover:text-primary transition-colors"
             >
-              <Logo animated={false} />
+              Es Venture
             </button>
 
             {/* Desktop Navigation */}
@@ -66,7 +65,7 @@ const Navigation = () => {
               <Button
                 onClick={() => scrollToSection("contact")}
                 size="sm"
-                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold"
+                className="rounded-full"
               >
                 Let's talk
               </Button>
@@ -106,7 +105,7 @@ const Navigation = () => {
             ))}
             <Button
               onClick={() => scrollToSection("contact")}
-              className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold"
+              className="w-full rounded-full"
             >
               Let's talk
             </Button>

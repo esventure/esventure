@@ -16,7 +16,6 @@ export default {
       fontFamily: {
         outfit: ['Outfit', 'sans-serif'],
         sans: ['Outfit', 'sans-serif'],
-        script: ['Caveat', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
