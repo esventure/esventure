@@ -274,6 +274,91 @@ const Index = () => {
         </div>
       </section>
 
+      {/* How It Works */}
+      <section id="how-it-works" className="bg-background py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2 
+              className="text-5xl md:text-6xl font-black text-center mb-20 text-foreground font-poppins"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              How It Works
+            </motion.h2>
+
+            <div className="space-y-16 relative">
+              {/* Vertical line */}
+              <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-primary/20 hidden md:block" />
+
+              {[
+                {
+                  week: "Week 0",
+                  title: "First Contact",
+                  description: "A short call to understand what's stuck or unclear.\nYou explain the situation; I start mapping the real problem immediately."
+                },
+                {
+                  week: "Week 1",
+                  title: "Kickoff & Discovery",
+                  description: "I get access to the right tools, documents and people.\nI untangle the situation, identify gaps and clarify what's really going on.\nOutput: a brief diagnosis + an early direction."
+                },
+                {
+                  week: "Week 2",
+                  title: "Structure & Direction",
+                  description: "I turn chaos into clarity.\nThis includes process mapping, UX flows, priorities and identifying missing pieces.\nOutput: a clear overview, draft structure and prioritised next steps."
+                },
+                {
+                  week: "Week 3",
+                  title: "Action Plan",
+                  description: "I finalise the structure and translate everything into a concrete, actionable plan.\nThis includes templates, flows, dashboards, responsibilities and next steps.\nWalkthrough + handover included.\nOutput: a complete action plan your team (or I) can execute."
+                },
+                {
+                  week: "Optional Week 4",
+                  title: "Support",
+                  description: "If you want help implementing the plan or driving the first steps, I'm there."
+                }
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  className="relative flex gap-8 items-start"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  {/* Circle marker */}
+                  <div className="flex-shrink-0">
+                    <motion.div 
+                      className="w-16 h-16 rounded-full bg-primary flex items-center justify-center relative z-10"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <span className="text-primary-foreground font-black text-lg">{index + 1}</span>
+                    </motion.div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 pt-2">
+                    <Badge className="mb-3 bg-secondary/20 text-foreground border-secondary font-bold">
+                      {step.week}
+                    </Badge>
+                    <h3 className="text-2xl md:text-3xl font-black text-foreground mb-4 font-poppins">
+                      {step.title}
+                    </h3>
+                    <div className="text-foreground/70 text-lg leading-relaxed space-y-2">
+                      {step.description.split('\n').map((line, i) => (
+                        <p key={i}>{line}</p>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Mini Cases */}
       <section id="projects" className="bg-muted py-24">
         <div className="container mx-auto px-4">
