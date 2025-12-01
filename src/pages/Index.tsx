@@ -603,7 +603,7 @@ const Index = () => {
             duration: 0.8
           }}>
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
-                <img alt="Esther Woerdman - Creative Director" className="w-full h-full object-cover" src="/lovable-uploads/76b89124-3cd8-47f4-b1e2-2015d0ec4498.jpg" />
+                <img alt="Esther Woerdman - Creative Director" className="w-full h-full object-cover" src="/lovable-uploads/9380f87e-f93e-43ff-aa3e-87e905edd2f2.png" />
               </div>
             </motion.div>
           </div>
