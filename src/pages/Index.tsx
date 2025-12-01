@@ -21,7 +21,7 @@ const Index = () => {
         <div className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             <div className="space-y-8 text-left">
-              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9]">
+              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">
                 I help teams move forward — <span className="text-secondary">fast.</span>
               </h1>
               <p className="text-2xl md:text-3xl font-medium text-primary-foreground/90">
@@ -87,7 +87,7 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground">My Services</h2>
+            <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground font-poppins">My Services</h2>
             <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto">
               Short-term, high-impact projects. <span className="text-primary font-bold">Practical, clear and fast</span> — always with a tangible result.
             </p>
@@ -112,7 +112,7 @@ const Index = () => {
                     <span className="text-3xl font-black text-primary-foreground">01</span>
                   </motion.div>
                   <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors">Fix It</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Fix It</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
                   When something isn't getting done — I take it, own it, and finish it.
@@ -120,7 +120,7 @@ const Index = () => {
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-4 text-foreground">When you need this:</h4>
+                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• A deliverable keeps slipping</li>
                       <li>• A project is half-done</li>
@@ -129,7 +129,7 @@ const Index = () => {
                   </div>
 
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
-                    <h4 className="font-bold text-lg mb-3 text-foreground">What you get:</h4>
+                    <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">
                       A deliverable that finally gets done. More headspace. Progress instead of stress.
                     </p>
@@ -156,7 +156,7 @@ const Index = () => {
                     <span className="text-3xl font-black text-primary-foreground">02</span>
                   </motion.div>
                   <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors">From Idea to Prototype</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">From Idea to Prototype</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
                   From a rough idea → to a clickable prototype you can show, test or pitch.
@@ -164,7 +164,7 @@ const Index = () => {
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-4 text-foreground">When you need this:</h4>
+                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Your idea only exists in your head</li>
                       <li>• You need something visual</li>
@@ -173,7 +173,7 @@ const Index = () => {
                   </div>
 
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
-                    <h4 className="font-bold text-lg mb-3 text-foreground">What you get:</h4>
+                    <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">
                       A concept that clicks. A prototype that speaks for itself. Direction for next steps.
                     </p>
@@ -200,7 +200,7 @@ const Index = () => {
                     <span className="text-3xl font-black text-primary-foreground">03</span>
                   </motion.div>
                   <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Clarity</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors">Process, Structure, Overview</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Process, Structure, Overview</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
                   For teams who need clarity, alignment and a structure that actually holds.
@@ -208,7 +208,7 @@ const Index = () => {
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-4 text-foreground">When you need this:</h4>
+                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Unclear responsibilities</li>
                       <li>• Work not aligned</li>
@@ -217,7 +217,7 @@ const Index = () => {
                   </div>
 
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
-                    <h4 className="font-bold text-lg mb-3 text-foreground">What you get:</h4>
+                    <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">
                       A team on the same page. A project that feels organised. Clarity, direction, flow.
                     </p>
@@ -233,7 +233,7 @@ const Index = () => {
       <section id="projects" className="bg-muted py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground">Recent Projects</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground font-poppins">Recent Projects</h2>
             <div className="grid md:grid-cols-3 gap-10">
               {[
                 {
@@ -251,7 +251,7 @@ const Index = () => {
               ].map((project, index) => (
                 <FadeInOnScroll key={index} delay={index * 0.1}>
                   <Card className="p-8 bg-background border-4 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-secondary rounded-2xl">
-                    <h3 className="font-bold text-2xl mb-4 text-foreground">{project.title}</h3>
+                    <h3 className="font-bold text-2xl mb-4 text-foreground font-poppins">{project.title}</h3>
                     <p className="text-foreground/70 text-lg leading-relaxed">{project.description}</p>
                   </Card>
                 </FadeInOnScroll>
@@ -264,7 +264,7 @@ const Index = () => {
       {/* About Me */}
       <section id="about" className="container mx-auto px-4 py-24">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-black mb-16 text-center">About Me</h2>
+          <h2 className="text-5xl md:text-6xl font-black mb-16 text-center font-poppins">About Me</h2>
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="order-2 md:order-1">
               <div className="text-xl text-foreground leading-relaxed space-y-6">
@@ -299,7 +299,7 @@ const Index = () => {
       <section id="contact" className="bg-primary py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-10">
-            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground">Ready to go on an Es Venture?</h2>
+            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground font-poppins">Ready to go on an Es Venture?</h2>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 

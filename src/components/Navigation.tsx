@@ -46,7 +46,7 @@ const Navigation = () => {
             {/* Logo */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-2xl font-black text-foreground hover:text-primary transition-colors"
+              className="text-2xl font-black text-foreground hover:text-primary transition-colors font-poppins"
             >
               Es Venture
             </button>
