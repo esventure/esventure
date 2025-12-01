@@ -474,8 +474,8 @@ const Index = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-16 bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12" />
-              <CarouselNext className="hidden md:flex -right-16 bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12" />
+              <CarouselPrevious className="bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12 -left-4 md:-left-16" />
+              <CarouselNext className="bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12 -right-4 md:-right-16" />
             </Carousel>
             
             {/* Carousel Dots */}
