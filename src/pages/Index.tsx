@@ -509,9 +509,8 @@ const Index = () => {
                 Send email
               </Button>
               <Button 
-                variant="outline" 
                 size="lg" 
-                className="text-xl px-12 py-8 font-bold border-4 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all rounded-full"
+                className="text-xl px-12 py-8 font-bold bg-primary/90 text-primary-foreground border-4 border-primary-foreground/50 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary transition-all rounded-full shadow-2xl"
                 onClick={() => window.open('https://calendly.com/esventure', '_blank')}
               >
                 Book a call
