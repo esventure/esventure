@@ -502,15 +502,14 @@ const Index = () => {
             >
               <Button 
                 size="lg" 
-                className="text-xl px-12 py-8 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all shadow-2xl rounded-full"
+                className="text-xl px-12 py-8 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:text-primary transition-all shadow-2xl rounded-full"
                 onClick={() => window.location.href = 'mailto:hello@esventure.com'}
               >
-                <Mail className="mr-3 w-6 h-6" />
                 Send email
               </Button>
               <Button 
                 size="lg" 
-                className="text-xl px-12 py-8 font-bold bg-primary/90 text-primary-foreground border-4 border-primary-foreground/50 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary transition-all rounded-full shadow-2xl"
+                className="text-xl px-12 py-8 font-bold bg-primary/90 text-primary-foreground border-4 border-primary-foreground/50 hover:bg-secondary hover:text-primary hover:border-secondary transition-all rounded-full shadow-2xl"
                 onClick={() => window.open('https://calendly.com/esventure', '_blank')}
               >
                 Book a call
