@@ -17,24 +17,24 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 280 85% 65%;
+    --primary: 253 91% 62%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 62 70% 82%;
-    --secondary-foreground: 0 0% 15%;
+    --secondary: 48 96% 53%;
+    --secondary-foreground: 0 0% 10%;
 
     --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 280 85% 65%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 48 96% 53%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 280 85% 65%;
+    --ring: 253 91% 62%;
 
     --radius: 1rem;
 
@@ -65,24 +65,24 @@ All colors MUST be HSL.
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 280 85% 65%;
+    --primary: 253 91% 62%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 62 70% 82%;
-    --secondary-foreground: 0 0% 15%;
+    --secondary: 48 96% 53%;
+    --secondary-foreground: 0 0% 10%;
 
     --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 65%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 280 85% 65%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 48 96% 53%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 280 85% 65%;
+    --ring: 253 91% 62%;
     --sidebar-background: 220 13% 9%;
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 43 96% 56%;
@@ -100,6 +100,6 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-outfit;
   }
 }

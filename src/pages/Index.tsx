@@ -1,60 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
-import { motion, useScroll, useTransform } from "framer-motion";
-import React from "react";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
-import Autoplay from "embla-carousel-autoplay";
 
 const Index = () => {
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
-
-  const [carouselApi, setCarouselApi] = React.useState<any>();
-  const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(0);
-
-  React.useEffect(() => {
-    if (!carouselApi) {
-      return;
-    }
-
-    setCount(carouselApi.scrollSnapList().length);
-    setCurrent(carouselApi.selectedScrollSnap());
-
-    carouselApi.on("select", () => {
-      setCurrent(carouselApi.selectedScrollSnap());
-    });
-  }, [carouselApi]);
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-primary">
-        <motion.div 
-          className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32"
-          style={{ y, opacity, scale }}
-        >
+        <div className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-            <motion.div 
-              className="space-y-8 text-left"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">
+            <div className="space-y-8 text-left">
+              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9]">
                 I help teams move forward — <span className="text-secondary">fast.</span>
               </h1>
               <p className="text-2xl md:text-3xl font-medium text-primary-foreground/90">
@@ -63,27 +28,17 @@ const Index = () => {
               <p className="text-xl md:text-2xl text-primary-foreground/70 font-light italic">
                 Are you ready to go on an Es Venture?
               </p>
-              <motion.div 
-                className="pt-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-              >
+              <div className="pt-6">
                 <Button 
                   size="lg" 
                   className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full"
                   onClick={scrollToContact}
                 >
-                  Send email
+                  Let's talk
                 </Button>
-              </motion.div>
-            </motion.div>
-            <motion.div 
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
+              </div>
+            </div>
+            <div className="relative">
               <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
                 <img 
                   src={estherYellow} 
@@ -91,21 +46,10 @@ const Index = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <motion.div 
-                className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 0.7, 0.5]
-                }}
-                transition={{ 
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              ></motion.div>
-            </motion.div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"></div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Why Es Venture */}
@@ -118,263 +62,194 @@ const Index = () => {
                 { text: "More direction" },
                 { text: "Things actually get done" }
               ].map((item, index) => (
-                <motion.div 
-                  key={index} 
-                  className="flex flex-col items-center text-center gap-4"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5, delay: index * 0.15 }}
-                >
-                  <motion.div 
-                    className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center"
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
+                <div key={index} className="flex flex-col items-center text-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
                     <Check className="w-8 h-8 text-secondary-foreground" strokeWidth={3} />
-                  </motion.div>
+                  </div>
                   <span className="text-2xl font-bold text-foreground">{item.text}</span>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
-
 
 
       {/* Services */}
       <section id="services" className="container mx-auto px-4 pb-24">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground font-poppins">My Services</h2>
-            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto">
-              Short-term, high-impact projects. <span className="text-primary font-bold">Practical, clear and fast</span> — always with a tangible result.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Service 1: Fix It */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0 }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            >
-              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
-                <div className="flex flex-col items-center text-center mb-4">
-                  <motion.div 
-                    className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4"
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <span className="text-3xl font-black text-primary-foreground">01</span>
-                  </motion.div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Fix It</h3>
-                </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
-                  When something isn't getting done — I take it, own it, and finish it.
-                </p>
-                
-                <div className="space-y-8 flex-1 flex flex-col">
-                  <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
-                    <ul className="space-y-2 text-foreground/70 text-sm">
-                      <li>• A deliverable keeps slipping</li>
-                      <li>• A project is half-done</li>
-                      <li>• No clear owner → no progress</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
-                    <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">
-                      A deliverable that finally gets done. More headspace. Progress instead of stress.
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-
-            {/* Service 2: From Idea to Prototype */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            >
-              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
-                <div className="flex flex-col items-center text-center mb-4">
-                  <motion.div 
-                    className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4"
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <span className="text-3xl font-black text-primary-foreground">02</span>
-                  </motion.div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">From Idea to Prototype</h3>
-                </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
-                  From a rough idea → to a clickable prototype you can show, test or pitch.
-                </p>
-                
-                <div className="space-y-8 flex-1 flex flex-col">
-                  <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
-                    <ul className="space-y-2 text-foreground/70 text-sm">
-                      <li>• Your idea only exists in your head</li>
-                      <li>• You need something visual</li>
-                      <li>• You want clarity before building</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
-                    <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">
-                      A concept that clicks. A prototype that speaks for itself. Direction for next steps.
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-
-            {/* Service 3: Process, Structure, Overview */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            >
-              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
-                <div className="flex flex-col items-center text-center mb-4">
-                  <motion.div 
-                    className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4"
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <span className="text-3xl font-black text-primary-foreground">03</span>
-                  </motion.div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Clarity</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Process, Structure, Overview</h3>
-                </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
-                  For teams who need clarity, alignment and a structure that actually holds.
-                </p>
-                
-                <div className="space-y-8 flex-1 flex flex-col">
-                  <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
-                    <ul className="space-y-2 text-foreground/70 text-sm">
-                      <li>• Unclear responsibilities</li>
-                      <li>• Work not aligned</li>
-                      <li>• Processes missing or duplicated</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
-                    <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">
-                      A team on the same page. A project that feels organised. Clarity, direction, flow.
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section id="how-it-works" className="bg-background py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2 
-              className="text-5xl md:text-6xl font-black text-center mb-20 text-foreground font-poppins"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              How It Works
-            </motion.h2>
-
-            <div className="space-y-16 relative">
-              {/* Vertical line */}
-              <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-primary/20 hidden md:block" />
-
-              {[
-                {
-                  week: "Week 0",
-                  title: "First Contact",
-                  description: "A short call to understand what's stuck or unclear.\nYou explain the situation; I start mapping the real problem immediately."
-                },
-                {
-                  week: "Week 1",
-                  title: "Kickoff & Discovery",
-                  description: "I get access to the right tools, documents and people.\nI untangle the situation, identify gaps and clarify what's really going on.\nOutput: a brief diagnosis + an early direction."
-                },
-                {
-                  week: "Week 2",
-                  title: "Structure & Direction",
-                  description: "I turn chaos into clarity.\nThis includes process mapping, UX flows, priorities and identifying missing pieces.\nOutput: a clear overview, draft structure and prioritised next steps."
-                },
-                {
-                  week: "Week 3",
-                  title: "Action Plan",
-                  description: "I finalise the structure and translate everything into a concrete, actionable plan.\nThis includes templates, flows, dashboards, responsibilities and next steps.\nWalkthrough + handover included.\nOutput: a complete action plan your team (or I) can execute."
-                },
-                {
-                  week: "Optional Week 4",
-                  title: "Support",
-                  description: "If you want help implementing the plan or driving the first steps, I'm there."
-                }
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  className="relative flex gap-8 items-start"
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  {/* Circle marker */}
-                  <div className="flex-shrink-0">
-                    <motion.div 
-                      className="w-16 h-16 rounded-full bg-primary flex items-center justify-center relative z-10"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <span className="text-primary-foreground font-black text-lg">{index + 1}</span>
-                    </motion.div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 pt-2">
-                    <Badge className="mb-3 bg-secondary/20 text-foreground border-secondary font-bold">
-                      {step.week}
-                    </Badge>
-                    <h3 className="text-2xl md:text-3xl font-black text-foreground mb-4 font-poppins">
-                      {step.title}
-                    </h3>
-                    <div className="text-foreground/70 text-lg leading-relaxed space-y-2">
-                      {step.description.split('\n').map((line, i) => (
-                        <p key={i}>{line}</p>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground">My Services</h2>
+          <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto">
+            Short-term, high-impact projects. <span className="text-primary font-bold">Practical, clear and fast</span> — always with a tangible result.
+          </p>
+          <div className="space-y-16">
+          {/* Service 1: Fix It */}
+          <FadeInOnScroll>
+            <Card className="p-10 md:p-16 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
+                <span className="text-3xl font-black text-primary-foreground">01</span>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-black text-foreground">Fix It</h3>
             </div>
+            <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
+              When something isn't getting done — I take it, own it, and finish it.
+            </p>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="font-bold text-xl mb-5 text-foreground">When you need this:</h3>
+                <ul className="space-y-3 text-foreground/70 text-lg">
+                  <li>• A deliverable keeps slipping</li>
+                  <li>• A project is half-done</li>
+                  <li>• No clear owner → no progress</li>
+                  <li>• A critical task keeps getting postponed</li>
+                  <li>• You need someone who says: "I'll take this."</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-xl mb-5 text-foreground">What I do:</h3>
+                <div className="space-y-4">
+                  {[
+                    "Take full ownership",
+                    "Get up to speed fast",
+                    "Clean up what's messy",
+                    "Make decisions where needed",
+                    "Build whatever is required",
+                    "Push it to the finish line"
+                  ].map((step, index) => (
+                    <div key={index} className="flex items-center gap-4 text-foreground text-lg font-medium">
+                      <ArrowRight className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={3} />
+                      <span>{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-secondary/20 p-8 rounded-2xl border-2 border-secondary">
+                <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
+                <p className="text-foreground text-lg font-medium leading-relaxed">
+                  A deliverable that finally gets done.<br />
+                  More headspace.<br />
+                  Progress instead of stress.
+                </p>
+              </div>
+            </div>
+          </Card>
+          </FadeInOnScroll>
+
+          {/* Service 2: From Idea to Prototype */}
+          <FadeInOnScroll delay={0.1}>
+            <Card className="p-10 md:p-16 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
+                <span className="text-3xl font-black text-primary-foreground">02</span>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-black text-foreground">From Idea to Prototype</h3>
+            </div>
+            <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
+              From a rough idea → to a clickable prototype you can show, test or pitch.
+            </p>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="font-bold text-xl mb-5 text-foreground">When you need this:</h3>
+                <ul className="space-y-3 text-foreground/70 text-lg">
+                  <li>• Your idea only exists in your head</li>
+                  <li>• You need something visual for feedback or pitching</li>
+                  <li>• You want clarity before building</li>
+                  <li>• You're stuck in the thinking phase</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-xl mb-5 text-foreground">What I do:</h3>
+                <div className="space-y-4">
+                  {[
+                    "Sharpen the concept",
+                    "Map user journey & UX flow",
+                    "Build clickable prototype (Figma / Lovable / Webflow)",
+                    "Create mini design system",
+                    "Optional: content, visuals, microcopy",
+                    "Package everything for sharing or testing"
+                  ].map((step, index) => (
+                    <div key={index} className="flex items-center gap-4 text-foreground text-lg font-medium">
+                      <ArrowRight className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={3} />
+                      <span>{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-secondary/20 p-8 rounded-2xl border-2 border-secondary">
+                <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
+                <p className="text-foreground text-lg font-medium leading-relaxed">
+                  A concept that clicks.<br />
+                  A prototype that speaks for itself.<br />
+                  Direction and confidence for next steps.
+                </p>
+              </div>
+            </div>
+          </Card>
+          </FadeInOnScroll>
+
+          {/* Service 3: Process, Structure, Overview */}
+          <FadeInOnScroll delay={0.2}>
+            <Card className="p-10 md:p-16 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
+                <span className="text-3xl font-black text-primary-foreground">03</span>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-black text-foreground">Process, Structure, Overview</h3>
+            </div>
+            <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
+              For teams who need clarity, alignment and a structure that actually holds.
+            </p>
+            
+            <div className="space-y-10">
+              <div>
+                <h3 className="font-bold text-xl mb-5 text-foreground">When you need this:</h3>
+                <ul className="space-y-3 text-foreground/70 text-lg">
+                  <li>• Unclear responsibilities</li>
+                  <li>• Work is happening, but not together</li>
+                  <li>• Processes missing or duplicated</li>
+                  <li>• New platforms/workflows need setup</li>
+                  <li>• Too many questions, not enough clarity</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-xl mb-5 text-foreground">What I do:</h3>
+                <div className="space-y-4">
+                  {[
+                    "Map current workflows & gaps",
+                    "Clarify scope, roles, responsibilities",
+                    "Design workflows and handoffs",
+                    "Build templates, dashboards, trackers",
+                    "Facilitate alignment (fast, no fluff)",
+                    "Set up a structure the team can follow"
+                  ].map((step, index) => (
+                    <div key={index} className="flex items-center gap-4 text-foreground text-lg font-medium">
+                      <ArrowRight className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={3} />
+                      <span>{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-secondary/20 p-8 rounded-2xl border-2 border-secondary">
+                <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
+                <p className="text-foreground text-lg font-medium leading-relaxed">
+                  A team on the same page.<br />
+                  A project that feels organised.<br />
+                  A structure that supports progress.<br />
+                  Clarity, direction, flow.
+                </p>
+              </div>
+            </div>
+          </Card>
+          </FadeInOnScroll>
           </div>
         </div>
       </section>
@@ -382,113 +257,29 @@ const Index = () => {
       {/* Mini Cases */}
       <section id="projects" className="bg-muted py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <motion.h2 
-              className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground font-poppins"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              Recent Projects
-            </motion.h2>
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              plugins={[
-                Autoplay({
-                  delay: 4000,
-                  stopOnInteraction: false,
-                  stopOnMouseEnter: true,
-                })
-              ]}
-              setApi={setCarouselApi}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4">
-                {[
-                  {
-                    title: "Startup",
-                    subtitle: "From idea to prototype",
-                    description: "Took a rough idea and turned it into a full UX flow + clickable prototype so the founder could finally show something real."
-                  },
-                  {
-                    title: "Tourism company",
-                    subtitle: "Project management setup",
-                    description: "Set up a simple project management system from scratch, cleaned up how the team works and made sure everyone actually knew what to do."
-                  },
-                  {
-                    title: "Photostudio",
-                    subtitle: "Website launch",
-                    description: "Designed and launched a clear, easy-to-navigate website so clients could find them (and book them) without confusion."
-                  },
-                  {
-                    title: "E-bike brand",
-                    subtitle: "Webshop launch",
-                    description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
-                  },
-                  {
-                    title: "Internal teams",
-                    subtitle: "Customer success agent",
-                    description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
-                  },
-                  {
-                    title: "NGO",
-                    subtitle: "User journey mapping across systems",
-                    description: "Mapped the full user journey across several applications — finally giving everyone a clear picture of how things actually flow."
-                  },
-                  {
-                    title: "NGO",
-                    subtitle: "UAT & E2E testing",
-                    description: "Coordinated UAT and E2E testing for a new platform, aligned teams and brought much-needed structure to the process."
-                  },
-                  {
-                    title: "E-bike brand",
-                    subtitle: "Interim PO for subscription launch",
-                    description: "Stepped in as interim PO to keep the subscription service moving. Cleaned up scope, prioritised what mattered and pushed things forward."
-                  },
-                  {
-                    title: "E-bike brand",
-                    subtitle: "ERP improvements",
-                    description: "Found and fixed gaps in the ERP flow so operational processes stopped getting stuck."
-                  }
-                ].map((project, index) => (
-                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.05 }}
-                      className="h-full"
-                    >
-                      <Card className="p-8 bg-background border-4 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-secondary rounded-2xl h-full">
-                        <h3 className="font-bold text-2xl mb-3 text-foreground font-poppins">{project.title}</h3>
-                        <p className="font-bold text-lg mb-4 text-primary">{project.subtitle}</p>
-                        <p className="text-foreground/70 text-base leading-relaxed">{project.description}</p>
-                      </Card>
-                    </motion.div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-16 bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12" />
-              <CarouselNext className="hidden md:flex -right-16 bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12" />
-            </Carousel>
-            
-            {/* Carousel Dots */}
-            <div className="flex justify-center gap-2 mt-8">
-              {Array.from({ length: count }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => carouselApi?.scrollTo(index)}
-                  className={`h-3 w-3 rounded-full transition-all ${
-                    index === current 
-                      ? "bg-primary w-8" 
-                      : "bg-primary/30 hover:bg-primary/50"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground">Recent Projects</h2>
+            <div className="grid md:grid-cols-3 gap-10">
+              {[
+                {
+                  title: "Rainforest Alliance",
+                  description: "Built workflows, dashboards & test processes. The team gained clarity and speed."
+                },
+                {
+                  title: "Creative Studio",
+                  description: "Created structure, workflows & simple systems. More overview, more space to grow."
+                },
+                {
+                  title: "Startup Founder",
+                  description: "Concept → UX flow → clickable prototype in 1 week. Pitch-ready."
+                }
+              ].map((project, index) => (
+                <FadeInOnScroll key={index} delay={index * 0.1}>
+                  <Card className="p-8 bg-background border-4 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-secondary rounded-2xl">
+                    <h3 className="font-bold text-2xl mb-4 text-foreground">{project.title}</h3>
+                    <p className="text-foreground/70 text-lg leading-relaxed">{project.description}</p>
+                  </Card>
+                </FadeInOnScroll>
               ))}
             </div>
           </div>
@@ -498,67 +289,25 @@ const Index = () => {
       {/* About Me */}
       <section id="about" className="container mx-auto px-4 py-24">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
-            className="text-5xl md:text-6xl font-black mb-16 text-center font-poppins"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            About Me
-          </motion.h2>
+          <h2 className="text-5xl md:text-6xl font-black mb-16 text-center">About Me</h2>
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div 
-              className="order-2 md:order-1"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div className="order-2 md:order-1">
               <div className="text-xl text-foreground leading-relaxed space-y-6">
-                <motion.p 
-                  className="font-medium"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                >
+                <p className="font-medium">
                   Hi, I'm Esther — product/implementation nerd, UX lover and structure enthusiast.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                >
+                </p>
+                <p>
                   I keep things simple. I move fast. And I make sure projects actually get finished.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
-                >
+                </p>
+                <p>
                   Teams bring me in when they're stuck, overwhelmed or unsure where to start.
-                </motion.p>
-                <motion.p 
-                  className="font-bold"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                >
+                </p>
+                <p className="font-bold">
                   I'm practical, direct and no-nonsense — no 70-page documents, just solutions that work.
-                </motion.p>
+                </p>
               </div>
-            </motion.div>
-            <motion.div 
-              className="order-1 md:order-2"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            </div>
+            <div className="order-1 md:order-2">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <img 
                   src={estherBW} 
@@ -566,7 +315,7 @@ const Index = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -574,37 +323,27 @@ const Index = () => {
       {/* Final CTA */}
       <section id="contact" className="bg-primary py-24">
         <div className="container mx-auto px-4">
-          <motion.div 
-            className="max-w-4xl mx-auto text-center space-y-10"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground font-poppins">Ready to go on an Es Venture?</h2>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
+          <div className="max-w-4xl mx-auto text-center space-y-10">
+            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground">Ready to go on an Es Venture?</h2>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 
-                className="text-xl px-12 py-8 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:text-primary transition-all shadow-2xl rounded-full"
+                className="text-xl px-12 py-8 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all shadow-2xl rounded-full"
                 onClick={() => window.location.href = 'mailto:hello@esventure.com'}
               >
-                Send email
+                <Mail className="mr-3 w-6 h-6" />
+                Let's talk
               </Button>
               <Button 
+                variant="outline" 
                 size="lg" 
-                className="text-xl px-12 py-8 font-bold bg-primary/90 text-primary-foreground border-4 border-primary-foreground/50 hover:bg-secondary hover:text-primary hover:border-secondary transition-all rounded-full shadow-2xl"
-                onClick={() => window.open('https://calendly.com/esventure', '_blank')}
+                className="text-xl px-12 py-8 font-bold border-4 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all rounded-full"
+                onClick={() => window.location.href = 'mailto:hello@esventure.com'}
               >
-                Book a call
+                Send an email
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
