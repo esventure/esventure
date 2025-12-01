@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
@@ -101,8 +102,8 @@ const Index = () => {
               transition={{ duration: 0.5, delay: 0 }}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
-              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group">
-                <div className="flex flex-col items-center text-center mb-6">
+              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
+                <div className="flex flex-col items-center text-center mb-4">
                   <motion.div 
                     className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4"
                     whileHover={{ rotate: 360, scale: 1.1 }}
@@ -110,14 +111,15 @@ const Index = () => {
                   >
                     <span className="text-3xl font-black text-primary-foreground">01</span>
                   </motion.div>
+                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors">Fix It</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center">
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
                   When something isn't getting done — I take it, own it, and finish it.
                 </p>
                 
-                <div className="space-y-8">
-                  <div>
+                <div className="space-y-8 flex-1 flex flex-col">
+                  <div className="flex-1">
                     <h4 className="font-bold text-lg mb-4 text-foreground">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• A deliverable keeps slipping</li>
@@ -126,7 +128,7 @@ const Index = () => {
                     </ul>
                   </div>
 
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary">
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
                     <h4 className="font-bold text-lg mb-3 text-foreground">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">
                       A deliverable that finally gets done. More headspace. Progress instead of stress.
@@ -144,8 +146,8 @@ const Index = () => {
               transition={{ duration: 0.5, delay: 0.15 }}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
-              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group">
-                <div className="flex flex-col items-center text-center mb-6">
+              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
+                <div className="flex flex-col items-center text-center mb-4">
                   <motion.div 
                     className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4"
                     whileHover={{ rotate: 360, scale: 1.1 }}
@@ -153,14 +155,15 @@ const Index = () => {
                   >
                     <span className="text-3xl font-black text-primary-foreground">02</span>
                   </motion.div>
+                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors">From Idea to Prototype</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center">
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
                   From a rough idea → to a clickable prototype you can show, test or pitch.
                 </p>
                 
-                <div className="space-y-8">
-                  <div>
+                <div className="space-y-8 flex-1 flex flex-col">
+                  <div className="flex-1">
                     <h4 className="font-bold text-lg mb-4 text-foreground">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Your idea only exists in your head</li>
@@ -169,7 +172,7 @@ const Index = () => {
                     </ul>
                   </div>
 
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary">
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
                     <h4 className="font-bold text-lg mb-3 text-foreground">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">
                       A concept that clicks. A prototype that speaks for itself. Direction for next steps.
@@ -187,8 +190,8 @@ const Index = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
             >
-              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group">
-                <div className="flex flex-col items-center text-center mb-6">
+              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
+                <div className="flex flex-col items-center text-center mb-4">
                   <motion.div 
                     className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4"
                     whileHover={{ rotate: 360, scale: 1.1 }}
@@ -196,14 +199,15 @@ const Index = () => {
                   >
                     <span className="text-3xl font-black text-primary-foreground">03</span>
                   </motion.div>
+                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Clarity</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors">Process, Structure, Overview</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center">
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
                   For teams who need clarity, alignment and a structure that actually holds.
                 </p>
                 
-                <div className="space-y-8">
-                  <div>
+                <div className="space-y-8 flex-1 flex flex-col">
+                  <div className="flex-1">
                     <h4 className="font-bold text-lg mb-4 text-foreground">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Unclear responsibilities</li>
@@ -212,7 +216,7 @@ const Index = () => {
                     </ul>
                   </div>
 
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary">
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
                     <h4 className="font-bold text-lg mb-3 text-foreground">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">
                       A team on the same page. A project that feels organised. Clarity, direction, flow.
