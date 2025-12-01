@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 
@@ -13,14 +13,27 @@ const Index = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-primary">
-        <div className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32">
+        <motion.div 
+          className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32"
+          style={{ y, opacity, scale }}
+        >
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-            <div className="space-y-8 text-left">
+            <motion.div 
+              className="space-y-8 text-left"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">
                 I help teams move forward — <span className="text-secondary">fast.</span>
               </h1>
@@ -30,7 +43,12 @@ const Index = () => {
               <p className="text-xl md:text-2xl text-primary-foreground/70 font-light italic">
                 Are you ready to go on an Es Venture?
               </p>
-              <div className="pt-6">
+              <motion.div 
+                className="pt-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
                 <Button 
                   size="lg" 
                   className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full"
@@ -38,9 +56,14 @@ const Index = () => {
                 >
                   Let's talk
                 </Button>
-              </div>
-            </div>
-            <div className="relative">
+              </motion.div>
+            </motion.div>
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
                 <img 
                   src={estherYellow} 
@@ -48,10 +71,21 @@ const Index = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"></div>
-            </div>
+              <motion.div 
+                className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  opacity: [0.5, 0.7, 0.5]
+                }}
+                transition={{ 
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              ></motion.div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Why Es Venture */}
@@ -64,12 +98,23 @@ const Index = () => {
                 { text: "More direction" },
                 { text: "Things actually get done" }
               ].map((item, index) => (
-                <div key={index} className="flex flex-col items-center text-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
+                <motion.div 
+                  key={index} 
+                  className="flex flex-col items-center text-center gap-4"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                >
+                  <motion.div 
+                    className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center"
+                    whileHover={{ scale: 1.1, rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
                     <Check className="w-8 h-8 text-secondary-foreground" strokeWidth={3} />
-                  </div>
+                  </motion.div>
                   <span className="text-2xl font-bold text-foreground">{item.text}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -233,7 +278,15 @@ const Index = () => {
       <section id="projects" className="bg-muted py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground font-poppins">Recent Projects</h2>
+            <motion.h2 
+              className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground font-poppins"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Recent Projects
+            </motion.h2>
             <div className="grid md:grid-cols-3 gap-10">
               {[
                 {
@@ -249,12 +302,19 @@ const Index = () => {
                   description: "Concept → UX flow → clickable prototype in 1 week. Pitch-ready."
                 }
               ].map((project, index) => (
-                <FadeInOnScroll key={index} delay={index * 0.1}>
-                  <Card className="p-8 bg-background border-4 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-secondary rounded-2xl">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <Card className="p-8 bg-background border-4 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-secondary rounded-2xl h-full">
                     <h3 className="font-bold text-2xl mb-4 text-foreground font-poppins">{project.title}</h3>
                     <p className="text-foreground/70 text-lg leading-relaxed">{project.description}</p>
                   </Card>
-                </FadeInOnScroll>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -264,25 +324,67 @@ const Index = () => {
       {/* About Me */}
       <section id="about" className="container mx-auto px-4 py-24">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-black mb-16 text-center font-poppins">About Me</h2>
+          <motion.h2 
+            className="text-5xl md:text-6xl font-black mb-16 text-center font-poppins"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            About Me
+          </motion.h2>
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
+            <motion.div 
+              className="order-2 md:order-1"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="text-xl text-foreground leading-relaxed space-y-6">
-                <p className="font-medium">
+                <motion.p 
+                  className="font-medium"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                >
                   Hi, I'm Esther — product/implementation nerd, UX lover and structure enthusiast.
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                >
                   I keep things simple. I move fast. And I make sure projects actually get finished.
-                </p>
-                <p>
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
                   Teams bring me in when they're stuck, overwhelmed or unsure where to start.
-                </p>
-                <p className="font-bold">
+                </motion.p>
+                <motion.p 
+                  className="font-bold"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                >
                   I'm practical, direct and no-nonsense — no 70-page documents, just solutions that work.
-                </p>
+                </motion.p>
               </div>
-            </div>
-            <div className="order-1 md:order-2">
+            </motion.div>
+            <motion.div 
+              className="order-1 md:order-2"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <img 
                   src={estherBW} 
@@ -290,7 +392,7 @@ const Index = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -298,9 +400,21 @@ const Index = () => {
       {/* Final CTA */}
       <section id="contact" className="bg-primary py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-10">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center space-y-10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className="text-5xl md:text-7xl font-black text-primary-foreground font-poppins">Ready to go on an Es Venture?</h2>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
               <Button 
                 size="lg" 
                 className="text-xl px-12 py-8 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all shadow-2xl rounded-full"
@@ -317,8 +431,8 @@ const Index = () => {
               >
                 Send an email
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
