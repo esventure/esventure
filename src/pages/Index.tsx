@@ -8,6 +8,7 @@ import FadeInOnScroll from "@/components/FadeInOnScroll";
 import { motion, useScroll, useTransform } from "framer-motion";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
+import Autoplay from "embla-carousel-autoplay";
 
 const Index = () => {
   const scrollToContact = () => {
@@ -378,6 +379,13 @@ const Index = () => {
                 align: "start",
                 loop: true,
               }}
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                  stopOnInteraction: false,
+                  stopOnMouseEnter: true,
+                })
+              ]}
               className="w-full"
             >
               <CarouselContent className="-ml-4">
