@@ -375,16 +375,49 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-10">
               {[
                 {
-                  title: "Rainforest Alliance",
-                  description: "Built workflows, dashboards & test processes. The team gained clarity and speed."
+                  title: "Startup",
+                  subtitle: "From idea to prototype",
+                  description: "Took a rough idea and turned it into a full UX flow + clickable prototype so the founder could finally show something real."
                 },
                 {
-                  title: "Creative Studio",
-                  description: "Created structure, workflows & simple systems. More overview, more space to grow."
+                  title: "Tourism company",
+                  subtitle: "Project management setup",
+                  description: "Set up a simple project management system from scratch, cleaned up how the team works and made sure everyone actually knew what to do."
                 },
                 {
-                  title: "Startup Founder",
-                  description: "Concept → UX flow → clickable prototype in 1 week. Pitch-ready."
+                  title: "Photostudio",
+                  subtitle: "Website launch",
+                  description: "Designed and launched a clear, easy-to-navigate website so clients could find them (and book them) without confusion."
+                },
+                {
+                  title: "E-bike brand",
+                  subtitle: "Webshop launch",
+                  description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
+                },
+                {
+                  title: "Internal teams",
+                  subtitle: "Customer success agent",
+                  description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
+                },
+                {
+                  title: "NGO",
+                  subtitle: "User journey mapping across systems",
+                  description: "Mapped the full user journey across several applications — finally giving everyone a clear picture of how things actually flow."
+                },
+                {
+                  title: "NGO",
+                  subtitle: "UAT & E2E testing",
+                  description: "Coordinated UAT and E2E testing for a new platform, aligned teams and brought much-needed structure to the process."
+                },
+                {
+                  title: "E-bike brand",
+                  subtitle: "Interim PO for subscription launch",
+                  description: "Stepped in as interim PO to keep the subscription service moving. Cleaned up scope, prioritised what mattered and pushed things forward."
+                },
+                {
+                  title: "E-bike brand",
+                  subtitle: "ERP improvements",
+                  description: "Found and fixed gaps in the ERP flow so operational processes stopped getting stuck."
                 }
               ].map((project, index) => (
                 <motion.div
@@ -396,8 +429,9 @@ const Index = () => {
                   whileHover={{ y: -5 }}
                 >
                   <Card className="p-8 bg-background border-4 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-secondary rounded-2xl h-full">
-                    <h3 className="font-bold text-2xl mb-4 text-foreground font-poppins">{project.title}</h3>
-                    <p className="text-foreground/70 text-lg leading-relaxed">{project.description}</p>
+                    <h3 className="font-bold text-2xl mb-3 text-foreground font-poppins">{project.title}</h3>
+                    <p className="font-bold text-lg mb-4 text-primary">{project.subtitle}</p>
+                    <p className="text-foreground/70 text-base leading-relaxed">{project.description}</p>
                   </Card>
                 </motion.div>
               ))}
