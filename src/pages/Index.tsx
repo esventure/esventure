@@ -10,6 +10,7 @@ import React from "react";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import Autoplay from "embla-carousel-autoplay";
+import Fade from "embla-carousel-fade";
 
 const Index = () => {
   const scrollToContact = () => {
@@ -398,6 +399,7 @@ const Index = () => {
                 loop: true,
               }}
               plugins={[
+                Fade(),
                 Autoplay({
                   delay: 4000,
                   stopOnInteraction: false,
