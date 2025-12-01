@@ -6,6 +6,7 @@ import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
 import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import Autoplay from "embla-carousel-autoplay";
@@ -19,6 +20,23 @@ const Index = () => {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
+
+  const [carouselApi, setCarouselApi] = React.useState<any>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+
+    setCount(carouselApi.scrollSnapList().length);
+    setCurrent(carouselApi.selectedScrollSnap());
+
+    carouselApi.on("select", () => {
+      setCurrent(carouselApi.selectedScrollSnap());
+    });
+  }, [carouselApi]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -386,6 +404,7 @@ const Index = () => {
                   stopOnMouseEnter: true,
                 })
               ]}
+              setApi={setCarouselApi}
               className="w-full"
             >
               <CarouselContent className="-ml-4">
@@ -456,6 +475,22 @@ const Index = () => {
               <CarouselPrevious className="hidden md:flex -left-16 bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12" />
               <CarouselNext className="hidden md:flex -right-16 bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12" />
             </Carousel>
+            
+            {/* Carousel Dots */}
+            <div className="flex justify-center gap-2 mt-8">
+              {Array.from({ length: count }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => carouselApi?.scrollTo(index)}
+                  className={`h-3 w-3 rounded-full transition-all ${
+                    index === current 
+                      ? "bg-primary w-8" 
+                      : "bg-primary/30 hover:bg-primary/50"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
