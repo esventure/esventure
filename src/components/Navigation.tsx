@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/es-venture-logo.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,9 +47,9 @@ const Navigation = () => {
             {/* Logo */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-2xl font-black text-foreground hover:text-primary transition-colors font-poppins"
+              className="flex items-center hover:opacity-80 transition-opacity"
             >
-              Es Venture
+              <img src={logo} alt="Es Venture" className="h-10 w-auto" />
             </button>
 
             {/* Desktop Navigation */}
