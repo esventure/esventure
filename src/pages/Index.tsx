@@ -54,7 +54,7 @@ const Index = () => {
                   className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full"
                   onClick={scrollToContact}
                 >
-                  Let's talk
+                  Send email
                 </Button>
               </motion.div>
             </motion.div>
@@ -506,15 +506,15 @@ const Index = () => {
                 onClick={() => window.location.href = 'mailto:hello@esventure.com'}
               >
                 <Mail className="mr-3 w-6 h-6" />
-                Let's talk
+                Send email
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
                 className="text-xl px-12 py-8 font-bold border-4 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all rounded-full"
-                onClick={() => window.location.href = 'mailto:hello@esventure.com'}
+                onClick={() => window.open('https://calendly.com/esventure', '_blank')}
               >
-                Send an email
+                Book a call
               </Button>
             </motion.div>
           </motion.div>
