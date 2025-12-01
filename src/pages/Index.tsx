@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
@@ -362,7 +363,7 @@ const Index = () => {
       {/* Mini Cases */}
       <section id="projects" className="bg-muted py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <motion.h2 
               className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground font-poppins"
               initial={{ opacity: 0, y: 30 }}
@@ -372,70 +373,81 @@ const Index = () => {
             >
               Recent Projects
             </motion.h2>
-            <div className="grid md:grid-cols-3 gap-10">
-              {[
-                {
-                  title: "Startup",
-                  subtitle: "From idea to prototype",
-                  description: "Took a rough idea and turned it into a full UX flow + clickable prototype so the founder could finally show something real."
-                },
-                {
-                  title: "Tourism company",
-                  subtitle: "Project management setup",
-                  description: "Set up a simple project management system from scratch, cleaned up how the team works and made sure everyone actually knew what to do."
-                },
-                {
-                  title: "Photostudio",
-                  subtitle: "Website launch",
-                  description: "Designed and launched a clear, easy-to-navigate website so clients could find them (and book them) without confusion."
-                },
-                {
-                  title: "E-bike brand",
-                  subtitle: "Webshop launch",
-                  description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
-                },
-                {
-                  title: "Internal teams",
-                  subtitle: "Customer success agent",
-                  description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
-                },
-                {
-                  title: "NGO",
-                  subtitle: "User journey mapping across systems",
-                  description: "Mapped the full user journey across several applications — finally giving everyone a clear picture of how things actually flow."
-                },
-                {
-                  title: "NGO",
-                  subtitle: "UAT & E2E testing",
-                  description: "Coordinated UAT and E2E testing for a new platform, aligned teams and brought much-needed structure to the process."
-                },
-                {
-                  title: "E-bike brand",
-                  subtitle: "Interim PO for subscription launch",
-                  description: "Stepped in as interim PO to keep the subscription service moving. Cleaned up scope, prioritised what mattered and pushed things forward."
-                },
-                {
-                  title: "E-bike brand",
-                  subtitle: "ERP improvements",
-                  description: "Found and fixed gaps in the ERP flow so operational processes stopped getting stuck."
-                }
-              ].map((project, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.15 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <Card className="p-8 bg-background border-4 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-secondary rounded-2xl h-full">
-                    <h3 className="font-bold text-2xl mb-3 text-foreground font-poppins">{project.title}</h3>
-                    <p className="font-bold text-lg mb-4 text-primary">{project.subtitle}</p>
-                    <p className="text-foreground/70 text-base leading-relaxed">{project.description}</p>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {[
+                  {
+                    title: "Startup",
+                    subtitle: "From idea to prototype",
+                    description: "Took a rough idea and turned it into a full UX flow + clickable prototype so the founder could finally show something real."
+                  },
+                  {
+                    title: "Tourism company",
+                    subtitle: "Project management setup",
+                    description: "Set up a simple project management system from scratch, cleaned up how the team works and made sure everyone actually knew what to do."
+                  },
+                  {
+                    title: "Photostudio",
+                    subtitle: "Website launch",
+                    description: "Designed and launched a clear, easy-to-navigate website so clients could find them (and book them) without confusion."
+                  },
+                  {
+                    title: "E-bike brand",
+                    subtitle: "Webshop launch",
+                    description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
+                  },
+                  {
+                    title: "Internal teams",
+                    subtitle: "Customer success agent",
+                    description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
+                  },
+                  {
+                    title: "NGO",
+                    subtitle: "User journey mapping across systems",
+                    description: "Mapped the full user journey across several applications — finally giving everyone a clear picture of how things actually flow."
+                  },
+                  {
+                    title: "NGO",
+                    subtitle: "UAT & E2E testing",
+                    description: "Coordinated UAT and E2E testing for a new platform, aligned teams and brought much-needed structure to the process."
+                  },
+                  {
+                    title: "E-bike brand",
+                    subtitle: "Interim PO for subscription launch",
+                    description: "Stepped in as interim PO to keep the subscription service moving. Cleaned up scope, prioritised what mattered and pushed things forward."
+                  },
+                  {
+                    title: "E-bike brand",
+                    subtitle: "ERP improvements",
+                    description: "Found and fixed gaps in the ERP flow so operational processes stopped getting stuck."
+                  }
+                ].map((project, index) => (
+                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.05 }}
+                      className="h-full"
+                    >
+                      <Card className="p-8 bg-background border-4 border-primary/30 shadow-lg hover:shadow-xl transition-all hover:border-secondary rounded-2xl h-full">
+                        <h3 className="font-bold text-2xl mb-3 text-foreground font-poppins">{project.title}</h3>
+                        <p className="font-bold text-lg mb-4 text-primary">{project.subtitle}</p>
+                        <p className="text-foreground/70 text-base leading-relaxed">{project.description}</p>
+                      </Card>
+                    </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-16 bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12" />
+              <CarouselNext className="hidden md:flex -right-16 bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12" />
+            </Carousel>
           </div>
         </div>
       </section>
