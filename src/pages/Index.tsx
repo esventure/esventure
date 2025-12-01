@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
+import { motion } from "framer-motion";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 
@@ -75,181 +76,151 @@ const Index = () => {
       </section>
 
 
+
       {/* Services */}
       <section id="services" className="container mx-auto px-4 pb-24">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground">My Services</h2>
-          <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto">
-            Short-term, high-impact projects. <span className="text-primary font-bold">Practical, clear and fast</span> — always with a tangible result.
-          </p>
-          <div className="space-y-16">
-          {/* Service 1: Fix It */}
-          <FadeInOnScroll>
-            <Card className="p-10 md:p-16 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
-                <span className="text-3xl font-black text-primary-foreground">01</span>
-              </div>
-              <h3 className="text-4xl md:text-5xl font-black text-foreground">Fix It</h3>
-            </div>
-            <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
-              When something isn't getting done — I take it, own it, and finish it.
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground">My Services</h2>
+            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto">
+              Short-term, high-impact projects. <span className="text-primary font-bold">Practical, clear and fast</span> — always with a tangible result.
             </p>
-            
-            <div className="space-y-10">
-              <div>
-                <h3 className="font-bold text-xl mb-5 text-foreground">When you need this:</h3>
-                <ul className="space-y-3 text-foreground/70 text-lg">
-                  <li>• A deliverable keeps slipping</li>
-                  <li>• A project is half-done</li>
-                  <li>• No clear owner → no progress</li>
-                  <li>• A critical task keeps getting postponed</li>
-                  <li>• You need someone who says: "I'll take this."</li>
-                </ul>
-              </div>
+          </motion.div>
 
-              <div>
-                <h3 className="font-bold text-xl mb-5 text-foreground">What I do:</h3>
-                <div className="space-y-4">
-                  {[
-                    "Take full ownership",
-                    "Get up to speed fast",
-                    "Clean up what's messy",
-                    "Make decisions where needed",
-                    "Build whatever is required",
-                    "Push it to the finish line"
-                  ].map((step, index) => (
-                    <div key={index} className="flex items-center gap-4 text-foreground text-lg font-medium">
-                      <ArrowRight className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={3} />
-                      <span>{step}</span>
-                    </div>
-                  ))}
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Service 1: Fix It */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            >
+              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group">
+                <div className="flex flex-col items-center text-center mb-6">
+                  <motion.div 
+                    className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <span className="text-3xl font-black text-primary-foreground">01</span>
+                  </motion.div>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors">Fix It</h3>
                 </div>
-              </div>
-
-              <div className="bg-secondary/20 p-8 rounded-2xl border-2 border-secondary">
-                <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
-                <p className="text-foreground text-lg font-medium leading-relaxed">
-                  A deliverable that finally gets done.<br />
-                  More headspace.<br />
-                  Progress instead of stress.
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center">
+                  When something isn't getting done — I take it, own it, and finish it.
                 </p>
-              </div>
-            </div>
-          </Card>
-          </FadeInOnScroll>
+                
+                <div className="space-y-8">
+                  <div>
+                    <h4 className="font-bold text-lg mb-4 text-foreground">When you need this:</h4>
+                    <ul className="space-y-2 text-foreground/70 text-sm">
+                      <li>• A deliverable keeps slipping</li>
+                      <li>• A project is half-done</li>
+                      <li>• No clear owner → no progress</li>
+                    </ul>
+                  </div>
 
-          {/* Service 2: From Idea to Prototype */}
-          <FadeInOnScroll delay={0.1}>
-            <Card className="p-10 md:p-16 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
-                <span className="text-3xl font-black text-primary-foreground">02</span>
-              </div>
-              <h3 className="text-4xl md:text-5xl font-black text-foreground">From Idea to Prototype</h3>
-            </div>
-            <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
-              From a rough idea → to a clickable prototype you can show, test or pitch.
-            </p>
-            
-            <div className="space-y-10">
-              <div>
-                <h3 className="font-bold text-xl mb-5 text-foreground">When you need this:</h3>
-                <ul className="space-y-3 text-foreground/70 text-lg">
-                  <li>• Your idea only exists in your head</li>
-                  <li>• You need something visual for feedback or pitching</li>
-                  <li>• You want clarity before building</li>
-                  <li>• You're stuck in the thinking phase</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-xl mb-5 text-foreground">What I do:</h3>
-                <div className="space-y-4">
-                  {[
-                    "Sharpen the concept",
-                    "Map user journey & UX flow",
-                    "Build clickable prototype (Figma / Lovable / Webflow)",
-                    "Create mini design system",
-                    "Optional: content, visuals, microcopy",
-                    "Package everything for sharing or testing"
-                  ].map((step, index) => (
-                    <div key={index} className="flex items-center gap-4 text-foreground text-lg font-medium">
-                      <ArrowRight className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={3} />
-                      <span>{step}</span>
-                    </div>
-                  ))}
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary">
+                    <h4 className="font-bold text-lg mb-3 text-foreground">What you get:</h4>
+                    <p className="text-foreground text-sm font-medium leading-relaxed">
+                      A deliverable that finally gets done. More headspace. Progress instead of stress.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Card>
+            </motion.div>
 
-              <div className="bg-secondary/20 p-8 rounded-2xl border-2 border-secondary">
-                <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
-                <p className="text-foreground text-lg font-medium leading-relaxed">
-                  A concept that clicks.<br />
-                  A prototype that speaks for itself.<br />
-                  Direction and confidence for next steps.
-                </p>
-              </div>
-            </div>
-          </Card>
-          </FadeInOnScroll>
-
-          {/* Service 3: Process, Structure, Overview */}
-          <FadeInOnScroll delay={0.2}>
-            <Card className="p-10 md:p-16 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
-                <span className="text-3xl font-black text-primary-foreground">03</span>
-              </div>
-              <h3 className="text-4xl md:text-5xl font-black text-foreground">Process, Structure, Overview</h3>
-            </div>
-            <p className="text-xl md:text-2xl text-foreground/70 mb-10 font-medium">
-              For teams who need clarity, alignment and a structure that actually holds.
-            </p>
-            
-            <div className="space-y-10">
-              <div>
-                <h3 className="font-bold text-xl mb-5 text-foreground">When you need this:</h3>
-                <ul className="space-y-3 text-foreground/70 text-lg">
-                  <li>• Unclear responsibilities</li>
-                  <li>• Work is happening, but not together</li>
-                  <li>• Processes missing or duplicated</li>
-                  <li>• New platforms/workflows need setup</li>
-                  <li>• Too many questions, not enough clarity</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-xl mb-5 text-foreground">What I do:</h3>
-                <div className="space-y-4">
-                  {[
-                    "Map current workflows & gaps",
-                    "Clarify scope, roles, responsibilities",
-                    "Design workflows and handoffs",
-                    "Build templates, dashboards, trackers",
-                    "Facilitate alignment (fast, no fluff)",
-                    "Set up a structure the team can follow"
-                  ].map((step, index) => (
-                    <div key={index} className="flex items-center gap-4 text-foreground text-lg font-medium">
-                      <ArrowRight className="w-6 h-6 text-primary flex-shrink-0" strokeWidth={3} />
-                      <span>{step}</span>
-                    </div>
-                  ))}
+            {/* Service 2: From Idea to Prototype */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            >
+              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group">
+                <div className="flex flex-col items-center text-center mb-6">
+                  <motion.div 
+                    className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <span className="text-3xl font-black text-primary-foreground">02</span>
+                  </motion.div>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors">From Idea to Prototype</h3>
                 </div>
-              </div>
-
-              <div className="bg-secondary/20 p-8 rounded-2xl border-2 border-secondary">
-                <h3 className="font-bold text-xl mb-4 text-foreground">What you get:</h3>
-                <p className="text-foreground text-lg font-medium leading-relaxed">
-                  A team on the same page.<br />
-                  A project that feels organised.<br />
-                  A structure that supports progress.<br />
-                  Clarity, direction, flow.
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center">
+                  From a rough idea → to a clickable prototype you can show, test or pitch.
                 </p>
-              </div>
-            </div>
-          </Card>
-          </FadeInOnScroll>
+                
+                <div className="space-y-8">
+                  <div>
+                    <h4 className="font-bold text-lg mb-4 text-foreground">When you need this:</h4>
+                    <ul className="space-y-2 text-foreground/70 text-sm">
+                      <li>• Your idea only exists in your head</li>
+                      <li>• You need something visual</li>
+                      <li>• You want clarity before building</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary">
+                    <h4 className="font-bold text-lg mb-3 text-foreground">What you get:</h4>
+                    <p className="text-foreground text-sm font-medium leading-relaxed">
+                      A concept that clicks. A prototype that speaks for itself. Direction for next steps.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Service 3: Process, Structure, Overview */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            >
+              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group">
+                <div className="flex flex-col items-center text-center mb-6">
+                  <motion.div 
+                    className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <span className="text-3xl font-black text-primary-foreground">03</span>
+                  </motion.div>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors">Process, Structure, Overview</h3>
+                </div>
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center">
+                  For teams who need clarity, alignment and a structure that actually holds.
+                </p>
+                
+                <div className="space-y-8">
+                  <div>
+                    <h4 className="font-bold text-lg mb-4 text-foreground">When you need this:</h4>
+                    <ul className="space-y-2 text-foreground/70 text-sm">
+                      <li>• Unclear responsibilities</li>
+                      <li>• Work not aligned</li>
+                      <li>• Processes missing or duplicated</li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary">
+                    <h4 className="font-bold text-lg mb-3 text-foreground">What you get:</h4>
+                    <p className="text-foreground text-sm font-medium leading-relaxed">
+                      A team on the same page. A project that feels organised. Clarity, direction, flow.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>
