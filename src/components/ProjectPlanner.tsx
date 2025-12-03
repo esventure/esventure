@@ -323,66 +323,89 @@ const ResultPanel = ({
       {isLoading ? (
         <SkeletonLoader />
       ) : result ? (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <div className="max-w-none mb-6 space-y-5">
-            <ReactMarkdown
-              components={{
-                h1: ({ children }) => (
-                  <div className="flex items-center gap-2 mt-6 mb-3 pb-2 border-b border-primary/20">
-                    <h4 className="text-xl font-bold text-foreground font-poppins">{children}</h4>
-                  </div>
-                ),
-                h2: ({ children }) => (
-                  <div className="flex items-center gap-2 mt-6 mb-3 pb-2 border-b border-primary/20">
-                    <h4 className="text-lg font-bold text-foreground font-poppins">{children}</h4>
-                  </div>
-                ),
-                h3: ({ children }) => (
-                  <h4 className="text-base font-bold text-foreground mt-4 mb-2 font-poppins">{children}</h4>
-                ),
-                p: ({ children }) => (
-                  <p className="text-foreground/80 mb-3 leading-relaxed text-[15px]">{children}</p>
-                ),
-                ul: ({ children }) => (
-                  <ul className="space-y-2 mb-4 ml-1">{children}</ul>
-                ),
-                ol: ({ children }) => (
-                  <ol className="space-y-2 mb-4 ml-1 list-none counter-reset-item">{children}</ol>
-                ),
-                li: ({ children }) => (
-                  <li className="flex items-start gap-3 text-foreground/80 text-[15px] leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                    <span>{children}</span>
-                  </li>
-                ),
-                strong: ({ children }) => (
-                  <strong className="font-semibold text-foreground">{children}</strong>
-                ),
-                em: ({ children }) => (
-                  <em className="italic text-foreground/70">{children}</em>
-                ),
-              }}
-            >
-              {result}
-            </ReactMarkdown>
-          </div>
-          <div className="border-t border-border/50 pt-6 mt-6">
-            <p className="text-sm text-muted-foreground mb-5 italic">
-              This is a first outline, not a formal quote — but it should give you a good feel for how we could work together.
-            </p>
-            <Button 
-              onClick={scrollToContact}
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 group"
-            >
-              Sounds good? Let's talk
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-        </motion.div>
+        (() => {
+          // Split result by section headers (## emoji) to animate each section
+          const sections = result.split(/(?=## [🎯⏱✅🎁💰])/g).filter(s => s.trim());
+          
+          const markdownComponents = {
+            h1: ({ children }: { children?: React.ReactNode }) => (
+              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-primary/20">
+                <h4 className="text-xl font-bold text-foreground font-poppins">{children}</h4>
+              </div>
+            ),
+            h2: ({ children }: { children?: React.ReactNode }) => (
+              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-primary/20">
+                <h4 className="text-lg font-bold text-foreground font-poppins">{children}</h4>
+              </div>
+            ),
+            h3: ({ children }: { children?: React.ReactNode }) => (
+              <h4 className="text-base font-bold text-foreground mt-4 mb-2 font-poppins">{children}</h4>
+            ),
+            p: ({ children }: { children?: React.ReactNode }) => (
+              <p className="text-foreground/80 mb-3 leading-relaxed text-[15px]">{children}</p>
+            ),
+            ul: ({ children }: { children?: React.ReactNode }) => (
+              <ul className="space-y-2 mb-4 ml-1">{children}</ul>
+            ),
+            ol: ({ children }: { children?: React.ReactNode }) => (
+              <ol className="space-y-2 mb-4 ml-1 list-none counter-reset-item">{children}</ol>
+            ),
+            li: ({ children }: { children?: React.ReactNode }) => (
+              <li className="flex items-start gap-3 text-foreground/80 text-[15px] leading-relaxed">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                <span>{children}</span>
+              </li>
+            ),
+            strong: ({ children }: { children?: React.ReactNode }) => (
+              <strong className="font-semibold text-foreground">{children}</strong>
+            ),
+            em: ({ children }: { children?: React.ReactNode }) => (
+              <em className="italic text-foreground/70">{children}</em>
+            ),
+          };
+          
+          return (
+            <div className="max-w-none mb-6 space-y-4">
+              {sections.map((section, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: index * 0.15,
+                    ease: [0.25, 0.1, 0.25, 1]
+                  }}
+                >
+                  <ReactMarkdown components={markdownComponents}>
+                    {section}
+                  </ReactMarkdown>
+                </motion.div>
+              ))}
+              <motion.div 
+                className="border-t border-border/50 pt-6 mt-6"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: sections.length * 0.15,
+                  ease: [0.25, 0.1, 0.25, 1]
+                }}
+              >
+                <p className="text-sm text-muted-foreground mb-5 italic">
+                  This is a first outline, not a formal quote — but it should give you a good feel for how we could work together.
+                </p>
+                <Button 
+                  onClick={scrollToContact}
+                  className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 group"
+                >
+                  Sounds good? Let's talk
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
+            </div>
+          );
+        })()
       ) : (
         <div className="flex flex-col items-center justify-center py-12 text-center">
           <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
