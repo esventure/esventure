@@ -216,7 +216,7 @@ Slipping deadlines, half-done deliverables, messy ownership, I bring order, clar
 
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">Finally, ownership / A project wrapped up nicely / Progress you can actually see            </p>
+                    <p className="text-foreground text-sm font-medium leading-relaxed">Finally, ownership / A project wrapped up nicely / Progress you can actually see                        </p>
                   </div>
                 </div>
               </Card>
@@ -260,7 +260,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">• You have an idea but nothing visual yet</h4>
+                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Your idea only exists in your head</li>
                       <li>• You need something visual</li>
