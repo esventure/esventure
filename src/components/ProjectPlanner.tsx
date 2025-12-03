@@ -11,9 +11,10 @@ import ReactMarkdown from "react-markdown";
 
 interface FormData {
   situation: string;
-  goal: string;
+  handoff: string;
   type: string;
   urgency: string;
+  context: string;
   budget: string;
 }
 
@@ -26,8 +27,8 @@ const PROJECT_TYPES = [
 
 const URGENCY_OPTIONS = [
   "Just exploring",
-  "Nice to have soon",
-  "This is on fire"
+  "Soon-ish",
+  "This is on fire 🔥"
 ];
 
 const BUDGET_OPTIONS = [
@@ -71,35 +72,38 @@ const PlannerForm = ({
   isLoading: boolean;
 }) => (
   <div className="space-y-6">
+    {/* 1. What's going on? */}
     <div>
       <Label htmlFor="situation" className="text-base font-semibold mb-2 block">
-        What's going on right now?
+        What's going on?
       </Label>
       <Textarea
         id="situation"
-        placeholder="What's messy, confusing, stuck or not working the way it should?"
+        placeholder="Tell me what's happening, what's messy, blocked or needs to move?"
         value={formData.situation}
         onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
         className="min-h-[100px] resize-none"
       />
     </div>
 
+    {/* 2. What do you need me to take off your plate? */}
     <div>
-      <Label htmlFor="goal" className="text-base font-semibold mb-2 block">
-        What do you want to achieve?
+      <Label htmlFor="handoff" className="text-base font-semibold mb-2 block">
+        What do you need me to take off your plate?
       </Label>
       <Textarea
-        id="goal"
-        placeholder="If this was 'fixed', what would be different?"
-        value={formData.goal}
-        onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
+        id="handoff"
+        placeholder="E.g. handle implementation, organise testing, clean up scope, design the prototype…"
+        value={formData.handoff}
+        onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
         className="min-h-[100px] resize-none"
       />
     </div>
 
+    {/* 3. What type of help do you need? */}
     <div>
       <Label className="text-base font-semibold mb-3 block">
-        What kind of thing is this mostly about?
+        What type of help do you need?
       </Label>
       <div className="flex flex-wrap gap-2">
         {PROJECT_TYPES.map((type) => (
@@ -114,6 +118,7 @@ const PlannerForm = ({
       </div>
     </div>
 
+    {/* 4. How urgent is this? */}
     <div>
       <Label className="text-base font-semibold mb-3 block">
         How urgent is this?
@@ -131,9 +136,40 @@ const PlannerForm = ({
       </div>
     </div>
 
+    {/* 5. Anything specific I should know? (optional) */}
     <div>
-      <Label className="text-base font-semibold mb-3 block">
-        Budget comfort zone (optional)
+      <Label htmlFor="context" className="text-base font-semibold mb-2 block">
+        Anything specific I should know? <span className="font-normal text-muted-foreground">(optional)</span>
+      </Label>
+      <Textarea
+        id="context"
+        placeholder="Tools, deadlines, existing systems, tricky stakeholders…"
+        value={formData.context}
+        onChange={(e) => setFormData({ ...formData, context: e.target.value })}
+        className="min-h-[80px] resize-none"
+      />
+    </div>
+
+    {/* Submit button */}
+    <Button 
+      onClick={onSubmit}
+      disabled={isLoading || !formData.situation || !formData.handoff}
+      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-lg font-bold"
+    >
+      {isLoading ? (
+        <>
+          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+          Thinking…
+        </>
+      ) : (
+        "Generate my plan"
+      )}
+    </Button>
+
+    {/* 6. Budget comfort zone (optional) - de-emphasized below button */}
+    <div className="pt-2">
+      <Label className="text-sm font-medium mb-3 block text-muted-foreground">
+        (Optional) Budget comfort zone
       </Label>
       <div className="flex flex-wrap gap-2">
         {BUDGET_OPTIONS.map((budget) => (
@@ -147,21 +183,6 @@ const PlannerForm = ({
         ))}
       </div>
     </div>
-
-    <Button 
-      onClick={onSubmit}
-      disabled={isLoading || !formData.situation || !formData.goal}
-      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-lg font-bold"
-    >
-      {isLoading ? (
-        <>
-          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-          Thinking…
-        </>
-      ) : (
-        "Generate my plan"
-      )}
-    </Button>
   </div>
 );
 
@@ -238,9 +259,10 @@ const ProjectPlanner = () => {
   const isMobile = useIsMobile();
   const [formData, setFormData] = useState<FormData>({
     situation: "",
-    goal: "",
+    handoff: "",
     type: "",
     urgency: "",
+    context: "",
     budget: ""
   });
   const [result, setResult] = useState<string | null>(null);
@@ -252,7 +274,7 @@ const ProjectPlanner = () => {
   };
 
   const handleSubmit = async () => {
-    if (!formData.situation || !formData.goal) return;
+    if (!formData.situation || !formData.handoff) return;
     
     setIsLoading(true);
     setError(null);
