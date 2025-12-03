@@ -11,7 +11,7 @@ serve(async (req) => {
   }
 
   try {
-    const { situation, goal, type, urgency, budget } = await req.json();
+    const { situation, handoff, type, urgency, context, budget } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
 
     if (!LOVABLE_API_KEY) {
@@ -80,9 +80,10 @@ Guidelines for pricing:
 
     const userPrompt = `User input:
 - Situation: ${situation}
-- Goal: ${goal}
-- Type: ${type || "not specified"}
+- What they need handled: ${handoff}
+- Type of help: ${type || "not specified"}
 - Urgency: ${urgency || "not specified"}
+- Additional context: ${context || "not specified"}
 - Budget comfort zone: ${budget || "not specified"}
 
 Now write the answer, following the structure 1–5, in 3–7 short paragraphs total.`;
