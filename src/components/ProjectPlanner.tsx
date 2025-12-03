@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Loader2, Expand, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import ReactMarkdown from "react-markdown";
 
 interface FormData {
   situation: string;
@@ -178,8 +179,40 @@ const ResultPanel = ({
     
     {result ? (
       <>
-        <div className="prose prose-sm max-w-none text-foreground/80 whitespace-pre-wrap mb-6">
-          {result}
+        <div className="max-w-none mb-6">
+          <ReactMarkdown
+            components={{
+              h1: ({ children }) => (
+                <h4 className="text-xl font-bold text-foreground mt-6 mb-2 font-poppins">{children}</h4>
+              ),
+              h2: ({ children }) => (
+                <h4 className="text-lg font-bold text-foreground mt-5 mb-2 font-poppins">{children}</h4>
+              ),
+              h3: ({ children }) => (
+                <h4 className="text-base font-bold text-foreground mt-4 mb-2 font-poppins">{children}</h4>
+              ),
+              p: ({ children }) => (
+                <p className="text-foreground/80 mb-3 leading-relaxed">{children}</p>
+              ),
+              ul: ({ children }) => (
+                <ul className="list-disc list-inside text-foreground/80 mb-3 space-y-1">{children}</ul>
+              ),
+              ol: ({ children }) => (
+                <ol className="list-decimal list-inside text-foreground/80 mb-3 space-y-1">{children}</ol>
+              ),
+              li: ({ children }) => (
+                <li className="text-foreground/80">{children}</li>
+              ),
+              strong: ({ children }) => (
+                <strong className="font-semibold text-foreground">{children}</strong>
+              ),
+              em: ({ children }) => (
+                <em className="italic text-foreground/70">{children}</em>
+              ),
+            }}
+          >
+            {result}
+          </ReactMarkdown>
         </div>
         <div className="border-t border-border pt-6 mt-6">
           <p className="text-sm text-muted-foreground mb-4 italic">
