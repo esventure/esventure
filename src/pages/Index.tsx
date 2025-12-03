@@ -263,7 +263,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                     <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">• You have an idea but nothing visual yet</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Your idea only exists in your head</li>
-                      <li>• You need something visual</li>
+                      <li>• You want to validate your prototype</li>
                       <li>• You want clarity before building</li>
                     </ul>
                   </div>
