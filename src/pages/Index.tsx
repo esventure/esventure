@@ -214,7 +214,7 @@ Slipping deadlines, half-done deliverables, messy ownership, I bring order, clar
                     </ul>
                   </div>
 
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] flex flex-col justify-start">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">Finally, ownership / A project wrapped up nicely / Progress you can actually see                        </p>
                   </div>
@@ -268,7 +268,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                     </ul>
                   </div>
 
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] flex flex-col justify-start">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">A prototype that explains your idea better than words / Insights into what works and what doesn't         </p>
                   </div>
@@ -321,11 +321,9 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                     </ul>
                   </div>
 
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] flex flex-col justify-start">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">
-                      A cleaner, smoother way of working / Processes that reduce friction, not add to it / Clear workflows that everyone understands   
-                    </p>
+                    <p className="text-foreground text-sm font-medium leading-relaxed">A cleaner, smoother way of working / Processes that reduce friction, not add to it / Clear workflows that everyone understands</p>
                   </div>
                 </div>
               </Card>
