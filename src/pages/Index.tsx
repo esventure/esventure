@@ -315,7 +315,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                   <div className="flex-1">
                     <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
-                      <li>• Unclear responsibilities</li>
+                      <li>• You feel inefficiency but can’t pinpoint it</li>
                       <li>• Work not aligned</li>
                       <li>• Processes missing or duplicated</li>
                     </ul>
