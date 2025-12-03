@@ -208,9 +208,9 @@ Slipping deadlines, half-done deliverables, messy ownership, I bring order, clar
                   <div className="flex-1">
                     <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
-                      <li>• A deliverable keeps slipping</li>
-                      <li>• A project is half-done</li>
-                      <li>• No clear owner → no progress</li>
+                      <li>• A deadline is approaching and nothing is moving</li>
+                      <li>• A project has been “almost done” for weeks</li>
+                      <li>• Tasks keep bouncing around with no progress</li>
                     </ul>
                   </div>
 
