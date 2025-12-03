@@ -201,7 +201,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
                   <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[2.5rem] flex items-center">Fix It</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">When a project gets stuck, I take it over and finish it.
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[8rem] flex items-center justify-center">When a project gets stuck, I take it over and finish it.
 Slipping deadlines, half-done deliverables, messy ownership, I bring order, clarity, and results. No chaos, just progress.</p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
@@ -253,7 +253,7 @@ Slipping deadlines, half-done deliverables, messy ownership, I bring order, clar
                   <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[2.5rem] flex items-center">From Idea to Prototype</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[8rem] flex items-center justify-center">
                   Got an idea but no shape yet?
 I turn rough thoughts into clean, clickable prototypes you can test, validate, or pitch. Fast, simple, and user-focused.
                 </p>
@@ -307,8 +307,8 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                   <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[2.5rem] flex items-center">Process Improvement</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
-                  I dive into your day-to-day operations, spot what's slowing you down, and resdesign your workflows so things work smoothly again. And you can focus on what you do best: running your company.                                     
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[8rem] flex items-center justify-center">
+                  I dive into your day-to-day operations, spot what's slowing you down, and redesign your workflows so things work smoothly again. And you can focus on what you do best: running your company.                                     
                 </p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
