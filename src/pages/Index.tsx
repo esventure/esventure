@@ -270,7 +270,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
 
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">A clickable prototype you can test or share / </p>
+                    <p className="text-foreground text-sm font-medium leading-relaxed">A prototype that explains your idea better than words / Insights into what works and what doesn't         </p>
                   </div>
                 </div>
               </Card>
@@ -304,12 +304,11 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                 }}>
                     <span className="text-3xl font-black text-primary-foreground">03</span>
                   </motion.div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Clarity</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Process, Structure, Overview</h3>
+                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Process Improvement</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
-                  If work feels chaotic, I map workflows, tidy tools, and create structure that actually holds.
-Your team gets clarity and a way of working that flows.
+                  I dive into your day-to-day operations, spot what's slowing you down, and resdesign your workflows so things work smoothly again. And you can focus on what you do best: running your company.                                     
                 </p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
