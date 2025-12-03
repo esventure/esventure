@@ -59,7 +59,10 @@ const Index = () => {
                 I help teams move forward — <span className="text-secondary">fast.</span>
               </h1>
               <p className="text-2xl md:text-3xl font-medium text-primary-foreground/90">
-                Short-term projects. Clarity. Structure. Momentum.
+                
+                
+Let's break through roadblocks, speed up projects, and work smarter.                                                                                                  
+              
               </p>
               <p className="text-xl md:text-2xl text-primary-foreground/70 font-light italic">
                 Are you ready to go on an Es Venture?
@@ -198,9 +201,8 @@ const Index = () => {
                   <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Fix It</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
-                  When something isn't getting done — I take it, own it, and finish it.
-                </p>
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">When a project gets stuck, I take it over and finish it.
+Slipping deadlines, half-done deliverables, messy ownership, I bring order, clarity, and results. No chaos, just progress.</p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="flex-1">
@@ -254,7 +256,8 @@ const Index = () => {
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">From Idea to Prototype</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
-                  From a rough idea → to a clickable prototype you can show, test or pitch.
+                  Got an idea but no shape yet?
+I turn rough thoughts into clean, clickable prototypes you can test, validate, or pitch. Fast, simple, and user-focused.
                 </p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
@@ -309,7 +312,8 @@ const Index = () => {
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Process, Structure, Overview</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
-                  For teams who need clarity, alignment and a structure that actually holds.
+                  If work feels chaotic, I map workflows, tidy tools, and create structure that actually holds.
+Your team gets clarity and a way of working that flows.
                 </p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
