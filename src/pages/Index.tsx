@@ -116,7 +116,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
               {[{
               text: "Less noise"
             }, {
-              text: "action"
+              text: "More action"
             }, {
               text: "Things actually get done"
             }].map((item, index) => <motion.div key={index} className="flex flex-col items-center text-center gap-4" initial={{
