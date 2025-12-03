@@ -328,29 +328,36 @@ const ResultPanel = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <div className="max-w-none mb-6">
+          <div className="max-w-none mb-6 space-y-5">
             <ReactMarkdown
               components={{
                 h1: ({ children }) => (
-                  <h4 className="text-xl font-bold text-foreground mt-6 mb-3 font-poppins">{children}</h4>
+                  <div className="flex items-center gap-2 mt-6 mb-3 pb-2 border-b border-primary/20">
+                    <h4 className="text-xl font-bold text-foreground font-poppins">{children}</h4>
+                  </div>
                 ),
                 h2: ({ children }) => (
-                  <h4 className="text-lg font-bold text-foreground mt-5 mb-2 font-poppins">{children}</h4>
+                  <div className="flex items-center gap-2 mt-6 mb-3 pb-2 border-b border-primary/20">
+                    <h4 className="text-lg font-bold text-foreground font-poppins">{children}</h4>
+                  </div>
                 ),
                 h3: ({ children }) => (
                   <h4 className="text-base font-bold text-foreground mt-4 mb-2 font-poppins">{children}</h4>
                 ),
                 p: ({ children }) => (
-                  <p className="text-foreground/80 mb-4 leading-relaxed">{children}</p>
+                  <p className="text-foreground/80 mb-3 leading-relaxed text-[15px]">{children}</p>
                 ),
                 ul: ({ children }) => (
-                  <ul className="list-disc list-outside ml-5 text-foreground/80 mb-4 space-y-2">{children}</ul>
+                  <ul className="space-y-2 mb-4 ml-1">{children}</ul>
                 ),
                 ol: ({ children }) => (
-                  <ol className="list-decimal list-outside ml-5 text-foreground/80 mb-4 space-y-2">{children}</ol>
+                  <ol className="space-y-2 mb-4 ml-1 list-none counter-reset-item">{children}</ol>
                 ),
                 li: ({ children }) => (
-                  <li className="text-foreground/80 leading-relaxed">{children}</li>
+                  <li className="flex items-start gap-3 text-foreground/80 text-[15px] leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                    <span>{children}</span>
+                  </li>
                 ),
                 strong: ({ children }) => (
                   <strong className="font-semibold text-foreground">{children}</strong>

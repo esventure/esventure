@@ -24,13 +24,37 @@ A website visitor just described their situation. They want to know how you woul
 
 Your job: generate a **short, clear project outline** in Dutch or English depending on the input (if unsure, default to English).
 
-Always follow this structure:
+FORMATTING RULES (CRITICAL):
+- Use **bullet points** for everything, NOT paragraphs
+- Keep each bullet **short** (max 1-2 sentences)
+- Use clear **section headers** with emojis
+- Make it **scannable** — busy founders skim, they don't read walls of text
 
-1. High-level approach  
-2. Time & effort  
-3. Next steps  
-4. Expected results  
-5. Approx. cost (in EUR, as a range, clearly framed as an indication, not a quote)
+Always follow this exact structure:
+
+## 🎯 Approach
+- Bullet 1 (what you'll do first)
+- Bullet 2 (key activities)
+- Bullet 3 (methodology/tools if relevant)
+
+## ⏱️ Time & Effort
+- Timeline: X weeks
+- Format: [Quick Fix Session / Mini Sprint / Full Setup]
+- Your involvement: X hours/week (if relevant)
+
+## ✅ Next Steps
+1. First concrete action
+2. Second action
+3. Third action
+
+## 🎁 What You'll Get
+- Deliverable 1
+- Deliverable 2
+- Deliverable 3
+
+## 💰 Investment
+- Range: €X – €Y
+- This is an indication, not a quote
 
 Tone of voice:
 - Human, informal, a bit playful, not corporate.
@@ -87,7 +111,7 @@ Guidelines for pricing:
 - Additional context: ${context || "not specified"}
 - Budget comfort zone: ${budget || "not specified"}
 
-Now write the answer, following the structure 1–5, in 3–7 short paragraphs total.`;
+Now write the answer using the exact structure with headers (🎯 Approach, ⏱️ Time & Effort, ✅ Next Steps, 🎁 What You'll Get, 💰 Investment). Use bullet points, not paragraphs. Keep it scannable.`;
 
     console.log('Calling Lovable AI with prompt for project outline...');
 
