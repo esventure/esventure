@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -16,6 +16,10 @@ interface FormData {
   urgency: string;
   context: string;
   budget: string;
+}
+
+interface StepRefs {
+  [key: number]: HTMLDivElement | null;
 }
 
 const PROJECT_TYPES = [
@@ -74,16 +78,39 @@ const PlannerForm = ({
   formData, 
   setFormData, 
   onSubmit, 
-  isLoading 
+  isLoading,
+  stepRefs,
+  scrollToNextStep
 }: { 
   formData: FormData;
   setFormData: (data: FormData) => void;
   onSubmit: () => void;
   isLoading: boolean;
-}) => (
+  stepRefs: React.MutableRefObject<StepRefs>;
+  scrollToNextStep: (currentStep: number) => void;
+}) => {
+  const handleSituationBlur = () => {
+    if (formData.situation.trim()) scrollToNextStep(1);
+  };
+
+  const handleHandoffBlur = () => {
+    if (formData.handoff.trim()) scrollToNextStep(2);
+  };
+
+  const handleTypeSelect = (type: string) => {
+    setFormData({ ...formData, type });
+    setTimeout(() => scrollToNextStep(3), 100);
+  };
+
+  const handleUrgencySelect = (urgency: string) => {
+    setFormData({ ...formData, urgency });
+    setTimeout(() => scrollToNextStep(4), 100);
+  };
+
+  return (
   <div className="space-y-8">
     {/* 1. What's going on? */}
-    <div className="space-y-4">
+    <div className="space-y-4" ref={(el) => { stepRefs.current[1] = el; }}>
       <div className="flex items-center gap-3">
         <StepNumber number={1} />
         <Label htmlFor="situation" className="text-lg font-bold block text-foreground font-poppins">
@@ -95,12 +122,13 @@ const PlannerForm = ({
         placeholder="E.g. We're launching a new product but nobody knows who's doing what… / Our onboarding flow is confusing and customers keep dropping off… / I have an idea but no clue where to start…"
         value={formData.situation}
         onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
+        onBlur={handleSituationBlur}
         className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-11"
       />
     </div>
 
     {/* 2. What do you need me to take off your plate? */}
-    <div className="space-y-4">
+    <div className="space-y-4" ref={(el) => { stepRefs.current[2] = el; }}>
       <div className="flex items-center gap-3">
         <StepNumber number={2} />
         <Label htmlFor="handoff" className="text-lg font-bold block text-foreground font-poppins">
@@ -112,12 +140,13 @@ const PlannerForm = ({
         placeholder="E.g. Coordinate testing across teams / Build a clickable prototype / Set up a project management system / Map out our user journey / Just tell me what to prioritise…"
         value={formData.handoff}
         onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
+        onBlur={handleHandoffBlur}
         className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-11"
       />
     </div>
 
     {/* 3. What type of help do you need? */}
-    <div className="space-y-4">
+    <div className="space-y-4" ref={(el) => { stepRefs.current[3] = el; }}>
       <div className="flex items-center gap-3">
         <StepNumber number={3} />
         <Label className="text-lg font-bold block text-foreground font-poppins">
@@ -129,7 +158,7 @@ const PlannerForm = ({
           <SelectButton
             key={type}
             selected={formData.type === type}
-            onClick={() => setFormData({ ...formData, type })}
+            onClick={() => handleTypeSelect(type)}
           >
             {type}
           </SelectButton>
@@ -138,7 +167,7 @@ const PlannerForm = ({
     </div>
 
     {/* 4. How urgent is this? */}
-    <div className="space-y-4">
+    <div className="space-y-4" ref={(el) => { stepRefs.current[4] = el; }}>
       <div className="flex items-center gap-3">
         <StepNumber number={4} />
         <Label className="text-lg font-bold block text-foreground font-poppins">
@@ -150,7 +179,7 @@ const PlannerForm = ({
           <SelectButton
             key={urgency}
             selected={formData.urgency === urgency}
-            onClick={() => setFormData({ ...formData, urgency })}
+            onClick={() => handleUrgencySelect(urgency)}
           >
             {urgency}
           </SelectButton>
@@ -159,7 +188,7 @@ const PlannerForm = ({
     </div>
 
     {/* 5. Anything specific I should know? (optional) */}
-    <div className="space-y-4">
+    <div className="space-y-4" ref={(el) => { stepRefs.current[5] = el; }}>
       <div className="flex items-center gap-3">
         <StepNumber number={5} required={false} />
         <Label htmlFor="context" className="text-lg font-bold block text-foreground font-poppins">
@@ -221,7 +250,8 @@ const PlannerForm = ({
       </div>
     </div>
   </div>
-);
+  );
+};
 
 const ResultPanel = ({ 
   result, 
@@ -373,6 +403,25 @@ const ProjectPlanner = () => {
   const [result, setResult] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const stepRefs = useRef<StepRefs>({});
+
+  const scrollToNextStep = useCallback((currentStep: number) => {
+    const getNextIncompleteStep = (): number | null => {
+      if (!formData.situation.trim()) return 1;
+      if (!formData.handoff.trim()) return 2;
+      if (!formData.type) return 3;
+      if (!formData.urgency) return 4;
+      return null; // All required steps complete
+    };
+
+    const nextStep = getNextIncompleteStep();
+    if (nextStep && nextStep > currentStep && stepRefs.current[nextStep]) {
+      stepRefs.current[nextStep]?.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }
+  }, [formData]);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -457,6 +506,8 @@ const ProjectPlanner = () => {
                   setFormData={setFormData} 
                   onSubmit={handleSubmit}
                   isLoading={isLoading}
+                  stepRefs={stepRefs}
+                  scrollToNextStep={scrollToNextStep}
                 />
                 {error && (
                   <p className="text-destructive text-sm mt-4">{error}</p>
@@ -500,6 +551,8 @@ const ProjectPlanner = () => {
                         setFormData={setFormData} 
                         onSubmit={handleSubmit}
                         isLoading={isLoading}
+                        stepRefs={stepRefs}
+                        scrollToNextStep={scrollToNextStep}
                       />
                       {error && (
                         <p className="text-destructive text-sm mt-4">{error}</p>
@@ -546,6 +599,8 @@ const ProjectPlanner = () => {
                       setFormData={setFormData} 
                       onSubmit={handleSubmit}
                       isLoading={isLoading}
+                      stepRefs={stepRefs}
+                      scrollToNextStep={scrollToNextStep}
                     />
                     {error && (
                       <p className="text-destructive text-sm">{error}</p>
