@@ -60,54 +60,15 @@ const SelectButton = ({
   </button>
 );
 
-const StepNumber = ({ number, required = true, completed = false }: { number: number; required?: boolean; completed?: boolean }) => (
-  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 transition-all duration-300 ${
-    completed
-      ? 'bg-secondary text-secondary-foreground'
-      : required 
-        ? 'bg-primary text-primary-foreground' 
-        : 'bg-muted text-muted-foreground'
+const StepNumber = ({ number, required = true }: { number: number; required?: boolean }) => (
+  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
+    required 
+      ? 'bg-primary text-primary-foreground' 
+      : 'bg-muted text-muted-foreground'
   }`}>
-    {completed ? '✓' : number}
+    {number}
   </div>
 );
-
-const ProgressBar = ({ formData }: { formData: FormData }) => {
-  const steps = [
-    { key: 'situation', required: true },
-    { key: 'handoff', required: true },
-    { key: 'type', required: false },
-    { key: 'urgency', required: false },
-  ];
-  
-  const completedSteps = steps.filter(step => formData[step.key as keyof FormData]).length;
-  const requiredCompleted = steps.filter(step => step.required && formData[step.key as keyof FormData]).length;
-  const totalRequired = steps.filter(step => step.required).length;
-  const progress = (completedSteps / steps.length) * 100;
-  
-  return (
-    <div className="mb-8">
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-medium text-foreground">
-          {requiredCompleted >= totalRequired ? (
-            <span className="text-secondary-foreground">Ready to generate!</span>
-          ) : (
-            `${completedSteps} of ${steps.length} steps completed`
-          )}
-        </span>
-        <span className="text-sm text-muted-foreground">
-          {Math.round(progress)}%
-        </span>
-      </div>
-      <div className="h-2 bg-muted rounded-full overflow-hidden">
-        <div 
-          className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-500 ease-out"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-    </div>
-  );
-};
 
 const PlannerForm = ({ 
   formData, 
@@ -121,12 +82,10 @@ const PlannerForm = ({
   isLoading: boolean;
 }) => (
   <div className="space-y-8">
-    <ProgressBar formData={formData} />
-    
     {/* 1. What's going on? */}
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <StepNumber number={1} completed={!!formData.situation} />
+        <StepNumber number={1} />
         <Label htmlFor="situation" className="text-lg font-bold block text-foreground font-poppins">
           What's going on?
         </Label>
@@ -143,7 +102,7 @@ const PlannerForm = ({
     {/* 2. What do you need me to take off your plate? */}
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <StepNumber number={2} completed={!!formData.handoff} />
+        <StepNumber number={2} />
         <Label htmlFor="handoff" className="text-lg font-bold block text-foreground font-poppins">
           What do you need off your plate?
         </Label>
@@ -160,7 +119,7 @@ const PlannerForm = ({
     {/* 3. What type of help do you need? */}
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <StepNumber number={3} required={false} completed={!!formData.type} />
+        <StepNumber number={3} />
         <Label className="text-lg font-bold block text-foreground font-poppins">
           What type of help?
         </Label>
@@ -181,7 +140,7 @@ const PlannerForm = ({
     {/* 4. How urgent is this? */}
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <StepNumber number={4} required={false} completed={!!formData.urgency} />
+        <StepNumber number={4} />
         <Label className="text-lg font-bold block text-foreground font-poppins">
           How urgent?
         </Label>
@@ -202,7 +161,7 @@ const PlannerForm = ({
     {/* 5. Anything specific I should know? (optional) */}
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <StepNumber number={5} required={false} completed={!!formData.context} />
+        <StepNumber number={5} required={false} />
         <Label htmlFor="context" className="text-lg font-bold block text-foreground font-poppins">
           Anything else? <span className="font-normal text-muted-foreground text-sm">(optional)</span>
         </Label>
@@ -244,7 +203,7 @@ const PlannerForm = ({
     {/* 6. Budget comfort zone (optional) - de-emphasized below button */}
     <div className="pt-4 border-t border-border/50">
       <div className="flex items-center gap-3 mb-3">
-        <StepNumber number={6} required={false} completed={!!formData.budget} />
+        <StepNumber number={6} required={false} />
         <Label className="text-base font-medium block text-muted-foreground">
           Budget comfort zone <span className="font-normal">(optional)</span>
         </Label>
