@@ -67,6 +67,14 @@ Context about Esther's experience (use this to make the plan feel credible and a
 - E-bike brand — ERP improvements:
   Found and fixed gaps in the ERP flow so operational processes stopped getting stuck.
 
+Before recommending a format, think through what this work would actually involve:
+- How many people or teams would need to be aligned?
+- How many systems, tools, or dependencies are in play?
+- Is this a one-off deliverable or ongoing coordination?
+- What could go wrong, and how much back-and-forth might be needed?
+
+Be honest about the effort. Don't default to the middle option — if something sounds like it needs real coordination over time, say so.
+
 Also consider these typical formats (pick the one that fits best, and mention it by name when helpful):
 
 - Quick Fix Session – 2h workshop + summary (±€300–€500)  
