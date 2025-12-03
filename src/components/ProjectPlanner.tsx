@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Loader2, Expand, MessageCircle } from "lucide-react";
+import { Loader2, Expand, MessageCircle, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import ReactMarkdown from "react-markdown";
@@ -50,10 +50,10 @@ const SelectButton = ({
   <button
     type="button"
     onClick={onClick}
-    className={`px-4 py-2 rounded-full text-sm font-medium transition-all border-2 ${
+    className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border-2 ${
       selected 
-        ? "bg-primary text-primary-foreground border-primary" 
-        : "bg-background text-foreground border-border hover:border-primary/50"
+        ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20" 
+        : "bg-background text-foreground border-border hover:border-primary/40 hover:bg-muted/50"
     }`}
   >
     {children}
@@ -71,10 +71,10 @@ const PlannerForm = ({
   onSubmit: () => void;
   isLoading: boolean;
 }) => (
-  <div className="space-y-6">
+  <div className="space-y-8">
     {/* 1. What's going on? */}
-    <div>
-      <Label htmlFor="situation" className="text-base font-semibold mb-2 block">
+    <div className="space-y-3">
+      <Label htmlFor="situation" className="text-base font-semibold block text-foreground">
         What's going on?
       </Label>
       <Textarea
@@ -82,13 +82,13 @@ const PlannerForm = ({
         placeholder="E.g. We're launching a new product but nobody knows who's doing what… / Our onboarding flow is confusing and customers keep dropping off… / I have an idea but no clue where to start…"
         value={formData.situation}
         onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
-        className="min-h-[100px] resize-none"
+        className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors"
       />
     </div>
 
     {/* 2. What do you need me to take off your plate? */}
-    <div>
-      <Label htmlFor="handoff" className="text-base font-semibold mb-2 block">
+    <div className="space-y-3">
+      <Label htmlFor="handoff" className="text-base font-semibold block text-foreground">
         What do you need me to take off your plate?
       </Label>
       <Textarea
@@ -96,13 +96,13 @@ const PlannerForm = ({
         placeholder="E.g. Coordinate testing across teams / Build a clickable prototype / Set up a project management system / Map out our user journey / Just tell me what to prioritise…"
         value={formData.handoff}
         onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
-        className="min-h-[100px] resize-none"
+        className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors"
       />
     </div>
 
     {/* 3. What type of help do you need? */}
-    <div>
-      <Label className="text-base font-semibold mb-3 block">
+    <div className="space-y-3">
+      <Label className="text-base font-semibold block text-foreground">
         What type of help do you need?
       </Label>
       <div className="flex flex-wrap gap-2">
@@ -119,8 +119,8 @@ const PlannerForm = ({
     </div>
 
     {/* 4. How urgent is this? */}
-    <div>
-      <Label className="text-base font-semibold mb-3 block">
+    <div className="space-y-3">
+      <Label className="text-base font-semibold block text-foreground">
         How urgent is this?
       </Label>
       <div className="flex flex-wrap gap-2">
@@ -137,16 +137,16 @@ const PlannerForm = ({
     </div>
 
     {/* 5. Anything specific I should know? (optional) */}
-    <div>
-      <Label htmlFor="context" className="text-base font-semibold mb-2 block">
-        Anything specific I should know? <span className="font-normal text-muted-foreground">(optional)</span>
+    <div className="space-y-3">
+      <Label htmlFor="context" className="text-base font-semibold block text-foreground">
+        Anything specific I should know? <span className="font-normal text-muted-foreground text-sm">(optional)</span>
       </Label>
       <Textarea
         id="context"
         placeholder="E.g. We use Notion and Slack / Dev team is external / Launch is in 6 weeks / Three departments need to sign off…"
         value={formData.context}
         onChange={(e) => setFormData({ ...formData, context: e.target.value })}
-        className="min-h-[80px] resize-none"
+        className="min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors"
       />
     </div>
 
@@ -154,7 +154,7 @@ const PlannerForm = ({
     <Button 
       onClick={onSubmit}
       disabled={isLoading || !formData.situation || !formData.handoff}
-      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-lg font-bold"
+      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-lg font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 disabled:shadow-none group"
     >
       {isLoading ? (
         <>
@@ -162,14 +162,18 @@ const PlannerForm = ({
           Thinking…
         </>
       ) : (
-        "Generate my plan"
+        <>
+          <Sparkles className="mr-2 h-5 w-5" />
+          Generate my plan
+          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+        </>
       )}
     </Button>
 
     {/* 6. Budget comfort zone (optional) - de-emphasized below button */}
-    <div className="pt-2">
+    <div className="pt-4 border-t border-border/50">
       <Label className="text-sm font-medium mb-3 block text-muted-foreground">
-        (Optional) Budget comfort zone
+        Budget comfort zone <span className="font-normal">(optional)</span>
       </Label>
       <div className="flex flex-wrap gap-2">
         {BUDGET_OPTIONS.map((budget) => (
@@ -193,18 +197,27 @@ const ResultPanel = ({
   result: string | null;
   scrollToContact: () => void;
 }) => (
-  <div className="bg-muted/50 rounded-2xl p-6 md:p-8 h-full">
-    <h3 className="text-2xl font-bold text-foreground mb-4 font-poppins">
-      Here's how I'd approach this
-    </h3>
+  <div className="bg-gradient-to-br from-muted/60 to-muted/30 rounded-2xl p-6 md:p-8 h-full border border-border/30">
+    <div className="flex items-center gap-3 mb-6">
+      <div className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center">
+        <Sparkles className="w-5 h-5 text-secondary-foreground" />
+      </div>
+      <h3 className="text-2xl font-bold text-foreground font-poppins">
+        Here's how I'd approach this
+      </h3>
+    </div>
     
     {result ? (
-      <>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
         <div className="max-w-none mb-6">
           <ReactMarkdown
             components={{
               h1: ({ children }) => (
-                <h4 className="text-xl font-bold text-foreground mt-6 mb-2 font-poppins">{children}</h4>
+                <h4 className="text-xl font-bold text-foreground mt-6 mb-3 font-poppins">{children}</h4>
               ),
               h2: ({ children }) => (
                 <h4 className="text-lg font-bold text-foreground mt-5 mb-2 font-poppins">{children}</h4>
@@ -213,16 +226,16 @@ const ResultPanel = ({
                 <h4 className="text-base font-bold text-foreground mt-4 mb-2 font-poppins">{children}</h4>
               ),
               p: ({ children }) => (
-                <p className="text-foreground/80 mb-3 leading-relaxed">{children}</p>
+                <p className="text-foreground/80 mb-4 leading-relaxed">{children}</p>
               ),
               ul: ({ children }) => (
-                <ul className="list-disc list-inside text-foreground/80 mb-3 space-y-1">{children}</ul>
+                <ul className="list-disc list-outside ml-5 text-foreground/80 mb-4 space-y-2">{children}</ul>
               ),
               ol: ({ children }) => (
-                <ol className="list-decimal list-inside text-foreground/80 mb-3 space-y-1">{children}</ol>
+                <ol className="list-decimal list-outside ml-5 text-foreground/80 mb-4 space-y-2">{children}</ol>
               ),
               li: ({ children }) => (
-                <li className="text-foreground/80">{children}</li>
+                <li className="text-foreground/80 leading-relaxed">{children}</li>
               ),
               strong: ({ children }) => (
                 <strong className="font-semibold text-foreground">{children}</strong>
@@ -235,22 +248,28 @@ const ResultPanel = ({
             {result}
           </ReactMarkdown>
         </div>
-        <div className="border-t border-border pt-6 mt-6">
-          <p className="text-sm text-muted-foreground mb-4 italic">
+        <div className="border-t border-border/50 pt-6 mt-6">
+          <p className="text-sm text-muted-foreground mb-5 italic">
             This is a first outline, not a formal quote — but it should give you a good feel for how we could work together.
           </p>
           <Button 
             onClick={scrollToContact}
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full font-bold"
+            className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 group"
           >
             Sounds good? Let's talk
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
-      </>
+      </motion.div>
     ) : (
-      <p className="text-foreground/60">
-        Once you describe your situation, I'll outline a rough approach, timing, next steps and a ballpark cost. No strings attached.
-      </p>
+      <div className="flex flex-col items-center justify-center py-12 text-center">
+        <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+          <MessageCircle className="w-8 h-8 text-muted-foreground/50" />
+        </div>
+        <p className="text-foreground/50 max-w-xs">
+          Once you describe your situation, I'll outline a rough approach, timing, next steps and a ballpark cost.
+        </p>
+      </div>
     )}
   </div>
 );
@@ -312,33 +331,40 @@ const ProjectPlanner = () => {
   const Modal = isMobile ? Sheet : Dialog;
 
   return (
-    <section id="project-planner" className="bg-background py-24">
-      <div className="container mx-auto px-4">
+    <section id="project-planner" className="bg-background py-24 relative overflow-hidden">
+      {/* Subtle background decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      
+      <div className="container mx-auto px-4 relative">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-foreground mb-4 font-poppins">
+            <span className="inline-block px-4 py-1.5 bg-secondary/30 text-secondary-foreground rounded-full text-sm font-medium mb-4">
+              Project Planner
+            </span>
+            <h2 className="text-4xl md:text-6xl font-black text-foreground mb-5 font-poppins">
               See how I'd tackle your project
             </h2>
-            <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed">
               Tell me what's stuck and I'll sketch out how I'd fix it: a rough approach, time & effort, next steps, and a ballpark budget.
             </p>
           </motion.div>
 
           {/* Desktop: inline form + modal button */}
           <div className="hidden md:block">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-10">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="bg-card border-2 border-border rounded-2xl p-8"
+                className="bg-card border border-border/50 rounded-2xl p-8 shadow-xl shadow-foreground/5"
               >
                 <PlannerForm 
                   formData={formData} 
@@ -361,10 +387,16 @@ const ProjectPlanner = () => {
               </motion.div>
             </div>
 
-            <div className="flex justify-center mt-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="flex justify-center mt-10"
+            >
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="rounded-full gap-2">
+                  <Button variant="outline" className="rounded-full gap-2 border-border/50 hover:bg-muted/50 hover:border-primary/30 transition-all">
                     <Expand className="w-4 h-4" />
                     Open as mini-planner
                   </Button>
@@ -391,7 +423,7 @@ const ProjectPlanner = () => {
                   </div>
                 </DialogContent>
               </Dialog>
-            </div>
+            </motion.div>
           </div>
 
           {/* Mobile: compact card + sheet */}
@@ -400,16 +432,20 @@ const ProjectPlanner = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-card border-2 border-border rounded-2xl p-6 text-center"
+              className="bg-card border border-border/50 rounded-2xl p-8 text-center shadow-xl shadow-foreground/5"
             >
-              <MessageCircle className="w-12 h-12 text-primary mx-auto mb-4" />
-              <p className="text-foreground/70 mb-6">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
+                <Sparkles className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold font-poppins mb-3">Get your project outline</h3>
+              <p className="text-foreground/60 mb-6 leading-relaxed">
                 Describe your challenge and get a personalized project outline in seconds.
               </p>
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-lg font-bold">
+                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-lg font-bold shadow-lg shadow-primary/25 group">
                     Open mini-planner
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="bottom" className="h-[95vh] overflow-y-auto">
