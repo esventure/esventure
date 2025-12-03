@@ -324,7 +324,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">
-                      A team on the same page. A project that feels organised. Clarity, direction, flow.
+                      A cleaner, smoother way of working / Processes that reduce friction, not add to it / Clear workflows that everyone understands   
                     </p>
                   </div>
                 </div>
