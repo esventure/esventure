@@ -260,7 +260,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
+                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">• You have an idea but nothing visual yet</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Your idea only exists in your head</li>
                       <li>• You need something visual</li>
