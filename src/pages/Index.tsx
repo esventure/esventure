@@ -189,7 +189,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
             }
           }}>
               <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
-                <div className="flex flex-col items-center text-center mb-4">
+                <div className="flex flex-col items-center text-center mb-6">
                   <motion.div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4" whileHover={{
                   rotate: 360,
                   scale: 1.1
@@ -198,8 +198,8 @@ Let's break through roadblocks, speed up projects, and work smarter.
                 }}>
                     <span className="text-3xl font-black text-primary-foreground">01</span>
                   </motion.div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Fix It</h3>
+                  <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[2.5rem] flex items-center">Fix It</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">When a project gets stuck, I take it over and finish it.
 Slipping deadlines, half-done deliverables, messy ownership, I bring order, clarity, and results. No chaos, just progress.</p>
@@ -241,7 +241,7 @@ Slipping deadlines, half-done deliverables, messy ownership, I bring order, clar
             }
           }}>
               <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
-                <div className="flex flex-col items-center text-center mb-4">
+                <div className="flex flex-col items-center text-center mb-6">
                   <motion.div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4" whileHover={{
                   rotate: 360,
                   scale: 1.1
@@ -250,8 +250,8 @@ Slipping deadlines, half-done deliverables, messy ownership, I bring order, clar
                 }}>
                     <span className="text-3xl font-black text-primary-foreground">02</span>
                   </motion.div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">From Idea to Prototype</h3>
+                  <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[2.5rem] flex items-center">From Idea to Prototype</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
                   Got an idea but no shape yet?
@@ -295,7 +295,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
             }
           }}>
               <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
-                <div className="flex flex-col items-center text-center mb-4">
+                <div className="flex flex-col items-center text-center mb-6">
                   <motion.div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4" whileHover={{
                   rotate: 360,
                   scale: 1.1
@@ -304,8 +304,8 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                 }}>
                     <span className="text-3xl font-black text-primary-foreground">03</span>
                   </motion.div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins">Process Improvement</h3>
+                  <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[2.5rem] flex items-center">Process Improvement</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[4rem] flex items-center justify-center">
                   I dive into your day-to-day operations, spot what's slowing you down, and resdesign your workflows so things work smoothly again. And you can focus on what you do best: running your company.                                     
