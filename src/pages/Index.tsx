@@ -55,8 +55,8 @@ const Index = () => {
             duration: 0.8,
             delay: 0.2
           }}>
-              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">I help teams move forward, 
-together.<span className="text-secondary">together.</span>
+              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">I help teams move forward,
+let's go.<span className="text-secondary">together.</span>
               </h1>
               <p className="text-2xl md:text-3xl font-medium text-primary-foreground/90">
                 
@@ -140,7 +140,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
               }}>
                     <Check className="w-8 h-8 text-secondary-foreground" strokeWidth={3} />
                   </motion.div>
-                  <span className="text-2xl font-bold text-foreground">{item.text}</span>
+                  <span className="text-2xl text-foreground font-extrabold font-sans">{item.text}</span>
                 </motion.div>)}
             </div>
           </div>
