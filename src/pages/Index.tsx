@@ -55,8 +55,8 @@ const Index = () => {
             duration: 0.8,
             delay: 0.2
           }}>
-              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">
-                I help teams move forward — <span className="text-secondary">fast.</span>
+              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">I help teams move forward, 
+together.<span className="text-secondary">together.</span>
               </h1>
               <p className="text-2xl md:text-3xl font-medium text-primary-foreground/90">
                 
@@ -78,7 +78,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
               delay: 0.6
             }}>
                 <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full" onClick={scrollToContact}>
-                  Send email
+                  Book a call  
                 </Button>
               </motion.div>
             </motion.div>
