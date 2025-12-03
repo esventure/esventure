@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Check, ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import FadeInOnScroll from "@/components/FadeInOnScroll";
+import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
 import estherBW from "@/assets/esther-bw.jpg";
@@ -517,6 +518,9 @@ Let's break through roadblocks, speed up projects, and work smarter.
           </div>
         </div>
       </section>
+
+      {/* Project Planner */}
+      <ProjectPlanner />
 
       {/* About Me */}
       <section id="about" className="container mx-auto px-4 py-24">
