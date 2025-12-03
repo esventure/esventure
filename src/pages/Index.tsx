@@ -216,9 +216,7 @@ Slipping deadlines, half-done deliverables, messy ownership, I bring order, clar
 
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">
-                      A deliverable that finally gets done. More headspace. Progress instead of stress.
-                    </p>
+                    <p className="text-foreground text-sm font-medium leading-relaxed">Finally, ownership / A project wrapped up nicely / Progress you can actually see            </p>
                   </div>
                 </div>
               </Card>
