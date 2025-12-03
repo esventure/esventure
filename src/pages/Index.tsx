@@ -317,7 +317,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• You feel inefficiency but can’t pinpoint it</li>
                       <li>• Your team keeps asking the same questions</li>
-                      <li>• Processes missing or duplicated</li>
+                      <li>• Processes live “in someone’s head” instead of a system</li>
                     </ul>
                   </div>
 
