@@ -192,87 +192,140 @@ const PlannerForm = ({
 
 const ResultPanel = ({ 
   result, 
-  scrollToContact 
+  scrollToContact,
+  isLoading = false
 }: { 
   result: string | null;
   scrollToContact: () => void;
-}) => (
-  <div className="bg-gradient-to-br from-muted/60 to-muted/30 rounded-2xl p-6 md:p-8 h-full border border-border/30">
-    <div className="flex items-center gap-3 mb-6">
-      <div className="w-10 h-10 rounded-full bg-secondary/50 flex items-center justify-center">
-        <Sparkles className="w-5 h-5 text-secondary-foreground" />
-      </div>
-      <h3 className="text-2xl font-bold text-foreground font-poppins">
-        Here's how I'd approach this
-      </h3>
-    </div>
-    
-    {result ? (
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-      >
-        <div className="max-w-none mb-6">
-          <ReactMarkdown
-            components={{
-              h1: ({ children }) => (
-                <h4 className="text-xl font-bold text-foreground mt-6 mb-3 font-poppins">{children}</h4>
-              ),
-              h2: ({ children }) => (
-                <h4 className="text-lg font-bold text-foreground mt-5 mb-2 font-poppins">{children}</h4>
-              ),
-              h3: ({ children }) => (
-                <h4 className="text-base font-bold text-foreground mt-4 mb-2 font-poppins">{children}</h4>
-              ),
-              p: ({ children }) => (
-                <p className="text-foreground/80 mb-4 leading-relaxed">{children}</p>
-              ),
-              ul: ({ children }) => (
-                <ul className="list-disc list-outside ml-5 text-foreground/80 mb-4 space-y-2">{children}</ul>
-              ),
-              ol: ({ children }) => (
-                <ol className="list-decimal list-outside ml-5 text-foreground/80 mb-4 space-y-2">{children}</ol>
-              ),
-              li: ({ children }) => (
-                <li className="text-foreground/80 leading-relaxed">{children}</li>
-              ),
-              strong: ({ children }) => (
-                <strong className="font-semibold text-foreground">{children}</strong>
-              ),
-              em: ({ children }) => (
-                <em className="italic text-foreground/70">{children}</em>
-              ),
-            }}
-          >
-            {result}
-          </ReactMarkdown>
+  isLoading?: boolean;
+}) => {
+  const SkeletonLoader = () => (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-6"
+    >
+      {/* Section header skeleton */}
+      <div className="space-y-3">
+        <div className="h-5 bg-muted rounded-full w-32 animate-pulse" />
+        <div className="space-y-2">
+          <div className="h-4 bg-muted/80 rounded-full w-full animate-pulse" style={{ animationDelay: '0.1s' }} />
+          <div className="h-4 bg-muted/80 rounded-full w-11/12 animate-pulse" style={{ animationDelay: '0.15s' }} />
+          <div className="h-4 bg-muted/80 rounded-full w-4/5 animate-pulse" style={{ animationDelay: '0.2s' }} />
         </div>
-        <div className="border-t border-border/50 pt-6 mt-6">
-          <p className="text-sm text-muted-foreground mb-5 italic">
-            This is a first outline, not a formal quote — but it should give you a good feel for how we could work together.
+      </div>
+      
+      {/* Time & effort skeleton */}
+      <div className="space-y-3">
+        <div className="h-5 bg-muted rounded-full w-28 animate-pulse" style={{ animationDelay: '0.25s' }} />
+        <div className="space-y-2">
+          <div className="h-4 bg-muted/80 rounded-full w-full animate-pulse" style={{ animationDelay: '0.3s' }} />
+          <div className="h-4 bg-muted/80 rounded-full w-3/4 animate-pulse" style={{ animationDelay: '0.35s' }} />
+        </div>
+      </div>
+      
+      {/* Next steps skeleton */}
+      <div className="space-y-3">
+        <div className="h-5 bg-muted rounded-full w-24 animate-pulse" style={{ animationDelay: '0.4s' }} />
+        <div className="space-y-2 pl-4">
+          <div className="h-4 bg-muted/80 rounded-full w-5/6 animate-pulse" style={{ animationDelay: '0.45s' }} />
+          <div className="h-4 bg-muted/80 rounded-full w-4/5 animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="h-4 bg-muted/80 rounded-full w-3/4 animate-pulse" style={{ animationDelay: '0.55s' }} />
+        </div>
+      </div>
+      
+      {/* Cost skeleton */}
+      <div className="space-y-3">
+        <div className="h-5 bg-muted rounded-full w-36 animate-pulse" style={{ animationDelay: '0.6s' }} />
+        <div className="h-4 bg-muted/80 rounded-full w-2/3 animate-pulse" style={{ animationDelay: '0.65s' }} />
+      </div>
+      
+      <p className="text-sm text-muted-foreground italic pt-4">
+        Thinking through your project…
+      </p>
+    </motion.div>
+  );
+
+  return (
+    <div className="bg-gradient-to-br from-muted/60 to-muted/30 rounded-2xl p-6 md:p-8 h-full border border-border/30">
+      <div className="flex items-center gap-3 mb-6">
+        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isLoading ? 'bg-primary/20' : 'bg-secondary/50'}`}>
+          <Sparkles className={`w-5 h-5 ${isLoading ? 'text-primary animate-pulse' : 'text-secondary-foreground'}`} />
+        </div>
+        <h3 className="text-2xl font-bold text-foreground font-poppins">
+          {isLoading ? 'Working on your plan…' : "Here's how I'd approach this"}
+        </h3>
+      </div>
+      
+      {isLoading ? (
+        <SkeletonLoader />
+      ) : result ? (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="max-w-none mb-6">
+            <ReactMarkdown
+              components={{
+                h1: ({ children }) => (
+                  <h4 className="text-xl font-bold text-foreground mt-6 mb-3 font-poppins">{children}</h4>
+                ),
+                h2: ({ children }) => (
+                  <h4 className="text-lg font-bold text-foreground mt-5 mb-2 font-poppins">{children}</h4>
+                ),
+                h3: ({ children }) => (
+                  <h4 className="text-base font-bold text-foreground mt-4 mb-2 font-poppins">{children}</h4>
+                ),
+                p: ({ children }) => (
+                  <p className="text-foreground/80 mb-4 leading-relaxed">{children}</p>
+                ),
+                ul: ({ children }) => (
+                  <ul className="list-disc list-outside ml-5 text-foreground/80 mb-4 space-y-2">{children}</ul>
+                ),
+                ol: ({ children }) => (
+                  <ol className="list-decimal list-outside ml-5 text-foreground/80 mb-4 space-y-2">{children}</ol>
+                ),
+                li: ({ children }) => (
+                  <li className="text-foreground/80 leading-relaxed">{children}</li>
+                ),
+                strong: ({ children }) => (
+                  <strong className="font-semibold text-foreground">{children}</strong>
+                ),
+                em: ({ children }) => (
+                  <em className="italic text-foreground/70">{children}</em>
+                ),
+              }}
+            >
+              {result}
+            </ReactMarkdown>
+          </div>
+          <div className="border-t border-border/50 pt-6 mt-6">
+            <p className="text-sm text-muted-foreground mb-5 italic">
+              This is a first outline, not a formal quote — but it should give you a good feel for how we could work together.
+            </p>
+            <Button 
+              onClick={scrollToContact}
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 group"
+            >
+              Sounds good? Let's talk
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </motion.div>
+      ) : (
+        <div className="flex flex-col items-center justify-center py-12 text-center">
+          <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+            <MessageCircle className="w-8 h-8 text-muted-foreground/50" />
+          </div>
+          <p className="text-foreground/50 max-w-xs">
+            Once you describe your situation, I'll outline a rough approach, timing, next steps and a ballpark cost.
           </p>
-          <Button 
-            onClick={scrollToContact}
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 group"
-          >
-            Sounds good? Let's talk
-            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
         </div>
-      </motion.div>
-    ) : (
-      <div className="flex flex-col items-center justify-center py-12 text-center">
-        <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
-          <MessageCircle className="w-8 h-8 text-muted-foreground/50" />
-        </div>
-        <p className="text-foreground/50 max-w-xs">
-          Once you describe your situation, I'll outline a rough approach, timing, next steps and a ballpark cost.
-        </p>
-      </div>
-    )}
-  </div>
-);
+      )}
+    </div>
+  );
+};
 
 const ProjectPlanner = () => {
   const isMobile = useIsMobile();
@@ -383,7 +436,7 @@ const ProjectPlanner = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <ResultPanel result={result} scrollToContact={scrollToContact} />
+                <ResultPanel result={result} scrollToContact={scrollToContact} isLoading={isLoading} />
               </motion.div>
             </div>
 
@@ -419,7 +472,7 @@ const ProjectPlanner = () => {
                         <p className="text-destructive text-sm mt-4">{error}</p>
                       )}
                     </div>
-                    <ResultPanel result={result} scrollToContact={scrollToContact} />
+                    <ResultPanel result={result} scrollToContact={scrollToContact} isLoading={isLoading} />
                   </div>
                 </DialogContent>
               </Dialog>
@@ -464,8 +517,8 @@ const ProjectPlanner = () => {
                     {error && (
                       <p className="text-destructive text-sm">{error}</p>
                     )}
-                    {(result || !isLoading) && (
-                      <ResultPanel result={result} scrollToContact={scrollToContact} />
+                    {(result || isLoading) && (
+                      <ResultPanel result={result} scrollToContact={scrollToContact} isLoading={isLoading} />
                     )}
                   </div>
                 </SheetContent>
