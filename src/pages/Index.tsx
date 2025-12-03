@@ -264,7 +264,7 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Your idea only exists in your head</li>
                       <li>• You want to validate your prototype</li>
-                      <li>• You want clarity before building</li>
+                      <li>• You’re pitching but you have nothing to show</li>
                     </ul>
                   </div>
 
