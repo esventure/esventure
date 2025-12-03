@@ -256,7 +256,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
                     <span className="text-3xl font-black text-primary-foreground">02</span>
                   </motion.div>
                   <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">From Idea to Prototype</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's prototype</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">Got an idea but no shape yet? I turn rough thoughts into clean, clickable prototypes you can test, validate, or pitch. Fast, simple, and user-focused.
 
@@ -313,7 +313,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
                     <span className="text-3xl font-black text-primary-foreground">03</span>
                   </motion.div>
                   <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Process Improvement</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Improve it </h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">I dive into your day-to-day operations, spot what's slowing you down, and redesign your workflows so things work smoothly again. And you can focus on what you do best: running your company.</p>
                 
