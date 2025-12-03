@@ -199,13 +199,12 @@ Let's break through roadblocks, speed up projects, and work smarter.
                     <span className="text-3xl font-black text-primary-foreground">01</span>
                   </motion.div>
                   <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[2.5rem] flex items-center">Fix It</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Fix It</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[8rem] flex items-center justify-center">When a project gets stuck, I take it over and finish it.
-Slipping deadlines, half-done deliverables, messy ownership, I bring order, clarity, and results. No chaos, just progress.</p>
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">When a project gets stuck, I take it over and finish it. Slipping deadlines, half-done deliverables, messy ownership, I bring order, clarity, and results. No chaos, just progress.</p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
-                  <div className="flex-1">
+                  <div className="min-h-[10rem]">
                     <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• A deadline is approaching and nothing is moving</li>
@@ -251,16 +250,13 @@ Slipping deadlines, half-done deliverables, messy ownership, I bring order, clar
                     <span className="text-3xl font-black text-primary-foreground">02</span>
                   </motion.div>
                   <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[2.5rem] flex items-center">From Idea to Prototype</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">From Idea to Prototype</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[8rem] flex items-center justify-center">
-                  Got an idea but no shape yet?
-I turn rough thoughts into clean, clickable prototypes you can test, validate, or pitch. Fast, simple, and user-focused.
-                </p>
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">Got an idea but no shape yet? I turn rough thoughts into clean, clickable prototypes you can test, validate, or pitch. Fast, simple, and user-focused.</p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
-                  <div className="flex-1">
-                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this: </h4>
+                  <div className="min-h-[10rem]">
+                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Your idea only exists in your head</li>
                       <li>• You want to validate your prototype</li>
@@ -305,14 +301,12 @@ I turn rough thoughts into clean, clickable prototypes you can test, validate, o
                     <span className="text-3xl font-black text-primary-foreground">03</span>
                   </motion.div>
                   <Badge className="mb-6 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[2.5rem] flex items-center">Process Improvement</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Process Improvement</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-center min-h-[8rem] flex items-center justify-center">
-                  I dive into your day-to-day operations, spot what's slowing you down, and redesign your workflows so things work smoothly again. And you can focus on what you do best: running your company.                                     
-                </p>
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">I dive into your day-to-day operations, spot what's slowing you down, and redesign your workflows so things work smoothly again. And you can focus on what you do best: running your company.</p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
-                  <div className="flex-1">
+                  <div className="min-h-[10rem]">
                     <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
                     <ul className="space-y-2 text-foreground/70 text-sm">
                       <li>• Things run… but not smoothly</li>
