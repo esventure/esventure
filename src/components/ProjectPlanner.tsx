@@ -60,6 +60,16 @@ const SelectButton = ({
   </button>
 );
 
+const StepNumber = ({ number, required = true }: { number: number; required?: boolean }) => (
+  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
+    required 
+      ? 'bg-primary text-primary-foreground' 
+      : 'bg-muted text-muted-foreground'
+  }`}>
+    {number}
+  </div>
+);
+
 const PlannerForm = ({ 
   formData, 
   setFormData, 
@@ -73,39 +83,48 @@ const PlannerForm = ({
 }) => (
   <div className="space-y-8">
     {/* 1. What's going on? */}
-    <div className="space-y-3">
-      <Label htmlFor="situation" className="text-base font-semibold block text-foreground">
-        What's going on?
-      </Label>
+    <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <StepNumber number={1} />
+        <Label htmlFor="situation" className="text-lg font-bold block text-foreground font-poppins">
+          What's going on?
+        </Label>
+      </div>
       <Textarea
         id="situation"
         placeholder="E.g. We're launching a new product but nobody knows who's doing what… / Our onboarding flow is confusing and customers keep dropping off… / I have an idea but no clue where to start…"
         value={formData.situation}
         onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
-        className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors"
+        className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-11"
       />
     </div>
 
     {/* 2. What do you need me to take off your plate? */}
-    <div className="space-y-3">
-      <Label htmlFor="handoff" className="text-base font-semibold block text-foreground">
-        What do you need me to take off your plate?
-      </Label>
+    <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <StepNumber number={2} />
+        <Label htmlFor="handoff" className="text-lg font-bold block text-foreground font-poppins">
+          What do you need off your plate?
+        </Label>
+      </div>
       <Textarea
         id="handoff"
         placeholder="E.g. Coordinate testing across teams / Build a clickable prototype / Set up a project management system / Map out our user journey / Just tell me what to prioritise…"
         value={formData.handoff}
         onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
-        className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors"
+        className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-11"
       />
     </div>
 
     {/* 3. What type of help do you need? */}
-    <div className="space-y-3">
-      <Label className="text-base font-semibold block text-foreground">
-        What type of help do you need?
-      </Label>
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <StepNumber number={3} />
+        <Label className="text-lg font-bold block text-foreground font-poppins">
+          What type of help?
+        </Label>
+      </div>
+      <div className="flex flex-wrap gap-2 ml-11">
         {PROJECT_TYPES.map((type) => (
           <SelectButton
             key={type}
@@ -119,11 +138,14 @@ const PlannerForm = ({
     </div>
 
     {/* 4. How urgent is this? */}
-    <div className="space-y-3">
-      <Label className="text-base font-semibold block text-foreground">
-        How urgent is this?
-      </Label>
-      <div className="flex flex-wrap gap-2">
+    <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <StepNumber number={4} />
+        <Label className="text-lg font-bold block text-foreground font-poppins">
+          How urgent?
+        </Label>
+      </div>
+      <div className="flex flex-wrap gap-2 ml-11">
         {URGENCY_OPTIONS.map((urgency) => (
           <SelectButton
             key={urgency}
@@ -137,45 +159,56 @@ const PlannerForm = ({
     </div>
 
     {/* 5. Anything specific I should know? (optional) */}
-    <div className="space-y-3">
-      <Label htmlFor="context" className="text-base font-semibold block text-foreground">
-        Anything specific I should know? <span className="font-normal text-muted-foreground text-sm">(optional)</span>
-      </Label>
+    <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <StepNumber number={5} required={false} />
+        <Label htmlFor="context" className="text-lg font-bold block text-foreground font-poppins">
+          Anything else? <span className="font-normal text-muted-foreground text-sm">(optional)</span>
+        </Label>
+      </div>
       <Textarea
         id="context"
         placeholder="E.g. We use Notion and Slack / Dev team is external / Launch is in 6 weeks / Three departments need to sign off…"
         value={formData.context}
         onChange={(e) => setFormData({ ...formData, context: e.target.value })}
-        className="min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors"
+        className="min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-11"
       />
     </div>
 
     {/* Submit button */}
-    <Button 
-      onClick={onSubmit}
-      disabled={isLoading || !formData.situation || !formData.handoff}
-      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-lg font-bold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 disabled:shadow-none group"
-    >
-      {isLoading ? (
-        <>
-          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-          Thinking…
-        </>
-      ) : (
-        <>
-          <Sparkles className="mr-2 h-5 w-5" />
-          Generate my plan
-          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-        </>
-      )}
-    </Button>
+    <div className="pt-2">
+      <Button 
+        onClick={onSubmit}
+        disabled={isLoading || !formData.situation || !formData.handoff}
+        className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full py-7 text-xl font-bold shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/40 transition-all duration-300 disabled:shadow-none disabled:bg-muted disabled:text-muted-foreground group"
+      >
+        {isLoading ? (
+          <>
+            <Loader2 className="mr-2 h-6 w-6 animate-spin" />
+            Thinking…
+          </>
+        ) : (
+          <>
+            <Sparkles className="mr-2 h-6 w-6" />
+            Generate my plan
+            <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+          </>
+        )}
+      </Button>
+      <p className="text-center text-sm text-muted-foreground mt-3">
+        Fill in steps 1 & 2 to get started
+      </p>
+    </div>
 
     {/* 6. Budget comfort zone (optional) - de-emphasized below button */}
     <div className="pt-4 border-t border-border/50">
-      <Label className="text-sm font-medium mb-3 block text-muted-foreground">
-        Budget comfort zone <span className="font-normal">(optional)</span>
-      </Label>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex items-center gap-3 mb-3">
+        <StepNumber number={6} required={false} />
+        <Label className="text-base font-medium block text-muted-foreground">
+          Budget comfort zone <span className="font-normal">(optional)</span>
+        </Label>
+      </div>
+      <div className="flex flex-wrap gap-2 ml-11">
         {BUDGET_OPTIONS.map((budget) => (
           <SelectButton
             key={budget}
