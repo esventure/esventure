@@ -79,7 +79,7 @@ const PlannerForm = ({
       </Label>
       <Textarea
         id="situation"
-        placeholder="Tell me what's happening, what's messy, blocked or needs to move?"
+        placeholder="E.g. We're launching a new product but nobody knows who's doing what… / Our onboarding flow is confusing and customers keep dropping off… / I have an idea but no clue where to start…"
         value={formData.situation}
         onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
         className="min-h-[100px] resize-none"
@@ -93,7 +93,7 @@ const PlannerForm = ({
       </Label>
       <Textarea
         id="handoff"
-        placeholder="E.g. handle implementation, organise testing, clean up scope, design the prototype…"
+        placeholder="E.g. Coordinate testing across teams / Build a clickable prototype / Set up a project management system / Map out our user journey / Just tell me what to prioritise…"
         value={formData.handoff}
         onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
         className="min-h-[100px] resize-none"
@@ -143,7 +143,7 @@ const PlannerForm = ({
       </Label>
       <Textarea
         id="context"
-        placeholder="Tools, deadlines, existing systems, tricky stakeholders…"
+        placeholder="E.g. We use Notion and Slack / Dev team is external / Launch is in 6 weeks / Three departments need to sign off…"
         value={formData.context}
         onChange={(e) => setFormData({ ...formData, context: e.target.value })}
         className="min-h-[80px] resize-none"
