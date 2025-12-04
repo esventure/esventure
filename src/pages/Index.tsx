@@ -526,7 +526,7 @@ const Index = () => {
       <section id="contact" className="relative py-24 overflow-hidden">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm scale-105"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${estherContactBg})` }}
         />
         {/* Purple Overlay */}
