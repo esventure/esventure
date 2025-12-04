@@ -495,7 +495,7 @@ const ProjectPlanner = () => {
           duration: 0.6
         }} className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 bg-secondary/30 text-secondary-foreground rounded-full text-sm font-medium mb-4">
-              Scope Snapshot
+              Tell Me What's Up
             </span>
             <h2 className="text-4xl md:text-6xl font-black text-foreground mb-5 font-poppins">
               See how I'd tackle your project
@@ -594,14 +594,14 @@ const ProjectPlanner = () => {
               <Sheet>
                 <SheetTrigger asChild>
                   <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-5 text-base font-bold shadow-lg shadow-primary/25 group">
-                    Open Scope Snapshot
+                    Tell Me What's Up
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="bottom" className="h-[88vh] flex flex-col px-0 pb-[env(safe-area-inset-bottom)]">
                   <SheetHeader className="px-5 pt-3 pb-3 border-b border-border/30 flex-shrink-0">
                     <SheetTitle className="text-base font-bold font-poppins">
-                      Scope Snapshot
+                      Tell Me What's Up
                     </SheetTitle>
                   </SheetHeader>
                   <div className="flex-1 overflow-y-auto px-4 py-4">
