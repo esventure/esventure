@@ -172,9 +172,7 @@ const PlannerForm = ({
             <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
           </>}
       </Button>
-      <p className="text-center text-sm text-muted-foreground mt-3">
-        Fill in steps 1 & 2 to get started
-      </p>
+      
     </div>
 
     {/* 6. Budget comfort zone (optional) - de-emphasized below button */}
@@ -530,10 +528,7 @@ const ProjectPlanner = () => {
           }} className="flex justify-center mt-10">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" className="rounded-full gap-2 border-border/50 hover:bg-muted/50 hover:border-primary/30 transition-all">
-                    <Expand className="w-4 h-4" />
-                    Open as mini-planner
-                  </Button>
+                  
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                   <DialogHeader>
