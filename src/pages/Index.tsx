@@ -133,7 +133,7 @@ const Index = () => {
               {[{
               text: "Less confusion"
             }, {
-              text: "Aligned teams"
+              text: "Less guessing"
             }, {
               text: "Things actually get done"
             }].map((item, index) => <motion.div key={index} className="flex flex-col items-center text-center gap-4" initial={{
