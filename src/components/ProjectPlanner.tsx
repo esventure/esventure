@@ -502,7 +502,7 @@ const ProjectPlanner = () => {
             </h2>
             <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed mb-3">Use this quick generator to get a feel for how I’d help: the way I’d approach it, what it would take, and what you can expect.
  </p>
-            <p className="text-base text-foreground/40 max-w-xl mx-auto">Tell me what's stuck and I'll sketch out a rough approach, time & effort, next steps, and a ballpark budget.</p>
+            
           </motion.div>
 
           {/* Desktop: inline form + modal button */}
@@ -609,11 +609,9 @@ const ProjectPlanner = () => {
                       <PlannerForm formData={formData} setFormData={setFormData} onSubmit={handleSubmit} isLoading={isLoading} stepRefs={stepRefs} scrollToNextStep={scrollToNextStep} />
                       {error && <p className="text-destructive text-sm mt-3">{error}</p>}
                     </div>
-                    {(result || isLoading) && (
-                      <div ref={resultPanelRef} className="mt-4">
+                    {(result || isLoading) && <div ref={resultPanelRef} className="mt-4">
                         <ResultPanel result={result} scrollToContact={scrollToContact} isLoading={isLoading} />
-                      </div>
-                    )}
+                      </div>}
                   </div>
                 </SheetContent>
               </Sheet>
