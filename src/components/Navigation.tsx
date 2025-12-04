@@ -25,7 +25,7 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { label: "Services", id: "services" },
+    { label: "What I do", id: "services" },
     { label: "Tell me what's up", id: "project-planner" },
     { label: "About", id: "about" },
   ];
