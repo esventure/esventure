@@ -516,39 +516,12 @@ const ProjectPlanner = () => {
             <h2 className="text-4xl md:text-6xl font-black text-foreground mb-5 font-poppins">
               See how I'd tackle your project
             </h2>
-            <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed mb-8">
+            <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed mb-3">
               From first call to action plan in 3–4 weeks. Fill in the form to see what working together could look like.
             </p>
-            
-            {/* Timeline Stepper */}
-            <div className="flex items-center justify-center gap-0 max-w-3xl mx-auto mb-4">
-              {[
-                { week: "0", label: "First Call", icon: "📞" },
-                { week: "1", label: "Discovery", icon: "🔍" },
-                { week: "2", label: "Structure", icon: "🗂️" },
-                { week: "3", label: "Action Plan", icon: "✅" },
-              ].map((step, index, arr) => (
-                <div key={index} className="flex items-center">
-                  <motion.div 
-                    className="flex flex-col items-center"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                  >
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center text-base md:text-lg mb-1.5 hover:bg-primary/20 hover:border-primary/50 transition-colors">
-                      {step.icon}
-                    </div>
-                    <span className="text-[10px] md:text-xs font-bold text-foreground/70">Week {step.week}</span>
-                    <span className="text-[9px] md:text-[10px] text-foreground/50 hidden sm:block">{step.label}</span>
-                  </motion.div>
-                  {index < arr.length - 1 && (
-                    <div className="w-8 md:w-16 h-0.5 bg-gradient-to-r from-primary/30 to-primary/10 mx-1 md:mx-2 mt-[-18px]" />
-                  )}
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-foreground/40 mb-1">+ optional Week 4 for implementation support</p>
+            <p className="text-base text-foreground/40 max-w-xl mx-auto">
+              Tell me what's stuck and I'll sketch out a rough approach, time & effort, next steps, and a ballpark budget.
+            </p>
           </motion.div>
 
           {/* Desktop: inline form + modal button */}
