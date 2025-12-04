@@ -523,7 +523,7 @@ const Index = () => {
           className="absolute inset-0 bg-cover bg-no-repeat"
           style={{ 
             backgroundImage: `url(${estherPhone})`,
-            backgroundPosition: 'right 90%'
+            backgroundPosition: 'right 25%'
           }}
         />
         {/* Gradient Overlay - fades from purple left to transparent right */}
