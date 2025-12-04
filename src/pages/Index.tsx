@@ -40,13 +40,13 @@ const Index = () => {
       <Navigation />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-primary">
-        <motion.div className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32" style={{
+        <motion.div className="container mx-auto px-4 pt-16 pb-16 md:pt-24 md:pb-24" style={{
         y,
         opacity,
         scale
       }}>
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-            <motion.div className="space-y-8 text-left" initial={{
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto">
+            <motion.div className="space-y-6 text-left" initial={{
             opacity: 0,
             x: -50
           }} animate={{
@@ -56,20 +56,14 @@ const Index = () => {
             duration: 0.8,
             delay: 0.2
           }}>
-              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
                 I help teams move forward,<br />
                 <span className="text-secondary">let's go.</span>
               </h1>
-              <p className="text-2xl md:text-3xl font-medium text-primary-foreground/90">
-                
-                
-Let's break through roadblocks, speed up projects, and work smarter.                                                                                                  
-              
+              <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
+                Break through roadblocks, speed up projects, and work smarter.
               </p>
-              <p className="text-xl md:text-2xl text-primary-foreground/70 font-light italic">
-                Are you ready to go on an Es Venture?
-              </p>
-              <motion.div className="pt-6" initial={{
+              <motion.div className="pt-4" initial={{
               opacity: 0,
               y: 20
             }} animate={{
