@@ -160,8 +160,7 @@ const Index = () => {
           duration: 0.6
         }}>
             <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground font-poppins">My Services</h2>
-            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto">Practical, clear and fast. Always with a tangible result, dedicated energy and of course a bit of fun.<span className="text-primary font-bold">Practical, clear and fast</span> — always with a tangible result.
-            </p>
+            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto"><span className="text-primary font-bold">Practical</span>, <span className="text-primary font-bold">clear</span> and <span className="text-primary font-bold">fast</span>. Always with a tangible result, dedicated energy and of course a bit of fun.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
