@@ -625,7 +625,12 @@ const Index = () => {
         className="fixed bottom-6 right-6 z-40"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: isAtPlanner ? 0 : 1, opacity: isAtPlanner ? 0 : 1 }}
-        transition={{ duration: 0.2, type: "spring" }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 300, 
+          damping: 25,
+          mass: 0.8
+        }}
       >
         <Button
           onClick={() => document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth' })}
