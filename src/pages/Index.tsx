@@ -8,6 +8,7 @@ import FadeInOnScroll from "@/components/FadeInOnScroll";
 import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
+import { FixItIcon, PrototypeIcon, ImproveIcon } from "@/components/ServiceIcons";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
@@ -211,7 +212,7 @@ const Index = () => {
                 }} transition={{
                   duration: 0.5
                 }}>
-                    <span className="text-3xl font-black text-primary-foreground">01</span>
+                    <FixItIcon size={32} className="text-primary-foreground" />
                   </motion.div>
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's fix it</h3>
@@ -264,7 +265,7 @@ const Index = () => {
                 }} transition={{
                   duration: 0.5
                 }}>
-                    <span className="text-3xl font-black text-primary-foreground">02</span>
+                    <PrototypeIcon size={32} className="text-primary-foreground" />
                   </motion.div>
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's prototype</h3>
@@ -317,7 +318,7 @@ const Index = () => {
                 }} transition={{
                   duration: 0.5
                 }}>
-                    <span className="text-3xl font-black text-primary-foreground">03</span>
+                    <ImproveIcon size={32} className="text-primary-foreground" />
                   </motion.div>
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's process</h3>
