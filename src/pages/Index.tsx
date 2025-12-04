@@ -530,7 +530,7 @@ const Index = () => {
           style={{ backgroundImage: `url(${estherContactBg})` }}
         />
         {/* Purple Overlay */}
-        <div className="absolute inset-0 bg-primary/60" />
+        <div className="absolute inset-0 bg-secondary/60" />
         
         <div className="container mx-auto px-4 relative z-10">
           <motion.div className="max-w-4xl mx-auto text-center space-y-10" initial={{
