@@ -28,12 +28,21 @@ const Index = () => {
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
   const [isPastHero, setIsPastHero] = React.useState(false);
+  const [isAtPlanner, setIsAtPlanner] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
       // Hero section is roughly the viewport height
       const heroHeight = window.innerHeight * 0.8;
       setIsPastHero(window.scrollY > heroHeight);
+      
+      // Check if at project planner section
+      const plannerSection = document.getElementById('project-planner');
+      if (plannerSection) {
+        const rect = plannerSection.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.3;
+        setIsAtPlanner(isVisible);
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -615,8 +624,8 @@ const Index = () => {
       <motion.div 
         className="fixed bottom-6 right-6 z-40"
         initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 1, duration: 0.3, type: "spring" }}
+        animate={{ scale: isAtPlanner ? 0 : 1, opacity: isAtPlanner ? 0 : 1 }}
+        transition={{ duration: 0.2, type: "spring" }}
       >
         <Button
           onClick={() => document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth' })}
