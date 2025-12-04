@@ -88,10 +88,12 @@ const PlannerForm = ({
           What's going on?
         </Label>
       </div>
-      <Textarea id="situation" placeholder="E.g. We're launching but nobody knows who's doing what…" value={formData.situation} onChange={e => setFormData({
-        ...formData,
-        situation: e.target.value
-      })} onBlur={handleSituationBlur} className="min-h-[80px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-9 md:ml-11 text-base" />
+      <div className="pl-9 md:pl-11">
+        <Textarea id="situation" placeholder="E.g. We're launching but nobody knows who's doing what…" value={formData.situation} onChange={e => setFormData({
+          ...formData,
+          situation: e.target.value
+        })} onBlur={handleSituationBlur} className="min-h-[80px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base w-full" />
+      </div>
     </div>
 
     {/* 2. What do you need me to take off your plate? */}
@@ -104,10 +106,12 @@ const PlannerForm = ({
           What do you need off your plate?
         </Label>
       </div>
-      <Textarea id="handoff" placeholder="E.g. Coordinate testing / Build a prototype…" value={formData.handoff} onChange={e => setFormData({
-        ...formData,
-        handoff: e.target.value
-      })} onBlur={handleHandoffBlur} className="min-h-[80px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-9 md:ml-11 text-base" />
+      <div className="pl-9 md:pl-11">
+        <Textarea id="handoff" placeholder="E.g. Coordinate testing / Build a prototype…" value={formData.handoff} onChange={e => setFormData({
+          ...formData,
+          handoff: e.target.value
+        })} onBlur={handleHandoffBlur} className="min-h-[80px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base w-full" />
+      </div>
     </div>
 
     {/* 3. What type of help do you need? */}
@@ -120,10 +124,12 @@ const PlannerForm = ({
           What type of help?
         </Label>
       </div>
-      <div className="flex flex-wrap gap-2 ml-9 md:ml-11">
-        {PROJECT_TYPES.map(type => <SelectButton key={type} selected={formData.type === type} onClick={() => handleTypeSelect(type)}>
-            {type}
-          </SelectButton>)}
+      <div className="pl-9 md:pl-11">
+        <div className="flex flex-wrap gap-2">
+          {PROJECT_TYPES.map(type => <SelectButton key={type} selected={formData.type === type} onClick={() => handleTypeSelect(type)}>
+              {type}
+            </SelectButton>)}
+        </div>
       </div>
     </div>
 
@@ -137,10 +143,12 @@ const PlannerForm = ({
           How urgent?
         </Label>
       </div>
-      <div className="flex flex-wrap gap-2 ml-9 md:ml-11">
-        {URGENCY_OPTIONS.map(urgency => <SelectButton key={urgency} selected={formData.urgency === urgency} onClick={() => handleUrgencySelect(urgency)}>
-            {urgency}
-          </SelectButton>)}
+      <div className="pl-9 md:pl-11">
+        <div className="flex flex-wrap gap-2">
+          {URGENCY_OPTIONS.map(urgency => <SelectButton key={urgency} selected={formData.urgency === urgency} onClick={() => handleUrgencySelect(urgency)}>
+              {urgency}
+            </SelectButton>)}
+        </div>
       </div>
     </div>
 
@@ -154,10 +162,12 @@ const PlannerForm = ({
           Anything else? <span className="font-normal text-muted-foreground text-xs md:text-sm">(optional)</span>
         </Label>
       </div>
-      <Textarea id="context" placeholder="E.g. We use Notion / Launch in 6 weeks…" value={formData.context} onChange={e => setFormData({
-        ...formData,
-        context: e.target.value
-      })} className="min-h-[60px] md:min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-9 md:ml-11 text-base" />
+      <div className="pl-9 md:pl-11">
+        <Textarea id="context" placeholder="E.g. We use Notion / Launch in 6 weeks…" value={formData.context} onChange={e => setFormData({
+          ...formData,
+          context: e.target.value
+        })} className="min-h-[60px] md:min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base w-full" />
+      </div>
     </div>
 
     {/* Submit button */}
@@ -183,13 +193,15 @@ const PlannerForm = ({
           Budget comfort zone <span className="font-normal">(optional)</span>
         </Label>
       </div>
-      <div className="flex flex-wrap gap-1.5 md:gap-2 ml-9 md:ml-11">
-        {BUDGET_OPTIONS.map(budget => <SelectButton key={budget} selected={formData.budget === budget} onClick={() => setFormData({
-          ...formData,
-          budget
-        })}>
-            {budget}
-          </SelectButton>)}
+      <div className="pl-9 md:pl-11">
+        <div className="flex flex-wrap gap-1.5 md:gap-2">
+          {BUDGET_OPTIONS.map(budget => <SelectButton key={budget} selected={formData.budget === budget} onClick={() => setFormData({
+            ...formData,
+            budget
+          })}>
+              {budget}
+            </SelectButton>)}
+        </div>
       </div>
     </div>
   </div>;
