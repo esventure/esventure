@@ -135,7 +135,7 @@ const Index = () => {
             }, {
               text: "Less guessing"
             }, {
-              text: "Things actually get done"
+              text: "More done"
             }].map((item, index) => <motion.div key={index} className="flex flex-col items-center text-center gap-4" initial={{
               opacity: 0,
               y: 30
