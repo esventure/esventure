@@ -380,7 +380,7 @@ const Index = () => {
               }, {
                 title: "NGO",
                 subtitle: "User journey mapping across systems",
-                description: "Mapped the full user journey across several applications — finally giving everyone a clear picture of how things actually flow."
+                description: "Mapped the full user journey across several applications, finally giving everyone a clear picture of how things actually flow."
               }, {
                 title: "NGO",
                 subtitle: "UAT & E2E testing",
