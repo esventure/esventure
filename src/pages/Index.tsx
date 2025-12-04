@@ -29,13 +29,12 @@ const Index = () => {
   const [count, setCount] = React.useState(0);
   const [isPastHero, setIsPastHero] = React.useState(false);
   const [isAtPlanner, setIsAtPlanner] = React.useState(false);
-
   React.useEffect(() => {
     const handleScroll = () => {
       // Hero section is roughly the viewport height
       const heroHeight = window.innerHeight * 0.8;
       setIsPastHero(window.scrollY > heroHeight);
-      
+
       // Check if at project planner section
       const plannerSection = document.getElementById('project-planner');
       if (plannerSection) {
@@ -44,12 +43,10 @@ const Index = () => {
         setIsAtPlanner(isVisible);
       }
     };
-    
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initial position
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   React.useEffect(() => {
     if (!carouselApi) {
       return;
@@ -183,7 +180,7 @@ const Index = () => {
         }} transition={{
           duration: 0.6
         }}>
-            <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground font-poppins">My Services</h2>
+            <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground font-poppins">What I do</h2>
             <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto"><span className="text-primary font-bold">Practical</span>, <span className="text-primary font-bold">clear</span> and <span className="text-primary font-bold">fast</span>. Always with a tangible result, dedicated energy and of course a bit of fun.</p>
           </motion.div>
 
@@ -621,25 +618,21 @@ const Index = () => {
       </footer>
 
       {/* Fixed Bottom CTA */}
-      <motion.div 
-        className="fixed bottom-6 right-6 z-40"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: isAtPlanner ? 0 : 1, opacity: isAtPlanner ? 0 : 1 }}
-        transition={{ 
-          type: "spring", 
-          stiffness: 300, 
-          damping: 25,
-          mass: 0.8
-        }}
-      >
-        <Button
-          onClick={() => document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth' })}
-          className={`rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 ${
-            isPastHero 
-              ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30' 
-              : 'bg-primary text-secondary hover:bg-primary/90 shadow-primary/30'
-          }`}
-        >
+      <motion.div className="fixed bottom-6 right-6 z-40" initial={{
+      scale: 0,
+      opacity: 0
+    }} animate={{
+      scale: isAtPlanner ? 0 : 1,
+      opacity: isAtPlanner ? 0 : 1
+    }} transition={{
+      type: "spring",
+      stiffness: 300,
+      damping: 25,
+      mass: 0.8
+    }}>
+        <Button onClick={() => document.getElementById('project-planner')?.scrollIntoView({
+        behavior: 'smooth'
+      })} className={`rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 ${isPastHero ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30' : 'bg-primary text-secondary hover:bg-primary/90 shadow-primary/30'}`}>
           Tell Me What's Up
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
