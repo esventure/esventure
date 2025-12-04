@@ -131,7 +131,7 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-12">
               {[{
-              text: "Clear priorities"
+              text: "Less confusion"
             }, {
               text: "Aligned teams"
             }, {
