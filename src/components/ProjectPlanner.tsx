@@ -516,8 +516,11 @@ const ProjectPlanner = () => {
             <h2 className="text-4xl md:text-6xl font-black text-foreground mb-5 font-poppins">
               See how I'd tackle your project
             </h2>
-            <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed">
-              Tell me what's stuck and I'll sketch out how I'd fix it: a rough approach, time & effort, next steps, and a ballpark budget.
+            <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed mb-3">
+              From first call to action plan in 3–4 weeks. Fill in the form to see what working together could look like.
+            </p>
+            <p className="text-base text-foreground/40 max-w-xl mx-auto">
+              Tell me what's stuck and I'll sketch out a rough approach, time & effort, next steps, and a ballpark budget.
             </p>
           </motion.div>
 
