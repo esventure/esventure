@@ -465,9 +465,7 @@ const Index = () => {
                 once: true
               }} transition={{
                 delay: 0.2
-              }}>
-                  Hi, I'm Esther — part product nerd, part UX thinker, full-time structure enthusiast, and a generalist pur sang.
-                </motion.p>
+              }}>Hi, I'm Esther! Part product nerd, part UX thinker, full-time structure enthusiast, and a generalist pur sang.</motion.p>
                 <motion.p initial={{
                 opacity: 0
               }} whileInView={{
@@ -487,9 +485,7 @@ const Index = () => {
                 once: true
               }} transition={{
                 delay: 0.4
-              }}>
-                  I move quickly, keep things clear, and make sure projects actually land.
-                </motion.p>
+              }}>By moving quickly, keeping things clear and to the point, and making sure projects actually land.</motion.p>
                 <motion.p className="font-bold" initial={{
                 opacity: 0
               }} whileInView={{
@@ -498,9 +494,7 @@ const Index = () => {
                 once: true
               }} transition={{
                 delay: 0.5
-              }}>
-                  No fluff, no 70-page documents — just practical solutions that make life easier.
-                </motion.p>
+              }}>No fluff, no 70-page documents, just practical solutions that make life easier.</motion.p>
               </div>
             </motion.div>
             <motion.div className="order-1 md:order-2" initial={{
@@ -525,10 +519,9 @@ const Index = () => {
       {/* Final CTA */}
       <section id="contact" className="relative py-24 overflow-hidden">
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${estherContactBg})` }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+        backgroundImage: `url(${estherContactBg})`
+      }} />
         {/* Purple Overlay */}
         <div className="absolute inset-0 bg-secondary/80" />
         
@@ -544,7 +537,9 @@ const Index = () => {
         }} transition={{
           duration: 0.8
         }}>
-            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground font-poppins drop-shadow-lg" style={{ textShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>Ready to go on an <span className="whitespace-nowrap">Es Venture?</span></h2>
+            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground font-poppins drop-shadow-lg" style={{
+            textShadow: '0 4px 12px rgba(0,0,0,0.3)'
+          }}>Ready to go on an <span className="whitespace-nowrap">Es Venture?</span></h2>
             <motion.div className="flex flex-col sm:flex-row gap-6 justify-center items-center" initial={{
             opacity: 0
           }} whileInView={{
