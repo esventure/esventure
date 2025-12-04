@@ -196,7 +196,7 @@ const Index = () => {
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let me fix it</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">When a project or deliverable gets stuck, I take it over and finish it. Slipping deadlines, half-done deliverables, messy ownership, I bring order, clarity, and results. No chaos, just progress.</p>
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">When a project or deliverable gets stuck, I take it over and <strong className="text-foreground">finish it</strong>. Slipping deadlines, half-done deliverables, messy ownership — I bring <strong className="text-foreground">order</strong>, <strong className="text-foreground">clarity</strong>, and <strong className="text-foreground">results</strong>. No chaos, just progress.</p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="min-h-[10rem]">
@@ -249,7 +249,7 @@ const Index = () => {
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's prototype</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">Got an idea but no shape yet? I can help you with your research and I can  turn rough thoughts into clean, clickable UI prototypes you can test, validate, or pitch. Fast, simple, and user-focused. </p>
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">Got an idea but no shape yet? I help you with <strong className="text-foreground">research</strong> and turn rough thoughts into <strong className="text-foreground">clean, clickable UI prototypes</strong> you can test, validate, or pitch. <em>Fast, simple, and user-focused.</em></p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="min-h-[10rem]">
@@ -302,7 +302,7 @@ const Index = () => {
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Improve it </h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">I dive into your day-to-day operations, spot what's slowing you down, and redesign your workflows so things work smoothly again. And you can focus on what you do best: running your company.</p>
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">I dive into your <strong className="text-foreground">day-to-day operations</strong>, spot what's slowing you down, and <strong className="text-foreground">redesign your workflows</strong> so things run smoothly again. So you can focus on what you do best: <em>running your company</em>.</p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="min-h-[10rem]">
