@@ -10,6 +10,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
+import estherContactBg from "@/assets/esther-contact-bg.jpg";
 import Autoplay from "embla-carousel-autoplay";
 const Index = () => {
   const scrollToContact = () => {
@@ -522,8 +523,16 @@ const Index = () => {
       </section>
 
       {/* Final CTA */}
-      <section id="contact" className="bg-primary py-24">
-        <div className="container mx-auto px-4">
+      <section id="contact" className="relative py-24 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${estherContactBg})` }}
+        />
+        {/* Purple Overlay */}
+        <div className="absolute inset-0 bg-primary/50" />
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div className="max-w-4xl mx-auto text-center space-y-10" initial={{
           opacity: 0,
           y: 30
