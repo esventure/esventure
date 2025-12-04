@@ -165,7 +165,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
           duration: 0.6
         }}>
             <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground font-poppins">My Services</h2>
-            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto"> Practical, clear and fast,<span className="text-primary font-bold">Practical, clear and fast</span> — always with a tangible result.
+            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto">Practical, clear and fast. Always with a tangible result, dedicated energy and of course a bit of fun.<span className="text-primary font-bold">Practical, clear and fast</span> — always with a tangible result.
             </p>
           </motion.div>
 
