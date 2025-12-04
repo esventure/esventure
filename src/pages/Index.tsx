@@ -10,7 +10,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
-import estherContactBg from "@/assets/esther-contact-bg.jpg";
+import estherPhone from "@/assets/esther-phone.jpg";
 import Autoplay from "embla-carousel-autoplay";
 const Index = () => {
   const scrollToContact = () => {
@@ -520,11 +520,11 @@ const Index = () => {
       <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${estherContactBg})` }}
+          className="absolute inset-0 bg-cover bg-right bg-no-repeat"
+          style={{ backgroundImage: `url(${estherPhone})` }}
         />
-        {/* Gradient Overlay - similar to hero */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60" />
+        {/* Gradient Overlay - fades from purple left to transparent right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent" />
         
         {/* Animated background elements like hero */}
         <motion.div 
