@@ -544,7 +544,7 @@ const Index = () => {
         }} transition={{
           duration: 0.8
         }}>
-            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground font-poppins drop-shadow-lg" style={{ textShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>Ready to go on an Es Venture?</h2>
+            <h2 className="text-5xl md:text-7xl font-black text-foreground font-poppins drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(255,255,255,0.3)' }}>Ready to go on an Es Venture?</h2>
             <motion.div className="flex flex-col sm:flex-row gap-6 justify-center items-center" initial={{
             opacity: 0
           }} whileInView={{
@@ -554,10 +554,10 @@ const Index = () => {
           }} transition={{
             delay: 0.3
           }}>
-              <Button size="lg" className="text-xl px-12 py-8 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:text-primary transition-all shadow-2xl rounded-full" onClick={() => window.location.href = 'mailto:hello@esventure.com'}>
+              <Button size="lg" className="text-xl px-12 py-8 font-bold bg-foreground text-background hover:bg-foreground/90 transition-all shadow-2xl rounded-full" onClick={() => window.location.href = 'mailto:hello@esventure.com'}>
                 Send email
               </Button>
-              <Button size="lg" className="text-xl px-12 py-8 font-bold bg-primary/90 text-primary-foreground border-4 border-primary-foreground/50 hover:bg-secondary hover:text-primary hover:border-secondary transition-all rounded-full shadow-2xl" onClick={() => window.open('https://calendly.com/esventure', '_blank')}>
+              <Button size="lg" className="text-xl px-12 py-8 font-bold bg-transparent text-foreground border-4 border-foreground hover:bg-foreground hover:text-background transition-all rounded-full shadow-2xl" onClick={() => window.open('https://calendly.com/esventure', '_blank')}>
                 Book a call
               </Button>
             </motion.div>
