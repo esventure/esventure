@@ -520,7 +520,7 @@ const Index = () => {
       <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-right bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-right-bottom bg-no-repeat"
           style={{ backgroundImage: `url(${estherPhone})` }}
         />
         {/* Gradient Overlay - fades from purple left to transparent right */}
