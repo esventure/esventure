@@ -214,7 +214,7 @@ const Index = () => {
                     <span className="text-3xl font-black text-primary-foreground">01</span>
                   </motion.div>
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let me fix it</h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's fix it</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">When a project or deliverable gets stuck, I <strong className="text-foreground">take it over</strong> and <strong className="text-foreground">finish it</strong>. Slipping deadlines, half-done deliverables, messy ownership. I bring <strong className="text-foreground">order</strong>, <strong className="text-foreground">clarity</strong>, and <strong className="text-foreground">results</strong>. No chaos, just <strong className="text-foreground">progress</strong>.</p>
                 
@@ -230,7 +230,7 @@ const Index = () => {
 
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] justify-start flex flex-col">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">Finally, ownership / A project wrapped up nicely / Progress you can actually see                          
+                    <p className="text-foreground text-sm font-medium leading-relaxed">Someone finally takes ownership and gets the thing delivered so you can move on.                          
 
                   </p>
                   </div>
@@ -283,7 +283,7 @@ const Index = () => {
 
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] justify-start flex flex-col">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">A prototype that explains your idea better than words / Insights into what works and what doesn't         
+                    <p className="text-foreground text-sm font-medium leading-relaxed">A simple, clean prototype that shows your idea without confusion, so you can test it, pitch it, or decide what’s next.         
 
                   </p>
                   </div>
@@ -320,7 +320,7 @@ const Index = () => {
                     <span className="text-3xl font-black text-primary-foreground">03</span>
                   </motion.div>
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Improve it </h3>
+                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's process</h3>
                 </div>
                 <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">I dive into your <strong className="text-foreground">day-to-day operations</strong>, spot what's slowing you down, and <strong className="text-foreground">redesign your workflows</strong> so things run smoothly again. So you can focus on what you do best: <em>running your company</em>.</p>
                 
@@ -336,7 +336,7 @@ const Index = () => {
 
                   <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] justify-start flex flex-col">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">A cleaner, smoother way of working / Processes that reduce friction, not add to it / Clear workflows that everyone understands
+                    <p className="text-foreground text-sm font-medium leading-relaxed">Clear workflows that everyone actually follows, less back-and-forth, and a way of working that just… works.
 
                   </p>
                   </div>
