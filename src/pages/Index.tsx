@@ -110,7 +110,7 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-3 gap-12">
               {[{
-              text: "Less noise"
+              text: "You get your time back"
             }, {
               text: "More action"
             }, {
