@@ -556,11 +556,11 @@ const Index = () => {
           }}>
               <Button size="lg" className="text-xl px-10 py-8 font-bold bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-all shadow-2xl rounded-full group" onClick={() => window.location.href = 'mailto:hello@esventure.com'}>
                 Send email
-                <Mail className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                <span className="ml-2 text-2xl group-hover:translate-x-1 transition-transform inline-block">✉️</span>
               </Button>
               <Button size="lg" className="text-xl px-10 py-8 font-bold bg-transparent text-primary-foreground border-4 border-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all rounded-full shadow-2xl group" onClick={() => window.open('https://calendly.com/esventure', '_blank')}>
                 Book a call
-                <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                <span className="ml-2 text-2xl group-hover:translate-x-1 transition-transform inline-block">📅</span>
               </Button>
             </motion.div>
           </motion.div>
