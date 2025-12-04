@@ -517,48 +517,84 @@ const Index = () => {
       </section>
 
       {/* Final CTA */}
-      <section id="contact" className="relative py-24 overflow-hidden">
+      <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
         {/* Background Image */}
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-        backgroundImage: `url(${estherContactBg})`
-      }} />
-        {/* Purple Overlay */}
-        <div className="absolute inset-0 bg-secondary/80" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${estherContactBg})` }}
+        />
+        {/* Gradient Overlay - similar to hero */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60" />
+        
+        {/* Animated background elements like hero */}
+        <motion.div 
+          className="absolute -bottom-20 -right-20 w-64 h-64 bg-secondary rounded-full blur-3xl opacity-30"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute top-20 left-20 w-48 h-48 bg-secondary rounded-full blur-3xl opacity-20"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.2, 0.4, 0.2]
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
         
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div className="max-w-4xl mx-auto text-center space-y-10" initial={{
-          opacity: 0,
-          y: 30
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.8
-        }}>
-            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground font-poppins drop-shadow-lg" style={{
-            textShadow: '0 4px 12px rgba(0,0,0,0.3)'
-          }}>Ready to go on an <span className="whitespace-nowrap">Es Venture?</span></h2>
-            <motion.div className="flex flex-col sm:flex-row gap-6 justify-center items-center" initial={{
-            opacity: 0
-          }} whileInView={{
-            opacity: 1
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: 0.3
-          }}>
-              <Button size="lg" className="text-xl px-10 py-8 font-bold bg-gradient-to-r from-primary-foreground to-secondary text-primary hover:from-secondary hover:to-primary-foreground transition-all shadow-2xl rounded-full group" onClick={() => window.location.href = 'mailto:hello@esventure.com'}>
-                Send email
-                <span className="ml-2 text-2xl group-hover:translate-x-1 transition-transform inline-block">✉️</span>
-              </Button>
-              <Button size="lg" className="text-xl px-10 py-8 font-bold bg-gradient-to-r from-transparent to-primary/20 text-primary-foreground border-4 border-primary-foreground hover:from-primary-foreground hover:to-secondary hover:text-primary hover:border-transparent transition-all rounded-full shadow-2xl group" onClick={() => window.open('https://calendly.com/esventure', '_blank')}>
-                Book a call
-                <span className="ml-2 text-2xl group-hover:translate-x-1 transition-transform inline-block">📅</span>
-              </Button>
+          <div className="max-w-3xl">
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                Ready for an<br />
+                <span className="text-secondary">Es Venture?</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
+                Let's talk about your project and see how I can help.
+              </p>
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 pt-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <Button 
+                  size="lg" 
+                  className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full"
+                  onClick={() => window.location.href = 'mailto:hi@esventure.nl'}
+                >
+                  <Mail className="mr-2 h-5 w-5" />
+                  Send email
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full"
+                  onClick={() => window.open('https://calendly.com/esventure', '_blank')}
+                >
+                  Book a call
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
