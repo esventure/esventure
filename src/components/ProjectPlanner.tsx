@@ -91,7 +91,7 @@ const PlannerForm = ({
       <Textarea id="situation" placeholder="E.g. We're launching but nobody knows who's doing what…" value={formData.situation} onChange={e => setFormData({
         ...formData,
         situation: e.target.value
-      })} onBlur={handleSituationBlur} className="min-h-[80px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-8 md:ml-11 text-base" />
+      })} onBlur={handleSituationBlur} className="min-h-[80px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-9 md:ml-11 text-base" />
     </div>
 
     {/* 2. What do you need me to take off your plate? */}
@@ -107,7 +107,7 @@ const PlannerForm = ({
       <Textarea id="handoff" placeholder="E.g. Coordinate testing / Build a prototype…" value={formData.handoff} onChange={e => setFormData({
         ...formData,
         handoff: e.target.value
-      })} onBlur={handleHandoffBlur} className="min-h-[80px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-8 md:ml-11 text-base" />
+      })} onBlur={handleHandoffBlur} className="min-h-[80px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-9 md:ml-11 text-base" />
     </div>
 
     {/* 3. What type of help do you need? */}
@@ -120,7 +120,7 @@ const PlannerForm = ({
           What type of help?
         </Label>
       </div>
-      <div className="flex flex-wrap gap-2 ml-8 md:ml-11">
+      <div className="flex flex-wrap gap-2 ml-9 md:ml-11">
         {PROJECT_TYPES.map(type => <SelectButton key={type} selected={formData.type === type} onClick={() => handleTypeSelect(type)}>
             {type}
           </SelectButton>)}
@@ -137,7 +137,7 @@ const PlannerForm = ({
           How urgent?
         </Label>
       </div>
-      <div className="flex flex-wrap gap-2 ml-8 md:ml-11">
+      <div className="flex flex-wrap gap-2 ml-9 md:ml-11">
         {URGENCY_OPTIONS.map(urgency => <SelectButton key={urgency} selected={formData.urgency === urgency} onClick={() => handleUrgencySelect(urgency)}>
             {urgency}
           </SelectButton>)}
@@ -157,7 +157,7 @@ const PlannerForm = ({
       <Textarea id="context" placeholder="E.g. We use Notion / Launch in 6 weeks…" value={formData.context} onChange={e => setFormData({
         ...formData,
         context: e.target.value
-      })} className="min-h-[60px] md:min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-8 md:ml-11 text-base" />
+      })} className="min-h-[60px] md:min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-9 md:ml-11 text-base" />
     </div>
 
     {/* Submit button */}
@@ -183,7 +183,7 @@ const PlannerForm = ({
           Budget comfort zone <span className="font-normal">(optional)</span>
         </Label>
       </div>
-      <div className="flex flex-wrap gap-1.5 md:gap-2 ml-8 md:ml-11">
+      <div className="flex flex-wrap gap-1.5 md:gap-2 ml-9 md:ml-11">
         {BUDGET_OPTIONS.map(budget => <SelectButton key={budget} selected={formData.budget === budget} onClick={() => setFormData({
           ...formData,
           budget
@@ -592,11 +592,13 @@ const ProjectPlanner = () => {
                       Scope Snapshot
                     </SheetTitle>
                   </SheetHeader>
-                  <div className="flex-1 overflow-y-auto px-5 py-5">
-                    <PlannerForm formData={formData} setFormData={setFormData} onSubmit={handleSubmit} isLoading={isLoading} stepRefs={stepRefs} scrollToNextStep={scrollToNextStep} />
-                    {error && <p className="text-destructive text-sm mt-3">{error}</p>}
+                  <div className="flex-1 overflow-y-auto px-4 py-4">
+                    <div className="bg-gradient-to-br from-muted/60 to-muted/30 rounded-2xl p-5 border border-border/30">
+                      <PlannerForm formData={formData} setFormData={setFormData} onSubmit={handleSubmit} isLoading={isLoading} stepRefs={stepRefs} scrollToNextStep={scrollToNextStep} />
+                      {error && <p className="text-destructive text-sm mt-3">{error}</p>}
+                    </div>
                     {(result || isLoading) && (
-                      <div ref={resultPanelRef} className="mt-6 pt-4 border-t border-border/40">
+                      <div ref={resultPanelRef} className="mt-4">
                         <ResultPanel result={result} scrollToContact={scrollToContact} isLoading={isLoading} />
                       </div>
                     )}
