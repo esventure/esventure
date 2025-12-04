@@ -633,7 +633,7 @@ const Index = () => {
         <Button onClick={() => document.getElementById('project-planner')?.scrollIntoView({
         behavior: 'smooth'
       })} className={`rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 ${isPastHero ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30' : 'bg-primary text-secondary hover:bg-primary/90 shadow-primary/30'}`}>
-          Tell Me What's Up
+          Tell me what's up
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
       </motion.div>
