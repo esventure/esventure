@@ -27,6 +27,20 @@ const Index = () => {
   const [carouselApi, setCarouselApi] = React.useState<any>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
+  const [isPastHero, setIsPastHero] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      // Hero section is roughly the viewport height
+      const heroHeight = window.innerHeight * 0.8;
+      setIsPastHero(window.scrollY > heroHeight);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   React.useEffect(() => {
     if (!carouselApi) {
       return;
@@ -606,7 +620,11 @@ const Index = () => {
       >
         <Button
           onClick={() => document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth' })}
-          className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold py-6 px-6 text-base shadow-lg shadow-secondary/30 hover:scale-105 transition-transform"
+          className={`rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 ${
+            isPastHero 
+              ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30' 
+              : 'bg-primary text-secondary hover:bg-primary/90 shadow-primary/30'
+          }`}
         >
           Tell Me What's Up
           <ArrowRight className="ml-2 h-5 w-5" />
