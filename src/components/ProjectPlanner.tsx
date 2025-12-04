@@ -30,7 +30,7 @@ const SelectButton = ({
   selected: boolean;
   onClick: () => void;
   children: React.ReactNode;
-}) => <button type="button" onClick={onClick} className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border-2 ${selected ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20" : "bg-background text-foreground border-border hover:border-primary/40 hover:bg-muted/50"}`}>
+}) => <button type="button" onClick={onClick} className={`px-3 py-2 md:px-4 md:py-2.5 rounded-full text-sm font-medium transition-all duration-200 border-2 ${selected ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20" : "bg-background text-foreground border-border hover:border-primary/40 hover:bg-muted/50"}`}>
     {children}
   </button>;
 const StepNumber = ({
@@ -39,7 +39,7 @@ const StepNumber = ({
 }: {
   number: number;
   required?: boolean;
-}) => <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${required ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
+}) => <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center text-xs md:text-sm font-bold shrink-0 ${required ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
     {number}
   </div>;
 const PlannerForm = ({
@@ -77,50 +77,50 @@ const PlannerForm = ({
     });
     setTimeout(() => scrollToNextStep(4), 100);
   };
-  return <div className="space-y-8">
+  return <div className="space-y-6 md:space-y-8">
     {/* 1. What's going on? */}
-    <div className="space-y-4" ref={el => {
+    <div className="space-y-3 md:space-y-4" ref={el => {
       stepRefs.current[1] = el;
     }}>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 md:gap-3">
         <StepNumber number={1} />
-        <Label htmlFor="situation" className="text-lg font-bold block text-foreground font-poppins">
+        <Label htmlFor="situation" className="text-base md:text-lg font-bold block text-foreground font-poppins">
           What's going on?
         </Label>
       </div>
-      <Textarea id="situation" placeholder="E.g. We're launching a new product but nobody knows who's doing what… / Our onboarding flow is confusing and customers keep dropping off… / I have an idea but no clue where to start…" value={formData.situation} onChange={e => setFormData({
+      <Textarea id="situation" placeholder="E.g. We're launching a new product but nobody knows who's doing what…" value={formData.situation} onChange={e => setFormData({
         ...formData,
         situation: e.target.value
-      })} onBlur={handleSituationBlur} className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-11" />
+      })} onBlur={handleSituationBlur} className="min-h-[100px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-9 md:ml-11 text-base" />
     </div>
 
     {/* 2. What do you need me to take off your plate? */}
-    <div className="space-y-4" ref={el => {
+    <div className="space-y-3 md:space-y-4" ref={el => {
       stepRefs.current[2] = el;
     }}>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 md:gap-3">
         <StepNumber number={2} />
-        <Label htmlFor="handoff" className="text-lg font-bold block text-foreground font-poppins">
+        <Label htmlFor="handoff" className="text-base md:text-lg font-bold block text-foreground font-poppins">
           What do you need off your plate?
         </Label>
       </div>
-      <Textarea id="handoff" placeholder="E.g. Coordinate testing across teams / Build a clickable prototype / Set up a project management system / Map out our user journey / Just tell me what to prioritise…" value={formData.handoff} onChange={e => setFormData({
+      <Textarea id="handoff" placeholder="E.g. Coordinate testing / Build a clickable prototype / Set up project management…" value={formData.handoff} onChange={e => setFormData({
         ...formData,
         handoff: e.target.value
-      })} onBlur={handleHandoffBlur} className="min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-11" />
+      })} onBlur={handleHandoffBlur} className="min-h-[100px] md:min-h-[120px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-9 md:ml-11 text-base" />
     </div>
 
     {/* 3. What type of help do you need? */}
-    <div className="space-y-4" ref={el => {
+    <div className="space-y-3 md:space-y-4" ref={el => {
       stepRefs.current[3] = el;
     }}>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 md:gap-3">
         <StepNumber number={3} />
-        <Label className="text-lg font-bold block text-foreground font-poppins">
+        <Label className="text-base md:text-lg font-bold block text-foreground font-poppins">
           What type of help?
         </Label>
       </div>
-      <div className="flex flex-wrap gap-2 ml-11">
+      <div className="flex flex-wrap gap-2 ml-9 md:ml-11">
         {PROJECT_TYPES.map(type => <SelectButton key={type} selected={formData.type === type} onClick={() => handleTypeSelect(type)}>
             {type}
           </SelectButton>)}
@@ -128,16 +128,16 @@ const PlannerForm = ({
     </div>
 
     {/* 4. How urgent is this? */}
-    <div className="space-y-4" ref={el => {
+    <div className="space-y-3 md:space-y-4" ref={el => {
       stepRefs.current[4] = el;
     }}>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 md:gap-3">
         <StepNumber number={4} />
-        <Label className="text-lg font-bold block text-foreground font-poppins">
+        <Label className="text-base md:text-lg font-bold block text-foreground font-poppins">
           How urgent?
         </Label>
       </div>
-      <div className="flex flex-wrap gap-2 ml-11">
+      <div className="flex flex-wrap gap-2 ml-9 md:ml-11">
         {URGENCY_OPTIONS.map(urgency => <SelectButton key={urgency} selected={formData.urgency === urgency} onClick={() => handleUrgencySelect(urgency)}>
             {urgency}
           </SelectButton>)}
@@ -145,45 +145,45 @@ const PlannerForm = ({
     </div>
 
     {/* 5. Anything specific I should know? (optional) */}
-    <div className="space-y-4" ref={el => {
+    <div className="space-y-3 md:space-y-4" ref={el => {
       stepRefs.current[5] = el;
     }}>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 md:gap-3">
         <StepNumber number={5} required={false} />
-        <Label htmlFor="context" className="text-lg font-bold block text-foreground font-poppins">
-          Anything else? <span className="font-normal text-muted-foreground text-sm">(optional)</span>
+        <Label htmlFor="context" className="text-base md:text-lg font-bold block text-foreground font-poppins">
+          Anything else? <span className="font-normal text-muted-foreground text-xs md:text-sm">(optional)</span>
         </Label>
       </div>
-      <Textarea id="context" placeholder="E.g. We use Notion and Slack / Dev team is external / Launch is in 6 weeks / Three departments need to sign off…" value={formData.context} onChange={e => setFormData({
+      <Textarea id="context" placeholder="E.g. We use Notion and Slack / Launch is in 6 weeks…" value={formData.context} onChange={e => setFormData({
         ...formData,
         context: e.target.value
-      })} className="min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-11" />
+      })} className="min-h-[80px] md:min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors ml-9 md:ml-11 text-base" />
     </div>
 
     {/* Submit button */}
     <div className="pt-2">
-      <Button onClick={onSubmit} disabled={isLoading || !formData.situation || !formData.handoff} className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full py-7 text-xl font-bold shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/40 transition-all duration-300 disabled:shadow-none disabled:bg-muted disabled:text-muted-foreground group">
+      <Button onClick={onSubmit} disabled={isLoading || !formData.situation || !formData.handoff} className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full py-5 md:py-7 text-lg md:text-xl font-bold shadow-lg shadow-secondary/30 hover:shadow-xl hover:shadow-secondary/40 transition-all duration-300 disabled:shadow-none disabled:bg-muted disabled:text-muted-foreground group">
         {isLoading ? <>
-            <Loader2 className="mr-2 h-6 w-6 animate-spin" />
+            <Loader2 className="mr-2 h-5 w-5 md:h-6 md:w-6 animate-spin" />
             Thinking…
           </> : <>
-            <Sparkles className="mr-2 h-6 w-6" />
+            <Sparkles className="mr-2 h-5 w-5 md:h-6 md:w-6" />
             Generate my plan
-            <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 h-5 w-5 md:h-6 md:w-6 group-hover:translate-x-1 transition-transform" />
           </>}
       </Button>
       
     </div>
 
     {/* 6. Budget comfort zone (optional) - de-emphasized below button */}
-    <div className="pt-4 border-t border-border/50">
-      <div className="flex items-center gap-3 mb-3">
+    <div className="pt-3 md:pt-4 border-t border-border/50">
+      <div className="flex items-center gap-2 md:gap-3 mb-3">
         <StepNumber number={6} required={false} />
-        <Label className="text-base font-medium block text-muted-foreground">
+        <Label className="text-sm md:text-base font-medium block text-muted-foreground">
           Budget comfort zone <span className="font-normal">(optional)</span>
         </Label>
       </div>
-      <div className="flex flex-wrap gap-2 ml-11">
+      <div className="flex flex-wrap gap-2 ml-9 md:ml-11">
         {BUDGET_OPTIONS.map(budget => <SelectButton key={budget} selected={formData.budget === budget} onClick={() => setFormData({
           ...formData,
           budget
@@ -470,7 +470,7 @@ const ProjectPlanner = () => {
           duration: 0.6
         }} className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 bg-secondary/30 text-secondary-foreground rounded-full text-sm font-medium mb-4">
-              Project Planner
+              Scope Snapshot
             </span>
             <h2 className="text-4xl md:text-6xl font-black text-foreground mb-5 font-poppins">
               See how I'd tackle your project
@@ -558,28 +558,28 @@ const ProjectPlanner = () => {
             y: 0
           }} viewport={{
             once: true
-          }} className="bg-card border border-border/50 rounded-2xl p-8 text-center shadow-xl shadow-foreground/5">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
-                <Sparkles className="w-8 h-8 text-primary" />
+          }} className="bg-card border border-border/50 rounded-2xl p-6 text-center shadow-xl shadow-foreground/5">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <Sparkles className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="text-xl font-bold font-poppins mb-3">Get your project outline</h3>
-              <p className="text-foreground/60 mb-6 leading-relaxed">
-                Describe your challenge and get a personalized project outline in seconds.
+              <h3 className="text-lg font-bold font-poppins mb-2">Get your project outline</h3>
+              <p className="text-foreground/60 mb-5 leading-relaxed text-sm">
+                Describe your challenge and get a personalized outline in seconds.
               </p>
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-lg font-bold shadow-lg shadow-primary/25 group">
-                    Open mini-planner
+                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-5 text-base font-bold shadow-lg shadow-primary/25 group">
+                    Open Scope Snapshot
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="bottom" className="h-[95vh] overflow-y-auto">
-                  <SheetHeader className="mb-6">
-                    <SheetTitle className="text-xl font-bold font-poppins">
-                      See how I'd tackle your project
+                <SheetContent side="bottom" className="h-[92vh] overflow-y-auto px-4 pb-8">
+                  <SheetHeader className="mb-4 sticky top-0 bg-background pt-2 pb-3 -mx-4 px-4 border-b border-border/30">
+                    <SheetTitle className="text-lg font-bold font-poppins">
+                      Scope Snapshot
                     </SheetTitle>
                   </SheetHeader>
-                  <div className="space-y-6">
+                  <div className="space-y-5">
                     <PlannerForm formData={formData} setFormData={setFormData} onSubmit={handleSubmit} isLoading={isLoading} stepRefs={stepRefs} scrollToNextStep={scrollToNextStep} />
                     {error && <p className="text-destructive text-sm">{error}</p>}
                     {(result || isLoading) && <ResultPanel result={result} scrollToContact={scrollToContact} isLoading={isLoading} />}
