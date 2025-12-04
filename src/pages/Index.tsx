@@ -554,11 +554,13 @@ const Index = () => {
           }} transition={{
             delay: 0.3
           }}>
-              <Button size="lg" className="text-xl px-12 py-8 font-bold bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-all shadow-2xl rounded-none" onClick={() => window.location.href = 'mailto:hello@esventure.com'}>
+              <Button size="lg" className="text-xl px-10 py-8 font-bold bg-primary-foreground text-primary hover:bg-primary-foreground/90 transition-all shadow-2xl rounded-full group" onClick={() => window.location.href = 'mailto:hello@esventure.com'}>
                 Send email
+                <Mail className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" className="text-xl px-12 py-8 font-bold bg-primary text-primary-foreground border-4 border-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all rounded-none shadow-2xl" onClick={() => window.open('https://calendly.com/esventure', '_blank')}>
+              <Button size="lg" className="text-xl px-10 py-8 font-bold bg-transparent text-primary-foreground border-4 border-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all rounded-full shadow-2xl group" onClick={() => window.open('https://calendly.com/esventure', '_blank')}>
                 Book a call
+                <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
           </motion.div>
