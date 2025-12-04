@@ -319,7 +319,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
                     </ul>
                   </div>
 
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] flex flex-col justify-start">
+                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] justify-start flex flex-col">
                     <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
                     <p className="text-foreground text-sm font-medium leading-relaxed">A cleaner, smoother way of working / Processes that reduce friction, not add to it / Clear workflows that everyone understands
 
