@@ -477,10 +477,9 @@ const ProjectPlanner = () => {
             <h2 className="text-4xl md:text-6xl font-black text-foreground mb-5 font-poppins">
               See how I'd tackle your project
             </h2>
-            <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed mb-3">I like making things as clear as possible, so tell me where the pain is and I'll create a plan right away. </p>
-            <p className="text-base text-foreground/40 max-w-xl mx-auto">
-              Tell me what's stuck and I'll sketch out a rough approach, time & effort, next steps, and a ballpark budget.
-            </p>
+            <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed mb-3">Use this quick generator to get a feel for how I’d help: the way I’d approach it, what it would take, and what you can expect.
+ </p>
+            <p className="text-base text-foreground/40 max-w-xl mx-auto">Tell me what's stuck and I'll sketch out a rough approach, time & effort, next steps, and a ballpark budget.</p>
           </motion.div>
 
           {/* Desktop: inline form + modal button */}
