@@ -521,7 +521,7 @@ const Index = () => {
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-no-repeat"
-          style={{ backgroundImage: `url(${estherPhone})`, backgroundPosition: 'center bottom' }}
+          style={{ backgroundImage: `url(${estherPhone})`, backgroundPosition: '70% bottom' }}
         />
         {/* Gradient Overlay - fades from purple left to transparent right */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent" />
