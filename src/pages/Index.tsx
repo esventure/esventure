@@ -544,7 +544,7 @@ const Index = () => {
         }} transition={{
           duration: 0.8
         }}>
-            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground font-poppins">Ready to go on an Es Venture?</h2>
+            <h2 className="text-5xl md:text-7xl font-black text-primary-foreground font-poppins drop-shadow-lg" style={{ textShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>Ready to go on an Es Venture?</h2>
             <motion.div className="flex flex-col sm:flex-row gap-6 justify-center items-center" initial={{
             opacity: 0
           }} whileInView={{
