@@ -586,17 +586,17 @@ const ProjectPlanner = () => {
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="bottom" className="h-[85vh] flex flex-col px-0 pb-[env(safe-area-inset-bottom)]">
-                  <SheetHeader className="px-4 pt-2 pb-2 border-b border-border/30 flex-shrink-0">
+                <SheetContent side="bottom" className="h-[88vh] flex flex-col px-0 pb-[env(safe-area-inset-bottom)]">
+                  <SheetHeader className="px-5 pt-3 pb-3 border-b border-border/30 flex-shrink-0">
                     <SheetTitle className="text-base font-bold font-poppins">
                       Scope Snapshot
                     </SheetTitle>
                   </SheetHeader>
-                  <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+                  <div className="flex-1 overflow-y-auto px-5 py-5">
                     <PlannerForm formData={formData} setFormData={setFormData} onSubmit={handleSubmit} isLoading={isLoading} stepRefs={stepRefs} scrollToNextStep={scrollToNextStep} />
-                    {error && <p className="text-destructive text-sm">{error}</p>}
+                    {error && <p className="text-destructive text-sm mt-3">{error}</p>}
                     {(result || isLoading) && (
-                      <div ref={resultPanelRef}>
+                      <div ref={resultPanelRef} className="mt-6 pt-4 border-t border-border/40">
                         <ResultPanel result={result} scrollToContact={scrollToContact} isLoading={isLoading} />
                       </div>
                     )}
