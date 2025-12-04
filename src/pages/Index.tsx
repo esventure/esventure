@@ -591,7 +591,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground py-12 pb-24">
+      <footer className="bg-foreground py-12">
         <div className="container mx-auto px-4 text-center">
           <p className="text-background font-medium text-lg">© 2025 Es Venture. All rights reserved.</p>
         </div>
@@ -599,20 +599,18 @@ const Index = () => {
 
       {/* Fixed Bottom CTA */}
       <motion.div 
-        className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-gradient-to-t from-background via-background to-transparent pointer-events-none"
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
+        className="fixed bottom-6 right-6 z-40"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1, duration: 0.3, type: "spring" }}
       >
-        <div className="max-w-md mx-auto">
-          <Button
-            onClick={() => document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth' })}
-            className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold py-6 text-lg shadow-lg shadow-secondary/30 pointer-events-auto"
-          >
-            Tell Me What's Up
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
+        <Button
+          onClick={() => document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth' })}
+          className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold py-6 px-6 text-base shadow-lg shadow-secondary/30 hover:scale-105 transition-transform"
+        >
+          Tell Me What's Up
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
       </motion.div>
     </div>;
 };
