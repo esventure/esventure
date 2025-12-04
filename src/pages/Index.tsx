@@ -466,7 +466,7 @@ const Index = () => {
               }} transition={{
                 delay: 0.2
               }}>
-                  Hi, I'm Esther — product/implementation nerd, UX lover and structure enthusiast.
+                  Hi, I'm Esther — part product nerd, part UX thinker, full-time structure enthusiast, and a generalist pur sang.
                 </motion.p>
                 <motion.p initial={{
                 opacity: 0
@@ -477,7 +477,7 @@ const Index = () => {
               }} transition={{
                 delay: 0.3
               }}>
-                  I keep things simple. I move fast. And I make sure projects actually get finished.
+                  I'm the person you call when you need someone who can jump into any topic, learn it fast, and bring order where there isn't any.
                 </motion.p>
                 <motion.p initial={{
                 opacity: 0
@@ -488,7 +488,7 @@ const Index = () => {
               }} transition={{
                 delay: 0.4
               }}>
-                  Teams bring me in when they're stuck, overwhelmed or unsure where to start.
+                  I move quickly, keep things clear, and make sure projects actually land.
                 </motion.p>
                 <motion.p className="font-bold" initial={{
                 opacity: 0
@@ -499,7 +499,7 @@ const Index = () => {
               }} transition={{
                 delay: 0.5
               }}>
-                  I'm practical, direct and no-nonsense — no 70-page documents, just solutions that work.
+                  No fluff, no 70-page documents — just practical solutions that make life easier.
                 </motion.p>
               </div>
             </motion.div>
