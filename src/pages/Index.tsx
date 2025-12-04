@@ -56,8 +56,7 @@ const Index = () => {
             duration: 0.8,
             delay: 0.2
           }}>
-              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">I help teams move forward,
-let's go.<span className="text-secondary">together.</span>
+              <h1 className="text-6xl md:text-8xl font-black text-primary-foreground tracking-tight leading-[0.9] font-poppins">I help teams move forward, together.<span className="text-secondary">together.</span>
               </h1>
               <p className="text-2xl md:text-3xl font-medium text-primary-foreground/90">
                 
