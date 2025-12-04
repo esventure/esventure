@@ -196,7 +196,7 @@ const Index = () => {
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
                   <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let me fix it</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">When a project or deliverable gets stuck, I take it over and <strong className="text-foreground">finish it</strong>. Slipping deadlines, half-done deliverables, messy ownership — I bring <strong className="text-foreground">order</strong>, <strong className="text-foreground">clarity</strong>, and <strong className="text-foreground">results</strong>. No chaos, just progress.</p>
+                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">When a project or deliverable gets stuck, I take it over and finish it. Slipping deadlines, half-done deliverables, messy ownership, I bring order, clarity, and results. No chaos, just progress.<strong className="text-foreground">finish it</strong>. Slipping deadlines, half-done deliverables, messy ownership — I bring <strong className="text-foreground">order</strong>, <strong className="text-foreground">clarity</strong>, and <strong className="text-foreground">results</strong>. No chaos, just progress.</p>
                 
                 <div className="space-y-8 flex-1 flex flex-col">
                   <div className="min-h-[10rem]">
@@ -519,51 +519,44 @@ const Index = () => {
       {/* Final CTA */}
       <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-no-repeat"
-          style={{ 
-            backgroundImage: `url(${estherPhone})`,
-            backgroundPosition: 'right 15%'
-          }}
-        />
+        <div className="absolute inset-0 bg-cover bg-no-repeat" style={{
+        backgroundImage: `url(${estherPhone})`,
+        backgroundPosition: 'right 15%'
+      }} />
         {/* Gradient Overlay - fades from purple left to transparent right */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent" />
         
         {/* Animated background elements like hero */}
-        <motion.div 
-          className="absolute -bottom-20 -right-20 w-64 h-64 bg-secondary rounded-full blur-3xl opacity-30"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute top-20 left-20 w-48 h-48 bg-secondary rounded-full blur-3xl opacity-20"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <motion.div className="absolute -bottom-20 -right-20 w-64 h-64 bg-secondary rounded-full blur-3xl opacity-30" animate={{
+        scale: [1, 1.2, 1],
+        opacity: [0.3, 0.5, 0.3]
+      }} transition={{
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }} />
+        <motion.div className="absolute top-20 left-20 w-48 h-48 bg-secondary rounded-full blur-3xl opacity-20" animate={{
+        scale: [1.2, 1, 1.2],
+        opacity: [0.2, 0.4, 0.2]
+      }} transition={{
+        duration: 5,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }} />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <motion.div 
-              className="space-y-8"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <motion.div className="space-y-8" initial={{
+            opacity: 0,
+            x: -50
+          }} whileInView={{
+            opacity: 1,
+            x: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.8
+          }}>
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
                 Ready for an<br />
                 <span className="text-secondary">Es Venture?</span>
@@ -571,27 +564,23 @@ const Index = () => {
               <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
                 Let's talk about your project and see how I can help.
               </p>
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-4 pt-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <Button 
-                  size="lg" 
-                  className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full"
-                  onClick={() => window.location.href = 'mailto:hi@esventure.nl'}
-                >
+              <motion.div className="flex flex-col sm:flex-row gap-4 pt-4" initial={{
+              opacity: 0,
+              y: 20
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              duration: 0.6,
+              delay: 0.3
+            }}>
+                <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full" onClick={() => window.location.href = 'mailto:hi@esventure.nl'}>
                   <Mail className="mr-2 h-5 w-5" />
                   Send email
                 </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full"
-                  onClick={() => window.open('https://calendly.com/esventure', '_blank')}
-                >
+                <Button size="lg" variant="outline" className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full" onClick={() => window.open('https://calendly.com/esventure', '_blank')}>
                   Book a call
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
