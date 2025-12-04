@@ -379,7 +379,7 @@ Let's break through roadblocks, speed up projects, and work smarter.
                 subtitle: "Webshop launch",
                 description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
               }, {
-                title: "Internal teams",
+                title: "Customer Success Team",
                 subtitle: "Customer success agent",
                 description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
               }, {
