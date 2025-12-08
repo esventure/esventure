@@ -33,7 +33,15 @@ const MOMENTUM_KEYWORDS = [
   'never follow the plan', 'never follow the calendar',
   'planning but not doing', 'arguing about priorities',
   'meetings turn into debates', 'planning meetings turn into debates',
-  'planning meetings always turn into debates'
+  'planning meetings always turn into debates',
+  // Coordination / ownership / role clarity
+  'unclear roles', 'unclear responsibilities', 'roles unclear', 
+  'responsibilities unclear', 'role confusion', 'who does what',
+  'nobody knows who does what', 'ownership unclear', 'unclear ownership',
+  'duplicated work', 'doing things twice', 'things done twice',
+  'missed tasks', 'tasks slipping', 'tasks not getting done',
+  'lack of coordination', 'coordination all over the place',
+  'inconsistent interpretation', 'everyone interprets it differently'
 ];
 
 // MOMENTUM OVERRIDE KEYWORDS (critical - these override Structure classification)
@@ -97,6 +105,14 @@ const MOMENTUM_OVERRIDE_KEYWORDS = [
   'time-sensitive', 'time sensitive', 'tight timeline', 'tight deadline',
   'someone needs to coordinate', 'need coordination', 'needs coordination',
   'nobody is coordinating', 'no coordination', 'coordination missing',
+  
+  // Ownership / role clarity signals
+  'ownership unclear', 'unclear ownership', 'nobody owns it', 
+  'duplicated work', 'things get done twice', 'doing things twice',
+  'missed tasks', 'tasks not getting done',
+  'everyone interprets it differently', 'plan interpreted differently',
+  'coordination all over the place', 'lack of coordination',
+  'who does what is unclear', 'unclear roles', 'roles unclear',
   
   // Original signals
   'waiting on each other', 'people waiting', 'blocked by others',
@@ -179,6 +195,22 @@ function detectSupportType(text: string, urgency: string): 'structure' | 'moment
       console.log('Momentum override triggered - planning/calendar drift fallback');
       return 'momentum';
     }
+  }
+  
+  // Check 3.6: Coordination / Ownership Drift Bias
+  // If text mentions duplicated work, missed work, unclear ownership, unclear roles, or coordination breakdown → Momentum
+  const coordinationDriftSignals = [
+    'duplicated work', 'doing things twice', 'things done twice', 'things get done twice',
+    'missed tasks', 'tasks not getting done', 'tasks slipping',
+    'ownership unclear', 'unclear ownership', 'nobody owns it',
+    'unclear roles', 'roles unclear', 'who does what',
+    'coordination all over the place', 'lack of coordination',
+    'everyone interprets it differently', 'plan interpreted differently'
+  ];
+  const hasCoordinationDrift = coordinationDriftSignals.some(signal => lowerText.includes(signal));
+  if (hasCoordinationDrift) {
+    console.log('Momentum override triggered - coordination/ownership drift fallback');
+    return 'momentum';
   }
   
   // STRUCTURE has priority (if no momentum override)
