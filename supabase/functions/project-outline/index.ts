@@ -29,6 +29,23 @@ const MOMENTUM_KEYWORDS = [
   'coordination missing', 'chaotic', 'confusion'
 ];
 
+// MOMENTUM OVERRIDE KEYWORDS (critical - these override Structure classification)
+// If ANY of these appear, classify as Momentum even if structure keywords are present
+// Structure = how work flows. Momentum = why work stalls.
+const MOMENTUM_OVERRIDE_KEYWORDS = [
+  'calendar not being followed', 'not following calendar', 'ignore the calendar',
+  'priorities unclear', 'unclear priorities', 'priority unclear',
+  'planning not translating', 'plans not translating', 'plan not working',
+  'meetings unproductive', 'unproductive meetings', 'meetings going nowhere',
+  'team stuck in discussion', 'stuck in discussion', 'endless discussions',
+  'not moving forward', "we're not moving forward", 'no progress',
+  'never stick to the plan', "don't stick to the plan", 'abandon the plan',
+  'things keep slipping', 'keeps slipping', 'keep missing',
+  'waiting on each other', 'people waiting', 'blocked by others',
+  'lack of progress', 'no movement', 'nothing gets done',
+  'we talk but nothing happens', 'all talk no action'
+];
+
 // C. PROTOTYPE WORK
 const PROTOTYPE_KEYWORDS = [
   'idea', 'concept', 'prototype', 'ux', 'ui', 'user flow', 'screens',
@@ -42,7 +59,16 @@ const PROTOTYPE_KEYWORDS = [
 function detectSupportType(text: string): 'structure' | 'momentum' | 'prototype' {
   const lowerText = text.toLowerCase();
   
-  // STRUCTURE has highest priority
+  // CRITICAL: MOMENTUM OVERRIDE CHECK FIRST
+  // If user's pain is lack of progress, not lack of structure, choose Momentum
+  // Structure = how work flows. Momentum = why work stalls.
+  const hasMomentumOverride = MOMENTUM_OVERRIDE_KEYWORDS.some(kw => lowerText.includes(kw));
+  if (hasMomentumOverride) {
+    console.log('Momentum override triggered - pain is lack of progress');
+    return 'momentum';
+  }
+  
+  // STRUCTURE has priority (if no momentum override)
   const hasStructureKeyword = STRUCTURE_KEYWORDS.some(kw => lowerText.includes(kw));
   if (hasStructureKeyword) {
     return 'structure';
@@ -318,10 +344,10 @@ serve(async (req) => {
 3. If a lightweight tool helps (Notion, Airtable), I'll set it up in a way that removes noise instead of adding more.
 4. The goal is calm, clarity, and a structure your team can actually use day-to-day.`,
       
-      momentum: `1. I'll begin with a short diagnostic to see what's blocking progress and where things get stuck.
-2. Then I stabilise the scope, set the priorities, and take ownership of the next steps.
-3. Expect clear communication and visible progress each week, without adding unnecessary complexity.
-4. My goal is to bring momentum back quickly and make everything feel manageable again.`,
+      momentum: `1. I'll start with a diagnostic to understand what's blocking progress and why things keep stalling.
+2. Then I stabilise the scope and priorities so we all know what matters most right now.
+3. I take ownership of coordination and make sure decisions get made and followed through.
+4. Every week, you'll see visible progress and clear updates on what's moving.`,
       
       prototype: `1. We'll unpack the idea and define what you want it to achieve.
 2. Then I'll shape a simple user flow and build a clean clickable prototype.
@@ -384,7 +410,9 @@ VOICE & TONE:
 DETECTED SUPPORT TYPE: ${supportType}
 PROJECT SIZE: ${sizeConfig.size}
 
-OUTPUT STRUCTURE (use this EXACT order, do not reorder or omit sections):
+SECTION ORDER RULE (CRITICAL - prevents duplicate/nested headings):
+You MUST output sections in this EXACT order. "Short summary" is ALWAYS first. "Here's how I'd tackle this" is ALWAYS second.
+NEVER nest headings. NEVER output "Here's how I'd tackle this" before "Short summary".
 
 ## Short summary
 Write 2–3 warm sentences rephrasing their situation and what they need. Start naturally with "So..." or "Sounds like..." — show you actually got it.
@@ -409,9 +437,11 @@ Depends on alignment speed and complexity.
 Most projects like this typically land in this range depending on final scope.
 
 CRITICAL RULES:
+- "Short summary" MUST be the first visible section heading
+- "Here's how I'd tackle this" MUST be the second section heading
 - Output all 6 sections in this EXACT order
-- Never omit any section
-- Never place headings inside each other
+- NEVER omit any section
+- NEVER nest or repeat section headings
 - Keep numbered steps for UX clarity
 - Don't mention hourly rates
 - NEVER use double hyphens (--)`;
