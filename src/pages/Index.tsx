@@ -173,7 +173,11 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0 }}
+              animate={{ y: [0, -8, 0] }}
+              transition={{ 
+                y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                opacity: { duration: 0.5 }
+              }}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
               className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default"
             >
@@ -191,7 +195,11 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
+              animate={{ y: [0, -8, 0] }}
+              transition={{ 
+                y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
+                opacity: { duration: 0.5, delay: 0.15 }
+              }}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
               className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#FDF9E4] shadow-xl shadow-secondary/10 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default"
             >
@@ -209,7 +217,11 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              animate={{ y: [0, -8, 0] }}
+              transition={{ 
+                y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 },
+                opacity: { duration: 0.5, delay: 0.3 }
+              }}
               whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
               className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default"
             >
