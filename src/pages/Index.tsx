@@ -159,7 +159,7 @@ const Index = () => {
         }} transition={{
           duration: 0.6
         }} className="text-center mb-16">
-            <h2 className="text-5xl md:text-7xl font-black mb-6 text-foreground font-poppins">
+            <h2 className="text-4xl md:text-7xl font-black mb-6 text-foreground font-poppins whitespace-nowrap">
               The Es Venture Effect
             </h2>
             <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto">I’m your project’s personal caffeine shot.</p>
