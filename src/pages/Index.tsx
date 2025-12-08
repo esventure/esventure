@@ -143,179 +143,100 @@ const Index = () => {
 
 
       {/* Services */}
-      <section id="services" className="container mx-auto px-4 pb-24">
+      <section id="services" className="container mx-auto px-4 py-24">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }}>
-            <h2 className="text-5xl md:text-7xl font-black text-center mb-8 text-foreground font-poppins">What I do</h2>
-            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-20 max-w-3xl mx-auto"><span className="text-primary font-bold">Practical</span>, <span className="text-primary font-bold">clear</span> and <span className="text-primary font-bold">fast</span>. Always with a tangible result, dedicated energy and of course a bit of fun.</p>
+            opacity: 0,
+            y: 20
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.6
+          }}>
+            <h2 className="text-5xl md:text-7xl font-black text-center mb-6 text-foreground font-poppins">What I do</h2>
+            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-16 max-w-3xl mx-auto">
+              Practical, clear and fast — with tangible results, dedicated energy and a bit of fun.
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Service 1: Fix It */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: 0
-          }} whileHover={{
-            y: -8,
-            transition: {
-              duration: 0.2
-            }
-          }}>
-              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.5, delay: 0 }} 
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            >
+              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md transition-all flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <motion.div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4" whileHover={{
-                  rotate: 360,
-                  scale: 1.1
-                }} transition={{
-                  duration: 0.5
-                }}>
-                    <FixItIcon size={32} className="text-primary-foreground" />
-                  </motion.div>
-                  <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">Project management</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's fix it</h3>
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <FixItIcon size={24} className="text-primary" />
+                  </div>
+                  <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Project management</Badge>
+                  <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's fix it</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">When a project or deliverable gets stuck, I <strong className="text-foreground">take it over</strong> and <strong className="text-foreground">finish it</strong>. Slipping deadlines, half-done deliverables, messy ownership. I bring <strong className="text-foreground">order</strong>, <strong className="text-foreground">clarity</strong>, and <strong className="text-foreground">results</strong>. No chaos, just <strong className="text-foreground">progress</strong>.</p>
-                
-                <div className="space-y-8 flex-1 flex flex-col">
-                  <div className="min-h-[10rem]">
-                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
-                    <ul className="space-y-2 text-foreground/70 text-sm">
-                      <li>• A deadline is approaching and nothing is moving</li>
-                      <li>• A project has been “almost done” for weeks</li>
-                      <li>• Tasks keep bouncing around with no progress</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] justify-start flex flex-col">
-                    <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">Someone finally takes ownership and gets the thing delivered so you can move on.                          
-
-                  </p>
-                  </div>
+                <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
+                  When things stall or deadlines slip, I step in and get your project moving again — fast, focused and clean.
+                </p>
+                <div className="bg-[#F6F3C2] p-4 rounded-xl">
+                  <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
+                  <p className="text-sm text-foreground/70">Ownership, momentum and deliverables that actually get done.</p>
                 </div>
               </Card>
             </motion.div>
 
-            {/* Service 2: From Idea to Prototype */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: 0.15
-          }} whileHover={{
-            y: -8,
-            transition: {
-              duration: 0.2
-            }
-          }}>
-              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
+            {/* Service 2: Prototype */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.5, delay: 0.15 }} 
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            >
+              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md transition-all flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <motion.div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4" whileHover={{
-                  rotate: 360,
-                  scale: 1.1
-                }} transition={{
-                  duration: 0.5
-                }}>
-                    <PrototypeIcon size={32} className="text-primary-foreground" />
-                  </motion.div>
-                  <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">UX/UI Design</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's prototype</h3>
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <PrototypeIcon size={24} className="text-primary" />
+                  </div>
+                  <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">UX/UI Design</Badge>
+                  <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's prototype</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">Got an idea but no shape yet? I help you with <strong className="text-foreground">research</strong> and turn rough thoughts into <strong className="text-foreground">clean, clickable UI prototypes</strong> you can test, validate, or pitch. <em>Fast, simple, and user-focused.</em></p>
-                
-                <div className="space-y-8 flex-1 flex flex-col">
-                  <div className="min-h-[10rem]">
-                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
-                    <ul className="space-y-2 text-foreground/70 text-sm">
-                      <li>• Your idea only exists in your head</li>
-                      <li>• You want to validate your prototype</li>
-                      <li>• You’re pitching but you have nothing to show</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] justify-start flex flex-col">
-                    <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">A simple, clean prototype that shows your idea without confusion, so you can test it, pitch it, or decide what’s next.         
-
-                  </p>
-                  </div>
+                <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
+                  Got an idea but no shape yet? I turn rough thoughts into clear, clickable UI prototypes you can test, validate or pitch.
+                </p>
+                <div className="bg-[#F6F3C2] p-4 rounded-xl">
+                  <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
+                  <p className="text-sm text-foreground/70">A simple prototype everyone understands.</p>
                 </div>
               </Card>
             </motion.div>
 
-            {/* Service 3: Process, Structure, Overview */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: 0.3
-          }} whileHover={{
-            y: -8,
-            transition: {
-              duration: 0.2
-            }
-          }}>
-              <Card className="h-full p-8 border-4 border-primary bg-card shadow-xl hover:shadow-2xl transition-all hover:border-secondary group flex flex-col">
+            {/* Service 3: Streamline */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }} 
+              transition={{ duration: 0.5, delay: 0.3 }} 
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            >
+              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md transition-all flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <motion.div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 mb-4" whileHover={{
-                  rotate: 360,
-                  scale: 1.1
-                }} transition={{
-                  duration: 0.5
-                }}>
-                    <ImproveIcon size={32} className="text-primary-foreground" />
-                  </motion.div>
-                  <Badge className="mb-4 bg-primary/10 text-primary border-primary hover:bg-primary/20">Process</Badge>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground group-hover:text-primary transition-colors font-poppins min-h-[5rem] flex items-end justify-center">Let's process</h3>
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <ImproveIcon size={24} className="text-primary" />
+                  </div>
+                  <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Process design</Badge>
+                  <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's streamline</h3>
                 </div>
-                <p className="text-lg text-foreground/70 mb-8 font-medium text-justify min-h-[8rem]">I dive into your <strong className="text-foreground">day-to-day operations</strong>, spot what's slowing you down, and <strong className="text-foreground">redesign your workflows</strong> so things run smoothly again. So you can focus on what you do best: <em>running your company</em>.</p>
-                
-                <div className="space-y-8 flex-1 flex flex-col">
-                  <div className="min-h-[10rem]">
-                    <h4 className="font-bold text-lg mb-4 text-foreground font-poppins">When you need this:</h4>
-                    <ul className="space-y-2 text-foreground/70 text-sm">
-                      <li>• Things run… but not smoothly</li>
-                      <li>• Your team keeps asking the same questions</li>
-                      <li>• Processes live “in someone’s head” instead of a system</li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-secondary/20 p-6 rounded-2xl border-2 border-secondary mt-auto min-h-[8rem] justify-start flex flex-col">
-                    <h4 className="font-bold text-lg mb-3 text-foreground font-poppins">What you get:</h4>
-                    <p className="text-foreground text-sm font-medium leading-relaxed">Clear workflows that everyone actually follows, less back-and-forth, and a way of working that just… works.
-
-                  </p>
-                  </div>
+                <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
+                  I clean up messy workflows, clarify who does what, and make your operations work smoothly again.
+                </p>
+                <div className="bg-[#F6F3C2] p-4 rounded-xl">
+                  <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
+                  <p className="text-sm text-foreground/70">Clear processes, less back-and-forth, and a way of working that just… works.</p>
                 </div>
               </Card>
             </motion.div>
