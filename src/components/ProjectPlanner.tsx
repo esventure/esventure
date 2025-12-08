@@ -82,7 +82,13 @@ const PlannerForm = ({
               <button
                 key={urgency}
                 type="button"
-                onClick={() => setFormData({ ...formData, urgency })}
+                onClick={() => {
+                  // Haptic feedback on mobile
+                  if ('vibrate' in navigator) {
+                    navigator.vibrate(10);
+                  }
+                  setFormData({ ...formData, urgency });
+                }}
                 className={`min-h-[44px] px-4 py-2.5 rounded-full text-sm font-medium transition-all hover:scale-105 ${
                   isSelected
                     ? isUrgent
