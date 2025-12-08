@@ -152,48 +152,70 @@ const Index = () => {
       {/* The Es Venture Effect */}
       <section className="container mx-auto px-4 py-24">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.6
+        }} className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-black mb-6 text-foreground font-poppins">
               The Es Venture Effect
             </h2>
-            <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto">
-              The impact of working together — clarity, flow and movement.
-            </p>
+            <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto">I’m your project’s personal caffeine shot.</p>
           </motion.div>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
             {/* Bubble 1: Faster clarity */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              animate={{ y: [0, -8, 0], rotate: [0, 2, 0, -2, 0], scale: [1, 1.02, 1] }}
-              transition={{ 
-                y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-                rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-                scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                opacity: { duration: 0.5 }
-              }}
-              whileHover={{ 
-                scale: 1.03, 
-                boxShadow: [
-                  "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)",
-                  "0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 0 35px rgba(139, 92, 246, 0.25)",
-                  "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)"
-                ],
-                transition: { 
-                  scale: { duration: 0.2 },
-                  boxShadow: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
-                }
-              }}
-              className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} animate={{
+            y: [0, -8, 0],
+            rotate: [0, 2, 0, -2, 0],
+            scale: [1, 1.02, 1]
+          }} transition={{
+            y: {
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            rotate: {
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            scale: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            opacity: {
+              duration: 0.5
+            }
+          }} whileHover={{
+            scale: 1.03,
+            boxShadow: ["0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)", "0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 0 35px rgba(139, 92, 246, 0.25)", "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)"],
+            transition: {
+              scale: {
+                duration: 0.2
+              },
+              boxShadow: {
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
+            }
+          }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
               <span className="text-3xl mb-3">✨</span>
               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
                 Faster clarity
@@ -204,31 +226,55 @@ const Index = () => {
             </motion.div>
 
             {/* Bubble 2: Cleaner workflows */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              animate={{ y: [0, -8, 0], rotate: [0, -2, 0, 2, 0], scale: [1, 1.02, 1] }}
-              transition={{ 
-                y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
-                rotate: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.3 },
-                scale: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 },
-                opacity: { duration: 0.5, delay: 0.15 }
-              }}
-              whileHover={{ 
-                scale: 1.03, 
-                boxShadow: [
-                  "0 20px 25px -5px rgba(250, 204, 21, 0.1), 0 0 20px rgba(250, 204, 21, 0.15)",
-                  "0 20px 25px -5px rgba(250, 204, 21, 0.25), 0 0 35px rgba(250, 204, 21, 0.3)",
-                  "0 20px 25px -5px rgba(250, 204, 21, 0.1), 0 0 20px rgba(250, 204, 21, 0.15)"
-                ],
-                transition: { 
-                  scale: { duration: 0.2 },
-                  boxShadow: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
-                }
-              }}
-              className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#FDF9E4] shadow-xl shadow-secondary/10 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} animate={{
+            y: [0, -8, 0],
+            rotate: [0, -2, 0, 2, 0],
+            scale: [1, 1.02, 1]
+          }} transition={{
+            y: {
+              duration: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5
+            },
+            rotate: {
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.3
+            },
+            scale: {
+              duration: 4.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.4
+            },
+            opacity: {
+              duration: 0.5,
+              delay: 0.15
+            }
+          }} whileHover={{
+            scale: 1.03,
+            boxShadow: ["0 20px 25px -5px rgba(250, 204, 21, 0.1), 0 0 20px rgba(250, 204, 21, 0.15)", "0 20px 25px -5px rgba(250, 204, 21, 0.25), 0 0 35px rgba(250, 204, 21, 0.3)", "0 20px 25px -5px rgba(250, 204, 21, 0.1), 0 0 20px rgba(250, 204, 21, 0.15)"],
+            transition: {
+              scale: {
+                duration: 0.2
+              },
+              boxShadow: {
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
+            }
+          }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#FDF9E4] shadow-xl shadow-secondary/10 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
               <span className="text-3xl mb-3">🧩</span>
               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
                 Cleaner workflows
@@ -239,31 +285,55 @@ const Index = () => {
             </motion.div>
 
             {/* Bubble 3: Projects that finally move */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              animate={{ y: [0, -8, 0], rotate: [0, 1.5, 0, -1.5, 0], scale: [1, 1.02, 1] }}
-              transition={{ 
-                y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 },
-                rotate: { duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.7 },
-                scale: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 },
-                opacity: { duration: 0.5, delay: 0.3 }
-              }}
-              whileHover={{ 
-                scale: 1.03, 
-                boxShadow: [
-                  "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)",
-                  "0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 0 35px rgba(139, 92, 246, 0.25)",
-                  "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)"
-                ],
-                transition: { 
-                  scale: { duration: 0.2 },
-                  boxShadow: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
-                }
-              }}
-              className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} animate={{
+            y: [0, -8, 0],
+            rotate: [0, 1.5, 0, -1.5, 0],
+            scale: [1, 1.02, 1]
+          }} transition={{
+            y: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            },
+            rotate: {
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.7
+            },
+            scale: {
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.8
+            },
+            opacity: {
+              duration: 0.5,
+              delay: 0.3
+            }
+          }} whileHover={{
+            scale: 1.03,
+            boxShadow: ["0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)", "0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 0 35px rgba(139, 92, 246, 0.25)", "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)"],
+            transition: {
+              scale: {
+                duration: 0.2
+              },
+              boxShadow: {
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
+            }
+          }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
               <span className="text-3xl mb-3">⚡</span>
               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
                 Projects that finally move
