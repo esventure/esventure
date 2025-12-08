@@ -746,11 +746,22 @@ OUTPUT FORMAT (strict order, no nesting):
 1-2 sentences max. Show you get it. Start with "So..." or "Sounds like..." and reference their specific situation. No fluff.
 
 ## Here's how I'd tackle this
+IMPORTANT: Use markdown numbered list syntax (1. 2. 3. 4.) - NOT plain text!
 4 numbered steps. Each step: ONE short sentence (max 12 words). Action-focused.
+Format EXACTLY like this:
+1. First step here
+2. Second step here
+3. Third step here
+4. Fourth step here
 ${approachGuidance}
 
 ## What you'd walk away with
+IMPORTANT: Use markdown bullet syntax (- item) - NOT plain text!
 3-4 bullet points. Each bullet: 4-8 words max. Concrete outcomes only.
+Format EXACTLY like this:
+- First outcome
+- Second outcome
+- Third outcome
 ${walkAwayGuidance}
 
 ## Timeline
