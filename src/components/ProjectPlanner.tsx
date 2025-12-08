@@ -42,7 +42,7 @@ const PlannerForm = ({
     <div className="space-y-8">
       {/* What's going on? */}
       <div className="space-y-2">
-        <label htmlFor="situation" className="text-sm font-medium text-muted-foreground">
+        <label htmlFor="situation" className="text-base font-medium text-foreground/80">
           What's going on?
         </label>
         <textarea
@@ -50,13 +50,13 @@ const PlannerForm = ({
           placeholder="What's messy or blocking progress?"
           value={formData.situation}
           onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
-          className="w-full min-h-[100px] px-0 py-3 bg-transparent border-0 border-b border-border/60 focus:border-primary focus:outline-none resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-colors"
+          className="w-full min-h-[100px] px-0 py-3 bg-transparent border-0 border-b-2 border-primary/30 focus:border-primary focus:outline-none resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-colors"
         />
       </div>
 
       {/* What should I take off your plate? */}
       <div className="space-y-2">
-        <label htmlFor="handoff" className="text-sm font-medium text-muted-foreground">
+        <label htmlFor="handoff" className="text-base font-medium text-foreground/80">
           What should I take off your plate?
         </label>
         <textarea
@@ -64,43 +64,50 @@ const PlannerForm = ({
           placeholder="Prototype, workflow cleanup, project coordination…"
           value={formData.handoff}
           onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
-          className="w-full min-h-[100px] px-0 py-3 bg-transparent border-0 border-b border-border/60 focus:border-primary focus:outline-none resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-colors"
+          className="w-full min-h-[100px] px-0 py-3 bg-transparent border-0 border-b-2 border-primary/30 focus:border-primary focus:outline-none resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-colors"
         />
       </div>
 
       {/* Urgency */}
       <div className="space-y-3">
-        <label className="text-sm font-medium text-muted-foreground">
+        <label className="text-base font-medium text-foreground/80">
           How urgent?
         </label>
         <div className="flex flex-wrap gap-2">
-          {URGENCY_OPTIONS.map((urgency) => (
-            <button
-              key={urgency}
-              type="button"
-              onClick={() => setFormData({ ...formData, urgency })}
-              className={`px-3 py-1.5 rounded-full text-sm transition-all ${
-                formData.urgency === urgency
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-transparent text-muted-foreground border border-border/60 hover:border-primary/50 hover:text-foreground"
-              }`}
-            >
-              {urgency}
-            </button>
-          ))}
+          {URGENCY_OPTIONS.map((urgency) => {
+            const isUrgent = urgency === "It's urgent 🔥";
+            const isSelected = formData.urgency === urgency;
+            
+            return (
+              <button
+                key={urgency}
+                type="button"
+                onClick={() => setFormData({ ...formData, urgency })}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105 ${
+                  isSelected
+                    ? isUrgent
+                      ? "bg-secondary text-secondary-foreground"
+                      : "bg-primary text-primary-foreground"
+                    : "bg-transparent text-muted-foreground border border-primary/30 hover:border-primary hover:text-foreground"
+                }`}
+              >
+                {urgency}
+              </button>
+            );
+          })}
         </div>
       </div>
 
       {/* Budget */}
       <div className="space-y-2">
-        <label htmlFor="budget" className="text-sm font-medium text-muted-foreground">
+        <label htmlFor="budget" className="text-base font-medium text-foreground/80">
           Budget range <span className="text-muted-foreground/60">(optional)</span>
         </label>
         <select
           id="budget"
           value={formData.budget}
           onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-          className="w-full px-0 py-3 bg-transparent border-0 border-b border-border/60 focus:border-primary focus:outline-none text-foreground text-base appearance-none cursor-pointer transition-colors"
+          className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-primary/30 focus:border-primary focus:outline-none text-foreground text-base appearance-none cursor-pointer transition-colors"
         >
           {BUDGET_OPTIONS.map((option) => (
             <option key={option.value} value={option.value} className="bg-background text-foreground">
@@ -111,11 +118,11 @@ const PlannerForm = ({
       </div>
 
       {/* Submit */}
-      <div className="pt-4">
+      <div className="pt-6">
         <Button
           onClick={onSubmit}
           disabled={isLoading || !formData.situation || !formData.handoff}
-          className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full py-5 text-base font-semibold transition-all disabled:opacity-40"
+          className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full py-6 text-base font-semibold transition-all disabled:opacity-40 group"
         >
           {isLoading ? (
             <>
@@ -123,7 +130,10 @@ const PlannerForm = ({
               Working on it…
             </>
           ) : (
-            "Show me the plan"
+            <>
+              Show me the plan
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+            </>
           )}
         </Button>
       </div>
@@ -178,16 +188,19 @@ const ResultPanel = ({
       <motion.div 
         initial={{ opacity: 0 }} 
         animate={{ opacity: 1 }}
-        className="py-12 text-center"
+        className="rounded-2xl bg-primary/5 border-l-4 border-primary p-8 min-h-[200px] flex items-center justify-center"
       >
-        <p className="text-muted-foreground">Working on it…</p>
+        <div className="flex items-center gap-3 text-muted-foreground">
+          <Loader2 className="h-5 w-5 animate-spin text-primary" />
+          <span>Working on it…</span>
+        </div>
       </motion.div>
     );
   }
 
   if (!result) {
     return (
-      <div className="py-12 text-center">
+      <div className="rounded-2xl bg-primary/5 border-l-4 border-primary/30 p-8 min-h-[200px] flex items-center justify-center">
         <p className="text-muted-foreground/60 text-sm">
           Your plan will appear here.
         </p>
@@ -200,14 +213,14 @@ const ResultPanel = ({
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
+      className="rounded-2xl bg-secondary/10 border-l-4 border-secondary p-6 md:p-8"
     >
       <ReactMarkdown components={markdownComponents}>{result}</ReactMarkdown>
 
-      <div className="mt-8 pt-6 border-t border-border/30">
+      <div className="mt-8 pt-6">
         <Button
           onClick={() => window.open("https://calendly.com/esventure", "_blank")}
-          variant="outline"
-          className="rounded-full font-medium group"
+          className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full font-semibold group px-6"
         >
           Book a quick call
           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
@@ -277,21 +290,21 @@ const ProjectPlanner = () => {
   return (
     <section id="tell-me" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-2 font-poppins">
+        <div className="max-w-5xl mx-auto">
+          {/* Header - matching page style */}
+          <div className="mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-3 font-poppins">
               Tell me what's up
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-lg text-muted-foreground">
               I'll show you how I'd approach it.
             </p>
           </div>
 
           {/* Two-column layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left: Form */}
-            <div>
+            {/* Left: Form with subtle background */}
+            <div className="rounded-2xl bg-primary/5 p-6 md:p-8">
               <PlannerForm
                 formData={formData}
                 setFormData={setFormData}
