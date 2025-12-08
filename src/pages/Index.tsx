@@ -82,8 +82,7 @@ const Index = () => {
                 I help teams move forward,<br />
                 <span className="text-secondary">let's go.</span>
               </h1>
-              <div className="space-y-4 mt-2">
-                <motion.p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-[1.7] font-medium tracking-wide" initial={{
+              <motion.div className="space-y-3 mt-2" initial={{
                 opacity: 0,
                 y: 15
               }} animate={{
@@ -93,21 +92,18 @@ const Index = () => {
                 duration: 0.6,
                 delay: 0.4
               }}>
-                  With a fast deep dive and clear visualisation, I turn complex projects into simple, actionable steps. Processes get optimised, teams regain focus, and progress becomes the default instead of the exception.
-                </motion.p>
-                <motion.p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-[1.7] font-medium tracking-wide" initial={{
-                opacity: 0,
-                y: 15
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.6,
-                delay: 0.55
-              }}>
-                  And when an idea needs form, I visualise this for you in the form of a real prototype: clear, clickable and ready to test. Ready to get things done?
-                </motion.p>
-              </div>
+                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
+                  I dive in fast, bring clarity, and turn chaos into action.
+                </p>
+                <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
+                  Complex projects → simple steps.<br />
+                  Messy processes → smooth workflows.<br />
+                  Ideas → clickable prototypes.
+                </p>
+                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium pt-2">
+                  Ready to get things done?
+                </p>
+              </motion.div>
               <motion.div className="pt-4" initial={{
               opacity: 0,
               y: 20
