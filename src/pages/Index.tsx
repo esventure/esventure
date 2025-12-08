@@ -163,81 +163,63 @@ const Index = () => {
               The Es Venture Effect
             </h2>
             <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto">
-              The impact of working together — clear, fast, and forward.
+              The impact of working together — clarity, flow and movement.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Effect 1: Faster clarity */}
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
+            {/* Bubble 1: Faster clarity */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              className="w-[220px] h-[220px] md:w-[250px] md:h-[250px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 cursor-default"
             >
-              <div className="relative h-full p-8 rounded-3xl bg-primary/5 border border-primary/20 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all text-center group">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-primary/10 flex items-center justify-center text-3xl">
-                    ✨
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground font-poppins mb-3">
-                    Faster clarity
-                  </h3>
-                  <p className="text-foreground/70 leading-relaxed">
-                    Ideas and projects become clear, focused and easy to act on.
-                  </p>
-                </div>
-              </div>
+              <span className="text-3xl mb-3">✨</span>
+              <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
+                Faster clarity
+              </h3>
+              <p className="text-sm text-foreground/70 leading-tight">
+                Ideas click faster and everyone finally understands the same thing.
+              </p>
             </motion.div>
 
-            {/* Effect 2: Cleaner workflows */}
+            {/* Bubble 2: Cleaner workflows */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              className="w-[220px] h-[220px] md:w-[250px] md:h-[250px] rounded-full bg-[#FDF9E4] shadow-xl shadow-secondary/10 flex flex-col items-center justify-center text-center p-6 cursor-default"
             >
-              <div className="relative h-full p-8 rounded-3xl bg-secondary/20 border border-secondary/30 shadow-sm hover:shadow-lg hover:shadow-secondary/20 transition-all text-center group">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-secondary/30 flex items-center justify-center text-3xl">
-                    🧩
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground font-poppins mb-3">
-                    Cleaner workflows
-                  </h3>
-                  <p className="text-foreground/70 leading-relaxed">
-                    Processes get untangled, organised and easier to follow.
-                  </p>
-                </div>
-              </div>
+              <span className="text-3xl mb-3">🧩</span>
+              <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
+                Cleaner workflows
+              </h3>
+              <p className="text-sm text-foreground/70 leading-tight">
+                Processes get untangled, organised and easier to run.
+              </p>
             </motion.div>
 
-            {/* Effect 3: Projects that finally move */}
+            {/* Bubble 3: Projects that finally move */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              className="w-[220px] h-[220px] md:w-[250px] md:h-[250px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 cursor-default"
             >
-              <div className="relative h-full p-8 rounded-3xl bg-primary/5 border border-primary/20 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all text-center group">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-primary/10 flex items-center justify-center text-3xl">
-                    ⚡
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-foreground font-poppins mb-3">
-                    Projects that finally move
-                  </h3>
-                  <p className="text-foreground/70 leading-relaxed">
-                    Movement, ownership and progress you can actually feel.
-                  </p>
-                </div>
-              </div>
+              <span className="text-3xl mb-3">⚡</span>
+              <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
+                Projects that finally move
+              </h3>
+              <p className="text-sm text-foreground/70 leading-tight">
+                Ownership, movement and visible progress.
+              </p>
             </motion.div>
           </div>
         </div>
