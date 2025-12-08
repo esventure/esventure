@@ -55,6 +55,7 @@ function determineProjectSize(inputs: {
   handoff: string;
   urgency: string;
   budget: string;
+  supportType: 'structure' | 'momentum' | 'prototype';
 }): { size: 'small' | 'medium' | 'large'; baseHoursMin: number; baseHoursMax: number; weeks: string } {
   const fullText = `${inputs.situation} ${inputs.handoff}`.toLowerCase();
   
@@ -83,7 +84,7 @@ function determineProjectSize(inputs: {
     if (fullText.includes(indicator)) complexityScore += 1;
   });
   
-  // Simple indicators (reduce complexity)
+  // Simple indicators (reduce complexity) - only for non-structure work
   const simpleIndicators = ['simple', 'quick', 'small', 'single', 'just one', 'founder', 'solo', 'one deliverable'];
   simpleIndicators.forEach(indicator => {
     if (fullText.includes(indicator)) complexityScore -= 1;
@@ -94,6 +95,25 @@ function determineProjectSize(inputs: {
     complexityScore -= 1;
   }
   
+  // STRUCTURE WORK: Default to Medium unless explicitly tiny
+  // Structure work should rarely be Small - workflows, processes, templates inherently need time
+  if (inputs.supportType === 'structure') {
+    // Only allow Small for structure if VERY explicit tiny indicators
+    const tinyIndicators = ['just one template', 'single template', 'one simple', 'very quick', 'tiny'];
+    const isTiny = tinyIndicators.some(indicator => fullText.includes(indicator));
+    
+    if (complexityScore >= 4) {
+      return { size: 'large', baseHoursMin: 20, baseHoursMax: 35, weeks: '3–6 weeks' };
+    } else if (isTiny && complexityScore <= -2) {
+      // Only Small if explicitly tiny AND low complexity
+      return { size: 'small', baseHoursMin: 8, baseHoursMax: 12, weeks: '1–2 weeks' };
+    } else {
+      // Default Structure to Medium (2–3 weeks timeline)
+      return { size: 'medium', baseHoursMin: 12, baseHoursMax: 20, weeks: '2–3 weeks' };
+    }
+  }
+  
+  // MOMENTUM & PROTOTYPE: Can be Small or Medium based on complexity
   if (complexityScore <= 0) {
     return { size: 'small', baseHoursMin: 8, baseHoursMax: 12, weeks: '1–2 weeks' };
   } else if (complexityScore <= 3) {
@@ -183,7 +203,7 @@ serve(async (req) => {
 
     const fullText = `${situation} ${handoff}`;
     const supportType = detectSupportType(fullText);
-    const projectSize = determineProjectSize({ situation, handoff, urgency, budget });
+    const projectSize = determineProjectSize({ situation, handoff, urgency, budget, supportType });
     const modifier = calculateModifiers({ urgency, situation, handoff });
     const costRange = calculateCostRange(projectSize.size, modifier);
     
