@@ -189,28 +189,35 @@ const ResultPanel = ({
   );
 
   const markdownComponents = {
-    h2: ({ children }: { children?: React.ReactNode }) => (
-      <div className="flex items-center gap-2 mb-3 mt-6 first:mt-0">
-        <h4 className="text-lg font-bold text-foreground font-poppins">{children}</h4>
-      </div>
-    ),
+    h2: ({ children }: { children?: React.ReactNode }) => {
+      const text = String(children || '');
+      const isMetric = text.includes('Timeline') || text.includes('Estimated') || text.includes('Ballpark');
+      
+      return (
+        <div className={`${isMetric ? 'mt-4 pt-4 border-t border-border/30' : 'mt-8 first:mt-0'}`}>
+          <h4 className={`font-bold text-foreground font-poppins mb-2 ${isMetric ? 'text-sm uppercase tracking-wide text-muted-foreground' : 'text-base'}`}>
+            {children}
+          </h4>
+        </div>
+      );
+    },
     p: ({ children }: { children?: React.ReactNode }) => (
-      <p className="text-foreground/80 mb-3 leading-relaxed text-[15px]">{children}</p>
+      <p className="text-foreground/85 mb-4 leading-[1.7] text-[15px]">{children}</p>
     ),
     ul: ({ children }: { children?: React.ReactNode }) => (
-      <ul className="space-y-2 mb-4 ml-1">{children}</ul>
+      <ul className="space-y-2.5 mb-5 mt-3">{children}</ul>
     ),
     li: ({ children }: { children?: React.ReactNode }) => (
-      <li className="flex items-start gap-3 text-foreground/80 text-[15px] leading-relaxed">
-        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+      <li className="flex items-start gap-3 text-foreground/85 text-[15px] leading-relaxed">
+        <span className="w-2 h-2 rounded-full bg-secondary mt-1.5 shrink-0" />
         <span>{children}</span>
       </li>
     ),
     strong: ({ children }: { children?: React.ReactNode }) => (
-      <strong className="font-semibold text-foreground">{children}</strong>
+      <strong className="font-bold text-foreground">{children}</strong>
     ),
     em: ({ children }: { children?: React.ReactNode }) => (
-      <em className="italic text-foreground/70">{children}</em>
+      <em className="italic text-muted-foreground">{children}</em>
     ),
   };
 
