@@ -50,7 +50,7 @@ const PlannerForm = ({
           placeholder="What's messy or blocking progress?"
           value={formData.situation}
           onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
-          className="w-full min-h-[100px] px-0 py-3 bg-transparent border-0 border-b-2 border-primary/30 focus:border-primary focus:outline-none resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-colors"
+          className="w-full min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all"
         />
       </div>
 
@@ -64,7 +64,7 @@ const PlannerForm = ({
           placeholder="Prototype, workflow cleanup, project coordination…"
           value={formData.handoff}
           onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
-          className="w-full min-h-[100px] px-0 py-3 bg-transparent border-0 border-b-2 border-primary/30 focus:border-primary focus:outline-none resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-colors"
+          className="w-full min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all"
         />
       </div>
 
@@ -107,7 +107,7 @@ const PlannerForm = ({
           id="budget"
           value={formData.budget}
           onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-          className="w-full px-0 py-3 bg-transparent border-0 border-b-2 border-primary/30 focus:border-primary focus:outline-none text-foreground text-base appearance-none cursor-pointer transition-colors"
+          className="w-full px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 text-foreground text-base appearance-none cursor-pointer transition-all"
         >
           {BUDGET_OPTIONS.map((option) => (
             <option key={option.value} value={option.value} className="bg-background text-foreground">
