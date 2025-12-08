@@ -191,31 +191,22 @@ serve(async (req) => {
     const adjustedHoursMin = Math.round(projectSize.baseHoursMin * (1 + modifier / 100));
     const adjustedHoursMax = Math.round(projectSize.baseHoursMax * (1 + modifier / 100));
 
-    // Approach templates - paragraph style, conversational
+    // Approach templates - numbered steps, conversational
     const approachTemplates = {
-      structure: `I'd start with a fast deep-dive to understand how things work today and where the friction sits.
-
-From there, I map and simplify the workflow into something clear, realistic, and easy for the team to follow.
-
-If a lightweight tool helps (Notion, Airtable), I'll set it up in a way that removes noise instead of adding more.
-
-The goal is calm, clarity, and a structure your team can actually use day-to-day.`,
+      structure: `1. I'd start with a fast deep-dive to understand how things work today and where the friction sits.
+2. From there, I map and simplify the workflow into something clear, realistic, and easy for the team to follow.
+3. If a lightweight tool helps (Notion, Airtable), I'll set it up in a way that removes noise instead of adding more.
+4. The goal is calm, clarity, and a structure your team can actually use day-to-day.`,
       
-      momentum: `I'll begin with a short diagnostic to see what's blocking progress and where things get stuck.
-
-Then I stabilise the scope, set the priorities, and take ownership of the next steps.
-
-Expect clear communication and visible progress each week, without adding unnecessary complexity.
-
-My goal is to bring momentum back quickly and make everything feel manageable again.`,
+      momentum: `1. I'll begin with a short diagnostic to see what's blocking progress and where things get stuck.
+2. Then I stabilise the scope, set the priorities, and take ownership of the next steps.
+3. Expect clear communication and visible progress each week, without adding unnecessary complexity.
+4. My goal is to bring momentum back quickly and make everything feel manageable again.`,
       
-      prototype: `We'll unpack the idea and define what you want it to achieve.
-
-Then I'll shape a simple user flow and build a clean clickable prototype.
-
-It's perfect for testing, alignment, or pitching, giving you something tangible, fast.
-
-You'll have a clear concept that's ready for next steps.`
+      prototype: `1. We'll unpack the idea and define what you want it to achieve.
+2. Then I'll shape a simple user flow and build a clean clickable prototype.
+3. It's perfect for testing, alignment, or pitching, giving you something tangible, fast.
+4. You'll have a clear concept that's ready for next steps.`
     };
 
     // Walk away with templates
@@ -261,7 +252,7 @@ Write 2–3 warm sentences rephrasing their situation and what they need. Start 
 ## Here's how I'd tackle this
 ${approachTemplates[supportType]}
 
-(Keep the paragraph style above. Do NOT convert to numbered list.)
+(Keep the numbered step format. Each step starts with a number.)
 
 ## What you'd walk away with
 ${walkAwayTemplates[supportType].map(item => `- ${item}`).join('\n')}
@@ -279,7 +270,7 @@ Most projects like this typically land in this range depending on final scope.
 
 FORMATTING RULES:
 - Use the exact headers above with ##
-- Keep the approach as flowing paragraphs (NOT numbered)
+- Keep the approach as a numbered list (1. 2. 3. 4.)
 - Be scannable and easy to read
 - Sound like a real human, not a proposal generator
 - Don't add extra sections or mention hourly rates
