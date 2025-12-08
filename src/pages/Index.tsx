@@ -83,20 +83,28 @@ const Index = () => {
                 <span className="text-secondary">let's go.</span>
               </h1>
               <div className="space-y-4 mt-2">
-                <motion.p 
-                  className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-[1.7] font-medium tracking-wide"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
+                <motion.p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-[1.7] font-medium tracking-wide" initial={{
+                opacity: 0,
+                y: 15
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.6,
+                delay: 0.4
+              }}>
                   With a fast deep dive and clear visualisation, I turn complex projects into simple, actionable steps. Processes get optimised, teams regain focus, and progress becomes the default instead of the exception.
                 </motion.p>
-                <motion.p 
-                  className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-[1.7] font-medium tracking-wide"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.55 }}
-                >
+                <motion.p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-[1.7] font-medium tracking-wide" initial={{
+                opacity: 0,
+                y: 15
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.6,
+                delay: 0.55
+              }}>
                   And when an idea needs form, I visualise this for you in the form of a real prototype: clear, clickable and ready to test. Ready to get things done?
                 </motion.p>
               </div>
@@ -146,31 +154,41 @@ const Index = () => {
       <section id="services" className="container mx-auto px-4 py-24">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{
+          opacity: 0,
+          y: 20
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} viewport={{
+          once: true
+        }} transition={{
+          duration: 0.6
+        }}>
+            <h2 className="text-5xl md:text-7xl font-black text-center mb-6 text-foreground font-poppins">What I do</h2>
+            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-16 max-w-3xl mx-auto">
+              Practical, clear and fast. With tangible results, dedicated energy and a bit of fun.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Service 1: Fix It */}
+            <motion.div initial={{
             opacity: 0,
-            y: 20
+            y: 30
           }} whileInView={{
             opacity: 1,
             y: 0
           }} viewport={{
             once: true
           }} transition={{
-            duration: 0.6
+            duration: 0.5,
+            delay: 0
+          }} whileHover={{
+            y: -4,
+            transition: {
+              duration: 0.2
+            }
           }}>
-            <h2 className="text-5xl md:text-7xl font-black text-center mb-6 text-foreground font-poppins">What I do</h2>
-            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-16 max-w-3xl mx-auto">
-              Practical, clear and fast — with tangible results, dedicated energy and a bit of fun.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Service 1: Fix It */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.5, delay: 0 }} 
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            >
               <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md transition-all flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
@@ -180,23 +198,33 @@ const Index = () => {
                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's fix it</h3>
                 </div>
                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                  When things stall or deadlines slip, I step in and get your project moving again — fast, focused and clean.
+                  Whether you're starting a new project, or an ongoing project gets stuck, I step in, take over and make sure it gets done.                                                                      
                 </p>
                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                  <p className="text-sm text-foreground/70">Ownership, momentum and deliverables that actually get done.</p>
+                  <p className="text-sm text-foreground/70">Ownership, progress and deliverables that get finished.</p>
                 </div>
               </Card>
             </motion.div>
 
             {/* Service 2: Prototype */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.5, delay: 0.15 }} 
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5,
+            delay: 0.15
+          }} whileHover={{
+            y: -4,
+            transition: {
+              duration: 0.2
+            }
+          }}>
               <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md transition-all flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
@@ -210,19 +238,29 @@ const Index = () => {
                 </p>
                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                  <p className="text-sm text-foreground/70">A simple prototype everyone understands.</p>
+                  <p className="text-sm text-foreground/70">A working prototype everyone understands.</p>
                 </div>
               </Card>
             </motion.div>
 
             {/* Service 3: Streamline */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.5, delay: 0.3 }} 
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} viewport={{
+            once: true
+          }} transition={{
+            duration: 0.5,
+            delay: 0.3
+          }} whileHover={{
+            y: -4,
+            transition: {
+              duration: 0.2
+            }
+          }}>
               <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md transition-all flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
