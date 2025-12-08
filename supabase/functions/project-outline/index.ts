@@ -20,13 +20,20 @@ const STRUCTURE_KEYWORDS = [
 
 // B. MOMENTUM / DELIVERY WORK (type of support, not urgency)
 const MOMENTUM_KEYWORDS = [
-  'launch', 'delays', 'delay', 'stalled', 'slipping', 'blocked',
-  'too many stakeholders', 'stakeholders', 'waiting on each other',
+  'launch', 'delays', 'delay', 'stalled', 'slipping', 'slip', 'slips', 'slipped',
+  'blocked', 'too many stakeholders', 'stakeholders', 'waiting on each other',
   'no clear owner', 'meetings with no progress', 'lost direction',
   'need structure', 'need movement', 'stuck', 'deadline', 'drifting',
   'coordination', 'execution', 'too many people', 'nobody knows',
   'decisions not being made', 'priorities unclear', 'responsibilities unclear',
-  'coordination missing', 'chaotic', 'confusion'
+  'coordination missing', 'chaotic', 'confusion',
+  // Calendar / plan / marketing drift
+  'calendar', 'content calendar', 'marketing calendar',
+  'stick to the plan', 'stick to it',
+  'never follow the plan', 'never follow the calendar',
+  'planning but not doing', 'arguing about priorities',
+  'meetings turn into debates', 'planning meetings turn into debates',
+  'planning meetings always turn into debates'
 ];
 
 // MOMENTUM OVERRIDE KEYWORDS (critical - these override Structure classification)
@@ -34,34 +41,66 @@ const MOMENTUM_KEYWORDS = [
 // Structure = how work flows. Momentum = why work ISN'T flowing.
 // If user's pain is about progress/movement/deadlines → ALWAYS Momentum
 const MOMENTUM_OVERRIDE_KEYWORDS = [
-  // Original progress-blocking signals
-  'calendar not being followed', 'not following calendar', 'ignore the calendar',
-  'priorities unclear', 'unclear priorities', 'priority unclear',
-  'planning not translating', 'plans not translating', 'plan not working',
-  'meetings unproductive', 'unproductive meetings', 'meetings going nowhere',
-  'team stuck in discussion', 'stuck in discussion', 'endless discussions',
-  'not moving forward', "we're not moving forward", 'no progress',
-  'never stick to the plan', "don't stick to the plan", 'abandon the plan',
-  'things keep slipping', 'keeps slipping', 'keep missing',
-  'waiting on each other', 'people waiting', 'blocked by others',
-  'lack of progress', 'no movement', 'nothing gets done',
-  'we talk but nothing happens', 'all talk no action',
+  // Progress-blocking signals - calendar/plan not followed
+  'calendar not being followed', 'not following calendar',
+  'ignore the calendar', 'never stick to the plan',
+  "don't stick to the plan", 'never stick to our plan',
+  'never stick to our calendar', 'never stick to our marketing calendar',
+  'never stick to it', 'we never stick to it', 'we never stick to the calendar',
+  'we never stick to our calendar',
   
-  // NEW: Deadline and schedule signals
-  'slipping deadline', 'deadline slipping', 'deadlines slipping', 'missed deadline',
+  // Things slipping variations
+  'things keep slipping', 'things slipping', 'things slip',
+  'things are slipping', 'things keep slipping through',
+  'keep missing', 'keep slipping', 'keeps slipping',
+  
+  // Priority variations
+  'priorities unclear', 'unclear priorities', 'priority unclear',
+  'priorities get unclear', 'priorities get fuzzy',
+  'priorities keep shifting', 'shifting priorities',
+  
+  // Planning not working variations
+  'planning not translating', 'plans not translating',
+  'plan not working', 'plan looks good but doesn\'t happen',
+  'plan exists but we don\'t follow it',
+  'calendar exists but we don\'t follow it',
+  
+  // Meeting variations
+  'meetings unproductive', 'unproductive meetings',
+  'meetings going nowhere', 'meetings go nowhere',
+  'planning meetings turn into debates',
+  'planning meetings always turn into debates',
+  'meetings turn into debates', 'debating instead of deciding',
+  'we debate instead of deciding',
+  
+  // Discussion stuck variations
+  'team stuck in discussion', 'stuck in discussion',
+  'endless discussions', 'all talk no action',
+  'we talk but nothing happens', 'no progress', 'no movement',
+  'not moving forward', "we're not moving forward",
+  'lack of progress', 'nothing gets done',
+  
+  // Deadline and schedule signals
+  'slipping deadline', 'deadline slipping', 'deadlines slipping',
+  'missed deadline', 'missed deadlines',
   'behind schedule', 'we are behind', "we're behind", 'falling behind',
   'need to catch up', 'catch up', 'catching up', 'running late',
   
-  // NEW: Team behavior signals  
+  // Team behavior signals  
   'team is improvising', 'improvising', 'making it up', 'winging it',
-  'deliverables are drifting', 'deliverables drifting', 'scope drifting', 'drifting',
+  'deliverables are drifting', 'deliverables drifting',
+  'scope drifting', 'drifting',
   'onboarding is unstable', 'onboarding unstable', 'unstable onboarding',
   
-  // NEW: Coordination signals
+  // Coordination signals
   'multiple teams', 'multi-team', 'many teams', 'several teams',
   'time-sensitive', 'time sensitive', 'tight timeline', 'tight deadline',
   'someone needs to coordinate', 'need coordination', 'needs coordination',
-  'nobody is coordinating', 'no coordination', 'coordination missing'
+  'nobody is coordinating', 'no coordination', 'coordination missing',
+  
+  // Original signals
+  'waiting on each other', 'people waiting', 'blocked by others',
+  'abandon the plan'
 ];
 
 // C. PROTOTYPE WORK
@@ -117,6 +156,27 @@ function detectSupportType(text: string, urgency: string): 'structure' | 'moment
     const hasDriftPain = driftSignals.some(signal => lowerText.includes(signal));
     if (hasDriftPain) {
       console.log('Momentum override triggered - mixed signals but drift pain detected');
+      return 'momentum';
+    }
+  }
+  
+  // Check 3.5: Planning / calendar drift fallback (Momentum bias)
+  // If text mentions planning/scheduling concepts with "not following" signals → prefer Momentum
+  const planningDriftSignals = [
+    'calendar', 'content calendar', 'marketing calendar',
+    'plan', 'planning', 'priorities', 'priority', 'meeting'
+  ];
+  const hasPlanningDrift = planningDriftSignals.some(signal => lowerText.includes(signal));
+  
+  // Only apply if NOT a very strong, explicit structure-only signal
+  const strongStructureOnly = ['documenting a process', 'mapping a workflow', 'creating templates', 'building a template']
+    .some(phrase => lowerText.includes(phrase));
+  
+  if (hasPlanningDrift && !strongStructureOnly) {
+    // Check if there are ANY delay/slip/not-following signals
+    const notFollowingSignals = ['not follow', 'never stick', "don't stick", 'arguing', 'debates', 'not working', 'slipping', 'behind', 'shifting'];
+    if (notFollowingSignals.some(sig => lowerText.includes(sig))) {
+      console.log('Momentum override triggered - planning/calendar drift fallback');
       return 'momentum';
     }
   }
