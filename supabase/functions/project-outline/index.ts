@@ -5,54 +5,120 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// Keywords for auto-detection - STRUCTURE has highest priority
+// ============================================================================
+// CLASSIFICATION KEYWORDS - Priority order: Structure > Momentum > Prototype
+// ============================================================================
+
+// A. STRUCTURE / CLARITY WORK (highest priority)
 const STRUCTURE_KEYWORDS = [
-  'workflow', 'process', 'clarity', 'overview', 'tooling', 'templates',
-  'structure', 'organise', 'organize', 'clean up', 'make sense', 'optimise',
-  'optimize', 'inconsistent', 'everyone doing their own thing', 'notion',
-  'airtable', 'system setup', 'mapping', 'messy', 'chaos', 'documentation'
+  'workflow', 'process', 'clarity', 'overview', 'structure', 'templates',
+  'consistency', 'optimize', 'optimise', 'notion', 'airtable', 'tool setup',
+  'mapping', 'cleaning up', 'clean up', 'everyone does it differently',
+  'scattered tools', 'we lose track', 'lose track', 'inconsistent',
+  'organise', 'organize', 'documentation', 'messy'
 ];
 
-// MOMENTUM WORK: Project needs ownership, coordination, unblocking, clarification, renewed movement
-// Momentum is a support TYPE, not urgency level. Urgency modifies hours/tone, not classification.
+// B. MOMENTUM / DELIVERY WORK (type of support, not urgency)
 const MOMENTUM_KEYWORDS = [
-  'stuck', 'stalled', 'delays', 'delay', 'slipping', 'timeline', 'need ownership',
-  'coordination', 'launch', 'execution', 'blocked', 'delivery', 'drifting',
-  'too many people', 'too many stakeholders', 'no clear owner', 'nobody knows',
-  'deadline', 'momentum', 'rescue', 'chaotic', 'confusion', 'unclear next steps',
-  'decisions not being made', 'lost direction', 'priorities unclear',
-  'responsibilities unclear', 'coordination missing', 'communication chaos'
+  'launch', 'delays', 'delay', 'stalled', 'slipping', 'blocked',
+  'too many stakeholders', 'stakeholders', 'waiting on each other',
+  'no clear owner', 'meetings with no progress', 'lost direction',
+  'need structure', 'need movement', 'stuck', 'deadline', 'drifting',
+  'coordination', 'execution', 'too many people', 'nobody knows',
+  'decisions not being made', 'priorities unclear', 'responsibilities unclear',
+  'coordination missing', 'chaotic', 'confusion'
 ];
 
+// C. PROTOTYPE WORK
 const PROTOTYPE_KEYWORDS = [
-  'idea', 'concept', 'prototype', 'ux', 'ui', 'mockup', 'user flow',
-  'screens', 'pitch', 'validate', 'mvp', 'wireframe', 'design'
+  'idea', 'concept', 'prototype', 'ux', 'ui', 'user flow', 'screens',
+  'mockup', 'mvp', 'pitch', 'wireframe', 'design', 'validate'
 ];
+
+// ============================================================================
+// SUPPORT TYPE DETECTION
+// ============================================================================
 
 function detectSupportType(text: string): 'structure' | 'momentum' | 'prototype' {
   const lowerText = text.toLowerCase();
   
-  // STRUCTURE has highest priority - if ANY structure keyword appears, classify as structure
+  // STRUCTURE has highest priority
   const hasStructureKeyword = STRUCTURE_KEYWORDS.some(kw => lowerText.includes(kw));
   if (hasStructureKeyword) {
     return 'structure';
   }
   
-  // Check for momentum keywords (only if no structure keywords)
+  // PROTOTYPE beats MOMENTUM only if explicitly describing building a prototype
+  const hasPrototypeKeyword = PROTOTYPE_KEYWORDS.some(kw => lowerText.includes(kw));
   const hasMomentumKeyword = MOMENTUM_KEYWORDS.some(kw => lowerText.includes(kw));
+  
+  // Check for explicit prototype context
+  const explicitPrototype = ['build a prototype', 'create a prototype', 'make a prototype', 
+    'design a prototype', 'need a prototype', 'want a prototype', 'prototype for']
+    .some(phrase => lowerText.includes(phrase));
+  
+  if (hasPrototypeKeyword && (explicitPrototype || !hasMomentumKeyword)) {
+    return 'prototype';
+  }
+  
   if (hasMomentumKeyword) {
     return 'momentum';
   }
   
-  // Check for prototype keywords (only if no structure or momentum keywords)
-  const hasPrototypeKeyword = PROTOTYPE_KEYWORDS.some(kw => lowerText.includes(kw));
-  if (hasPrototypeKeyword) {
-    return 'prototype';
-  }
-  
-  // Default to structure (most common and safest)
+  // Ambiguous → default to Structure
   return 'structure';
 }
+
+// ============================================================================
+// PROJECT SIZING - Fixed buckets, not calculated
+// ============================================================================
+
+type ProjectSize = 'small' | 'medium' | 'large' | 'very-large';
+
+interface SizeConfig {
+  size: ProjectSize;
+  hoursMin: number;
+  hoursMax: number;
+  weeks: string;
+  costMin: number;
+  costMax: number;
+}
+
+// FIXED COST BUCKETS - Must ALWAYS use these exact ranges
+const SIZE_CONFIGS: Record<ProjectSize, SizeConfig> = {
+  'small': {
+    size: 'small',
+    hoursMin: 8,
+    hoursMax: 12,
+    weeks: '1–2 weeks',
+    costMin: 1000,
+    costMax: 1800
+  },
+  'medium': {
+    size: 'medium',
+    hoursMin: 12,
+    hoursMax: 20,
+    weeks: '2–4 weeks',
+    costMin: 1800,
+    costMax: 3200
+  },
+  'large': {
+    size: 'large',
+    hoursMin: 20,
+    hoursMax: 35,
+    weeks: '3–6 weeks',
+    costMin: 3200,
+    costMax: 5000
+  },
+  'very-large': {
+    size: 'very-large',
+    hoursMin: 35,
+    hoursMax: 50,
+    weeks: '5–8 weeks',
+    costMin: 5000,
+    costMax: 8000
+  }
+};
 
 function determineProjectSize(inputs: {
   situation: string;
@@ -60,127 +126,100 @@ function determineProjectSize(inputs: {
   urgency: string;
   budget: string;
   supportType: 'structure' | 'momentum' | 'prototype';
-}): { size: 'small' | 'medium' | 'large'; baseHoursMin: number; baseHoursMax: number; weeks: string } {
+}): SizeConfig {
   const fullText = `${inputs.situation} ${inputs.handoff}`.toLowerCase();
+  
+  // Complexity indicators
+  const largeIndicators = [
+    'multiple teams', 'multi-team', 'stakeholders', 'integration', 'integrations', 
+    'api', 'apis', 'testing', 'uat', 'e2e', 'migration', 'complex', 'unclear scope',
+    'launch', 'slipping', 'deadline', 'priorities unclear', 'responsibilities unclear',
+    'lost direction', 'coordination missing'
+  ];
+  
+  const veryLargeIndicators = [
+    'many teams', 'enterprise', 'organization-wide', 'company-wide', 
+    'long-term', 'months', 'technical debt'
+  ];
+  
+  const smallIndicators = [
+    'simple', 'quick', 'single', 'just one', 'one deliverable', 'tiny',
+    'small task', 'quick fix', 'founder', 'solo'
+  ];
   
   let complexityScore = 0;
   
-  // Budget factor
-  if (inputs.budget === '€6.000+') {
-    complexityScore += 3;
-  } else if (inputs.budget === '€3.000–€6.000') {
-    complexityScore += 2;
-  } else if (inputs.budget === '€1.000–€3.000') {
-    complexityScore += 1;
-  } else if (inputs.budget === '< €1.000') {
-    complexityScore -= 1;
-  }
-  
-  // Large complexity indicators
-  const largeIndicators = ['multiple teams', 'multi-team', 'stakeholders', 'integration', 'integrations', 'api', 'apis', 'testing', 'uat', 'e2e', 'migration', 'complex', 'unclear scope'];
+  // Count complexity signals
   largeIndicators.forEach(indicator => {
-    if (fullText.includes(indicator)) complexityScore += 2;
-  });
-  
-  // Medium complexity indicators
-  const mediumIndicators = ['multiple', 'team', 'alignment', 'several', 'deliverables'];
-  mediumIndicators.forEach(indicator => {
     if (fullText.includes(indicator)) complexityScore += 1;
   });
   
-  // Simple indicators (reduce complexity)
-  const simpleIndicators = ['simple', 'quick', 'small', 'single', 'just one', 'founder', 'solo', 'one deliverable'];
-  simpleIndicators.forEach(indicator => {
+  veryLargeIndicators.forEach(indicator => {
+    if (fullText.includes(indicator)) complexityScore += 2;
+  });
+  
+  smallIndicators.forEach(indicator => {
     if (fullText.includes(indicator)) complexityScore -= 1;
   });
   
-  // URGENCY-BASED SIZING ADJUSTMENTS
-  // Just exploring: no pressure, sizing based purely on complexity
-  if (inputs.urgency === 'Just exploring') {
-    complexityScore -= 1; // Slightly reduce perceived complexity
-  }
+  // Budget signals
+  if (inputs.budget === '€6.000+') complexityScore += 2;
+  else if (inputs.budget === '€3.000–€6.000') complexityScore += 1;
+  else if (inputs.budget === '< €1.000') complexityScore -= 1;
   
-  // Needs attention: project is stuck/drifting - avoid Small unless micro-task
-  // Upscale to Large if complexity keywords appear
-  if (inputs.urgency === 'Needs attention') {
-    // Avoid Small for "Needs attention" - default to Medium minimum
-    if (complexityScore <= 0) {
-      complexityScore = 1; // Push towards Medium
-    }
-    // Upscale to Large if complexity indicators present
-    if (complexityScore >= 3) {
-      complexityScore += 1;
-    }
-  }
-  
-  // It's urgent 🔥: often Medium → Large, especially with complexity
+  // URGENCY-BASED SIZING (affects sizing, not classification)
+  // "It's urgent 🔥" with complexity indicators → push towards Large
   if (inputs.urgency === "It's urgent 🔥") {
-    // Push towards larger sizes
-    complexityScore += 1;
-    // If deadlines, multiple teams, or stalled project mentioned, lean Large
-    const urgentLargeIndicators = ['deadline', 'multiple', 'team', 'stalled', 'stuck', 'blocked', 'scope unclear'];
+    const urgentLargeIndicators = ['deadline', 'multiple', 'team', 'stalled', 'stuck', 'blocked', 'launch'];
     const hasUrgentComplexity = urgentLargeIndicators.some(indicator => fullText.includes(indicator));
     if (hasUrgentComplexity) {
       complexityScore += 1;
     }
   }
   
-  // STRUCTURE WORK: Default to Medium unless explicitly tiny
-  // Structure work should rarely be Small - workflows, processes, templates inherently need time
+  // STRUCTURE WORK: Defaults to Medium
   if (inputs.supportType === 'structure') {
-    // Only allow Small for structure if VERY explicit tiny indicators
-    const tinyIndicators = ['just one template', 'single template', 'one simple', 'very quick', 'tiny'];
-    const isTiny = tinyIndicators.some(indicator => fullText.includes(indicator));
+    // Only Small if very explicitly tiny
+    const isTiny = ['just one template', 'single template', 'one simple document', 'very quick', 'tiny']
+      .some(indicator => fullText.includes(indicator));
     
-    if (complexityScore >= 4) {
-      return { size: 'large', baseHoursMin: 20, baseHoursMax: 35, weeks: '3–6 weeks' };
-    } else if (isTiny && complexityScore <= -2 && inputs.urgency !== 'Needs attention' && inputs.urgency !== "It's urgent 🔥") {
-      // Only Small if explicitly tiny, low complexity, AND not urgent
-      return { size: 'small', baseHoursMin: 8, baseHoursMax: 12, weeks: '1–2 weeks' };
-    } else {
-      // Default Structure to Medium (2–3 weeks timeline)
-      return { size: 'medium', baseHoursMin: 12, baseHoursMax: 20, weeks: '2–3 weeks' };
-    }
+    if (complexityScore >= 5) return SIZE_CONFIGS['very-large'];
+    if (complexityScore >= 3) return SIZE_CONFIGS['large'];
+    if (isTiny && complexityScore <= -2) return SIZE_CONFIGS['small'];
+    return SIZE_CONFIGS['medium']; // DEFAULT
   }
   
-  // MOMENTUM WORK: Default to Medium (18-28 hours, 3-5 weeks, €2.800-€4.200)
-  // Momentum work should NEVER default to Small unless explicitly tiny
-  // Upsize to Large when: launch, multiple teams, deadlines slipping, priorities unclear, etc.
+  // MOMENTUM WORK: Defaults to Medium, upsize to Large on complexity
   if (inputs.supportType === 'momentum') {
-    const tinyIndicators = ['just one task', 'single task', 'one quick', 'very quick', 'tiny'];
-    const isTiny = tinyIndicators.some(indicator => fullText.includes(indicator));
+    const isTiny = ['just one task', 'single task', 'one quick call', 'very quick', 'tiny']
+      .some(indicator => fullText.includes(indicator));
     
-    // Large indicators specific to momentum work
+    // Upsize to Large when: launch, multiple teams, deadlines slipping, priorities unclear
     const momentumLargeIndicators = [
       'launch', 'multiple team', 'multi-team', 'deadline', 'slipping',
       'priorities unclear', 'responsibilities unclear', 'coordination missing',
-      'lost direction', 'scope unclear', 'complex', 'stakeholders'
+      'lost direction', 'scope unclear'
     ];
     const hasLargeIndicator = momentumLargeIndicators.some(indicator => fullText.includes(indicator));
     
-    if (complexityScore >= 4 || hasLargeIndicator) {
-      return { size: 'large', baseHoursMin: 28, baseHoursMax: 40, weeks: '4–6 weeks' };
-    } else if (isTiny && complexityScore <= -2 && inputs.urgency !== 'Needs attention' && inputs.urgency !== "It's urgent 🔥") {
-      // Only Small if explicitly tiny, low complexity, AND not urgent
-      return { size: 'small', baseHoursMin: 10, baseHoursMax: 15, weeks: '1–2 weeks' };
-    } else {
-      // Default Momentum to Medium (3–5 weeks timeline, 18-28 hours)
-      return { size: 'medium', baseHoursMin: 18, baseHoursMax: 28, weeks: '3–5 weeks' };
-    }
+    if (complexityScore >= 5) return SIZE_CONFIGS['very-large'];
+    if (complexityScore >= 3 || hasLargeIndicator) return SIZE_CONFIGS['large'];
+    if (isTiny && complexityScore <= -2) return SIZE_CONFIGS['small'];
+    return SIZE_CONFIGS['medium']; // DEFAULT
   }
   
-  // PROTOTYPE WORK: Can be Small or Medium based on complexity
-  // But respect urgency rules - "Needs attention" and "Urgent" avoid Small
-  if (complexityScore <= 0 && inputs.urgency !== 'Needs attention' && inputs.urgency !== "It's urgent 🔥") {
-    return { size: 'small', baseHoursMin: 8, baseHoursMax: 12, weeks: '1–2 weeks' };
-  } else if (complexityScore <= 3) {
-    return { size: 'medium', baseHoursMin: 12, baseHoursMax: 20, weeks: '2–4 weeks' };
-  } else {
-    return { size: 'large', baseHoursMin: 20, baseHoursMax: 35, weeks: '3–6 weeks' };
-  }
+  // PROTOTYPE WORK: Small–Medium depending on complexity
+  if (complexityScore >= 5) return SIZE_CONFIGS['very-large'];
+  if (complexityScore >= 3) return SIZE_CONFIGS['large'];
+  if (complexityScore >= 1) return SIZE_CONFIGS['medium'];
+  return SIZE_CONFIGS['small'];
 }
 
-function calculateModifiers(inputs: {
+// ============================================================================
+// MODIFIERS - Only affect hours, NOT cost buckets
+// ============================================================================
+
+function calculateHourModifier(inputs: {
   urgency: string;
   situation: string;
   handoff: string;
@@ -188,17 +227,13 @@ function calculateModifiers(inputs: {
   let modifier = 0;
   const fullText = `${inputs.situation} ${inputs.handoff}`.toLowerCase();
   
-  // Urgency modifier (updated logic)
-  // Just exploring: no pressure, no modifier (was -10%, now 0%)
-  // Soon: baseline, no modifier
-  // Needs attention: +10% (project stuck/drifting)
-  // It's urgent 🔥: +20% (immediate attention needed)
+  // URGENCY MODIFIERS
   switch (inputs.urgency) {
     case 'Just exploring':
-      // No modifier - sizing determined purely by complexity
+      // No modifier
       break;
     case 'Soon':
-      // Baseline, no change
+      // Baseline, no modifier
       break;
     case 'Needs attention':
       modifier += 10;
@@ -208,20 +243,17 @@ function calculateModifiers(inputs: {
       break;
   }
   
-  // Complexity keywords add %
+  // COMPLEXITY MODIFIERS
   if (fullText.includes('testing') || fullText.includes('uat') || fullText.includes('e2e')) {
     modifier += 20;
   }
   if (fullText.includes('integration') || fullText.includes('api')) {
     modifier += 15;
   }
-  if (fullText.includes('migration')) {
-    modifier += 20;
-  }
   if (fullText.includes('multiple team') || fullText.includes('multi-team')) {
     modifier += 15;
   }
-  if (fullText.includes('unclear') || fullText.includes("don't know what")) {
+  if (fullText.includes('unclear') || fullText.includes("don't know what") || fullText.includes('scope unclear')) {
     modifier += 10;
   }
   
@@ -229,39 +261,17 @@ function calculateModifiers(inputs: {
   return Math.min(modifier, 40);
 }
 
-function calculateCostRange(size: string, modifier: number, supportType: string): { min: number; max: number } {
-  // Base rate: €100/hour
-  const baseRanges: Record<string, Record<string, { min: number; max: number }>> = {
-    momentum: {
-      small: { min: 1000, max: 1500 },   // 10-15 hours @ €100
-      medium: { min: 1800, max: 2800 },  // 18-28 hours @ €100
-      large: { min: 2800, max: 4000 },   // 28-40 hours @ €100
-    },
-    structure: {
-      small: { min: 800, max: 1200 },    // 8-12 hours @ €100
-      medium: { min: 1200, max: 2000 },  // 12-20 hours @ €100
-      large: { min: 2000, max: 3500 },   // 20-35 hours @ €100
-    },
-    prototype: {
-      small: { min: 800, max: 1200 },    // 8-12 hours @ €100
-      medium: { min: 1200, max: 2000 },  // 12-20 hours @ €100
-      large: { min: 2000, max: 3500 },   // 20-35 hours @ €100
-    },
-  };
-  
-  const typeRanges = baseRanges[supportType] || baseRanges.structure;
-  const range = typeRanges[size] || typeRanges.medium;
-  const multiplier = 1 + (modifier / 100);
-  
-  return {
-    min: Math.round(range.min * multiplier / 100) * 100,
-    max: Math.round(range.max * multiplier / 100) * 100,
-  };
-}
+// ============================================================================
+// FORMATTING
+// ============================================================================
 
 function formatCurrency(amount: number): string {
   return `€${amount.toLocaleString('de-DE')}`;
 }
+
+// ============================================================================
+// MAIN HANDLER
+// ============================================================================
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -276,17 +286,32 @@ serve(async (req) => {
       throw new Error('LOVABLE_API_KEY is not configured');
     }
 
+    // 1. CLASSIFY SUPPORT TYPE
     const fullText = `${situation} ${handoff}`;
     const supportType = detectSupportType(fullText);
-    const projectSize = determineProjectSize({ situation, handoff, urgency, budget, supportType });
-    const modifier = calculateModifiers({ urgency, situation, handoff });
-    const costRange = calculateCostRange(projectSize.size, modifier, supportType);
     
-    // Adjust hours based on modifier
-    const adjustedHoursMin = Math.round(projectSize.baseHoursMin * (1 + modifier / 100));
-    const adjustedHoursMax = Math.round(projectSize.baseHoursMax * (1 + modifier / 100));
+    // 2. DETERMINE PROJECT SIZE (includes urgency-based sizing)
+    const sizeConfig = determineProjectSize({ situation, handoff, urgency, budget, supportType });
+    
+    // 3. CALCULATE HOUR MODIFIER (urgency + complexity)
+    const hourModifier = calculateHourModifier({ urgency, situation, handoff });
+    
+    // 4. ADJUST HOURS (modifiers apply to hours, NOT to cost buckets)
+    const adjustedHoursMin = Math.round(sizeConfig.hoursMin * (1 + hourModifier / 100));
+    const adjustedHoursMax = Math.round(sizeConfig.hoursMax * (1 + hourModifier / 100));
+    
+    // 5. COST COMES FROM FIXED BUCKET (never calculated from hours)
+    const costMin = sizeConfig.costMin;
+    const costMax = sizeConfig.costMax;
 
-    // Approach templates - numbered steps, conversational
+    console.log('=== Project Plan Generator ===');
+    console.log('Support type:', supportType);
+    console.log('Project size:', sizeConfig.size);
+    console.log('Hour modifier:', hourModifier + '%');
+    console.log('Adjusted hours:', adjustedHoursMin, '-', adjustedHoursMax);
+    console.log('Cost bucket:', formatCurrency(costMin), '-', formatCurrency(costMax));
+
+    // Approach templates - numbered steps
     const approachTemplates = {
       structure: `1. I'd start with a fast deep-dive to understand how things work today and where the friction sits.
 2. From there, I map and simplify the workflow into something clear, realistic, and easy for the team to follow.
@@ -326,20 +351,40 @@ serve(async (req) => {
       ]
     };
 
-    const systemPrompt = `You are Esther, a warm, down-to-earth freelance consultant writing a project plan for someone who just described their situation. 
+    // Urgency-based tone guidance
+    let toneGuidance = '';
+    switch (urgency) {
+      case 'Just exploring':
+        toneGuidance = 'Use the softest, calmest tone. No pressure.';
+        break;
+      case 'Soon':
+        toneGuidance = 'Neutral professional tone.';
+        break;
+      case 'Needs attention':
+        toneGuidance = 'Confident and proactive tone. The project is active but stuck.';
+        break;
+      case "It's urgent 🔥":
+        toneGuidance = 'Direct, decisive tone (still warm, never dramatic). Immediate attention needed.';
+        break;
+      default:
+        toneGuidance = 'Warm, professional tone.';
+    }
+
+    const systemPrompt = `You are Esther, a warm, down-to-earth freelance consultant writing a project plan.
 
 VOICE & TONE:
-- Warm, conversational, concise, confident
-- Human but not overly casual
-- No corporate jargon, no AI-ish phrasing
-- Clear, energetic, structured
-- NEVER use double hyphens (--). Use proper punctuation, commas, or a single dash if needed
-- Sound like someone genuinely rolling up their sleeves to help
+- Warm, clear, calm, direct
+- Professional but human
+- No corporate jargon, no hype, no over-enthusiasm
+- No exclamation marks unless user uses them
+- Write like a senior consultant with empathy and clarity
+- NEVER use double hyphens (--). Use proper punctuation or a single dash if needed
+- ${toneGuidance}
 
 DETECTED SUPPORT TYPE: ${supportType}
-PROJECT SIZE: ${projectSize.size}
+PROJECT SIZE: ${sizeConfig.size}
 
-STRUCTURE (use these exact headers and format):
+OUTPUT STRUCTURE (use this EXACT order, do not reorder or omit sections):
 
 ## Short summary
 Write 2–3 warm sentences rephrasing their situation and what they need. Start naturally with "So..." or "Sounds like..." — show you actually got it.
@@ -353,23 +398,23 @@ ${approachTemplates[supportType]}
 ${walkAwayTemplates[supportType].map(item => `- ${item}`).join('\n')}
 
 ## Timeline
-**${projectSize.weeks}**
+**${sizeConfig.weeks}**
 Depends on alignment speed and complexity.
 
 ## Estimated hours
 **${adjustedHoursMin}–${adjustedHoursMax} hours**
 
 ## Ballpark cost
-**${formatCurrency(costRange.min)}–${formatCurrency(costRange.max)}**
+**${formatCurrency(costMin)}–${formatCurrency(costMax)}**
 Most projects like this typically land in this range depending on final scope.
 
-FORMATTING RULES:
-- Use the exact headers above with ##
-- Keep the approach as a numbered list (1. 2. 3. 4.)
-- Be scannable and easy to read
-- Sound like a real human, not a proposal generator
-- Don't add extra sections or mention hourly rates
-- NEVER use double hyphens (--) anywhere`;
+CRITICAL RULES:
+- Output all 6 sections in this EXACT order
+- Never omit any section
+- Never place headings inside each other
+- Keep numbered steps for UX clarity
+- Don't mention hourly rates
+- NEVER use double hyphens (--)`;
 
     const userPrompt = `User input:
 - Situation: ${situation}
@@ -378,11 +423,6 @@ FORMATTING RULES:
 - Budget comfort zone: ${budget || "not specified"}
 
 Generate the project plan using the structure above. Be human, warm, and direct.`;
-
-    console.log('Calling Lovable AI for project plan...');
-    console.log('Detected support type:', supportType);
-    console.log('Project size:', projectSize.size);
-    console.log('Modifier:', modifier);
 
     const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
