@@ -82,12 +82,22 @@ const Index = () => {
                 I help teams move forward,<br />
                 <span className="text-secondary">let's go.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg leading-relaxed">
+              <motion.p 
+                className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg leading-relaxed"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 With a fast deep dive and clear visualisation, I turn complex projects into simple, actionable steps. Processes get optimised, teams regain focus, and progress becomes the default instead of the exception.
-              </p>
-              <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg leading-relaxed">
+              </motion.p>
+              <motion.p 
+                className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg leading-relaxed"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
+              >
                 And when an idea needs form, I visualise this for you in the form of a real prototype: clear, clickable and ready to test. Ready to get things done?
-              </p>
+              </motion.p>
               <motion.div className="pt-4" initial={{
               opacity: 0,
               y: 20
