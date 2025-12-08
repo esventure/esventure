@@ -227,6 +227,7 @@ VOICE & TONE:
 - Write like you're having a friendly chat over coffee, not presenting a formal proposal
 - Use "I'd" instead of "I would", "you'll" instead of "you will" 
 - Be warm but direct — no fluff, no corporate speak, no AI-sounding phrases
+- NEVER use double hyphens (--). Use proper punctuation, commas, or a single dash if needed
 - Sound like a real person who genuinely wants to help, not a consultant trying to impress
 - It's okay to be casual ("kick off", "dig in", "get things moving")
 - Show you actually understood their situation — reflect it back naturally
@@ -266,7 +267,8 @@ FORMATTING RULES:
 - The approach MUST be a numbered list (1. 2. 3. 4.)
 - Keep it scannable and easy to read
 - Sound like a real human, not a proposal generator
-- Don't add extra sections or mention hourly rates`;
+- Don't add extra sections or mention hourly rates
+- NEVER use double hyphens (--) anywhere in your output`;
 
     const userPrompt = `User input:
 - Situation: ${situation}
