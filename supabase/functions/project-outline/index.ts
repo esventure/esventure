@@ -31,8 +31,10 @@ const MOMENTUM_KEYWORDS = [
 
 // MOMENTUM OVERRIDE KEYWORDS (critical - these override Structure classification)
 // If ANY of these appear, classify as Momentum even if structure keywords are present
-// Structure = how work flows. Momentum = why work stalls.
+// Structure = how work flows. Momentum = why work ISN'T flowing.
+// If user's pain is about progress/movement/deadlines → ALWAYS Momentum
 const MOMENTUM_OVERRIDE_KEYWORDS = [
+  // Original progress-blocking signals
   'calendar not being followed', 'not following calendar', 'ignore the calendar',
   'priorities unclear', 'unclear priorities', 'priority unclear',
   'planning not translating', 'plans not translating', 'plan not working',
@@ -43,7 +45,23 @@ const MOMENTUM_OVERRIDE_KEYWORDS = [
   'things keep slipping', 'keeps slipping', 'keep missing',
   'waiting on each other', 'people waiting', 'blocked by others',
   'lack of progress', 'no movement', 'nothing gets done',
-  'we talk but nothing happens', 'all talk no action'
+  'we talk but nothing happens', 'all talk no action',
+  
+  // NEW: Deadline and schedule signals
+  'slipping deadline', 'deadline slipping', 'deadlines slipping', 'missed deadline',
+  'behind schedule', 'we are behind', "we're behind", 'falling behind',
+  'need to catch up', 'catch up', 'catching up', 'running late',
+  
+  // NEW: Team behavior signals  
+  'team is improvising', 'improvising', 'making it up', 'winging it',
+  'deliverables are drifting', 'deliverables drifting', 'scope drifting', 'drifting',
+  'onboarding is unstable', 'onboarding unstable', 'unstable onboarding',
+  
+  // NEW: Coordination signals
+  'multiple teams', 'multi-team', 'many teams', 'several teams',
+  'time-sensitive', 'time sensitive', 'tight timeline', 'tight deadline',
+  'someone needs to coordinate', 'need coordination', 'needs coordination',
+  'nobody is coordinating', 'no coordination', 'coordination missing'
 ];
 
 // C. PROTOTYPE WORK
@@ -56,27 +74,60 @@ const PROTOTYPE_KEYWORDS = [
 // SUPPORT TYPE DETECTION
 // ============================================================================
 
-function detectSupportType(text: string): 'structure' | 'momentum' | 'prototype' {
+function detectSupportType(text: string, urgency: string): 'structure' | 'momentum' | 'prototype' {
   const lowerText = text.toLowerCase();
   
-  // CRITICAL: MOMENTUM OVERRIDE CHECK FIRST
-  // If user's pain is lack of progress, not lack of structure, choose Momentum
-  // Structure = how work flows. Momentum = why work stalls.
+  // CRITICAL: MOMENTUM PRIORITY OVERRIDE
+  // Structure = how work flows. Momentum = why work ISN'T flowing.
+  // If user's pain is about progress/movement/deadlines → ALWAYS Momentum
+  
+  // Check 1: Explicit momentum override keywords
   const hasMomentumOverride = MOMENTUM_OVERRIDE_KEYWORDS.some(kw => lowerText.includes(kw));
   if (hasMomentumOverride) {
-    console.log('Momentum override triggered - pain is lack of progress');
+    console.log('Momentum override triggered - explicit progress/deadline keywords');
     return 'momentum';
   }
   
-  // STRUCTURE has priority (if no momentum override)
+  // Check 2: "It's urgent 🔥" + any drift/coordination signals → Momentum
+  // When user selects urgent AND mentions ANY project complexity, assume they need movement not structure
+  if (urgency === "It's urgent 🔥") {
+    const urgentMomentumSignals = [
+      'deadline', 'launch', 'team', 'stakeholder', 'coordinate', 'coordination',
+      'behind', 'slipping', 'stuck', 'blocked', 'stalled', 'delay', 'drifting',
+      'unclear', 'waiting', 'multiple', 'several', 'busy', 'complex'
+    ];
+    const hasUrgentMomentumSignal = urgentMomentumSignals.some(signal => lowerText.includes(signal));
+    if (hasUrgentMomentumSignal) {
+      console.log('Momentum override triggered - urgent + drift/coordination signals');
+      return 'momentum';
+    }
+  }
+  
+  // Check 3: Even with structure keywords, if ANY momentum signal exists alongside urgency → Momentum
+  // "workflow unclear AND we are behind schedule" → Momentum (not Structure)
+  const hasMomentumKeyword = MOMENTUM_KEYWORDS.some(kw => lowerText.includes(kw));
   const hasStructureKeyword = STRUCTURE_KEYWORDS.some(kw => lowerText.includes(kw));
+  
+  if (hasStructureKeyword && hasMomentumKeyword) {
+    // Mixed signals - check if the pain is about movement/deadlines
+    const driftSignals = [
+      'behind', 'deadline', 'slipping', 'stuck', 'stalled', 'blocked', 
+      'delay', 'drifting', 'improvising', 'catch up', 'urgent', 'launch'
+    ];
+    const hasDriftPain = driftSignals.some(signal => lowerText.includes(signal));
+    if (hasDriftPain) {
+      console.log('Momentum override triggered - mixed signals but drift pain detected');
+      return 'momentum';
+    }
+  }
+  
+  // STRUCTURE has priority (if no momentum override)
   if (hasStructureKeyword) {
     return 'structure';
   }
   
   // PROTOTYPE beats MOMENTUM only if explicitly describing building a prototype
   const hasPrototypeKeyword = PROTOTYPE_KEYWORDS.some(kw => lowerText.includes(kw));
-  const hasMomentumKeyword = MOMENTUM_KEYWORDS.some(kw => lowerText.includes(kw));
   
   // Check for explicit prototype context
   const explicitPrototype = ['build a prototype', 'create a prototype', 'make a prototype', 
@@ -312,9 +363,9 @@ serve(async (req) => {
       throw new Error('LOVABLE_API_KEY is not configured');
     }
 
-    // 1. CLASSIFY SUPPORT TYPE
+    // 1. CLASSIFY SUPPORT TYPE (urgency can trigger Momentum override)
     const fullText = `${situation} ${handoff}`;
-    const supportType = detectSupportType(fullText);
+    const supportType = detectSupportType(fullText, urgency);
     
     // 2. DETERMINE PROJECT SIZE (includes urgency-based sizing)
     const sizeConfig = determineProjectSize({ situation, handoff, urgency, budget, supportType });
