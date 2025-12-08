@@ -181,21 +181,22 @@ serve(async (req) => {
     const adjustedHoursMin = Math.round(projectSize.baseHoursMin * (1 + modifier / 100));
     const adjustedHoursMax = Math.round(projectSize.baseHoursMax * (1 + modifier / 100));
 
-    // Approach templates
+    // Approach templates - now as numbered steps
     const approachTemplates = {
-      structure: `I'd start with a fast deep-dive to understand how things work today and where the confusion or friction sits.
-From there, I map the workflow, simplify it, and turn it into something practical and easy to follow.
-If tools or light setup help (Notion, Airtable, simple automations), I'll add those — but only where they genuinely improve things.
-You'll walk away with calm, clarity, and a workflow the team can actually use.`,
+      structure: `1. Start with a fast deep-dive to understand how things work today and where the confusion or friction sits.
+2. Map the workflow, simplify it, and turn it into something practical and easy to follow.
+3. Add tools or light setup only where they genuinely help (Notion, Airtable, simple automations).
+4. Deliver clarity, focus, and a workflow the team can actually use.`,
       
-      delivery: `I'll begin with a short diagnostic to see what's blocking progress and what decisions or ownership are missing.
-Then I stabilise the scope, map the priorities, and take the next steps off your plate.
-Expect structure, transparency, and visible progress each week.
-My goal is to bring momentum back quickly without overcomplicating anything.`,
+      delivery: `1. Begin with a short diagnostic to see what's blocking progress and what decisions or ownership are missing.
+2. Stabilise the scope and map the priorities clearly.
+3. Take the next steps off your plate with visible progress each week.
+4. Bring momentum back quickly without overcomplicating anything.`,
       
-      prototype: `We'll unpack the idea and clarify what you need it to achieve.
-Then I'll translate it into a simple, intuitive flow and a clean clickable prototype.
-It's perfect for testing, sharing with stakeholders, or pitching — giving you something real, fast.`
+      prototype: `1. Unpack the idea and clarify what it really needs to achieve.
+2. Translate it into a simple, intuitive user flow.
+3. Build a clean, clickable prototype you can test or pitch.
+4. Prepare it for user testing, internal alignment, or stakeholder demos.`
     };
 
     // Walk away with templates
@@ -236,8 +237,8 @@ STRUCTURE (use these exact headers and follow precisely):
 Write 2–3 natural, human sentences rephrasing their situation and what they need. Show you understood.
 
 ## Here's how I'd approach this
+Output this as a numbered list (1. 2. 3. 4.) - adapt the steps slightly to their specific situation:
 ${approachTemplates[supportType]}
-(Adapt this slightly to their specific situation while keeping the core approach.)
 
 ## What you'll walk away with
 Show these bullets:
@@ -257,6 +258,7 @@ Most projects like this usually land in this range, depending on final scope and
 
 FORMATTING RULES:
 - Use the exact headers shown above with ##
+- The approach MUST be a numbered list (1. 2. 3. 4.)
 - Keep everything concise and scannable
 - Be direct and concrete, but kind
 - Don't add extra sections

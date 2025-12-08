@@ -204,6 +204,34 @@ const ResultPanel = ({
     p: ({ children }: { children?: React.ReactNode }) => (
       <p className="text-foreground/85 mb-4 leading-[1.7] text-[15px]">{children}</p>
     ),
+    ol: ({ children }: { children?: React.ReactNode }) => {
+      // Convert children to array and add step numbers
+      const childArray = Array.isArray(children) ? children : [children];
+      let stepNum = 0;
+      
+      return (
+        <div className="space-y-0 my-4 relative">
+          {/* Vertical connector line */}
+          <div className="absolute left-[11px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
+          {childArray.map((child, index) => {
+            if (child && typeof child === 'object' && 'props' in child) {
+              stepNum++;
+              return (
+                <div key={index} className="flex gap-4 relative">
+                  <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center shrink-0 z-10 shadow-sm">
+                    {stepNum}
+                  </div>
+                  <div className="flex-1 pb-4">
+                    <p className="text-foreground/85 text-[15px] leading-relaxed pt-0.5">{child.props.children}</p>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })}
+        </div>
+      );
+    },
     ul: ({ children }: { children?: React.ReactNode }) => (
       <ul className="space-y-2.5 mb-5 mt-3">{children}</ul>
     ),
