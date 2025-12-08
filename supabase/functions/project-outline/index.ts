@@ -13,11 +13,15 @@ const STRUCTURE_KEYWORDS = [
   'airtable', 'system setup', 'mapping', 'messy', 'chaos', 'documentation'
 ];
 
+// MOMENTUM WORK: Project needs ownership, coordination, unblocking, clarification, renewed movement
+// Momentum is a support TYPE, not urgency level. Urgency modifies hours/tone, not classification.
 const MOMENTUM_KEYWORDS = [
-  'stuck', 'delays', 'delay', 'slipping', 'timeline', 'need ownership',
-  'coordination', 'launch', 'execution', 'blocked', 'delivery',
-  'too many people involved', 'no clear owner', 'project is drifting',
-  'nobody knows', 'deadline', 'momentum', 'rescue'
+  'stuck', 'stalled', 'delays', 'delay', 'slipping', 'timeline', 'need ownership',
+  'coordination', 'launch', 'execution', 'blocked', 'delivery', 'drifting',
+  'too many people', 'too many stakeholders', 'no clear owner', 'nobody knows',
+  'deadline', 'momentum', 'rescue', 'chaotic', 'confusion', 'unclear next steps',
+  'decisions not being made', 'lost direction', 'priorities unclear',
+  'responsibilities unclear', 'coordination missing', 'communication chaos'
 ];
 
 const PROTOTYPE_KEYWORDS = [
@@ -139,7 +143,33 @@ function determineProjectSize(inputs: {
     }
   }
   
-  // MOMENTUM & PROTOTYPE: Can be Small or Medium based on complexity
+  // MOMENTUM WORK: Default to Medium (18-28 hours, 3-5 weeks, €2.800-€4.200)
+  // Momentum work should NEVER default to Small unless explicitly tiny
+  // Upsize to Large when: launch, multiple teams, deadlines slipping, priorities unclear, etc.
+  if (inputs.supportType === 'momentum') {
+    const tinyIndicators = ['just one task', 'single task', 'one quick', 'very quick', 'tiny'];
+    const isTiny = tinyIndicators.some(indicator => fullText.includes(indicator));
+    
+    // Large indicators specific to momentum work
+    const momentumLargeIndicators = [
+      'launch', 'multiple team', 'multi-team', 'deadline', 'slipping',
+      'priorities unclear', 'responsibilities unclear', 'coordination missing',
+      'lost direction', 'scope unclear', 'complex', 'stakeholders'
+    ];
+    const hasLargeIndicator = momentumLargeIndicators.some(indicator => fullText.includes(indicator));
+    
+    if (complexityScore >= 4 || hasLargeIndicator) {
+      return { size: 'large', baseHoursMin: 28, baseHoursMax: 40, weeks: '4–6 weeks' };
+    } else if (isTiny && complexityScore <= -2 && inputs.urgency !== 'Needs attention' && inputs.urgency !== "It's urgent 🔥") {
+      // Only Small if explicitly tiny, low complexity, AND not urgent
+      return { size: 'small', baseHoursMin: 10, baseHoursMax: 15, weeks: '1–2 weeks' };
+    } else {
+      // Default Momentum to Medium (3–5 weeks timeline, 18-28 hours)
+      return { size: 'medium', baseHoursMin: 18, baseHoursMax: 28, weeks: '3–5 weeks' };
+    }
+  }
+  
+  // PROTOTYPE WORK: Can be Small or Medium based on complexity
   // But respect urgency rules - "Needs attention" and "Urgent" avoid Small
   if (complexityScore <= 0 && inputs.urgency !== 'Needs attention' && inputs.urgency !== "It's urgent 🔥") {
     return { size: 'small', baseHoursMin: 8, baseHoursMax: 12, weeks: '1–2 weeks' };
@@ -199,14 +229,28 @@ function calculateModifiers(inputs: {
   return Math.min(modifier, 40);
 }
 
-function calculateCostRange(size: string, modifier: number): { min: number; max: number } {
-  const baseRanges: Record<string, { min: number; max: number }> = {
-    small: { min: 900, max: 1500 },
-    medium: { min: 1500, max: 2800 },
-    large: { min: 2800, max: 4500 },
+function calculateCostRange(size: string, modifier: number, supportType: string): { min: number; max: number } {
+  // Momentum work has higher base ranges (€2.800-€4.200 for medium)
+  const baseRanges: Record<string, Record<string, { min: number; max: number }>> = {
+    momentum: {
+      small: { min: 1200, max: 1800 },
+      medium: { min: 2800, max: 4200 },
+      large: { min: 4200, max: 6000 },
+    },
+    structure: {
+      small: { min: 900, max: 1500 },
+      medium: { min: 1500, max: 2800 },
+      large: { min: 2800, max: 4500 },
+    },
+    prototype: {
+      small: { min: 900, max: 1500 },
+      medium: { min: 1500, max: 2800 },
+      large: { min: 2800, max: 4500 },
+    },
   };
   
-  const range = baseRanges[size] || baseRanges.medium;
+  const typeRanges = baseRanges[supportType] || baseRanges.structure;
+  const range = typeRanges[size] || typeRanges.medium;
   const multiplier = 1 + (modifier / 100);
   
   return {
@@ -236,7 +280,7 @@ serve(async (req) => {
     const supportType = detectSupportType(fullText);
     const projectSize = determineProjectSize({ situation, handoff, urgency, budget, supportType });
     const modifier = calculateModifiers({ urgency, situation, handoff });
-    const costRange = calculateCostRange(projectSize.size, modifier);
+    const costRange = calculateCostRange(projectSize.size, modifier, supportType);
     
     // Adjust hours based on modifier
     const adjustedHoursMin = Math.round(projectSize.baseHoursMin * (1 + modifier / 100));
