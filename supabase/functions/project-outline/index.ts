@@ -5,38 +5,48 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// Keywords for auto-detection of support type
-const STRUCTURE_KEYWORDS = ['process', 'workflow', 'messy', 'unclear', 'tools', 'setup', 'notion', 'structure', 'organise', 'organize', 'optimise', 'optimize', 'chaos', 'complex', 'overview', 'documentation', 'system'];
-const DELIVERY_KEYWORDS = ['stuck', 'delay', 'slipping', 'timeline', 'nobody knows', 'ownership', 'coordination', 'blocked', 'project', 'deliverables', 'implementation', 'momentum', 'rescue', 'deadline'];
-const PROTOTYPE_KEYWORDS = ['prototype', 'design', 'idea', 'concept', 'mockup', 'ux', 'ui', 'screens', 'user flow', 'mvp', 'pitch', 'validate', 'wireframe'];
+// Keywords for auto-detection - STRUCTURE has highest priority
+const STRUCTURE_KEYWORDS = [
+  'workflow', 'process', 'clarity', 'overview', 'tooling', 'templates',
+  'structure', 'organise', 'organize', 'clean up', 'make sense', 'optimise',
+  'optimize', 'inconsistent', 'everyone doing their own thing', 'notion',
+  'airtable', 'system setup', 'mapping', 'messy', 'chaos', 'documentation'
+];
 
-function detectSupportType(text: string): 'structure' | 'delivery' | 'prototype' {
+const MOMENTUM_KEYWORDS = [
+  'stuck', 'delays', 'delay', 'slipping', 'timeline', 'need ownership',
+  'coordination', 'launch', 'execution', 'blocked', 'delivery',
+  'too many people involved', 'no clear owner', 'project is drifting',
+  'nobody knows', 'deadline', 'momentum', 'rescue'
+];
+
+const PROTOTYPE_KEYWORDS = [
+  'idea', 'concept', 'prototype', 'ux', 'ui', 'mockup', 'user flow',
+  'screens', 'pitch', 'validate', 'mvp', 'wireframe', 'design'
+];
+
+function detectSupportType(text: string): 'structure' | 'momentum' | 'prototype' {
   const lowerText = text.toLowerCase();
   
-  let structureScore = 0;
-  let deliveryScore = 0;
-  let prototypeScore = 0;
-  
-  STRUCTURE_KEYWORDS.forEach(kw => {
-    if (lowerText.includes(kw)) structureScore++;
-  });
-  DELIVERY_KEYWORDS.forEach(kw => {
-    if (lowerText.includes(kw)) deliveryScore++;
-  });
-  PROTOTYPE_KEYWORDS.forEach(kw => {
-    if (lowerText.includes(kw)) prototypeScore++;
-  });
-  
-  // Pick dominant type
-  if (prototypeScore >= structureScore && prototypeScore >= deliveryScore && prototypeScore > 0) {
-    return 'prototype';
-  } else if (deliveryScore >= structureScore && deliveryScore > 0) {
-    return 'delivery';
-  } else if (structureScore > 0) {
+  // STRUCTURE has highest priority - if ANY structure keyword appears, classify as structure
+  const hasStructureKeyword = STRUCTURE_KEYWORDS.some(kw => lowerText.includes(kw));
+  if (hasStructureKeyword) {
     return 'structure';
   }
   
-  // Default to structure if no clear match
+  // Check for momentum keywords (only if no structure keywords)
+  const hasMomentumKeyword = MOMENTUM_KEYWORDS.some(kw => lowerText.includes(kw));
+  if (hasMomentumKeyword) {
+    return 'momentum';
+  }
+  
+  // Check for prototype keywords (only if no structure or momentum keywords)
+  const hasPrototypeKeyword = PROTOTYPE_KEYWORDS.some(kw => lowerText.includes(kw));
+  if (hasPrototypeKeyword) {
+    return 'prototype';
+  }
+  
+  // Default to structure (most common and safest)
   return 'structure';
 }
 
@@ -62,26 +72,26 @@ function determineProjectSize(inputs: {
   }
   
   // Large complexity indicators
-  const largeIndicators = ['multiple teams', 'stakeholders', 'integration', 'integrations', 'api', 'apis', 'testing', 'uat', 'e2e', 'migration', 'complex', 'unclear scope', 'certification'];
+  const largeIndicators = ['multiple teams', 'multi-team', 'stakeholders', 'integration', 'integrations', 'api', 'apis', 'testing', 'uat', 'e2e', 'migration', 'complex', 'unclear scope'];
   largeIndicators.forEach(indicator => {
     if (fullText.includes(indicator)) complexityScore += 2;
   });
   
   // Medium complexity indicators
-  const mediumIndicators = ['multiple', 'team', 'alignment', 'messy but solvable', 'several'];
+  const mediumIndicators = ['multiple', 'team', 'alignment', 'several', 'deliverables'];
   mediumIndicators.forEach(indicator => {
     if (fullText.includes(indicator)) complexityScore += 1;
   });
   
   // Simple indicators (reduce complexity)
-  const simpleIndicators = ['simple', 'quick', 'small', 'single', 'just one', 'founder', 'solo'];
+  const simpleIndicators = ['simple', 'quick', 'small', 'single', 'just one', 'founder', 'solo', 'one deliverable'];
   simpleIndicators.forEach(indicator => {
     if (fullText.includes(indicator)) complexityScore -= 1;
   });
   
-  // Urgency can indicate complexity
-  if (inputs.urgency === "It's urgent 🔥") {
-    complexityScore += 1;
+  // Low urgency reduces perceived complexity
+  if (inputs.urgency === 'Just exploring') {
+    complexityScore -= 1;
   }
   
   if (complexityScore <= 0) {
@@ -89,7 +99,7 @@ function determineProjectSize(inputs: {
   } else if (complexityScore <= 3) {
     return { size: 'medium', baseHoursMin: 12, baseHoursMax: 20, weeks: '2–4 weeks' };
   } else {
-    return { size: 'large', baseHoursMin: 20, baseHoursMax: 35, weeks: '4–6 weeks' };
+    return { size: 'large', baseHoursMin: 20, baseHoursMax: 35, weeks: '3–6 weeks' };
   }
 }
 
@@ -127,11 +137,11 @@ function calculateModifiers(inputs: {
   if (fullText.includes('migration')) {
     modifier += 20;
   }
-  if (fullText.includes("don't know") || fullText.includes("unclear") || fullText.includes("we don't know what we need")) {
-    modifier += 10;
-  }
-  if (fullText.includes('multiple team') || fullText.includes('multiple stakeholder')) {
+  if (fullText.includes('multiple team') || fullText.includes('multi-team')) {
     modifier += 15;
+  }
+  if (fullText.includes('unclear') || fullText.includes("don't know what")) {
+    modifier += 10;
   }
   
   // Cap at 40%
@@ -181,94 +191,99 @@ serve(async (req) => {
     const adjustedHoursMin = Math.round(projectSize.baseHoursMin * (1 + modifier / 100));
     const adjustedHoursMax = Math.round(projectSize.baseHoursMax * (1 + modifier / 100));
 
-    // Approach templates - now as numbered steps, conversational tone
+    // Approach templates - paragraph style, conversational
     const approachTemplates = {
-      structure: `1. First, I'd jump in and get a clear picture of how things work today — where the friction is, what's unclear, what's slowing people down.
-2. Then I'll map out a cleaner workflow and simplify things so it actually makes sense.
-3. If tools would help (like Notion or Airtable), I'll set those up — but only if they genuinely make life easier.
-4. You'll end up with clarity, calm, and a way of working your team can actually stick to.`,
+      structure: `I'd start with a fast deep-dive to understand how things work today and where the friction sits.
+
+From there, I map and simplify the workflow into something clear, realistic, and easy for the team to follow.
+
+If a lightweight tool helps (Notion, Airtable), I'll set it up in a way that removes noise instead of adding more.
+
+The goal is calm, clarity, and a structure your team can actually use day-to-day.`,
       
-      delivery: `1. I'd start by digging into what's actually blocking things — where decisions are stuck, what's unclear, who's waiting on what.
-2. Then I'll tighten up the scope and get priorities straight.
-3. From there, I'll take the reins on the next steps so you can stop firefighting.
-4. The goal? Get things moving again without making it more complicated than it needs to be.`,
+      momentum: `I'll begin with a short diagnostic to see what's blocking progress and where things get stuck.
+
+Then I stabilise the scope, set the priorities, and take ownership of the next steps.
+
+Expect clear communication and visible progress each week, without adding unnecessary complexity.
+
+My goal is to bring momentum back quickly and make everything feel manageable again.`,
       
-      prototype: `1. We'd kick off by getting really clear on what this idea needs to do — what problem it solves, who it's for.
-2. I'll sketch out a simple flow that makes sense and feels intuitive.
-3. Then I'll build a clean, clickable prototype you can actually show people.
-4. Perfect for testing with users, getting stakeholder buy-in, or pitching it with confidence.`
+      prototype: `We'll unpack the idea and define what you want it to achieve.
+
+Then I'll shape a simple user flow and build a clean clickable prototype.
+
+It's perfect for testing, alignment, or pitching, giving you something tangible, fast.
+
+You'll have a clear concept that's ready for next steps.`
     };
 
     // Walk away with templates
     const walkAwayTemplates = {
       structure: [
-        'A workflow that actually makes sense',
-        'Less confusion, more clarity',
-        'Practical next steps you can act on',
-        'Tool setup if it helps (Notion, Airtable, etc.)'
+        'A clear, unified workflow',
+        'Practical templates',
+        'Optional lightweight tooling setup',
+        'A simple next-steps plan'
       ],
-      delivery: [
-        'Someone taking ownership of the mess',
-        'Clear priorities everyone understands',
-        'Visible progress week by week',
-        'No more wondering what is happening'
+      momentum: [
+        'Ownership of next steps',
+        'Realistic priorities',
+        'Weekly visible progress',
+        'Clear communication'
       ],
       prototype: [
-        'A clickable prototype you can show',
-        'Clear user flow and screens',
-        'Something real to test or pitch',
-        'Confidence in the direction'
+        'Clickable prototype',
+        'User flow + structure',
+        'Testing-ready concept',
+        'Clear next steps'
       ]
     };
 
     const systemPrompt = `You are Esther, a warm, down-to-earth freelance consultant writing a project plan for someone who just described their situation. 
 
 VOICE & TONE:
-- Write like you're having a friendly chat over coffee, not presenting a formal proposal
-- Use "I'd" instead of "I would", "you'll" instead of "you will" 
-- Be warm but direct — no fluff, no corporate speak, no AI-sounding phrases
+- Warm, conversational, concise, confident
+- Human but not overly casual
+- No corporate jargon, no AI-ish phrasing
+- Clear, energetic, structured
 - NEVER use double hyphens (--). Use proper punctuation, commas, or a single dash if needed
-- Sound like a real person who genuinely wants to help, not a consultant trying to impress
-- It's okay to be casual ("kick off", "dig in", "get things moving")
-- Show you actually understood their situation — reflect it back naturally
+- Sound like someone genuinely rolling up their sleeves to help
 
 DETECTED SUPPORT TYPE: ${supportType}
 PROJECT SIZE: ${projectSize.size}
-CALCULATED TIMELINE: ${projectSize.weeks}
-CALCULATED HOURS: ${adjustedHoursMin}–${adjustedHoursMax} hours
-CALCULATED COST: ${formatCurrency(costRange.min)}–${formatCurrency(costRange.max)}
 
-STRUCTURE (use these exact headers):
+STRUCTURE (use these exact headers and format):
 
-## Got it
-Write 2–3 conversational sentences showing you understood their situation. Start with something like "So..." or "Sounds like..." — make it feel like a natural response, not a summary.
+## Short summary
+Write 2–3 warm sentences rephrasing their situation and what they need. Start naturally with "So..." or "Sounds like..." — show you actually got it.
 
 ## Here's how I'd tackle this
-Output as a numbered list (1. 2. 3. 4.) — adapt these steps to their specific situation:
 ${approachTemplates[supportType]}
+
+(Keep the paragraph style above. Do NOT convert to numbered list.)
 
 ## What you'd walk away with
 ${walkAwayTemplates[supportType].map(item => `- ${item}`).join('\n')}
 
 ## Timeline
 **${projectSize.weeks}**
-Depends on how quickly we can align and how complex things get.
+Depends on alignment speed and complexity.
 
 ## Estimated hours
 **${adjustedHoursMin}–${adjustedHoursMax} hours**
-Give or take — depends on the final scope.
 
 ## Ballpark cost
 **${formatCurrency(costRange.min)}–${formatCurrency(costRange.max)}**
-This is just a rough sense of what similar projects usually need — not a quote.
+Most projects like this typically land in this range depending on final scope.
 
 FORMATTING RULES:
 - Use the exact headers above with ##
-- The approach MUST be a numbered list (1. 2. 3. 4.)
-- Keep it scannable and easy to read
+- Keep the approach as flowing paragraphs (NOT numbered)
+- Be scannable and easy to read
 - Sound like a real human, not a proposal generator
 - Don't add extra sections or mention hourly rates
-- NEVER use double hyphens (--) anywhere in your output`;
+- NEVER use double hyphens (--) anywhere`;
 
     const userPrompt = `User input:
 - Situation: ${situation}
@@ -276,7 +291,7 @@ FORMATTING RULES:
 - Urgency: ${urgency || "not specified"}
 - Budget comfort zone: ${budget || "not specified"}
 
-Generate the project plan using the structure above. Be human, not robotic.`;
+Generate the project plan using the structure above. Be human, warm, and direct.`;
 
     console.log('Calling Lovable AI for project plan...');
     console.log('Detected support type:', supportType);
