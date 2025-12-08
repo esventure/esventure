@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Loader2, Sparkles, ArrowRight, MessageCircle, Calendar } from "lucide-react";
+import { Loader2, Sparkles, ArrowRight, MessageCircle, Calendar, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import ReactMarkdown from "react-markdown";
@@ -10,60 +10,63 @@ import ReactMarkdown from "react-markdown";
 interface FormData {
   situation: string;
   handoff: string;
-  type: string;
+  supportType: string;
   urgency: string;
   context: string;
   budget: string;
+  teamSize: string;
 }
 
-const HELP_TYPES = [
-  { id: "fix", label: "Fix It", desc: "Momentum + delivery" },
-  { id: "prototype", label: "Prototype It", desc: "Idea → Clickable concept" },
-  { id: "structure", label: "Structure It", desc: "Process clarity + systems" },
-  { id: "unsure", label: "Not sure yet", desc: "" },
+const SUPPORT_TYPES = [
+  { id: "messy-process", label: "Make sense of a messy process" },
+  { id: "structure-clarity", label: "Bring structure and clarity to a project" },
+  { id: "idea-to-real", label: "Turn an idea into something real" },
+  { id: "regain-momentum", label: "Help a team regain momentum" },
+  { id: "unsure", label: "Not sure yet" },
 ];
 
 const URGENCY_OPTIONS = [
   "Just exploring",
-  "Want to start soon",
+  "Starting soon",
   "Need momentum",
-  "It's on fire 🔥",
+  "It's getting urgent 🔥",
 ];
 
 const BUDGET_OPTIONS = [
   "< €1.000",
-  "€1.000 – €3.000",
-  "€3.000 – €6.000",
+  "€1.000–€3.000",
+  "€3.000–€6.000",
   "€6.000+",
   "No idea yet",
+];
+
+const TEAM_SIZE_OPTIONS = [
+  { value: "", label: "Select team size" },
+  { value: "solo", label: "Just me" },
+  { value: "small", label: "Small team (2–10)" },
+  { value: "growing", label: "Growing team (10–50)" },
+  { value: "large", label: "Large organisation (50+)" },
 ];
 
 const PillButton = ({
   selected,
   onClick,
   children,
-  description,
 }: {
   selected: boolean;
   onClick: () => void;
   children: React.ReactNode;
-  description?: string;
 }) => (
   <button
     type="button"
     onClick={onClick}
-    className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border-2 flex flex-col items-center gap-0.5 ${
+    className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border-2 text-left ${
       selected
         ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
         : "bg-background text-foreground border-border hover:border-primary/40 hover:bg-muted/50"
     }`}
   >
-    <span>{children}</span>
-    {description && (
-      <span className={`text-xs ${selected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-        {description}
-      </span>
-    )}
+    {children}
   </button>
 );
 
@@ -116,10 +119,10 @@ const PlannerForm = ({
         </Label>
         <Textarea
           id="situation"
-          placeholder="What's happening, what's messy, or what's blocking progress?"
+          placeholder="What's happening right now, what's messy, or what's blocking progress?"
           value={formData.situation}
           onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
-          className="min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base"
+          className="min-h-[80px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base"
         />
       </div>
 
@@ -130,25 +133,24 @@ const PlannerForm = ({
         </Label>
         <Textarea
           id="handoff"
-          placeholder="E.g. build a prototype, untangle a process, coordinate testing, get a slipping project moving again…"
+          placeholder="E.g. prepare a prototype, untangle a workflow, coordinate testing, rescue a slipping project…"
           value={formData.handoff}
           onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
-          className="min-h-[100px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base"
+          className="min-h-[80px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base"
         />
       </div>
 
-      {/* 3. What type of help do you need? */}
+      {/* 3. What kind of support do you need? */}
       <div className="space-y-3">
         <Label className="text-base font-semibold block text-foreground">
-          3. What type of help do you need?
+          3. What kind of support do you need?
         </Label>
         <div className="flex flex-wrap gap-2">
-          {HELP_TYPES.map((type) => (
+          {SUPPORT_TYPES.map((type) => (
             <PillButton
               key={type.id}
-              selected={formData.type === type.id}
-              onClick={() => setFormData({ ...formData, type: type.id })}
-              description={type.desc}
+              selected={formData.supportType === type.id}
+              onClick={() => setFormData({ ...formData, supportType: type.id })}
             >
               {type.label}
             </PillButton>
@@ -156,10 +158,10 @@ const PlannerForm = ({
         </div>
       </div>
 
-      {/* 4. How urgent is it? */}
+      {/* 4. How urgent is this? */}
       <div className="space-y-3">
         <Label className="text-base font-semibold block text-foreground">
-          4. How urgent is it?
+          4. How urgent is this?
         </Label>
         <div className="flex flex-wrap gap-2">
           {URGENCY_OPTIONS.map((urgency) => (
@@ -182,10 +184,10 @@ const PlannerForm = ({
         </Label>
         <Textarea
           id="context"
-          placeholder="Tools you're using, deadlines, team setup, constraints…"
+          placeholder="Tools, deadlines, team setup, or constraints? Add anything important."
           value={formData.context}
           onChange={(e) => setFormData({ ...formData, context: e.target.value })}
-          className="min-h-[80px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base"
+          className="min-h-[70px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base"
         />
       </div>
 
@@ -207,7 +209,33 @@ const PlannerForm = ({
           ))}
         </div>
         <p className="text-xs text-muted-foreground italic">
-          This helps me shape a realistic scope — not a commitment.
+          Just to shape a realistic scope — not a commitment.
+        </p>
+      </div>
+
+      {/* 7. Team size (optional) */}
+      <div className="space-y-2">
+        <Label htmlFor="teamSize" className="text-base font-semibold block text-foreground">
+          7. Team size{" "}
+          <span className="font-normal text-muted-foreground text-sm">(optional)</span>
+        </Label>
+        <div className="relative">
+          <select
+            id="teamSize"
+            value={formData.teamSize}
+            onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
+            className="w-full px-4 py-3 rounded-lg bg-muted/30 border-2 border-border/50 text-foreground text-sm font-medium appearance-none cursor-pointer focus:border-primary focus:bg-background transition-colors"
+          >
+            {TEAM_SIZE_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
+        </div>
+        <p className="text-xs text-muted-foreground italic">
+          Only affects alignment and timing.
         </p>
       </div>
 
@@ -312,9 +340,6 @@ const ResultPanel = ({
           <ReactMarkdown components={markdownComponents}>{result}</ReactMarkdown>
 
           <div className="border-t border-border/50 pt-6 mt-6">
-            <p className="text-sm text-muted-foreground mb-5 italic">
-              This isn't a quote — just a sense of what similar projects needed.
-            </p>
             <Button
               onClick={() => window.open("https://calendly.com/esventure", "_blank")}
               className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 group"
@@ -324,7 +349,7 @@ const ResultPanel = ({
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <p className="text-xs text-muted-foreground mt-3">
-              No pressure — just to confirm fit and shape the exact scope.
+              No pressure — just to confirm fit and shape the final scope.
             </p>
           </div>
         </motion.div>
@@ -347,10 +372,11 @@ const ProjectPlanner = () => {
   const [formData, setFormData] = useState<FormData>({
     situation: "",
     handoff: "",
-    type: "",
+    supportType: "",
     urgency: "",
     context: "",
     budget: "",
+    teamSize: "",
   });
   const [result, setResult] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
