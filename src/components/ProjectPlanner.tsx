@@ -10,45 +10,26 @@ import ReactMarkdown from "react-markdown";
 interface FormData {
   situation: string;
   handoff: string;
-  supportType: string;
   urgency: string;
-  context: string;
   budget: string;
-  teamSize: string;
 }
-
-const SUPPORT_TYPES = [
-  { id: "messy-process", label: "Make sense of a messy process" },
-  { id: "structure-clarity", label: "Bring structure and clarity to a project" },
-  { id: "idea-to-real", label: "Turn an idea into something real" },
-  { id: "regain-momentum", label: "Help a team regain momentum" },
-  { id: "unsure", label: "Not sure yet" },
-];
 
 const URGENCY_OPTIONS = [
   "Just exploring",
-  "Starting soon",
+  "Soon",
   "Need momentum",
-  "It's getting urgent 🔥",
+  "It's urgent 🔥",
 ];
 
 const BUDGET_OPTIONS = [
-  "< €1.000",
-  "€1.000–€3.000",
-  "€3.000–€6.000",
-  "€6.000+",
-  "No idea yet",
+  { value: "", label: "No idea yet" },
+  { value: "< €1.000", label: "< €1.000" },
+  { value: "€1.000–€3.000", label: "€1.000–€3.000" },
+  { value: "€3.000–€6.000", label: "€3.000–€6.000" },
+  { value: "€6.000+", label: "€6.000+" },
 ];
 
-const TEAM_SIZE_OPTIONS = [
-  { value: "", label: "Select team size" },
-  { value: "solo", label: "Just me" },
-  { value: "small", label: "Small team (2–10)" },
-  { value: "growing", label: "Growing team (10–50)" },
-  { value: "large", label: "Large organisation (50+)" },
-];
-
-const PillButton = ({
+const UrgencyChip = ({
   selected,
   onClick,
   children,
@@ -60,41 +41,12 @@ const PillButton = ({
   <button
     type="button"
     onClick={onClick}
-    className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border-2 text-left ${
+    className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border-2 ${
       selected
         ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
         : "bg-background text-foreground border-border hover:border-primary/40 hover:bg-muted/50"
     }`}
   >
-    {children}
-  </button>
-);
-
-const RadioOption = ({
-  selected,
-  onClick,
-  children,
-}: {
-  selected: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 w-full text-left ${
-      selected
-        ? "bg-primary/10 text-foreground border-2 border-primary"
-        : "bg-muted/30 text-foreground border-2 border-transparent hover:bg-muted/50"
-    }`}
-  >
-    <div
-      className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
-        selected ? "border-primary" : "border-muted-foreground/50"
-      }`}
-    >
-      {selected && <div className="w-2 h-2 rounded-full bg-primary" />}
-    </div>
     {children}
   </button>
 );
@@ -112,10 +64,10 @@ const PlannerForm = ({
 }) => {
   return (
     <div className="space-y-6">
-      {/* 1. What's the situation? */}
+      {/* 1. What's going on? */}
       <div className="space-y-2">
         <Label htmlFor="situation" className="text-base font-semibold block text-foreground">
-          1. What's the situation?
+          1. What's going on?
         </Label>
         <Textarea
           id="situation"
@@ -133,100 +85,45 @@ const PlannerForm = ({
         </Label>
         <Textarea
           id="handoff"
-          placeholder="E.g. prepare a prototype, untangle a workflow, coordinate testing, rescue a slipping project…"
+          placeholder="E.g. prototype something, clean up a workflow, coordinate testing, get a project moving again…"
           value={formData.handoff}
           onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
           className="min-h-[80px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base"
         />
       </div>
 
-      {/* 3. What kind of support do you need? */}
+      {/* 3. How urgent is this? */}
       <div className="space-y-3">
         <Label className="text-base font-semibold block text-foreground">
-          3. What kind of support do you need?
-        </Label>
-        <div className="flex flex-wrap gap-2">
-          {SUPPORT_TYPES.map((type) => (
-            <PillButton
-              key={type.id}
-              selected={formData.supportType === type.id}
-              onClick={() => setFormData({ ...formData, supportType: type.id })}
-            >
-              {type.label}
-            </PillButton>
-          ))}
-        </div>
-      </div>
-
-      {/* 4. How urgent is this? */}
-      <div className="space-y-3">
-        <Label className="text-base font-semibold block text-foreground">
-          4. How urgent is this?
+          3. How urgent is this?
         </Label>
         <div className="flex flex-wrap gap-2">
           {URGENCY_OPTIONS.map((urgency) => (
-            <PillButton
+            <UrgencyChip
               key={urgency}
               selected={formData.urgency === urgency}
               onClick={() => setFormData({ ...formData, urgency })}
             >
               {urgency}
-            </PillButton>
+            </UrgencyChip>
           ))}
         </div>
       </div>
 
-      {/* 5. Anything else I should know? */}
+      {/* Optional: Budget comfort zone */}
       <div className="space-y-2">
-        <Label htmlFor="context" className="text-base font-semibold block text-foreground">
-          5. Anything else I should know?{" "}
-          <span className="font-normal text-muted-foreground text-sm">(optional)</span>
-        </Label>
-        <Textarea
-          id="context"
-          placeholder="Tools, deadlines, team setup, or constraints? Add anything important."
-          value={formData.context}
-          onChange={(e) => setFormData({ ...formData, context: e.target.value })}
-          className="min-h-[70px] resize-none bg-muted/30 border-border/50 focus:border-primary focus:bg-background transition-colors text-base"
-        />
-      </div>
-
-      {/* 6. Budget comfort zone */}
-      <div className="space-y-3">
-        <Label className="text-base font-semibold block text-foreground">
-          6. Budget comfort zone{" "}
-          <span className="font-normal text-muted-foreground text-sm">(optional)</span>
-        </Label>
-        <div className="space-y-2">
-          {BUDGET_OPTIONS.map((budget) => (
-            <RadioOption
-              key={budget}
-              selected={formData.budget === budget}
-              onClick={() => setFormData({ ...formData, budget })}
-            >
-              {budget}
-            </RadioOption>
-          ))}
-        </div>
-        <p className="text-xs text-muted-foreground italic">
-          Just to shape a realistic scope — not a commitment.
-        </p>
-      </div>
-
-      {/* 7. Team size (optional) */}
-      <div className="space-y-2">
-        <Label htmlFor="teamSize" className="text-base font-semibold block text-foreground">
-          7. Team size{" "}
+        <Label htmlFor="budget" className="text-base font-semibold block text-foreground">
+          Budget comfort zone{" "}
           <span className="font-normal text-muted-foreground text-sm">(optional)</span>
         </Label>
         <div className="relative">
           <select
-            id="teamSize"
-            value={formData.teamSize}
-            onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
+            id="budget"
+            value={formData.budget}
+            onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
             className="w-full px-4 py-3 rounded-lg bg-muted/30 border-2 border-border/50 text-foreground text-sm font-medium appearance-none cursor-pointer focus:border-primary focus:bg-background transition-colors"
           >
-            {TEAM_SIZE_OPTIONS.map((option) => (
+            {BUDGET_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -235,7 +132,7 @@ const PlannerForm = ({
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
         </div>
         <p className="text-xs text-muted-foreground italic">
-          Only affects alignment and timing.
+          Just to help shape a realistic scope — not a commitment.
         </p>
       </div>
 
@@ -372,11 +269,8 @@ const ProjectPlanner = () => {
   const [formData, setFormData] = useState<FormData>({
     situation: "",
     handoff: "",
-    supportType: "",
     urgency: "",
-    context: "",
     budget: "",
-    teamSize: "",
   });
   const [result, setResult] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
