@@ -178,7 +178,18 @@ const Index = () => {
                 y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
                 opacity: { duration: 0.5 }
               }}
-              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              whileHover={{ 
+                scale: 1.03, 
+                boxShadow: [
+                  "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)",
+                  "0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 0 35px rgba(139, 92, 246, 0.25)",
+                  "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)"
+                ],
+                transition: { 
+                  scale: { duration: 0.2 },
+                  boxShadow: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                }
+              }}
               className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default"
             >
               <span className="text-3xl mb-3">✨</span>
@@ -200,7 +211,18 @@ const Index = () => {
                 y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
                 opacity: { duration: 0.5, delay: 0.15 }
               }}
-              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              whileHover={{ 
+                scale: 1.03, 
+                boxShadow: [
+                  "0 20px 25px -5px rgba(250, 204, 21, 0.1), 0 0 20px rgba(250, 204, 21, 0.15)",
+                  "0 20px 25px -5px rgba(250, 204, 21, 0.25), 0 0 35px rgba(250, 204, 21, 0.3)",
+                  "0 20px 25px -5px rgba(250, 204, 21, 0.1), 0 0 20px rgba(250, 204, 21, 0.15)"
+                ],
+                transition: { 
+                  scale: { duration: 0.2 },
+                  boxShadow: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                }
+              }}
               className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#FDF9E4] shadow-xl shadow-secondary/10 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default"
             >
               <span className="text-3xl mb-3">🧩</span>
@@ -222,7 +244,18 @@ const Index = () => {
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 },
                 opacity: { duration: 0.5, delay: 0.3 }
               }}
-              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              whileHover={{ 
+                scale: 1.03, 
+                boxShadow: [
+                  "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)",
+                  "0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 0 35px rgba(139, 92, 246, 0.25)",
+                  "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)"
+                ],
+                transition: { 
+                  scale: { duration: 0.2 },
+                  boxShadow: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                }
+              }}
               className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default"
             >
               <span className="text-3xl mb-3">⚡</span>
