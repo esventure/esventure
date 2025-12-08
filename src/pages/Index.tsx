@@ -173,9 +173,10 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              animate={{ y: [0, -8, 0] }}
+              animate={{ y: [0, -8, 0], rotate: [0, 2, 0, -2, 0] }}
               transition={{ 
                 y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                rotate: { duration: 6, repeat: Infinity, ease: "easeInOut" },
                 opacity: { duration: 0.5 }
               }}
               whileHover={{ 
@@ -206,9 +207,10 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              animate={{ y: [0, -8, 0] }}
+              animate={{ y: [0, -8, 0], rotate: [0, -2, 0, 2, 0] }}
               transition={{ 
                 y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 },
+                rotate: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.3 },
                 opacity: { duration: 0.5, delay: 0.15 }
               }}
               whileHover={{ 
@@ -239,9 +241,10 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              animate={{ y: [0, -8, 0] }}
+              animate={{ y: [0, -8, 0], rotate: [0, 1.5, 0, -1.5, 0] }}
               transition={{ 
                 y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 },
+                rotate: { duration: 8, repeat: Infinity, ease: "easeInOut", delay: 0.7 },
                 opacity: { duration: 0.5, delay: 0.3 }
               }}
               whileHover={{ 
