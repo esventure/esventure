@@ -141,46 +141,6 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Why Es Venture */}
-      <section className="bg-background py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-12">
-              {[{
-              text: "Less confusion"
-            }, {
-              text: "Less guessing"
-            }, {
-              text: "More done"
-            }].map((item, index) => <motion.div key={index} className="flex flex-col items-center text-center gap-4" initial={{
-              opacity: 0,
-              y: 30
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true,
-              margin: "-100px"
-            }} transition={{
-              duration: 0.5,
-              delay: index * 0.15
-            }}>
-                  <motion.div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center" whileHover={{
-                scale: 1.1,
-                rotate: 360
-              }} transition={{
-                duration: 0.5
-              }}>
-                    <Check className="w-8 h-8 text-secondary-foreground" strokeWidth={3} />
-                  </motion.div>
-                  <span className="text-2xl text-foreground font-extrabold font-sans">{item.text}</span>
-                </motion.div>)}
-            </div>
-          </div>
-        </div>
-      </section>
-
-
 
       {/* Services */}
       <section id="services" className="container mx-auto px-4 pb-24">
