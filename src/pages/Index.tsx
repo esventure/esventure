@@ -149,6 +149,99 @@ const Index = () => {
         </motion.div>
       </section>
 
+      {/* The Es Venture Effect */}
+      <section className="container mx-auto px-4 py-24">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-7xl font-black mb-6 text-foreground font-poppins">
+              The Es Venture Effect
+            </h2>
+            <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto">
+              The impact of working together — clear, fast, and forward.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Effect 1: Faster clarity */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0 }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+            >
+              <div className="relative h-full p-8 rounded-3xl bg-primary/5 border border-primary/20 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all text-center group">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative">
+                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-primary/10 flex items-center justify-center text-3xl">
+                    ✨
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground font-poppins mb-3">
+                    Faster clarity
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed">
+                    Ideas and projects become clear, focused and easy to act on.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Effect 2: Cleaner workflows */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+            >
+              <div className="relative h-full p-8 rounded-3xl bg-secondary/20 border border-secondary/30 shadow-sm hover:shadow-lg hover:shadow-secondary/20 transition-all text-center group">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative">
+                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-secondary/30 flex items-center justify-center text-3xl">
+                    🧩
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground font-poppins mb-3">
+                    Cleaner workflows
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed">
+                    Processes get untangled, organised and easier to follow.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Effect 3: Projects that finally move */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+            >
+              <div className="relative h-full p-8 rounded-3xl bg-primary/5 border border-primary/20 shadow-sm hover:shadow-lg hover:shadow-primary/10 transition-all text-center group">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative">
+                  <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-primary/10 flex items-center justify-center text-3xl">
+                    ⚡
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground font-poppins mb-3">
+                    Projects that finally move
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed">
+                    Movement, ownership and progress you can actually feel.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* Services */}
       <section id="services" className="container mx-auto px-4 py-24">
