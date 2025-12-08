@@ -78,11 +78,12 @@ const Index = () => {
             duration: 0.8,
             delay: 0.2
           }}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[1.1] font-poppins">
-                I help founders, small teams and growing companies move faster.
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                I help teams move forward,<br />
+                <span className="text-secondary">let's go.</span>
               </h1>
-              <p className="text-lg md:text-xl text-primary-foreground/80 max-w-xl leading-relaxed">
-                Whether your project is stuck, your idea needs a prototype, or your processes are a mess: I jump in, organise the chaos and make things work again.
+              <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
+                Break through roadblocks, speed up projects, and work smarter.
               </p>
               <motion.div className="pt-4" initial={{
               opacity: 0,
