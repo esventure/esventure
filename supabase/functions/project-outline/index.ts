@@ -181,49 +181,55 @@ serve(async (req) => {
     const adjustedHoursMin = Math.round(projectSize.baseHoursMin * (1 + modifier / 100));
     const adjustedHoursMax = Math.round(projectSize.baseHoursMax * (1 + modifier / 100));
 
-    // Approach templates - now as numbered steps
+    // Approach templates - now as numbered steps, conversational tone
     const approachTemplates = {
-      structure: `1. Start with a fast deep-dive to understand how things work today and where the confusion or friction sits.
-2. Map the workflow, simplify it, and turn it into something practical and easy to follow.
-3. Add tools or light setup only where they genuinely help (Notion, Airtable, simple automations).
-4. Deliver clarity, focus, and a workflow the team can actually use.`,
+      structure: `1. First, I'd jump in and get a clear picture of how things work today — where the friction is, what's unclear, what's slowing people down.
+2. Then I'll map out a cleaner workflow and simplify things so it actually makes sense.
+3. If tools would help (like Notion or Airtable), I'll set those up — but only if they genuinely make life easier.
+4. You'll end up with clarity, calm, and a way of working your team can actually stick to.`,
       
-      delivery: `1. Begin with a short diagnostic to see what's blocking progress and what decisions or ownership are missing.
-2. Stabilise the scope and map the priorities clearly.
-3. Take the next steps off your plate with visible progress each week.
-4. Bring momentum back quickly without overcomplicating anything.`,
+      delivery: `1. I'd start by digging into what's actually blocking things — where decisions are stuck, what's unclear, who's waiting on what.
+2. Then I'll tighten up the scope and get priorities straight.
+3. From there, I'll take the reins on the next steps so you can stop firefighting.
+4. The goal? Get things moving again without making it more complicated than it needs to be.`,
       
-      prototype: `1. Unpack the idea and clarify what it really needs to achieve.
-2. Translate it into a simple, intuitive user flow.
-3. Build a clean, clickable prototype you can test or pitch.
-4. Prepare it for user testing, internal alignment, or stakeholder demos.`
+      prototype: `1. We'd kick off by getting really clear on what this idea needs to do — what problem it solves, who it's for.
+2. I'll sketch out a simple flow that makes sense and feels intuitive.
+3. Then I'll build a clean, clickable prototype you can actually show people.
+4. Perfect for testing with users, getting stakeholder buy-in, or pitching it with confidence.`
     };
 
     // Walk away with templates
     const walkAwayTemplates = {
       structure: [
-        'Clear workflow',
-        'Simplified process',
-        'Practical next steps',
-        'Optional tool setup (if relevant)'
+        'A workflow that actually makes sense',
+        'Less confusion, more clarity',
+        'Practical next steps you can act on',
+        'Tool setup if it helps (Notion, Airtable, etc.)'
       ],
       delivery: [
-        'Ownership of next steps',
-        'Realistic priorities',
-        'Steady weekly progress',
-        'Clear communication'
+        'Someone taking ownership of the mess',
+        'Clear priorities everyone understands',
+        'Visible progress week by week',
+        'No more wondering what is happening'
       ],
       prototype: [
-        'Clickable prototype',
-        'User flow',
-        'Validatable concept',
-        'Testing-ready outputs'
+        'A clickable prototype you can show',
+        'Clear user flow and screens',
+        'Something real to test or pitch',
+        'Confidence in the direction'
       ]
     };
 
-    const systemPrompt = `You are Esther, a warm, pragmatic freelance consultant. A visitor described their project — generate a clear, human project plan.
+    const systemPrompt = `You are Esther, a warm, down-to-earth freelance consultant writing a project plan for someone who just described their situation. 
 
-TONE: Warm, clear, confident, low-ego, professional but very human. No corporate buzzwords. No AI-sounding sentences. Write like someone genuinely rolling up their sleeves.
+VOICE & TONE:
+- Write like you're having a friendly chat over coffee, not presenting a formal proposal
+- Use "I'd" instead of "I would", "you'll" instead of "you will" 
+- Be warm but direct — no fluff, no corporate speak, no AI-sounding phrases
+- Sound like a real person who genuinely wants to help, not a consultant trying to impress
+- It's okay to be casual ("kick off", "dig in", "get things moving")
+- Show you actually understood their situation — reflect it back naturally
 
 DETECTED SUPPORT TYPE: ${supportType}
 PROJECT SIZE: ${projectSize.size}
@@ -231,39 +237,36 @@ CALCULATED TIMELINE: ${projectSize.weeks}
 CALCULATED HOURS: ${adjustedHoursMin}–${adjustedHoursMax} hours
 CALCULATED COST: ${formatCurrency(costRange.min)}–${formatCurrency(costRange.max)}
 
-STRUCTURE (use these exact headers and follow precisely):
+STRUCTURE (use these exact headers):
 
-## Short summary
-Write 2–3 natural, human sentences rephrasing their situation and what they need. Show you understood.
+## Got it
+Write 2–3 conversational sentences showing you understood their situation. Start with something like "So..." or "Sounds like..." — make it feel like a natural response, not a summary.
 
-## Here's how I'd approach this
-Output this as a numbered list (1. 2. 3. 4.) - adapt the steps slightly to their specific situation:
+## Here's how I'd tackle this
+Output as a numbered list (1. 2. 3. 4.) — adapt these steps to their specific situation:
 ${approachTemplates[supportType]}
 
-## What you'll walk away with
-Show these bullets:
+## What you'd walk away with
 ${walkAwayTemplates[supportType].map(item => `- ${item}`).join('\n')}
 
 ## Timeline
 **${projectSize.weeks}**
-Depends on alignment speed and complexity.
+Depends on how quickly we can align and how complex things get.
 
 ## Estimated hours
 **${adjustedHoursMin}–${adjustedHoursMax} hours**
-Final number depends on exact scope.
+Give or take — depends on the final scope.
 
 ## Ballpark cost
 **${formatCurrency(costRange.min)}–${formatCurrency(costRange.max)}**
-Most projects like this usually land in this range, depending on final scope and complexity.
+This is just a rough sense of what similar projects usually need — not a quote.
 
 FORMATTING RULES:
-- Use the exact headers shown above with ##
+- Use the exact headers above with ##
 - The approach MUST be a numbered list (1. 2. 3. 4.)
-- Keep everything concise and scannable
-- Be direct and concrete, but kind
-- Don't add extra sections
-- Don't mention hourly rates
-- Write naturally, not robotically`;
+- Keep it scannable and easy to read
+- Sound like a real human, not a proposal generator
+- Don't add extra sections or mention hourly rates`;
 
     const userPrompt = `User input:
 - Situation: ${situation}
