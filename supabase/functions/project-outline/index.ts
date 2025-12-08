@@ -126,6 +126,110 @@ const PROTOTYPE_KEYWORDS = [
 ];
 
 // ============================================================================
+// MOMENTUM SUB-TYPE DETECTION
+// ============================================================================
+
+type MomentumSubType = 'calendar_drift' | 'deadline_pressure' | 'coordination_issues' | 'progress_blocked' | 'general';
+
+interface DetectedSignals {
+  matchedOverrideKeywords: string[];
+  matchedMomentumKeywords: string[];
+  matchedStructureKeywords: string[];
+  matchedPrototypeKeywords: string[];
+  complexityIndicators: string[];
+  momentumSubType: MomentumSubType;
+  userPainPoints: string[];
+}
+
+function extractDetectedSignals(text: string): DetectedSignals {
+  const lowerText = text.toLowerCase();
+  
+  // Extract matched keywords
+  const matchedOverrideKeywords = MOMENTUM_OVERRIDE_KEYWORDS.filter(kw => lowerText.includes(kw));
+  const matchedMomentumKeywords = MOMENTUM_KEYWORDS.filter(kw => lowerText.includes(kw));
+  const matchedStructureKeywords = STRUCTURE_KEYWORDS.filter(kw => lowerText.includes(kw));
+  const matchedPrototypeKeywords = PROTOTYPE_KEYWORDS.filter(kw => lowerText.includes(kw));
+  
+  // Extract complexity indicators
+  const complexityKeywords = [
+    'multiple teams', 'multi-team', 'stakeholders', 'integration', 'integrations',
+    'api', 'apis', 'testing', 'uat', 'migration', 'complex', 'unclear scope',
+    'launch', 'many teams', 'enterprise', 'organization-wide', 'company-wide'
+  ];
+  const complexityIndicators = complexityKeywords.filter(kw => lowerText.includes(kw));
+  
+  // Detect momentum sub-type
+  let momentumSubType: MomentumSubType = 'general';
+  
+  // Calendar/Planning Drift signals
+  const calendarDriftSignals = [
+    'calendar', 'content calendar', 'marketing calendar', 'never stick to',
+    'not following', 'ignore the calendar', 'planning but not doing',
+    'meetings turn into debates', 'debating instead of deciding'
+  ];
+  const hasCalendarDrift = calendarDriftSignals.some(s => lowerText.includes(s));
+  
+  // Deadline/Schedule Pressure signals
+  const deadlineSignals = [
+    'deadline', 'behind schedule', 'slipping', 'catch up', 'running late',
+    'time-sensitive', 'tight timeline', 'launch', 'falling behind'
+  ];
+  const hasDeadlinePressure = deadlineSignals.some(s => lowerText.includes(s));
+  
+  // Coordination/Ownership Issues signals
+  const coordinationSignals = [
+    'unclear roles', 'unclear ownership', 'who does what', 'duplicated work',
+    'missed tasks', 'nobody owns', 'lack of coordination', 'coordination',
+    'multiple teams', 'no clear owner', 'responsibilities unclear'
+  ];
+  const hasCoordinationIssues = coordinationSignals.some(s => lowerText.includes(s));
+  
+  // Progress Blocked signals
+  const progressBlockedSignals = [
+    'stuck', 'stalled', 'blocked', 'no progress', 'no movement',
+    'nothing gets done', 'waiting on each other', 'not moving forward'
+  ];
+  const hasProgressBlocked = progressBlockedSignals.some(s => lowerText.includes(s));
+  
+  // Prioritize sub-type (most specific first)
+  if (hasCoordinationIssues) momentumSubType = 'coordination_issues';
+  else if (hasCalendarDrift) momentumSubType = 'calendar_drift';
+  else if (hasDeadlinePressure) momentumSubType = 'deadline_pressure';
+  else if (hasProgressBlocked) momentumSubType = 'progress_blocked';
+  
+  // Extract user pain points (key phrases that describe their specific situation)
+  const painPointPatterns = [
+    /we (never|don't|can't|aren't) [^.!?]+/gi,
+    /things (keep|are|get) [^.!?]+/gi,
+    /nobody (knows|owns|is) [^.!?]+/gi,
+    /no one (knows|owns|is) [^.!?]+/gi,
+    /everyone (does|interprets) [^.!?]+/gi,
+    /meetings [^.!?]+/gi,
+    /team is [^.!?]+/gi,
+    /priorities [^.!?]+/gi,
+    /deadlines? [^.!?]+/gi
+  ];
+  
+  const userPainPoints: string[] = [];
+  for (const pattern of painPointPatterns) {
+    const matches = text.match(pattern);
+    if (matches) {
+      userPainPoints.push(...matches.slice(0, 2)); // Limit to 2 per pattern
+    }
+  }
+  
+  return {
+    matchedOverrideKeywords: matchedOverrideKeywords.slice(0, 5), // Top 5
+    matchedMomentumKeywords: matchedMomentumKeywords.slice(0, 5),
+    matchedStructureKeywords: matchedStructureKeywords.slice(0, 5),
+    matchedPrototypeKeywords: matchedPrototypeKeywords.slice(0, 5),
+    complexityIndicators: complexityIndicators.slice(0, 5),
+    momentumSubType,
+    userPainPoints: userPainPoints.slice(0, 4) // Top 4 pain points
+  };
+}
+
+// ============================================================================
 // SUPPORT TYPE DETECTION
 // ============================================================================
 
@@ -439,6 +543,93 @@ function formatCurrency(amount: number): string {
 }
 
 // ============================================================================
+// DYNAMIC APPROACH GUIDANCE (replaces static templates)
+// ============================================================================
+
+function getMomentumApproachGuidance(subType: MomentumSubType, painPoints: string[]): string {
+  const painContext = painPoints.length > 0 
+    ? `\nUser's specific pain points to address: "${painPoints.join('", "')}"` 
+    : '';
+  
+  const subTypeGuidance: Record<MomentumSubType, string> = {
+    calendar_drift: `The user is struggling with plans/calendars not being followed. Focus step 2 on why the calendar isn't sticking and how to make planning realistic and actually followed.`,
+    deadline_pressure: `The user has deadline/schedule pressure. Focus step 2 on stabilising what's in scope NOW and cutting what can wait. Emphasize speed and focus.`,
+    coordination_issues: `The user has ownership/coordination confusion. Focus step 2 on clarifying who owns what, eliminating duplicate work, and setting clear handoffs.`,
+    progress_blocked: `The user feels stuck or blocked. Focus step 2 on identifying and removing specific blockers, getting quick wins to rebuild momentum.`,
+    general: `Focus on general momentum restoration with clear ownership and visible progress.`
+  };
+
+  return `Write 4 numbered steps tailored to THIS specific situation. Reference their actual problem.
+${subTypeGuidance[subType]}
+${painContext}
+
+Your steps should follow this structure but use THEIR language and situation:
+1. Diagnostic step - understand what's specifically blocking them (reference their situation)
+2. [Sub-type specific action] - the core fix for their type of problem
+3. Ownership & coordination - clarify who does what and how decisions get made
+4. Visible progress - establish weekly rhythm so they SEE things moving
+
+Do NOT use generic language. Reference specifics from their input.`;
+}
+
+function getStructureApproachGuidance(painPoints: string[]): string {
+  const painContext = painPoints.length > 0 
+    ? `\nUser's specific pain points to address: "${painPoints.join('", "')}"` 
+    : '';
+
+  return `Write 4 numbered steps tailored to THIS specific situation. Reference their actual problem.
+${painContext}
+
+Your steps should follow this structure but use THEIR language and situation:
+1. Discovery step - understand their current state and where the friction is
+2. Mapping step - document and simplify the workflow into something usable
+3. Tools/templates - set up lightweight structure (Notion, templates, etc.) if helpful
+4. Handover - deliver something they can actually use day-to-day
+
+Do NOT use generic language. Reference specifics from their input.`;
+}
+
+function getPrototypeApproachGuidance(painPoints: string[]): string {
+  const painContext = painPoints.length > 0 
+    ? `\nUser's specific goals: "${painPoints.join('", "')}"` 
+    : '';
+
+  return `Write 4 numbered steps tailored to THIS specific concept. Reference their actual idea.
+${painContext}
+
+Your steps should follow this structure but use THEIR language and situation:
+1. Unpack the idea - define what they want to achieve and who it's for
+2. User flow - map out the key screens/interactions
+3. Build - create a clickable prototype they can test or pitch
+4. Ready for next steps - prepare it for testing, alignment, or presentation
+
+Do NOT use generic language. Reference specifics from their input.`;
+}
+
+// ============================================================================
+// DYNAMIC WALK-AWAY GUIDANCE (replaces static templates)
+// ============================================================================
+
+function getWalkAwayGuidance(supportType: 'structure' | 'momentum' | 'prototype', subType: MomentumSubType): string {
+  const baseGuidance = `List 3-4 tangible outcomes they'd walk away with, tailored to their specific situation.
+Use bullets (-). Reference what they actually mentioned needing.
+Keep each bullet short (5-10 words max).`;
+
+  const typeHints: Record<string, string> = {
+    structure: `Focus on: clarity, usable workflows, templates, reduced confusion.`,
+    momentum_calendar_drift: `Focus on: a calendar that sticks, realistic planning rhythm, decisions that get made.`,
+    momentum_deadline_pressure: `Focus on: clear priorities, protected timeline, focused scope, visible progress.`,
+    momentum_coordination_issues: `Focus on: clear ownership, no duplicate work, smooth handoffs, everyone knowing their role.`,
+    momentum_progress_blocked: `Focus on: blockers removed, momentum restored, quick wins, forward movement.`,
+    momentum_general: `Focus on: ownership, momentum, weekly progress, clear next steps.`,
+    prototype: `Focus on: clickable prototype, clear user flow, something to test/pitch, ready for next steps.`
+  };
+
+  const key = supportType === 'momentum' ? `momentum_${subType}` : supportType;
+  return `${baseGuidance}\n${typeHints[key] || ''}`;
+}
+
+// ============================================================================
 // MAIN HANDLER
 // ============================================================================
 
@@ -459,66 +650,44 @@ serve(async (req) => {
     const fullText = `${situation} ${handoff}`;
     const supportType = detectSupportType(fullText, urgency);
     
-    // 2. DETERMINE PROJECT SIZE (includes urgency-based sizing)
+    // 2. EXTRACT DETECTED SIGNALS for contextual output
+    const detectedSignals = extractDetectedSignals(fullText);
+    
+    // 3. DETERMINE PROJECT SIZE (includes urgency-based sizing)
     const sizeConfig = determineProjectSize({ situation, handoff, urgency, budget, supportType });
     
-    // 3. CALCULATE HOUR MODIFIER (urgency + complexity)
+    // 4. CALCULATE HOUR MODIFIER (urgency + complexity)
     const hourModifier = calculateHourModifier({ urgency, situation, handoff });
     
-    // 4. ADJUST HOURS (modifiers apply to hours, NOT to cost buckets)
+    // 5. ADJUST HOURS (modifiers apply to hours, NOT to cost buckets)
     const adjustedHoursMin = Math.round(sizeConfig.hoursMin * (1 + hourModifier / 100));
     const adjustedHoursMax = Math.round(sizeConfig.hoursMax * (1 + hourModifier / 100));
     
-    // 5. COST COMES FROM FIXED BUCKET (never calculated from hours)
+    // 6. COST COMES FROM FIXED BUCKET (never calculated from hours)
     const costMin = sizeConfig.costMin;
     const costMax = sizeConfig.costMax;
 
     console.log('=== Project Plan Generator ===');
     console.log('Support type:', supportType);
+    console.log('Momentum sub-type:', detectedSignals.momentumSubType);
     console.log('Project size:', sizeConfig.size);
     console.log('Hour modifier:', hourModifier + '%');
     console.log('Adjusted hours:', adjustedHoursMin, '-', adjustedHoursMax);
     console.log('Cost bucket:', formatCurrency(costMin), '-', formatCurrency(costMax));
+    console.log('Detected signals:', JSON.stringify(detectedSignals, null, 2));
 
-    // Approach templates - numbered steps
-    const approachTemplates = {
-      structure: `1. I'd start with a fast deep-dive to understand how things work today and where the friction sits.
-2. From there, I map and simplify the workflow into something clear, realistic, and easy for the team to follow.
-3. If a lightweight tool helps (Notion, Airtable), I'll set it up in a way that removes noise instead of adding more.
-4. The goal is calm, clarity, and a structure your team can actually use day-to-day.`,
-      
-      momentum: `1. I'll start with a diagnostic to understand what's blocking progress and why things keep stalling.
-2. Then I stabilise the scope and priorities so we all know what matters most right now.
-3. I take ownership of coordination and make sure decisions get made and followed through.
-4. Every week, you'll see visible progress and clear updates on what's moving.`,
-      
-      prototype: `1. We'll unpack the idea and define what you want it to achieve.
-2. Then I'll shape a simple user flow and build a clean clickable prototype.
-3. It's perfect for testing, alignment, or pitching, giving you something tangible, fast.
-4. You'll have a clear concept that's ready for next steps.`
-    };
+    // Get dynamic approach guidance based on support type and sub-type
+    let approachGuidance: string;
+    if (supportType === 'momentum') {
+      approachGuidance = getMomentumApproachGuidance(detectedSignals.momentumSubType, detectedSignals.userPainPoints);
+    } else if (supportType === 'structure') {
+      approachGuidance = getStructureApproachGuidance(detectedSignals.userPainPoints);
+    } else {
+      approachGuidance = getPrototypeApproachGuidance(detectedSignals.userPainPoints);
+    }
 
-    // Walk away with templates
-    const walkAwayTemplates = {
-      structure: [
-        'A clear, unified workflow',
-        'Practical templates',
-        'Optional lightweight tooling setup',
-        'A simple next-steps plan'
-      ],
-      momentum: [
-        'Ownership of next steps',
-        'Realistic priorities',
-        'Weekly visible progress',
-        'Clear communication'
-      ],
-      prototype: [
-        'Clickable prototype',
-        'User flow + structure',
-        'Testing-ready concept',
-        'Clear next steps'
-      ]
-    };
+    // Get dynamic walk-away guidance
+    const walkAwayGuidance = getWalkAwayGuidance(supportType, detectedSignals.momentumSubType);
 
     // Urgency-based tone guidance
     let toneGuidance = '';
@@ -539,6 +708,19 @@ serve(async (req) => {
         toneGuidance = 'Warm, professional tone.';
     }
 
+    // Build context block for AI
+    const contextBlock = `
+DETECTED CONTEXT (use this to tailor your response):
+- Support Type: ${supportType}
+- Momentum Sub-Type: ${supportType === 'momentum' ? detectedSignals.momentumSubType.replace('_', ' ') : 'N/A'}
+- Matched Signals: ${[...detectedSignals.matchedOverrideKeywords, ...detectedSignals.matchedMomentumKeywords].slice(0, 5).join(', ') || 'none specific'}
+- Complexity Factors: ${detectedSignals.complexityIndicators.join(', ') || 'none detected'}
+- User Pain Points: ${detectedSignals.userPainPoints.join(' | ') || 'not extracted'}
+
+LANGUAGE MIRRORING RULE:
+Mirror key phrases from the user's input where natural. If they said "calendar chaos", acknowledge "the calendar chaos" in your response. If they said "nobody knows who does what", reference that exact phrase. This makes the response feel personal and understood.
+`;
+
     const systemPrompt = `You are Esther, a warm, down-to-earth freelance consultant writing a project plan.
 
 VOICE & TONE:
@@ -550,7 +732,8 @@ VOICE & TONE:
 - NEVER use double hyphens (--). Use proper punctuation or a single dash if needed
 - ${toneGuidance}
 
-DETECTED SUPPORT TYPE: ${supportType}
+${contextBlock}
+
 PROJECT SIZE: ${sizeConfig.size}
 
 SECTION ORDER RULE (CRITICAL - prevents duplicate/nested headings):
@@ -558,15 +741,16 @@ You MUST output sections in this EXACT order. "Short summary" is ALWAYS first. "
 NEVER nest headings. NEVER output "Here's how I'd tackle this" before "Short summary".
 
 ## Short summary
-Write 2–3 warm sentences rephrasing their situation and what they need. Start naturally with "So..." or "Sounds like..." — show you actually got it.
+Write 2-3 warm sentences rephrasing their situation and what they need. Start naturally with "So..." or "Sounds like..." - show you actually got it. 
+MIRROR THEIR LANGUAGE. Reference specific things they mentioned.
 
 ## Here's how I'd tackle this
-${approachTemplates[supportType]}
+${approachGuidance}
 
-(Keep the numbered step format. Each step starts with a number.)
+(Output as numbered steps: 1. 2. 3. 4.)
 
 ## What you'd walk away with
-${walkAwayTemplates[supportType].map(item => `- ${item}`).join('\n')}
+${walkAwayGuidance}
 
 ## Timeline
 **${sizeConfig.weeks}**
@@ -587,7 +771,8 @@ CRITICAL RULES:
 - NEVER nest or repeat section headings
 - Keep numbered steps for UX clarity
 - Don't mention hourly rates
-- NEVER use double hyphens (--)`;
+- NEVER use double hyphens (--)
+- MIRROR THE USER'S LANGUAGE - this is critical for making the response feel personal`;
 
     const userPrompt = `User input:
 - Situation: ${situation}
@@ -595,7 +780,7 @@ CRITICAL RULES:
 - Urgency: ${urgency || "not specified"}
 - Budget comfort zone: ${budget || "not specified"}
 
-Generate the project plan using the structure above. Be human, warm, and direct.`;
+Generate the project plan using the structure above. Be human, warm, and direct. Reference their specific situation, don't be generic.`;
 
     const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
