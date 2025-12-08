@@ -238,7 +238,7 @@ const Index = () => {
                 </p>
                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                  <p className="text-sm text-foreground/70">A working prototype everyone understands.</p>
+                  <p className="text-sm text-foreground/70">A working prototype that visualises your idea and that people understand.</p>
                 </div>
               </Card>
             </motion.div>
