@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Children, isValidElement } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -162,18 +162,30 @@ const ResultPanel = ({
     p: ({ children }: { children?: React.ReactNode }) => (
       <p className="text-foreground/80 mb-3 leading-relaxed text-[15px]">{children}</p>
     ),
-    ol: ({ children }: { children?: React.ReactNode }) => (
-      <ol className="space-y-2 my-4 text-[15px] text-foreground/80">
-        {children}
-      </ol>
-    ),
+    ol: ({ children }: { children?: React.ReactNode }) => {
+      // Add step numbers to ordered list items
+      let stepNum = 0;
+      const numberedChildren = Children.map(children, (child) => {
+        if (isValidElement(child) && child.type === 'li') {
+          stepNum++;
+          return (
+            <li className="text-foreground/80 leading-relaxed flex items-start gap-3">
+              <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-semibold flex items-center justify-center mt-0.5">
+                {stepNum}
+              </span>
+              <span className="flex-1">{child.props.children}</span>
+            </li>
+          );
+        }
+        return child;
+      });
+      return <ol className="space-y-3 my-4 text-[15px] list-none">{numberedChildren}</ol>;
+    },
     ul: ({ children }: { children?: React.ReactNode }) => (
-      <ul className="space-y-1.5 my-3 text-[15px]">{children}</ul>
+      <ul className="space-y-2 my-3 text-[15px] list-disc list-outside pl-5 marker:text-primary">{children}</ul>
     ),
     li: ({ children }: { children?: React.ReactNode }) => (
-      <li className="text-foreground/80 leading-relaxed pl-1">
-        {children}
-      </li>
+      <li className="text-foreground/80 leading-relaxed">{children}</li>
     ),
     strong: ({ children }: { children?: React.ReactNode }) => (
       <strong className="font-semibold text-foreground">{children}</strong>
