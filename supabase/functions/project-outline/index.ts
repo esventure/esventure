@@ -84,15 +84,41 @@ function determineProjectSize(inputs: {
     if (fullText.includes(indicator)) complexityScore += 1;
   });
   
-  // Simple indicators (reduce complexity) - only for non-structure work
+  // Simple indicators (reduce complexity)
   const simpleIndicators = ['simple', 'quick', 'small', 'single', 'just one', 'founder', 'solo', 'one deliverable'];
   simpleIndicators.forEach(indicator => {
     if (fullText.includes(indicator)) complexityScore -= 1;
   });
   
-  // Low urgency reduces perceived complexity
+  // URGENCY-BASED SIZING ADJUSTMENTS
+  // Just exploring: no pressure, sizing based purely on complexity
   if (inputs.urgency === 'Just exploring') {
-    complexityScore -= 1;
+    complexityScore -= 1; // Slightly reduce perceived complexity
+  }
+  
+  // Needs attention: project is stuck/drifting - avoid Small unless micro-task
+  // Upscale to Large if complexity keywords appear
+  if (inputs.urgency === 'Needs attention') {
+    // Avoid Small for "Needs attention" - default to Medium minimum
+    if (complexityScore <= 0) {
+      complexityScore = 1; // Push towards Medium
+    }
+    // Upscale to Large if complexity indicators present
+    if (complexityScore >= 3) {
+      complexityScore += 1;
+    }
+  }
+  
+  // It's urgent 🔥: often Medium → Large, especially with complexity
+  if (inputs.urgency === "It's urgent 🔥") {
+    // Push towards larger sizes
+    complexityScore += 1;
+    // If deadlines, multiple teams, or stalled project mentioned, lean Large
+    const urgentLargeIndicators = ['deadline', 'multiple', 'team', 'stalled', 'stuck', 'blocked', 'scope unclear'];
+    const hasUrgentComplexity = urgentLargeIndicators.some(indicator => fullText.includes(indicator));
+    if (hasUrgentComplexity) {
+      complexityScore += 1;
+    }
   }
   
   // STRUCTURE WORK: Default to Medium unless explicitly tiny
@@ -104,8 +130,8 @@ function determineProjectSize(inputs: {
     
     if (complexityScore >= 4) {
       return { size: 'large', baseHoursMin: 20, baseHoursMax: 35, weeks: '3–6 weeks' };
-    } else if (isTiny && complexityScore <= -2) {
-      // Only Small if explicitly tiny AND low complexity
+    } else if (isTiny && complexityScore <= -2 && inputs.urgency !== 'Needs attention' && inputs.urgency !== "It's urgent 🔥") {
+      // Only Small if explicitly tiny, low complexity, AND not urgent
       return { size: 'small', baseHoursMin: 8, baseHoursMax: 12, weeks: '1–2 weeks' };
     } else {
       // Default Structure to Medium (2–3 weeks timeline)
@@ -114,7 +140,8 @@ function determineProjectSize(inputs: {
   }
   
   // MOMENTUM & PROTOTYPE: Can be Small or Medium based on complexity
-  if (complexityScore <= 0) {
+  // But respect urgency rules - "Needs attention" and "Urgent" avoid Small
+  if (complexityScore <= 0 && inputs.urgency !== 'Needs attention' && inputs.urgency !== "It's urgent 🔥") {
     return { size: 'small', baseHoursMin: 8, baseHoursMax: 12, weeks: '1–2 weeks' };
   } else if (complexityScore <= 3) {
     return { size: 'medium', baseHoursMin: 12, baseHoursMax: 20, weeks: '2–4 weeks' };
@@ -131,15 +158,19 @@ function calculateModifiers(inputs: {
   let modifier = 0;
   const fullText = `${inputs.situation} ${inputs.handoff}`.toLowerCase();
   
-  // Urgency modifier
+  // Urgency modifier (updated logic)
+  // Just exploring: no pressure, no modifier (was -10%, now 0%)
+  // Soon: baseline, no modifier
+  // Needs attention: +10% (project stuck/drifting)
+  // It's urgent 🔥: +20% (immediate attention needed)
   switch (inputs.urgency) {
     case 'Just exploring':
-      modifier -= 10;
+      // No modifier - sizing determined purely by complexity
       break;
     case 'Soon':
-      // baseline, no change
+      // Baseline, no change
       break;
-    case 'Need momentum':
+    case 'Needs attention':
       modifier += 10;
       break;
     case "It's urgent 🔥":

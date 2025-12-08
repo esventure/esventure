@@ -17,7 +17,7 @@ interface FormData {
 const URGENCY_OPTIONS = [
   "Just exploring",
   "Soon",
-  "Need momentum",
+  "Needs attention",
   "It's urgent 🔥",
 ];
 
