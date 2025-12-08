@@ -230,22 +230,22 @@ function calculateModifiers(inputs: {
 }
 
 function calculateCostRange(size: string, modifier: number, supportType: string): { min: number; max: number } {
-  // Momentum work has higher base ranges (€2.800-€4.200 for medium)
+  // Base rate: €100/hour
   const baseRanges: Record<string, Record<string, { min: number; max: number }>> = {
     momentum: {
-      small: { min: 1200, max: 1800 },
-      medium: { min: 2800, max: 4200 },
-      large: { min: 4200, max: 6000 },
+      small: { min: 1000, max: 1500 },   // 10-15 hours @ €100
+      medium: { min: 1800, max: 2800 },  // 18-28 hours @ €100
+      large: { min: 2800, max: 4000 },   // 28-40 hours @ €100
     },
     structure: {
-      small: { min: 900, max: 1500 },
-      medium: { min: 1500, max: 2800 },
-      large: { min: 2800, max: 4500 },
+      small: { min: 800, max: 1200 },    // 8-12 hours @ €100
+      medium: { min: 1200, max: 2000 },  // 12-20 hours @ €100
+      large: { min: 2000, max: 3500 },   // 20-35 hours @ €100
     },
     prototype: {
-      small: { min: 900, max: 1500 },
-      medium: { min: 1500, max: 2800 },
-      large: { min: 2800, max: 4500 },
+      small: { min: 800, max: 1200 },    // 8-12 hours @ €100
+      medium: { min: 1200, max: 2000 },  // 12-20 hours @ €100
+      large: { min: 2000, max: 3500 },   // 20-35 hours @ €100
     },
   };
   
