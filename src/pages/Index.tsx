@@ -474,7 +474,7 @@ const Index = () => {
               duration: 0.2
             }
           }}>
-              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md transition-all flex flex-col">
+              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <FixItIcon size={24} className="text-primary" />
@@ -510,7 +510,7 @@ const Index = () => {
               duration: 0.2
             }
           }}>
-              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md transition-all flex flex-col">
+              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <PrototypeIcon size={24} className="text-primary" />
@@ -546,7 +546,7 @@ const Index = () => {
               duration: 0.2
             }
           }}>
-              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md transition-all flex flex-col">
+              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                     <ImproveIcon size={24} className="text-primary" />
@@ -646,7 +646,7 @@ const Index = () => {
                   duration: 0.5,
                   delay: index * 0.05
                 }} className="h-full">
-                      <Card className="p-8 bg-card border border-[#D7C4FF] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 rounded-2xl h-full">
+                      <Card className="p-8 bg-[#F0EAFF] border border-[#D7C4FF] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 rounded-2xl h-full">
                         <h3 className="font-bold text-2xl mb-3 text-foreground font-poppins">{project.title}</h3>
                         <p className="font-bold text-lg mb-4 text-primary">{project.subtitle}</p>
                         <p className="text-foreground/70 text-base leading-relaxed">{project.description}</p>
