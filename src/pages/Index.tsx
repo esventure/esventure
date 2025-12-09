@@ -715,7 +715,7 @@ const Index = () => {
                 once: true
               }} transition={{
                 delay: 0.2
-              }}>Hi, I'm Esther! Part product nerd, part UX thinker, full-time structure enthusiast, and a generalist pur sang.</motion.p>
+              }}>Hello, I'm Esther! I'm a mix of a product enthusiast, a UX thinker, and a devoted fan of structure. As a true generalist, I'm here to help!</motion.p>
                 <motion.p initial={{
                 opacity: 0
               }} whileInView={{
@@ -725,7 +725,7 @@ const Index = () => {
               }} transition={{
                 delay: 0.3
               }}>
-                  I'm the person you call when you need someone who can jump into any topic, learn it fast, and bring order where there isn't any.
+                  You can count on me to dive into any subject, grasp it quickly, and create order from chaos.
                 </motion.p>
                 <motion.p initial={{
                 opacity: 0
@@ -735,7 +735,7 @@ const Index = () => {
                 once: true
               }} transition={{
                 delay: 0.4
-              }}>By moving quickly, keeping things clear and to the point, and making sure projects actually land.</motion.p>
+              }}>My approach focuses on speed, clarity, and ensuring that projects are executed successfully.</motion.p>
                 <motion.p className="font-bold" initial={{
                 opacity: 0
               }} whileInView={{
@@ -744,7 +744,7 @@ const Index = () => {
                 once: true
               }} transition={{
                 delay: 0.5
-              }}>No fluff, no 70-page documents, just practical solutions that make life easier.</motion.p>
+              }}>I prefer straightforward solutions over lengthy reports. I promise you practical strategies that simplify life.</motion.p>
               </div>
             </motion.div>
             <motion.div className="order-1 md:order-2" initial={{
