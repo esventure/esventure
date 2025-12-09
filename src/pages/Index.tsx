@@ -855,8 +855,8 @@ const Index = () => {
       scale: 0,
       opacity: 0
     }} animate={{
-      scale: isAtPlanner ? 0 : 1,
-      opacity: isAtPlanner ? 0 : 1
+      scale: isPastHero && !isAtPlanner ? 1 : 0,
+      opacity: isPastHero && !isAtPlanner ? 1 : 0
     }} transition={{
       type: "spring",
       stiffness: 300,
@@ -865,7 +865,7 @@ const Index = () => {
     }}>
         <Button onClick={() => document.getElementById('project-planner')?.scrollIntoView({
         behavior: 'smooth'
-      })} className={`rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 ${isPastHero ? 'bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30' : 'bg-primary text-secondary hover:bg-primary/90 shadow-primary/30'}`}>
+      })} className="rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30">
           Tell me what's up
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
