@@ -100,11 +100,8 @@ const Index = () => {
                   Messy processes → smooth workflows.<br />
                   Ideas → clickable prototypes.
                 </p>
-                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium pt-2">
-                  Ready to get things done?
-                </p>
               </motion.div>
-              <motion.div className="pt-4" initial={{
+              <motion.div className="pt-6" initial={{
               opacity: 0,
               y: 20
             }} animate={{
@@ -114,8 +111,16 @@ const Index = () => {
               duration: 0.6,
               delay: 0.6
             }}>
-                <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full" onClick={scrollToContact}>
-                  Book a call  
+                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-semibold mb-4">
+                  Ready to get things done?
+                </p>
+                <Button 
+                  size="lg" 
+                  className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full group" 
+                  onClick={() => document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Start Your Project Plan
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </motion.div>
             </motion.div>

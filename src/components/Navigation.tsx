@@ -67,19 +67,6 @@ const Navigation = () => {
                 </button>
               ))}
               <Button
-                onClick={() => scrollToSection("project-planner")}
-                size="sm"
-                variant="outline"
-                className={cn(
-                  "rounded-full font-semibold transition-all",
-                  isScrolled
-                    ? "border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                    : "border-foreground/30 text-foreground hover:border-primary hover:text-primary"
-                )}
-              >
-                Tell Me What's Up
-              </Button>
-              <Button
                 onClick={() => scrollToSection("contact")}
                 size="sm"
                 className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
@@ -119,13 +106,6 @@ const Navigation = () => {
                 {link.label}
               </button>
             ))}
-            <Button
-              onClick={() => scrollToSection("project-planner")}
-              variant="outline"
-              className="w-full rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold mt-2"
-            >
-              Tell Me What's Up
-            </Button>
             <Button
               onClick={() => scrollToSection("contact")}
               className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
