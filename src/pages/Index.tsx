@@ -109,7 +109,7 @@ const Index = () => {
               duration: 0.6,
               delay: 0.6
             }}>
-                <div className="flex flex-col items-start">
+                <div className="flex flex-col items-center text-center">
                   <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed font-semibold mb-4">
                     Ready to get things done?
                   </p>
