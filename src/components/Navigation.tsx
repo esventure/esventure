@@ -25,8 +25,8 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { label: "What I do", id: "services" },
-    { label: "Tell me what's up", id: "project-planner" },
+    { label: "Services", id: "services" },
+    { label: "Projects", id: "projects" },
     { label: "About", id: "about" },
   ];
 
@@ -36,8 +36,8 @@ const Navigation = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-lg translate-y-0"
-            : "-translate-y-full"
+            ? "bg-background/95 backdrop-blur-md shadow-lg py-2"
+            : "bg-transparent py-4"
         )}
       >
         <div className="container mx-auto px-4">
@@ -51,22 +51,40 @@ const Navigation = () => {
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className="text-foreground/80 hover:text-primary transition-colors font-bold"
+                  className={cn(
+                    "text-sm font-semibold transition-colors",
+                    isScrolled
+                      ? "text-foreground/80 hover:text-primary"
+                      : "text-foreground hover:text-primary"
+                  )}
                 >
                   {link.label}
                 </button>
               ))}
               <Button
+                onClick={() => scrollToSection("project-planner")}
+                size="sm"
+                variant="outline"
+                className={cn(
+                  "rounded-full font-semibold transition-all",
+                  isScrolled
+                    ? "border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                    : "border-foreground/30 text-foreground hover:border-primary hover:text-primary"
+                )}
+              >
+                Tell Me What's Up
+              </Button>
+              <Button
                 onClick={() => scrollToSection("contact")}
                 size="sm"
-                className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold"
+                className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
               >
-                Let's talk
+                Let's Talk
               </Button>
             </div>
 
@@ -85,28 +103,34 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={cn(
-            "md:hidden bg-background border-t border-border transition-all duration-300 overflow-hidden",
+            "md:hidden bg-background/95 backdrop-blur-md border-t border-border transition-all duration-300 overflow-hidden",
             isMobileMenuOpen ? "max-h-96" : "max-h-0"
           )}
         >
-          <div className="container mx-auto px-4 py-4 space-y-4">
+          <div className="container mx-auto px-4 py-4 space-y-2">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left py-2 text-foreground/70 hover:text-foreground transition-colors font-medium"
+                className="block w-full text-left py-3 text-foreground hover:text-primary transition-colors font-semibold"
               >
                 {link.label}
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("contact")}
-              className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold"
+              onClick={() => scrollToSection("project-planner")}
+              variant="outline"
+              className="w-full rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold mt-2"
             >
-              Let's talk
+              Tell Me What's Up
+            </Button>
+            <Button
+              onClick={() => scrollToSection("contact")}
+              className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
+            >
+              Let's Talk
             </Button>
           </div>
         </div>
