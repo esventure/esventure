@@ -67,8 +67,8 @@ const Index = () => {
         opacity,
         scale
       }}>
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto">
-            <motion.div className="space-y-6 text-left" initial={{
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-7xl mx-auto">
+            <motion.div className="flex flex-col justify-between text-left md:min-h-[500px] lg:min-h-[600px]" initial={{
             opacity: 0,
             x: -50
           }} animate={{
@@ -78,28 +78,30 @@ const Index = () => {
             duration: 0.8,
             delay: 0.2
           }}>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                I help teams move forward,<br />
-                <span className="text-secondary">let's go.</span>
-              </h1>
-              <motion.div className="space-y-3 mt-2" initial={{
-              opacity: 0,
-              y: 15
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.6,
-              delay: 0.4
-            }}>
-                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">By diving in fast, I bring clarity, and turn chaos into action.</p>
-                <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
-                  Complex projects → simple steps.<br />
-                  Messy processes → smooth workflows.<br />
-                  Ideas → clickable prototypes.
-                </p>
-              </motion.div>
-              <motion.div className="pt-6" initial={{
+              <div>
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                  I help teams move forward,<br />
+                  <span className="text-secondary">let's go.</span>
+                </h1>
+                <motion.div className="space-y-3 mt-6" initial={{
+                opacity: 0,
+                y: 15
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.6,
+                delay: 0.4
+              }}>
+                  <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">By diving in fast, I bring clarity, and turn chaos into action.</p>
+                  <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
+                    Complex projects → simple steps.<br />
+                    Messy processes → smooth workflows.<br />
+                    Ideas → clickable prototypes.
+                  </p>
+                </motion.div>
+              </div>
+              <motion.div className="pt-6 md:pt-0" initial={{
               opacity: 0,
               y: 20
             }} animate={{
