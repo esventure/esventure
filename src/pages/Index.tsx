@@ -656,7 +656,7 @@ const Index = () => {
                   delay: index * 0.05
                 }} className="h-full">
                       <Card className="p-8 bg-[#F0EAFF] border border-[#D7C4FF] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 rounded-2xl h-full">
-                        <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">{project.category}</Badge>
+                        <Badge className="mb-3 bg-secondary text-secondary-foreground border-0 text-xs font-medium">{project.category}</Badge>
                         <h3 className="font-bold text-2xl mb-3 text-foreground font-poppins">{project.title}</h3>
                         <p className="font-bold text-lg mb-4 text-primary">{project.subtitle}</p>
                         <p className="text-foreground/70 text-base leading-relaxed">{project.description}</p>
