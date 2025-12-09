@@ -109,15 +109,17 @@ const Index = () => {
               duration: 0.6,
               delay: 0.6
             }}>
-                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-semibold mb-4">
-                  Ready to get things done?
-                </p>
-                <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full group" onClick={() => document.getElementById('project-planner')?.scrollIntoView({
-                behavior: 'smooth'
-              })}>
-                  Start Your Project Plan
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <div className="flex flex-col items-start">
+                  <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed font-semibold mb-4">
+                    Ready to get things done?
+                  </p>
+                  <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full group" onClick={() => document.getElementById('project-planner')?.scrollIntoView({
+                  behavior: 'smooth'
+                })}>
+                    Start your project plan
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
               </motion.div>
             </motion.div>
             <motion.div className="relative" initial={{
