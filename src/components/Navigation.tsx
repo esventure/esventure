@@ -41,23 +41,23 @@ const Navigation = () => {
         )}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
             {/* Logo */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-2xl font-black text-foreground hover:text-primary transition-colors font-poppins"
+              className="text-3xl font-black text-foreground hover:text-primary transition-colors font-poppins"
             >
               Es Venture
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
                   className={cn(
-                    "text-sm font-semibold transition-colors",
+                    "text-base font-semibold transition-colors",
                     isScrolled
                       ? "text-foreground/80 hover:text-primary"
                       : "text-foreground hover:text-primary"
@@ -68,8 +68,7 @@ const Navigation = () => {
               ))}
               <Button
                 onClick={() => scrollToSection("contact")}
-                size="sm"
-                className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
+                className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-6 py-5 text-base"
               >
                 Let's Talk
               </Button>
@@ -101,14 +100,14 @@ const Navigation = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left py-3 text-foreground hover:text-primary transition-colors font-semibold"
+                className="block w-full text-left py-3 text-foreground hover:text-primary transition-colors font-semibold text-lg"
               >
                 {link.label}
               </button>
             ))}
             <Button
               onClick={() => scrollToSection("contact")}
-              className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
+              className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold text-base py-5"
             >
               Let's Talk
             </Button>
