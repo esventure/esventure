@@ -646,7 +646,7 @@ const Index = () => {
                   duration: 0.5,
                   delay: index * 0.05
                 }} className="h-full">
-                      <Card className="p-8 bg-card border border-[#D7C4FF] shadow-sm hover:shadow-md transition-all rounded-2xl h-full">
+                      <Card className="p-8 bg-card border border-[#D7C4FF] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 rounded-2xl h-full">
                         <h3 className="font-bold text-2xl mb-3 text-foreground font-poppins">{project.title}</h3>
                         <p className="font-bold text-lg mb-4 text-primary">{project.subtitle}</p>
                         <p className="text-foreground/70 text-base leading-relaxed">{project.description}</p>
