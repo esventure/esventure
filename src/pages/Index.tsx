@@ -83,7 +83,7 @@ const Index = () => {
                   I help teams move forward,<br />
                   <span className="text-secondary">let's go.</span>
                 </h1>
-                <motion.div className="space-y-3 mt-6" initial={{
+                <motion.div className="space-y-3 mt-12 md:mt-16" initial={{
                 opacity: 0,
                 y: 15
               }} animate={{
