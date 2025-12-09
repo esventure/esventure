@@ -109,9 +109,9 @@ const Index = () => {
               duration: 0.6,
               delay: 0.6
             }}>
-                <div className="flex flex-col items-center text-center">
-                  <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed font-semibold mb-4">
-                    Ready to get things done?
+                <div className="flex flex-col items-start">
+                  <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed font-semibold mb-3">
+                    Ready? →
                   </p>
                   <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full group" onClick={() => document.getElementById('project-planner')?.scrollIntoView({
                   behavior: 'smooth'
