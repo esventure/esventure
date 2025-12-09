@@ -83,18 +83,16 @@ const Index = () => {
                 <span className="text-secondary">let's go.</span>
               </h1>
               <motion.div className="space-y-3 mt-2" initial={{
-                opacity: 0,
-                y: 15
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.6,
-                delay: 0.4
-              }}>
-                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
-                  I dive in fast, bring clarity, and turn chaos into action.
-                </p>
+              opacity: 0,
+              y: 15
+            }} animate={{
+              opacity: 1,
+              y: 0
+            }} transition={{
+              duration: 0.6,
+              delay: 0.4
+            }}>
+                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">By diving in fast, I bring clarity, and turn chaos into action.</p>
                 <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
                   Complex projects → simple steps.<br />
                   Messy processes → smooth workflows.<br />
@@ -114,11 +112,9 @@ const Index = () => {
                 <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-semibold mb-4">
                   Ready to get things done?
                 </p>
-                <Button 
-                  size="lg" 
-                  className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full group" 
-                  onClick={() => document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth' })}
-                >
+                <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full group" onClick={() => document.getElementById('project-planner')?.scrollIntoView({
+                behavior: 'smooth'
+              })}>
                   Start Your Project Plan
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
