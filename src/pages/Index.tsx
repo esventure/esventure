@@ -109,7 +109,7 @@ const Index = () => {
               duration: 0.6,
               delay: 0.6
             }}>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
                   <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed font-semibold">
                     Ready? →
                   </p>
