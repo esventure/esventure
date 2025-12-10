@@ -101,28 +101,6 @@ const Index = () => {
                   </p>
                 </motion.div>
               </div>
-              <motion.div className="pt-6 md:pt-0" initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.6,
-              delay: 0.6
-            }}>
-                <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
-                  <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed font-semibold">
-                    Ready? →
-                  </p>
-                  <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full group" onClick={() => document.getElementById('project-planner')?.scrollIntoView({
-                  behavior: 'smooth'
-                })}>
-                    Start your project plan
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
-              </motion.div>
             </motion.div>
             <motion.div className="relative" initial={{
             opacity: 0,
