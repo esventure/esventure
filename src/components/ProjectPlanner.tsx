@@ -267,7 +267,7 @@ const ProjectPlanner = () => {
 
   const scrollToResults = () => {
     if (resultPanelRef.current) {
-      const yOffset = -20; // Small offset from top
+      const yOffset = -100; // Larger offset to show more context above
       const element = resultPanelRef.current;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
