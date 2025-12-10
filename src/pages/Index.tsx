@@ -13,11 +13,43 @@ import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
 import Autoplay from "embla-carousel-autoplay";
+declare global {
+  interface Window {
+    calendar?: {
+      schedulingButton: {
+        load: (config: { url: string; color: string; label: string; target?: HTMLElement }) => void;
+      };
+    };
+  }
+}
+
 const Index = () => {
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({
       behavior: 'smooth'
     });
+  };
+
+  const openCalendarPopup = () => {
+    if (window.calendar?.schedulingButton) {
+      // Create a temporary element to trigger the popup
+      const tempDiv = document.createElement('div');
+      document.body.appendChild(tempDiv);
+      window.calendar.schedulingButton.load({
+        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2KpRz-GJY-0scm7PLpaQ8OSdoazS3a3uKUpzuCYhyih7y6irHVokQ7e-2eDy5tBFE5cKb61xYv?gv=true',
+        color: '#039BE5',
+        label: 'Book a call',
+        target: tempDiv,
+      });
+      // Click the generated button after a short delay
+      setTimeout(() => {
+        const button = tempDiv.querySelector('button');
+        if (button) button.click();
+      }, 100);
+    } else {
+      // Fallback if script hasn't loaded
+      window.open('https://calendar.app.google/wbCMSuvapzW5SXwe8', '_blank');
+    }
   };
   const {
     scrollYProgress
@@ -835,7 +867,7 @@ const Index = () => {
                   <Mail className="mr-2 h-5 w-5" />
                   Send email
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full" onClick={() => window.open('https://calendar.app.google/wbCMSuvapzW5SXwe8', '_blank')}>
+                <Button size="lg" variant="outline" className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full" onClick={openCalendarPopup}>
                   Book a call
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
