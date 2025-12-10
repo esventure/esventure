@@ -129,7 +129,7 @@ const Index = () => {
       </section>
 
       {/* Divider */}
-      <div className="container mx-auto px-4"><div className="max-w-6xl mx-auto border-t border-border/50" /></div>
+      <div className="container mx-auto px-4"><div className="max-w-6xl mx-auto border-t-2 border-dashed border-primary/20" /></div>
       
       {/* The Es Venture Effect */}
       <section className="container mx-auto px-4 py-16">
@@ -422,7 +422,7 @@ const Index = () => {
       </section>
 
       {/* Divider */}
-      <div className="container mx-auto px-4"><div className="max-w-6xl mx-auto border-t border-border/50" /></div>
+      <div className="container mx-auto px-4"><div className="max-w-6xl mx-auto border-t-2 border-dashed border-primary/20" /></div>
       
       {/* Services */}
       <section id="services" className="container mx-auto px-4 py-16">
@@ -555,6 +555,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="container mx-auto px-4"><div className="max-w-6xl mx-auto border-t-2 border-dashed border-primary/20" /></div>
 
       {/* Project Planner */}
       <ProjectPlanner />
