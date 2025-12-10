@@ -62,13 +62,13 @@ const Index = () => {
       <Navigation />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-primary">
-        <motion.div className="container mx-auto px-4 pt-16 pb-16 md:pt-24 md:pb-24" style={{
+        <motion.div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16" style={{
         y,
         opacity,
         scale
       }}>
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-7xl mx-auto">
-            <motion.div className="flex flex-col justify-between text-left md:min-h-[500px] lg:min-h-[600px]" initial={{
+          <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-7xl mx-auto">
+            <motion.div className="flex flex-col justify-start text-left" initial={{
             opacity: 0,
             x: -50
           }} animate={{
@@ -83,7 +83,7 @@ const Index = () => {
                   I help teams move forward,<br />
                   <span className="text-secondary">let's go.</span>
                 </h1>
-                <motion.div className="space-y-3 mt-12 md:mt-16" initial={{
+                <motion.div className="space-y-3 mt-8 md:mt-10" initial={{
                 opacity: 0,
                 y: 15
               }} animate={{
