@@ -850,9 +850,14 @@ const Index = () => {
       damping: 25,
       mass: 0.8
     }}>
-        <Button onClick={() => document.getElementById('project-planner')?.scrollIntoView({
-        behavior: 'smooth'
-      })} className="rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30">
+        <Button onClick={() => {
+          const element = document.getElementById('project-planner');
+          if (element) {
+            const yOffset = -100;
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }} className="rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30">
           Tell me what's up
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
