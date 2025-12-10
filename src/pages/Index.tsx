@@ -835,7 +835,7 @@ const Index = () => {
                   <Mail className="mr-2 h-5 w-5" />
                   Send email
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full" onClick={() => window.open('https://calendar.app.google/wbCMSuvapzW5SXwe8', '_blank')}>
+                <Button size="lg" variant="outline" className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full" onClick={() => window.open('https://calendar.app.google/5GxNAzn7W3FJNMrh8', '_blank')}>
                   Book a call
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
