@@ -265,16 +265,21 @@ const ProjectPlanner = () => {
   const [error, setError] = useState<string | null>(null);
   const resultPanelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (isMobile && (isLoading || result) && resultPanelRef.current) {
-      setTimeout(() => {
-        resultPanelRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 100);
+  const scrollToResults = () => {
+    if (resultPanelRef.current) {
+      const yOffset = -20; // Small offset from top
+      const element = resultPanelRef.current;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
-  }, [isLoading, result, isMobile]);
+  };
+
+  useEffect(() => {
+    if (isMobile && isLoading && resultPanelRef.current) {
+      // Scroll immediately when loading starts
+      setTimeout(scrollToResults, 150);
+    }
+  }, [isLoading, isMobile]);
 
   const handleSubmit = async () => {
     if (!formData.situation || !formData.handoff) return;
