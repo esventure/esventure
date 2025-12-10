@@ -831,7 +831,7 @@ const Index = () => {
               duration: 0.6,
               delay: 0.3
             }}>
-                <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full" onClick={() => window.location.href = 'mailto:hi@esventure.nl'}>
+                <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full" onClick={() => window.location.href = 'mailto:esther@esventure.nl'}>
                   <Mail className="mr-2 h-5 w-5" />
                   Send email
                 </Button>
