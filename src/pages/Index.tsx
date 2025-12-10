@@ -128,8 +128,11 @@ const Index = () => {
         </motion.div>
       </section>
 
+      {/* Divider */}
+      <div className="container mx-auto px-4"><div className="max-w-6xl mx-auto border-t border-border/50" /></div>
+      
       {/* The Es Venture Effect */}
-      <section className="container mx-auto px-4 py-24">
+      <section className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{
           opacity: 0,
@@ -418,8 +421,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="container mx-auto px-4"><div className="max-w-6xl mx-auto border-t border-border/50" /></div>
+      
       {/* Services */}
-      <section id="services" className="container mx-auto px-4 py-24">
+      <section id="services" className="container mx-auto px-4 py-16">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{
           opacity: 0,
@@ -554,7 +560,7 @@ const Index = () => {
       <ProjectPlanner />
 
       {/* Mini Cases */}
-      <section id="projects" className="bg-muted py-24">
+      <section id="projects" className="bg-muted py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <motion.h2 className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground font-poppins" initial={{
@@ -662,7 +668,7 @@ const Index = () => {
       </section>
 
       {/* About Me */}
-      <section id="about" className="container mx-auto px-4 py-24">
+      <section id="about" className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
           <motion.h2 className="text-5xl md:text-6xl font-black mb-16 text-center font-poppins" initial={{
           opacity: 0,

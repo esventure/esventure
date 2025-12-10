@@ -310,7 +310,7 @@ const ProjectPlanner = () => {
   };
 
   return (
-    <section id="project-planner" className="py-16 md:py-24 bg-background pb-[calc(1rem+env(safe-area-inset-bottom))]">
+    <section id="project-planner" className="py-12 md:py-16 bg-background pb-[calc(1rem+env(safe-area-inset-bottom))]">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           {/* Header - matching page style */}
