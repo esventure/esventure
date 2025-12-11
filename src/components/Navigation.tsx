@@ -97,8 +97,8 @@ const Navigation = () => {
 
         <div
           className={cn(
-            "md:hidden bg-background/95 backdrop-blur-md border-t border-border transition-all duration-300 overflow-hidden",
-            isMobileMenuOpen ? "max-h-96" : "max-h-0"
+            "md:hidden bg-background/95 backdrop-blur-md transition-all duration-300 overflow-hidden",
+            isMobileMenuOpen ? "max-h-96 border-t border-border" : "max-h-0"
           )}
         >
           <div className="container mx-auto px-4 py-4 space-y-2">
