@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -836,7 +837,13 @@ const Index = () => {
       <footer className="bg-foreground py-12">
         <div className="container mx-auto px-4 flex flex-col items-center gap-6">
           <img src={logoEV} alt="Es Venture" className="h-10 brightness-0 invert" />
-          <p className="text-background/70 text-sm">© 2025 Es Venture. All rights reserved.</p>
+          <div className="flex items-center gap-4 text-sm">
+            <p className="text-background/70">© 2025 Es Venture. All rights reserved.</p>
+            <span className="text-background/40">•</span>
+            <Link to="/privacy" className="text-background/70 hover:text-background transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </footer>
 

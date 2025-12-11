@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -56,7 +57,10 @@ export const CookieConsent = () => {
               <div className="flex-1">
                 <p className="text-sm text-foreground/80">
                   We use cookies to analyze site traffic and improve your experience. 
-                  By clicking "Accept", you consent to our use of analytics cookies.
+                  By clicking "Accept", you consent to our use of analytics cookies.{" "}
+                  <Link to="/privacy" className="underline hover:text-foreground">
+                    Privacy Policy
+                  </Link>
                 </p>
               </div>
               <div className="flex gap-3 w-full md:w-auto">
