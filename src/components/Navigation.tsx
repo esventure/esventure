@@ -46,17 +46,17 @@ const Navigation = () => {
         )}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-end justify-between h-14">
+          <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="hover:opacity-80 transition-opacity pb-1"
+              className="hover:opacity-80 transition-opacity"
             >
               <img src={logoEV} alt="Es Venture" className="h-12" />
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-end gap-8 pb-1">
+            <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
@@ -74,7 +74,7 @@ const Navigation = () => {
               <Button
                 onClick={() => scrollToSection("contact")}
                 variant="ghost"
-                className="rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold px-5 py-1 text-base transition-colors translate-y-1"
+                className="rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold px-5 py-1 text-base transition-colors"
               >
                 Let's Talk
               </Button>
