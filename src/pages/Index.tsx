@@ -14,6 +14,7 @@ import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
 import logoEV from "@/assets/logo-ev.svg";
 import Autoplay from "embla-carousel-autoplay";
+import { analytics } from "@/lib/analytics";
 const Index = () => {
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({
@@ -817,11 +818,11 @@ const Index = () => {
               duration: 0.6,
               delay: 0.3
             }}>
-                <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full" onClick={() => window.location.href = 'mailto:esther@esventure.nl'}>
+                <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full" onClick={() => { analytics.emailClick(); window.location.href = 'mailto:esther@esventure.nl'; }}>
                   <Mail className="mr-2 h-5 w-5" />
                   Send email
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full" onClick={() => window.open('https://calendar.app.google/5GxNAzn7W3FJNMrh8', '_blank')}>
+                <Button size="lg" variant="outline" className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full" onClick={() => { analytics.bookCallClick(); window.open('https://calendar.app.google/5GxNAzn7W3FJNMrh8', '_blank'); }}>
                   Book a call
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -853,6 +854,7 @@ const Index = () => {
       mass: 0.8
     }}>
         <Button onClick={() => {
+          analytics.ctaClick('floating_button');
           const element = document.getElementById('project-planner');
           if (element) {
             const yOffset = -100;

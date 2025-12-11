@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoEV from "@/assets/logo-ev.svg";
+import { analytics } from "@/lib/analytics";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,6 +19,7 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
+    analytics.navClick(id);
     const element = document.getElementById(id);
     if (element) {
       const yOffset = -80;

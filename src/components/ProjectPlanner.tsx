@@ -4,6 +4,7 @@ import { Loader2, ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import ReactMarkdown from "react-markdown";
+import { analytics } from "@/lib/analytics";
 
 interface FormData {
   situation: string;
@@ -241,7 +242,10 @@ const ResultPanel = ({
 
       <div className="mt-8 pt-6 border-t border-secondary/20">
         <Button
-          onClick={() => window.open("https://calendly.com/esventure", "_blank")}
+          onClick={() => {
+            analytics.bookCallClick();
+            window.open("https://calendly.com/esventure", "_blank");
+          }}
           className="w-full md:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full font-semibold group px-6 py-5 md:py-4"
         >
           Book a quick call
@@ -306,6 +310,7 @@ const ProjectPlanner = () => {
 
       const data = await response.json();
       setResult(data.reply);
+      analytics.projectPlannerSubmit({ urgency: formData.urgency, budget: formData.budget });
     } catch (err) {
       setError("Something went wrong. Please try again.");
       console.error("Error generating plan:", err);
