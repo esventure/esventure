@@ -109,22 +109,3 @@ All colors MUST be HSL.
   }
 }
 
-/* Placeholder fade animation */
-@keyframes placeholder-fade {
-  0% {
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.animate-placeholder::placeholder {
-  animation: placeholder-fade 3.5s ease-in-out infinite;
-}

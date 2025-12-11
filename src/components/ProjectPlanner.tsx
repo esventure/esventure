@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, Children, isValidElement } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2, ArrowRight, ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import ReactMarkdown from "react-markdown";
 import { analytics } from "@/lib/analytics";
@@ -54,6 +54,30 @@ const BUDGET_OPTIONS = [
   { value: "€6.000+", label: "€6.000+" },
 ];
 
+// Animated placeholder component
+const AnimatedPlaceholder = ({ 
+  text, 
+  isVisible 
+}: { 
+  text: string; 
+  isVisible: boolean;
+}) => {
+  if (!isVisible) return null;
+  
+  return (
+    <motion.span
+      key={text}
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="absolute left-4 top-3 text-muted-foreground/50 text-base pointer-events-none"
+    >
+      {text}
+    </motion.span>
+  );
+};
+
 const PlannerForm = ({
   formData,
   setFormData,
@@ -85,14 +109,21 @@ const PlannerForm = ({
         <label htmlFor="situation" className="text-base font-medium text-foreground/80">
           What's going on?
         </label>
-        <textarea
-          key={`situation-${placeholderIndex}`}
-          id="situation"
-          placeholder={SITUATION_PLACEHOLDERS[placeholderIndex]}
-          value={formData.situation}
-          onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
-          className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all animate-placeholder"
-        />
+        <div className="relative">
+          <textarea
+            id="situation"
+            value={formData.situation}
+            onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
+            className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground text-base transition-all"
+          />
+          <AnimatePresence mode="wait">
+            <AnimatedPlaceholder 
+              key={placeholderIndex}
+              text={SITUATION_PLACEHOLDERS[placeholderIndex]} 
+              isVisible={!formData.situation} 
+            />
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* What should I take off your plate? */}
@@ -100,14 +131,21 @@ const PlannerForm = ({
         <label htmlFor="handoff" className="text-base font-medium text-foreground/80">
           What should I take off your plate?
         </label>
-        <textarea
-          key={`handoff-${placeholderIndex}`}
-          id="handoff"
-          placeholder={HANDOFF_PLACEHOLDERS[placeholderIndex]}
-          value={formData.handoff}
-          onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
-          className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all animate-placeholder"
-        />
+        <div className="relative">
+          <textarea
+            id="handoff"
+            value={formData.handoff}
+            onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
+            className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground text-base transition-all"
+          />
+          <AnimatePresence mode="wait">
+            <AnimatedPlaceholder 
+              key={placeholderIndex}
+              text={HANDOFF_PLACEHOLDERS[placeholderIndex]} 
+              isVisible={!formData.handoff} 
+            />
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Urgency */}
