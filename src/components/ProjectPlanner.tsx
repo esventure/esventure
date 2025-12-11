@@ -86,11 +86,12 @@ const PlannerForm = ({
           What's going on?
         </label>
         <textarea
+          key={`situation-${placeholderIndex}`}
           id="situation"
           placeholder={SITUATION_PLACEHOLDERS[placeholderIndex]}
           value={formData.situation}
           onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
-          className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all"
+          className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all animate-placeholder"
         />
       </div>
 
@@ -100,11 +101,12 @@ const PlannerForm = ({
           What should I take off your plate?
         </label>
         <textarea
+          key={`handoff-${placeholderIndex}`}
           id="handoff"
           placeholder={HANDOFF_PLACEHOLDERS[placeholderIndex]}
           value={formData.handoff}
           onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
-          className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all"
+          className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all animate-placeholder"
         />
       </div>
 
