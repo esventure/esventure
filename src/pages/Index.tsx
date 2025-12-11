@@ -17,6 +17,12 @@ import logoEV from "@/assets/logo-ev.svg";
 import Autoplay from "embla-carousel-autoplay";
 import { analytics } from "@/lib/analytics";
 const Index = () => {
+  // Initialize scroll depth tracking
+  React.useEffect(() => {
+    const cleanup = analytics.initScrollTracking();
+    return cleanup;
+  }, []);
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({
       behavior: 'smooth'
