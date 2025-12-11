@@ -244,7 +244,7 @@ const ResultPanel = ({
         <Button
           onClick={() => {
             analytics.bookCallClick();
-            window.open("https://calendly.com/esventure", "_blank");
+            window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
           }}
           className="w-full md:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full font-semibold group px-6 py-5 md:py-4"
         >
