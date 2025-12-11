@@ -13,6 +13,32 @@ interface FormData {
   budget: string;
 }
 
+const SITUATION_PLACEHOLDERS = [
+  "Users drop off during onboarding after step two.",
+  "Feature requirements are unclear and scattered across tools.",
+  "Teams disagree on the correct user flow.",
+  "Our workflow is slow, messy, and unstructured.",
+  "Launch is near, but nothing feels aligned yet.",
+  "Stakeholders keep changing direction without documentation.",
+  "We built a prototype, but it confuses everyone.",
+  "Multiple systems interact, but we lack an overview.",
+  "Progress stalls because no one owns next steps.",
+  "Customer support repeats work due to unclear processes.",
+];
+
+const HANDOFF_PLACEHOLDERS = [
+  "Create a clear user flow for this feature.",
+  "Turn our idea into a clickable prototype.",
+  "Map and simplify our full end-to-end process.",
+  "Organise requirements into one aligned feature definition.",
+  "Coordinate the project and keep everyone aligned.",
+  "Document workflows and define roles for the team.",
+  "Reshape our prototype into something test-ready.",
+  "Translate feedback into one clear design direction.",
+  "Build a realistic delivery timeline we can follow.",
+  "Structure messy inputs for testing and certification.",
+];
+
 const URGENCY_OPTIONS = [
   "Just exploring",
   "Soon",
@@ -39,6 +65,19 @@ const PlannerForm = ({
   onSubmit: () => void;
   isLoading: boolean;
 }) => {
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+
+  // Rotate placeholders every 3.5 seconds when fields are empty
+  useEffect(() => {
+    if (formData.situation || formData.handoff) return;
+    
+    const interval = setInterval(() => {
+      setPlaceholderIndex((prev) => (prev + 1) % SITUATION_PLACEHOLDERS.length);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [formData.situation, formData.handoff]);
+
   return (
     <div className="space-y-6 md:space-y-8">
       {/* What's going on? */}
@@ -48,7 +87,7 @@ const PlannerForm = ({
         </label>
         <textarea
           id="situation"
-          placeholder="What's messy or blocking progress?"
+          placeholder={SITUATION_PLACEHOLDERS[placeholderIndex]}
           value={formData.situation}
           onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
           className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all"
@@ -62,7 +101,7 @@ const PlannerForm = ({
         </label>
         <textarea
           id="handoff"
-          placeholder="Prototype, workflow cleanup, project coordination…"
+          placeholder={HANDOFF_PLACEHOLDERS[placeholderIndex]}
           value={formData.handoff}
           onChange={(e) => setFormData({ ...formData, handoff: e.target.value })}
           className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground placeholder:text-muted-foreground/50 text-base transition-all"
