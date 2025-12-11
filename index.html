@@ -2,13 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) with default consent denied for GDPR -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L7MYB931Y6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // Default consent to denied
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
       gtag('js', new Date());
       gtag('config', 'G-L7MYB931Y6');
+      // Check localStorage for existing consent
+      if (localStorage.getItem('cookie_consent') === 'accepted') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      }
     </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
