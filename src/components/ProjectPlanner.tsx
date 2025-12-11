@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, Children, isValidElement } from "re
 import { Button } from "@/components/ui/button";
 import { Loader2, ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
+
 import ReactMarkdown from "react-markdown";
 import { analytics } from "@/lib/analytics";
 
@@ -257,7 +257,6 @@ const ResultPanel = ({
 };
 
 const ProjectPlanner = () => {
-  const isMobile = useIsMobile();
   const [formData, setFormData] = useState<FormData>({
     situation: "",
     handoff: "",
@@ -279,11 +278,11 @@ const ProjectPlanner = () => {
   };
 
   useEffect(() => {
-    if (isMobile && isLoading && resultPanelRef.current) {
+    if (isLoading && resultPanelRef.current) {
       // Scroll immediately when loading starts
       setTimeout(scrollToResults, 150);
     }
-  }, [isLoading, isMobile]);
+  }, [isLoading]);
 
   const handleSubmit = async () => {
     if (!formData.situation || !formData.handoff) return;
