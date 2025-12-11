@@ -56,13 +56,13 @@ const Navigation = () => {
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
                   className={cn(
-                    "text-sm font-semibold font-poppins transition-colors",
+                    "text-base font-semibold font-poppins transition-colors",
                     isScrolled
                       ? "text-foreground/80 hover:text-primary"
                       : "text-foreground hover:text-primary"
@@ -73,7 +73,7 @@ const Navigation = () => {
               ))}
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-4 py-1.5 text-sm"
+                className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-5 py-2 text-base"
               >
                 Let's Talk
               </Button>
