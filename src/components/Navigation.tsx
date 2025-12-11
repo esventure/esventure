@@ -74,7 +74,7 @@ const Navigation = () => {
               <Button
                 onClick={() => scrollToSection("contact")}
                 variant="ghost"
-                className="rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold px-5 py-1.5 text-base transition-colors mb-0.5"
+                className="rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold px-5 py-1 text-base transition-colors translate-y-1"
               >
                 Let's Talk
               </Button>
