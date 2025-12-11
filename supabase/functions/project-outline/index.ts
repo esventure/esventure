@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -827,6 +828,25 @@ Generate the project plan using the structure above. Be human, warm, and direct.
     }
 
     console.log('Successfully generated project plan');
+
+    // Store the inquiry in the database
+    try {
+      const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+      const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+      const supabase = createClient(supabaseUrl, supabaseServiceKey);
+      
+      await supabase.from('project_inquiries').insert({
+        situation,
+        handoff,
+        urgency,
+        budget,
+        ai_response: reply
+      });
+      console.log('Project inquiry stored successfully');
+    } catch (dbError) {
+      // Log but don't fail the request if storage fails
+      console.error('Failed to store project inquiry:', dbError);
+    }
 
     return new Response(JSON.stringify({ reply }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
