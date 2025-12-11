@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logoEV from "@/assets/logo-ev.svg";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,9 +48,9 @@ const Navigation = () => {
             {/* Logo */}
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-3xl font-black text-foreground hover:text-primary transition-colors font-poppins"
+              className="hover:opacity-80 transition-opacity"
             >
-              Es Venture
+              <img src={logoEV} alt="Es Venture" className="h-8" />
             </button>
 
             {/* Desktop Navigation */}
