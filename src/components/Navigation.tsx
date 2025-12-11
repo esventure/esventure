@@ -50,7 +50,7 @@ const Navigation = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="hover:opacity-80 transition-opacity"
             >
-              <img src={logoEV} alt="Es Venture" className="h-8" />
+              <img src={logoEV} alt="Es Venture" className="h-12" />
             </button>
 
             {/* Desktop Navigation */}
@@ -60,7 +60,7 @@ const Navigation = () => {
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
                   className={cn(
-                    "text-base font-semibold transition-colors",
+                    "text-base font-normal font-poppins transition-colors",
                     isScrolled
                       ? "text-foreground/80 hover:text-primary"
                       : "text-foreground hover:text-primary"
