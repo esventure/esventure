@@ -12,6 +12,7 @@ import { FixItIconAlt as FixItIcon, PrototypeIconAlt as PrototypeIcon, ImproveIc
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
+import logoEV from "@/assets/logo-ev.svg";
 import Autoplay from "embla-carousel-autoplay";
 const Index = () => {
   const scrollToContact = () => {
@@ -832,8 +833,9 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="bg-foreground py-12">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-background font-medium text-lg">© 2025 Es Venture. All rights reserved.</p>
+        <div className="container mx-auto px-4 flex flex-col items-center gap-6">
+          <img src={logoEV} alt="Es Venture" className="h-10 brightness-0 invert" />
+          <p className="text-background/70 text-sm">© 2025 Es Venture. All rights reserved.</p>
         </div>
       </footer>
 
