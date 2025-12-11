@@ -56,7 +56,7 @@ const Navigation = () => {
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-end gap-8 pb-1">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
