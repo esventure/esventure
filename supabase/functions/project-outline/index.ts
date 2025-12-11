@@ -767,9 +767,6 @@ ${walkAwayGuidance}
 ## Timeline
 **${sizeConfig.weeks}**
 
-## Estimated hours
-**${adjustedHoursMin}–${adjustedHoursMax} hours**
-
 ## Ballpark cost
 **${formatCurrency(costMin)}–${formatCurrency(costMax)}**
 
