@@ -551,7 +551,7 @@ const Index = () => {
                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's streamline</h3>
                 </div>
                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                  I clean up messy workflows, clarify who does what, and make your operations work smoothly again.
+                  I fix messy workflows, clarify ownership, and make day-to-day operations smooth again.
                 </p>
                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
