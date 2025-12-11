@@ -73,7 +73,7 @@ const Navigation = () => {
               ))}
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-6 py-5 text-base"
+                className="rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold px-5 py-2 text-sm mb-0.5"
               >
                 Let's Talk
               </Button>
@@ -112,7 +112,7 @@ const Navigation = () => {
             ))}
             <Button
               onClick={() => scrollToSection("contact")}
-              className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold text-base py-5"
+              className="w-full rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold text-base py-3"
             >
               Let's Talk
             </Button>
