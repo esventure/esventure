@@ -62,7 +62,7 @@ const Navigation = () => {
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
                   className={cn(
-                    "text-base font-normal font-poppins transition-colors",
+                    "text-base font-semibold font-poppins transition-colors",
                     isScrolled
                       ? "text-foreground/80 hover:text-primary"
                       : "text-foreground hover:text-primary"
@@ -105,7 +105,7 @@ const Navigation = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left py-3 text-foreground hover:text-primary transition-colors font-semibold text-lg"
+                className="block w-full text-left py-3 text-foreground hover:text-primary transition-colors font-semibold font-poppins text-lg"
               >
                 {link.label}
               </button>
