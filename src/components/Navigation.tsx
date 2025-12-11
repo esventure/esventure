@@ -74,7 +74,7 @@ const Navigation = () => {
               <Button
                 onClick={() => scrollToSection("contact")}
                 variant="ghost"
-                className="rounded-full border border-foreground/30 bg-transparent text-foreground hover:border-primary hover:text-primary hover:bg-transparent font-semibold px-5 py-2 text-base transition-colors"
+                className="rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold px-5 py-1.5 text-base transition-colors mb-0.5"
               >
                 Let's Talk
               </Button>
@@ -114,7 +114,7 @@ const Navigation = () => {
             <Button
               onClick={() => scrollToSection("contact")}
               variant="ghost"
-              className="w-full rounded-full border border-foreground/30 bg-transparent text-foreground hover:border-primary hover:text-primary hover:bg-transparent font-semibold text-base py-3 transition-colors"
+              className="w-full rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold text-base py-3 transition-colors"
             >
               Let's Talk
             </Button>
