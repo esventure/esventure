@@ -410,10 +410,10 @@ const ProjectPlanner = () => {
           {/* Header - centered */}
           <div className="mb-12 md:mb-16 text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-3 font-poppins">
-              Tell me what's up
+              Got a project in mind?
             </h2>
             <p className="text-lg text-muted-foreground">
-              I'll show you how I'd approach it.
+              Let me show you how I'd tackle it.
             </p>
           </div>
 
