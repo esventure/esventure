@@ -207,7 +207,7 @@ const PlannerForm = ({
       </div>
 
       {/* Submit */}
-      <div className="pt-6">
+      <div className="pt-6 space-y-4">
         <Button
           onClick={onSubmit}
           disabled={isLoading || !formData.situation || !formData.handoff}
@@ -225,6 +225,9 @@ const PlannerForm = ({
             </>
           )}
         </Button>
+        <p className="text-xs text-muted-foreground/70 text-center">
+          The more detail you share, the more precise your prognosis will be.
+        </p>
       </div>
     </div>
   );
@@ -319,7 +322,10 @@ const ResultPanel = ({
     >
       <ReactMarkdown components={markdownComponents}>{result}</ReactMarkdown>
 
-      <div className="mt-8 pt-6 border-t border-secondary/20">
+      <div className="mt-8 pt-6 border-t border-secondary/20 space-y-4">
+        <p className="text-xs text-muted-foreground/70">
+          This is a ballpark indication. The actual price will be determined after analysing the full scope of your project.
+        </p>
         <Button
           onClick={() => {
             analytics.bookCallClick();
