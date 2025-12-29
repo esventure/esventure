@@ -1,9 +1,12 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { Resend } from "https://esm.sh/resend@2.0.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
+
+const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 Deno.serve(async (req) => {
   // Handle CORS preflight
@@ -58,6 +61,31 @@ Deno.serve(async (req) => {
     }
 
     console.log("Contact submission saved:", { email: email.trim().toLowerCase() });
+
+    // Send email notification
+    try {
+      const { error: emailError } = await resend.emails.send({
+        from: "ES Venture <esther@esventure.nl>",
+        to: ["esther@esventure.nl"],
+        subject: `New Lead: ${firstName} ${lastName}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+          ${projectPlan ? `<h3>Project Plan Context:</h3><pre style="white-space: pre-wrap; background: #f5f5f5; padding: 16px; border-radius: 8px;">${projectPlan}</pre>` : ""}
+        `,
+      });
+
+      if (emailError) {
+        console.error("Email send error:", emailError);
+      } else {
+        console.log("Email notification sent successfully");
+      }
+    } catch (emailErr) {
+      console.error("Email notification failed:", emailErr);
+      // Don't fail the request if email fails
+    }
 
     return new Response(
       JSON.stringify({ success: true }),
