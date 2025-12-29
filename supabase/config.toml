@@ -30,3 +30,6 @@ enable_confirmations = false
 
 [functions.project-outline]
 verify_jwt = false
+
+[functions.submit-contact]
+verify_jwt = false

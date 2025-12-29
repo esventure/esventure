@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect, Children, isValidElement } from "react";
 import { Button } from "@/components/ui/button";
-import { Loader2, ArrowRight, ChevronDown } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Loader2, ArrowRight, ChevronDown, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "sonner";
 
 import ReactMarkdown from "react-markdown";
 import { analytics } from "@/lib/analytics";
-
 interface FormData {
   situation: string;
   handoff: string;
@@ -233,6 +234,118 @@ const PlannerForm = ({
   );
 };
 
+const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.firstName || !formData.lastName || !formData.email) return;
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/submit-contact`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            projectPlan,
+          }),
+        }
+      );
+
+      if (!response.ok) throw new Error("Failed to submit");
+
+      setIsSubmitted(true);
+      toast.success("Thanks! I'll be in touch soon.");
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+      console.error("Contact form error:", err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSubmitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="flex items-center gap-3 text-secondary"
+      >
+        <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
+          <Check className="h-4 w-4" />
+        </div>
+        <span className="text-sm font-medium">I'll be in touch soon!</span>
+      </motion.div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="grid grid-cols-2 gap-3">
+        <Input
+          placeholder="First name"
+          value={formData.firstName}
+          onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+          required
+          className="bg-background border-secondary/30 focus:border-secondary"
+        />
+        <Input
+          placeholder="Last name"
+          value={formData.lastName}
+          onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+          required
+          className="bg-background border-secondary/30 focus:border-secondary"
+        />
+      </div>
+      <Input
+        type="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        required
+        className="bg-background border-secondary/30 focus:border-secondary"
+      />
+      <Input
+        type="tel"
+        placeholder="Phone (optional)"
+        value={formData.phone}
+        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+        className="bg-background border-secondary/30 focus:border-secondary"
+      />
+      <Button
+        type="submit"
+        disabled={isSubmitting || !formData.firstName || !formData.lastName || !formData.email}
+        className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full font-semibold group"
+      >
+        {isSubmitting ? (
+          <>
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            Sending…
+          </>
+        ) : (
+          <>
+            Send project details
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+          </>
+        )}
+      </Button>
+    </form>
+  );
+};
+
 const ResultPanel = ({
   result,
   isLoading = false,
@@ -326,16 +439,7 @@ const ResultPanel = ({
         <p className="text-xs text-muted-foreground/70">
           This is a ballpark indication. The actual price will be determined after analysing the full scope of your project.
         </p>
-        <Button
-          onClick={() => {
-            analytics.bookCallClick();
-            window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
-          }}
-          className="w-full md:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full font-semibold group px-6 py-5 md:py-4"
-        >
-          Book a quick call
-          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-        </Button>
+        <ContactForm projectPlan={result} />
       </div>
     </motion.div>
   );
