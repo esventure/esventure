@@ -14,6 +14,10 @@ import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
 import logoEV from "@/assets/logo-ev.svg";
+import vanmoofLogo from "@/assets/clients/vanmoof.png";
+import lovensLogo from "@/assets/clients/lovens.png";
+import prioticketLogo from "@/assets/clients/prioticket.png";
+import rainforestLogo from "@/assets/clients/rainforest-alliance.png";
 import Autoplay from "embla-carousel-autoplay";
 import { analytics } from "@/lib/analytics";
 const Index = () => {
@@ -674,6 +678,46 @@ const Index = () => {
             }).map((_, index) => <button key={index} onClick={() => carouselApi?.scrollTo(index)} className={`h-3 w-3 rounded-full transition-all ${index === current ? "bg-primary w-8" : "bg-primary/30 hover:bg-primary/50"}`} aria-label={`Go to slide ${index + 1}`} />)}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Worked With */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <motion.p 
+            className="text-sm text-muted-foreground text-center mb-8 uppercase tracking-widest"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Worked with
+          </motion.p>
+          <motion.div 
+            className="flex flex-wrap justify-center items-center gap-8 md:gap-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            {[
+              { src: vanmoofLogo, alt: "VanMoof" },
+              { src: lovensLogo, alt: "Lovens" },
+              { src: prioticketLogo, alt: "Prioticket" },
+              { src: rainforestLogo, alt: "Rainforest Alliance" },
+            ].map((client, index) => (
+              <motion.img
+                key={client.alt}
+                src={client.src}
+                alt={client.alt}
+                className="h-8 md:h-10 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
+              />
+            ))}
+          </motion.div>
         </div>
       </section>
 
