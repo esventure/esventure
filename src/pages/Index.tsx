@@ -701,16 +701,16 @@ const Index = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             {[
-              { src: vanmoofLogo, alt: "VanMoof" },
-              { src: lovensLogo, alt: "Lovens" },
-              { src: prioticketLogo, alt: "Prioticket" },
-              { src: rainforestLogo, alt: "Rainforest Alliance" },
+              { src: vanmoofLogo, alt: "VanMoof", size: "h-12 md:h-16" },
+              { src: lovensLogo, alt: "Lovens", size: "h-12 md:h-16" },
+              { src: prioticketLogo, alt: "Prioticket", size: "h-8 md:h-10" },
+              { src: rainforestLogo, alt: "Rainforest Alliance", size: "h-8 md:h-10" },
             ].map((client, index) => (
               <motion.img
                 key={client.alt}
                 src={client.src}
                 alt={client.alt}
-                className="h-8 md:h-10 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                className={`${client.size} w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300`}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
