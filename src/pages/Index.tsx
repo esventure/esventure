@@ -18,6 +18,7 @@ import vanmoofLogo from "@/assets/clients/vanmoof.png";
 import lovensLogo from "@/assets/clients/lovens.png";
 import prioticketLogo from "@/assets/clients/prioticket.png";
 import rainforestLogo from "@/assets/clients/rainforest-alliance.png";
+import attractionworldLogo from "@/assets/clients/attractionworld.png";
 import Autoplay from "embla-carousel-autoplay";
 import { analytics } from "@/lib/analytics";
 const Index = () => {
@@ -705,6 +706,7 @@ const Index = () => {
               { src: lovensLogo, alt: "Lovens", size: "h-14 md:h-20" },
               { src: prioticketLogo, alt: "Prioticket", size: "h-8 md:h-10" },
               { src: rainforestLogo, alt: "Rainforest Alliance", size: "h-8 md:h-10" },
+              { src: attractionworldLogo, alt: "Attractionworld", size: "h-8 md:h-10" },
             ].map((client, index) => (
               <motion.img
                 key={client.alt}
