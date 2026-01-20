@@ -701,8 +701,8 @@ const Index = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             {[
-              { src: vanmoofLogo, alt: "VanMoof", size: "h-12 md:h-16" },
-              { src: lovensLogo, alt: "Lovens", size: "h-12 md:h-16" },
+              { src: vanmoofLogo, alt: "VanMoof", size: "h-14 md:h-20" },
+              { src: lovensLogo, alt: "Lovens", size: "h-14 md:h-20" },
               { src: prioticketLogo, alt: "Prioticket", size: "h-8 md:h-10" },
               { src: rainforestLogo, alt: "Rainforest Alliance", size: "h-8 md:h-10" },
             ].map((client, index) => (
