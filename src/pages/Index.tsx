@@ -702,22 +702,29 @@ const Index = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             {[
-              { src: vanmoofLogo, alt: "VanMoof", size: "h-14 md:h-20" },
-              { src: lovensLogo, alt: "Lovens", size: "h-14 md:h-20" },
-              { src: prioticketLogo, alt: "Prioticket", size: "h-8 md:h-10" },
-              { src: rainforestLogo, alt: "Rainforest Alliance", size: "h-8 md:h-10" },
-              { src: attractionworldLogo, alt: "Attractionworld", size: "h-8 md:h-10" },
+              { src: vanmoofLogo, alt: "VanMoof", url: "https://www.vanmoof.com/" },
+              { src: lovensLogo, alt: "Lovens", url: "https://lovensbikes.com/en/" },
+              { src: prioticketLogo, alt: "Prioticket", url: "https://www.prioticket.com/" },
+              { src: rainforestLogo, alt: "Rainforest Alliance", url: "https://www.rainforest-alliance.org/" },
+              { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
             ].map((client, index) => (
-              <motion.img
+              <motion.a
                 key={client.alt}
-                src={client.src}
-                alt={client.alt}
-                className={`${client.size} w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300`}
+                href={client.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
-              />
+                className="hover:opacity-80 transition-opacity duration-300"
+              >
+                <img
+                  src={client.src}
+                  alt={client.alt}
+                  className="h-8 md:h-10 w-auto"
+                />
+              </motion.a>
             ))}
           </motion.div>
         </div>
