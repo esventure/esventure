@@ -683,8 +683,8 @@ const Index = () => {
       </section>
 
       {/* Worked With */}
-      <section className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-12 overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4">
           <motion.p 
             className="text-sm text-muted-foreground text-center mb-8 uppercase tracking-widest"
             initial={{ opacity: 0, y: 20 }}
@@ -694,37 +694,60 @@ const Index = () => {
           >
             Worked with
           </motion.p>
+        </div>
+        <div className="relative">
           <motion.div 
-            className="flex flex-wrap justify-center items-center gap-8 md:gap-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex items-center gap-16 md:gap-24"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ 
+              duration: 20, 
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
           >
+            {/* First set of logos */}
             {[
               { src: vanmoofLogo, alt: "VanMoof", url: "https://www.vanmoof.com/" },
               { src: lovensLogo, alt: "Lovens", url: "https://lovensbikes.com/en/" },
               { src: prioticketLogo, alt: "Prioticket", url: "https://www.prioticket.com/" },
               { src: rainforestLogo, alt: "Rainforest Alliance", url: "https://www.rainforest-alliance.org/" },
               { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
-            ].map((client, index) => (
-              <motion.a
+            ].map((client) => (
+              <a
                 key={client.alt}
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.1 + index * 0.1 }}
-                className="hover:opacity-80 transition-opacity duration-300"
+                className="hover:opacity-80 transition-opacity duration-300 flex-shrink-0"
               >
                 <img
                   src={client.src}
                   alt={client.alt}
                   className="h-8 md:h-10 w-auto"
                 />
-              </motion.a>
+              </a>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {[
+              { src: vanmoofLogo, alt: "VanMoof", url: "https://www.vanmoof.com/" },
+              { src: lovensLogo, alt: "Lovens", url: "https://lovensbikes.com/en/" },
+              { src: prioticketLogo, alt: "Prioticket", url: "https://www.prioticket.com/" },
+              { src: rainforestLogo, alt: "Rainforest Alliance", url: "https://www.rainforest-alliance.org/" },
+              { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
+            ].map((client) => (
+              <a
+                key={`${client.alt}-duplicate`}
+                href={client.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity duration-300 flex-shrink-0"
+              >
+                <img
+                  src={client.src}
+                  alt={client.alt}
+                  className="h-8 md:h-10 w-auto"
+                />
+              </a>
             ))}
           </motion.div>
         </div>
