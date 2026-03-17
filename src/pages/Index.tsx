@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, ChevronDown } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion } from "framer-motion";
@@ -141,6 +141,17 @@ const Index = () => {
             </motion.div>
           </div>
         </div>
+
+        {/* Scroll down arrow */}
+        <motion.button
+          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          aria-label="Scroll down"
+        >
+          <ChevronDown className="w-8 h-8" />
+        </motion.button>
       </section>
 
       {/* ─── 2. When to Call Me ─── */}
