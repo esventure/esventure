@@ -122,10 +122,12 @@ const MOMENTUM_OVERRIDE_KEYWORDS = [
   'abandon the plan'
 ];
 
-// C. PROTOTYPE WORK
-const PROTOTYPE_KEYWORDS = [
+// C. QUICK FIX / RAPID SOLUTIONS WORK
+const QUICK_FIX_KEYWORDS = [
   'idea', 'concept', 'prototype', 'ux', 'ui', 'user flow', 'screens',
-  'mockup', 'mvp', 'pitch', 'wireframe', 'design', 'validate'
+  'mockup', 'mvp', 'pitch', 'wireframe', 'design', 'validate',
+  'quick fix', 'fast', 'diagnose', 'urgent issue', 'broken', 'bug',
+  'yesterday', 'asap', 'quick win', 'unblock'
 ];
 
 // ============================================================================
