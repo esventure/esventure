@@ -280,8 +280,8 @@ function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'c
     ];
     const hasDriftPain = driftSignals.some(signal => lowerText.includes(signal));
     if (hasDriftPain) {
-      console.log('Momentum override triggered - mixed signals but drift pain detected');
-      return 'momentum';
+      console.log('Make It Happen override triggered - mixed signals but drift pain detected');
+      return 'make-it-happen';
     }
   }
   
