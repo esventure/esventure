@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, createContext, useContext, useCallb
 import { motion, AnimatePresence } from "framer-motion";
 
 const COLLAPSED_HEIGHT = 52;
+const NAV_HEIGHT = 72; // h-14 + py-2 ≈ 72px
 
 // ── Context to collect section refs globally ──
 interface SectionInfo {
