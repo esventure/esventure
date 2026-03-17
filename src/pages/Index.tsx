@@ -93,11 +93,11 @@ const Index = () => {
             delay: 0.2
           }}>
               <div>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
                    I'm the partner who makes your business move,<br />
                    <span className="text-secondary">let's go.</span>
                  </h1>
-                 <motion.div className="space-y-3 mt-8 md:mt-10" initial={{
+                 <motion.div className="space-y-3 mt-6 md:mt-8" initial={{
                  opacity: 0,
                  y: 15
                }} animate={{
@@ -113,6 +113,38 @@ const Index = () => {
                      Complex problems → simple steps.<br />
                      Big ideas → real results.
                    </p>
+                </motion.div>
+                <motion.div className="flex flex-col sm:flex-row gap-3 mt-8" initial={{
+                  opacity: 0,
+                  y: 15
+                }} animate={{
+                  opacity: 1,
+                  y: 0
+                }} transition={{
+                  duration: 0.6,
+                  delay: 0.6
+                }}>
+                  <Button
+                    size="lg"
+                    className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
+                    onClick={() => {
+                      analytics.ctaClick('hero_primary');
+                      document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                  >
+                    Let's Talk About Your Project
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="ghost"
+                    className="text-base px-8 py-6 font-bold text-primary-foreground border-2 border-primary-foreground/30 hover:bg-primary-foreground/10 hover:border-primary-foreground/50 transition-all rounded-full"
+                    onClick={() => {
+                      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                  >
+                    See What I Do
+                  </Button>
                 </motion.div>
               </div>
             </motion.div>
