@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Check, ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import Navigation from "@/components/Navigation";
-import FadeInOnScroll from "@/components/FadeInOnScroll";
 import ProjectPlanner from "@/components/ProjectPlanner";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import React from "react";
 import { MakeItHappenIcon, ClearPathIcon, QuickFixIcon } from "@/components/ServiceIcons";
-import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
 import logoEV from "@/assets/logo-ev.svg";
@@ -19,856 +15,370 @@ import lovensLogo from "@/assets/clients/lovens.png";
 import prioticketLogo from "@/assets/clients/prioticket.png";
 import rainforestLogo from "@/assets/clients/rainforest-alliance.png";
 import attractionworldLogo from "@/assets/clients/attractionworld.png";
-import Autoplay from "embla-carousel-autoplay";
 import { analytics } from "@/lib/analytics";
+
+const clients = [
+  { src: vanmoofLogo, alt: "VanMoof", url: "https://www.vanmoof.com/" },
+  { src: lovensLogo, alt: "Lovens", url: "https://lovensbikes.com/en/" },
+  { src: prioticketLogo, alt: "Prioticket", url: "https://www.prioticket.com/" },
+  { src: rainforestLogo, alt: "Rainforest Alliance", url: "https://www.rainforest-alliance.org/" },
+  { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
+];
+
+const scenarios = [
+  {
+    quote: "This project is completely stalled and I don't know why.",
+    need: "Momentum.",
+    explanation: "I'll find the friction and get things moving again.",
+  },
+  {
+    quote: "I have a million things to do and I can't focus on what's important.",
+    need: "Clarity.",
+    explanation: "I'll help you prioritize and then take the big tasks off your plate.",
+  },
+  {
+    quote: "We have a great idea, but no one to actually build or manage it.",
+    need: "Ownership.",
+    explanation: "I'll step in as your interim lead and drive it from start to finish.",
+  },
+  {
+    quote: "Our process is a mess and it's slowing everyone down.",
+    need: "A Fix.",
+    explanation: "I'll map it out, find the kinks, and build a workflow that just works.",
+  },
+];
+
+const services = [
+  {
+    icon: MakeItHappenIcon,
+    label: "The Engine",
+    title: "Let's Make It Happen",
+    description:
+      "When you need pure execution. I step in as your hands-on operator, project lead, or interim manager to drive your most critical initiatives over the finish line.",
+  },
+  {
+    icon: ClearPathIcon,
+    label: "The Roadmap",
+    title: "Your Clear Path Forward",
+    description:
+      "When you have a vision but no clear plan. I'll turn your big ideas into a concrete, step-by-step action plan that we can actually execute on.",
+  },
+  {
+    icon: QuickFixIcon,
+    label: "The Spark",
+    title: "Quick Fixes & Fast Starts",
+    description:
+      "When you need to get unstuck, fast. I'll diagnose that urgent problem, design a quick solution, or build a prototype to get you immediate momentum.",
+  },
+];
+
 const Index = () => {
-  // Initialize scroll depth tracking
   React.useEffect(() => {
     const cleanup = analytics.initScrollTracking();
     return cleanup;
   }, []);
 
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({
-      behavior: 'smooth'
-    });
+  const scrollToPlanner = () => {
+    analytics.ctaClick("hero_primary");
+    document.getElementById("project-planner")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  const {
-    scrollYProgress
-  } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
-  const [carouselApi, setCarouselApi] = React.useState<any>();
-  const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(0);
-  const [isPastHero, setIsPastHero] = React.useState(false);
-  const [isAtPlanner, setIsAtPlanner] = React.useState(false);
-  React.useEffect(() => {
-    const handleScroll = () => {
-      // Hero section is roughly the viewport height
-      const heroHeight = window.innerHeight * 0.8;
-      setIsPastHero(window.scrollY > heroHeight);
 
-      // Check if at project planner section
-      const plannerSection = document.getElementById('project-planner');
-      if (plannerSection) {
-        const rect = plannerSection.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.3;
-        setIsAtPlanner(isVisible);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial position
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  React.useEffect(() => {
-    if (!carouselApi) {
-      return;
-    }
-    setCount(carouselApi.scrollSnapList().length);
-    setCurrent(carouselApi.selectedScrollSnap());
-    carouselApi.on("select", () => {
-      setCurrent(carouselApi.selectedScrollSnap());
-    });
-  }, [carouselApi]);
-  return <div className="min-h-screen bg-background">
+  return (
+    <div className="min-h-screen bg-background">
       <Navigation />
-      {/* Hero Section */}
+
+      {/* ─── 1. Hero ─── */}
       <section className="relative overflow-hidden bg-primary">
-        <motion.div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16" style={{
-        y,
-        opacity,
-        scale
-      }}>
+        <div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16">
           <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-7xl mx-auto">
-            <motion.div className="flex flex-col justify-start text-left" initial={{
-            opacity: 0,
-            x: -50
-          }} animate={{
-            opacity: 1,
-            x: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 0.2
-          }}>
-              <div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                   I'm the partner who makes your business move,<br />
-                   <span className="text-secondary">let's go.</span>
-                 </h1>
-                 <motion.div className="space-y-3 mt-6 md:mt-8" initial={{
-                 opacity: 0,
-                 y: 15
-               }} animate={{
-                 opacity: 1,
-                 y: 0
-               }} transition={{
-                 duration: 0.6,
-                 delay: 0.4
-               }}>
-                   <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">I cut through the noise, jump in fast, and turn chaos into action.</p>
-                   <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
-                     Stalled projects → finished deliverables.<br />
-                     Complex problems → simple steps.<br />
-                     Big ideas → real results.
-                   </p>
-                </motion.div>
-                <motion.div className="flex flex-col sm:flex-row gap-3 mt-8" initial={{
-                  opacity: 0,
-                  y: 15
-                }} animate={{
-                  opacity: 1,
-                  y: 0
-                }} transition={{
-                  duration: 0.6,
-                  delay: 0.6
-                }}>
-                  <Button
-                    size="lg"
-                    className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
-                    onClick={() => {
-                      analytics.ctaClick('hero_primary');
-                      document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }}
-                  >
-                    Let's Talk About Your Project
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="ghost"
-                    className="text-base px-8 py-6 font-bold text-primary-foreground border-2 border-primary-foreground/30 hover:bg-primary-foreground/10 hover:border-primary-foreground/50 transition-all rounded-full"
-                    onClick={() => {
-                      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }}
-                  >
-                    See What I Do
-                  </Button>
-                </motion.div>
+            <motion.div
+              className="flex flex-col justify-center text-left"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                Your project's personal{" "}
+                <span className="text-secondary">caffeine shot.</span>
+              </h1>
+
+              <div className="space-y-4 mt-6 md:mt-8">
+                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
+                  Feeling stuck? Overwhelmed? Got a brilliant idea but no time to make it happen? That's where I come in.
+                </p>
+                <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
+                  I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
+                  fluff, no endless meetings — just pure, focused momentum.
+                </p>
+              </div>
+
+              <div className="mt-8">
+                <Button
+                  size="lg"
+                  className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
+                  onClick={scrollToPlanner}
+                >
+                  Let's Get This Done
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
               </div>
             </motion.div>
-            <motion.div className="relative" initial={{
-            opacity: 0,
-            x: 50
-          }} animate={{
-            opacity: 1,
-            x: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 0.4
-          }}>
+
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
                 <img src={estherYellow} alt="Esther Woerdman" className="w-full h-full object-cover" />
               </div>
-              <motion.div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50" animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.5, 0.7, 0.5]
-            }} transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}></motion.div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Divider */}
-      <div className="container mx-auto px-4 py-4"><div className="max-w-4xl mx-auto border-t border-border/30" /></div>
-      
-      {/* The Es Venture Effect */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="max-w-6xl mx-auto">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }} className="text-center mb-16">
-            <h2 className="text-4xl md:text-7xl font-black mb-6 text-foreground font-poppins leading-none tracking-tight">
-              The<br />
-              Es Venture<br />
-              Effect
-            </h2>
-            <p className="text-xl md:text-2xl text-foreground/70 max-w-2xl mx-auto">I’m your project’s personal caffeine shot.</p>
-          </motion.div>
-
-          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
-            {/* Bubble 1: Faster clarity */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} animate={{
-            y: [0, -8, 0],
-            rotate: [0, 2, 0, -2, 0],
-            scale: [1, 1.02, 1]
-          }} transition={{
-            y: {
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            },
-            rotate: {
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
-            },
-            scale: {
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            },
-            opacity: {
-              duration: 0.5
-            }
-          }} whileHover={{
-            scale: 1.03,
-            boxShadow: ["0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)", "0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 0 35px rgba(139, 92, 246, 0.25)", "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)"],
-            transition: {
-              scale: {
-                duration: 0.2
-              },
-              boxShadow: {
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }
-          }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
-              <span className="text-3xl mb-3">🚀</span>
-               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
-                 Momentum & Clarity
-               </h3>
-               <p className="text-sm text-foreground/70 leading-tight">
-                 I cut through the noise and turn your biggest headaches into clear, actionable steps.
-               </p>
-            </motion.div>
-
-            {/* Bubble 2: Cleaner workflows */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} animate={{
-            y: [0, -8, 0],
-            rotate: [0, -2, 0, 2, 0],
-            scale: [1, 1.02, 1]
-          }} transition={{
-            y: {
-              duration: 3.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5
-            },
-            rotate: {
-              duration: 7,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.3
-            },
-            scale: {
-              duration: 4.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.4
-            },
-            opacity: {
-              duration: 0.5,
-              delay: 0.15
-            }
-          }} whileHover={{
-            scale: 1.03,
-            boxShadow: ["0 20px 25px -5px rgba(250, 204, 21, 0.1), 0 0 20px rgba(250, 204, 21, 0.15)", "0 20px 25px -5px rgba(250, 204, 21, 0.25), 0 0 35px rgba(250, 204, 21, 0.3)", "0 20px 25px -5px rgba(250, 204, 21, 0.1), 0 0 20px rgba(250, 204, 21, 0.15)"],
-            transition: {
-              scale: {
-                duration: 0.2
-              },
-              boxShadow: {
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }
-          }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#FDF9E4] shadow-xl shadow-secondary/10 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
-              <span className="text-3xl mb-3">🤝</span>
-               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
-                 Your Trusted Partner
-               </h3>
-               <p className="text-sm text-foreground/70 leading-tight">I jump into your world and get things done with a personal touch. Quick win or ongoing adventure — I'm all in.
-             </p>
-            </motion.div>
-
-            {/* Bubble 3: Projects that finally move */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} animate={{
-            y: [0, -8, 0],
-            rotate: [0, 1.5, 0, -1.5, 0],
-            scale: [1, 1.02, 1]
-          }} transition={{
-            y: {
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1
-            },
-            rotate: {
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.7
-            },
-            scale: {
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.8
-            },
-            opacity: {
-              duration: 0.5,
-              delay: 0.3
-            }
-          }} whileHover={{
-            scale: 1.03,
-            boxShadow: ["0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)", "0 20px 25px -5px rgba(139, 92, 246, 0.2), 0 0 35px rgba(139, 92, 246, 0.25)", "0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 0 20px rgba(139, 92, 246, 0.15)"],
-            transition: {
-              scale: {
-                duration: 0.2
-              },
-              boxShadow: {
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }
-          }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
-              <span className="text-3xl mb-3">⚡</span>
-               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">High-Leverage Execution</h3>
-               <p className="text-sm text-foreground/70 leading-tight">
-                 From big-picture strategy to nitty-gritty details, nothing falls through the cracks when I'm on the case.
-               </p>
+              <motion.div
+                className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.7, 0.5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="container mx-auto px-4 py-4"><div className="max-w-4xl mx-auto border-t border-border/30" /></div>
-      
-      {/* Services */}
-      <section id="services" className="container mx-auto px-4 py-16">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }}>
-            <h2 className="text-5xl md:text-7xl font-black text-center mb-6 text-foreground font-poppins">What I do</h2>
-             <p className="text-xl md:text-2xl text-center text-foreground/70 mb-16 max-w-3xl mx-auto">I'm here to help you out. Hands-on, fast, and with tangible results.</p>
+      {/* ─── 2. When to Call Me ─── */}
+      <section id="about" className="container mx-auto px-4 py-20">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-14"
+          >
+            <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4">When to Call Me</h2>
+            <p className="text-xl text-muted-foreground">
+              You don't need a perfect plan. You just need to know you need help.
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Service 1: Fix It */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: 0
-          }} whileHover={{
-            y: -4,
-            transition: {
-              duration: 0.2
-            }
-          }}>
-              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
-                <div className="flex flex-col items-center text-center mb-6">
-                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                     <MakeItHappenIcon size={24} className="text-primary" />
-                   </div>
-                   <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Hands-On Support</Badge>
-                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's Make It Happen</h3>
-                 </div>
-                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                   I step in and take charge. Whether it's leading a big project, unblocking something that's stuck, or being that extra pair of hands to get urgent tasks over the finish line.
-                 </p>
-                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
-                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                   <p className="text-sm text-foreground/70">Hands-on support and leadership so you can focus on what you do best.</p>
-                 </div>
-              </Card>
-            </motion.div>
-
-            {/* Service 2: Prototype */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: 0.15
-          }} whileHover={{
-            y: -4,
-            transition: {
-              duration: 0.2
-            }
-          }}>
-              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
-                <div className="flex flex-col items-center text-center mb-6">
-                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                     <ClearPathIcon size={24} className="text-primary" />
-                   </div>
-                   <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Strategic Clarity</Badge>
-                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Your Clear Path Forward</h3>
-                 </div>
-                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                   Got a big vision but no clear map? I translate high-level ideas into concrete, actionable plans. No more ideas gathering dust — we'll make them happen.
-                 </p>
-                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
-                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                   <p className="text-sm text-foreground/70">Complex problems turned into simple steps, strategy that's not just planned but executed.</p>
-                 </div>
-              </Card>
-            </motion.div>
-
-            {/* Service 3: Streamline */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.5,
-            delay: 0.3
-          }} whileHover={{
-            y: -4,
-            transition: {
-              duration: 0.2
-            }
-          }}>
-              <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
-                <div className="flex flex-col items-center text-center mb-6">
-                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                     <QuickFixIcon size={24} className="text-primary" />
-                   </div>
-                   <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Rapid Solutions</Badge>
-                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Quick Fixes & Fast Starts</h3>
-                 </div>
-                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                   When things hit the fan, I'm your person. I quickly diagnose urgent issues and deliver tangible solutions — from critical user flows to clickable prototypes.
-                 </p>
-                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
-                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                   <p className="text-sm text-foreground/70">Fast solutions and working prototypes that get you unstuck, so you can breathe easier.</p>
-                 </div>
-              </Card>
-            </motion.div>
+          <div className="space-y-4">
+            {scenarios.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="grid md:grid-cols-2 gap-4 md:gap-8 p-6 rounded-2xl border border-border/50 bg-muted/30 hover:bg-muted/50 transition-colors"
+              >
+                <p className="text-lg italic text-foreground/80">"{s.quote}"</p>
+                <p className="text-lg">
+                  <span className="font-black text-primary font-poppins">{s.need}</span>{" "}
+                  <span className="text-foreground/70">{s.explanation}</span>
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="container mx-auto px-4 py-4"><div className="max-w-4xl mx-auto border-t border-border/30" /></div>
-
-      {/* Project Planner */}
-      <ProjectPlanner />
-
-      {/* Mini Cases */}
-      <section id="projects" className="bg-muted py-16">
+      {/* ─── 3. How I Help ─── */}
+      <section id="services" className="bg-muted/30 py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
-            <motion.h2 className="text-5xl md:text-6xl font-black text-center mb-16 text-foreground font-poppins" initial={{
-            opacity: 0,
-            y: 30
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.6
-          }}>
-              Recent Projects
-            </motion.h2>
-            <Carousel opts={{
-            align: "start",
-            loop: true,
-            slidesToScroll: 1
-          }} plugins={[Autoplay({
-            delay: 4000,
-            stopOnInteraction: false,
-            stopOnMouseEnter: true
-          })]} setApi={setCarouselApi} className="w-full">
-              <CarouselContent className="-ml-4">
-                {[{
-                  title: "The Founder Who Could Finally Pitch",
-                  subtitle: "From napkin sketch to clickable prototype",
-                  category: "Quick Fixes & Fast Starts",
-                  description: "A first-time founder had a brilliant idea but nothing to show investors. In two weeks, I turned scattered notes into a polished UX flow and clickable prototype — she walked into her next pitch with confidence and closed the round."
-                }, {
-                  title: "The Tourism Team That Stopped Drowning",
-                  subtitle: "Chaos to clarity in 3 weeks",
-                  category: "Let's Make It Happen",
-                  description: "A growing tourism company had 12 people, zero structure, and projects falling through the cracks daily. I built their project management system from scratch, defined roles, and within a month the team actually knew who was doing what."
-                }, {
-                  title: "The Photographer Nobody Could Find",
-                  subtitle: "A website that finally books clients",
-                  category: "Quick Fixes & Fast Starts",
-                  description: "An award-winning photographer was losing clients because their online presence was a mess. I designed and launched a clean, bookable website — enquiries doubled in the first month."
-                }, {
-                  title: "The E-Bike Brand That Went Global",
-                  subtitle: "From warehouse to webshop",
-                  category: "Let's Make It Happen",
-                  description: "A beloved e-bike brand wanted to sell merch worldwide but had no idea where to start. I set up the full online shop, organised workflows, and launched it — fans in 30+ countries could finally buy their favourite gear."
-                }, {
-                  title: "The Support Team That Got Their Evenings Back",
-                  subtitle: "An AI assistant that actually helps",
-                  category: "Your Clear Path Forward",
-                  description: "A customer success team was answering the same 50 questions on repeat, burning out fast. I built an internal AI assistant that handles the repetitive stuff — the team now focuses on real problems and leaves on time."
-                }, {
-                  title: "The NGO With 5 Systems and No Map",
-                  subtitle: "One journey, finally visible",
-                  category: "Your Clear Path Forward",
-                  description: "Donors, volunteers, and beneficiaries were touching 5 different platforms and nobody understood the full picture. I mapped the entire user journey across all systems — for the first time, leadership could see where people got lost."
-                }, {
-                  title: "The Platform Launch Nobody Believed In",
-                  subtitle: "Tested, aligned, and shipped",
-                  category: "Let's Make It Happen",
-                  description: "A major platform migration was behind schedule and teams were pointing fingers. I coordinated UAT and end-to-end testing, got everyone aligned, and we launched on time — something the team had stopped believing was possible."
-                }, {
-                  title: "The Subscription That Almost Didn't Ship",
-                  subtitle: "Interim PO, real momentum",
-                  category: "Let's Make It Happen",
-                  description: "An e-bike brand's subscription service had been 'almost ready' for months. I stepped in as interim Product Owner, cut the scope bloat, reprioritised ruthlessly, and the service went live within 6 weeks."
-                }, {
-                  title: "The ERP Nobody Wanted to Touch",
-                  subtitle: "Fixing what everyone avoided",
-                  category: "Your Clear Path Forward",
-                  description: "Operational teams were doing manual workarounds because the ERP had gaps nobody dared to address. I dove in, found the bottlenecks, and fixed the flow — saving the team hours of frustration every single week."
-                }].map((project, index) => <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <motion.div initial={{
-                  opacity: 0,
-                  y: 30
-                }} whileInView={{
-                  opacity: 1,
-                  y: 0
-                }} viewport={{
-                  once: true
-                }} transition={{
-                  duration: 0.5,
-                  delay: index * 0.05
-                }} className="h-full">
-                      <Card className="group p-8 bg-[#F0EAFF] border border-[#D7C4FF] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 rounded-xl h-full relative overflow-hidden">
-                        <Badge className="mb-3 bg-secondary text-secondary-foreground border-0 text-xs font-medium">{project.category}</Badge>
-                        <h3 className="font-bold text-2xl mb-3 text-foreground font-poppins">{project.title}</h3>
-                        <p className="font-bold text-lg mb-4 text-primary">{project.subtitle}</p>
-                        <p className="text-foreground/70 text-base leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">{project.description}</p>
-                      </Card>
-                    </motion.div>
-                  </CarouselItem>)}
-              </CarouselContent>
-              <CarouselPrevious className="bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12 -left-4 md:-left-16" />
-              <CarouselNext className="bg-primary text-primary-foreground hover:bg-primary/90 border-0 h-12 w-12 -right-4 md:-right-16" />
-            </Carousel>
-            
-            {/* Carousel Dots */}
-            <div className="flex justify-center gap-2 mt-8">
-              {Array.from({
-              length: count
-            }).map((_, index) => <button key={index} onClick={() => carouselApi?.scrollTo(index)} className={`h-3 w-3 rounded-full transition-all ${index === current ? "bg-primary w-8" : "bg-primary/30 hover:bg-primary/50"}`} aria-label={`Go to slide ${index + 1}`} />)}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-14"
+            >
+              <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4">
+                How I Help
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Think of me as your secret weapon. You can deploy me in three key ways.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {services.map((service, i) => {
+                const Icon = service.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.15 }}
+                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  >
+                    <Card className="h-full p-8 border border-border/50 bg-card shadow-sm hover:shadow-md transition-all duration-200 flex flex-col">
+                      <div className="flex flex-col items-center text-center mb-6">
+                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                          <Icon size={28} className="text-primary" />
+                        </div>
+                        <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">
+                          {service.label}
+                        </span>
+                        <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">
+                          {service.title}
+                        </h3>
+                      </div>
+                      <p className="text-base text-foreground/70 text-center leading-relaxed flex-1 mb-6">
+                        {service.description}
+                      </p>
+                      <button
+                        onClick={scrollToPlanner}
+                        className="text-primary font-semibold text-sm hover:underline inline-flex items-center justify-center gap-1"
+                      >
+                        See it in action <ArrowRight className="h-4 w-4" />
+                      </button>
+                    </Card>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Worked With */}
-      <section className="py-12 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4">
-          <motion.p 
-            className="text-sm text-muted-foreground text-center mb-8 uppercase tracking-widest"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Worked with
-          </motion.p>
-        </div>
-        <div className="relative">
-          <motion.div 
-            className="flex items-center gap-16 md:gap-24"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ 
-              duration: 20, 
-              repeat: Infinity, 
-              ease: "linear" 
-            }}
-          >
-            {/* First set of logos */}
-            {[
-              { src: vanmoofLogo, alt: "VanMoof", url: "https://www.vanmoof.com/" },
-              { src: lovensLogo, alt: "Lovens", url: "https://lovensbikes.com/en/" },
-              { src: prioticketLogo, alt: "Prioticket", url: "https://www.prioticket.com/" },
-              { src: rainforestLogo, alt: "Rainforest Alliance", url: "https://www.rainforest-alliance.org/" },
-              { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
-            ].map((client) => (
-              <a
-                key={client.alt}
-                href={client.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 group/logo"
-              >
-                <img
-                  src={client.src}
-                  alt={client.alt}
-                  className="h-8 md:h-10 w-auto grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 transition-all duration-400"
-                />
-              </a>
-            ))}
-            {/* Duplicate set for seamless loop */}
-            {[
-              { src: vanmoofLogo, alt: "VanMoof", url: "https://www.vanmoof.com/" },
-              { src: lovensLogo, alt: "Lovens", url: "https://lovensbikes.com/en/" },
-              { src: prioticketLogo, alt: "Prioticket", url: "https://www.prioticket.com/" },
-              { src: rainforestLogo, alt: "Rainforest Alliance", url: "https://www.rainforest-alliance.org/" },
-              { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
-            ].map((client) => (
-              <a
-                key={`${client.alt}-duplicate`}
-                href={client.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 group/logo"
-              >
-                <img
-                  src={client.src}
-                  alt={client.alt}
-                  className="h-8 md:h-10 w-auto grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 transition-all duration-400"
-                />
-              </a>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About Me */}
-      <section id="about" className="container mx-auto px-4 py-16">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2 className="text-5xl md:text-6xl font-black mb-16 text-center font-poppins" initial={{
-          opacity: 0,
-          y: 30
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} transition={{
-          duration: 0.6
-        }}>
-            About Me
-          </motion.h2>
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div className="order-2 md:order-1" initial={{
-            opacity: 0,
-            x: -50
-          }} whileInView={{
-            opacity: 1,
-            x: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.8
-          }}>
-              <div className="rounded-2xl border border-border/50 bg-muted/30 p-8 md:p-10 relative">
-                <div className="text-xl text-foreground leading-relaxed space-y-6">
-                  <motion.p className="font-medium" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>Hey, I'm Esther! Part product nerd, part UX thinker, full-time structure enthusiast, and your go-to partner for getting things done.</motion.p>
-                  <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
-                    I jump into any challenge, learn it fast, and make things happen. No fluff, no 70-page documents — just practical solutions that make life easier.
-                  </motion.p>
-                  <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>Whether it's a messy process, an undefined project, or a critical gap — doesn't matter. I'm here to fix it, streamline it, or build it. Whatever it takes.</motion.p>
-                  <motion.p className="font-bold" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }}>Think of me as your project's personal caffeine shot. Let's go.</motion.p>
-                </div>
-                <motion.p className="mt-6 text-right text-lg italic text-muted-foreground font-poppins" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}>— Esther</motion.p>
-                <div className="flex flex-wrap gap-2 mt-6">
-                  {["10+ projects", "5+ industries", "Strategy to execution"].map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">{tag}</span>
-                  ))}
-                </div>
-              </div>
+      {/* ─── 4. The Es Venture Effect ─── */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-8">
+                The Es Venture Effect
+              </h2>
+              <blockquote className="text-xl md:text-2xl italic text-foreground/80 leading-relaxed">
+                "Esther didn't just manage our project; she breathed life into it. She has this incredible ability to
+                simplify the complex and get everyone excited about what's next. A total game-changer."
+              </blockquote>
+              <p className="mt-6 text-muted-foreground font-poppins">— A happy client</p>
             </motion.div>
-            <motion.div className="order-1 md:order-2" initial={{
-            opacity: 0,
-            x: 50
-          }} whileInView={{
-            opacity: 1,
-            x: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.8
-          }}>
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
-                <img alt="Esther Woerdman - Creative Director" className="w-full h-full object-cover" src="/lovable-uploads/9380f87e-f93e-43ff-aa3e-87e905edd2f2.png" />
-              </div>
+          </div>
+
+          {/* Client logos */}
+          <div className="relative overflow-hidden">
+            <motion.p
+              className="text-sm text-muted-foreground text-center mb-8 uppercase tracking-widest"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              Worked with
+            </motion.p>
+            <motion.div
+              className="flex items-center gap-16 md:gap-24"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            >
+              {[...clients, ...clients].map((client, i) => (
+                <a
+                  key={`${client.alt}-${i}`}
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 group/logo"
+                >
+                  <img
+                    src={client.src}
+                    alt={client.alt}
+                    className="h-8 md:h-10 w-auto grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 transition-all duration-400"
+                  />
+                </a>
+              ))}
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* ─── 5. Project Planner ─── */}
+      <ProjectPlanner />
+
+      {/* ─── 6. Contact CTA ─── */}
       <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
-        {/* Background Image */}
-        <div className="absolute inset-0 bg-cover bg-no-repeat" style={{
-        backgroundImage: `url(${estherPhone})`,
-        backgroundPosition: 'right 15%'
-      }} />
-        {/* Gradient Overlay - fades from purple left to transparent right */}
+        <div
+          className="absolute inset-0 bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url(${estherPhone})`, backgroundPosition: "right 15%" }}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent" />
-        
-        {/* Animated background elements like hero */}
-        <motion.div className="absolute -bottom-20 -right-20 w-64 h-64 bg-secondary rounded-full blur-3xl opacity-30" animate={{
-        scale: [1, 1.2, 1],
-        opacity: [0.3, 0.5, 0.3]
-      }} transition={{
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }} />
-        <motion.div className="absolute top-20 left-20 w-48 h-48 bg-secondary rounded-full blur-3xl opacity-20" animate={{
-        scale: [1.2, 1, 1.2],
-        opacity: [0.2, 0.4, 0.2]
-      }} transition={{
-        duration: 5,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }} />
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <motion.div className="space-y-8" initial={{
-            opacity: 0,
-            x: -50
-          }} whileInView={{
-            opacity: 1,
-            x: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            duration: 0.8
-          }}>
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                 Ready to move<br />
-                 <span className="text-secondary">forward?</span>
-               </h2>
-               <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
-                 What's the one thing you wish you could get off your plate? Let's talk.
-               </p>
-              <motion.div className="flex flex-col sm:flex-row gap-4 pt-4" initial={{
-              opacity: 0,
-              y: 20
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              duration: 0.6,
-              delay: 0.3
-            }}>
-                <Button size="lg" className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full" onClick={() => { analytics.emailClick(); window.location.href = 'mailto:esther@esventure.nl'; }}>
+                Ready to make something{" "}
+                <span className="text-secondary">happen?</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
+                Let's talk about what's on your plate. No pressure, no sales pitch — just a real conversation about how
+                I can help you move forward.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button
+                  size="lg"
+                  className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full"
+                  onClick={() => {
+                    analytics.emailClick();
+                    window.location.href = "mailto:esther@esventure.nl";
+                  }}
+                >
                   <Mail className="mr-2 h-5 w-5" />
                   Send email
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full" onClick={() => { analytics.bookCallClick(); window.open('https://calendar.app.google/5GxNAzn7W3FJNMrh8', '_blank'); }}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full"
+                  onClick={() => {
+                    analytics.bookCallClick();
+                    window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
+                  }}
+                >
                   Book a call
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* ─── 7. Footer ─── */}
       <footer className="bg-foreground py-12">
         <div className="container mx-auto px-4 flex flex-col items-center gap-6">
           <img src={logoEV} alt="Es Venture" className="h-10 brightness-0 invert" />
-          <div className="flex items-center gap-4 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
             <p className="text-background/70">© 2025 Es Venture. All rights reserved.</p>
             <span className="text-background/40">•</span>
             <Link to="/privacy" className="text-background/70 hover:text-background transition-colors">
               Privacy Policy
             </Link>
+            <span className="text-background/40">•</span>
+            <a
+              href="https://plaiwrks.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-background/70 hover:text-background transition-colors"
+            >
+              AI-native projects? Check out Plaiwrks
+            </a>
           </div>
         </div>
       </footer>
-
-      {/* Fixed Bottom CTA */}
-      <motion.div className="fixed bottom-6 right-6 z-40" initial={{
-      scale: 0,
-      opacity: 0
-    }} animate={{
-      scale: isPastHero && !isAtPlanner ? 1 : 0,
-      opacity: isPastHero && !isAtPlanner ? 1 : 0
-    }} transition={{
-      type: "spring",
-      stiffness: 300,
-      damping: 25,
-      mass: 0.8
-    }}>
-        <Button onClick={() => {
-           analytics.ctaClick('floating_button');
-           const element = document.getElementById('project-planner');
-           if (element) {
-             const yOffset = -100;
-             const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-             window.scrollTo({ top: y, behavior: 'smooth' });
-           }
-         }} className="rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30 animate-pulse-once">
-           What's on your plate?
-           <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
-      </motion.div>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;

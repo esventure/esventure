@@ -31,7 +31,6 @@ const Navigation = () => {
 
   const navLinks = [
     { label: "Services", id: "services" },
-    { label: "Projects", id: "projects" },
     { label: "About", id: "about" },
   ];
 
