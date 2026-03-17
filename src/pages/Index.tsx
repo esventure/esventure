@@ -455,19 +455,19 @@ const Index = () => {
           }}>
               <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <ImproveIcon size={24} className="text-primary" />
-                  </div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Process design</Badge>
-                  <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's streamline</h3>
-                </div>
-                <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                  I fix messy workflows, clarify ownership, and make day-to-day operations smooth again.
-                </p>
-                <div className="bg-[#F6F3C2] p-4 rounded-xl">
-                  <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                  <p className="text-sm text-foreground/70">Clear processes, less back-and-forth, and a way of working that just… works.</p>
-                </div>
+                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                     <QuickFixIcon size={24} className="text-primary" />
+                   </div>
+                   <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Rapid Solutions</Badge>
+                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Quick Fixes & Fast Starts</h3>
+                 </div>
+                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
+                   When things hit the fan, I'm your person. I quickly diagnose urgent issues and deliver tangible solutions — from critical user flows to clickable prototypes.
+                 </p>
+                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
+                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
+                   <p className="text-sm text-foreground/70">Fast solutions and working prototypes that get you unstuck, so you can breathe easier.</p>
+                 </div>
               </Card>
             </motion.div>
           </div>
