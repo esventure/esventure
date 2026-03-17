@@ -1,75 +1,127 @@
-import React, { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState, useEffect, createContext, useContext, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const COLLAPSED_HEIGHT = 56;
+const COLLAPSED_HEIGHT = 52;
 
-interface CollapsibleSectionProps {
+// ── Context to collect section refs globally ──
+interface SectionInfo {
+  id: string;
   title: string;
-  stickyIndex: number;
-  children: React.ReactNode;
-  className?: string;
-  collapsedBg?: string;
+  ref: React.RefObject<HTMLDivElement>;
+  bgClass: string;
 }
 
-const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
-  title,
-  stickyIndex,
-  children,
-  className = "",
-  collapsedBg = "bg-primary",
-}) => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const topOffset = stickyIndex * COLLAPSED_HEIGHT;
+interface StickyContextType {
+  register: (info: SectionInfo) => void;
+  unregister: (id: string) => void;
+}
+
+const StickyContext = createContext<StickyContextType>({
+  register: () => {},
+  unregister: () => {},
+});
+
+// ── Provider: wraps the page, renders fixed headers ──
+export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [sections, setSections] = useState<SectionInfo[]>([]);
+  const [collapsedIds, setCollapsedIds] = useState<Set<string>>(new Set());
+
+  const register = useCallback((info: SectionInfo) => {
+    setSections((prev) => {
+      if (prev.find((s) => s.id === info.id)) return prev;
+      return [...prev, info];
+    });
+  }, []);
+
+  const unregister = useCallback((id: string) => {
+    setSections((prev) => prev.filter((s) => s.id !== id));
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      // Collapse when the bottom of the section is above the stacking area
-      const threshold = topOffset + COLLAPSED_HEIGHT + 20;
-      setIsCollapsed(rect.bottom < threshold + 100 && rect.top < topOffset);
+      const next = new Set<string>();
+      sections.forEach((section) => {
+        if (!section.ref.current) return;
+        const rect = section.ref.current.getBoundingClientRect();
+        // Section is "past" when its bottom is above the top of the viewport + some buffer
+        if (rect.bottom < COLLAPSED_HEIGHT * 2) {
+          next.add(section.id);
+        }
+      });
+      setCollapsedIds((prev) => {
+        if (prev.size === next.size && [...prev].every((id) => next.has(id))) return prev;
+        return next;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [topOffset]);
+  }, [sections]);
 
-  const scrollToSection = () => {
-    sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const collapsedSections = sections.filter((s) => collapsedIds.has(s.id));
+
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div ref={sectionRef} className="relative">
-      {/* Sticky collapsed header */}
-      <motion.div
-        className={`sticky z-[${30 + stickyIndex}] ${collapsedBg} cursor-pointer border-b border-primary-foreground/10 overflow-hidden`}
-        style={{
-          top: topOffset,
-          zIndex: 30 + stickyIndex,
-        }}
-        animate={{
-          height: isCollapsed ? COLLAPSED_HEIGHT : 0,
-          opacity: isCollapsed ? 1 : 0,
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        onClick={scrollToSection}
-      >
-        <div className="h-[56px] flex items-center px-6 md:px-10">
-          <p className="text-sm md:text-base font-bold text-primary-foreground font-poppins tracking-wide truncate">
-            {title}
-          </p>
-        </div>
-      </motion.div>
+    <StickyContext.Provider value={{ register, unregister }}>
+      {children}
 
-      {/* Full section content */}
-      <div ref={contentRef} className={className}>
-        {children}
+      {/* Fixed stacked headers */}
+      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+        <AnimatePresence>
+          {collapsedSections.map((section, i) => (
+            <motion.div
+              key={section.id}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: COLLAPSED_HEIGHT, opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className={`${section.bgClass} pointer-events-auto cursor-pointer border-b border-primary-foreground/10 overflow-hidden`}
+              style={{ zIndex: 50 + i }}
+              onClick={() => scrollToSection(section.ref)}
+            >
+              <div
+                className="flex items-center px-6 md:px-10"
+                style={{ height: COLLAPSED_HEIGHT }}
+              >
+                <p className="text-sm md:text-base font-bold text-primary-foreground font-poppins tracking-wide truncate">
+                  {section.title}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
-    </div>
+    </StickyContext.Provider>
   );
+};
+
+// ── Section wrapper: registers itself ──
+interface CollapsibleSectionProps {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+  bgClass?: string;
+}
+
+const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
+  id,
+  title,
+  children,
+  bgClass = "bg-primary",
+}) => {
+  const ref = useRef<HTMLDivElement>(null!);
+  const { register, unregister } = useContext(StickyContext);
+
+  useEffect(() => {
+    register({ id, title, ref, bgClass });
+    return () => unregister(id);
+  }, [id, title, bgClass, register, unregister]);
+
+  return <div ref={ref}>{children}</div>;
 };
 
 export default CollapsibleSection;

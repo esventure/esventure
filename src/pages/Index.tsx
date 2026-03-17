@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { MakeItHappenIcon, ClearPathIcon, QuickFixIcon } from "@/components/ServiceIcons";
 import WhenToCallMe from "@/components/WhenToCallMe";
-import CollapsibleSection from "@/components/CollapsibleSection";
+import CollapsibleSection, { StickyHeaderProvider } from "@/components/CollapsibleSection";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
 import logoEV from "@/assets/logo-ev.svg";
@@ -100,11 +100,12 @@ const Index = () => {
   };
 
   return (
+    <StickyHeaderProvider>
     <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* ─── 1. Hero ─── */}
-      <CollapsibleSection title="☕ Your project's personal caffeine shot" stickyIndex={0}>
+      <CollapsibleSection id="hero" title="☕ Your project's personal caffeine shot">
         <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
           <div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16 flex-1 flex items-center">
             <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-7xl mx-auto">
@@ -162,12 +163,12 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 2. When to Call Me ─── */}
-      <CollapsibleSection title="📞 When to Call Me" stickyIndex={1}>
+      <CollapsibleSection id="when-to-call" title="📞 When to Call Me">
         <WhenToCallMe />
       </CollapsibleSection>
 
       {/* ─── 3. How I Help ─── */}
-      <CollapsibleSection title="🛠 How I Help" stickyIndex={2} collapsedBg="bg-muted">
+      <CollapsibleSection id="how-i-help" title="🛠 How I Help" bgClass="bg-muted">
         <section id="services" className="bg-muted/30 py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-7xl mx-auto">
@@ -230,7 +231,7 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 4. The Es Venture Effect ─── */}
-      <CollapsibleSection title="✨ The Es Venture Effect" stickyIndex={3}>
+      <CollapsibleSection id="effect" title="✨ The Es Venture Effect">
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-16">
@@ -288,12 +289,12 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 5. Project Planner ─── */}
-      <CollapsibleSection title="💡 Got a project in mind?" stickyIndex={4}>
+      <CollapsibleSection id="planner" title="💡 Got a project in mind?">
         <ProjectPlanner />
       </CollapsibleSection>
 
       {/* ─── 6. Contact CTA ─── */}
-      <CollapsibleSection title="🚀 Ready to make something happen?" stickyIndex={5}>
+      <CollapsibleSection id="contact-cta" title="🚀 Ready to make something happen?">
         <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
           <div
             className="absolute inset-0 bg-cover bg-no-repeat"
@@ -375,6 +376,7 @@ const Index = () => {
       {/* Fixed scroll-down arrow */}
       <ScrollDownArrow />
     </div>
+    </StickyHeaderProvider>
   );
 };
 
