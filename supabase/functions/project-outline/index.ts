@@ -551,7 +551,7 @@ function formatCurrency(amount: number): string {
 // DYNAMIC APPROACH GUIDANCE (replaces static templates)
 // ============================================================================
 
-function getMomentumApproachGuidance(subType: MomentumSubType, painPoints: string[]): string {
+function getMakeItHappenApproachGuidance(subType: MomentumSubType, painPoints: string[]): string {
   const painContext = painPoints.length > 0 
     ? `\nUser's specific pain points to address: "${painPoints.join('", "')}"` 
     : '';
