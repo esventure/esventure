@@ -104,64 +104,67 @@ const Index = () => {
       <Navigation />
 
       {/* ─── 1. Hero ─── */}
-      <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
-        <div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16 flex-1 flex items-center">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-7xl mx-auto">
-            <motion.div
-              className="flex flex-col justify-center text-left"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                Your project's personal{" "}
-                <span className="text-secondary">caffeine shot.</span>
-              </h1>
-
-              <div className="space-y-4 mt-6 md:mt-8">
-                <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
-                  Feeling stuck? Overwhelmed? Got a brilliant idea but no time (or skills) to make it happen? That's where I come in.
-                </p>
-                <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
-                  I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
-                  fluff, no endless meetings. Just pure, focused action.
-                </p>
-              </div>
-
-              <div className="mt-8">
-                <Button
-                  size="lg"
-                  className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
-                  onClick={scrollToPlanner}
-                >
-                  Let's Get This Done
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <div className="aspect-[3/4] overflow-hidden shadow-2xl">
-                <img src={estherYellow} alt="Esther Woerdman" className="w-full h-full object-cover" />
-              </div>
+      <CollapsibleSection title="☕ Your project's personal caffeine shot" stickyIndex={0}>
+        <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
+          <div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16 flex-1 flex items-center">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-7xl mx-auto">
               <motion.div
-                className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"
-                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.7, 0.5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </motion.div>
-          </div>
-        </div>
+                className="flex flex-col justify-center text-left"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                  Your project's personal{" "}
+                  <span className="text-secondary">caffeine shot.</span>
+                </h1>
 
-      </section>
+                <div className="space-y-4 mt-6 md:mt-8">
+                  <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
+                    Feeling stuck? Overwhelmed? Got a brilliant idea but no time (or skills) to make it happen? That's where I come in.
+                  </p>
+                  <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
+                    I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
+                    fluff, no endless meetings. Just pure, focused action.
+                  </p>
+                </div>
+
+                <div className="mt-8">
+                  <Button
+                    size="lg"
+                    className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
+                    onClick={scrollToPlanner}
+                  >
+                    Let's Get This Done
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <div className="aspect-[3/4] overflow-hidden shadow-2xl">
+                  <img src={estherYellow} alt="Esther Woerdman" className="w-full h-full object-cover" />
+                </div>
+                <motion.div
+                  className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.7, 0.5] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      </CollapsibleSection>
 
       {/* ─── 2. When to Call Me ─── */}
-      <WhenToCallMe />
+      <CollapsibleSection title="📞 When to Call Me" stickyIndex={1}>
+        <WhenToCallMe />
+      </CollapsibleSection>
 
       {/* ─── 3. How I Help ─── */}
       <section id="services" className="bg-muted/30 py-20">
