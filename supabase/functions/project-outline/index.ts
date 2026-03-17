@@ -683,12 +683,12 @@ serve(async (req) => {
 
     // Get dynamic approach guidance based on support type and sub-type
     let approachGuidance: string;
-    if (supportType === 'momentum') {
-      approachGuidance = getMomentumApproachGuidance(detectedSignals.momentumSubType, detectedSignals.userPainPoints);
-    } else if (supportType === 'structure') {
-      approachGuidance = getStructureApproachGuidance(detectedSignals.userPainPoints);
+    if (supportType === 'make-it-happen') {
+      approachGuidance = getMakeItHappenApproachGuidance(detectedSignals.momentumSubType, detectedSignals.userPainPoints);
+    } else if (supportType === 'clear-path') {
+      approachGuidance = getClearPathApproachGuidance(detectedSignals.userPainPoints);
     } else {
-      approachGuidance = getPrototypeApproachGuidance(detectedSignals.userPainPoints);
+      approachGuidance = getQuickFixApproachGuidance(detectedSignals.userPainPoints);
     }
 
     // Get dynamic walk-away guidance
