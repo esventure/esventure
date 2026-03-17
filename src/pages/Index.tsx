@@ -9,7 +9,7 @@ import FadeInOnScroll from "@/components/FadeInOnScroll";
 import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
-import { FixItIconAlt as FixItIcon, PrototypeIconAlt as PrototypeIcon, ImproveIconAlt as ImproveIcon } from "@/components/ServiceIcons";
+import { MakeItHappenIcon, ClearPathIcon, QuickFixIcon } from "@/components/ServiceIcons";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
