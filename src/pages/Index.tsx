@@ -167,7 +167,7 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 3. How I Help ─── */}
-      <section id="services" className="bg-muted/30 py-20">
+      <CollapsibleSection title="🛠 How I Help" stickyIndex={2} collapsedBg="bg-muted">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <motion.div
