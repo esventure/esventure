@@ -110,7 +110,6 @@ const Index = () => {
                   I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
                   fluff, no endless meetings. Just pure, focused action.
                 </p>
-                </p>
               </div>
 
               <div className="mt-8">
