@@ -512,13 +512,29 @@ const ProjectPlanner = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
           {/* Header - centered */}
-          <div className="mb-12 md:mb-16 text-center">
+          <div className="mb-8 md:mb-12 text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-3 font-poppins">
               Got a project in mind?
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground mb-8">
               Let me show you how I'd tackle it.
             </p>
+            {/* Progress indicator */}
+            <div className="flex items-center justify-center gap-3">
+              {[
+                { label: "Describe", num: 1 },
+                { label: "Handoff", num: 2 },
+                { label: "Details", num: 3 },
+              ].map((step, i) => (
+                <React.Fragment key={step.label}>
+                  {i > 0 && <div className="w-8 h-px bg-border" />}
+                  <div className="flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">{step.num}</span>
+                    <span className="text-sm font-medium text-muted-foreground hidden sm:inline">{step.label}</span>
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
           </div>
 
           {/* Two-column layout */}

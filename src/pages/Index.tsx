@@ -93,11 +93,11 @@ const Index = () => {
             delay: 0.2
           }}>
               <div>
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
                    I'm the partner who makes your business move,<br />
                    <span className="text-secondary">let's go.</span>
                  </h1>
-                 <motion.div className="space-y-3 mt-8 md:mt-10" initial={{
+                 <motion.div className="space-y-3 mt-6 md:mt-8" initial={{
                  opacity: 0,
                  y: 15
                }} animate={{
@@ -113,6 +113,38 @@ const Index = () => {
                      Complex problems → simple steps.<br />
                      Big ideas → real results.
                    </p>
+                </motion.div>
+                <motion.div className="flex flex-col sm:flex-row gap-3 mt-8" initial={{
+                  opacity: 0,
+                  y: 15
+                }} animate={{
+                  opacity: 1,
+                  y: 0
+                }} transition={{
+                  duration: 0.6,
+                  delay: 0.6
+                }}>
+                  <Button
+                    size="lg"
+                    className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
+                    onClick={() => {
+                      analytics.ctaClick('hero_primary');
+                      document.getElementById('project-planner')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                  >
+                    Let's Talk About Your Project
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="ghost"
+                    className="text-base px-8 py-6 font-bold text-primary-foreground border-2 border-primary-foreground/30 hover:bg-primary-foreground/10 hover:border-primary-foreground/50 transition-all rounded-full"
+                    onClick={() => {
+                      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                  >
+                    See What I Do
+                  </Button>
                 </motion.div>
               </div>
             </motion.div>
@@ -565,11 +597,11 @@ const Index = () => {
                   duration: 0.5,
                   delay: index * 0.05
                 }} className="h-full">
-                      <Card className="p-8 bg-[#F0EAFF] border border-[#D7C4FF] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 rounded-xl h-full">
+                      <Card className="group p-8 bg-[#F0EAFF] border border-[#D7C4FF] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 rounded-xl h-full relative overflow-hidden">
                         <Badge className="mb-3 bg-secondary text-secondary-foreground border-0 text-xs font-medium">{project.category}</Badge>
                         <h3 className="font-bold text-2xl mb-3 text-foreground font-poppins">{project.title}</h3>
                         <p className="font-bold text-lg mb-4 text-primary">{project.subtitle}</p>
-                        <p className="text-foreground/70 text-base leading-relaxed">{project.description}</p>
+                        <p className="text-foreground/70 text-base leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">{project.description}</p>
                       </Card>
                     </motion.div>
                   </CarouselItem>)}
@@ -624,12 +656,12 @@ const Index = () => {
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity duration-300 flex-shrink-0"
+                className="flex-shrink-0 group/logo"
               >
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className="h-8 md:h-10 w-auto"
+                  className="h-8 md:h-10 w-auto grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 transition-all duration-400"
                 />
               </a>
             ))}
@@ -646,12 +678,12 @@ const Index = () => {
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity duration-300 flex-shrink-0"
+                className="flex-shrink-0 group/logo"
               >
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className="h-8 md:h-10 w-auto"
+                  className="h-8 md:h-10 w-auto grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 transition-all duration-400"
                 />
               </a>
             ))}
@@ -687,46 +719,22 @@ const Index = () => {
           }} transition={{
             duration: 0.8
           }}>
-              <div className="text-xl text-foreground leading-relaxed space-y-6">
-                 <motion.p className="font-medium" initial={{
-                 opacity: 0
-               }} whileInView={{
-                 opacity: 1
-               }} viewport={{
-                 once: true
-               }} transition={{
-                 delay: 0.2
-               }}>Hey, I'm Esther! Part product nerd, part UX thinker, full-time structure enthusiast, and your go-to partner for getting things done.</motion.p>
-                 <motion.p initial={{
-                 opacity: 0
-               }} whileInView={{
-                 opacity: 1
-               }} viewport={{
-                 once: true
-               }} transition={{
-                 delay: 0.3
-               }}>
-                   I jump into any challenge, learn it fast, and make things happen. No fluff, no 70-page documents — just practical solutions that make life easier.
-                 </motion.p>
-                 <motion.p initial={{
-                 opacity: 0
-               }} whileInView={{
-                 opacity: 1
-               }} viewport={{
-                 once: true
-               }} transition={{
-                 delay: 0.4
-               }}>Whether it's a messy process, an undefined project, or a critical gap — doesn't matter. I'm here to fix it, streamline it, or build it. Whatever it takes.</motion.p>
-                 <motion.p className="font-bold" initial={{
-                 opacity: 0
-               }} whileInView={{
-                 opacity: 1
-               }} viewport={{
-                 once: true
-               }} transition={{
-                 delay: 0.5
-               }}>Think of me as your project's personal caffeine shot. Let's go.</motion.p>
-               </div>
+              <div className="rounded-2xl border border-border/50 bg-muted/30 p-8 md:p-10 relative">
+                <div className="text-xl text-foreground leading-relaxed space-y-6">
+                  <motion.p className="font-medium" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>Hey, I'm Esther! Part product nerd, part UX thinker, full-time structure enthusiast, and your go-to partner for getting things done.</motion.p>
+                  <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
+                    I jump into any challenge, learn it fast, and make things happen. No fluff, no 70-page documents — just practical solutions that make life easier.
+                  </motion.p>
+                  <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>Whether it's a messy process, an undefined project, or a critical gap — doesn't matter. I'm here to fix it, streamline it, or build it. Whatever it takes.</motion.p>
+                  <motion.p className="font-bold" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }}>Think of me as your project's personal caffeine shot. Let's go.</motion.p>
+                </div>
+                <motion.p className="mt-6 text-right text-lg italic text-muted-foreground font-poppins" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}>— Esther</motion.p>
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {["10+ projects", "5+ industries", "Strategy to execution"].map((tag) => (
+                    <span key={tag} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">{tag}</span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
             <motion.div className="order-1 md:order-2" initial={{
             opacity: 0,
@@ -856,7 +864,7 @@ const Index = () => {
              const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
              window.scrollTo({ top: y, behavior: 'smooth' });
            }
-         }} className="rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30">
+         }} className="rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30 animate-pulse-once">
            What's on your plate?
            <ArrowRight className="ml-2 h-5 w-5" />
         </Button>

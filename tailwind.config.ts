@@ -84,10 +84,16 @@ export default {
             height: "0",
           },
         },
+        "pulse-once": {
+          "0%": { boxShadow: "0 0 0 0 hsl(var(--secondary) / 0.5)" },
+          "70%": { boxShadow: "0 0 0 14px hsl(var(--secondary) / 0)" },
+          "100%": { boxShadow: "0 0 0 0 hsl(var(--secondary) / 0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-once": "pulse-once 1.5s ease-out 0.5s 2",
       },
     },
   },
