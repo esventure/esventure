@@ -231,7 +231,7 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 4. The Es Venture Effect ─── */}
-      <CollapsibleSection title="✨ The Es Venture Effect" stickyIndex={3}>
+      <CollapsibleSection id="effect" title="✨ The Es Venture Effect">
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-16">
