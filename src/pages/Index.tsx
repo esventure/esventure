@@ -273,52 +273,12 @@ const Index = () => {
               }
             }
           }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#FDF9E4] shadow-xl shadow-secondary/10 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
-              <span className="text-3xl mb-3">👩‍✈️</span>
-              <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
-                People-Friendly Leadership
-
-
-
-              </h3>
-              <p className="text-sm text-foreground/70 leading-tight">Being confident yet approachable, I make sure everyone feels they belong in the conversation.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </p>
+              <span className="text-3xl mb-3">🤝</span>
+               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
+                 Your Trusted Partner
+               </h3>
+               <p className="text-sm text-foreground/70 leading-tight">I jump into your world and get things done with a personal touch. Quick win or ongoing adventure — I'm all in.
+             </p>
             </motion.div>
 
             {/* Bubble 3: Projects that finally move */}
