@@ -289,7 +289,7 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 5. Project Planner ─── */}
-      <CollapsibleSection title="💡 Got a project in mind?" stickyIndex={4}>
+      <CollapsibleSection id="planner" title="💡 Got a project in mind?">
         <ProjectPlanner />
       </CollapsibleSection>
 
