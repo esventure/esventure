@@ -468,12 +468,11 @@ function determineProjectSize(inputs: {
     return SIZE_CONFIGS['medium']; // DEFAULT
   }
   
-  // MOMENTUM WORK: Defaults to Medium, upsize to Large on complexity
-  if (inputs.supportType === 'momentum') {
+  // MAKE IT HAPPEN WORK: Defaults to Medium, upsize to Large on complexity
+  if (inputs.supportType === 'make-it-happen') {
     const isTiny = ['just one task', 'single task', 'one quick call', 'very quick', 'tiny']
       .some(indicator => fullText.includes(indicator));
     
-    // Upsize to Large when: launch, multiple teams, deadlines slipping, priorities unclear
     const momentumLargeIndicators = [
       'launch', 'multiple team', 'multi-team', 'deadline', 'slipping',
       'priorities unclear', 'responsibilities unclear', 'coordination missing',
@@ -487,7 +486,7 @@ function determineProjectSize(inputs: {
     return SIZE_CONFIGS['medium']; // DEFAULT
   }
   
-  // PROTOTYPE WORK: Small–Medium depending on complexity
+  // QUICK FIX WORK: Small–Medium depending on complexity
   if (complexityScore >= 5) return SIZE_CONFIGS['very-large'];
   if (complexityScore >= 3) return SIZE_CONFIGS['large'];
   if (complexityScore >= 1) return SIZE_CONFIGS['medium'];
