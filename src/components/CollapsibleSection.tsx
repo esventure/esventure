@@ -73,8 +73,12 @@ export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ 
     <StickyContext.Provider value={{ register, unregister }}>
       {children}
 
-      {/* Fixed stacked headers */}
-      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      {/* Fixed stacked headers — below the nav */}
+      <motion.div
+        className="fixed left-0 right-0 z-40 pointer-events-none"
+        animate={{ top: navVisible ? NAV_HEIGHT : 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <AnimatePresence>
           {collapsedSections.map((section, i) => (
             <motion.div
