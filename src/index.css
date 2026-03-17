@@ -99,6 +99,10 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body {
     @apply overflow-x-hidden;
     -webkit-overflow-scrolling: touch;
@@ -106,6 +110,10 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
   }
 }
 
