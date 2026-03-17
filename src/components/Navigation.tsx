@@ -76,7 +76,7 @@ const Navigation = () => {
                 variant="ghost"
                 className="rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold px-5 py-1 text-base transition-colors"
               >
-                Let's Talk
+                Let's Go
               </Button>
             </div>
 
