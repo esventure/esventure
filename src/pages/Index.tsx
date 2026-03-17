@@ -383,19 +383,19 @@ const Index = () => {
           }}>
               <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <FixItIcon size={24} className="text-primary" />
-                  </div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Project management</Badge>
-                  <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's fix it</h3>
-                </div>
-                <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                  Whether you're starting a new project, or an ongoing project gets stuck, I step in, take over and make sure it gets done.                                                                      
-                </p>
-                <div className="bg-[#F6F3C2] p-4 rounded-xl">
-                  <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                  <p className="text-sm text-foreground/70">Ownership, progress and deliverables that get finished.</p>
-                </div>
+                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                     <MakeItHappenIcon size={24} className="text-primary" />
+                   </div>
+                   <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Hands-On Support</Badge>
+                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's Make It Happen</h3>
+                 </div>
+                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
+                   I step in and take charge. Whether it's leading a big project, unblocking something that's stuck, or being that extra pair of hands to get urgent tasks over the finish line.
+                 </p>
+                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
+                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
+                   <p className="text-sm text-foreground/70">Hands-on support and leadership so you can focus on what you do best.</p>
+                 </div>
               </Card>
             </motion.div>
 
