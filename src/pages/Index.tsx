@@ -789,12 +789,12 @@ const Index = () => {
             duration: 0.8
           }}>
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                Ready for an<br />
-                <span className="text-secondary">Es Venture?</span>
-              </h2>
-              <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
-                Let's talk about your project and see how I can help.
-              </p>
+                 Ready to move<br />
+                 <span className="text-secondary">forward?</span>
+               </h2>
+               <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
+                 What's the one thing you wish you could get off your plate? Let's talk.
+               </p>
               <motion.div className="flex flex-col sm:flex-row gap-4 pt-4" initial={{
               opacity: 0,
               y: 20
