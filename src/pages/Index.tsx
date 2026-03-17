@@ -114,7 +114,7 @@ const Index = () => {
                   <motion.button
                     onClick={() => window.scrollBy({ top: 300, behavior: "smooth" })}
                     className="flex-shrink-0 text-primary-foreground/70 hover:text-primary-foreground transition-colors mb-1"
-                    animate={{ y: [0, 6, 0] }}
+                    animate={{ y: [0, 6, 0], rotate: [0, 0, 0] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                     aria-label="Scroll down"
                   >
