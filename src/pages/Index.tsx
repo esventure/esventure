@@ -719,46 +719,22 @@ const Index = () => {
           }} transition={{
             duration: 0.8
           }}>
-              <div className="text-xl text-foreground leading-relaxed space-y-6">
-                 <motion.p className="font-medium" initial={{
-                 opacity: 0
-               }} whileInView={{
-                 opacity: 1
-               }} viewport={{
-                 once: true
-               }} transition={{
-                 delay: 0.2
-               }}>Hey, I'm Esther! Part product nerd, part UX thinker, full-time structure enthusiast, and your go-to partner for getting things done.</motion.p>
-                 <motion.p initial={{
-                 opacity: 0
-               }} whileInView={{
-                 opacity: 1
-               }} viewport={{
-                 once: true
-               }} transition={{
-                 delay: 0.3
-               }}>
-                   I jump into any challenge, learn it fast, and make things happen. No fluff, no 70-page documents — just practical solutions that make life easier.
-                 </motion.p>
-                 <motion.p initial={{
-                 opacity: 0
-               }} whileInView={{
-                 opacity: 1
-               }} viewport={{
-                 once: true
-               }} transition={{
-                 delay: 0.4
-               }}>Whether it's a messy process, an undefined project, or a critical gap — doesn't matter. I'm here to fix it, streamline it, or build it. Whatever it takes.</motion.p>
-                 <motion.p className="font-bold" initial={{
-                 opacity: 0
-               }} whileInView={{
-                 opacity: 1
-               }} viewport={{
-                 once: true
-               }} transition={{
-                 delay: 0.5
-               }}>Think of me as your project's personal caffeine shot. Let's go.</motion.p>
-               </div>
+              <div className="rounded-2xl border border-border/50 bg-muted/30 p-8 md:p-10 relative">
+                <div className="text-xl text-foreground leading-relaxed space-y-6">
+                  <motion.p className="font-medium" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>Hey, I'm Esther! Part product nerd, part UX thinker, full-time structure enthusiast, and your go-to partner for getting things done.</motion.p>
+                  <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
+                    I jump into any challenge, learn it fast, and make things happen. No fluff, no 70-page documents — just practical solutions that make life easier.
+                  </motion.p>
+                  <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>Whether it's a messy process, an undefined project, or a critical gap — doesn't matter. I'm here to fix it, streamline it, or build it. Whatever it takes.</motion.p>
+                  <motion.p className="font-bold" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }}>Think of me as your project's personal caffeine shot. Let's go.</motion.p>
+                </div>
+                <motion.p className="mt-6 text-right text-lg italic text-muted-foreground font-poppins" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}>— Esther</motion.p>
+                <div className="flex flex-wrap gap-2 mt-6">
+                  {["10+ projects", "5+ industries", "Strategy to execution"].map((tag) => (
+                    <span key={tag} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">{tag}</span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
             <motion.div className="order-1 md:order-2" initial={{
             opacity: 0,
