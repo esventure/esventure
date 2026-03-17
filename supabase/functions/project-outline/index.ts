@@ -615,22 +615,22 @@ Do NOT use generic language. Reference specifics from their input.`;
 // DYNAMIC WALK-AWAY GUIDANCE (replaces static templates)
 // ============================================================================
 
-function getWalkAwayGuidance(supportType: 'structure' | 'momentum' | 'prototype', subType: MomentumSubType): string {
+function getWalkAwayGuidance(supportType: 'make-it-happen' | 'clear-path' | 'quick-fix', subType: MomentumSubType): string {
   const baseGuidance = `List 3-4 tangible outcomes they'd walk away with, tailored to their specific situation.
 Use bullets (-). Reference what they actually mentioned needing.
 Keep each bullet short (5-10 words max).`;
 
   const typeHints: Record<string, string> = {
-    structure: `Focus on: clarity, usable workflows, templates, reduced confusion.`,
-    momentum_calendar_drift: `Focus on: a calendar that sticks, realistic planning rhythm, decisions that get made.`,
-    momentum_deadline_pressure: `Focus on: clear priorities, protected timeline, focused scope, visible progress.`,
-    momentum_coordination_issues: `Focus on: clear ownership, no duplicate work, smooth handoffs, everyone knowing their role.`,
-    momentum_progress_blocked: `Focus on: blockers removed, momentum restored, quick wins, forward movement.`,
-    momentum_general: `Focus on: ownership, momentum, weekly progress, clear next steps.`,
-    prototype: `Focus on: clickable prototype, clear user flow, something to test/pitch, ready for next steps.`
+    'clear-path': `Focus on: clarity, usable workflows, templates, reduced confusion, actionable roadmap.`,
+    'make-it-happen_calendar_drift': `Focus on: a calendar that sticks, realistic planning rhythm, decisions that get made.`,
+    'make-it-happen_deadline_pressure': `Focus on: clear priorities, protected timeline, focused scope, visible progress.`,
+    'make-it-happen_coordination_issues': `Focus on: clear ownership, no duplicate work, smooth handoffs, everyone knowing their role.`,
+    'make-it-happen_progress_blocked': `Focus on: blockers removed, momentum restored, quick wins, forward movement.`,
+    'make-it-happen_general': `Focus on: ownership, momentum, weekly progress, clear next steps.`,
+    'quick-fix': `Focus on: working prototype, diagnosed issue, tangible fix, something to test/pitch, breathing room.`
   };
 
-  const key = supportType === 'momentum' ? `momentum_${subType}` : supportType;
+  const key = supportType === 'make-it-happen' ? `make-it-happen_${subType}` : supportType;
   return `${baseGuidance}\n${typeHints[key] || ''}`;
 }
 
