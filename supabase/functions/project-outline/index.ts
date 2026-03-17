@@ -716,8 +716,8 @@ serve(async (req) => {
     // Build context block for AI
     const contextBlock = `
 DETECTED CONTEXT (use this to tailor your response):
-- Support Type: ${supportType}
-- Momentum Sub-Type: ${supportType === 'momentum' ? detectedSignals.momentumSubType.replace('_', ' ') : 'N/A'}
+- Support Type: ${supportType === 'make-it-happen' ? 'Let\'s Make It Happen (Hands-On Support)' : supportType === 'clear-path' ? 'Your Clear Path Forward (Strategic Clarity)' : 'Quick Fixes & Fast Starts (Rapid Solutions)'}
+- Sub-Type: ${supportType === 'make-it-happen' ? detectedSignals.momentumSubType.replace('_', ' ') : 'N/A'}
 - Matched Signals: ${[...detectedSignals.matchedOverrideKeywords, ...detectedSignals.matchedMomentumKeywords].slice(0, 5).join(', ') || 'none specific'}
 - Complexity Factors: ${detectedSignals.complexityIndicators.join(', ') || 'none detected'}
 - User Pain Points: ${detectedSignals.userPainPoints.join(' | ') || 'not extracted'}
