@@ -378,6 +378,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Fixed scroll-down arrow */}
+      <ScrollDownArrow />
     </div>
   );
 };
