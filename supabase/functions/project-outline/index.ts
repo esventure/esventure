@@ -577,7 +577,7 @@ Your steps should follow this structure but use THEIR language and situation:
 Do NOT use generic language. Reference specifics from their input.`;
 }
 
-function getStructureApproachGuidance(painPoints: string[]): string {
+function getClearPathApproachGuidance(painPoints: string[]): string {
   const painContext = painPoints.length > 0 
     ? `\nUser's specific pain points to address: "${painPoints.join('", "')}"` 
     : '';
