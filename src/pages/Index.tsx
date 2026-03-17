@@ -508,51 +508,51 @@ const Index = () => {
           })]} setApi={setCarouselApi} className="w-full">
               <CarouselContent className="-ml-4">
                 {[{
-                title: "Startup",
-                subtitle: "From idea to prototype",
-                category: "UX/UI Design",
-                description: "Took a rough idea and turned it into a full UX flow + clickable prototype so the founder could finally show something real."
-              }, {
-                title: "Tourism company",
-                subtitle: "Project management setup",
-                category: "Project management",
-                description: "Set up a simple project management system from scratch, cleaned up how the team works and made sure everyone actually knew what to do."
-              }, {
-                title: "Photostudio",
-                subtitle: "Website launch",
-                category: "UX/UI Design",
-                description: "Designed and launched a clear, easy-to-navigate website so clients could find them (and book them) without confusion."
-              }, {
-                title: "E-bike brand",
-                subtitle: "Webshop launch",
-                category: "Project management",
-                description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
-              }, {
-                title: "Customer Success Team",
-                subtitle: "Customer success agent",
-                category: "Process design",
-                description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
-              }, {
-                title: "NGO",
-                subtitle: "User journey mapping across systems",
-                category: "UX/UI Design",
-                description: "Mapped the full user journey across several applications, finally giving everyone a clear picture of how things actually flow."
-              }, {
-                title: "NGO",
-                subtitle: "UAT & E2E testing",
-                category: "Project management",
-                description: "Coordinated UAT and E2E testing for a new platform, aligned teams and brought much-needed structure to the process."
-              }, {
-                title: "E-bike brand",
-                subtitle: "Interim PO for subscription launch",
-                category: "Project management",
-                description: "Stepped in as interim PO to keep the subscription service moving. Cleaned up scope, prioritised what mattered and pushed things forward."
-              }, {
-                title: "E-bike brand",
-                subtitle: "ERP improvements",
-                category: "Process design",
-                description: "Found and fixed gaps in the ERP flow so operational processes stopped getting stuck."
-              }].map((project, index) => <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                 title: "Startup",
+                 subtitle: "From idea to prototype",
+                 category: "Quick Fixes & Fast Starts",
+                 description: "Took a rough idea and turned it into a full UX flow + clickable prototype so the founder could finally show something real."
+               }, {
+                 title: "Tourism company",
+                 subtitle: "Project management setup",
+                 category: "Let's Make It Happen",
+                 description: "Set up a simple project management system from scratch, cleaned up how the team works and made sure everyone actually knew what to do."
+               }, {
+                 title: "Photostudio",
+                 subtitle: "Website launch",
+                 category: "Quick Fixes & Fast Starts",
+                 description: "Designed and launched a clear, easy-to-navigate website so clients could find them (and book them) without confusion."
+               }, {
+                 title: "E-bike brand",
+                 subtitle: "Webshop launch",
+                 category: "Let's Make It Happen",
+                 description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
+               }, {
+                 title: "Customer Success Team",
+                 subtitle: "Customer success agent",
+                 category: "Your Clear Path Forward",
+                 description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
+               }, {
+                 title: "NGO",
+                 subtitle: "User journey mapping across systems",
+                 category: "Your Clear Path Forward",
+                 description: "Mapped the full user journey across several applications, finally giving everyone a clear picture of how things actually flow."
+               }, {
+                 title: "NGO",
+                 subtitle: "UAT & E2E testing",
+                 category: "Let's Make It Happen",
+                 description: "Coordinated UAT and E2E testing for a new platform, aligned teams and brought much-needed structure to the process."
+               }, {
+                 title: "E-bike brand",
+                 subtitle: "Interim PO for subscription launch",
+                 category: "Let's Make It Happen",
+                 description: "Stepped in as interim PO to keep the subscription service moving. Cleaned up scope, prioritised what mattered and pushed things forward."
+               }, {
+                 title: "E-bike brand",
+                 subtitle: "ERP improvements",
+                 category: "Your Clear Path Forward",
+                 description: "Found and fixed gaps in the ERP flow so operational processes stopped getting stuck."
+               }].map((project, index) => <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <motion.div initial={{
                   opacity: 0,
                   y: 30
