@@ -88,8 +88,8 @@ const Index = () => {
       <Navigation />
 
       {/* ─── 1. Hero ─── */}
-      <section className="relative overflow-hidden bg-primary">
-        <div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16">
+      <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
+        <div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16 flex-1 flex items-center">
           <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-7xl mx-auto">
             <motion.div
               className="flex flex-col justify-center text-left"
