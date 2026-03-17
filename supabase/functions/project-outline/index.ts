@@ -151,9 +151,9 @@ function extractDetectedSignals(text: string): DetectedSignals {
   
   // Extract matched keywords
   const matchedOverrideKeywords = MOMENTUM_OVERRIDE_KEYWORDS.filter(kw => lowerText.includes(kw));
-  const matchedMomentumKeywords = MOMENTUM_KEYWORDS.filter(kw => lowerText.includes(kw));
-  const matchedStructureKeywords = STRUCTURE_KEYWORDS.filter(kw => lowerText.includes(kw));
-  const matchedPrototypeKeywords = PROTOTYPE_KEYWORDS.filter(kw => lowerText.includes(kw));
+  const matchedMomentumKeywords = MAKE_IT_HAPPEN_KEYWORDS.filter(kw => lowerText.includes(kw));
+  const matchedStructureKeywords = CLEAR_PATH_KEYWORDS.filter(kw => lowerText.includes(kw));
+  const matchedPrototypeKeywords = QUICK_FIX_KEYWORDS.filter(kw => lowerText.includes(kw));
   
   // Extract complexity indicators
   const complexityKeywords = [
