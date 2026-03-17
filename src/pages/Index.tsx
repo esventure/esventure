@@ -7,6 +7,7 @@ import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion } from "framer-motion";
 import React from "react";
 import { MakeItHappenIcon, ClearPathIcon, QuickFixIcon } from "@/components/ServiceIcons";
+import WhenToCallMe from "@/components/WhenToCallMe";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
 import logoEV from "@/assets/logo-ev.svg";
@@ -61,28 +62,6 @@ const clients = [
   { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
 ];
 
-const scenarios = [
-  {
-    quote: "This project is completely stalled and I don't know why.",
-    need: "Momentum.",
-    explanation: "I'll find the friction and get things moving again.",
-  },
-  {
-    quote: "I have a million things to do and I can't focus on what's important.",
-    need: "Clarity.",
-    explanation: "I'll help you prioritize and then take the big tasks off your plate.",
-  },
-  {
-    quote: "We have a great idea, but no one to actually build or manage it.",
-    need: "Ownership.",
-    explanation: "I'll step in as your interim lead and drive it from start to finish.",
-  },
-  {
-    quote: "Our process is a mess and it's slowing everyone down.",
-    need: "A Fix.",
-    explanation: "I'll map it out, find the kinks, and build a workflow that just works.",
-  },
-];
 
 const services = [
   {
@@ -181,41 +160,7 @@ const Index = () => {
       </section>
 
       {/* ─── 2. When to Call Me ─── */}
-      <section id="about" className="container mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-14"
-          >
-            <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4">When to Call Me</h2>
-            <p className="text-xl text-muted-foreground">
-              You don't need a perfect plan. You just need to know you need help.
-            </p>
-          </motion.div>
-
-          <div className="space-y-4">
-            {scenarios.map((s, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="grid md:grid-cols-2 gap-4 md:gap-8 p-6 rounded-2xl border border-border/50 bg-muted/30 hover:bg-muted/50 transition-colors"
-              >
-                <p className="text-lg italic text-foreground/80">"{s.quote}"</p>
-                <p className="text-lg">
-                  <span className="font-black text-primary font-poppins">{s.need}</span>{" "}
-                  <span className="text-foreground/70">{s.explanation}</span>
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhenToCallMe />
 
       {/* ─── 3. How I Help ─── */}
       <section id="services" className="bg-muted/30 py-20">
