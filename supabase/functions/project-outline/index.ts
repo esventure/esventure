@@ -318,8 +318,8 @@ function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'c
   ];
   const hasCoordinationDrift = coordinationDriftSignals.some(signal => lowerText.includes(signal));
   if (hasCoordinationDrift) {
-    console.log('Momentum override triggered - coordination/ownership drift fallback');
-    return 'momentum';
+    console.log('Make It Happen override triggered - coordination/ownership drift fallback');
+    return 'make-it-happen';
   }
   
   // STRUCTURE has priority (if no momentum override)
