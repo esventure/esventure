@@ -262,8 +262,8 @@ function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'c
     ];
     const hasUrgentMomentumSignal = urgentMomentumSignals.some(signal => lowerText.includes(signal));
     if (hasUrgentMomentumSignal) {
-      console.log('Momentum override triggered - urgent + drift/coordination signals');
-      return 'momentum';
+      console.log('Make It Happen override triggered - urgent + drift/coordination signals');
+      return 'make-it-happen';
     }
   }
   
