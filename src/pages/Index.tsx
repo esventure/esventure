@@ -141,6 +141,17 @@ const Index = () => {
             </motion.div>
           </div>
         </div>
+
+        {/* Scroll down arrow */}
+        <motion.button
+          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          aria-label="Scroll down"
+        >
+          <ChevronDown className="w-8 h-8" />
+        </motion.button>
       </section>
 
       {/* ─── 2. When to Call Me ─── */}
