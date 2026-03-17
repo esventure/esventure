@@ -656,12 +656,12 @@ const Index = () => {
                 href={client.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity duration-300 flex-shrink-0"
+                className="flex-shrink-0 group/logo"
               >
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className="h-8 md:h-10 w-auto"
+                  className="h-8 md:h-10 w-auto grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 transition-all duration-400"
                 />
               </a>
             ))}
