@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { MakeItHappenIcon, ClearPathIcon, QuickFixIcon } from "@/components/ServiceIcons";
 import WhenToCallMe from "@/components/WhenToCallMe";
-import CollapsibleSection from "@/components/CollapsibleSection";
+import CollapsibleSection, { StickyHeaderProvider } from "@/components/CollapsibleSection";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
 import logoEV from "@/assets/logo-ev.svg";
