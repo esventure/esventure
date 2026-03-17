@@ -376,6 +376,7 @@ const Index = () => {
       {/* Fixed scroll-down arrow */}
       <ScrollDownArrow />
     </div>
+    </StickyHeaderProvider>
   );
 };
 
