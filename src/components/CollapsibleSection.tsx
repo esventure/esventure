@@ -41,12 +41,14 @@ export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ 
 
   useEffect(() => {
     const handleScroll = () => {
+      // Check if nav is visible (it shows after scrollY > 100)
+      setNavVisible(window.scrollY > 100);
+
       const next = new Set<string>();
       sections.forEach((section) => {
         if (!section.ref.current) return;
         const rect = section.ref.current.getBoundingClientRect();
-        // Section is "past" when its bottom is above the top of the viewport + some buffer
-        if (rect.bottom < COLLAPSED_HEIGHT * 2) {
+        if (rect.bottom < COLLAPSED_HEIGHT * 2 + (window.scrollY > 100 ? NAV_HEIGHT : 0)) {
           next.add(section.id);
         }
       });
