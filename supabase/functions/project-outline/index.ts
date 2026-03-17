@@ -269,8 +269,8 @@ function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'c
   
   // Check 3: Even with structure keywords, if ANY momentum signal exists alongside urgency → Momentum
   // "workflow unclear AND we are behind schedule" → Momentum (not Structure)
-  const hasMomentumKeyword = MOMENTUM_KEYWORDS.some(kw => lowerText.includes(kw));
-  const hasStructureKeyword = STRUCTURE_KEYWORDS.some(kw => lowerText.includes(kw));
+  const hasMomentumKeyword = MAKE_IT_HAPPEN_KEYWORDS.some(kw => lowerText.includes(kw));
+  const hasStructureKeyword = CLEAR_PATH_KEYWORDS.some(kw => lowerText.includes(kw));
   
   if (hasStructureKeyword && hasMomentumKeyword) {
     // Mixed signals - check if the pain is about movement/deadlines
