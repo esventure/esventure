@@ -163,7 +163,7 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 2. When to Call Me ─── */}
-      <CollapsibleSection title="📞 When to Call Me" stickyIndex={1}>
+      <CollapsibleSection id="when-to-call" title="📞 When to Call Me">
         <WhenToCallMe />
       </CollapsibleSection>
 
