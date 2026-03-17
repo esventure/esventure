@@ -594,19 +594,19 @@ Your steps should follow this structure but use THEIR language and situation:
 Do NOT use generic language. Reference specifics from their input.`;
 }
 
-function getPrototypeApproachGuidance(painPoints: string[]): string {
+function getQuickFixApproachGuidance(painPoints: string[]): string {
   const painContext = painPoints.length > 0 
     ? `\nUser's specific goals: "${painPoints.join('", "')}"` 
     : '';
 
-  return `Write 4 numbered steps tailored to THIS specific concept. Reference their actual idea.
+  return `Write 4 numbered steps tailored to THIS specific concept. Reference their actual idea or issue.
 ${painContext}
 
 Your steps should follow this structure but use THEIR language and situation:
-1. Unpack the idea - define what they want to achieve and who it's for
-2. User flow - map out the key screens/interactions
-3. Build - create a clickable prototype they can test or pitch
-4. Ready for next steps - prepare it for testing, alignment, or presentation
+1. Diagnose - quickly understand the core issue or idea
+2. User flow / solution design - map out the fix or key interactions
+3. Build / deliver - create a working prototype, fix, or tangible solution
+4. Ready for next steps - prepare it for testing, alignment, or handoff
 
 Do NOT use generic language. Reference specifics from their input.`;
 }
