@@ -168,178 +168,186 @@ const Index = () => {
 
       {/* ─── 3. How I Help ─── */}
       <CollapsibleSection title="🛠 How I Help" stickyIndex={2} collapsedBg="bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-14"
-            >
-              <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4">
-                How I Help
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Think of me as your secret weapon. You can deploy me in three key ways.
-              </p>
-            </motion.div>
+        <section id="services" className="bg-muted/30 py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-center mb-14"
+              >
+                <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4">
+                  How I Help
+                </h2>
+                <p className="text-xl text-muted-foreground">
+                  Think of me as your secret weapon. You can deploy me in three key ways.
+                </p>
+              </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {services.map((service, i) => {
-                const Icon = service.icon;
-                return (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.15 }}
-                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  >
-                    <Card className="h-full p-8 border border-border/50 bg-card shadow-sm hover:shadow-md transition-all duration-200 flex flex-col">
-                      <div className="flex flex-col items-center text-center mb-6">
-                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
-                          <Icon size={28} className="text-primary" />
+              <div className="grid md:grid-cols-3 gap-8">
+                {services.map((service, i) => {
+                  const Icon = service.icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: i * 0.15 }}
+                      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                    >
+                      <Card className="h-full p-8 border border-border/50 bg-card shadow-sm hover:shadow-md transition-all duration-200 flex flex-col">
+                        <div className="flex flex-col items-center text-center mb-6">
+                          <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+                            <Icon size={28} className="text-primary" />
+                          </div>
+                          <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">
+                            {service.label}
+                          </span>
+                          <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">
+                            {service.title}
+                          </h3>
                         </div>
-                        <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">
-                          {service.label}
-                        </span>
-                        <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">
-                          {service.title}
-                        </h3>
-                      </div>
-                      <p className="text-base text-foreground/70 text-center leading-relaxed flex-1 mb-6">
-                        {service.description}
-                      </p>
-                      <button
-                        onClick={scrollToPlanner}
-                        className="text-primary font-semibold text-sm hover:underline inline-flex items-center justify-center gap-1"
-                      >
-                        See it in action <ArrowRight className="h-4 w-4" />
-                      </button>
-                    </Card>
-                  </motion.div>
-                );
-              })}
+                        <p className="text-base text-foreground/70 text-center leading-relaxed flex-1 mb-6">
+                          {service.description}
+                        </p>
+                        <button
+                          onClick={scrollToPlanner}
+                          className="text-primary font-semibold text-sm hover:underline inline-flex items-center justify-center gap-1"
+                        >
+                          See it in action <ArrowRight className="h-4 w-4" />
+                        </button>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </CollapsibleSection>
 
       {/* ─── 4. The Es Venture Effect ─── */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-8">
-                The Es Venture Effect
-              </h2>
-              <blockquote className="text-xl md:text-2xl italic text-foreground/80 leading-relaxed">
-                "Esther didn't just manage our project; she breathed life into it. She has this incredible ability to
-                simplify the complex and get everyone excited about what's next. A total game-changer."
-              </blockquote>
-              <p className="mt-6 text-muted-foreground font-poppins">— A happy client</p>
-            </motion.div>
-          </div>
+      <CollapsibleSection title="✨ The Es Venture Effect" stickyIndex={3}>
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-8">
+                  The Es Venture Effect
+                </h2>
+                <blockquote className="text-xl md:text-2xl italic text-foreground/80 leading-relaxed">
+                  "Esther didn't just manage our project; she breathed life into it. She has this incredible ability to
+                  simplify the complex and get everyone excited about what's next. A total game-changer."
+                </blockquote>
+                <p className="mt-6 text-muted-foreground font-poppins">— A happy client</p>
+              </motion.div>
+            </div>
 
-          {/* Client logos */}
-          <div className="relative overflow-hidden">
-            <motion.p
-              className="text-sm text-muted-foreground text-center mb-8 uppercase tracking-widest"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Worked with
-            </motion.p>
-            <motion.div
-              className="flex items-center gap-16 md:gap-24"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              {[...clients, ...clients].map((client, i) => (
-                <a
-                  key={`${client.alt}-${i}`}
-                  href={client.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0 group/logo"
-                >
-                  <img
-                    src={client.src}
-                    alt={client.alt}
-                    className="h-8 md:h-10 w-auto grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 transition-all duration-400"
-                  />
-                </a>
-              ))}
-            </motion.div>
+            {/* Client logos */}
+            <div className="relative overflow-hidden">
+              <motion.p
+                className="text-sm text-muted-foreground text-center mb-8 uppercase tracking-widest"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+              >
+                Worked with
+              </motion.p>
+              <motion.div
+                className="flex items-center gap-16 md:gap-24"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                {[...clients, ...clients].map((client, i) => (
+                  <a
+                    key={`${client.alt}-${i}`}
+                    href={client.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-shrink-0 group/logo"
+                  >
+                    <img
+                      src={client.src}
+                      alt={client.alt}
+                      className="h-8 md:h-10 w-auto grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 transition-all duration-400"
+                    />
+                  </a>
+                ))}
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </CollapsibleSection>
 
       {/* ─── 5. Project Planner ─── */}
-      <ProjectPlanner />
+      <CollapsibleSection title="💡 Got a project in mind?" stickyIndex={4}>
+        <ProjectPlanner />
+      </CollapsibleSection>
 
       {/* ─── 6. Contact CTA ─── */}
-      <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
-        <div
-          className="absolute inset-0 bg-cover bg-no-repeat"
-          style={{ backgroundImage: `url(${estherPhone})`, backgroundPosition: "right 15%" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent" />
+      <CollapsibleSection title="🚀 Ready to make something happen?" stickyIndex={5}>
+        <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
+          <div
+            className="absolute inset-0 bg-cover bg-no-repeat"
+            style={{ backgroundImage: `url(${estherPhone})`, backgroundPosition: "right 15%" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent" />
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <motion.div
-              className="space-y-8"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                Ready to make something{" "}
-                <span className="text-secondary">happen?</span>
-              </h2>
-              <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
-                Let's talk about what's on your plate. No pressure, no sales pitch — just a real conversation about how
-                I can help you move forward.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button
-                  size="lg"
-                  className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full"
-                  onClick={() => {
-                    analytics.emailClick();
-                    window.location.href = "mailto:esther@esventure.nl";
-                  }}
-                >
-                  <Mail className="mr-2 h-5 w-5" />
-                  Send email
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full"
-                  onClick={() => {
-                    analytics.bookCallClick();
-                    window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
-                  }}
-                >
-                  Book a call
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-            </motion.div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-3xl">
+              <motion.div
+                className="space-y-8"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                  Ready to make something{" "}
+                  <span className="text-secondary">happen?</span>
+                </h2>
+                <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
+                  Let's talk about what's on your plate. No pressure, no sales pitch — just a real conversation about how
+                  I can help you move forward.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <Button
+                    size="lg"
+                    className="text-lg px-10 py-7 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-all rounded-full"
+                    onClick={() => {
+                      analytics.emailClick();
+                      window.location.href = "mailto:esther@esventure.nl";
+                    }}
+                  >
+                    <Mail className="mr-2 h-5 w-5" />
+                    Send email
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="text-lg px-10 py-7 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all rounded-full"
+                    onClick={() => {
+                      analytics.bookCallClick();
+                      window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
+                    }}
+                  >
+                    Book a call
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </CollapsibleSection>
 
       {/* ─── 7. Footer ─── */}
       <footer className="bg-foreground py-12">
