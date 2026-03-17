@@ -62,28 +62,6 @@ const clients = [
   { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
 ];
 
-const scenarios = [
-  {
-    quote: "This project is completely stalled and I don't know why.",
-    need: "Momentum.",
-    explanation: "I'll find the friction and get things moving again.",
-  },
-  {
-    quote: "I have a million things to do and I can't focus on what's important.",
-    need: "Clarity.",
-    explanation: "I'll help you prioritize and then take the big tasks off your plate.",
-  },
-  {
-    quote: "We have a great idea, but no one to actually build or manage it.",
-    need: "Ownership.",
-    explanation: "I'll step in as your interim lead and drive it from start to finish.",
-  },
-  {
-    quote: "Our process is a mess and it's slowing everyone down.",
-    need: "A Fix.",
-    explanation: "I'll map it out, find the kinks, and build a workflow that just works.",
-  },
-];
 
 const services = [
   {
