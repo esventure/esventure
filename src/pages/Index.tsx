@@ -294,7 +294,7 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 6. Contact CTA ─── */}
-      <CollapsibleSection title="🚀 Ready to make something happen?" stickyIndex={5}>
+      <CollapsibleSection id="contact-cta" title="🚀 Ready to make something happen?">
         <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
           <div
             className="absolute inset-0 bg-cover bg-no-repeat"
