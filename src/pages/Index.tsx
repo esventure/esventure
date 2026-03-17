@@ -688,45 +688,45 @@ const Index = () => {
             duration: 0.8
           }}>
               <div className="text-xl text-foreground leading-relaxed space-y-6">
-                <motion.p className="font-medium" initial={{
-                opacity: 0
-              }} whileInView={{
-                opacity: 1
-              }} viewport={{
-                once: true
-              }} transition={{
-                delay: 0.2
-              }}>Hello, I'm Esther! I'm a mix of a product enthusiast, a UX thinker, and a devoted fan of structure. As a true generalist, I'm here to help!</motion.p>
-                <motion.p initial={{
-                opacity: 0
-              }} whileInView={{
-                opacity: 1
-              }} viewport={{
-                once: true
-              }} transition={{
-                delay: 0.3
-              }}>
-                  You can count on me to dive into any subject, grasp it quickly, and create order from chaos.
-                </motion.p>
-                <motion.p initial={{
-                opacity: 0
-              }} whileInView={{
-                opacity: 1
-              }} viewport={{
-                once: true
-              }} transition={{
-                delay: 0.4
-              }}>My approach focuses on speed, clarity, and ensuring that projects are executed successfully.</motion.p>
-                <motion.p className="font-bold" initial={{
-                opacity: 0
-              }} whileInView={{
-                opacity: 1
-              }} viewport={{
-                once: true
-              }} transition={{
-                delay: 0.5
-              }}>I prefer straightforward solutions over lengthy reports. I promise you practical strategies that simplify life.</motion.p>
-              </div>
+                 <motion.p className="font-medium" initial={{
+                 opacity: 0
+               }} whileInView={{
+                 opacity: 1
+               }} viewport={{
+                 once: true
+               }} transition={{
+                 delay: 0.2
+               }}>Hey, I'm Esther! Part product nerd, part UX thinker, full-time structure enthusiast, and your go-to partner for getting things done.</motion.p>
+                 <motion.p initial={{
+                 opacity: 0
+               }} whileInView={{
+                 opacity: 1
+               }} viewport={{
+                 once: true
+               }} transition={{
+                 delay: 0.3
+               }}>
+                   I jump into any challenge, learn it fast, and make things happen. No fluff, no 70-page documents — just practical solutions that make life easier.
+                 </motion.p>
+                 <motion.p initial={{
+                 opacity: 0
+               }} whileInView={{
+                 opacity: 1
+               }} viewport={{
+                 once: true
+               }} transition={{
+                 delay: 0.4
+               }}>Whether it's a messy process, an undefined project, or a critical gap — doesn't matter. I'm here to fix it, streamline it, or build it. Whatever it takes.</motion.p>
+                 <motion.p className="font-bold" initial={{
+                 opacity: 0
+               }} whileInView={{
+                 opacity: 1
+               }} viewport={{
+                 once: true
+               }} transition={{
+                 delay: 0.5
+               }}>Think of me as your project's personal caffeine shot. Let's go.</motion.p>
+               </div>
             </motion.div>
             <motion.div className="order-1 md:order-2" initial={{
             opacity: 0,
