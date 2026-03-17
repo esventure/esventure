@@ -359,7 +359,7 @@ const Index = () => {
           duration: 0.6
         }}>
             <h2 className="text-5xl md:text-7xl font-black text-center mb-6 text-foreground font-poppins">What I do</h2>
-            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-16 max-w-3xl mx-auto">I'm here to help you out. Practical, clear and fast. With tangible results, lots of energy and a bit of fun.</p>
+             <p className="text-xl md:text-2xl text-center text-foreground/70 mb-16 max-w-3xl mx-auto">I'm here to help you out. Hands-on, fast, and with tangible results.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
