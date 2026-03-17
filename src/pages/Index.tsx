@@ -104,11 +104,12 @@ const Index = () => {
 
               <div className="space-y-4 mt-6 md:mt-8">
                 <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
-                  Feeling stuck? Overwhelmed? Got a brilliant idea but no time to make it happen? That's where I come in.
+                  Feeling stuck? Overwhelmed? Got a brilliant idea but no time (or skills) to make it happen? That's where I come in.
                 </p>
                 <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
                   I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
-                  fluff, no endless meetings. Just pure, focused momentum.
+                  fluff, no endless meetings. Just pure, focused action.
+                </p>
                 </p>
               </div>
 
