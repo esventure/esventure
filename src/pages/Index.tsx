@@ -94,25 +94,25 @@ const Index = () => {
           }}>
               <div>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                  I help teams move forward,<br />
-                  <span className="text-secondary">let's go.</span>
-                </h1>
-                <motion.div className="space-y-3 mt-8 md:mt-10" initial={{
-                opacity: 0,
-                y: 15
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.6,
-                delay: 0.4
-              }}>
-                  <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">By diving in fast, I bring clarity, and turn chaos into action.</p>
-                  <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
-                    Complex projects → simple steps.<br />
-                    Messy processes → smooth workflows.<br />
-                    Ideas → clickable prototypes.
-                  </p>
+                   I'm the partner who makes your business move,<br />
+                   <span className="text-secondary">let's go.</span>
+                 </h1>
+                 <motion.div className="space-y-3 mt-8 md:mt-10" initial={{
+                 opacity: 0,
+                 y: 15
+               }} animate={{
+                 opacity: 1,
+                 y: 0
+               }} transition={{
+                 duration: 0.6,
+                 delay: 0.4
+               }}>
+                   <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">I cut through the noise, jump in fast, and turn chaos into action.</p>
+                   <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
+                     Stalled projects → finished deliverables.<br />
+                     Complex problems → simple steps.<br />
+                     Big ideas → real results.
+                   </p>
                 </motion.div>
               </div>
             </motion.div>
