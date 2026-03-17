@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, createContext, useContext, useCallb
 import { motion, AnimatePresence } from "framer-motion";
 
 const COLLAPSED_HEIGHT = 52;
+const NAV_HEIGHT = 72; // h-14 + py-2 ≈ 72px
 
 // ── Context to collect section refs globally ──
 interface SectionInfo {
@@ -25,6 +26,7 @@ const StickyContext = createContext<StickyContextType>({
 export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [sections, setSections] = useState<SectionInfo[]>([]);
   const [collapsedIds, setCollapsedIds] = useState<Set<string>>(new Set());
+  const [navVisible, setNavVisible] = useState(false);
 
   const register = useCallback((info: SectionInfo) => {
     setSections((prev) => {
@@ -39,12 +41,14 @@ export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ 
 
   useEffect(() => {
     const handleScroll = () => {
+      // Check if nav is visible (it shows after scrollY > 100)
+      setNavVisible(window.scrollY > 100);
+
       const next = new Set<string>();
       sections.forEach((section) => {
         if (!section.ref.current) return;
         const rect = section.ref.current.getBoundingClientRect();
-        // Section is "past" when its bottom is above the top of the viewport + some buffer
-        if (rect.bottom < COLLAPSED_HEIGHT * 2) {
+        if (rect.bottom < COLLAPSED_HEIGHT * 2 + (window.scrollY > 100 ? NAV_HEIGHT : 0)) {
           next.add(section.id);
         }
       });
@@ -69,8 +73,12 @@ export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ 
     <StickyContext.Provider value={{ register, unregister }}>
       {children}
 
-      {/* Fixed stacked headers */}
-      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      {/* Fixed stacked headers — below the nav */}
+      <motion.div
+        className="fixed left-0 right-0 z-40 pointer-events-none"
+        animate={{ top: navVisible ? NAV_HEIGHT : 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <AnimatePresence>
           {collapsedSections.map((section, i) => (
             <motion.div
@@ -94,7 +102,7 @@ export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ 
             </motion.div>
           ))}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </StickyContext.Provider>
   );
 };
