@@ -322,29 +322,30 @@ function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'c
     return 'make-it-happen';
   }
   
-  // STRUCTURE has priority (if no momentum override)
+  // CLEAR PATH has priority (if no make-it-happen override)
   if (hasStructureKeyword) {
-    return 'structure';
+    return 'clear-path';
   }
   
-  // PROTOTYPE beats MOMENTUM only if explicitly describing building a prototype
-  const hasPrototypeKeyword = PROTOTYPE_KEYWORDS.some(kw => lowerText.includes(kw));
+  // QUICK FIX beats MAKE IT HAPPEN only if explicitly describing building a prototype/quick fix
+  const hasPrototypeKeyword = QUICK_FIX_KEYWORDS.some(kw => lowerText.includes(kw));
   
-  // Check for explicit prototype context
+  // Check for explicit quick fix / prototype context
   const explicitPrototype = ['build a prototype', 'create a prototype', 'make a prototype', 
-    'design a prototype', 'need a prototype', 'want a prototype', 'prototype for']
+    'design a prototype', 'need a prototype', 'want a prototype', 'prototype for',
+    'quick fix', 'quick win', 'need it yesterday', 'fast fix']
     .some(phrase => lowerText.includes(phrase));
   
   if (hasPrototypeKeyword && (explicitPrototype || !hasMomentumKeyword)) {
-    return 'prototype';
+    return 'quick-fix';
   }
   
   if (hasMomentumKeyword) {
-    return 'momentum';
+    return 'make-it-happen';
   }
   
-  // Ambiguous → default to Structure
-  return 'structure';
+  // Ambiguous → default to Clear Path
+  return 'clear-path';
 }
 
 // ============================================================================
