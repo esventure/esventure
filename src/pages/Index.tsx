@@ -108,7 +108,7 @@ const Index = () => {
                 </p>
                 <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
                   I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
-                  fluff, no endless meetings — just pure, focused momentum.
+                  fluff, no endless meetings. Just pure, focused momentum.
                 </p>
               </div>
 
@@ -130,7 +130,7 @@ const Index = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="aspect-[3/4] overflow-hidden shadow-2xl">
                 <img src={estherYellow} alt="Esther Woerdman" className="w-full h-full object-cover" />
               </div>
               <motion.div
