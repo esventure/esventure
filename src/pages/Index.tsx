@@ -106,10 +106,21 @@ const Index = () => {
                 <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
                   Feeling stuck? Overwhelmed? Got a brilliant idea but no time (or skills) to make it happen? That's where I come in.
                 </p>
-                <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
-                  I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
-                  fluff, no endless meetings. Just pure, focused action.
-                </p>
+                <div className="flex items-end gap-3">
+                  <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
+                    I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
+                    fluff, no endless meetings. Just pure, focused action.
+                  </p>
+                  <motion.button
+                    onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+                    className="flex-shrink-0 text-primary-foreground/70 hover:text-primary-foreground transition-colors mb-1"
+                    animate={{ y: [0, 6, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    aria-label="Scroll down"
+                  >
+                    <ChevronDown className="w-7 h-7" />
+                  </motion.button>
+                </div>
               </div>
 
               <div className="mt-8">
@@ -142,16 +153,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Scroll down arrow */}
-        <motion.button
-          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          aria-label="Scroll down"
-        >
-          <ChevronDown className="w-8 h-8" />
-        </motion.button>
       </section>
 
       {/* ─── 2. When to Call Me ─── */}
