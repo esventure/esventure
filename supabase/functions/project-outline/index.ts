@@ -248,8 +248,8 @@ function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'c
   // Check 1: Explicit momentum override keywords
   const hasMomentumOverride = MOMENTUM_OVERRIDE_KEYWORDS.some(kw => lowerText.includes(kw));
   if (hasMomentumOverride) {
-    console.log('Momentum override triggered - explicit progress/deadline keywords');
-    return 'momentum';
+    console.log('Make It Happen override triggered - explicit progress/deadline keywords');
+    return 'make-it-happen';
   }
   
   // Check 2: "It's urgent 🔥" + any drift/coordination signals → Momentum
