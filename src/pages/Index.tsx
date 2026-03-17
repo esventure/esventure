@@ -540,51 +540,51 @@ const Index = () => {
           })]} setApi={setCarouselApi} className="w-full">
               <CarouselContent className="-ml-4">
                 {[{
-                 title: "Startup",
-                 subtitle: "From idea to prototype",
-                 category: "Quick Fixes & Fast Starts",
-                 description: "Took a rough idea and turned it into a full UX flow + clickable prototype so the founder could finally show something real."
-               }, {
-                 title: "Tourism company",
-                 subtitle: "Project management setup",
-                 category: "Let's Make It Happen",
-                 description: "Set up a simple project management system from scratch, cleaned up how the team works and made sure everyone actually knew what to do."
-               }, {
-                 title: "Photostudio",
-                 subtitle: "Website launch",
-                 category: "Quick Fixes & Fast Starts",
-                 description: "Designed and launched a clear, easy-to-navigate website so clients could find them (and book them) without confusion."
-               }, {
-                 title: "E-bike brand",
-                 subtitle: "Webshop launch",
-                 category: "Let's Make It Happen",
-                 description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
-               }, {
-                 title: "Customer Success Team",
-                 subtitle: "Customer success agent",
-                 category: "Your Clear Path Forward",
-                 description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
-               }, {
-                 title: "NGO",
-                 subtitle: "User journey mapping across systems",
-                 category: "Your Clear Path Forward",
-                 description: "Mapped the full user journey across several applications, finally giving everyone a clear picture of how things actually flow."
-               }, {
-                 title: "NGO",
-                 subtitle: "UAT & E2E testing",
-                 category: "Let's Make It Happen",
-                 description: "Coordinated UAT and E2E testing for a new platform, aligned teams and brought much-needed structure to the process."
-               }, {
-                 title: "E-bike brand",
-                 subtitle: "Interim PO for subscription launch",
-                 category: "Let's Make It Happen",
-                 description: "Stepped in as interim PO to keep the subscription service moving. Cleaned up scope, prioritised what mattered and pushed things forward."
-               }, {
-                 title: "E-bike brand",
-                 subtitle: "ERP improvements",
-                 category: "Your Clear Path Forward",
-                 description: "Found and fixed gaps in the ERP flow so operational processes stopped getting stuck."
-               }].map((project, index) => <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  title: "The Founder Who Could Finally Pitch",
+                  subtitle: "From napkin sketch to clickable prototype",
+                  category: "Quick Fixes & Fast Starts",
+                  description: "A first-time founder had a brilliant idea but nothing to show investors. In two weeks, I turned scattered notes into a polished UX flow and clickable prototype — she walked into her next pitch with confidence and closed the round."
+                }, {
+                  title: "The Tourism Team That Stopped Drowning",
+                  subtitle: "Chaos to clarity in 3 weeks",
+                  category: "Let's Make It Happen",
+                  description: "A growing tourism company had 12 people, zero structure, and projects falling through the cracks daily. I built their project management system from scratch, defined roles, and within a month the team actually knew who was doing what."
+                }, {
+                  title: "The Photographer Nobody Could Find",
+                  subtitle: "A website that finally books clients",
+                  category: "Quick Fixes & Fast Starts",
+                  description: "An award-winning photographer was losing clients because their online presence was a mess. I designed and launched a clean, bookable website — enquiries doubled in the first month."
+                }, {
+                  title: "The E-Bike Brand That Went Global",
+                  subtitle: "From warehouse to webshop",
+                  category: "Let's Make It Happen",
+                  description: "A beloved e-bike brand wanted to sell merch worldwide but had no idea where to start. I set up the full online shop, organised workflows, and launched it — fans in 30+ countries could finally buy their favourite gear."
+                }, {
+                  title: "The Support Team That Got Their Evenings Back",
+                  subtitle: "An AI assistant that actually helps",
+                  category: "Your Clear Path Forward",
+                  description: "A customer success team was answering the same 50 questions on repeat, burning out fast. I built an internal AI assistant that handles the repetitive stuff — the team now focuses on real problems and leaves on time."
+                }, {
+                  title: "The NGO With 5 Systems and No Map",
+                  subtitle: "One journey, finally visible",
+                  category: "Your Clear Path Forward",
+                  description: "Donors, volunteers, and beneficiaries were touching 5 different platforms and nobody understood the full picture. I mapped the entire user journey across all systems — for the first time, leadership could see where people got lost."
+                }, {
+                  title: "The Platform Launch Nobody Believed In",
+                  subtitle: "Tested, aligned, and shipped",
+                  category: "Let's Make It Happen",
+                  description: "A major platform migration was behind schedule and teams were pointing fingers. I coordinated UAT and end-to-end testing, got everyone aligned, and we launched on time — something the team had stopped believing was possible."
+                }, {
+                  title: "The Subscription That Almost Didn't Ship",
+                  subtitle: "Interim PO, real momentum",
+                  category: "Let's Make It Happen",
+                  description: "An e-bike brand's subscription service had been 'almost ready' for months. I stepped in as interim Product Owner, cut the scope bloat, reprioritised ruthlessly, and the service went live within 6 weeks."
+                }, {
+                  title: "The ERP Nobody Wanted to Touch",
+                  subtitle: "Fixing what everyone avoided",
+                  category: "Your Clear Path Forward",
+                  description: "Operational teams were doing manual workarounds because the ERP had gaps nobody dared to address. I dove in, found the bottlenecks, and fixed the flow — saving the team hours of frustration every single week."
+                }].map((project, index) => <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <motion.div initial={{
                   opacity: 0,
                   y: 30
