@@ -15,29 +15,29 @@ interface FormData {
 }
 
 const SITUATION_PLACEHOLDERS = [
-  "Users drop off during onboarding after step two.",
-  "Feature requirements are unclear and scattered across tools.",
-  "Teams disagree on the correct user flow.",
-  "Our workflow is slow, messy, and unstructured.",
-  "Launch is near, but nothing feels aligned yet.",
-  "Stakeholders keep changing direction without documentation.",
-  "We built a prototype, but it confuses everyone.",
-  "Multiple systems interact, but we lack an overview.",
-  "Progress stalls because no one owns next steps.",
-  "Customer support repeats work due to unclear processes.",
+  "There's a project stuck and no one owns it.",
+  "Our process is causing headaches and slowing everyone down.",
+  "I have a big idea but no clue where to start.",
+  "We keep talking but nothing actually moves forward.",
+  "There's a critical gap and no one to fill it.",
+  "Deadlines keep slipping and priorities are all over the place.",
+  "We built something but it confuses everyone who uses it.",
+  "Multiple teams are involved and nobody's aligned.",
+  "Things keep falling through the cracks.",
+  "I need someone to just take this off my plate and run with it.",
 ];
 
 const HANDOFF_PLACEHOLDERS = [
-  "Create a clear user flow for this feature.",
-  "Turn our idea into a clickable prototype.",
-  "Map and simplify our full end-to-end process.",
-  "Organise requirements into one aligned feature definition.",
-  "Coordinate the project and keep everyone aligned.",
-  "Document workflows and define roles for the team.",
-  "Reshape our prototype into something test-ready.",
-  "Translate feedback into one clear design direction.",
-  "Build a realistic delivery timeline we can follow.",
-  "Structure messy inputs for testing and certification.",
+  "Step in and take charge of this project.",
+  "Turn my vision into an actionable plan.",
+  "Diagnose this issue fast and give me a working fix.",
+  "Unblock my team so we can start shipping.",
+  "Build me a prototype I can test and pitch.",
+  "Figure out what's broken in our process and fix it.",
+  "Coordinate this launch and keep everyone aligned.",
+  "Create a clear roadmap from this mess of ideas.",
+  "Get this project over the finish line.",
+  "Help me figure out what to prioritise and how to execute.",
 ];
 
 const URGENCY_OPTIONS = [
