@@ -238,12 +238,12 @@ function extractDetectedSignals(text: string): DetectedSignals {
 // SUPPORT TYPE DETECTION
 // ============================================================================
 
-function detectSupportType(text: string, urgency: string): 'structure' | 'momentum' | 'prototype' {
+function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'clear-path' | 'quick-fix' {
   const lowerText = text.toLowerCase();
   
-  // CRITICAL: MOMENTUM PRIORITY OVERRIDE
-  // Structure = how work flows. Momentum = why work ISN'T flowing.
-  // If user's pain is about progress/movement/deadlines → ALWAYS Momentum
+  // CRITICAL: MAKE IT HAPPEN PRIORITY OVERRIDE
+  // Clear Path = how work flows. Make It Happen = why work ISN'T flowing.
+  // If user's pain is about progress/movement/deadlines → ALWAYS Make It Happen
   
   // Check 1: Explicit momentum override keywords
   const hasMomentumOverride = MOMENTUM_OVERRIDE_KEYWORDS.some(kw => lowerText.includes(kw));
