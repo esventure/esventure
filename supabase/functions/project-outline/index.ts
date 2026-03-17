@@ -20,15 +20,16 @@ const CLEAR_PATH_KEYWORDS = [
   'vision', 'plan', 'actionable', 'bottleneck', 'simplify'
 ];
 
-// B. MOMENTUM / DELIVERY WORK (type of support, not urgency)
-const MOMENTUM_KEYWORDS = [
+// B. MAKE IT HAPPEN / HANDS-ON SUPPORT (type of support, not urgency)
+const MAKE_IT_HAPPEN_KEYWORDS = [
   'launch', 'delays', 'delay', 'stalled', 'slipping', 'slip', 'slips', 'slipped',
   'blocked', 'too many stakeholders', 'stakeholders', 'waiting on each other',
   'no clear owner', 'meetings with no progress', 'lost direction',
   'need structure', 'need movement', 'stuck', 'deadline', 'drifting',
   'coordination', 'execution', 'too many people', 'nobody knows',
   'decisions not being made', 'priorities unclear', 'responsibilities unclear',
-  'coordination missing', 'chaotic', 'confusion',
+  'coordination missing', 'chaotic', 'confusion', 'take charge', 'step in',
+  'leadership', 'interim', 'hands-on', 'take over', 'get it done',
   // Calendar / plan / marketing drift
   'calendar', 'content calendar', 'marketing calendar',
   'stick to the plan', 'stick to it',
