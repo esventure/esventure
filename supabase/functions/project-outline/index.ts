@@ -404,7 +404,7 @@ function determineProjectSize(inputs: {
   handoff: string;
   urgency: string;
   budget: string;
-  supportType: 'structure' | 'momentum' | 'prototype';
+  supportType: 'make-it-happen' | 'clear-path' | 'quick-fix';
 }): SizeConfig {
   const fullText = `${inputs.situation} ${inputs.handoff}`.toLowerCase();
   
