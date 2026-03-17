@@ -7,16 +7,17 @@ const corsHeaders = {
 };
 
 // ============================================================================
-// CLASSIFICATION KEYWORDS - Priority order: Structure > Momentum > Prototype
+// CLASSIFICATION KEYWORDS - Priority order: Clear Path > Make It Happen > Quick Fix
 // ============================================================================
 
-// A. STRUCTURE / CLARITY WORK (highest priority)
-const STRUCTURE_KEYWORDS = [
+// A. CLEAR PATH / STRATEGIC CLARITY WORK (highest priority)
+const CLEAR_PATH_KEYWORDS = [
   'workflow', 'process', 'clarity', 'overview', 'structure', 'templates',
   'consistency', 'optimize', 'optimise', 'notion', 'airtable', 'tool setup',
   'mapping', 'cleaning up', 'clean up', 'everyone does it differently',
   'scattered tools', 'we lose track', 'lose track', 'inconsistent',
-  'organise', 'organize', 'documentation', 'messy'
+  'organise', 'organize', 'documentation', 'messy', 'strategy', 'roadmap',
+  'vision', 'plan', 'actionable', 'bottleneck', 'simplify'
 ];
 
 // B. MOMENTUM / DELIVERY WORK (type of support, not urgency)
