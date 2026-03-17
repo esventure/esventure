@@ -456,8 +456,8 @@ function determineProjectSize(inputs: {
     }
   }
   
-  // STRUCTURE WORK: Defaults to Medium
-  if (inputs.supportType === 'structure') {
+  // CLEAR PATH WORK: Defaults to Medium
+  if (inputs.supportType === 'clear-path') {
     // Only Small if very explicitly tiny
     const isTiny = ['just one template', 'single template', 'one simple document', 'very quick', 'tiny']
       .some(indicator => fullText.includes(indicator));
