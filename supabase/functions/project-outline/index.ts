@@ -7,27 +7,29 @@ const corsHeaders = {
 };
 
 // ============================================================================
-// CLASSIFICATION KEYWORDS - Priority order: Structure > Momentum > Prototype
+// CLASSIFICATION KEYWORDS - Priority order: Clear Path > Make It Happen > Quick Fix
 // ============================================================================
 
-// A. STRUCTURE / CLARITY WORK (highest priority)
-const STRUCTURE_KEYWORDS = [
+// A. CLEAR PATH / STRATEGIC CLARITY WORK (highest priority)
+const CLEAR_PATH_KEYWORDS = [
   'workflow', 'process', 'clarity', 'overview', 'structure', 'templates',
   'consistency', 'optimize', 'optimise', 'notion', 'airtable', 'tool setup',
   'mapping', 'cleaning up', 'clean up', 'everyone does it differently',
   'scattered tools', 'we lose track', 'lose track', 'inconsistent',
-  'organise', 'organize', 'documentation', 'messy'
+  'organise', 'organize', 'documentation', 'messy', 'strategy', 'roadmap',
+  'vision', 'plan', 'actionable', 'bottleneck', 'simplify'
 ];
 
-// B. MOMENTUM / DELIVERY WORK (type of support, not urgency)
-const MOMENTUM_KEYWORDS = [
+// B. MAKE IT HAPPEN / HANDS-ON SUPPORT (type of support, not urgency)
+const MAKE_IT_HAPPEN_KEYWORDS = [
   'launch', 'delays', 'delay', 'stalled', 'slipping', 'slip', 'slips', 'slipped',
   'blocked', 'too many stakeholders', 'stakeholders', 'waiting on each other',
   'no clear owner', 'meetings with no progress', 'lost direction',
   'need structure', 'need movement', 'stuck', 'deadline', 'drifting',
   'coordination', 'execution', 'too many people', 'nobody knows',
   'decisions not being made', 'priorities unclear', 'responsibilities unclear',
-  'coordination missing', 'chaotic', 'confusion',
+  'coordination missing', 'chaotic', 'confusion', 'take charge', 'step in',
+  'leadership', 'interim', 'hands-on', 'take over', 'get it done',
   // Calendar / plan / marketing drift
   'calendar', 'content calendar', 'marketing calendar',
   'stick to the plan', 'stick to it',
@@ -120,10 +122,12 @@ const MOMENTUM_OVERRIDE_KEYWORDS = [
   'abandon the plan'
 ];
 
-// C. PROTOTYPE WORK
-const PROTOTYPE_KEYWORDS = [
+// C. QUICK FIX / RAPID SOLUTIONS WORK
+const QUICK_FIX_KEYWORDS = [
   'idea', 'concept', 'prototype', 'ux', 'ui', 'user flow', 'screens',
-  'mockup', 'mvp', 'pitch', 'wireframe', 'design', 'validate'
+  'mockup', 'mvp', 'pitch', 'wireframe', 'design', 'validate',
+  'quick fix', 'fast', 'diagnose', 'urgent issue', 'broken', 'bug',
+  'yesterday', 'asap', 'quick win', 'unblock'
 ];
 
 // ============================================================================
@@ -147,9 +151,9 @@ function extractDetectedSignals(text: string): DetectedSignals {
   
   // Extract matched keywords
   const matchedOverrideKeywords = MOMENTUM_OVERRIDE_KEYWORDS.filter(kw => lowerText.includes(kw));
-  const matchedMomentumKeywords = MOMENTUM_KEYWORDS.filter(kw => lowerText.includes(kw));
-  const matchedStructureKeywords = STRUCTURE_KEYWORDS.filter(kw => lowerText.includes(kw));
-  const matchedPrototypeKeywords = PROTOTYPE_KEYWORDS.filter(kw => lowerText.includes(kw));
+  const matchedMomentumKeywords = MAKE_IT_HAPPEN_KEYWORDS.filter(kw => lowerText.includes(kw));
+  const matchedStructureKeywords = CLEAR_PATH_KEYWORDS.filter(kw => lowerText.includes(kw));
+  const matchedPrototypeKeywords = QUICK_FIX_KEYWORDS.filter(kw => lowerText.includes(kw));
   
   // Extract complexity indicators
   const complexityKeywords = [
@@ -234,18 +238,18 @@ function extractDetectedSignals(text: string): DetectedSignals {
 // SUPPORT TYPE DETECTION
 // ============================================================================
 
-function detectSupportType(text: string, urgency: string): 'structure' | 'momentum' | 'prototype' {
+function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'clear-path' | 'quick-fix' {
   const lowerText = text.toLowerCase();
   
-  // CRITICAL: MOMENTUM PRIORITY OVERRIDE
-  // Structure = how work flows. Momentum = why work ISN'T flowing.
-  // If user's pain is about progress/movement/deadlines → ALWAYS Momentum
+  // CRITICAL: MAKE IT HAPPEN PRIORITY OVERRIDE
+  // Clear Path = how work flows. Make It Happen = why work ISN'T flowing.
+  // If user's pain is about progress/movement/deadlines → ALWAYS Make It Happen
   
   // Check 1: Explicit momentum override keywords
   const hasMomentumOverride = MOMENTUM_OVERRIDE_KEYWORDS.some(kw => lowerText.includes(kw));
   if (hasMomentumOverride) {
-    console.log('Momentum override triggered - explicit progress/deadline keywords');
-    return 'momentum';
+    console.log('Make It Happen override triggered - explicit progress/deadline keywords');
+    return 'make-it-happen';
   }
   
   // Check 2: "It's urgent 🔥" + any drift/coordination signals → Momentum
@@ -258,15 +262,15 @@ function detectSupportType(text: string, urgency: string): 'structure' | 'moment
     ];
     const hasUrgentMomentumSignal = urgentMomentumSignals.some(signal => lowerText.includes(signal));
     if (hasUrgentMomentumSignal) {
-      console.log('Momentum override triggered - urgent + drift/coordination signals');
-      return 'momentum';
+      console.log('Make It Happen override triggered - urgent + drift/coordination signals');
+      return 'make-it-happen';
     }
   }
   
   // Check 3: Even with structure keywords, if ANY momentum signal exists alongside urgency → Momentum
   // "workflow unclear AND we are behind schedule" → Momentum (not Structure)
-  const hasMomentumKeyword = MOMENTUM_KEYWORDS.some(kw => lowerText.includes(kw));
-  const hasStructureKeyword = STRUCTURE_KEYWORDS.some(kw => lowerText.includes(kw));
+  const hasMomentumKeyword = MAKE_IT_HAPPEN_KEYWORDS.some(kw => lowerText.includes(kw));
+  const hasStructureKeyword = CLEAR_PATH_KEYWORDS.some(kw => lowerText.includes(kw));
   
   if (hasStructureKeyword && hasMomentumKeyword) {
     // Mixed signals - check if the pain is about movement/deadlines
@@ -276,8 +280,8 @@ function detectSupportType(text: string, urgency: string): 'structure' | 'moment
     ];
     const hasDriftPain = driftSignals.some(signal => lowerText.includes(signal));
     if (hasDriftPain) {
-      console.log('Momentum override triggered - mixed signals but drift pain detected');
-      return 'momentum';
+      console.log('Make It Happen override triggered - mixed signals but drift pain detected');
+      return 'make-it-happen';
     }
   }
   
@@ -297,8 +301,8 @@ function detectSupportType(text: string, urgency: string): 'structure' | 'moment
     // Check if there are ANY delay/slip/not-following signals
     const notFollowingSignals = ['not follow', 'never stick', "don't stick", 'arguing', 'debates', 'not working', 'slipping', 'behind', 'shifting'];
     if (notFollowingSignals.some(sig => lowerText.includes(sig))) {
-      console.log('Momentum override triggered - planning/calendar drift fallback');
-      return 'momentum';
+      console.log('Make It Happen override triggered - planning/calendar drift fallback');
+      return 'make-it-happen';
     }
   }
   
@@ -314,33 +318,34 @@ function detectSupportType(text: string, urgency: string): 'structure' | 'moment
   ];
   const hasCoordinationDrift = coordinationDriftSignals.some(signal => lowerText.includes(signal));
   if (hasCoordinationDrift) {
-    console.log('Momentum override triggered - coordination/ownership drift fallback');
-    return 'momentum';
+    console.log('Make It Happen override triggered - coordination/ownership drift fallback');
+    return 'make-it-happen';
   }
   
-  // STRUCTURE has priority (if no momentum override)
+  // CLEAR PATH has priority (if no make-it-happen override)
   if (hasStructureKeyword) {
-    return 'structure';
+    return 'clear-path';
   }
   
-  // PROTOTYPE beats MOMENTUM only if explicitly describing building a prototype
-  const hasPrototypeKeyword = PROTOTYPE_KEYWORDS.some(kw => lowerText.includes(kw));
+  // QUICK FIX beats MAKE IT HAPPEN only if explicitly describing building a prototype/quick fix
+  const hasPrototypeKeyword = QUICK_FIX_KEYWORDS.some(kw => lowerText.includes(kw));
   
-  // Check for explicit prototype context
+  // Check for explicit quick fix / prototype context
   const explicitPrototype = ['build a prototype', 'create a prototype', 'make a prototype', 
-    'design a prototype', 'need a prototype', 'want a prototype', 'prototype for']
+    'design a prototype', 'need a prototype', 'want a prototype', 'prototype for',
+    'quick fix', 'quick win', 'need it yesterday', 'fast fix']
     .some(phrase => lowerText.includes(phrase));
   
   if (hasPrototypeKeyword && (explicitPrototype || !hasMomentumKeyword)) {
-    return 'prototype';
+    return 'quick-fix';
   }
   
   if (hasMomentumKeyword) {
-    return 'momentum';
+    return 'make-it-happen';
   }
   
-  // Ambiguous → default to Structure
-  return 'structure';
+  // Ambiguous → default to Clear Path
+  return 'clear-path';
 }
 
 // ============================================================================
@@ -399,7 +404,7 @@ function determineProjectSize(inputs: {
   handoff: string;
   urgency: string;
   budget: string;
-  supportType: 'structure' | 'momentum' | 'prototype';
+  supportType: 'make-it-happen' | 'clear-path' | 'quick-fix';
 }): SizeConfig {
   const fullText = `${inputs.situation} ${inputs.handoff}`.toLowerCase();
   
@@ -451,8 +456,8 @@ function determineProjectSize(inputs: {
     }
   }
   
-  // STRUCTURE WORK: Defaults to Medium
-  if (inputs.supportType === 'structure') {
+  // CLEAR PATH WORK: Defaults to Medium
+  if (inputs.supportType === 'clear-path') {
     // Only Small if very explicitly tiny
     const isTiny = ['just one template', 'single template', 'one simple document', 'very quick', 'tiny']
       .some(indicator => fullText.includes(indicator));
@@ -463,12 +468,11 @@ function determineProjectSize(inputs: {
     return SIZE_CONFIGS['medium']; // DEFAULT
   }
   
-  // MOMENTUM WORK: Defaults to Medium, upsize to Large on complexity
-  if (inputs.supportType === 'momentum') {
+  // MAKE IT HAPPEN WORK: Defaults to Medium, upsize to Large on complexity
+  if (inputs.supportType === 'make-it-happen') {
     const isTiny = ['just one task', 'single task', 'one quick call', 'very quick', 'tiny']
       .some(indicator => fullText.includes(indicator));
     
-    // Upsize to Large when: launch, multiple teams, deadlines slipping, priorities unclear
     const momentumLargeIndicators = [
       'launch', 'multiple team', 'multi-team', 'deadline', 'slipping',
       'priorities unclear', 'responsibilities unclear', 'coordination missing',
@@ -482,7 +486,7 @@ function determineProjectSize(inputs: {
     return SIZE_CONFIGS['medium']; // DEFAULT
   }
   
-  // PROTOTYPE WORK: Small–Medium depending on complexity
+  // QUICK FIX WORK: Small–Medium depending on complexity
   if (complexityScore >= 5) return SIZE_CONFIGS['very-large'];
   if (complexityScore >= 3) return SIZE_CONFIGS['large'];
   if (complexityScore >= 1) return SIZE_CONFIGS['medium'];
@@ -547,7 +551,7 @@ function formatCurrency(amount: number): string {
 // DYNAMIC APPROACH GUIDANCE (replaces static templates)
 // ============================================================================
 
-function getMomentumApproachGuidance(subType: MomentumSubType, painPoints: string[]): string {
+function getMakeItHappenApproachGuidance(subType: MomentumSubType, painPoints: string[]): string {
   const painContext = painPoints.length > 0 
     ? `\nUser's specific pain points to address: "${painPoints.join('", "')}"` 
     : '';
@@ -573,7 +577,7 @@ Your steps should follow this structure but use THEIR language and situation:
 Do NOT use generic language. Reference specifics from their input.`;
 }
 
-function getStructureApproachGuidance(painPoints: string[]): string {
+function getClearPathApproachGuidance(painPoints: string[]): string {
   const painContext = painPoints.length > 0 
     ? `\nUser's specific pain points to address: "${painPoints.join('", "')}"` 
     : '';
@@ -590,19 +594,19 @@ Your steps should follow this structure but use THEIR language and situation:
 Do NOT use generic language. Reference specifics from their input.`;
 }
 
-function getPrototypeApproachGuidance(painPoints: string[]): string {
+function getQuickFixApproachGuidance(painPoints: string[]): string {
   const painContext = painPoints.length > 0 
     ? `\nUser's specific goals: "${painPoints.join('", "')}"` 
     : '';
 
-  return `Write 4 numbered steps tailored to THIS specific concept. Reference their actual idea.
+  return `Write 4 numbered steps tailored to THIS specific concept. Reference their actual idea or issue.
 ${painContext}
 
 Your steps should follow this structure but use THEIR language and situation:
-1. Unpack the idea - define what they want to achieve and who it's for
-2. User flow - map out the key screens/interactions
-3. Build - create a clickable prototype they can test or pitch
-4. Ready for next steps - prepare it for testing, alignment, or presentation
+1. Diagnose - quickly understand the core issue or idea
+2. User flow / solution design - map out the fix or key interactions
+3. Build / deliver - create a working prototype, fix, or tangible solution
+4. Ready for next steps - prepare it for testing, alignment, or handoff
 
 Do NOT use generic language. Reference specifics from their input.`;
 }
@@ -611,22 +615,22 @@ Do NOT use generic language. Reference specifics from their input.`;
 // DYNAMIC WALK-AWAY GUIDANCE (replaces static templates)
 // ============================================================================
 
-function getWalkAwayGuidance(supportType: 'structure' | 'momentum' | 'prototype', subType: MomentumSubType): string {
+function getWalkAwayGuidance(supportType: 'make-it-happen' | 'clear-path' | 'quick-fix', subType: MomentumSubType): string {
   const baseGuidance = `List 3-4 tangible outcomes they'd walk away with, tailored to their specific situation.
 Use bullets (-). Reference what they actually mentioned needing.
 Keep each bullet short (5-10 words max).`;
 
   const typeHints: Record<string, string> = {
-    structure: `Focus on: clarity, usable workflows, templates, reduced confusion.`,
-    momentum_calendar_drift: `Focus on: a calendar that sticks, realistic planning rhythm, decisions that get made.`,
-    momentum_deadline_pressure: `Focus on: clear priorities, protected timeline, focused scope, visible progress.`,
-    momentum_coordination_issues: `Focus on: clear ownership, no duplicate work, smooth handoffs, everyone knowing their role.`,
-    momentum_progress_blocked: `Focus on: blockers removed, momentum restored, quick wins, forward movement.`,
-    momentum_general: `Focus on: ownership, momentum, weekly progress, clear next steps.`,
-    prototype: `Focus on: clickable prototype, clear user flow, something to test/pitch, ready for next steps.`
+    'clear-path': `Focus on: clarity, usable workflows, templates, reduced confusion, actionable roadmap.`,
+    'make-it-happen_calendar_drift': `Focus on: a calendar that sticks, realistic planning rhythm, decisions that get made.`,
+    'make-it-happen_deadline_pressure': `Focus on: clear priorities, protected timeline, focused scope, visible progress.`,
+    'make-it-happen_coordination_issues': `Focus on: clear ownership, no duplicate work, smooth handoffs, everyone knowing their role.`,
+    'make-it-happen_progress_blocked': `Focus on: blockers removed, momentum restored, quick wins, forward movement.`,
+    'make-it-happen_general': `Focus on: ownership, momentum, weekly progress, clear next steps.`,
+    'quick-fix': `Focus on: working prototype, diagnosed issue, tangible fix, something to test/pitch, breathing room.`
   };
 
-  const key = supportType === 'momentum' ? `momentum_${subType}` : supportType;
+  const key = supportType === 'make-it-happen' ? `make-it-happen_${subType}` : supportType;
   return `${baseGuidance}\n${typeHints[key] || ''}`;
 }
 
@@ -679,12 +683,12 @@ serve(async (req) => {
 
     // Get dynamic approach guidance based on support type and sub-type
     let approachGuidance: string;
-    if (supportType === 'momentum') {
-      approachGuidance = getMomentumApproachGuidance(detectedSignals.momentumSubType, detectedSignals.userPainPoints);
-    } else if (supportType === 'structure') {
-      approachGuidance = getStructureApproachGuidance(detectedSignals.userPainPoints);
+    if (supportType === 'make-it-happen') {
+      approachGuidance = getMakeItHappenApproachGuidance(detectedSignals.momentumSubType, detectedSignals.userPainPoints);
+    } else if (supportType === 'clear-path') {
+      approachGuidance = getClearPathApproachGuidance(detectedSignals.userPainPoints);
     } else {
-      approachGuidance = getPrototypeApproachGuidance(detectedSignals.userPainPoints);
+      approachGuidance = getQuickFixApproachGuidance(detectedSignals.userPainPoints);
     }
 
     // Get dynamic walk-away guidance
@@ -712,8 +716,8 @@ serve(async (req) => {
     // Build context block for AI
     const contextBlock = `
 DETECTED CONTEXT (use this to tailor your response):
-- Support Type: ${supportType}
-- Momentum Sub-Type: ${supportType === 'momentum' ? detectedSignals.momentumSubType.replace('_', ' ') : 'N/A'}
+- Support Type: ${supportType === 'make-it-happen' ? 'Let\'s Make It Happen (Hands-On Support)' : supportType === 'clear-path' ? 'Your Clear Path Forward (Strategic Clarity)' : 'Quick Fixes & Fast Starts (Rapid Solutions)'}
+- Sub-Type: ${supportType === 'make-it-happen' ? detectedSignals.momentumSubType.replace('_', ' ') : 'N/A'}
 - Matched Signals: ${[...detectedSignals.matchedOverrideKeywords, ...detectedSignals.matchedMomentumKeywords].slice(0, 5).join(', ') || 'none specific'}
 - Complexity Factors: ${detectedSignals.complexityIndicators.join(', ') || 'none detected'}
 - User Pain Points: ${detectedSignals.userPainPoints.join(' | ') || 'not extracted'}
@@ -722,7 +726,7 @@ LANGUAGE MIRRORING RULE:
 Mirror key phrases from the user's input where natural. If they said "calendar chaos", acknowledge "the calendar chaos" in your response. If they said "nobody knows who does what", reference that exact phrase. This makes the response feel personal and understood.
 `;
 
-    const systemPrompt = `You are Esther, a warm, down-to-earth freelance consultant writing a project plan.
+    const systemPrompt = `You are Esther, a warm, energetic, hands-on freelance partner writing a project plan. You're the kind of person who rolls up their sleeves and makes things happen.
 
 CRITICAL BREVITY RULES:
 - BE CONCISE. Every sentence must earn its place.
@@ -732,10 +736,16 @@ CRITICAL BREVITY RULES:
 - This is a FIRST IMPRESSION - light but sharp
 
 VOICE & TONE:
-- Warm but economical with words
-- Direct, no padding
+- Super personal and approachable — like talking to a trusted friend who happens to be amazing at getting things done
+- Energetic and action-oriented — "Let's go!", "Consider it done!", convey momentum
+- Direct, no padding — no corporate jargon allowed
 - ${toneGuidance}
 - NEVER use double hyphens (--)
+
+YOUR THREE SERVICES (reference the relevant one naturally):
+- "Let's Make It Happen" — hands-on project leadership and operational support
+- "Your Clear Path Forward" — turning complex problems into actionable plans and strategy
+- "Quick Fixes & Fast Starts" — rapid problem solving, prototypes, and quick wins
 
 ${contextBlock}
 

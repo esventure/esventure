@@ -9,7 +9,7 @@ import FadeInOnScroll from "@/components/FadeInOnScroll";
 import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
-import { FixItIconAlt as FixItIcon, PrototypeIconAlt as PrototypeIcon, ImproveIconAlt as ImproveIcon } from "@/components/ServiceIcons";
+import { MakeItHappenIcon, ClearPathIcon, QuickFixIcon } from "@/components/ServiceIcons";
 import estherBW from "@/assets/esther-bw.jpg";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
@@ -94,25 +94,25 @@ const Index = () => {
           }}>
               <div>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                  I help teams move forward,<br />
-                  <span className="text-secondary">let's go.</span>
-                </h1>
-                <motion.div className="space-y-3 mt-8 md:mt-10" initial={{
-                opacity: 0,
-                y: 15
-              }} animate={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.6,
-                delay: 0.4
-              }}>
-                  <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">By diving in fast, I bring clarity, and turn chaos into action.</p>
-                  <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
-                    Complex projects → simple steps.<br />
-                    Messy processes → smooth workflows.<br />
-                    Ideas → clickable prototypes.
-                  </p>
+                   I'm the partner who makes your business move,<br />
+                   <span className="text-secondary">let's go.</span>
+                 </h1>
+                 <motion.div className="space-y-3 mt-8 md:mt-10" initial={{
+                 opacity: 0,
+                 y: 15
+               }} animate={{
+                 opacity: 1,
+                 y: 0
+               }} transition={{
+                 duration: 0.6,
+                 delay: 0.4
+               }}>
+                   <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">I cut through the noise, jump in fast, and turn chaos into action.</p>
+                   <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
+                     Stalled projects → finished deliverables.<br />
+                     Complex problems → simple steps.<br />
+                     Big ideas → real results.
+                   </p>
                 </motion.div>
               </div>
             </motion.div>
@@ -214,52 +214,13 @@ const Index = () => {
               }
             }
           }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
-              <span className="text-3xl mb-3">🗣️</span>
-              <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
-                Simple Communication
-              </h3>
-              <p className="text-sm text-foreground/70 leading-tight">
-                No beating around the bush, just clear updates so everyone’s on the same page.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              </p>
+              <span className="text-3xl mb-3">🚀</span>
+               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
+                 Momentum & Clarity
+               </h3>
+               <p className="text-sm text-foreground/70 leading-tight">
+                 I cut through the noise and turn your biggest headaches into clear, actionable steps.
+               </p>
             </motion.div>
 
             {/* Bubble 2: Cleaner workflows */}
@@ -312,52 +273,12 @@ const Index = () => {
               }
             }
           }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#FDF9E4] shadow-xl shadow-secondary/10 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
-              <span className="text-3xl mb-3">👩‍✈️</span>
-              <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
-                People-Friendly Leadership
-
-
-
-              </h3>
-              <p className="text-sm text-foreground/70 leading-tight">Being confident yet approachable, I make sure everyone feels they belong in the conversation.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </p>
+              <span className="text-3xl mb-3">🤝</span>
+               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">
+                 Your Trusted Partner
+               </h3>
+               <p className="text-sm text-foreground/70 leading-tight">I jump into your world and get things done with a personal touch. Quick win or ongoing adventure — I'm all in.
+             </p>
             </motion.div>
 
             {/* Bubble 3: Projects that finally move */}
@@ -410,26 +331,11 @@ const Index = () => {
               }
             }
           }} className="w-[220px] h-[220px] md:w-[280px] md:h-[280px] rounded-full bg-[#F0EAFF] shadow-xl shadow-primary/5 flex flex-col items-center justify-center text-center p-6 md:p-8 cursor-default">
-              <span className="text-3xl mb-3">📈</span>
-              <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">Pushing forward</h3>
-              <p className="text-sm text-foreground/70 leading-tight">
-                Keeping things moving at a comfortable pace, so progress happens smoothly and naturally.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              </p>
+              <span className="text-3xl mb-3">⚡</span>
+               <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins mb-2">High-Leverage Execution</h3>
+               <p className="text-sm text-foreground/70 leading-tight">
+                 From big-picture strategy to nitty-gritty details, nothing falls through the cracks when I'm on the case.
+               </p>
             </motion.div>
           </div>
         </div>
@@ -453,7 +359,7 @@ const Index = () => {
           duration: 0.6
         }}>
             <h2 className="text-5xl md:text-7xl font-black text-center mb-6 text-foreground font-poppins">What I do</h2>
-            <p className="text-xl md:text-2xl text-center text-foreground/70 mb-16 max-w-3xl mx-auto">I'm here to help you out. Practical, clear and fast. With tangible results, lots of energy and a bit of fun.</p>
+             <p className="text-xl md:text-2xl text-center text-foreground/70 mb-16 max-w-3xl mx-auto">I'm here to help you out. Hands-on, fast, and with tangible results.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -477,19 +383,19 @@ const Index = () => {
           }}>
               <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <FixItIcon size={24} className="text-primary" />
-                  </div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Project management</Badge>
-                  <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's fix it</h3>
-                </div>
-                <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                  Whether you're starting a new project, or an ongoing project gets stuck, I step in, take over and make sure it gets done.                                                                      
-                </p>
-                <div className="bg-[#F6F3C2] p-4 rounded-xl">
-                  <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                  <p className="text-sm text-foreground/70">Ownership, progress and deliverables that get finished.</p>
-                </div>
+                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                     <MakeItHappenIcon size={24} className="text-primary" />
+                   </div>
+                   <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Hands-On Support</Badge>
+                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's Make It Happen</h3>
+                 </div>
+                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
+                   I step in and take charge. Whether it's leading a big project, unblocking something that's stuck, or being that extra pair of hands to get urgent tasks over the finish line.
+                 </p>
+                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
+                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
+                   <p className="text-sm text-foreground/70">Hands-on support and leadership so you can focus on what you do best.</p>
+                 </div>
               </Card>
             </motion.div>
 
@@ -513,19 +419,19 @@ const Index = () => {
           }}>
               <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <PrototypeIcon size={24} className="text-primary" />
-                  </div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">UX/UI Design</Badge>
-                  <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's prototype</h3>
-                </div>
-                <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                  Got an idea but no shape yet? I turn rough thoughts into clear, clickable UI prototypes you can test, validate or pitch.
-                </p>
-                <div className="bg-[#F6F3C2] p-4 rounded-xl">
-                  <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                  <p className="text-sm text-foreground/70">A working prototype that visualises your idea and that people understand.</p>
-                </div>
+                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                     <ClearPathIcon size={24} className="text-primary" />
+                   </div>
+                   <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Strategic Clarity</Badge>
+                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Your Clear Path Forward</h3>
+                 </div>
+                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
+                   Got a big vision but no clear map? I translate high-level ideas into concrete, actionable plans. No more ideas gathering dust — we'll make them happen.
+                 </p>
+                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
+                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
+                   <p className="text-sm text-foreground/70">Complex problems turned into simple steps, strategy that's not just planned but executed.</p>
+                 </div>
               </Card>
             </motion.div>
 
@@ -549,19 +455,19 @@ const Index = () => {
           }}>
               <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <ImproveIcon size={24} className="text-primary" />
-                  </div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Process design</Badge>
-                  <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's streamline</h3>
-                </div>
-                <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                  I fix messy workflows, clarify ownership, and make day-to-day operations smooth again.
-                </p>
-                <div className="bg-[#F6F3C2] p-4 rounded-xl">
-                  <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                  <p className="text-sm text-foreground/70">Clear processes, less back-and-forth, and a way of working that just… works.</p>
-                </div>
+                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                     <QuickFixIcon size={24} className="text-primary" />
+                   </div>
+                   <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Rapid Solutions</Badge>
+                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Quick Fixes & Fast Starts</h3>
+                 </div>
+                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
+                   When things hit the fan, I'm your person. I quickly diagnose urgent issues and deliver tangible solutions — from critical user flows to clickable prototypes.
+                 </p>
+                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
+                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
+                   <p className="text-sm text-foreground/70">Fast solutions and working prototypes that get you unstuck, so you can breathe easier.</p>
+                 </div>
               </Card>
             </motion.div>
           </div>
@@ -602,51 +508,51 @@ const Index = () => {
           })]} setApi={setCarouselApi} className="w-full">
               <CarouselContent className="-ml-4">
                 {[{
-                title: "Startup",
-                subtitle: "From idea to prototype",
-                category: "UX/UI Design",
-                description: "Took a rough idea and turned it into a full UX flow + clickable prototype so the founder could finally show something real."
-              }, {
-                title: "Tourism company",
-                subtitle: "Project management setup",
-                category: "Project management",
-                description: "Set up a simple project management system from scratch, cleaned up how the team works and made sure everyone actually knew what to do."
-              }, {
-                title: "Photostudio",
-                subtitle: "Website launch",
-                category: "UX/UI Design",
-                description: "Designed and launched a clear, easy-to-navigate website so clients could find them (and book them) without confusion."
-              }, {
-                title: "E-bike brand",
-                subtitle: "Webshop launch",
-                category: "Project management",
-                description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
-              }, {
-                title: "Customer Success Team",
-                subtitle: "Customer success agent",
-                category: "Process design",
-                description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
-              }, {
-                title: "NGO",
-                subtitle: "User journey mapping across systems",
-                category: "UX/UI Design",
-                description: "Mapped the full user journey across several applications, finally giving everyone a clear picture of how things actually flow."
-              }, {
-                title: "NGO",
-                subtitle: "UAT & E2E testing",
-                category: "Project management",
-                description: "Coordinated UAT and E2E testing for a new platform, aligned teams and brought much-needed structure to the process."
-              }, {
-                title: "E-bike brand",
-                subtitle: "Interim PO for subscription launch",
-                category: "Project management",
-                description: "Stepped in as interim PO to keep the subscription service moving. Cleaned up scope, prioritised what mattered and pushed things forward."
-              }, {
-                title: "E-bike brand",
-                subtitle: "ERP improvements",
-                category: "Process design",
-                description: "Found and fixed gaps in the ERP flow so operational processes stopped getting stuck."
-              }].map((project, index) => <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                 title: "Startup",
+                 subtitle: "From idea to prototype",
+                 category: "Quick Fixes & Fast Starts",
+                 description: "Took a rough idea and turned it into a full UX flow + clickable prototype so the founder could finally show something real."
+               }, {
+                 title: "Tourism company",
+                 subtitle: "Project management setup",
+                 category: "Let's Make It Happen",
+                 description: "Set up a simple project management system from scratch, cleaned up how the team works and made sure everyone actually knew what to do."
+               }, {
+                 title: "Photostudio",
+                 subtitle: "Website launch",
+                 category: "Quick Fixes & Fast Starts",
+                 description: "Designed and launched a clear, easy-to-navigate website so clients could find them (and book them) without confusion."
+               }, {
+                 title: "E-bike brand",
+                 subtitle: "Webshop launch",
+                 category: "Let's Make It Happen",
+                 description: "Helped set up and launch the online merchandising shop, organised the workflows and made sure everything worked as it should."
+               }, {
+                 title: "Customer Success Team",
+                 subtitle: "Customer success agent",
+                 category: "Your Clear Path Forward",
+                 description: "Built an internal AI assistant to answer repetitive questions so the team could stop putting out fires and focus on real work."
+               }, {
+                 title: "NGO",
+                 subtitle: "User journey mapping across systems",
+                 category: "Your Clear Path Forward",
+                 description: "Mapped the full user journey across several applications, finally giving everyone a clear picture of how things actually flow."
+               }, {
+                 title: "NGO",
+                 subtitle: "UAT & E2E testing",
+                 category: "Let's Make It Happen",
+                 description: "Coordinated UAT and E2E testing for a new platform, aligned teams and brought much-needed structure to the process."
+               }, {
+                 title: "E-bike brand",
+                 subtitle: "Interim PO for subscription launch",
+                 category: "Let's Make It Happen",
+                 description: "Stepped in as interim PO to keep the subscription service moving. Cleaned up scope, prioritised what mattered and pushed things forward."
+               }, {
+                 title: "E-bike brand",
+                 subtitle: "ERP improvements",
+                 category: "Your Clear Path Forward",
+                 description: "Found and fixed gaps in the ERP flow so operational processes stopped getting stuck."
+               }].map((project, index) => <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <motion.div initial={{
                   opacity: 0,
                   y: 30
@@ -782,45 +688,45 @@ const Index = () => {
             duration: 0.8
           }}>
               <div className="text-xl text-foreground leading-relaxed space-y-6">
-                <motion.p className="font-medium" initial={{
-                opacity: 0
-              }} whileInView={{
-                opacity: 1
-              }} viewport={{
-                once: true
-              }} transition={{
-                delay: 0.2
-              }}>Hello, I'm Esther! I'm a mix of a product enthusiast, a UX thinker, and a devoted fan of structure. As a true generalist, I'm here to help!</motion.p>
-                <motion.p initial={{
-                opacity: 0
-              }} whileInView={{
-                opacity: 1
-              }} viewport={{
-                once: true
-              }} transition={{
-                delay: 0.3
-              }}>
-                  You can count on me to dive into any subject, grasp it quickly, and create order from chaos.
-                </motion.p>
-                <motion.p initial={{
-                opacity: 0
-              }} whileInView={{
-                opacity: 1
-              }} viewport={{
-                once: true
-              }} transition={{
-                delay: 0.4
-              }}>My approach focuses on speed, clarity, and ensuring that projects are executed successfully.</motion.p>
-                <motion.p className="font-bold" initial={{
-                opacity: 0
-              }} whileInView={{
-                opacity: 1
-              }} viewport={{
-                once: true
-              }} transition={{
-                delay: 0.5
-              }}>I prefer straightforward solutions over lengthy reports. I promise you practical strategies that simplify life.</motion.p>
-              </div>
+                 <motion.p className="font-medium" initial={{
+                 opacity: 0
+               }} whileInView={{
+                 opacity: 1
+               }} viewport={{
+                 once: true
+               }} transition={{
+                 delay: 0.2
+               }}>Hey, I'm Esther! Part product nerd, part UX thinker, full-time structure enthusiast, and your go-to partner for getting things done.</motion.p>
+                 <motion.p initial={{
+                 opacity: 0
+               }} whileInView={{
+                 opacity: 1
+               }} viewport={{
+                 once: true
+               }} transition={{
+                 delay: 0.3
+               }}>
+                   I jump into any challenge, learn it fast, and make things happen. No fluff, no 70-page documents — just practical solutions that make life easier.
+                 </motion.p>
+                 <motion.p initial={{
+                 opacity: 0
+               }} whileInView={{
+                 opacity: 1
+               }} viewport={{
+                 once: true
+               }} transition={{
+                 delay: 0.4
+               }}>Whether it's a messy process, an undefined project, or a critical gap — doesn't matter. I'm here to fix it, streamline it, or build it. Whatever it takes.</motion.p>
+                 <motion.p className="font-bold" initial={{
+                 opacity: 0
+               }} whileInView={{
+                 opacity: 1
+               }} viewport={{
+                 once: true
+               }} transition={{
+                 delay: 0.5
+               }}>Think of me as your project's personal caffeine shot. Let's go.</motion.p>
+               </div>
             </motion.div>
             <motion.div className="order-1 md:order-2" initial={{
             opacity: 0,
@@ -883,12 +789,12 @@ const Index = () => {
             duration: 0.8
           }}>
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                Ready for an<br />
-                <span className="text-secondary">Es Venture?</span>
-              </h2>
-              <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
-                Let's talk about your project and see how I can help.
-              </p>
+                 Ready to move<br />
+                 <span className="text-secondary">forward?</span>
+               </h2>
+               <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
+                 What's the one thing you wish you could get off your plate? Let's talk.
+               </p>
               <motion.div className="flex flex-col sm:flex-row gap-4 pt-4" initial={{
               opacity: 0,
               y: 20
@@ -943,16 +849,16 @@ const Index = () => {
       mass: 0.8
     }}>
         <Button onClick={() => {
-          analytics.ctaClick('floating_button');
-          const element = document.getElementById('project-planner');
-          if (element) {
-            const yOffset = -100;
-            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-          }
-        }} className="rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30">
-          Got a project in mind?
-          <ArrowRight className="ml-2 h-5 w-5" />
+           analytics.ctaClick('floating_button');
+           const element = document.getElementById('project-planner');
+           if (element) {
+             const yOffset = -100;
+             const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+             window.scrollTo({ top: y, behavior: 'smooth' });
+           }
+         }} className="rounded-full font-bold py-6 px-6 text-base shadow-lg hover:scale-105 transition-all duration-300 bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-secondary/30">
+           What's on your plate?
+           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
       </motion.div>
     </div>;
