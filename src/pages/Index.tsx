@@ -108,7 +108,7 @@ const Index = () => {
                 </p>
                 <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
                   I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
-                  fluff, no endless meetings — just pure, focused momentum.
+                  fluff, no endless meetings. Just pure, focused momentum.
                 </p>
               </div>
 
