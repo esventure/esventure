@@ -419,19 +419,19 @@ const Index = () => {
           }}>
               <Card className="h-full p-8 border border-[#D7C4FF] bg-card shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <PrototypeIcon size={24} className="text-primary" />
-                  </div>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">UX/UI Design</Badge>
-                  <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Let's prototype</h3>
-                </div>
-                <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
-                  Got an idea but no shape yet? I turn rough thoughts into clear, clickable UI prototypes you can test, validate or pitch.
-                </p>
-                <div className="bg-[#F6F3C2] p-4 rounded-xl">
-                  <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
-                  <p className="text-sm text-foreground/70">A working prototype that visualises your idea and that people understand.</p>
-                </div>
+                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                     <ClearPathIcon size={24} className="text-primary" />
+                   </div>
+                   <Badge className="mb-3 bg-primary/10 text-primary border-0 text-xs font-medium">Strategic Clarity</Badge>
+                   <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">Your Clear Path Forward</h3>
+                 </div>
+                 <p className="text-base text-foreground/70 mb-6 text-center leading-relaxed flex-1">
+                   Got a big vision but no clear map? I translate high-level ideas into concrete, actionable plans. No more ideas gathering dust — we'll make them happen.
+                 </p>
+                 <div className="bg-[#F6F3C2] p-4 rounded-xl">
+                   <p className="text-sm font-semibold text-foreground/90 mb-1">What you get:</p>
+                   <p className="text-sm text-foreground/70">Complex problems turned into simple steps, strategy that's not just planned but executed.</p>
+                 </div>
               </Card>
             </motion.div>
 
