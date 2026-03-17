@@ -301,8 +301,8 @@ function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'c
     // Check if there are ANY delay/slip/not-following signals
     const notFollowingSignals = ['not follow', 'never stick', "don't stick", 'arguing', 'debates', 'not working', 'slipping', 'behind', 'shifting'];
     if (notFollowingSignals.some(sig => lowerText.includes(sig))) {
-      console.log('Momentum override triggered - planning/calendar drift fallback');
-      return 'momentum';
+      console.log('Make It Happen override triggered - planning/calendar drift fallback');
+      return 'make-it-happen';
     }
   }
   
