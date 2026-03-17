@@ -102,7 +102,7 @@ export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ 
             </motion.div>
           ))}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </StickyContext.Provider>
   );
 };
