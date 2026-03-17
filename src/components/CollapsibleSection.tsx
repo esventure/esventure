@@ -26,6 +26,7 @@ const StickyContext = createContext<StickyContextType>({
 export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [sections, setSections] = useState<SectionInfo[]>([]);
   const [collapsedIds, setCollapsedIds] = useState<Set<string>>(new Set());
+  const [navVisible, setNavVisible] = useState(false);
 
   const register = useCallback((info: SectionInfo) => {
     setSections((prev) => {
