@@ -26,9 +26,18 @@ const StyleGuide = () => {
             <img src={logoEV} alt="Es Venture" className="h-8" />
             <h1 className="text-xl font-black font-poppins text-foreground">Style Guide</h1>
           </div>
-          <Link to="/" className="text-sm text-primary hover:underline">
-            ← Terug naar website
-          </Link>
+          <div className="flex items-center gap-4">
+            <Button
+              size="sm"
+              className="rounded-full font-bold print:hidden"
+              onClick={() => window.print()}
+            >
+              <Download className="mr-2 h-4 w-4" /> Download PDF
+            </Button>
+            <Link to="/" className="text-sm text-primary hover:underline print:hidden">
+              ← Terug naar website
+            </Link>
+          </div>
         </div>
       </header>
 
