@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import StyleGuide from "./pages/StyleGuide";
 import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
