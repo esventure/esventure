@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Mail, Check, AlertCircle, Star } from "lucide-react";
+import { ArrowRight, Mail, Check, AlertCircle, Star, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoEV from "@/assets/logo-ev.svg";
 import { MakeItHappenIcon, ClearPathIcon, QuickFixIcon } from "@/components/ServiceIcons";
