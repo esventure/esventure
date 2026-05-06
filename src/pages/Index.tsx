@@ -264,26 +264,80 @@ const Index = () => {
         </section>
       </CollapsibleSection>
 
-      {/* ─── 4. The Es Venture Effect ─── */}
+      {/* ─── 4. Sparring Partner ─── */}
+      <CollapsibleSection id="sparring" title="🧠 Need a sparring partner?">
+        <section className="py-20 bg-secondary">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mx-auto text-center"
+            >
+              <h2 className="text-4xl md:text-6xl font-black text-secondary-foreground font-poppins mb-6">
+                Need a sparring partner?
+              </h2>
+              <p className="text-lg md:text-xl text-secondary-foreground/80 leading-relaxed mb-8">
+                Sometimes the brief doesn't exist yet — you just need someone experienced to think it through with. Book a sparring session to challenge assumptions, structure your ideas, and define a clear direction before the real work begins.
+              </p>
+              <Button
+                size="lg"
+                className="text-base px-8 py-6 font-bold bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all rounded-full shadow-lg"
+                onClick={() => {
+                  analytics.bookCallClick();
+                  window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
+                }}
+              >
+                Book a sparring session
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+      </CollapsibleSection>
+
+      {/* ─── 5. The Es Venture Effect ─── */}
       <CollapsibleSection id="effect" title="✨ The Es Venture Effect">
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <motion.div
+            <div className="max-w-5xl mx-auto text-center mb-14">
+              <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
+                className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4"
               >
-                <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-8">
-                  The Es Venture Effect
-                </h2>
-                <blockquote className="text-xl md:text-2xl italic text-foreground/80 leading-relaxed">
-                  "Esther didn't just manage our project; she breathed life into it. She has this incredible ability to
-                  simplify the complex and get everyone excited about what's next. A total game-changer."
-                </blockquote>
-                <p className="mt-6 text-muted-foreground font-poppins">— A happy client</p>
-              </motion.div>
+                The Es Venture Effect
+              </motion.h2>
+              <p className="text-xl text-muted-foreground">What you actually get when we work together.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+              {pillars.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <Card className="h-full p-8 border border-border/50 bg-card shadow-sm">
+                    <div className="text-4xl font-black text-primary font-poppins mb-3">0{i + 1}</div>
+                    <h3 className="text-xl md:text-2xl font-black text-foreground font-poppins mb-3">{p.title}</h3>
+                    <p className="text-foreground/70 leading-relaxed">{p.description}</p>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <blockquote className="text-xl md:text-2xl italic text-foreground/80 leading-relaxed">
+                "Esther didn't just manage our project; she breathed life into it. She has this incredible ability to
+                simplify the complex and get everyone excited about what's next. A total game-changer."
+              </blockquote>
+              <p className="mt-6 text-muted-foreground font-poppins">— A happy client</p>
             </div>
 
             {/* Client logos */}
@@ -322,8 +376,61 @@ const Index = () => {
         </section>
       </CollapsibleSection>
 
-      {/* ─── 5. Project Planner ─── */}
-      <CollapsibleSection id="planner" title="💡 Got a project in mind?">
+      {/* ─── 6. About Me ─── */}
+      <CollapsibleSection id="about" title="👤 About me" bgClass="bg-muted">
+        <section className="py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-10 lg:gap-16 max-w-6xl mx-auto items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="aspect-[3/4] overflow-hidden shadow-2xl"
+              >
+                <img src={estherPhone} alt="Esther Woerdman" className="w-full h-full object-cover" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground font-poppins mb-6">
+                  Hello, I'm <span className="text-primary">Esther.</span>
+                </h2>
+                <div className="space-y-4 text-base md:text-lg text-foreground/80 leading-relaxed">
+                  <p>
+                    I'm a creative digital project manager — which in practice means I'm the person you call when a project is stuck, a process is unclear, or an idea hasn't yet been built.
+                  </p>
+                  <p>
+                    I move quickly to understand your unique challenges. I'm equally comfortable leading a strategic whiteboard session with your management team as I am running a technical review with your developers. My core strength is bridging the gap between IT and the rest of your organisation, turning rough ideas into working prototypes and live websites, and making sure complex projects actually cross the finish line.
+                  </p>
+                  <p>
+                    I prioritise straightforward solutions and tangible action over lengthy reports. When we work together, you'll always know where things stand — and you'll always get practical strategies that simplify your operations and drive results.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <Button
+                    size="lg"
+                    className="text-base px-8 py-6 font-bold bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all rounded-full shadow-lg"
+                    onClick={() => {
+                      analytics.emailClick();
+                      window.location.href = "mailto:esther@esventure.nl";
+                    }}
+                  >
+                    <Mail className="mr-2 h-5 w-5" />
+                    Let's talk
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      </CollapsibleSection>
+
+      {/* ─── 7. Project Planner ─── */}
+      <CollapsibleSection id="planner" title="💡 Describe your situation">
         <ProjectPlanner />
       </CollapsibleSection>
 
