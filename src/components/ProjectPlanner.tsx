@@ -436,6 +436,16 @@ const ResultPanel = ({
       <ReactMarkdown components={markdownComponents}>{result}</ReactMarkdown>
 
       <div className="mt-8 pt-6 border-t border-secondary/20 space-y-4">
+        <Button
+          onClick={() => {
+            analytics.bookCallClick();
+            window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
+          }}
+          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-base font-semibold group"
+        >
+          This looks like a solid plan — let's discuss it
+          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+        </Button>
         <p className="text-xs text-muted-foreground/70">
           This is a ballpark indication. The actual price will be determined after analysing the full scope of your project.
         </p>
@@ -514,10 +524,10 @@ const ProjectPlanner = () => {
           {/* Header - centered */}
           <div className="mb-8 md:mb-12 text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-3 font-poppins">
-              Got a project in mind?
+              Describe your situation, and I'll show you how we can fix it.
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Let me show you how I'd tackle it.
+              Drop in a few details and get a tailored plan in under a minute.
             </p>
             {/* Progress indicator */}
             <div className="flex items-center justify-center gap-3">

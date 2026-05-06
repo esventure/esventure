@@ -48,3 +48,13 @@ export const QuickFixIcon: React.FC<IconProps> = ({ className = "", size = 32 })
     />
   </svg>
 );
+
+// Build Icon - Browser window with code brackets (web development, shipping)
+export const BuildIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
+  <svg viewBox="0 0 32 32" width={size} height={size} className={className} fill="none">
+    <rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" strokeWidth="3" fill="none" />
+    <line x1="4" y1="12" x2="28" y2="12" stroke="currentColor" strokeWidth="3" />
+    <path d="M12 17 L9 20 L12 23" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+    <path d="M20 17 L23 20 L20 23" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  </svg>
+);
