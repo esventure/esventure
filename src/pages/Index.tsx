@@ -127,7 +127,7 @@ const Index = () => {
       <Navigation />
 
       {/* ─── 1. Hero ─── */}
-      <CollapsibleSection id="hero" title="☕ Your project's personal caffeine shot">
+      <CollapsibleSection id="hero" title="👋 Your digital fixer & sparring partner">
         <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
           <div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16 flex-1 flex items-center">
             <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-7xl mx-auto">
@@ -138,28 +138,40 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                  Your project's personal{" "}
-                  <span className="text-secondary">caffeine shot.</span>
+                  Your digital fixer &{" "}
+                  <span className="text-secondary">creative sparring partner.</span>
                 </h1>
 
                 <div className="space-y-4 mt-6 md:mt-8">
                   <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
-                    Feeling stuck? Overwhelmed? Got a brilliant idea but no time (or skills) to make it happen? That's where I come in.
+                    I'm a creative digital project manager who connects the dots between IT and your business — rescuing stuck projects, untangling messy processes, and shipping prototypes and websites that actually work.
                   </p>
-                  <p className="text-lg md:text-xl text-primary-foreground/70 max-w-xl leading-relaxed">
-                    I'm Esther, your hands-on partner for turning chaos into clarity and getting things done. No corporate
-                    fluff, no endless meetings. Just pure, focused action.
-                  </p>
+                  <ul className="space-y-2 text-base md:text-lg text-primary-foreground/80 max-w-xl">
+                    <li className="flex gap-3"><span className="text-secondary font-black">→</span> Stuck project? I take it over and drive it to the finish line.</li>
+                    <li className="flex gap-3"><span className="text-secondary font-black">→</span> IT and business disconnected? I translate and align.</li>
+                    <li className="flex gap-3"><span className="text-secondary font-black">→</span> Got an idea? I build the prototype and the website.</li>
+                  </ul>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
                   <Button
                     size="lg"
                     className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
                     onClick={scrollToPlanner}
                   >
-                    Let's Get This Done
+                    Tell me what's broken
                     <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="text-base px-8 py-6 font-bold bg-transparent text-primary-foreground border-2 border-primary-foreground/50 hover:bg-primary-foreground/10 hover:border-primary-foreground rounded-full"
+                    onClick={() => {
+                      analytics.bookCallClick();
+                      window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
+                    }}
+                  >
+                    Book a call
                   </Button>
                 </div>
               </motion.div>
@@ -205,11 +217,11 @@ const Index = () => {
                   How I Help
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Think of me as your secret weapon. You can deploy me in three key ways.
+                  Four ways to put me to work — pick the one that fits.
                 </p>
               </motion.div>
 
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                 {services.map((service, i) => {
                   const Icon = service.icon;
                   return (
