@@ -40,8 +40,8 @@ const Navigation = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-lg py-2 translate-y-0"
-            : "-translate-y-full"
+            ? "bg-background/95 backdrop-blur-md shadow-lg py-2"
+            : "bg-transparent py-3"
         )}
       >
         <div className="container mx-auto px-4">
@@ -51,7 +51,11 @@ const Navigation = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="hover:opacity-80 transition-opacity"
             >
-              <img src={logoEV} alt="Es Venture" className="h-12" />
+              <img
+                src={logoEV}
+                alt="Es Venture"
+                className={cn("h-12 transition-all", !isScrolled && "brightness-0 invert")}
+              />
             </button>
 
             {/* Desktop Navigation */}
@@ -64,25 +68,33 @@ const Navigation = () => {
                     "text-base font-semibold font-poppins transition-colors",
                     isScrolled
                       ? "text-foreground/80 hover:text-primary"
-                      : "text-foreground hover:text-primary"
+                      : "text-primary-foreground/90 hover:text-secondary"
                   )}
                 >
                   {link.label}
                 </button>
               ))}
               <Button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("project-planner")}
                 variant="ghost"
-                className="rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold px-5 py-1 text-base transition-colors"
+                className={cn(
+                  "rounded-full font-semibold px-5 py-1 text-base transition-colors",
+                  isScrolled
+                    ? "border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary"
+                    : "border border-primary-foreground/60 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                )}
               >
-                Let's Go
+                Plan my project
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+              className={cn(
+                "md:hidden p-2 transition-colors",
+                isScrolled ? "text-foreground hover:text-primary" : "text-primary-foreground hover:text-secondary"
+              )}
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -111,11 +123,11 @@ const Navigation = () => {
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection("project-planner")}
               variant="ghost"
               className="w-full rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold text-base py-3 transition-colors"
             >
-              Let's Go
+              Plan my project
             </Button>
           </div>
         </div>

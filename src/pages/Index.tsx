@@ -20,13 +20,15 @@ import attractionworldLogo from "@/assets/clients/attractionworld.png";
 import { analytics } from "@/lib/analytics";
 
 const ScrollDownArrow = () => {
-  const [isNearBottom, setIsNearBottom] = React.useState(false);
+  const [hide, setHide] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
       const scrollBottom = window.innerHeight + window.scrollY;
       const docHeight = document.documentElement.scrollHeight;
-      setIsNearBottom(docHeight - scrollBottom < 200);
+      const nearBottom = docHeight - scrollBottom < 200;
+      const scrolledPastHero = window.scrollY > 100;
+      setHide(nearBottom || scrolledPastHero);
     };
     window.addEventListener("scroll", handleScroll);
     handleScroll();
@@ -36,18 +38,18 @@ const ScrollDownArrow = () => {
   return (
     <motion.button
       onClick={() => window.scrollBy({ top: 300, behavior: "smooth" })}
-      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 w-12 h-12 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground flex items-center justify-center shadow-lg hover:bg-primary transition-colors"
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-12 h-12 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground flex items-center justify-center shadow-lg hover:bg-primary transition-colors"
       animate={{
         y: [0, 6, 0],
-        opacity: isNearBottom ? 0 : 1,
-        scale: isNearBottom ? 0.8 : 1,
+        opacity: hide ? 0 : 1,
+        scale: hide ? 0.8 : 1,
       }}
       transition={{
         y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
         opacity: { duration: 0.3 },
         scale: { duration: 0.3 },
       }}
-      style={{ pointerEvents: isNearBottom ? "none" : "auto" }}
+      style={{ pointerEvents: hide ? "none" : "auto" }}
       aria-label="Scroll down"
     >
       <ChevronDown className="w-6 h-6" />
@@ -129,8 +131,8 @@ const Index = () => {
       {/* ─── 1. Hero ─── */}
       <CollapsibleSection id="hero" title="👋 Your digital fixer & sparring partner">
         <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
-          <div className="container mx-auto px-4 pt-12 pb-12 md:pt-16 md:pb-16 flex-1 flex items-center">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-7xl mx-auto">
+          <div className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16 flex-1 flex items-center">
+            <div className="grid md:grid-cols-[1.2fr_1fr] gap-8 md:gap-12 max-w-7xl mx-auto items-center w-full">
               <motion.div
                 className="flex flex-col justify-center text-left"
                 initial={{ opacity: 0, x: -50 }}
@@ -138,22 +140,22 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                  Your digital fixer &{" "}
+                  Your digital fixer &amp;{" "}
                   <span className="text-secondary">creative sparring partner.</span>
                 </h1>
 
-                <div className="space-y-4 mt-6 md:mt-8">
-                  <p className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
-                    I'm a creative digital project manager who connects the dots between IT and your business — rescuing stuck projects, untangling messy processes, and shipping prototypes and websites that actually work.
+                <div className="space-y-4 mt-6">
+                  <p className="text-base md:text-lg text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
+                    A creative digital project manager who connects IT and business — rescuing stuck projects, untangling messy processes, and shipping prototypes and websites that actually work.
                   </p>
-                  <ul className="space-y-2 text-base md:text-lg text-primary-foreground/80 max-w-xl">
-                    <li className="flex gap-3"><span className="text-secondary font-black">→</span> Stuck project? I take it over and drive it to the finish line.</li>
-                    <li className="flex gap-3"><span className="text-secondary font-black">→</span> IT and business disconnected? I translate and align.</li>
-                    <li className="flex gap-3"><span className="text-secondary font-black">→</span> Got an idea? I build the prototype and the website.</li>
+                  <ul className="space-y-2 text-sm md:text-base text-primary-foreground/85 max-w-xl">
+                    <li className="flex gap-3"><span className="text-secondary font-black mt-0.5">✓</span> Stuck project? I take it over and drive it to the finish line.</li>
+                    <li className="flex gap-3"><span className="text-secondary font-black mt-0.5">✓</span> IT and business disconnected? I translate and align.</li>
+                    <li className="flex gap-3"><span className="text-secondary font-black mt-0.5">✓</span> Got an idea? I build the prototype and the website.</li>
                   </ul>
                 </div>
 
-                <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <div className="mt-7 flex flex-col sm:flex-row gap-3">
                   <Button
                     size="lg"
                     className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
@@ -177,12 +179,12 @@ const Index = () => {
               </motion.div>
 
               <motion.div
-                className="relative"
+                className="relative max-h-[75vh]"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <div className="aspect-[3/4] overflow-hidden shadow-2xl">
+                <div className="aspect-[3/4] max-h-[75vh] overflow-hidden shadow-2xl mx-auto">
                   <img src={estherYellow} alt="Esther Woerdman" className="w-full h-full object-cover" />
                 </div>
                 <motion.div
@@ -221,7 +223,7 @@ const Index = () => {
                 </p>
               </motion.div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
                 {services.map((service, i) => {
                   const Icon = service.icon;
                   return (
