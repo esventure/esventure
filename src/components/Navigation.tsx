@@ -75,7 +75,7 @@ const Navigation = () => {
                 </button>
               ))}
               <Button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("project-planner")}
                 variant="ghost"
                 className={cn(
                   "rounded-full font-semibold px-5 py-1 text-base transition-colors",
@@ -123,7 +123,7 @@ const Navigation = () => {
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection("project-planner")}
               variant="ghost"
               className="w-full rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold text-base py-3 transition-colors"
             >
