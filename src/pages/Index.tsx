@@ -20,13 +20,15 @@ import attractionworldLogo from "@/assets/clients/attractionworld.png";
 import { analytics } from "@/lib/analytics";
 
 const ScrollDownArrow = () => {
-  const [isNearBottom, setIsNearBottom] = React.useState(false);
+  const [hide, setHide] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
       const scrollBottom = window.innerHeight + window.scrollY;
       const docHeight = document.documentElement.scrollHeight;
-      setIsNearBottom(docHeight - scrollBottom < 200);
+      const nearBottom = docHeight - scrollBottom < 200;
+      const scrolledPastHero = window.scrollY > 100;
+      setHide(nearBottom || scrolledPastHero);
     };
     window.addEventListener("scroll", handleScroll);
     handleScroll();
@@ -36,18 +38,18 @@ const ScrollDownArrow = () => {
   return (
     <motion.button
       onClick={() => window.scrollBy({ top: 300, behavior: "smooth" })}
-      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 w-12 h-12 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground flex items-center justify-center shadow-lg hover:bg-primary transition-colors"
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-12 h-12 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground flex items-center justify-center shadow-lg hover:bg-primary transition-colors"
       animate={{
         y: [0, 6, 0],
-        opacity: isNearBottom ? 0 : 1,
-        scale: isNearBottom ? 0.8 : 1,
+        opacity: hide ? 0 : 1,
+        scale: hide ? 0.8 : 1,
       }}
       transition={{
         y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
         opacity: { duration: 0.3 },
         scale: { duration: 0.3 },
       }}
-      style={{ pointerEvents: isNearBottom ? "none" : "auto" }}
+      style={{ pointerEvents: hide ? "none" : "auto" }}
       aria-label="Scroll down"
     >
       <ChevronDown className="w-6 h-6" />
