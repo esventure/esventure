@@ -223,7 +223,7 @@ const Index = () => {
                 </p>
               </motion.div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
                 {services.map((service, i) => {
                   const Icon = service.icon;
                   return (
