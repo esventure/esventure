@@ -436,6 +436,16 @@ const ResultPanel = ({
       <ReactMarkdown components={markdownComponents}>{result}</ReactMarkdown>
 
       <div className="mt-8 pt-6 border-t border-secondary/20 space-y-4">
+        <Button
+          onClick={() => {
+            analytics.bookCallClick();
+            window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
+          }}
+          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-base font-semibold group"
+        >
+          This looks like a solid plan — let's discuss it
+          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+        </Button>
         <p className="text-xs text-muted-foreground/70">
           This is a ballpark indication. The actual price will be determined after analysing the full scope of your project.
         </p>
