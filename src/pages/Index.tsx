@@ -68,9 +68,9 @@ const services = [
   {
     icon: MakeItHappenIcon,
     label: "The Engine",
-    title: "Let's Make It Happen",
+    title: "Let's Fix It",
     description:
-      "When you need pure execution. I step in as your hands-on operator, project lead, or interim manager to drive your most critical initiatives over the finish line.",
+      "Your project's stuck or your new initiative needs an owner. I step in, take charge, and bridge IT and the rest of your business so nothing falls through the cracks — until it's shipped.",
   },
   {
     icon: ClearPathIcon,
@@ -85,6 +85,28 @@ const services = [
     title: "Quick Fixes & Fast Starts",
     description:
       "When you need to get unstuck, fast. I'll diagnose that urgent problem, design a quick solution, or build a prototype to get you immediate momentum.",
+  },
+  {
+    icon: BuildIcon,
+    label: "The Build",
+    title: "Let's Ship It",
+    description:
+      "When your concept is ready to go live. I build clean, functional websites, prototypes and applications — turning a design deck into a working reality your users can actually interact with.",
+  },
+];
+
+const pillars = [
+  {
+    title: "Absolute Clarity",
+    description: "You'll always know exactly where the project stands — no surprises, no guesswork.",
+  },
+  {
+    title: "Bridging IT & Business",
+    description: "I translate between developers and decision-makers so everyone speaks the same language.",
+  },
+  {
+    title: "Driving to Delivery",
+    description: "Projects don't drift. They ship. That's the core promise.",
   },
 ];
 
