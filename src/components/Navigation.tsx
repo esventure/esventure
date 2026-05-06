@@ -68,7 +68,7 @@ const Navigation = () => {
                     "text-base font-semibold font-poppins transition-colors",
                     isScrolled
                       ? "text-foreground/80 hover:text-primary"
-                      : "text-foreground hover:text-primary"
+                      : "text-primary-foreground/90 hover:text-secondary"
                   )}
                 >
                   {link.label}
@@ -77,16 +77,24 @@ const Navigation = () => {
               <Button
                 onClick={() => scrollToSection("contact")}
                 variant="ghost"
-                className="rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold px-5 py-1 text-base transition-colors"
+                className={cn(
+                  "rounded-full font-semibold px-5 py-1 text-base transition-colors",
+                  isScrolled
+                    ? "border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary"
+                    : "border border-primary-foreground/60 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                )}
               >
-                Let's Go
+                Plan my project
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+              className={cn(
+                "md:hidden p-2 transition-colors",
+                isScrolled ? "text-foreground hover:text-primary" : "text-primary-foreground hover:text-secondary"
+              )}
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
