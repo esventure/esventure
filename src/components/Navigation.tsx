@@ -40,8 +40,8 @@ const Navigation = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-lg py-2 translate-y-0"
-            : "-translate-y-full"
+            ? "bg-background/95 backdrop-blur-md shadow-lg py-2"
+            : "bg-transparent py-3"
         )}
       >
         <div className="container mx-auto px-4">
@@ -51,7 +51,11 @@ const Navigation = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="hover:opacity-80 transition-opacity"
             >
-              <img src={logoEV} alt="Es Venture" className="h-12" />
+              <img
+                src={logoEV}
+                alt="Es Venture"
+                className={cn("h-12 transition-all", !isScrolled && "brightness-0 invert")}
+              />
             </button>
 
             {/* Desktop Navigation */}
