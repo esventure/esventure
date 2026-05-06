@@ -63,7 +63,10 @@ export const StickyHeaderProvider: React.FC<{ children: React.ReactNode }> = ({ 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [sections]);
 
-  const collapsedSections = sections.filter((s) => collapsedIds.has(s.id));
+  // Keep at most the 3 most recently collapsed bars visible
+  const MAX_VISIBLE = 3;
+  const allCollapsed = sections.filter((s) => collapsedIds.has(s.id));
+  const collapsedSections = allCollapsed.slice(-MAX_VISIBLE);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
