@@ -334,7 +334,7 @@ const Index = () => {
               <p className="text-xl text-muted-foreground">What you actually get when we work together.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+            <div className="grid md:grid-cols-3 gap-10 md:gap-6 max-w-5xl mx-auto mb-16">
               {pillars.map((p, i) => (
                 <motion.div
                   key={p.title}
@@ -342,12 +342,11 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="md:px-4 md:border-l md:border-border/60 md:first:border-l-0"
                 >
-                  <Card className="h-full p-8 border border-border/50 bg-card shadow-sm">
-                    <div className="text-4xl font-black text-primary font-poppins mb-3">0{i + 1}</div>
-                    <h3 className="text-xl md:text-2xl font-black text-foreground font-poppins mb-3">{p.title}</h3>
-                    <p className="text-foreground/70 leading-relaxed">{p.description}</p>
-                  </Card>
+                  <div className="text-5xl font-black text-primary/30 font-poppins mb-2 leading-none">0{i + 1}</div>
+                  <h3 className="text-xl md:text-2xl font-black text-foreground font-poppins mb-3">{p.title}</h3>
+                  <p className="text-foreground/70 leading-relaxed">{p.description}</p>
                 </motion.div>
               ))}
             </div>
