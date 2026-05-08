@@ -511,24 +511,53 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 7. Footer ─── */}
-      <footer className="bg-foreground py-12">
-        <div className="container mx-auto px-4 flex flex-col items-center gap-6">
-          <img src={logoEV} alt="Es Venture" className="h-10 brightness-0 invert" />
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
-            <p className="text-background/70">© 2025 Es Venture. All rights reserved.</p>
-            <span className="text-background/40">•</span>
-            <Link to="/privacy" className="text-background/70 hover:text-background transition-colors">
-              Privacy Policy
-            </Link>
-            <span className="text-background/40">•</span>
-            <a
-              href="https://plaiwrks.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-background/70 hover:text-background transition-colors"
-            >
-              AI-native projects? Check out Plaiwrks
-            </a>
+      <footer className="bg-foreground py-14">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+            <div>
+              <img src={logoEV} alt="Es Venture" className="h-10 brightness-0 invert mb-4" />
+              <p className="text-sm text-background/60 leading-relaxed max-w-xs">
+                Your digital fixer & creative sparring partner. Based in the Netherlands, working with founders and teams across Europe.
+              </p>
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-background/50 mb-3">Get in touch</p>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="mailto:esther@esventure.nl" className="text-background/80 hover:text-secondary transition-colors">
+                    esther@esventure.nl
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/estherwoerdman/" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
+                    LinkedIn — Esther Woerdman
+                  </a>
+                </li>
+                <li>
+                  <a href="https://calendar.app.google/5GxNAzn7W3FJNMrh8" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
+                    Book a call
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-background/50 mb-3">More</p>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link to="/privacy" className="text-background/80 hover:text-secondary transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <a href="https://plaiwrks.com" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
+                    AI-native projects? See Plaiwrks →
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-background/10 mt-10 pt-6 text-center">
+            <p className="text-xs text-background/50">© 2025 Es Venture. All rights reserved.</p>
           </div>
         </div>
       </footer>
