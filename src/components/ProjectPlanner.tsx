@@ -443,7 +443,7 @@ const ResultPanel = ({
           }}
           className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-base font-semibold group"
         >
-          This looks like a solid plan — let's discuss it
+          This looks like a solid plan - let's discuss it
           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
         </Button>
         <p className="text-xs text-muted-foreground/70">
@@ -527,7 +527,7 @@ const ProjectPlanner = () => {
               Describe your situation.
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              I'll show you how we can fix it — in under a minute.
+              I'll show you how we can fix it - in under a minute.
             </p>
             {/* Progress indicator */}
             <div className="flex items-center justify-center gap-3">

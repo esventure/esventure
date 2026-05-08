@@ -89,7 +89,7 @@ const StyleGuide = () => {
 
           <div className="space-y-8">
             <div className="space-y-4">
-              <h3 className="text-lg font-bold text-foreground">Headings — Poppins</h3>
+              <h3 className="text-lg font-bold text-foreground">Headings - Poppins</h3>
               <div className="space-y-3 border-l-4 border-primary pl-6">
                 <p className="text-6xl font-black font-poppins text-foreground">Heading 1</p>
                 <p className="text-4xl font-black font-poppins text-foreground">Heading 2</p>
@@ -99,16 +99,16 @@ const StyleGuide = () => {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-lg font-bold text-foreground">Body — Nunito Sans</h3>
+              <h3 className="text-lg font-bold text-foreground">Body - Nunito Sans</h3>
               <div className="space-y-3 border-l-4 border-secondary pl-6">
                 <p className="text-xl text-foreground font-medium">
-                  Large body text — gebruikt voor introductieteksten en hero's.
+                  Large body text - gebruikt voor introductieteksten en hero's.
                 </p>
                 <p className="text-base text-foreground">
-                  Regular body text — de standaard tekststijl voor paragrafen en beschrijvingen op de website.
+                  Regular body text - de standaard tekststijl voor paragrafen en beschrijvingen op de website.
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Small / caption text — gebruikt voor labels, bijschriften en metadata.
+                  Small / caption text - gebruikt voor labels, bijschriften en metadata.
                 </p>
               </div>
             </div>
@@ -231,7 +231,7 @@ const StyleGuide = () => {
                 <Check className="w-5 h-5 text-primary" /> Wel
               </h4>
               <ul className="space-y-2 text-foreground/80 text-sm">
-                <li>Direct en persoonlijk — "jij/je" taalgebruik</li>
+                <li>Direct en persoonlijk - "jij/je" taalgebruik</li>
                 <li>Energiek en actiegericht</li>
                 <li>Helder, zelfverzekerd, no-nonsense</li>
                 <li>Menselijk en benaderbaar</li>
@@ -258,7 +258,7 @@ const StyleGuide = () => {
       {/* Footer */}
       <footer className="border-t border-border py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground">Es Venture Style Guide — Intern document</p>
+          <p className="text-sm text-muted-foreground">Es Venture Style Guide - Intern document</p>
         </div>
       </footer>
     </div>

@@ -69,7 +69,7 @@ const WhenToCallMe = () => {
             When to Call Me
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            When your project is bleeding time, money, or sanity — you don't need a pep talk. You need a surgeon.
+            When your project is bleeding time, money, or sanity - you don't need a pep talk. You need a surgeon.
           </p>
         </motion.div>
 
