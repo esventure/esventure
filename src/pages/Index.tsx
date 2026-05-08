@@ -11,6 +11,7 @@ import WhenToCallMe from "@/components/WhenToCallMe";
 import CollapsibleSection, { StickyHeaderProvider } from "@/components/CollapsibleSection";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
+import estherBw from "@/assets/esther-bw.jpg";
 import logoEV from "@/assets/logo-ev.svg";
 import vanmoofLogo from "@/assets/clients/vanmoof.png";
 import lovensLogo from "@/assets/clients/lovens.png";
@@ -407,7 +408,7 @@ const Index = () => {
                 transition={{ duration: 0.6 }}
                 className="aspect-[3/4] overflow-hidden shadow-2xl"
               >
-                <img src={estherPhone} alt="Esther Woerdman" className="w-full h-full object-cover" />
+                <img src={estherBw} alt="Esther Woerdman" className="w-full h-full object-cover" />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
