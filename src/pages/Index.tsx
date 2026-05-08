@@ -408,7 +408,7 @@ const Index = () => {
                 transition={{ duration: 0.6 }}
                 className="aspect-[3/4] overflow-hidden shadow-2xl"
               >
-                <img src={estherPhone} alt="Esther Woerdman" className="w-full h-full object-cover" />
+                <img src={estherBw} alt="Esther Woerdman" className="w-full h-full object-cover" />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
