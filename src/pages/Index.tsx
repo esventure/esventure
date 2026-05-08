@@ -6,7 +6,7 @@ import Navigation from "@/components/Navigation";
 import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion } from "framer-motion";
 import React from "react";
-import { MakeItHappenIcon, ClearPathIcon, QuickFixIcon, BuildIcon } from "@/components/ServiceIcons";
+import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 import WhenToCallMe from "@/components/WhenToCallMe";
 import CollapsibleSection, { StickyHeaderProvider } from "@/components/CollapsibleSection";
 import estherYellow from "@/assets/esther-yellow.jpg";
@@ -69,32 +69,32 @@ const clients = [
 
 const services = [
   {
-    icon: MakeItHappenIcon,
-    label: "The Engine",
-    title: "Let's Fix It",
+    icon: FixerIcon,
+    label: "The Fixer",
+    title: "Let's Get It Moving",
     description:
-      "Your project's stuck or your new initiative needs an owner. I step in, take charge, and bridge IT and the rest of your business so nothing falls through the cracks - until it's shipped.",
+      "That stuck project, that half-finished initiative, that thing nobody owns. I step in, take charge, and drive it forward until it actually ships.",
   },
   {
-    icon: ClearPathIcon,
-    label: "The Roadmap",
-    title: "Your Clear Path Forward",
+    icon: SparringIcon,
+    label: "The Sparring Room",
+    title: "Let's Think It Through",
     description:
-      "When you have a vision but no clear plan. I'll turn your big ideas into a concrete, step-by-step action plan that we can actually execute on.",
+      "When you've got an idea but no shape yet. We sketch, challenge, prototype and pressure-test it together until it's clear enough to build.",
   },
   {
-    icon: QuickFixIcon,
-    label: "The Spark",
-    title: "Quick Fixes & Fast Starts",
+    icon: MapIcon,
+    label: "The Map",
+    title: "Let's Make It Flow",
     description:
-      "When you need to get unstuck, fast. I'll diagnose that urgent problem, design a quick solution, or build a prototype to get you immediate momentum.",
+      "Messy processes, double work, things falling between teams. I map what's actually happening, find the friction, and redesign it so your day-to-day just runs.",
   },
   {
-    icon: BuildIcon,
-    label: "The Build",
-    title: "Let's Ship It",
+    icon: MirrorIcon,
+    label: "The Mirror",
+    title: "Let's Make It Yours",
     description:
-      "When your concept is ready to go live. I build clean, functional websites, prototypes and applications - turning a design deck into a working reality your users can actually interact with.",
+      "Your brand or personal story deserves a visual that fits. I help shape how you (or your company) shows up - from positioning to a website that actually feels like you.",
   },
 ];
 
