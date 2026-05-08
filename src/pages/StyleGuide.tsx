@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { ArrowRight, Mail, Check, AlertCircle, Star, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoEV from "@/assets/logo-ev.svg";
-import { MakeItHappenIcon, ClearPathIcon, QuickFixIcon } from "@/components/ServiceIcons";
+import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 
 const ColorSwatch = ({ name, variable, cssVar }: { name: string; variable: string; cssVar: string }) => (
   <div className="flex flex-col items-center gap-2">
@@ -155,11 +155,12 @@ const StyleGuide = () => {
           <h2 className="text-3xl font-black font-poppins text-foreground mb-2">Cards</h2>
           <p className="text-muted-foreground mb-8">Service cards met iconen en beschrijvingen.</p>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { Icon: MakeItHappenIcon, label: "The Engine", title: "Let's Make It Happen" },
-              { Icon: ClearPathIcon, label: "The Roadmap", title: "Your Clear Path Forward" },
-              { Icon: QuickFixIcon, label: "The Spark", title: "Quick Fixes & Fast Starts" },
+              { Icon: FixerIcon, label: "The Fixer", title: "Let's Get It Moving" },
+              { Icon: SparringIcon, label: "The Sparring Room", title: "Let's Think It Through" },
+              { Icon: MapIcon, label: "The Map", title: "Let's Make It Flow" },
+              { Icon: MirrorIcon, label: "The Mirror", title: "Let's Make It Yours" },
             ].map(({ Icon, label, title }, i) => (
               <Card key={i} className="p-8 border border-border/50 bg-card shadow-sm hover:shadow-md transition-all duration-200 flex flex-col items-center text-center">
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
@@ -179,9 +180,10 @@ const StyleGuide = () => {
 
           <div className="flex flex-wrap gap-8 items-end">
             {[
-              { Icon: MakeItHappenIcon, name: "MakeItHappen" },
-              { Icon: ClearPathIcon, name: "ClearPath" },
-              { Icon: QuickFixIcon, name: "QuickFix" },
+              { Icon: FixerIcon, name: "Fixer" },
+              { Icon: SparringIcon, name: "Sparring" },
+              { Icon: MapIcon, name: "Map" },
+              { Icon: MirrorIcon, name: "Mirror" },
             ].map(({ Icon, name }) => (
               <div key={name} className="flex flex-col items-center gap-2">
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
