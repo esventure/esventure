@@ -256,7 +256,7 @@ const Index = () => {
                         >
                           See it in action <ArrowRight className="h-4 w-4" />
                         </button>
-                      </Card>
+                      </div>
                     </motion.div>
                   );
                 })}
