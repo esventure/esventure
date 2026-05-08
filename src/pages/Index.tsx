@@ -73,7 +73,7 @@ const services = [
     label: "The Engine",
     title: "Let's Fix It",
     description:
-      "Your project's stuck or your new initiative needs an owner. I step in, take charge, and bridge IT and the rest of your business so nothing falls through the cracks — until it's shipped.",
+      "Your project's stuck or your new initiative needs an owner. I step in, take charge, and bridge IT and the rest of your business so nothing falls through the cracks - until it's shipped.",
   },
   {
     icon: ClearPathIcon,
@@ -94,14 +94,14 @@ const services = [
     label: "The Build",
     title: "Let's Ship It",
     description:
-      "When your concept is ready to go live. I build clean, functional websites, prototypes and applications — turning a design deck into a working reality your users can actually interact with.",
+      "When your concept is ready to go live. I build clean, functional websites, prototypes and applications - turning a design deck into a working reality your users can actually interact with.",
   },
 ];
 
 const pillars = [
   {
     title: "Absolute Clarity",
-    description: "You'll always know exactly where the project stands — no surprises, no guesswork.",
+    description: "You'll always know exactly where the project stands - no surprises, no guesswork.",
   },
   {
     title: "Bridging IT & Business",
@@ -147,7 +147,7 @@ const Index = () => {
 
                 <div className="space-y-4 mt-6">
                   <p className="text-base md:text-lg text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
-                    A creative digital project manager who connects IT and business — rescuing stuck projects, untangling messy processes, and shipping prototypes and websites that actually work.
+                    A creative digital project manager who connects IT and business - rescuing stuck projects, untangling messy processes, and shipping prototypes and websites that actually work.
                   </p>
                   <ul className="space-y-2 text-sm md:text-base text-primary-foreground/85 max-w-xl">
                     <li className="flex gap-3"><span className="text-secondary font-black mt-0.5">✓</span> Stuck project? I take it over and drive it to the finish line.</li>
@@ -220,7 +220,7 @@ const Index = () => {
                   How I Help
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Four ways to put me to work — pick the one that fits.
+                  Four ways to put me to work - pick the one that fits.
                 </p>
               </motion.div>
 
@@ -282,7 +282,7 @@ const Index = () => {
                   Need a sparring partner?
                 </h2>
                 <p className="text-lg md:text-xl text-secondary-foreground/80 leading-relaxed mb-8">
-                  Sometimes the brief doesn't exist yet — you just need someone experienced to think it through with. Book a sparring session to challenge assumptions, structure your ideas, and define a clear direction before the real work begins.
+                  Sometimes the brief doesn't exist yet - you just need someone experienced to think it through with. Book a sparring session to challenge assumptions, structure your ideas, and define a clear direction before the real work begins.
                 </p>
                 <Button
                   size="lg"
@@ -357,7 +357,7 @@ const Index = () => {
                 "Esther didn't just manage our project; she breathed life into it. She has this incredible ability to
                 simplify the complex and get everyone excited about what's next. A total game-changer."
               </blockquote>
-              <p className="mt-6 text-muted-foreground font-poppins">— A happy client</p>
+              <p className="mt-6 text-muted-foreground font-poppins">- A happy client</p>
             </div>
 
             {/* Client logos */}
@@ -421,13 +421,13 @@ const Index = () => {
                 </h2>
                 <div className="space-y-4 text-base md:text-lg text-foreground/80 leading-relaxed">
                   <p>
-                    I'm a creative digital project manager — which in practice means I'm the person you call when a project is stuck, a process is unclear, or an idea hasn't yet been built.
+                    I'm a creative digital project manager - which in practice means I'm the person you call when a project is stuck, a process is unclear, or an idea hasn't yet been built.
                   </p>
                   <p>
                     I move quickly to understand your unique challenges. I'm equally comfortable leading a strategic whiteboard session with your management team as I am running a technical review with your developers. My core strength is bridging the gap between IT and the rest of your organisation, turning rough ideas into working prototypes and live websites, and making sure complex projects actually cross the finish line.
                   </p>
                   <p>
-                    I prioritise straightforward solutions and tangible action over lengthy reports. When we work together, you'll always know where things stand — and you'll always get practical strategies that simplify your operations and drive results.
+                    I prioritise straightforward solutions and tangible action over lengthy reports. When we work together, you'll always know where things stand - and you'll always get practical strategies that simplify your operations and drive results.
                   </p>
                 </div>
                 <div className="mt-8">
@@ -477,7 +477,7 @@ const Index = () => {
                   <span className="text-secondary">happen?</span>
                 </h2>
                 <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
-                  Let's talk about what's on your plate. No pressure, no sales pitch — just a real conversation about how
+                  Let's talk about what's on your plate. No pressure, no sales pitch - just a real conversation about how
                   I can help you move forward.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -531,7 +531,7 @@ const Index = () => {
                 </li>
                 <li>
                   <a href="https://www.linkedin.com/in/estherwoerdman/" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
-                    LinkedIn — Esther Woerdman
+                    LinkedIn - Esther Woerdman
                   </a>
                 </li>
                 <li>
