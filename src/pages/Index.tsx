@@ -235,10 +235,10 @@ const Index = () => {
                       transition={{ duration: 0.5, delay: i * 0.15 }}
                       whileHover={{ y: -4, transition: { duration: 0.2 } }}
                     >
-                      <Card className="h-full p-8 border border-border/50 bg-card shadow-sm hover:shadow-md transition-all duration-200 flex flex-col">
+                      <div className="h-full p-8 bg-card hover:bg-primary/[0.02] border-t-2 border-primary/30 hover:border-primary transition-all duration-200 flex flex-col">
                         <div className="flex flex-col items-center text-center mb-6">
-                          <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
-                            <Icon size={28} className="text-primary" />
+                          <div className="w-14 h-14 flex items-center justify-center mb-4 text-primary">
+                            <Icon size={36} className="text-primary" />
                           </div>
                           <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">
                             {service.label}
