@@ -270,31 +270,49 @@ const Index = () => {
       <CollapsibleSection id="sparring" title="🧠 Need a sparring partner?">
         <section className="py-20 bg-secondary">
           <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mx-auto text-center"
-            >
-              <h2 className="text-4xl md:text-6xl font-black text-secondary-foreground font-poppins mb-6">
-                Need a sparring partner?
-              </h2>
-              <p className="text-lg md:text-xl text-secondary-foreground/80 leading-relaxed mb-8">
-                Sometimes the brief doesn't exist yet — you just need someone experienced to think it through with. Book a sparring session to challenge assumptions, structure your ideas, and define a clear direction before the real work begins.
-              </p>
-              <Button
-                size="lg"
-                className="text-base px-8 py-6 font-bold bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all rounded-full shadow-lg"
-                onClick={() => {
-                  analytics.bookCallClick();
-                  window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
-                }}
+            <div className="grid md:grid-cols-[1.3fr_1fr] gap-10 lg:gap-16 max-w-6xl mx-auto items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
               >
-                Book a sparring session
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </motion.div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-secondary-foreground font-poppins mb-6 leading-[1.05]">
+                  Need a sparring partner?
+                </h2>
+                <p className="text-lg md:text-xl text-secondary-foreground/80 leading-relaxed mb-8">
+                  Sometimes the brief doesn't exist yet — you just need someone experienced to think it through with. Book a sparring session to challenge assumptions, structure your ideas, and define a clear direction before the real work begins.
+                </p>
+                <Button
+                  size="lg"
+                  className="text-base px-8 py-6 font-bold bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all rounded-full shadow-lg"
+                  onClick={() => {
+                    analytics.bookCallClick();
+                    window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
+                  }}
+                >
+                  Book a sparring session
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="relative"
+              >
+                <div className="bg-background/60 backdrop-blur-sm border-l-4 border-primary p-8 md:p-10 rounded-r-2xl">
+                  <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4">You'll walk away with</p>
+                  <ul className="space-y-3 text-base md:text-lg text-secondary-foreground">
+                    <li className="flex gap-3"><span className="text-primary font-black">→</span> Clarity on what's actually the problem.</li>
+                    <li className="flex gap-3"><span className="text-primary font-black">→</span> A rough structure for how to tackle it.</li>
+                    <li className="flex gap-3"><span className="text-primary font-black">→</span> A concrete next step you can take this week.</li>
+                  </ul>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
       </CollapsibleSection>
