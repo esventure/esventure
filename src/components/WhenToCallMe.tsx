@@ -167,14 +167,14 @@ const WhenToCallMe = () => {
           <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins mb-6">
             Why Call Me?
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
             {differentiators.map((d, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border border-border/50 bg-card p-5"
-              >
-                <p className="font-bold text-foreground text-sm">{d.bold}</p>
-                <p className="text-xs text-muted-foreground mt-1">{d.sub}</p>
+              <div key={i} className="flex gap-3">
+                <span className="text-primary font-black text-lg leading-tight shrink-0">→</span>
+                <div>
+                  <p className="font-bold text-foreground text-sm">{d.bold}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{d.sub}</p>
+                </div>
               </div>
             ))}
           </div>
