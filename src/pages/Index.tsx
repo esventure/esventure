@@ -11,6 +11,7 @@ import WhenToCallMe from "@/components/WhenToCallMe";
 import CollapsibleSection, { StickyHeaderProvider } from "@/components/CollapsibleSection";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
+import estherBw from "@/assets/esther-bw.jpg";
 import logoEV from "@/assets/logo-ev.svg";
 import vanmoofLogo from "@/assets/clients/vanmoof.png";
 import lovensLogo from "@/assets/clients/lovens.png";
