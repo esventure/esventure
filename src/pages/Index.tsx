@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+
 import { ArrowRight, Mail, ChevronDown } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ProjectPlanner from "@/components/ProjectPlanner";
