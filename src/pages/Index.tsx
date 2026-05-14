@@ -162,7 +162,7 @@ const Index = () => {
                     className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
                     onClick={scrollToPlanner}
                   >
-                    Tell me what's broken
+                    Tell me where I can help
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                   <Button
