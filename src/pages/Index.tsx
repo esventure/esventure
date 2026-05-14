@@ -354,8 +354,8 @@ Call me
 
             <div className="max-w-3xl mx-auto text-center mb-16">
               <blockquote className="text-xl md:text-2xl italic text-foreground/80 leading-relaxed">
-                "Esther didn't just manage our project; she breathed life into it. She has this incredible ability to
-                simplify the complex and get everyone excited about what's next. A total game-changer."
+                "Esther didn't just manage our project — she kind of saved it. She's got this way of untangling messy
+                situations and getting everyone actually excited about what's next. Made a huge difference for us."
               </blockquote>
               <p className="mt-6 text-muted-foreground font-poppins">- A happy client</p>
             </div>
