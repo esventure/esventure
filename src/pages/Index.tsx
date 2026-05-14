@@ -332,7 +332,7 @@ Call me
               >
                 The Es Venture Effect
               </motion.h2>
-              <p className="text-xl text-muted-foreground">What you actually get when we work together.</p>
+              <p className="text-xl text-muted-foreground">I'm your project's personal caffeine shot.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-10 md:gap-6 max-w-5xl mx-auto mb-16">
