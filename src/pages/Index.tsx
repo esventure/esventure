@@ -473,8 +473,8 @@ Call me
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                  READY FOR AN{" "}
-                  <span className="text-secondary">ES VENTURE?</span>
+                  Ready for an<br />
+                  <span className="text-secondary">Es Venture?</span>
                 </h2>
                 <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
                   Let's talk about what's on your plate. No pressure, no sales pitch - just a real conversation about how
