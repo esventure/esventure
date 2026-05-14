@@ -1,75 +1,33 @@
-## Rework "How I Help" — 4 new services
+## New iconography style
 
-Replace the current 4 service cards (Engine / Roadmap / Spark / Build) with the 4 themes you love. Same card layout, same "Let's..." voice, same `See it in action` CTA — only the content + icons change.
+A quick scan of the codebase: the only custom hand-drawn icons live in `src/components/ServiceIcons.tsx` (the 4 service cards). `WhenToCallMe` and `ProjectPlanner` use generic lucide icons (arrows, checks, loaders) that should stay as they are — replacing those would hurt usability. So "everything custom" effectively means the 4 service icons.
 
-### New service cards
+## New style
 
-**1. The Fixer — Let's Get It Moving**
-- Label: `THE FIXER`
-- Title: `Let's Get It Moving`
-- Copy: "That stuck project, that half-finished initiative, that thing nobody owns. I step in, take charge, and drive it forward until it actually ships."
+Inspired by the reference: solid filled silhouettes with thin white interior cut-outs that add detail without losing the bold mass.
 
-**2. The Sparring Room — Let's Think It Through**
-- Label: `THE SPARRING ROOM`
-- Title: `Let's Think It Through`
-- Copy: "When you've got an idea but no shape yet. We sketch, challenge, prototype and pressure-test it together until it's clear enough to build."
+- **Fill**: brand purple (#BF5AF2)
+- **Inner detail lines**: white, hairline (~1.5px), used sparingly to suggest form
+- **Background chip**: soft yellow circle (existing pastel-yellow treatment) — kept as-is so the style change reads clearly against the cards
+- **Canvas**: 32×32 viewBox, slightly rounded corners on shape edges, no outlines, no strokes on the silhouette itself
 
-**3. The Map — Let's Make It Flow**
-- Label: `THE MAP`
-- Title: `Let's Make It Flow`
-- Copy: "Messy processes, double work, things falling between teams. I map what's actually happening, find the friction, and redesign it so your day-to-day just runs."
+## The 4 new icons (concepts)
 
-**4. The Mirror — Let's Make It Yours**
-- Label: `THE MIRROR`
-- Title: `Let's Make It Yours`
-- Copy: "Your brand or personal story deserves a visual that fits. I help shape how you (or your company) shows up — from positioning to a website that actually feels like you."
+Staying abstract and conceptual (not literal objects), translated into the silhouette language:
 
-### Original icon concepts
+1. **Fixer — Get It Moving**: A solid chunky arrow-block (rounded rectangle pushed into a wedge tip) with two thin white motion slits cut through the back half. Reads as mass in motion.
+2. **Sparring — Think It Through**: Two solid facing half-discs with a small 4-point star cut out (white) in the gap between them. Dialogue + spark, all in filled form.
+3. **Map — Make It Flow**: A solid organic blob on the left tapering into a thick flowing ribbon that ends in a filled dot. A single hairline white line traces the path through the middle. Chaos resolving into flow.
+4. **Mirror — Make It Yours**: A solid rounded-square frame (filled, slightly tilted) with a white sparkle/star cut out of the center. Identity reflected back.
 
-All icons stay in the existing house style: 32x32 viewBox, single-color (`currentColor`), abstract geometric, slightly rounded, ~3px stroke. Original = not the obvious wrench/lightbulb/flowchart/eye combo.
+## Files to change
 
-**1. The Fixer — "Block being pushed"**
-A square block with a small arrow-wedge pushing it from behind, plus a tiny motion line. Visualises *unstuck → moving*, not "repair". Distinctive, not a wrench.
+- `src/components/ServiceIcons.tsx` — rewrite all 4 icons as filled `<path>` shapes with `fill="currentColor"` and small white inner cut-outs (using `fill="white"` or even-odd fill rules)
+- `src/pages/Index.tsx` — no logic changes; only verify the icon background chip stays soft yellow and `text-primary` is applied
+- `src/pages/StyleGuide.tsx` — the icons render automatically via the same imports; no edit needed unless background chips need adjusting
 
-```text
-   ┌───┐
- ▶ │   │  →
-   └───┘
-```
+## Out of scope
 
-**2. The Sparring Room — "Two interlocking arcs forming a spark"**
-Two open arcs facing each other (like two minds meeting), with a small filled diamond in the gap where they meet. Reads as dialogue + idea, without using a speech bubble or lightbulb.
-
-```text
-  )    (
-    ◆
-  )    (
-```
-
-**3. The Map — "Tangled line resolving into a straight one"**
-A single continuous stroke that starts as a knot/loop on the left and untangles into a clean horizontal line ending in a dot. Visualises *chaos → flow* in one gesture. Much more original than a flowchart.
-
-```text
-  ╭─╮
-  │ ╰─────●
-  ╰─╯
-```
-
-**4. The Mirror — "Asymmetric frame with a star inside"**
-A rounded square frame (slightly tilted, one corner open) with the Es Venture sparkle/star sitting inside it. Echoes the EV logo mark, signals identity + framing without using an eye, face or camera.
-
-```text
-  ┌──┐
-  │ ✦│
-  └──┘
-```
-
-### Files to change
-
-- `src/components/ServiceIcons.tsx` — replace the 4 existing icon components (`MakeItHappenIcon`, `ClearPathIcon`, `QuickFixIcon`, `BuildIcon`) with 4 new ones: `FixerIcon`, `SparringIcon`, `MapIcon`, `MirrorIcon`. Same prop signature, same stroke style.
-- `src/pages/Index.tsx` — update the `services` array (lines ~69-98): new icon imports + new label/title/description for each of the 4 cards. No layout changes.
-
-### Out of scope
-
-- The "Need a sparring partner?" yellow band stays. With the new "Sparring Room" service card, we may want to revisit whether that section is still needed — but I'll only touch it if you confirm.
-- No copy changes elsewhere on the page.
+- Lucide functional icons in Planner / WTCM / nav
+- Card layout, copy, "Let's…" voice, yellow outcome boxes
+- Any other section
