@@ -174,7 +174,7 @@ const Index = () => {
                       window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
                     }}
                   >
-                    Book a call
+Call me
                   </Button>
                 </div>
               </motion.div>
