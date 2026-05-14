@@ -71,23 +71,21 @@ export const MapIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
 
 // Mirror Icon — solid tilted rounded-square frame with a sparkle cut out of center
 export const MirrorIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
-  <g>
-    <svg viewBox="0 0 32 32" width={size} height={size} className={className}>
-      <g transform="rotate(-8 16 16)">
-        {/* Solid frame using even-odd fill: outer rounded square minus inner rounded square */}
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M5 8 A3 3 0 0 1 8 5 H24 A3 3 0 0 1 27 8 V24 A3 3 0 0 1 24 27 H8 A3 3 0 0 1 5 24 Z
-             M10 11 H22 A1 1 0 0 1 23 12 V20 A1 1 0 0 1 22 21 H10 A1 1 0 0 1 9 20 V12 A1 1 0 0 1 10 11 Z"
-          fill="currentColor"
-        />
-      </g>
-      {/* Sparkle cut sitting inside the frame */}
+  <svg viewBox="0 0 32 32" width={size} height={size} className={className}>
+    <g transform="rotate(-8 16 16)">
+      {/* Solid frame using even-odd fill: outer rounded square minus inner rounded square */}
       <path
-        d="M16 11 Q16.8 15.2 21 16 Q16.8 16.8 16 21 Q15.2 16.8 11 16 Q15.2 15.2 16 11 Z"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5 8 A3 3 0 0 1 8 5 H24 A3 3 0 0 1 27 8 V24 A3 3 0 0 1 24 27 H8 A3 3 0 0 1 5 24 Z
+           M10 11 H22 A1 1 0 0 1 23 12 V20 A1 1 0 0 1 22 21 H10 A1 1 0 0 1 9 20 V12 A1 1 0 0 1 10 11 Z"
         fill="currentColor"
       />
-    </svg>
-  </g>
+    </g>
+    {/* Sparkle inside the frame */}
+    <path
+      d="M16 11 Q16.8 15.2 21 16 Q16.8 16.8 16 21 Q15.2 16.8 11 16 Q15.2 15.2 16 11 Z"
+      fill="currentColor"
+    />
+  </svg>
 );
