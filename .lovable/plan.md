@@ -1,42 +1,48 @@
-## The problem
+## Stepping back
 
-The current "When to Call Me" section shows 6 scenario cards on the left + a sticky response panel on the right. Eyes don't know where to land: emojis, bold keywords, descriptions, AND a duplicate panel all compete at once. It's visually noisy and the split layout doubles the cognitive load.
+You're right — I've been redesigning the *container* without questioning the *content*. The real problem isn't layout. It's that the six items are clever metaphors ("The Unfinished Business", "The Idea Graveyard", "The 'Who Even Does That?' Gap") that the visitor has to *decode* before they recognize themselves. That's why every layout feels noisy: every tile demands a second of interpretation.
 
-## Three directions to choose from
+## What we're actually trying to say
 
-### Option A — Quiet accordion list
+The job of this section is one thing: **make the visitor say "oh shit, that's me"** within 2 seconds. Then they trust that you understand their situation, which makes them want to talk to you.
 
-A single centered column. Each scenario is one clean row: emoji + keyword. Click to expand → the symptom and Esther's response slide open inline. Only one open at a time.
+So the content needs to be:
+- **Specific situations**, not metaphors
+- **Phrased the way Esther's customer would describe their own week** — not the way a copywriter would brand it
+- Recognizable in a glance, no decoding
 
-- One thing to look at, top to bottom
-- No duplicate sticky panel
-- Feels editorial, calm, confident
-- Closest to the rest of the one-pager rhythm
+## Direction: rewrite the 6 scenarios as concrete, first-person situations
 
-### Option B — Symptom → Fix pairs
+Drop the cute names. Each item becomes a single line that sounds like something the visitor literally said in a meeting last week.
 
-Drop the interaction entirely. Show all 6 as a 2-column grid of compact cards. Each card has the emoji + keyword on top, the symptom in muted text, then a thin divider, then Esther's response in foreground text below.
+Draft (open to edits):
 
-- Everything visible, no clicking
-- Reads like a menu of "if this, then that"
-- Denser but flat hierarchy = easier to scan
-- Best if Esther wants visitors to absorb everything without interaction
+1. "We've been 'almost done' with this for six months."
+2. "I'm the founder, the ops person, the support team, and now also the bookkeeper."
+3. "Our tools don't talk to each other and three people are doing the same thing twice."
+4. "We have a Notion full of great ideas and zero of them have shipped."
+5. "Nobody owns this and it's quietly breaking everything."
+6. "Someone left, and now nobody knows how half of it works."
 
-### Option C — Single rotating spotlight
+Each line is the symptom in plain language. No emoji needed — the words do the work. Esther's response (the "fix") can stay tucked away on click, OR we surface a short fix line right under it.
 
-One large card center stage showing one scenario at a time (emoji, keyword, symptom, response). Small dot navigation + auto-rotate every 6s, pause on hover. Six dots underneath.
+## Two layout options for this rewritten content
 
-- Maximum focus — only one thing on screen
-- Feels premium / story-like
-- Risk: visitors may not realize there are 6 (mitigated by dots + subtle "1 / 6" counter)
+**Option 1 — A single quiet list (recommended)**
+Just six lines, each in quotation marks, stacked. Below each one in smaller foreground text: Esther's one-line answer ("→ I move in, find the actual blocker, and ship it."). No tiles, no accordion, no interaction. Reads like a conversation. Maximum scannability, zero noise.
 
-## Recommendation
+**Option 2 — Two-column "you say / I do" table**
+Left column: the visitor's quote. Right column: Esther's one-line response. Reads like a menu. Slightly more structured, slightly more work to scan.
 
-**Option A (accordion)** — best balance of calm + discoverable. Matches the existing "sticky stacking" rhythm of the page and removes the duplicate panel that's causing most of the noise.
+I'd push for Option 1 — it matches Esther's direct, no-bullshit voice better than a table.
 
-## Files to touch
+## What I'd change
 
-- `src/components/WhenToCallMe.tsx` — rewrite the layout; keep the `scenarios` data and "Why Call Me?" block untouched
-- No changes to copy, colors, tokens, or other sections
+- `src/components/WhenToCallMe.tsx` — rewrite the `scenarios` array (new copy, drop emojis, drop cute keywords) and rebuild the layout as a quiet list
+- Update `mem://features/when-to-call-me-section` to reflect the new approach
 
-Which direction should I build?
+## What I need from you before I build
+
+1. Do you agree with the diagnosis (clever names → cognitive load)?
+2. Are the 6 draft quotes above close to what you want, or do you want to rewrite them in your own voice first?
+3. Layout: quiet list (Option 1) or two-column you-say/I-do (Option 2)?
