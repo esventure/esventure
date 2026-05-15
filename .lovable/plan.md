@@ -1,33 +1,42 @@
-## New iconography style
+## The problem
 
-A quick scan of the codebase: the only custom hand-drawn icons live in `src/components/ServiceIcons.tsx` (the 4 service cards). `WhenToCallMe` and `ProjectPlanner` use generic lucide icons (arrows, checks, loaders) that should stay as they are — replacing those would hurt usability. So "everything custom" effectively means the 4 service icons.
+The current "When to Call Me" section shows 6 scenario cards on the left + a sticky response panel on the right. Eyes don't know where to land: emojis, bold keywords, descriptions, AND a duplicate panel all compete at once. It's visually noisy and the split layout doubles the cognitive load.
 
-## New style
+## Three directions to choose from
 
-Inspired by the reference: solid filled silhouettes with thin white interior cut-outs that add detail without losing the bold mass.
+### Option A — Quiet accordion list
 
-- **Fill**: brand purple (#BF5AF2)
-- **Inner detail lines**: white, hairline (~1.5px), used sparingly to suggest form
-- **Background chip**: soft yellow circle (existing pastel-yellow treatment) — kept as-is so the style change reads clearly against the cards
-- **Canvas**: 32×32 viewBox, slightly rounded corners on shape edges, no outlines, no strokes on the silhouette itself
+A single centered column. Each scenario is one clean row: emoji + keyword. Click to expand → the symptom and Esther's response slide open inline. Only one open at a time.
 
-## The 4 new icons (concepts)
+- One thing to look at, top to bottom
+- No duplicate sticky panel
+- Feels editorial, calm, confident
+- Closest to the rest of the one-pager rhythm
 
-Staying abstract and conceptual (not literal objects), translated into the silhouette language:
+### Option B — Symptom → Fix pairs
 
-1. **Fixer — Get It Moving**: A solid chunky arrow-block (rounded rectangle pushed into a wedge tip) with two thin white motion slits cut through the back half. Reads as mass in motion.
-2. **Sparring — Think It Through**: Two solid facing half-discs with a small 4-point star cut out (white) in the gap between them. Dialogue + spark, all in filled form.
-3. **Map — Make It Flow**: A solid organic blob on the left tapering into a thick flowing ribbon that ends in a filled dot. A single hairline white line traces the path through the middle. Chaos resolving into flow.
-4. **Mirror — Make It Yours**: A solid rounded-square frame (filled, slightly tilted) with a white sparkle/star cut out of the center. Identity reflected back.
+Drop the interaction entirely. Show all 6 as a 2-column grid of compact cards. Each card has the emoji + keyword on top, the symptom in muted text, then a thin divider, then Esther's response in foreground text below.
 
-## Files to change
+- Everything visible, no clicking
+- Reads like a menu of "if this, then that"
+- Denser but flat hierarchy = easier to scan
+- Best if Esther wants visitors to absorb everything without interaction
 
-- `src/components/ServiceIcons.tsx` — rewrite all 4 icons as filled `<path>` shapes with `fill="currentColor"` and small white inner cut-outs (using `fill="white"` or even-odd fill rules)
-- `src/pages/Index.tsx` — no logic changes; only verify the icon background chip stays soft yellow and `text-primary` is applied
-- `src/pages/StyleGuide.tsx` — the icons render automatically via the same imports; no edit needed unless background chips need adjusting
+### Option C — Single rotating spotlight
 
-## Out of scope
+One large card center stage showing one scenario at a time (emoji, keyword, symptom, response). Small dot navigation + auto-rotate every 6s, pause on hover. Six dots underneath.
 
-- Lucide functional icons in Planner / WTCM / nav
-- Card layout, copy, "Let's…" voice, yellow outcome boxes
-- Any other section
+- Maximum focus — only one thing on screen
+- Feels premium / story-like
+- Risk: visitors may not realize there are 6 (mitigated by dots + subtle "1 / 6" counter)
+
+## Recommendation
+
+**Option A (accordion)** — best balance of calm + discoverable. Matches the existing "sticky stacking" rhythm of the page and removes the duplicate panel that's causing most of the noise.
+
+## Files to touch
+
+- `src/components/WhenToCallMe.tsx` — rewrite the layout; keep the `scenarios` data and "Why Call Me?" block untouched
+- No changes to copy, colors, tokens, or other sections
+
+Which direction should I build?
