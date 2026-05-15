@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { Plus } from "lucide-react";
 
 const scenarios = [
   {
@@ -49,21 +49,18 @@ const differentiators = [
 ];
 
 const WhenToCallMe = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const isMobile = useIsMobile();
-
-  const selected = scenarios[selectedIndex];
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
     <section id="about" className="container mx-auto px-4 py-20">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-14"
+          className="mb-12"
         >
           <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4">
             When to Call Me
@@ -73,87 +70,51 @@ const WhenToCallMe = () => {
           </p>
         </motion.div>
 
-        {/* Two-column layout (desktop) / single column (mobile) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-          {/* Left: Scenario list */}
-          <div className="flex flex-col gap-2">
-            {scenarios.map((s, i) => {
-              const isActive = selectedIndex === i;
-              return (
-                <React.Fragment key={i}>
-                  <motion.button
-                    onClick={() => setSelectedIndex(i)}
-                    className={`text-left w-full px-5 py-4 rounded-2xl border transition-all duration-200 ${
-                      isActive
-                        ? "border-primary/40 bg-primary/5 shadow-md shadow-primary/10"
-                        : "border-border/50 bg-card hover:border-primary/20 hover:bg-primary/[0.02]"
+        {/* Accordion list */}
+        <div className="border-t border-border/60">
+          {scenarios.map((s, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div key={i} className="border-b border-border/60">
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  className="w-full flex items-center gap-4 py-5 text-left group"
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-2xl shrink-0">{s.emoji}</span>
+                  <span className="flex-1 font-black text-foreground font-poppins text-lg leading-tight">
+                    {s.keyword}
+                  </span>
+                  <Plus
+                    className={`w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300 ${
+                      isOpen ? "rotate-45 text-primary" : "group-hover:text-primary"
                     }`}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.06 }}
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className="text-xl mt-0.5 shrink-0">{s.emoji}</span>
-                      <div className="min-w-0">
-                        <p className="font-black text-foreground font-poppins text-sm leading-tight">
-                          {s.keyword}
-                        </p>
-                        <p className="text-xs text-muted-foreground leading-relaxed mt-1">
+                  />
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-12 pr-8 pb-6 space-y-3">
+                        <p className="text-sm text-muted-foreground italic leading-relaxed">
                           {s.quote}
                         </p>
+                        <p className="text-base text-foreground leading-relaxed">
+                          {s.response}
+                        </p>
                       </div>
-                    </div>
-                  </motion.button>
-
-                  {/* Mobile: inline response */}
-                  {isMobile && (
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25, ease: "easeInOut" }}
-                          className="overflow-hidden"
-                        >
-                          <div className="px-5 py-4 rounded-2xl bg-primary/5 border border-primary/20 mb-1">
-                            <p className="text-sm text-foreground leading-relaxed">
-                              {s.response}
-                            </p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    </motion.div>
                   )}
-                </React.Fragment>
-              );
-            })}
-          </div>
-
-          {/* Right: Response panel (desktop only) */}
-          {!isMobile && (
-            <div className="sticky top-32 self-start">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={selectedIndex}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="rounded-3xl border border-primary/20 bg-primary/5 p-8"
-                >
-                  <span className="text-4xl block mb-4">{selected.emoji}</span>
-                  <h3 className="text-2xl font-black text-foreground font-poppins mb-4">
-                    {selected.keyword}
-                  </h3>
-                  <p className="text-foreground/80 leading-relaxed text-base">
-                    {selected.response}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
 
         {/* Why Call Me? */}
