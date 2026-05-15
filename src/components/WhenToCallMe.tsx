@@ -2,19 +2,19 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const triggers = [
-  "Almost done for 6 months",
-  "Founder doing everything",
-  "Tools don't talk",
-  "Ideas stuck in Notion",
-  "Nobody owns it",
-  "Someone left a mess",
+  "It's been 'almost done' for months",
+  "You're the founder doing all the things",
+  "Your tools don't talk to each other",
+  "Great ideas die in Notion",
+  "Nobody actually owns it",
+  "Someone left, and left a mess",
 ];
 
 const differentiators = [
-  "Does, doesn't just advise",
-  "Cuts through the noise",
-  "Ships, doesn't report",
-  "Your force multiplier",
+  "I do, I don't just advise",
+  "I cut through the noise",
+  "I ship, I don't write reports",
+  "I'm your extra pair of hands",
 ];
 
 const WhenToCallMe = () => {
