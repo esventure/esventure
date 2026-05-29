@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "planMyProject": "Plan my project"
+  },
+  "language": {
+    "switchTo": "Switch language",
+    "en": "EN",
+    "nl": "NL"
+  },
+  "hero": {
+    "titleStart": "Your digital fixer &",
+    "titleEnd": "creative sparring partner.",
+    "lead": "A creative digital project manager who connects IT and business - rescuing stuck projects, untangling messy processes, and shipping prototypes and websites that actually work.",
+    "bullets": [
+      "Stuck project? I take it over and drive it to the finish line.",
+      "IT and business disconnected? I translate and align.",
+      "Got an idea? I build the prototype and the website."
+    ],
+    "ctaPrimary": "Tell me where I can help",
+    "ctaSecondary": "Call me"
+  },
+  "whenToCallMe": {
+    "title": "When to Call Me",
+    "subtitle": "If any of these sound familiar, we should talk.",
+    "triggers": [
+      "It's been 'almost done' for months",
+      "You're the founder doing all the things",
+      "Your tools don't talk to each other",
+      "Great ideas die in Notion",
+      "Nobody actually owns it",
+      "Someone left, and left a mess"
+    ],
+    "summary": "If it's messy, stuck, ownerless, or quietly draining your team —",
+    "summaryEm": "that's where I come in.",
+    "whyTitle": "Why Call Me?",
+    "differentiators": [
+      "I do, I don't just advise",
+      "I cut through the noise",
+      "I ship, I don't write reports",
+      "I'm your extra pair of hands"
+    ]
+  },
+  "services": {
+    "title": "How I Help",
+    "subtitle": "Four ways to put me to work - pick the one that fits.",
+    "cta": "See it in action",
+    "items": [
+      {
+        "label": "The Fixer",
+        "title": "Let's Get It Moving",
+        "description": "That stuck project, that half-finished initiative, that thing nobody owns. I step in, take charge, and drive it forward until it actually ships."
+      },
+      {
+        "label": "The Sparring Room",
+        "title": "Let's Think It Through",
+        "description": "When you've got an idea but no shape yet. We sketch, challenge, prototype and pressure-test it together until it's clear enough to build."
+      },
+      {
+        "label": "The Map",
+        "title": "Let's Make It Flow",
+        "description": "Messy processes, double work, things falling between teams. I map what's actually happening, find the friction, and redesign it so your day-to-day just runs."
+      },
+      {
+        "label": "The Mirror",
+        "title": "Let's Make It Yours",
+        "description": "Your brand or personal story deserves a visual that fits. I help shape how you (or your company) shows up - from positioning to a website that actually feels like you."
+      }
+    ]
+  },
+  "sparring": {
+    "title": "Need a sparring partner?",
+    "body": "Sometimes the brief doesn't exist yet - you just need someone experienced to think it through with. Book a sparring session to challenge assumptions, structure your ideas, and define a clear direction before the real work begins.",
+    "cta": "Book a sparring session",
+    "walkAwayLabel": "You'll walk away with",
+    "walkAwayItems": [
+      "Clarity on what's actually the problem.",
+      "A rough structure for how to tackle it.",
+      "A concrete next step you can take this week."
+    ]
+  },
+  "effect": {
+    "title": "The Es Venture Effect",
+    "subtitle": "I'm your project's personal caffeine shot.",
+    "pillars": [
+      {
+        "title": "Absolute Clarity",
+        "description": "You'll always know exactly where the project stands - no surprises, no guesswork."
+      },
+      {
+        "title": "Bridging IT & Business",
+        "description": "I translate between developers and decision-makers so everyone speaks the same language."
+      },
+      {
+        "title": "Driving to Delivery",
+        "description": "Projects don't drift. They ship. That's the core promise."
+      }
+    ],
+    "quote": "\"Esther didn't just manage our project — she kind of saved it. She's got this way of untangling messy situations and getting everyone actually excited about what's next. Made a huge difference for us.\"",
+    "quoteAttribution": "- A happy client",
+    "workedWith": "Worked with"
+  },
+  "about": {
+    "title": "Hello, I'm",
+    "name": "Esther.",
+    "paragraphs": [
+      "I'm a creative digital project manager - which in practice means I'm the person you call when a project is stuck, a process is unclear, or an idea hasn't yet been built.",
+      "I move quickly to understand your unique challenges. I'm equally comfortable leading a strategic whiteboard session with your management team as I am running a technical review with your developers. My core strength is bridging the gap between IT and the rest of your organisation, turning rough ideas into working prototypes and live websites, and making sure complex projects actually cross the finish line.",
+      "I prioritise straightforward solutions and tangible action over lengthy reports. When we work together, you'll always know where things stand - and you'll always get practical strategies that simplify your operations and drive results."
+    ],
+    "cta": "Let's talk"
+  },
+  "planner": {
+    "title": "Describe your situation.",
+    "subtitle": "I'll show you how we can fix it - in under a minute.",
+    "steps": { "describe": "Describe", "handoff": "Handoff", "details": "Details" },
+    "situationLabel": "What's going on?",
+    "handoffLabel": "What should I take off your plate?",
+    "urgencyLabel": "How urgent?",
+    "urgencyOptions": ["Just exploring", "Soon", "Needs attention", "It's urgent 🔥"],
+    "budgetLabel": "Budget range",
+    "optional": "(optional)",
+    "budgetOptions": {
+      "none": "No idea yet"
+    },
+    "submit": "Show me the plan",
+    "submitting": "Working on it…",
+    "submitHint": "The more detail you share, the more precise your prognosis will be.",
+    "resultPlaceholder": "Your plan will appear here.",
+    "loading": "Working on it…",
+    "discussCta": "This looks like a solid plan - let's discuss it",
+    "ballparkNote": "This is a ballpark indication. The actual price will be determined after analysing the full scope of your project.",
+    "contact": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "submit": "Send project details",
+      "sending": "Sending…",
+      "success": "Thanks! I'll be in touch soon.",
+      "successInline": "I'll be in touch soon!",
+      "error": "Something went wrong. Please try again."
+    },
+    "error": "Something went wrong. Please try again."
+  },
+  "contactCta": {
+    "titleStart": "Ready for an",
+    "titleEnd": "Es Venture?",
+    "body": "Let's talk about what's on your plate. No pressure, no sales pitch - just a real conversation about how I can help you move forward.",
+    "ctaEmail": "Send email",
+    "ctaCall": "Book a call"
+  },
+  "footer": {
+    "tagline": "Your digital fixer & creative sparring partner. Based in the Netherlands, working with founders and teams across Europe.",
+    "getInTouch": "Get in touch",
+    "more": "More",
+    "linkedin": "LinkedIn - Esther Woerdman",
+    "bookCall": "Book a call",
+    "privacy": "Privacy Policy",
+    "plaiwrks": "AI-native projects? See Plaiwrks →",
+    "rights": "© 2025 Es Venture. All rights reserved."
+  },
+  "cookie": {
+    "message": "We use cookies to analyze site traffic and improve your experience. By clicking \"Accept\", you consent to our use of analytics cookies.",
+    "privacy": "Privacy Policy",
+    "decline": "Decline",
+    "accept": "Accept"
+  }
+}

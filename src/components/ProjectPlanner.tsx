@@ -7,6 +7,7 @@ import { toast } from "sonner";
 
 import ReactMarkdown from "react-markdown";
 import { analytics } from "@/lib/analytics";
+import { useTranslation } from "react-i18next";
 interface FormData {
   situation: string;
   handoff: string;
@@ -14,46 +15,61 @@ interface FormData {
   budget: string;
 }
 
-const SITUATION_PLACEHOLDERS = [
-  "There's a project stuck and no one owns it.",
-  "Our process is causing headaches and slowing everyone down.",
-  "I have a big idea but no clue where to start.",
-  "We keep talking but nothing actually moves forward.",
-  "There's a critical gap and no one to fill it.",
-  "Deadlines keep slipping and priorities are all over the place.",
-  "We built something but it confuses everyone who uses it.",
-  "Multiple teams are involved and nobody's aligned.",
-  "Things keep falling through the cracks.",
-  "I need someone to just take this off my plate and run with it.",
-];
+const SITUATION_PLACEHOLDERS_BY_LANG: Record<string, string[]> = {
+  en: [
+    "There's a project stuck and no one owns it.",
+    "Our process is causing headaches and slowing everyone down.",
+    "I have a big idea but no clue where to start.",
+    "We keep talking but nothing actually moves forward.",
+    "There's a critical gap and no one to fill it.",
+    "Deadlines keep slipping and priorities are all over the place.",
+    "We built something but it confuses everyone who uses it.",
+    "Multiple teams are involved and nobody's aligned.",
+    "Things keep falling through the cracks.",
+    "I need someone to just take this off my plate and run with it.",
+  ],
+  nl: [
+    "Er ligt een project stil en niemand is eigenaar.",
+    "Ons proces zorgt voor kopzorgen en vertraagt iedereen.",
+    "Ik heb een groot idee maar geen idee waar te beginnen.",
+    "We blijven praten maar er gebeurt niets.",
+    "Er is een kritieke gap en niemand om die te vullen.",
+    "Deadlines blijven verschuiven en prioriteiten zijn onduidelijk.",
+    "We bouwden iets, maar gebruikers raken erin verdwaald.",
+    "Meerdere teams zijn betrokken en niemand is gealigneerd.",
+    "Dingen blijven tussen wal en schip vallen.",
+    "Ik heb iemand nodig die dit van mijn bord pakt en ermee aan de slag gaat.",
+  ],
+};
 
-const HANDOFF_PLACEHOLDERS = [
-  "Step in and take charge of this project.",
-  "Turn my vision into an actionable plan.",
-  "Diagnose this issue fast and give me a working fix.",
-  "Unblock my team so we can start shipping.",
-  "Build me a prototype I can test and pitch.",
-  "Figure out what's broken in our process and fix it.",
-  "Coordinate this launch and keep everyone aligned.",
-  "Create a clear roadmap from this mess of ideas.",
-  "Get this project over the finish line.",
-  "Help me figure out what to prioritise and how to execute.",
-];
+const HANDOFF_PLACEHOLDERS_BY_LANG: Record<string, string[]> = {
+  en: [
+    "Step in and take charge of this project.",
+    "Turn my vision into an actionable plan.",
+    "Diagnose this issue fast and give me a working fix.",
+    "Unblock my team so we can start shipping.",
+    "Build me a prototype I can test and pitch.",
+    "Figure out what's broken in our process and fix it.",
+    "Coordinate this launch and keep everyone aligned.",
+    "Create a clear roadmap from this mess of ideas.",
+    "Get this project over the finish line.",
+    "Help me figure out what to prioritise and how to execute.",
+  ],
+  nl: [
+    "Stap in en neem de leiding over dit project.",
+    "Vertaal mijn visie naar een uitvoerbaar plan.",
+    "Diagnosticeer dit snel en geef me een werkende fix.",
+    "Deblokkeer mijn team zodat we kunnen leveren.",
+    "Bouw een prototype dat ik kan testen en pitchen.",
+    "Zoek uit wat er kapot is in ons proces en fix het.",
+    "Coördineer deze launch en houd iedereen op één lijn.",
+    "Maak een heldere roadmap van deze chaos aan ideeën.",
+    "Breng dit project over de finish.",
+    "Help me bepalen wat prioriteit heeft en hoe we het uitvoeren.",
+  ],
+};
 
-const URGENCY_OPTIONS = [
-  "Just exploring",
-  "Soon",
-  "Needs attention",
-  "It's urgent 🔥",
-];
-
-const BUDGET_OPTIONS = [
-  { value: "", label: "No idea yet" },
-  { value: "< €1.000", label: "< €1.000" },
-  { value: "€1.000–€3.000", label: "€1.000–€3.000" },
-  { value: "€3.000–€6.000", label: "€3.000–€6.000" },
-  { value: "€6.000+", label: "€6.000+" },
-];
+const BUDGET_OPTION_VALUES = ["", "< €1.000", "€1.000–€3.000", "€3.000–€6.000", "€6.000+"];
 
 // Animated placeholder component
 const AnimatedPlaceholder = ({ 
@@ -90,25 +106,30 @@ const PlannerForm = ({
   onSubmit: () => void;
   isLoading: boolean;
 }) => {
+  const { t, i18n } = useTranslation();
+  const lang = (i18n.language || "en").startsWith("nl") ? "nl" : "en";
+  const SITUATION_PLACEHOLDERS = SITUATION_PLACEHOLDERS_BY_LANG[lang];
+  const HANDOFF_PLACEHOLDERS = HANDOFF_PLACEHOLDERS_BY_LANG[lang];
+  const URGENCY_OPTIONS = t("planner.urgencyOptions", { returnObjects: true }) as string[];
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
   // Rotate placeholders every 3.5 seconds when fields are empty
   useEffect(() => {
     if (formData.situation || formData.handoff) return;
-    
+
     const interval = setInterval(() => {
       setPlaceholderIndex((prev) => (prev + 1) % SITUATION_PLACEHOLDERS.length);
     }, 3500);
 
     return () => clearInterval(interval);
-  }, [formData.situation, formData.handoff]);
+  }, [formData.situation, formData.handoff, SITUATION_PLACEHOLDERS.length]);
 
   return (
     <div className="space-y-6 md:space-y-8">
       {/* What's going on? */}
       <div className="space-y-2">
         <label htmlFor="situation" className="text-base font-medium text-foreground/80">
-          What's going on?
+          {t("planner.situationLabel")}
         </label>
         <div className="relative">
           <textarea
@@ -118,10 +139,10 @@ const PlannerForm = ({
             className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground text-base transition-all"
           />
           <AnimatePresence mode="wait">
-            <AnimatedPlaceholder 
+            <AnimatedPlaceholder
               key={placeholderIndex}
-              text={SITUATION_PLACEHOLDERS[placeholderIndex]} 
-              isVisible={!formData.situation} 
+              text={SITUATION_PLACEHOLDERS[placeholderIndex]}
+              isVisible={!formData.situation}
             />
           </AnimatePresence>
         </div>
@@ -130,7 +151,7 @@ const PlannerForm = ({
       {/* What should I take off your plate? */}
       <div className="space-y-2">
         <label htmlFor="handoff" className="text-base font-medium text-foreground/80">
-          What should I take off your plate?
+          {t("planner.handoffLabel")}
         </label>
         <div className="relative">
           <textarea
@@ -140,10 +161,10 @@ const PlannerForm = ({
             className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground text-base transition-all"
           />
           <AnimatePresence mode="wait">
-            <AnimatedPlaceholder 
+            <AnimatedPlaceholder
               key={placeholderIndex}
-              text={HANDOFF_PLACEHOLDERS[placeholderIndex]} 
-              isVisible={!formData.handoff} 
+              text={HANDOFF_PLACEHOLDERS[placeholderIndex]}
+              isVisible={!formData.handoff}
             />
           </AnimatePresence>
         </div>
@@ -152,19 +173,18 @@ const PlannerForm = ({
       {/* Urgency */}
       <div className="space-y-3">
         <label className="text-base font-medium text-foreground/80">
-          How urgent?
+          {t("planner.urgencyLabel")}
         </label>
         <div className="grid grid-cols-2 md:flex md:flex-wrap gap-2">
           {URGENCY_OPTIONS.map((urgency) => {
-            const isUrgent = urgency === "It's urgent 🔥";
+            const isUrgent = urgency.includes("🔥");
             const isSelected = formData.urgency === urgency;
-            
+
             return (
               <button
                 key={urgency}
                 type="button"
                 onClick={() => {
-                  // Haptic feedback on mobile
                   if ('vibrate' in navigator) {
                     navigator.vibrate(10);
                   }
@@ -188,7 +208,7 @@ const PlannerForm = ({
       {/* Budget */}
       <div className="space-y-2">
         <label htmlFor="budget" className="text-base font-medium text-foreground/80">
-          Budget range <span className="text-muted-foreground/60">(optional)</span>
+          {t("planner.budgetLabel")} <span className="text-muted-foreground/60">{t("planner.optional")}</span>
         </label>
         <div className="relative">
           <select
@@ -197,9 +217,9 @@ const PlannerForm = ({
             onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
             className="w-full min-h-[44px] px-4 py-3 pr-10 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 text-foreground text-base appearance-none cursor-pointer transition-all"
           >
-            {BUDGET_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value} className="bg-background text-foreground">
-                {option.label}
+            {BUDGET_OPTION_VALUES.map((value) => (
+              <option key={value} value={value} className="bg-background text-foreground">
+                {value === "" ? t("planner.budgetOptions.none") : value}
               </option>
             ))}
           </select>
@@ -217,17 +237,17 @@ const PlannerForm = ({
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Working on it…
+              {t("planner.submitting")}
             </>
           ) : (
             <>
-              Show me the plan
+              {t("planner.submit")}
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
             </>
           )}
         </Button>
         <p className="text-xs text-muted-foreground/70 text-center">
-          The more detail you share, the more precise your prognosis will be.
+          {t("planner.submitHint")}
         </p>
       </div>
     </div>
@@ -235,6 +255,7 @@ const PlannerForm = ({
 };
 
 const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -268,9 +289,9 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
       if (!response.ok) throw new Error("Failed to submit");
 
       setIsSubmitted(true);
-      toast.success("Thanks! I'll be in touch soon.");
+      toast.success(t("planner.contact.success"));
     } catch (err) {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t("planner.contact.error"));
       console.error("Contact form error:", err);
     } finally {
       setIsSubmitting(false);
@@ -287,7 +308,7 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
         <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
           <Check className="h-4 w-4" />
         </div>
-        <span className="text-sm font-medium">I'll be in touch soon!</span>
+        <span className="text-sm font-medium">{t("planner.contact.successInline")}</span>
       </motion.div>
     );
   }
@@ -296,14 +317,14 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
     <form onSubmit={handleSubmit} className="space-y-3">
       <div className="grid grid-cols-2 gap-3">
         <Input
-          placeholder="First name"
+          placeholder={t("planner.contact.firstName")}
           value={formData.firstName}
           onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
           required
           className="bg-background border-secondary/30 focus:border-secondary"
         />
         <Input
-          placeholder="Last name"
+          placeholder={t("planner.contact.lastName")}
           value={formData.lastName}
           onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
           required
@@ -312,7 +333,7 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
       </div>
       <Input
         type="email"
-        placeholder="Email"
+        placeholder={t("planner.contact.email")}
         value={formData.email}
         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         required
@@ -320,7 +341,7 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
       />
       <Input
         type="tel"
-        placeholder="Phone (optional)"
+        placeholder={t("planner.contact.phone")}
         value={formData.phone}
         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
         className="bg-background border-secondary/30 focus:border-secondary"
@@ -333,11 +354,11 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
         {isSubmitting ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Sending…
+            {t("planner.contact.sending")}
           </>
         ) : (
           <>
-            Send project details
+            {t("planner.contact.submit")}
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
           </>
         )}
@@ -353,11 +374,12 @@ const ResultPanel = ({
   result: string | null;
   isLoading?: boolean;
 }) => {
+  const { t } = useTranslation();
   const markdownComponents = {
     h2: ({ children }: { children?: React.ReactNode }) => {
       const text = String(children || '');
-      const isMetric = text.includes('Timeline') || text.includes('Estimated') || text.includes('Ballpark');
-      
+      const isMetric = /Timeline|Estimated|Ballpark|Tijdlijn|Indicatieve|Kostenindicatie|Doorlooptijd/i.test(text);
+
       return (
         <h4 className={`font-semibold text-foreground mb-2 ${isMetric ? 'text-sm text-muted-foreground mt-6' : 'text-base mt-8 first:mt-0'}`}>
           {children}
@@ -367,8 +389,7 @@ const ResultPanel = ({
     p: ({ children }: { children?: React.ReactNode }) => (
       <p className="text-foreground/80 mb-3 leading-relaxed text-[15px]">{children}</p>
     ),
-    ol: ({ children, node }: { children?: React.ReactNode; node?: any }) => {
-      // Track step numbers using a counter and clone elements with index
+    ol: ({ children }: { children?: React.ReactNode; node?: any }) => {
       let stepNum = 0;
       const numberedChildren = Children.map(children, (child) => {
         if (isValidElement(child)) {
@@ -378,7 +399,7 @@ const ResultPanel = ({
               <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-semibold flex items-center justify-center mt-0.5">
                 {stepNum}
               </span>
-              <span className="flex-1">{child.props?.children}</span>
+              <span className="flex-1">{(child.props as any)?.children}</span>
             </li>
           );
         }
@@ -389,8 +410,7 @@ const ResultPanel = ({
     ul: ({ children }: { children?: React.ReactNode }) => (
       <ul className="space-y-2 my-3 text-[15px] list-disc list-outside pl-5 marker:text-primary">{children}</ul>
     ),
-    li: ({ children, node }: { children?: React.ReactNode; node?: any }) => {
-      // This handles ul items - ol items are handled by the ol component above
+    li: ({ children }: { children?: React.ReactNode; node?: any }) => {
       return <li className="text-foreground/80 leading-relaxed">{children}</li>;
     },
     strong: ({ children }: { children?: React.ReactNode }) => (
@@ -403,14 +423,14 @@ const ResultPanel = ({
 
   if (isLoading) {
     return (
-      <motion.div 
-        initial={{ opacity: 0 }} 
+      <motion.div
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="rounded-2xl bg-primary/5 border-l-4 border-primary p-8 min-h-[200px] flex items-center justify-center"
       >
         <div className="flex items-center gap-3 text-muted-foreground">
           <Loader2 className="h-5 w-5 animate-spin text-primary" />
-          <span>Working on it…</span>
+          <span>{t("planner.loading")}</span>
         </div>
       </motion.div>
     );
@@ -420,7 +440,7 @@ const ResultPanel = ({
     return (
       <div className="rounded-2xl bg-primary/5 border-l-4 border-primary/30 p-8 min-h-[200px] flex items-center justify-center">
         <p className="text-muted-foreground/60 text-sm">
-          Your plan will appear here.
+          {t("planner.resultPlaceholder")}
         </p>
       </div>
     );
@@ -443,11 +463,11 @@ const ResultPanel = ({
           }}
           className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-base font-semibold group"
         >
-          This looks like a solid plan - let's discuss it
+          {t("planner.discussCta")}
           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
         </Button>
         <p className="text-xs text-muted-foreground/70">
-          This is a ballpark indication. The actual price will be determined after analysing the full scope of your project.
+          {t("planner.ballparkNote")}
         </p>
         <ContactForm projectPlan={result} />
       </div>
@@ -456,6 +476,7 @@ const ResultPanel = ({
 };
 
 const ProjectPlanner = () => {
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     situation: "",
     handoff: "",
@@ -469,7 +490,7 @@ const ProjectPlanner = () => {
 
   const scrollToResults = () => {
     if (resultPanelRef.current) {
-      const yOffset = -100; // Larger offset to show more context above
+      const yOffset = -100;
       const element = resultPanelRef.current;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
@@ -478,7 +499,6 @@ const ProjectPlanner = () => {
 
   useEffect(() => {
     if (isLoading && resultPanelRef.current) {
-      // Scroll immediately when loading starts
       setTimeout(scrollToResults, 150);
     }
   }, [isLoading]);
@@ -490,6 +510,16 @@ const ProjectPlanner = () => {
     setError(null);
 
     try {
+      const language = (i18n.language || "en").startsWith("nl") ? "nl" : "en";
+      // Map NL urgency back to canonical English values the backend understands
+      const urgencyMap: Record<string, string> = {
+        "Aan het verkennen": "Just exploring",
+        "Binnenkort": "Soon",
+        "Vraagt aandacht": "Needs attention",
+        "Het is urgent 🔥": "It's urgent 🔥",
+      };
+      const urgencyForBackend = urgencyMap[formData.urgency] ?? formData.urgency;
+
       const response = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/project-outline`,
         {
@@ -498,9 +528,10 @@ const ProjectPlanner = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({ ...formData, urgency: urgencyForBackend, language }),
         }
       );
+
 
       if (!response.ok) {
         throw new Error("Failed to generate plan");
@@ -510,32 +541,32 @@ const ProjectPlanner = () => {
       setResult(data.reply);
       analytics.projectPlannerSubmit({ urgency: formData.urgency, budget: formData.budget });
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError(t("planner.error"));
       console.error("Error generating plan:", err);
     } finally {
       setIsLoading(false);
     }
   };
 
+  const steps = [
+    { label: t("planner.steps.describe"), num: 1 },
+    { label: t("planner.steps.handoff"), num: 2 },
+    { label: t("planner.steps.details"), num: 3 },
+  ];
+
   return (
     <section id="project-planner" className="py-12 md:py-16 bg-background pb-[calc(1rem+env(safe-area-inset-bottom))]">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
-          {/* Header - centered */}
           <div className="mb-8 md:mb-12 text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-3 font-poppins">
-              Describe your situation.
+              {t("planner.title")}
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              I'll show you how we can fix it - in under a minute.
+              {t("planner.subtitle")}
             </p>
-            {/* Progress indicator */}
             <div className="flex items-center justify-center gap-3">
-              {[
-                { label: "Describe", num: 1 },
-                { label: "Handoff", num: 2 },
-                { label: "Details", num: 3 },
-              ].map((step, i) => (
+              {steps.map((step, i) => (
                 <React.Fragment key={step.label}>
                   {i > 0 && <div className="w-8 h-px bg-border" />}
                   <div className="flex items-center gap-2">
@@ -547,9 +578,7 @@ const ProjectPlanner = () => {
             </div>
           </div>
 
-          {/* Two-column layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left: Form with subtle background */}
             <div className="rounded-2xl bg-primary/5 p-6 md:p-8">
               <PlannerForm
                 formData={formData}
@@ -559,7 +588,6 @@ const ProjectPlanner = () => {
               />
             </div>
 
-            {/* Right: Results */}
             <div ref={resultPanelRef}>
               <ResultPanel result={result} isLoading={isLoading} />
             </div>

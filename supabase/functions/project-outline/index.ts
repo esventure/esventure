@@ -644,7 +644,8 @@ serve(async (req) => {
   }
 
   try {
-    const { situation, handoff, urgency, budget } = await req.json();
+    const { situation, handoff, urgency, budget, language } = await req.json();
+    const responseLanguage = language === 'nl' ? 'nl' : 'en';
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
 
     if (!LOVABLE_API_KEY) {
@@ -785,7 +786,16 @@ RULES:
 - Sections in this EXACT order, no skipping
 - Mirror their language where natural
 - No hourly rates mentioned
-- Keep it scannable - this is a quick read, not a proposal`;
+- Keep it scannable - this is a quick read, not a proposal
+${responseLanguage === 'nl' ? `
+LANGUAGE: Write the ENTIRE response in Dutch (Nederlands). Use informal "je"/"jij" form, warm and energetic.
+Translate the section headings as follows:
+- "## Short summary" → "## Korte samenvatting"
+- "## Here's how I'd tackle this" → "## Zo zou ik dit aanpakken"
+- "## What you'd walk away with" → "## Wat je eraan overhoudt"
+- "## Timeline" → "## Doorlooptijd"
+- "## Ballpark cost" → "## Indicatieve kosten"
+Keep all formatting, numbered/bulleted list syntax, and bold/markdown structure identical. Mirror Dutch phrases from the user where natural. Do NOT use double hyphens (--).` : ''}`;
 
     const userPrompt = `User input:
 - Situation: ${situation}
