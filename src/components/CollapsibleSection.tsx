@@ -15,7 +15,7 @@ interface CollapsibleSectionProps {
 }
 
 const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({ id, children }) => (
-  <div id={`section-${id}`}>{children}</div>
+  <div id={id}>{children}</div>
 );
 
 export default CollapsibleSection;
