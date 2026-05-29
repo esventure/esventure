@@ -24,6 +24,10 @@ const StyleGuide = () => {
         <title>Style Guide - Es Venture</title>
         <meta name="description" content="The Es Venture brand style guide. Explore our colors, typography, buttons, icons, spacing, and tone of voice." />
         <link rel="canonical" href="https://esventure.nl/styleguide" />
+        <meta property="og:title" content="Style Guide - Es Venture" />
+        <meta property="og:description" content="The Es Venture brand style guide. Explore our colors, typography, buttons, icons, spacing, and tone of voice." />
+        <meta property="og:url" content="https://esventure.nl/styleguide" />
+        <meta property="og:image" content="https://esventure.nl/og-image.png" />
       </Helmet>
       <div className="min-h-screen bg-background">
       {/* Header */}

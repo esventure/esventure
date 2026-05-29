@@ -10,6 +10,10 @@ const PrivacyPolicy = () => {
         <title>Privacy Policy - Es Venture</title>
         <meta name="description" content="Learn how Es Venture collects, uses, and protects your personal data. Read our privacy policy for data rights and cookie preferences." />
         <link rel="canonical" href="https://esventure.nl/privacy" />
+        <meta property="og:title" content="Privacy Policy - Es Venture" />
+        <meta property="og:description" content="Learn how Es Venture collects, uses, and protects your personal data. Read our privacy policy for data rights and cookie preferences." />
+        <meta property="og:url" content="https://esventure.nl/privacy" />
+        <meta property="og:image" content="https://esventure.nl/og-image.png" />
       </Helmet>
       <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12 max-w-3xl">

@@ -99,6 +99,10 @@ const Index = () => {
         <title>Es Venture - Strategy, Design &amp; Delivery</title>
         <meta name="description" content="Short-term, high-impact projects focused on clarity, structure and momentum. Fix it. Prototype it. Structure it." />
         <link rel="canonical" href="https://esventure.nl/" />
+        <meta property="og:title" content="Es Venture - Strategy, Design & Delivery" />
+        <meta property="og:description" content="Short-term, high-impact projects focused on clarity, structure and momentum. Fix it. Prototype it. Structure it." />
+        <meta property="og:url" content="https://esventure.nl/" />
+        <meta property="og:image" content="https://esventure.nl/og-image.png" />
       </Helmet>
       <div className="min-h-screen bg-background">
       <Navigation />
