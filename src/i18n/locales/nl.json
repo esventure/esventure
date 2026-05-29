@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "services": "Diensten",
+    "about": "Over mij",
+    "planMyProject": "Plan mijn project"
+  },
+  "language": {
+    "switchTo": "Wissel taal",
+    "en": "EN",
+    "nl": "NL"
+  },
+  "hero": {
+    "titleStart": "Jouw digitale fixer &",
+    "titleEnd": "creatieve sparringpartner.",
+    "lead": "Een creatieve digitale projectmanager die IT en business verbindt - vastgelopen projecten vlot trekt, rommelige processen ontwart, en prototypes en websites oplevert die écht werken.",
+    "bullets": [
+      "Project vastgelopen? Ik neem het over en breng het over de finish.",
+      "IT en business op verschillende eilanden? Ik vertaal en breng ze samen.",
+      "Een idee? Ik bouw het prototype én de website."
+    ],
+    "ctaPrimary": "Vertel waar ik kan helpen",
+    "ctaSecondary": "Bel me"
+  },
+  "whenToCallMe": {
+    "title": "Wanneer mij te bellen",
+    "subtitle": "Klinkt iets hiervan bekend? Dan moeten we praten.",
+    "triggers": [
+      "Al maanden 'bijna af'",
+      "Jij bent de founder die alles doet",
+      "Je tools praten niet met elkaar",
+      "Goede ideeën sterven in Notion",
+      "Niemand is écht eigenaar",
+      "Iemand vertrok en liet een chaos achter"
+    ],
+    "summary": "Als het rommelig, vastgelopen of zonder eigenaar is, of stilletjes je team leegtrekt —",
+    "summaryEm": "daar kom ik om de hoek.",
+    "whyTitle": "Waarom mij bellen?",
+    "differentiators": [
+      "Ik dóé, ik adviseer niet alleen",
+      "Ik kap door de ruis heen",
+      "Ik lever op, geen rapporten",
+      "Ik ben je extra paar handen"
+    ]
+  },
+  "services": {
+    "title": "Hoe ik help",
+    "subtitle": "Vier manieren om mij in te zetten - kies wat past.",
+    "cta": "Zie het in actie",
+    "items": [
+      {
+        "label": "The Fixer",
+        "title": "Laten we het in beweging krijgen",
+        "description": "Dat vastgelopen project, dat half-afgemaakte initiatief, dat ding waarvan niemand eigenaar is. Ik stap in, neem de leiding en breng het écht over de finish."
+      },
+      {
+        "label": "The Sparring Room",
+        "title": "Laten we het samen doordenken",
+        "description": "Als je een idee hebt maar nog geen vorm. We schetsen, dagen uit, prototypen en testen het samen tot het helder genoeg is om te bouwen."
+      },
+      {
+        "label": "The Map",
+        "title": "Laten we het laten stromen",
+        "description": "Rommelige processen, dubbel werk, dingen die tussen teams vallen. Ik breng in kaart wat er echt gebeurt, vind de frictie en herontwerp het zodat je dagelijkse werk gewoon loopt."
+      },
+      {
+        "label": "The Mirror",
+        "title": "Laten we het van jou maken",
+        "description": "Jouw merk of persoonlijke verhaal verdient een visual die past. Ik help vormgeven hoe jij (of je bedrijf) verschijnt - van positionering tot een website die écht voelt als jou."
+      }
+    ]
+  },
+  "sparring": {
+    "title": "Behoefte aan een sparringpartner?",
+    "body": "Soms bestaat de briefing nog niet - je hebt gewoon iemand met ervaring nodig om mee door te denken. Boek een sparringsessie om aannames uit te dagen, je ideeën te structureren en een heldere richting te bepalen vóór het echte werk begint.",
+    "cta": "Boek een sparringsessie",
+    "walkAwayLabel": "Je loopt naar buiten met",
+    "walkAwayItems": [
+      "Helderheid over wat het probleem nu écht is.",
+      "Een ruwe structuur om het aan te pakken.",
+      "Een concrete volgende stap voor deze week."
+    ]
+  },
+  "effect": {
+    "title": "Het Es Venture Effect",
+    "subtitle": "Ik ben de espresso-shot voor jouw project.",
+    "pillars": [
+      {
+        "title": "Absolute helderheid",
+        "description": "Je weet altijd precies waar het project staat - geen verrassingen, geen giswerk."
+      },
+      {
+        "title": "Brug tussen IT & business",
+        "description": "Ik vertaal tussen developers en beslissers, zodat iedereen dezelfde taal spreekt."
+      },
+      {
+        "title": "Doorpakken tot oplevering",
+        "description": "Projecten drijven niet weg. Ze worden opgeleverd. Dat is de kernbelofte."
+      }
+    ],
+    "quote": "\"Esther managede ons project niet alleen - ze redde het eigenlijk. Ze heeft een manier om rommelige situaties te ontwarren en iedereen weer enthousiast te krijgen. Maakte voor ons een enorm verschil.\"",
+    "quoteAttribution": "- Een tevreden klant",
+    "workedWith": "Gewerkt met"
+  },
+  "about": {
+    "title": "Hallo, ik ben",
+    "name": "Esther.",
+    "paragraphs": [
+      "Ik ben een creatieve digitale projectmanager - wat in de praktijk betekent: ik ben de persoon die je belt als een project vastloopt, een proces onduidelijk is, of een idee nog niet gebouwd is.",
+      "Ik schakel snel om je uitdagingen te begrijpen. Ik leid net zo makkelijk een strategische whiteboard-sessie met je managementteam als een technische review met je developers. Mijn kracht zit in het overbruggen van IT en de rest van je organisatie, ruwe ideeën omzetten in werkende prototypes en live websites, en zorgen dat complexe projecten écht over de finish komen.",
+      "Ik kies voor heldere oplossingen en zichtbare actie boven dikke rapporten. Als we samenwerken weet je altijd waar je staat - en krijg je praktische strategieën die je operatie versimpelen en resultaat opleveren."
+    ],
+    "cta": "Laten we praten"
+  },
+  "planner": {
+    "title": "Beschrijf je situatie.",
+    "subtitle": "Ik laat je in minder dan een minuut zien hoe we het oplossen.",
+    "steps": { "describe": "Beschrijf", "handoff": "Overdracht", "details": "Details" },
+    "situationLabel": "Wat speelt er?",
+    "handoffLabel": "Wat mag ik van je bord nemen?",
+    "urgencyLabel": "Hoe urgent?",
+    "urgencyOptions": ["Aan het verkennen", "Binnenkort", "Vraagt aandacht", "Het is urgent 🔥"],
+    "budgetLabel": "Budgetrange",
+    "optional": "(optioneel)",
+    "budgetOptions": {
+      "none": "Nog geen idee"
+    },
+    "submit": "Laat het plan zien",
+    "submitting": "Bezig…",
+    "submitHint": "Hoe meer detail je deelt, hoe scherper de prognose.",
+    "resultPlaceholder": "Jouw plan verschijnt hier.",
+    "loading": "Bezig…",
+    "discussCta": "Dit lijkt een solide plan - laten we het bespreken",
+    "ballparkNote": "Dit is een indicatie. De definitieve prijs volgt na analyse van de volledige scope.",
+    "contact": {
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "email": "E-mail",
+      "phone": "Telefoon (optioneel)",
+      "submit": "Stuur projectgegevens",
+      "sending": "Versturen…",
+      "success": "Bedankt! Ik neem snel contact op.",
+      "successInline": "Ik neem snel contact op!",
+      "error": "Er ging iets mis. Probeer het opnieuw."
+    },
+    "error": "Er ging iets mis. Probeer het opnieuw."
+  },
+  "contactCta": {
+    "titleStart": "Klaar voor een",
+    "titleEnd": "Es Venture?",
+    "body": "Laten we het hebben over wat er op je bord ligt. Geen druk, geen salespraat - gewoon een echt gesprek over hoe ik je vooruit kan helpen.",
+    "ctaEmail": "Stuur een e-mail",
+    "ctaCall": "Boek een gesprek"
+  },
+  "footer": {
+    "tagline": "Jouw digitale fixer & creatieve sparringpartner. Gevestigd in Nederland, werkend met founders en teams door heel Europa.",
+    "getInTouch": "Contact",
+    "more": "Meer",
+    "linkedin": "LinkedIn - Esther Woerdman",
+    "bookCall": "Boek een gesprek",
+    "privacy": "Privacybeleid",
+    "plaiwrks": "AI-native projecten? Bekijk Plaiwrks →",
+    "rights": "© 2025 Es Venture. Alle rechten voorbehouden."
+  },
+  "cookie": {
+    "message": "We gebruiken cookies om sitegebruik te analyseren en je ervaring te verbeteren. Door op \"Accepteren\" te klikken, ga je akkoord met analytische cookies.",
+    "privacy": "Privacybeleid",
+    "decline": "Weigeren",
+    "accept": "Accepteren"
+  }
+}
