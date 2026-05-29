@@ -196,7 +196,7 @@ const Index = () => {
               </motion.div>
 
               {/* Editorial split flow */}
-              <div className="space-y-24 md:space-y-40">
+              <div>
                 {services.map((service, i) => {
                   const isReversed = i % 2 === 1;
                   const num = String(i + 1).padStart(2, "0");
@@ -207,15 +207,38 @@ const Index = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-80px" }}
                       transition={{ duration: 0.6 }}
-                      className={`group flex flex-col gap-8 md:gap-12 items-start ${
+                      className={`group relative pt-16 md:pt-24 pb-16 md:pb-24 ${
+                        i !== 0 ? "border-t border-border/40" : ""
+                      } flex flex-col gap-8 md:gap-12 items-start ${
                         isReversed ? "md:flex-row-reverse" : "md:flex-row"
                       }`}
                     >
-                      <div className={`md:w-1/3 pt-2 ${isReversed ? "md:text-right" : ""}`}>
-                        <span className="block font-poppins text-primary font-semibold tracking-widest uppercase text-xs md:text-sm mb-4">
-                          {num} / {service.label}
+                      {/* Chapter number marker on the divider */}
+                      {i !== 0 && (
+                        <span
+                          className={`absolute -top-4 md:-top-5 font-poppins text-xs md:text-sm font-bold tracking-[0.3em] text-muted-foreground/70 bg-background px-3 ${
+                            isReversed ? "right-0" : "left-0"
+                          }`}
+                        >
+                          CH. {num}
                         </span>
-                        <h3 className="font-poppins text-4xl md:text-5xl font-black text-foreground leading-[1.05] mb-6">
+                      )}
+
+                      <div className={`md:w-1/3 pt-2 relative ${isReversed ? "md:text-right" : ""}`}>
+                        {/* Oversized outlined chapter numeral watermark */}
+                        <span
+                          aria-hidden
+                          className={`pointer-events-none select-none absolute -top-10 md:-top-14 font-poppins font-black leading-none text-[6rem] md:text-[9rem] text-transparent ${
+                            isReversed ? "right-0 md:-right-2" : "left-0 md:-left-2"
+                          }`}
+                          style={{ WebkitTextStroke: "1px hsl(var(--primary) / 0.18)" }}
+                        >
+                          {num}
+                        </span>
+                        <span className="relative block font-poppins text-primary font-semibold tracking-widest uppercase text-xs md:text-sm mb-4">
+                          {service.label}
+                        </span>
+                        <h3 className="relative font-poppins text-4xl md:text-5xl font-black text-foreground leading-[1.05] mb-6">
                           {service.title}
                         </h3>
                       </div>
