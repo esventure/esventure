@@ -508,6 +508,7 @@ const Index = () => {
           </div>
         </section>
       </CollapsibleSection>
+      </main>
 
       {/* ─── 9. Footer ─── */}
       <footer className="bg-foreground py-14">
