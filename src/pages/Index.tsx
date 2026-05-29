@@ -97,6 +97,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
 
+      <main>
       {/* ─── 1. Hero ─── */}
       <CollapsibleSection id="hero" title="👋 Your digital fixer & sparring partner">
         <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
@@ -507,6 +508,7 @@ const Index = () => {
           </div>
         </section>
       </CollapsibleSection>
+      </main>
 
       {/* ─── 9. Footer ─── */}
       <footer className="bg-foreground py-14">
@@ -519,7 +521,7 @@ const Index = () => {
               </p>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-background/50 mb-3">{t("footer.getInTouch")}</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-background/70 mb-3">{t("footer.getInTouch")}</p>
               <ul className="space-y-2 text-sm">
                 <li>
                   <a href="mailto:esther@esventure.nl" className="text-background/80 hover:text-secondary transition-colors">
@@ -539,7 +541,7 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-background/50 mb-3">{t("footer.more")}</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-background/70 mb-3">{t("footer.more")}</p>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link to="/privacy" className="text-background/80 hover:text-secondary transition-colors">
@@ -555,7 +557,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-background/10 mt-10 pt-6 text-center">
-            <p className="text-xs text-background/50">{t("footer.rights")}</p>
+            <p className="text-xs text-background/70">{t("footer.rights")}</p>
           </div>
         </div>
       </footer>

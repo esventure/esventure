@@ -88,7 +88,7 @@ const AnimatedPlaceholder = ({
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="absolute left-4 top-3 text-muted-foreground/50 text-base pointer-events-none"
+      className="absolute left-4 top-3 text-muted-foreground text-base pointer-events-none"
     >
       {text}
     </motion.span>
@@ -208,7 +208,7 @@ const PlannerForm = ({
       {/* Budget */}
       <div className="space-y-2">
         <label htmlFor="budget" className="text-base font-medium text-foreground/80">
-          {t("planner.budgetLabel")} <span className="text-muted-foreground/60">{t("planner.optional")}</span>
+          {t("planner.budgetLabel")} <span className="text-muted-foreground">{t("planner.optional")}</span>
         </label>
         <div className="relative">
           <select
@@ -439,7 +439,7 @@ const ResultPanel = ({
   if (!result) {
     return (
       <div className="rounded-2xl bg-primary/5 border-l-4 border-primary/30 p-8 min-h-[200px] flex items-center justify-center">
-        <p className="text-muted-foreground/60 text-sm">
+        <p className="text-muted-foreground text-sm">
           {t("planner.resultPlaceholder")}
         </p>
       </div>
