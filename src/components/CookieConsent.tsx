@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const CONSENT_KEY = "cookie_consent";
 
@@ -11,6 +12,7 @@ export const getCookieConsent = () => {
 };
 
 export const CookieConsent = () => {
+  const { t } = useTranslation();
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
@@ -23,22 +25,16 @@ export const CookieConsent = () => {
   const handleAccept = () => {
     localStorage.setItem(CONSENT_KEY, "accepted");
     setShowBanner(false);
-    // Enable GA tracking
     if (window.gtag) {
-      window.gtag("consent", "update", {
-        analytics_storage: "granted",
-      });
+      window.gtag("consent", "update", { analytics_storage: "granted" });
     }
   };
 
   const handleDecline = () => {
     localStorage.setItem(CONSENT_KEY, "declined");
     setShowBanner(false);
-    // Disable GA tracking
     if (window.gtag) {
-      window.gtag("consent", "update", {
-        analytics_storage: "denied",
-      });
+      window.gtag("consent", "update", { analytics_storage: "denied" });
     }
   };
 
@@ -56,10 +52,9 @@ export const CookieConsent = () => {
             <div className="bg-background border border-border rounded-2xl shadow-lg p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4">
               <div className="flex-1">
                 <p className="text-sm text-foreground/80">
-                  We use cookies to analyze site traffic and improve your experience. 
-                  By clicking "Accept", you consent to our use of analytics cookies.{" "}
+                  {t("cookie.message")}{" "}
                   <Link to="/privacy" className="underline hover:text-foreground">
-                    Privacy Policy
+                    {t("cookie.privacy")}
                   </Link>
                 </p>
               </div>
@@ -69,13 +64,13 @@ export const CookieConsent = () => {
                   onClick={handleDecline}
                   className="flex-1 md:flex-none rounded-full text-sm"
                 >
-                  Decline
+                  {t("cookie.decline")}
                 </Button>
                 <Button
                   onClick={handleAccept}
                   className="flex-1 md:flex-none bg-primary text-primary-foreground hover:bg-primary/90 rounded-full text-sm"
                 >
-                  Accept
+                  {t("cookie.accept")}
                 </Button>
               </div>
             </div>

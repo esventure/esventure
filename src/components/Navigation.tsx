@@ -4,8 +4,11 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoEV from "@/assets/logo-ev.svg";
 import { analytics } from "@/lib/analytics";
+import { useTranslation } from "react-i18next";
+import LanguageToggle from "@/components/LanguageToggle";
 
 const Navigation = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -30,8 +33,8 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { label: "Services", id: "services" },
-    { label: "About", id: "about" },
+    { label: t("nav.services"), id: "services" },
+    { label: t("nav.about"), id: "about" },
   ];
 
   return (
@@ -59,7 +62,7 @@ const Navigation = () => {
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
@@ -84,25 +87,29 @@ const Navigation = () => {
                     : "border border-primary-foreground/60 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 )}
               >
-                Plan my project
+                {t("nav.planMyProject")}
               </Button>
+              <LanguageToggle variant={isScrolled ? "dark" : "light"} />
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={cn(
-                "md:hidden p-2 transition-colors",
-                isScrolled ? "text-foreground hover:text-primary" : "text-primary-foreground hover:text-secondary"
-              )}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+            {/* Mobile right side */}
+            <div className="md:hidden flex items-center gap-2">
+              <LanguageToggle variant={isScrolled ? "dark" : "light"} />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={cn(
+                  "p-2 transition-colors",
+                  isScrolled ? "text-foreground hover:text-primary" : "text-primary-foreground hover:text-secondary"
+                )}
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -127,7 +134,7 @@ const Navigation = () => {
               variant="ghost"
               className="w-full rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold text-base py-3 transition-colors"
             >
-              Plan my project
+              {t("nav.planMyProject")}
             </Button>
           </div>
         </div>
