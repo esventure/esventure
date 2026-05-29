@@ -270,7 +270,7 @@ const StyleGuide = () => {
           <p className="text-sm text-muted-foreground">Es Venture Style Guide - Intern document</p>
         </div>
       </footer>
-    </div>
+    </div></>
   );
 };
 
