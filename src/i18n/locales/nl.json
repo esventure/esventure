@@ -1,5 +1,6 @@
 {
   "nav": {
+    "whenToCallMe": "Wanneer mij te bellen",
     "services": "Diensten",
     "about": "Over mij",
     "planMyProject": "Plan mijn project"
