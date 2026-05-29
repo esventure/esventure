@@ -173,57 +173,73 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 3. How I Help ─── */}
-      <CollapsibleSection id="how-i-help" title="🛠 How I Help" bgClass="bg-muted">
-        <section id="services" className="bg-muted/30 py-20">
-          <div className="container mx-auto px-4">
+      <CollapsibleSection id="how-i-help" title="🛠 How I Help" bgClass="bg-background">
+        <section id="services" className="bg-background py-24 md:py-32">
+          <div className="container mx-auto px-6 md:px-12">
             <div className="max-w-7xl mx-auto">
+              {/* Editorial header */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="text-center mb-14"
+                className="mb-24 md:mb-40"
               >
-                <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4">
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground font-poppins tracking-tight leading-[0.95] mb-6">
                   {t("services.title")}
                 </h2>
-                <p className="text-xl text-muted-foreground">
+                <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
                   {t("services.subtitle")}
                 </p>
               </motion.div>
 
-              <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
+              {/* Editorial split flow */}
+              <div className="space-y-24 md:space-y-40">
                 {services.map((service, i) => {
-                  const Icon = service.icon;
+                  const isReversed = i % 2 === 1;
+                  const num = String(i + 1).padStart(2, "0");
                   return (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: i * 0.15 }}
-                      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                      viewport={{ once: true, margin: "-80px" }}
+                      transition={{ duration: 0.6 }}
+                      className={`group flex flex-col gap-8 md:gap-12 items-start ${
+                        isReversed ? "md:flex-row-reverse" : "md:flex-row"
+                      }`}
                     >
-                      <div className="h-full p-8 bg-card hover:bg-primary/[0.02] border-t-2 border-primary/30 hover:border-primary transition-all duration-200 flex flex-col">
-                        <div className="flex flex-col items-center text-center mb-6">
-                          <div className="w-14 h-14 flex items-center justify-center mb-4 text-primary">
-                            <Icon size={36} className="text-primary" />
-                          </div>
-                          <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">
-                            {service.label}
-                          </span>
-                          <h3 className="text-2xl md:text-3xl font-black text-foreground font-poppins">
-                            {service.title}
-                          </h3>
-                        </div>
-                        <p className="text-base text-foreground/70 text-center leading-relaxed flex-1 mb-6">
+                      <div className={`md:w-1/3 pt-2 ${isReversed ? "md:text-right" : ""}`}>
+                        <span className="block font-poppins text-primary font-semibold tracking-widest uppercase text-xs md:text-sm mb-4">
+                          {num} / {service.label}
+                        </span>
+                        <h3 className="font-poppins text-4xl md:text-5xl font-black text-foreground leading-[1.05] mb-6">
+                          {service.title}
+                        </h3>
+                      </div>
+                      <div
+                        className={`md:w-2/3 ${
+                          isReversed
+                            ? "md:pr-12 md:border-r md:text-right"
+                            : "md:pl-12 md:border-l"
+                        } border-border/60`}
+                      >
+                        <p
+                          className={`text-lg md:text-xl text-foreground/70 leading-relaxed mb-8 max-w-xl ${
+                            isReversed ? "md:ml-auto" : ""
+                          }`}
+                        >
                           {service.description}
                         </p>
                         <button
                           onClick={scrollToPlanner}
-                          className="text-primary font-semibold text-sm hover:underline inline-flex items-center justify-center gap-1"
+                          className="inline-flex items-center text-primary font-bold text-sm md:text-base group-hover:gap-3 gap-2 transition-all duration-300"
                         >
-                          {t("services.cta")} <ArrowRight className="h-4 w-4" />
+                          {isReversed && (
+                            <ArrowRight className="w-5 h-5 rotate-180" />
+                          )}
+                          {t("services.cta")}
+                          {!isReversed && <ArrowRight className="w-5 h-5" />}
                         </button>
                       </div>
                     </motion.div>
