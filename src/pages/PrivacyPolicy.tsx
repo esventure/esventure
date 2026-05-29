@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Helmet } from "react-helmet-async";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Helmet>
+        <title>Privacy Policy - Es Venture</title>
+        <meta name="description" content="Learn how Es Venture collects, uses, and protects your personal data. Read our privacy policy for data rights and cookie preferences." />
+        <link rel="canonical" href="https://esventure.nl/privacy" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <Link to="/">
           <Button variant="ghost" className="mb-8 -ml-4">
@@ -111,7 +118,7 @@ const PrivacyPolicy = () => {
           </section>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

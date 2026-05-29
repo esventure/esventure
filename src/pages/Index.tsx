@@ -6,6 +6,7 @@ import Navigation from "@/components/Navigation";
 import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion } from "framer-motion";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 import WhenToCallMe from "@/components/WhenToCallMe";
@@ -94,7 +95,12 @@ const Index = () => {
 
   return (
     <StickyHeaderProvider>
-    <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Es Venture - Strategy, Design &amp; Delivery</title>
+        <meta name="description" content="Short-term, high-impact projects focused on clarity, structure and momentum. Fix it. Prototype it. Structure it." />
+        <link rel="canonical" href="https://esventure.nl/" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
       <Navigation />
 
       <main>

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Mail, Check, AlertCircle, Star, Download } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import logoEV from "@/assets/logo-ev.svg";
 import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 
@@ -18,7 +19,13 @@ const ColorSwatch = ({ name, variable, cssVar }: { name: string; variable: strin
 
 const StyleGuide = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Helmet>
+        <title>Style Guide - Es Venture</title>
+        <meta name="description" content="The Es Venture brand style guide. Explore our colors, typography, buttons, icons, spacing, and tone of voice." />
+        <link rel="canonical" href="https://esventure.nl/styleguide" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -263,7 +270,7 @@ const StyleGuide = () => {
           <p className="text-sm text-muted-foreground">Es Venture Style Guide - Intern document</p>
         </div>
       </footer>
-    </div>
+    </div></>
   );
 };
 
