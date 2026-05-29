@@ -19,7 +19,13 @@ const ColorSwatch = ({ name, variable, cssVar }: { name: string; variable: strin
 
 const StyleGuide = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Helmet>
+        <title>Style Guide - Es Venture</title>
+        <meta name="description" content="The Es Venture brand style guide. Explore our colors, typography, buttons, icons, spacing, and tone of voice." />
+        <link rel="canonical" href="https://esventure.nl/styleguide" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
