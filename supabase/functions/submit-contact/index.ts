@@ -26,10 +26,27 @@ Deno.serve(async (req) => {
       );
     }
 
+    // Type + length validation
+    const isStr = (v: unknown): v is string => typeof v === "string";
+    if (!isStr(firstName) || !isStr(lastName) || !isStr(email) ||
+        (phone != null && !isStr(phone)) || (projectPlan != null && !isStr(projectPlan))) {
+      return new Response(
+        JSON.stringify({ error: "Invalid field types" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+    if (firstName.length > 100 || lastName.length > 100 || email.length > 255 ||
+        (phone && phone.length > 50) || (projectPlan && projectPlan.length > 10000)) {
+      return new Response(
+        JSON.stringify({ error: "Input too long" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      console.error("Invalid email format:", email);
+      console.error("Invalid email format");
       return new Response(
         JSON.stringify({ error: "Invalid email format" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -60,22 +77,28 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log("Contact submission saved:", { email: email.trim().toLowerCase() });
+    console.log("Contact submission saved");
+
+    // Escape HTML to prevent injection in admin email
+    const escHtml = (s: string) =>
+      s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 
     // Send email notification
     try {
       const { error: emailError } = await resend.emails.send({
         from: "ES Venture <esther@esventure.nl>",
         to: ["esther@esventure.nl"],
-        subject: `New Lead: ${firstName} ${lastName}`,
+        subject: `New Lead: ${escHtml(firstName)} ${escHtml(lastName)}`,
         html: `
           <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
-          ${projectPlan ? `<h3>Project Plan Context:</h3><pre style="white-space: pre-wrap; background: #f5f5f5; padding: 16px; border-radius: 8px;">${projectPlan}</pre>` : ""}
+          <p><strong>Name:</strong> ${escHtml(firstName)} ${escHtml(lastName)}</p>
+          <p><strong>Email:</strong> ${escHtml(email)}</p>
+          <p><strong>Phone:</strong> ${phone ? escHtml(phone) : "Not provided"}</p>
+          ${projectPlan ? `<h3>Project Plan Context:</h3><pre style="white-space: pre-wrap; background: #f5f5f5; padding: 16px; border-radius: 8px;">${escHtml(projectPlan)}</pre>` : ""}
         `,
       });
+
 
       if (emailError) {
         console.error("Email send error:", emailError);
