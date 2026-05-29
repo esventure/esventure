@@ -1,7 +1,8 @@
 {
   "nav": {
+    "whenToCallMe": "When to call me",
     "services": "Services",
-    "about": "About",
+    "about": "About me",
     "planMyProject": "Plan my project"
   },
   "language": {
