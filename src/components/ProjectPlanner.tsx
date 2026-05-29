@@ -106,25 +106,30 @@ const PlannerForm = ({
   onSubmit: () => void;
   isLoading: boolean;
 }) => {
+  const { t, i18n } = useTranslation();
+  const lang = (i18n.language || "en").startsWith("nl") ? "nl" : "en";
+  const SITUATION_PLACEHOLDERS = SITUATION_PLACEHOLDERS_BY_LANG[lang];
+  const HANDOFF_PLACEHOLDERS = HANDOFF_PLACEHOLDERS_BY_LANG[lang];
+  const URGENCY_OPTIONS = t("planner.urgencyOptions", { returnObjects: true }) as string[];
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
   // Rotate placeholders every 3.5 seconds when fields are empty
   useEffect(() => {
     if (formData.situation || formData.handoff) return;
-    
+
     const interval = setInterval(() => {
       setPlaceholderIndex((prev) => (prev + 1) % SITUATION_PLACEHOLDERS.length);
     }, 3500);
 
     return () => clearInterval(interval);
-  }, [formData.situation, formData.handoff]);
+  }, [formData.situation, formData.handoff, SITUATION_PLACEHOLDERS.length]);
 
   return (
     <div className="space-y-6 md:space-y-8">
       {/* What's going on? */}
       <div className="space-y-2">
         <label htmlFor="situation" className="text-base font-medium text-foreground/80">
-          What's going on?
+          {t("planner.situationLabel")}
         </label>
         <div className="relative">
           <textarea
@@ -134,10 +139,10 @@ const PlannerForm = ({
             className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground text-base transition-all"
           />
           <AnimatePresence mode="wait">
-            <AnimatedPlaceholder 
+            <AnimatedPlaceholder
               key={placeholderIndex}
-              text={SITUATION_PLACEHOLDERS[placeholderIndex]} 
-              isVisible={!formData.situation} 
+              text={SITUATION_PLACEHOLDERS[placeholderIndex]}
+              isVisible={!formData.situation}
             />
           </AnimatePresence>
         </div>
@@ -146,7 +151,7 @@ const PlannerForm = ({
       {/* What should I take off your plate? */}
       <div className="space-y-2">
         <label htmlFor="handoff" className="text-base font-medium text-foreground/80">
-          What should I take off your plate?
+          {t("planner.handoffLabel")}
         </label>
         <div className="relative">
           <textarea
@@ -156,10 +161,10 @@ const PlannerForm = ({
             className="w-full min-h-[80px] md:min-h-[100px] px-4 py-3 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 resize-none text-foreground text-base transition-all"
           />
           <AnimatePresence mode="wait">
-            <AnimatedPlaceholder 
+            <AnimatedPlaceholder
               key={placeholderIndex}
-              text={HANDOFF_PLACEHOLDERS[placeholderIndex]} 
-              isVisible={!formData.handoff} 
+              text={HANDOFF_PLACEHOLDERS[placeholderIndex]}
+              isVisible={!formData.handoff}
             />
           </AnimatePresence>
         </div>
@@ -168,19 +173,18 @@ const PlannerForm = ({
       {/* Urgency */}
       <div className="space-y-3">
         <label className="text-base font-medium text-foreground/80">
-          How urgent?
+          {t("planner.urgencyLabel")}
         </label>
         <div className="grid grid-cols-2 md:flex md:flex-wrap gap-2">
           {URGENCY_OPTIONS.map((urgency) => {
-            const isUrgent = urgency === "It's urgent 🔥";
+            const isUrgent = urgency.includes("🔥");
             const isSelected = formData.urgency === urgency;
-            
+
             return (
               <button
                 key={urgency}
                 type="button"
                 onClick={() => {
-                  // Haptic feedback on mobile
                   if ('vibrate' in navigator) {
                     navigator.vibrate(10);
                   }
@@ -204,7 +208,7 @@ const PlannerForm = ({
       {/* Budget */}
       <div className="space-y-2">
         <label htmlFor="budget" className="text-base font-medium text-foreground/80">
-          Budget range <span className="text-muted-foreground/60">(optional)</span>
+          {t("planner.budgetLabel")} <span className="text-muted-foreground/60">{t("planner.optional")}</span>
         </label>
         <div className="relative">
           <select
@@ -213,9 +217,9 @@ const PlannerForm = ({
             onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
             className="w-full min-h-[44px] px-4 py-3 pr-10 bg-background rounded-lg border border-primary/20 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/10 text-foreground text-base appearance-none cursor-pointer transition-all"
           >
-            {BUDGET_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value} className="bg-background text-foreground">
-                {option.label}
+            {BUDGET_OPTION_VALUES.map((value) => (
+              <option key={value} value={value} className="bg-background text-foreground">
+                {value === "" ? t("planner.budgetOptions.none") : value}
               </option>
             ))}
           </select>
@@ -233,17 +237,17 @@ const PlannerForm = ({
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Working on it…
+              {t("planner.submitting")}
             </>
           ) : (
             <>
-              Show me the plan
+              {t("planner.submit")}
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
             </>
           )}
         </Button>
         <p className="text-xs text-muted-foreground/70 text-center">
-          The more detail you share, the more precise your prognosis will be.
+          {t("planner.submitHint")}
         </p>
       </div>
     </div>
