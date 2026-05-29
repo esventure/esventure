@@ -24,6 +24,7 @@
   "whenToCallMe": {
     "title": "Wanneer mij te bellen",
     "subtitle": "Klinkt iets hiervan bekend? Dan moeten we praten.",
+    "symptomLabel": "Symptoom",
     "triggers": [
       "Al maanden 'bijna af'",
       "Jij bent de founder die alles doet",

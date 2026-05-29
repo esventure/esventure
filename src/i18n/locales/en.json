@@ -24,6 +24,7 @@
   "whenToCallMe": {
     "title": "When to Call Me",
     "subtitle": "If any of these sound familiar, we should talk.",
+    "symptomLabel": "Symptom",
     "triggers": [
       "It's been 'almost done' for months",
       "You're the founder doing all the things",
