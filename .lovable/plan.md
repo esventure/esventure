@@ -1,28 +1,39 @@
-## Plan
+## Plan: Bilingual site (EN/NL) with language toggle
 
-Replace the current quote-plus-response list with a much lighter “recognition board”:
+### Approach
+Use `react-i18next` (lightweight, standard) with two translation JSON files. A small toggle in the navigation (EN | NL) switches language instantly. Selected language is persisted in `localStorage` and reflected in the `<html lang>` attribute for SEO.
 
-1. **Cut each scenario down to a short trigger**
-   - Example: `Almost done for 6 months`
-   - Example: `Founder doing everything`
-   - Example: `Tools don't talk`
-   - Example: `Ideas stuck in Notion`
-   - Example: `Nobody owns it`
-   - Example: `Someone left a mess`
+### Steps
 
-2. **Show them as compact pills or mini-cards**
-   - 2-column on mobile where possible, 3-column on desktop.
-   - No long quotes, no explanatory paragraphs, no response line under every item.
-   - Keep it visually calm: short labels, lots of whitespace, subtle border.
+1. **Install i18n**
+   - Add `react-i18next` and `i18next` (+ `i18next-browser-languagedetector` to auto-pick browser language on first visit).
 
-3. **Use one short summary line underneath**
-   - Something like: `If it is messy, stuck, ownerless, or quietly draining your team, that is where I come in.`
-   - This replaces the repeated response text.
+2. **Set up i18n config**
+   - `src/i18n/index.ts` — initialize i18next with EN as fallback, detect from localStorage → browser.
+   - `src/i18n/locales/en.json` and `src/i18n/locales/nl.json` — all UI strings, organized by section (nav, hero, services, whenToCallMe, effect, planner, footer, cookie, privacy, common).
+   - Import once in `src/main.tsx`.
 
-4. **Tighten the “Why Call Me?” area**
-   - Reduce the four differentiators to short punchy phrases only.
-   - Remove the subtext lines so the whole section breathes again.
+3. **Translate every visible component**
+   - `Navigation`, `Hero`, `Services`, `WhenToCallMe`, `EsVentureEffect` / worked-with bar, `ProjectPlanner` (form labels, placeholders, step indicator, disclaimer, result section labels), `Footer`, `CookieConsent`, `NotFound`, `PrivacyPolicy`, `StyleGuide` headers where user-facing.
+   - Replace hardcoded strings with `t('section.key')`.
 
-## Result
+4. **Language toggle UI**
+   - Small `LanguageToggle` component (EN | NL pill) in `Navigation.tsx` desktop + mobile menu.
+   - On click: `i18n.changeLanguage(...)`, save to localStorage, update `document.documentElement.lang`.
 
-The section becomes recognizable at a glance instead of something visitors have to read line by line.
+5. **AI output language (Project Planner)**
+   - Pass current language to the `project-outline` edge function in the request body.
+   - In `supabase/functions/project-outline/index.ts`, append an instruction to the system prompt: respond in Dutch when `language === 'nl'`, keep all structure/voice rules identical.
+   - Email notification subject/body stays in English (internal).
+
+6. **SEO / meta**
+   - Update `index.html` `<html lang>` default stays `en`; runtime updates via toggle.
+   - Keep Open Graph copy in English (primary audience). NL toggle is for site visitors.
+
+### Out of scope
+- Separate `/nl` URL routing (single-page toggle only).
+- Translating internal admin emails sent to Esther.
+- Translating Privacy Policy legal text — will be translated to NL but kept structurally identical.
+
+### Result
+A single EN/NL toggle in the nav. Every visible string, including the AI-generated project outline, responds in the chosen language. Preference persists across sessions.
