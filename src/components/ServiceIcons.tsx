@@ -5,10 +5,10 @@ interface IconProps {
   size?: number;
 }
 
-// Refined silhouette icons — bold mass, hairline white inner cuts.
+// Refined silhouette icons - bold mass, hairline white inner cuts.
 // Color via currentColor (text-primary). Inner detail uses white.
 
-// Fixer — Hammer with motion accent
+// Fixer - Hammer with motion accent
 export const FixerIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
   <svg viewBox="0 0 32 32" width={size} height={size} className={className} fill="none">
     <g transform="rotate(-38 16 16)">
@@ -31,19 +31,19 @@ export const FixerIcon: React.FC<IconProps> = ({ className = "", size = 32 }) =>
   </svg>
 );
 
-// Sparring — Two people talking / brainstorming
+// Sparring - Two people talking / brainstorming
 export const SparringIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
   <svg viewBox="0 0 32 32" width={size} height={size} className={className} fill="none">
-    {/* Left person — head */}
+    {/* Left person - head */}
     <circle cx="9" cy="9" r="3.2" fill="currentColor" />
-    {/* Left person — shoulders */}
+    {/* Left person - shoulders */}
     <path
       d="M3 22 Q3 16.5 9 16.5 Q15 16.5 15 22 V24 Q15 25 14 25 H4 Q3 25 3 24 Z"
       fill="currentColor"
     />
-    {/* Right person — head */}
+    {/* Right person - head */}
     <circle cx="23" cy="9" r="3.2" fill="currentColor" />
-    {/* Right person — shoulders */}
+    {/* Right person - shoulders */}
     <path
       d="M17 22 Q17 16.5 23 16.5 Q29 16.5 29 22 V24 Q29 25 28 25 H18 Q17 25 17 24 Z"
       fill="currentColor"
@@ -64,10 +64,10 @@ export const SparringIcon: React.FC<IconProps> = ({ className = "", size = 32 })
   </svg>
 );
 
-// Map — Workflow / process flow
+// Map - Workflow / process flow
 export const MapIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
   <svg viewBox="0 0 32 32" width={size} height={size} className={className} fill="none">
-    {/* Step 1 — circle (start) */}
+    {/* Step 1 - circle (start) */}
     <circle cx="6" cy="7" r="3.5" fill="currentColor" />
     <circle cx="6" cy="7" r="1.3" fill="white" />
     {/* Arrow 1 → 2 */}
@@ -78,7 +78,7 @@ export const MapIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    {/* Step 2 — rounded rect */}
+    {/* Step 2 - rounded rect */}
     <rect x="14.5" y="3.5" width="13" height="7" rx="1.6" fill="currentColor" />
     <rect x="16.5" y="6.4" width="9" height="1.2" rx="0.6" fill="white" />
     {/* Arrow down to diamond */}
@@ -89,7 +89,7 @@ export const MapIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    {/* Step 3 — diamond (decision) */}
+    {/* Step 3 - diamond (decision) */}
     <path d="M21 15 L26.5 20 L21 25 L15.5 20 Z" fill="currentColor" />
     <path
       d="M18.5 20 L20.3 21.7 L23.5 18.5"
@@ -108,7 +108,7 @@ export const MapIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
       strokeLinejoin="round"
       fill="none"
     />
-    {/* Step 4 — final circle */}
+    {/* Step 4 - final circle */}
     <circle cx="8.5" cy="27.5" r="3" fill="currentColor" />
     <path
       d="M7 27.5 L8.1 28.6 L10 26.5"
@@ -121,7 +121,7 @@ export const MapIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
   </svg>
 );
 
-// Mirror — Painting being painted (canvas + brush)
+// Mirror - Painting being painted (canvas + brush)
 export const MirrorIcon: React.FC<IconProps> = ({ className = "", size = 32 }) => (
   <svg viewBox="0 0 32 32" width={size} height={size} className={className} fill="none">
     {/* Easel legs */}
