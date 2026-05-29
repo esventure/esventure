@@ -1,39 +1,25 @@
-## Plan: Bilingual site (EN/NL) with language toggle
+## Plan: Symptom-diagnostic redesign of "When to Call Me"
 
-### Approach
-Use `react-i18next` (lightweight, standard) with two translation JSON files. A small toggle in the navigation (EN | NL) switches language instantly. Selected language is persisted in `localStorage` and reflected in the `<html lang>` attribute for SEO.
+Rebuild `src/components/WhenToCallMe.tsx` to match the selected direction (Symptom diagnostic grid) — keeping all current copy intact in both EN and NL.
 
-### Steps
+### Visual changes
+- Wider container (`max-w-5xl`).
+- **Symptoms grid**: single bordered, rounded card with `grid grid-cols-3 gap-px` so each cell shares hairline dividers — feels like a diagnostic sheet.
+  - Each cell: small uppercase purple label "Symptom 01 / Symptoom 01", bold Poppins trigger text, short yellow underline bar that extends on hover.
+  - Subtle hover bg shift on each cell.
+- **Summary line** below the grid, with the closing phrase underlined in purple.
+- **"Why call me?" panel**: separated into a soft purple-tinted rounded panel (`bg-primary/5`, `border-primary/10`) with a thin divider next to the heading.
+  - 2-col grid of cards (card bg, soft border, soft shadow).
+  - Each card: round icon badge (alternating primary purple / secondary yellow) + bold differentiator text. Icons from lucide: `Zap`, `Scissors`, `CheckCircle2`, `HandHelping`.
 
-1. **Install i18n**
-   - Add `react-i18next` and `i18next` (+ `i18next-browser-languagedetector` to auto-pick browser language on first visit).
+### i18n
+Add one new key in both locale files:
+- `whenToCallMe.symptomLabel`: `"Symptom"` (EN) / `"Symptoom"` (NL).
+Cell label rendered as `{symptomLabel} {01..06}`.
 
-2. **Set up i18n config**
-   - `src/i18n/index.ts` — initialize i18next with EN as fallback, detect from localStorage → browser.
-   - `src/i18n/locales/en.json` and `src/i18n/locales/nl.json` — all UI strings, organized by section (nav, hero, services, whenToCallMe, effect, planner, footer, cookie, privacy, common).
-   - Import once in `src/main.tsx`.
+### Files
+- `src/components/WhenToCallMe.tsx` — full rewrite of markup as above (framer-motion reveals preserved, semantic tokens only — `bg-card`, `bg-primary`, `text-primary`, `bg-secondary`, `border-border`, `text-muted-foreground`).
+- `src/i18n/locales/en.json` — add `symptomLabel`.
+- `src/i18n/locales/nl.json` — add `symptomLabel`.
 
-3. **Translate every visible component**
-   - `Navigation`, `Hero`, `Services`, `WhenToCallMe`, `EsVentureEffect` / worked-with bar, `ProjectPlanner` (form labels, placeholders, step indicator, disclaimer, result section labels), `Footer`, `CookieConsent`, `NotFound`, `PrivacyPolicy`, `StyleGuide` headers where user-facing.
-   - Replace hardcoded strings with `t('section.key')`.
-
-4. **Language toggle UI**
-   - Small `LanguageToggle` component (EN | NL pill) in `Navigation.tsx` desktop + mobile menu.
-   - On click: `i18n.changeLanguage(...)`, save to localStorage, update `document.documentElement.lang`.
-
-5. **AI output language (Project Planner)**
-   - Pass current language to the `project-outline` edge function in the request body.
-   - In `supabase/functions/project-outline/index.ts`, append an instruction to the system prompt: respond in Dutch when `language === 'nl'`, keep all structure/voice rules identical.
-   - Email notification subject/body stays in English (internal).
-
-6. **SEO / meta**
-   - Update `index.html` `<html lang>` default stays `en`; runtime updates via toggle.
-   - Keep Open Graph copy in English (primary audience). NL toggle is for site visitors.
-
-### Out of scope
-- Separate `/nl` URL routing (single-page toggle only).
-- Translating internal admin emails sent to Esther.
-- Translating Privacy Policy legal text — will be translated to NL but kept structurally identical.
-
-### Result
-A single EN/NL toggle in the nav. Every visible string, including the AI-generated project outline, responds in the chosen language. Preference persists across sessions.
+No backend, routing, or other section changes.
