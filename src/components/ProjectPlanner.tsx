@@ -15,46 +15,61 @@ interface FormData {
   budget: string;
 }
 
-const SITUATION_PLACEHOLDERS = [
-  "There's a project stuck and no one owns it.",
-  "Our process is causing headaches and slowing everyone down.",
-  "I have a big idea but no clue where to start.",
-  "We keep talking but nothing actually moves forward.",
-  "There's a critical gap and no one to fill it.",
-  "Deadlines keep slipping and priorities are all over the place.",
-  "We built something but it confuses everyone who uses it.",
-  "Multiple teams are involved and nobody's aligned.",
-  "Things keep falling through the cracks.",
-  "I need someone to just take this off my plate and run with it.",
-];
+const SITUATION_PLACEHOLDERS_BY_LANG: Record<string, string[]> = {
+  en: [
+    "There's a project stuck and no one owns it.",
+    "Our process is causing headaches and slowing everyone down.",
+    "I have a big idea but no clue where to start.",
+    "We keep talking but nothing actually moves forward.",
+    "There's a critical gap and no one to fill it.",
+    "Deadlines keep slipping and priorities are all over the place.",
+    "We built something but it confuses everyone who uses it.",
+    "Multiple teams are involved and nobody's aligned.",
+    "Things keep falling through the cracks.",
+    "I need someone to just take this off my plate and run with it.",
+  ],
+  nl: [
+    "Er ligt een project stil en niemand is eigenaar.",
+    "Ons proces zorgt voor kopzorgen en vertraagt iedereen.",
+    "Ik heb een groot idee maar geen idee waar te beginnen.",
+    "We blijven praten maar er gebeurt niets.",
+    "Er is een kritieke gap en niemand om die te vullen.",
+    "Deadlines blijven verschuiven en prioriteiten zijn onduidelijk.",
+    "We bouwden iets, maar gebruikers raken erin verdwaald.",
+    "Meerdere teams zijn betrokken en niemand is gealigneerd.",
+    "Dingen blijven tussen wal en schip vallen.",
+    "Ik heb iemand nodig die dit van mijn bord pakt en ermee aan de slag gaat.",
+  ],
+};
 
-const HANDOFF_PLACEHOLDERS = [
-  "Step in and take charge of this project.",
-  "Turn my vision into an actionable plan.",
-  "Diagnose this issue fast and give me a working fix.",
-  "Unblock my team so we can start shipping.",
-  "Build me a prototype I can test and pitch.",
-  "Figure out what's broken in our process and fix it.",
-  "Coordinate this launch and keep everyone aligned.",
-  "Create a clear roadmap from this mess of ideas.",
-  "Get this project over the finish line.",
-  "Help me figure out what to prioritise and how to execute.",
-];
+const HANDOFF_PLACEHOLDERS_BY_LANG: Record<string, string[]> = {
+  en: [
+    "Step in and take charge of this project.",
+    "Turn my vision into an actionable plan.",
+    "Diagnose this issue fast and give me a working fix.",
+    "Unblock my team so we can start shipping.",
+    "Build me a prototype I can test and pitch.",
+    "Figure out what's broken in our process and fix it.",
+    "Coordinate this launch and keep everyone aligned.",
+    "Create a clear roadmap from this mess of ideas.",
+    "Get this project over the finish line.",
+    "Help me figure out what to prioritise and how to execute.",
+  ],
+  nl: [
+    "Stap in en neem de leiding over dit project.",
+    "Vertaal mijn visie naar een uitvoerbaar plan.",
+    "Diagnosticeer dit snel en geef me een werkende fix.",
+    "Deblokkeer mijn team zodat we kunnen leveren.",
+    "Bouw een prototype dat ik kan testen en pitchen.",
+    "Zoek uit wat er kapot is in ons proces en fix het.",
+    "Coördineer deze launch en houd iedereen op één lijn.",
+    "Maak een heldere roadmap van deze chaos aan ideeën.",
+    "Breng dit project over de finish.",
+    "Help me bepalen wat prioriteit heeft en hoe we het uitvoeren.",
+  ],
+};
 
-const URGENCY_OPTIONS = [
-  "Just exploring",
-  "Soon",
-  "Needs attention",
-  "It's urgent 🔥",
-];
-
-const BUDGET_OPTIONS = [
-  { value: "", label: "No idea yet" },
-  { value: "< €1.000", label: "< €1.000" },
-  { value: "€1.000–€3.000", label: "€1.000–€3.000" },
-  { value: "€3.000–€6.000", label: "€3.000–€6.000" },
-  { value: "€6.000+", label: "€6.000+" },
-];
+const BUDGET_OPTION_VALUES = ["", "< €1.000", "€1.000–€3.000", "€3.000–€6.000", "€6.000+"];
 
 // Animated placeholder component
 const AnimatedPlaceholder = ({ 
