@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Mail, Check, AlertCircle, Star, Download } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import logoEV from "@/assets/logo-ev.svg";
 import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 
