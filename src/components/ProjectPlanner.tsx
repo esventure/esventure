@@ -374,11 +374,12 @@ const ResultPanel = ({
   result: string | null;
   isLoading?: boolean;
 }) => {
+  const { t } = useTranslation();
   const markdownComponents = {
     h2: ({ children }: { children?: React.ReactNode }) => {
       const text = String(children || '');
-      const isMetric = text.includes('Timeline') || text.includes('Estimated') || text.includes('Ballpark');
-      
+      const isMetric = /Timeline|Estimated|Ballpark|Tijdlijn|Indicatieve|Kostenindicatie|Doorlooptijd/i.test(text);
+
       return (
         <h4 className={`font-semibold text-foreground mb-2 ${isMetric ? 'text-sm text-muted-foreground mt-6' : 'text-base mt-8 first:mt-0'}`}>
           {children}
@@ -388,8 +389,7 @@ const ResultPanel = ({
     p: ({ children }: { children?: React.ReactNode }) => (
       <p className="text-foreground/80 mb-3 leading-relaxed text-[15px]">{children}</p>
     ),
-    ol: ({ children, node }: { children?: React.ReactNode; node?: any }) => {
-      // Track step numbers using a counter and clone elements with index
+    ol: ({ children }: { children?: React.ReactNode; node?: any }) => {
       let stepNum = 0;
       const numberedChildren = Children.map(children, (child) => {
         if (isValidElement(child)) {
@@ -399,7 +399,7 @@ const ResultPanel = ({
               <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-semibold flex items-center justify-center mt-0.5">
                 {stepNum}
               </span>
-              <span className="flex-1">{child.props?.children}</span>
+              <span className="flex-1">{(child.props as any)?.children}</span>
             </li>
           );
         }
@@ -410,8 +410,7 @@ const ResultPanel = ({
     ul: ({ children }: { children?: React.ReactNode }) => (
       <ul className="space-y-2 my-3 text-[15px] list-disc list-outside pl-5 marker:text-primary">{children}</ul>
     ),
-    li: ({ children, node }: { children?: React.ReactNode; node?: any }) => {
-      // This handles ul items - ol items are handled by the ol component above
+    li: ({ children }: { children?: React.ReactNode; node?: any }) => {
       return <li className="text-foreground/80 leading-relaxed">{children}</li>;
     },
     strong: ({ children }: { children?: React.ReactNode }) => (
@@ -424,14 +423,14 @@ const ResultPanel = ({
 
   if (isLoading) {
     return (
-      <motion.div 
-        initial={{ opacity: 0 }} 
+      <motion.div
+        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="rounded-2xl bg-primary/5 border-l-4 border-primary p-8 min-h-[200px] flex items-center justify-center"
       >
         <div className="flex items-center gap-3 text-muted-foreground">
           <Loader2 className="h-5 w-5 animate-spin text-primary" />
-          <span>Working on it…</span>
+          <span>{t("planner.loading")}</span>
         </div>
       </motion.div>
     );
@@ -441,7 +440,7 @@ const ResultPanel = ({
     return (
       <div className="rounded-2xl bg-primary/5 border-l-4 border-primary/30 p-8 min-h-[200px] flex items-center justify-center">
         <p className="text-muted-foreground/60 text-sm">
-          Your plan will appear here.
+          {t("planner.resultPlaceholder")}
         </p>
       </div>
     );
@@ -464,11 +463,11 @@ const ResultPanel = ({
           }}
           className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6 text-base font-semibold group"
         >
-          This looks like a solid plan - let's discuss it
+          {t("planner.discussCta")}
           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
         </Button>
         <p className="text-xs text-muted-foreground/70">
-          This is a ballpark indication. The actual price will be determined after analysing the full scope of your project.
+          {t("planner.ballparkNote")}
         </p>
         <ContactForm projectPlan={result} />
       </div>
