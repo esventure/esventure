@@ -6,6 +6,7 @@ import Navigation from "@/components/Navigation";
 import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion } from "framer-motion";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 import WhenToCallMe from "@/components/WhenToCallMe";
 import CollapsibleSection, { StickyHeaderProvider } from "@/components/CollapsibleSection";
@@ -66,54 +67,11 @@ const clients = [
   { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
 ];
 
-
-const services = [
-  {
-    icon: FixerIcon,
-    label: "The Fixer",
-    title: "Let's Get It Moving",
-    description:
-      "That stuck project, that half-finished initiative, that thing nobody owns. I step in, take charge, and drive it forward until it actually ships.",
-  },
-  {
-    icon: SparringIcon,
-    label: "The Sparring Room",
-    title: "Let's Think It Through",
-    description:
-      "When you've got an idea but no shape yet. We sketch, challenge, prototype and pressure-test it together until it's clear enough to build.",
-  },
-  {
-    icon: MapIcon,
-    label: "The Map",
-    title: "Let's Make It Flow",
-    description:
-      "Messy processes, double work, things falling between teams. I map what's actually happening, find the friction, and redesign it so your day-to-day just runs.",
-  },
-  {
-    icon: MirrorIcon,
-    label: "The Mirror",
-    title: "Let's Make It Yours",
-    description:
-      "Your brand or personal story deserves a visual that fits. I help shape how you (or your company) shows up - from positioning to a website that actually feels like you.",
-  },
-];
-
-const pillars = [
-  {
-    title: "Absolute Clarity",
-    description: "You'll always know exactly where the project stands - no surprises, no guesswork.",
-  },
-  {
-    title: "Bridging IT & Business",
-    description: "I translate between developers and decision-makers so everyone speaks the same language.",
-  },
-  {
-    title: "Driving to Delivery",
-    description: "Projects don't drift. They ship. That's the core promise.",
-  },
-];
+const serviceIcons = [FixerIcon, SparringIcon, MapIcon, MirrorIcon];
 
 const Index = () => {
+  const { t } = useTranslation();
+
   React.useEffect(() => {
     const cleanup = analytics.initScrollTracking();
     return cleanup;
@@ -123,6 +81,14 @@ const Index = () => {
     analytics.ctaClick("hero_primary");
     document.getElementById("project-planner")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const heroBullets = t("hero.bullets", { returnObjects: true }) as string[];
+  const services = (t("services.items", { returnObjects: true }) as Array<{ label: string; title: string; description: string }>).map(
+    (s, i) => ({ ...s, icon: serviceIcons[i] })
+  );
+  const pillars = t("effect.pillars", { returnObjects: true }) as Array<{ title: string; description: string }>;
+  const sparringWalkAway = t("sparring.walkAwayItems", { returnObjects: true }) as string[];
+  const aboutParagraphs = t("about.paragraphs", { returnObjects: true }) as string[];
 
   return (
     <StickyHeaderProvider>
@@ -141,18 +107,20 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                  Your digital fixer &amp;{" "}
-                  <span className="text-secondary">creative sparring partner.</span>
+                  {t("hero.titleStart")}{" "}
+                  <span className="text-secondary">{t("hero.titleEnd")}</span>
                 </h1>
 
                 <div className="space-y-4 mt-6">
                   <p className="text-base md:text-lg text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
-                    A creative digital project manager who connects IT and business - rescuing stuck projects, untangling messy processes, and shipping prototypes and websites that actually work.
+                    {t("hero.lead")}
                   </p>
                   <ul className="space-y-2 text-sm md:text-base text-primary-foreground/85 max-w-xl">
-                    <li className="flex gap-3"><span className="text-secondary font-black mt-0.5">✓</span> Stuck project? I take it over and drive it to the finish line.</li>
-                    <li className="flex gap-3"><span className="text-secondary font-black mt-0.5">✓</span> IT and business disconnected? I translate and align.</li>
-                    <li className="flex gap-3"><span className="text-secondary font-black mt-0.5">✓</span> Got an idea? I build the prototype and the website.</li>
+                    {heroBullets.map((b, i) => (
+                      <li key={i} className="flex gap-3">
+                        <span className="text-secondary font-black mt-0.5">✓</span> {b}
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
@@ -162,7 +130,7 @@ const Index = () => {
                     className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
                     onClick={scrollToPlanner}
                   >
-                    Tell me where I can help
+                    {t("hero.ctaPrimary")}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                   <Button
@@ -174,7 +142,7 @@ const Index = () => {
                       window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
                     }}
                   >
-Call me
+                    {t("hero.ctaSecondary")}
                   </Button>
                 </div>
               </motion.div>
@@ -217,10 +185,10 @@ Call me
                 className="text-center mb-14"
               >
                 <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4">
-                  How I Help
+                  {t("services.title")}
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  Four ways to put me to work - pick the one that fits.
+                  {t("services.subtitle")}
                 </p>
               </motion.div>
 
@@ -255,7 +223,7 @@ Call me
                           onClick={scrollToPlanner}
                           className="text-primary font-semibold text-sm hover:underline inline-flex items-center justify-center gap-1"
                         >
-                          See it in action <ArrowRight className="h-4 w-4" />
+                          {t("services.cta")} <ArrowRight className="h-4 w-4" />
                         </button>
                       </div>
                     </motion.div>
@@ -279,10 +247,10 @@ Call me
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-secondary-foreground font-poppins mb-6 leading-[1.05]">
-                  Need a sparring partner?
+                  {t("sparring.title")}
                 </h2>
                 <p className="text-lg md:text-xl text-secondary-foreground/80 leading-relaxed mb-8">
-                  Sometimes the brief doesn't exist yet - you just need someone experienced to think it through with. Book a sparring session to challenge assumptions, structure your ideas, and define a clear direction before the real work begins.
+                  {t("sparring.body")}
                 </p>
                 <Button
                   size="lg"
@@ -292,7 +260,7 @@ Call me
                     window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
                   }}
                 >
-                  Book a sparring session
+                  {t("sparring.cta")}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </motion.div>
@@ -305,11 +273,13 @@ Call me
                 className="relative"
               >
                 <div className="bg-background/60 backdrop-blur-sm border-l-4 border-primary p-8 md:p-10 rounded-r-2xl">
-                  <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4">You'll walk away with</p>
+                  <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4">{t("sparring.walkAwayLabel")}</p>
                   <ul className="space-y-3 text-base md:text-lg text-secondary-foreground">
-                    <li className="flex gap-3"><span className="text-primary font-black">→</span> Clarity on what's actually the problem.</li>
-                    <li className="flex gap-3"><span className="text-primary font-black">→</span> A rough structure for how to tackle it.</li>
-                    <li className="flex gap-3"><span className="text-primary font-black">→</span> A concrete next step you can take this week.</li>
+                    {sparringWalkAway.map((item, i) => (
+                      <li key={i} className="flex gap-3">
+                        <span className="text-primary font-black">→</span> {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </motion.div>
@@ -330,9 +300,9 @@ Call me
                 transition={{ duration: 0.6 }}
                 className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4"
               >
-                The Es Venture Effect
+                {t("effect.title")}
               </motion.h2>
-              <p className="text-xl text-muted-foreground">I'm your project's personal caffeine shot.</p>
+              <p className="text-xl text-muted-foreground">{t("effect.subtitle")}</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-10 md:gap-6 max-w-5xl mx-auto mb-16">
@@ -354,10 +324,9 @@ Call me
 
             <div className="max-w-3xl mx-auto text-center mb-16">
               <blockquote className="text-xl md:text-2xl italic text-foreground/80 leading-relaxed">
-                "Esther didn't just manage our project — she kind of saved it. She's got this way of untangling messy
-                situations and getting everyone actually excited about what's next. Made a huge difference for us."
+                {t("effect.quote")}
               </blockquote>
-              <p className="mt-6 text-muted-foreground font-poppins">- A happy client</p>
+              <p className="mt-6 text-muted-foreground font-poppins">{t("effect.quoteAttribution")}</p>
             </div>
 
             {/* Client logos */}
@@ -368,7 +337,7 @@ Call me
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                Worked with
+                {t("effect.workedWith")}
               </motion.p>
               <motion.div
                 className="flex items-center gap-16 md:gap-24"
@@ -417,18 +386,12 @@ Call me
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground font-poppins mb-6">
-                  Hello, I'm <span className="text-primary">Esther.</span>
+                  {t("about.title")} <span className="text-primary">{t("about.name")}</span>
                 </h2>
                 <div className="space-y-4 text-base md:text-lg text-foreground/80 leading-relaxed">
-                  <p>
-                    I'm a creative digital project manager - which in practice means I'm the person you call when a project is stuck, a process is unclear, or an idea hasn't yet been built.
-                  </p>
-                  <p>
-                    I move quickly to understand your unique challenges. I'm equally comfortable leading a strategic whiteboard session with your management team as I am running a technical review with your developers. My core strength is bridging the gap between IT and the rest of your organisation, turning rough ideas into working prototypes and live websites, and making sure complex projects actually cross the finish line.
-                  </p>
-                  <p>
-                    I prioritise straightforward solutions and tangible action over lengthy reports. When we work together, you'll always know where things stand - and you'll always get practical strategies that simplify your operations and drive results.
-                  </p>
+                  {aboutParagraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
                 </div>
                 <div className="mt-8">
                   <Button
@@ -440,7 +403,7 @@ Call me
                     }}
                   >
                     <Mail className="mr-2 h-5 w-5" />
-                    Let's talk
+                    {t("about.cta")}
                   </Button>
                 </div>
               </motion.div>
@@ -454,7 +417,7 @@ Call me
         <ProjectPlanner />
       </CollapsibleSection>
 
-      {/* ─── 6. Contact CTA ─── */}
+      {/* ─── 8. Contact CTA ─── */}
       <CollapsibleSection id="contact-cta" title="🚀 Ready to make something happen?">
         <section id="contact" className="relative overflow-hidden bg-primary min-h-[70vh] flex items-center">
           <div
@@ -473,12 +436,11 @@ Call me
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
-                  Ready for an<br />
-                  <span className="text-secondary">Es Venture?</span>
+                  {t("contactCta.titleStart")}<br />
+                  <span className="text-secondary">{t("contactCta.titleEnd")}</span>
                 </h2>
                 <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-lg">
-                  Let's talk about what's on your plate. No pressure, no sales pitch - just a real conversation about how
-                  I can help you move forward.
+                  {t("contactCta.body")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Button
@@ -490,7 +452,7 @@ Call me
                     }}
                   >
                     <Mail className="mr-2 h-5 w-5" />
-                    Send email
+                    {t("contactCta.ctaEmail")}
                   </Button>
                   <Button
                     size="lg"
@@ -501,7 +463,7 @@ Call me
                       window.open("https://calendar.app.google/5GxNAzn7W3FJNMrh8", "_blank");
                     }}
                   >
-                    Book a call
+                    {t("contactCta.ctaCall")}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </div>
@@ -511,18 +473,18 @@ Call me
         </section>
       </CollapsibleSection>
 
-      {/* ─── 7. Footer ─── */}
+      {/* ─── 9. Footer ─── */}
       <footer className="bg-foreground py-14">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
             <div>
               <img src={logoEV} alt="Es Venture" className="h-10 brightness-0 invert mb-4" />
               <p className="text-sm text-background/60 leading-relaxed max-w-xs">
-                Your digital fixer & creative sparring partner. Based in the Netherlands, working with founders and teams across Europe.
+                {t("footer.tagline")}
               </p>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-background/50 mb-3">Get in touch</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-background/50 mb-3">{t("footer.getInTouch")}</p>
               <ul className="space-y-2 text-sm">
                 <li>
                   <a href="mailto:esther@esventure.nl" className="text-background/80 hover:text-secondary transition-colors">
@@ -531,34 +493,34 @@ Call me
                 </li>
                 <li>
                   <a href="https://www.linkedin.com/in/estherwoerdman/" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
-                    LinkedIn - Esther Woerdman
+                    {t("footer.linkedin")}
                   </a>
                 </li>
                 <li>
                   <a href="https://calendar.app.google/5GxNAzn7W3FJNMrh8" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
-                    Book a call
+                    {t("footer.bookCall")}
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-background/50 mb-3">More</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-background/50 mb-3">{t("footer.more")}</p>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link to="/privacy" className="text-background/80 hover:text-secondary transition-colors">
-                    Privacy Policy
+                    {t("footer.privacy")}
                   </Link>
                 </li>
                 <li>
                   <a href="https://plaiwrks.com" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
-                    AI-native projects? See Plaiwrks →
+                    {t("footer.plaiwrks")}
                   </a>
                 </li>
               </ul>
             </div>
           </div>
           <div className="border-t border-background/10 mt-10 pt-6 text-center">
-            <p className="text-xs text-background/50">© 2025 Es Venture. All rights reserved.</p>
+            <p className="text-xs text-background/50">{t("footer.rights")}</p>
           </div>
         </div>
       </footer>
