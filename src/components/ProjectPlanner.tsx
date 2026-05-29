@@ -255,6 +255,7 @@ const PlannerForm = ({
 };
 
 const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -288,9 +289,9 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
       if (!response.ok) throw new Error("Failed to submit");
 
       setIsSubmitted(true);
-      toast.success("Thanks! I'll be in touch soon.");
+      toast.success(t("planner.contact.success"));
     } catch (err) {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t("planner.contact.error"));
       console.error("Contact form error:", err);
     } finally {
       setIsSubmitting(false);
@@ -307,7 +308,7 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
         <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
           <Check className="h-4 w-4" />
         </div>
-        <span className="text-sm font-medium">I'll be in touch soon!</span>
+        <span className="text-sm font-medium">{t("planner.contact.successInline")}</span>
       </motion.div>
     );
   }
@@ -316,14 +317,14 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
     <form onSubmit={handleSubmit} className="space-y-3">
       <div className="grid grid-cols-2 gap-3">
         <Input
-          placeholder="First name"
+          placeholder={t("planner.contact.firstName")}
           value={formData.firstName}
           onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
           required
           className="bg-background border-secondary/30 focus:border-secondary"
         />
         <Input
-          placeholder="Last name"
+          placeholder={t("planner.contact.lastName")}
           value={formData.lastName}
           onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
           required
@@ -332,7 +333,7 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
       </div>
       <Input
         type="email"
-        placeholder="Email"
+        placeholder={t("planner.contact.email")}
         value={formData.email}
         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         required
@@ -340,7 +341,7 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
       />
       <Input
         type="tel"
-        placeholder="Phone (optional)"
+        placeholder={t("planner.contact.phone")}
         value={formData.phone}
         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
         className="bg-background border-secondary/30 focus:border-secondary"
@@ -353,11 +354,11 @@ const ContactForm = ({ projectPlan }: { projectPlan: string }) => {
         {isSubmitting ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Sending…
+            {t("planner.contact.sending")}
           </>
         ) : (
           <>
-            Send project details
+            {t("planner.contact.submit")}
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
           </>
         )}
