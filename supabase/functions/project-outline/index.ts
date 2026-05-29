@@ -645,12 +645,39 @@ serve(async (req) => {
 
   try {
     const { situation, handoff, urgency, budget, language } = await req.json();
+
+    // Server-side input validation
+    if (typeof situation !== 'string' || typeof handoff !== 'string' ||
+        situation.trim().length === 0 || handoff.trim().length === 0) {
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+    if (situation.length > 2000 || handoff.length > 1000) {
+      return new Response(JSON.stringify({ error: 'Input too long' }), {
+        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+    const allowedUrgency = ['Just exploring', 'Soon', 'Needs attention', "It's urgent 🔥", '', undefined, null];
+    const allowedBudget = ['< €1.000', '€1.000–€3.000', '€3.000–€6.000', '€6.000+', '', undefined, null];
+    if (urgency != null && !allowedUrgency.includes(urgency)) {
+      return new Response(JSON.stringify({ error: 'Invalid urgency value' }), {
+        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+    if (budget != null && !allowedBudget.includes(budget)) {
+      return new Response(JSON.stringify({ error: 'Invalid budget value' }), {
+        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     const responseLanguage = language === 'nl' ? 'nl' : 'en';
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
 
     if (!LOVABLE_API_KEY) {
       throw new Error('LOVABLE_API_KEY is not configured');
     }
+
 
     // 1. CLASSIFY SUPPORT TYPE (urgency can trigger Momentum override)
     const fullText = `${situation} ${handoff}`;
@@ -874,10 +901,10 @@ Generate the project plan using the structure above. Be human, warm, and direct.
 
   } catch (error) {
     console.error('Error in project-outline function:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return new Response(JSON.stringify({ error: errorMessage }), {
+    return new Response(JSON.stringify({ error: 'Failed to generate plan. Please try again.' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
+
 });
