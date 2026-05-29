@@ -7,6 +7,7 @@ import { toast } from "sonner";
 
 import ReactMarkdown from "react-markdown";
 import { analytics } from "@/lib/analytics";
+import { useTranslation } from "react-i18next";
 interface FormData {
   situation: string;
   handoff: string;
