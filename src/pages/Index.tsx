@@ -19,6 +19,7 @@ import lovensLogo from "@/assets/clients/lovens.png";
 import prioticketLogo from "@/assets/clients/prioticket.png";
 import rainforestLogo from "@/assets/clients/rainforest-alliance.png";
 import attractionworldLogo from "@/assets/clients/attractionworld.png";
+import landalLogo from "@/assets/clients/landal.png";
 import { analytics } from "@/lib/analytics";
 
 const ScrollDownArrow = () => {
@@ -65,6 +66,7 @@ const clients = [
   { src: prioticketLogo, alt: "Prioticket", url: "https://www.prioticket.com/" },
   { src: rainforestLogo, alt: "Rainforest Alliance", url: "https://www.rainforest-alliance.org/" },
   { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
+  { src: landalLogo, alt: "Landal", url: "https://www.landal.com/" },
 ];
 
 const serviceIcons = [FixerIcon, SparringIcon, MapIcon, MirrorIcon];
