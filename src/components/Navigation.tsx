@@ -33,6 +33,7 @@ const Navigation = () => {
   };
 
   const navLinks = [
+    { label: t("nav.whenToCallMe"), id: "when-to-call" },
     { label: t("nav.services"), id: "services" },
     { label: t("nav.about"), id: "about" },
   ];
