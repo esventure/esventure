@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { Zap, Scissors, CheckCircle2, HandHelping } from "lucide-react";
+import { Zap, Scissors, CheckCircle2, HandHelping, ArrowRight, CornerDownLeft } from "lucide-react";
 
 const WhenToCallMe = () => {
   const { t } = useTranslation();
@@ -38,24 +38,55 @@ const WhenToCallMe = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/60 border border-border/60 overflow-hidden rounded-2xl">
-            {triggers.map((tr, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.35, delay: i * 0.05 }}
-                className="bg-card p-8 group hover:bg-muted/40 transition-colors"
-              >
-                <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-                  {symptomLabel} {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins leading-tight mb-4">
-                  {tr}
-                </h3>
-                <div className="w-8 h-1 bg-secondary group-hover:w-16 transition-all duration-300" />
-              </motion.div>
-            ))}
+            {triggers.map((tr, i) => {
+              const isRowEnd = i % 3 === 2;
+              const isLast = i === triggers.length - 1;
+              const isRow1End = i === 2;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.35, delay: i * 0.05 }}
+                  className="relative bg-card p-8 group hover:bg-muted/40 transition-colors"
+                >
+                  <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
+                    {symptomLabel} {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins leading-tight mb-4">
+                    {tr}
+                  </h3>
+                  <div className="w-8 h-1 bg-secondary group-hover:w-16 transition-all duration-300" />
+
+                  {/* Flow arrow → next cell in same row */}
+                  {!isRowEnd && !isLast && (
+                    <div
+                      aria-hidden
+                      className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10 w-6 h-6 rounded-full bg-background border border-border/60 items-center justify-center text-muted-foreground/70 group-hover:text-primary group-hover:border-primary/40 transition-colors"
+                    >
+                      <ArrowRight
+                        className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5"
+                        strokeWidth={2.5}
+                      />
+                    </div>
+                  )}
+
+                  {/* Flow arrow ↓ snaking to next row */}
+                  {isRow1End && (
+                    <div
+                      aria-hidden
+                      className="hidden md:flex absolute -bottom-3 right-6 z-10 w-6 h-6 rounded-full bg-background border border-border/60 items-center justify-center text-muted-foreground/70 group-hover:text-primary group-hover:border-primary/40 transition-colors"
+                    >
+                      <CornerDownLeft
+                        className="w-3 h-3 transition-transform duration-300 group-hover:translate-y-0.5"
+                        strokeWidth={2.5}
+                      />
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
 
           <motion.p
