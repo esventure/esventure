@@ -19,6 +19,7 @@ import lovensLogo from "@/assets/clients/lovens.png";
 import prioticketLogo from "@/assets/clients/prioticket.png";
 import rainforestLogo from "@/assets/clients/rainforest-alliance.png";
 import attractionworldLogo from "@/assets/clients/attractionworld.png";
+import landalLogo from "@/assets/clients/landal.png";
 import { analytics } from "@/lib/analytics";
 
 const ScrollDownArrow = () => {
