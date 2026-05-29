@@ -37,7 +37,7 @@ const WhenToCallMe = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/60 border border-border/60 overflow-hidden rounded-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/60 border border-border/60 rounded-2xl [&>*:first-child]:md:rounded-tl-2xl [&>*:nth-child(3)]:md:rounded-tr-2xl [&>*:nth-child(4)]:md:rounded-bl-2xl [&>*:last-child]:md:rounded-br-2xl">
             {triggers.map((tr, i) => {
               const isRowEnd = i % 3 === 2;
               const isLast = i === triggers.length - 1;
