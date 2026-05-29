@@ -97,6 +97,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
 
+      <main>
       {/* ─── 1. Hero ─── */}
       <CollapsibleSection id="hero" title="👋 Your digital fixer & sparring partner">
         <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
