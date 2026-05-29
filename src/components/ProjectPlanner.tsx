@@ -511,6 +511,15 @@ const ProjectPlanner = () => {
 
     try {
       const language = (i18n.language || "en").startsWith("nl") ? "nl" : "en";
+      // Map NL urgency back to canonical English values the backend understands
+      const urgencyMap: Record<string, string> = {
+        "Aan het verkennen": "Just exploring",
+        "Binnenkort": "Soon",
+        "Vraagt aandacht": "Needs attention",
+        "Het is urgent 🔥": "It's urgent 🔥",
+      };
+      const urgencyForBackend = urgencyMap[formData.urgency] ?? formData.urgency;
+
       const response = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/project-outline`,
         {
@@ -519,9 +528,10 @@ const ProjectPlanner = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
           },
-          body: JSON.stringify({ ...formData, language }),
+          body: JSON.stringify({ ...formData, urgency: urgencyForBackend, language }),
         }
       );
+
 
       if (!response.ok) {
         throw new Error("Failed to generate plan");
