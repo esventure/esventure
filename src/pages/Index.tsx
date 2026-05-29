@@ -338,12 +338,6 @@ const Index = () => {
               ))}
             </div>
 
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <blockquote className="text-xl md:text-2xl italic text-foreground/80 leading-relaxed">
-                {t("effect.quote")}
-              </blockquote>
-              <p className="mt-6 text-muted-foreground font-poppins">{t("effect.quoteAttribution")}</p>
-            </div>
 
             {/* Client logos */}
             <div className="relative overflow-hidden">
