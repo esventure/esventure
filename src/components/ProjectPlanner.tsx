@@ -476,6 +476,7 @@ const ResultPanel = ({
 };
 
 const ProjectPlanner = () => {
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     situation: "",
     handoff: "",
@@ -489,7 +490,7 @@ const ProjectPlanner = () => {
 
   const scrollToResults = () => {
     if (resultPanelRef.current) {
-      const yOffset = -100; // Larger offset to show more context above
+      const yOffset = -100;
       const element = resultPanelRef.current;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
@@ -498,7 +499,6 @@ const ProjectPlanner = () => {
 
   useEffect(() => {
     if (isLoading && resultPanelRef.current) {
-      // Scroll immediately when loading starts
       setTimeout(scrollToResults, 150);
     }
   }, [isLoading]);
@@ -510,6 +510,7 @@ const ProjectPlanner = () => {
     setError(null);
 
     try {
+      const language = (i18n.language || "en").startsWith("nl") ? "nl" : "en";
       const response = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/project-outline`,
         {
@@ -518,7 +519,7 @@ const ProjectPlanner = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({ ...formData, language }),
         }
       );
 
@@ -530,32 +531,32 @@ const ProjectPlanner = () => {
       setResult(data.reply);
       analytics.projectPlannerSubmit({ urgency: formData.urgency, budget: formData.budget });
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError(t("planner.error"));
       console.error("Error generating plan:", err);
     } finally {
       setIsLoading(false);
     }
   };
 
+  const steps = [
+    { label: t("planner.steps.describe"), num: 1 },
+    { label: t("planner.steps.handoff"), num: 2 },
+    { label: t("planner.steps.details"), num: 3 },
+  ];
+
   return (
     <section id="project-planner" className="py-12 md:py-16 bg-background pb-[calc(1rem+env(safe-area-inset-bottom))]">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-5xl mx-auto">
-          {/* Header - centered */}
           <div className="mb-8 md:mb-12 text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-3 font-poppins">
-              Describe your situation.
+              {t("planner.title")}
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              I'll show you how we can fix it - in under a minute.
+              {t("planner.subtitle")}
             </p>
-            {/* Progress indicator */}
             <div className="flex items-center justify-center gap-3">
-              {[
-                { label: "Describe", num: 1 },
-                { label: "Handoff", num: 2 },
-                { label: "Details", num: 3 },
-              ].map((step, i) => (
+              {steps.map((step, i) => (
                 <React.Fragment key={step.label}>
                   {i > 0 && <div className="w-8 h-px bg-border" />}
                   <div className="flex items-center gap-2">
@@ -567,9 +568,7 @@ const ProjectPlanner = () => {
             </div>
           </div>
 
-          {/* Two-column layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left: Form with subtle background */}
             <div className="rounded-2xl bg-primary/5 p-6 md:p-8">
               <PlannerForm
                 formData={formData}
@@ -579,7 +578,6 @@ const ProjectPlanner = () => {
               />
             </div>
 
-            {/* Right: Results */}
             <div ref={resultPanelRef}>
               <ResultPanel result={result} isLoading={isLoading} />
             </div>
