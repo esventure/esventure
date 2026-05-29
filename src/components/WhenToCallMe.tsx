@@ -63,7 +63,7 @@ const WhenToCallMe = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-10 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed"
+            className="mt-10 text-base md:text-lg text-muted-foreground leading-relaxed"
           >
             {t("whenToCallMe.summary")}{" "}
             <span className="font-bold text-foreground border-b-2 border-primary">
