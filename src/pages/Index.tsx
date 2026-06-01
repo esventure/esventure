@@ -96,13 +96,14 @@ const Index = () => {
   return (
     <StickyHeaderProvider>
       <Helmet>
-        <title>Es Venture - Strategy, Design &amp; Delivery</title>
-        <meta name="description" content="Short-term, high-impact projects focused on clarity, structure and momentum. Fix it. Prototype it. Structure it." />
+        <title>Es Venture - Jouw digitale fixer &amp; creatieve sparringpartner</title>
+        <meta name="description" content="Es Venture trekt vastgelopen projecten vlot, ontwart rommelige processen en levert prototypes en websites op die écht werken. Strategie, design en delivery in één." />
         <link rel="canonical" href="https://esventure.nl/" />
-        <meta property="og:title" content="Es Venture - Strategy, Design & Delivery" />
-        <meta property="og:description" content="Short-term, high-impact projects focused on clarity, structure and momentum. Fix it. Prototype it. Structure it." />
+        <meta property="og:title" content="Es Venture - Jouw digitale fixer & creatieve sparringpartner" />
+        <meta property="og:description" content="Vastgelopen project, rommelig proces of idee dat nog gebouwd moet worden? Es Venture pakt door en levert op." />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:image" content="https://esventure.nl/og-image.png" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <div className="min-h-screen bg-background">
       <Navigation />
