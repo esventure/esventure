@@ -12,10 +12,14 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>Page Not Found - Es Venture</title>
-        <meta name="description" content="The page you're looking for doesn't exist. Return to Es Venture for strategy, design, and delivery services." />
+        <title>Pagina niet gevonden - Es Venture</title>
+        <meta name="description" content="De pagina die je zoekt bestaat niet. Ga terug naar Es Venture voor strategie, design en delivery." />
         <link rel="canonical" href="https://esventure.nl/404" />
         <meta name="robots" content="noindex" />
+        <meta property="og:title" content="Pagina niet gevonden - Es Venture" />
+        <meta property="og:description" content="De pagina die je zoekt bestaat niet. Ga terug naar Es Venture." />
+        <meta property="og:url" content="https://esventure.nl/404" />
+        <meta property="og:image" content="https://esventure.nl/og-image.png" />
       </Helmet>
       <div className="flex min-h-screen items-center justify-center bg-muted">
         <div className="text-center">

@@ -7,13 +7,14 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Helmet>
-        <title>Privacy Policy - Es Venture</title>
-        <meta name="description" content="Learn how Es Venture collects, uses, and protects your personal data. Read our privacy policy for data rights and cookie preferences." />
+        <title>Privacybeleid - Es Venture</title>
+        <meta name="description" content="Lees hoe Es Venture jouw persoonlijke gegevens verzamelt, gebruikt en beschermt. Inclusief jouw rechten onder de AVG en cookievoorkeuren." />
         <link rel="canonical" href="https://esventure.nl/privacy" />
-        <meta property="og:title" content="Privacy Policy - Es Venture" />
-        <meta property="og:description" content="Learn how Es Venture collects, uses, and protects your personal data. Read our privacy policy for data rights and cookie preferences." />
+        <meta property="og:title" content="Privacybeleid - Es Venture" />
+        <meta property="og:description" content="Lees hoe Es Venture jouw persoonlijke gegevens verzamelt, gebruikt en beschermt. Inclusief jouw rechten en cookievoorkeuren." />
         <meta property="og:url" content="https://esventure.nl/privacy" />
         <meta property="og:image" content="https://esventure.nl/og-image.png" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12 max-w-3xl">
