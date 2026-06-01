@@ -104,6 +104,20 @@ const Index = () => {
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:image" content="https://esventure.nl/og-image.png" />
         <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Es Venture",
+            "url": "https://esventure.nl",
+            "description": "Jouw digitale fixer en creatieve sparringpartner voor strategie, design en delivery.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Amsterdam",
+              "addressCountry": "NL"
+            }
+          })}
+        </script>
       </Helmet>
       <div className="min-h-screen bg-background">
       <Navigation />
