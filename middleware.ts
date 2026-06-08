@@ -1,6 +1,6 @@
 import { next } from '@vercel/edge';
 
-const BOT_REGEX = /googlebot|bingbot|linkedinbot|twitterbot|facebookexternalhit|slackbot|whatsapp|discordbot|telegrambot|applebot|baiduspider|yandex|duckduckbot|ia_archiver|gptbot|claudebot|perplexitybot|prerender/i;
+const BOT_REGEX = /googlebot|bingbot|linkedinbot|twitterbot|facebookexternalhit|slackbot|whatsapp|discordbot|telegrambot|applebot|baiduspider|yandex|duckduckbot|ia_archiver|gptbot|claudebot|perplexitybot/i;
 
 export const config = {
   matcher: '/((?!api|_next|.*\\.).*)',
@@ -8,6 +8,11 @@ export const config = {
 
 export default async function middleware(request: Request) {
   const ua = request.headers.get('user-agent') || '';
+
+  if (request.headers.get('x-prerender') || /prerender/i.test(ua)) {
+    return next();
+  }
+
   if (!BOT_REGEX.test(ua)) {
     return next();
   }
