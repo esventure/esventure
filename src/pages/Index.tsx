@@ -96,11 +96,11 @@ const Index = () => {
   return (
     <StickyHeaderProvider>
       <Helmet>
-        <title>Es Venture — Wat het ook is, als het digitaal is, regel ik het.</title>
+        <title>Es Venture - Wat het ook is, als het digitaal is, regel ik het.</title>
         <meta name="description" content="Van gedurfde nieuwe ideeën tot vastgelopen projecten: Es Venture is de digitale partner voor founders en teams die iemand nodig hebben die het bedenkt, bouwt en oplevert." />
         <link rel="canonical" href="https://esventure.nl/" />
-        <meta property="og:title" content="Es Venture — Wat het ook is, als het digitaal is, regel ik het." />
-        <meta property="og:description" content="Wat het ook is, als het digitaal is, regel ik het. Denken, bouwen, opleveren — samen." />
+        <meta property="og:title" content="Es Venture - Wat het ook is, als het digitaal is, regel ik het." />
+        <meta property="og:description" content="Wat het ook is, als het digitaal is, regel ik het. Denken, bouwen, opleveren - samen." />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:image" content="https://esventure.nl/og-image.png" />
         <meta property="og:type" content="website" />
@@ -110,7 +110,7 @@ const Index = () => {
             "@type": "ProfessionalService",
             "name": "Es Venture",
             "url": "https://esventure.nl",
-            "description": "Jouw digitale partner voor denken, bouwen en opleveren — van idee tot live.",
+            "description": "Jouw digitale partner voor denken, bouwen en opleveren - van idee tot live.",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Amsterdam",
@@ -124,7 +124,7 @@ const Index = () => {
 
       <main>
       {/* ─── 1. Hero ─── */}
-      <CollapsibleSection id="hero" title="👋 Whatever it is — if it's digital, I've got it.">
+      <CollapsibleSection id="hero" title="👋 Whatever it is - if it's digital, I've got it.">
         <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
           <div className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16 flex-1 flex items-center">
             <div className="grid md:grid-cols-[1.2fr_1fr] gap-8 md:gap-12 max-w-7xl mx-auto items-center w-full">

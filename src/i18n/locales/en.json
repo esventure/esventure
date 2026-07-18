@@ -11,10 +11,10 @@
     "nl": "NL"
   },
   "hero": {
-    "titleStart": "Whatever it is — if it's",
+    "titleStart": "Whatever it is - if it's",
     "titleEnd": "digital",
     "titleAfter": "I've got it.",
-    "lead": "From bold new ideas to stuck projects going nowhere — I'm the digital partner founders and teams call when they need someone who can think it, build it, and ship it.",
+    "lead": "From bold new ideas to stuck projects going nowhere - I'm the digital partner founders and teams call when they need someone who can think it, build it, and ship it.",
     "bullets": [
       "Got a project? I drive it from idea to live.",
       "Need a digital strategy? I think it through and make it real.",
@@ -25,7 +25,7 @@
   },
   "whenToCallMe": {
     "title": "When to Call Me",
-    "subtitle": "Whether you're building something new or fixing something broken — these are the moments I show up.",
+    "subtitle": "Whether you're building something new or fixing something broken - these are the moments I show up.",
     "symptomLabel": "Symptom",
     "triggers": [
       "You're launching something and need a digital partner from day one.",
@@ -85,7 +85,7 @@
   },
   "effect": {
     "title": "The Es Venture Effect",
-    "subtitle": "I'm your digital partner — for whatever comes next.",
+    "subtitle": "I'm your digital partner - for whatever comes next.",
     "pillars": [
       {
         "title": "Absolute Clarity",
@@ -155,7 +155,7 @@
     "ctaCall": "Book a call"
   },
   "footer": {
-    "tagline": "Whatever it is — if it's digital, I've got it. Based in the Netherlands, working with founders and teams across Europe.",
+    "tagline": "Whatever it is - if it's digital, I've got it. Based in the Netherlands, working with founders and teams across Europe.",
     "getInTouch": "Get in touch",
     "more": "More",
     "linkedin": "LinkedIn - Esther Woerdman",
