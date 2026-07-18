@@ -11,28 +11,29 @@
     "nl": "NL"
   },
   "hero": {
-    "titleStart": "Your digital fixer &",
-    "titleEnd": "creative sparring partner.",
-    "lead": "A creative digital project manager who connects IT and business - rescuing stuck projects, untangling messy processes, and shipping prototypes and websites that actually work.",
+    "titleStart": "Whatever it is — if it's",
+    "titleEnd": "digital",
+    "titleAfter": "I've got it.",
+    "lead": "From bold new ideas to stuck projects going nowhere — I'm the digital partner founders and teams call when they need someone who can think it, build it, and ship it.",
     "bullets": [
-      "Stuck project? I take it over and drive it to the finish line.",
-      "IT and business disconnected? I translate and align.",
-      "Got an idea? I build the prototype and the website."
+      "Got a project? I drive it from idea to live.",
+      "Need a digital strategy? I think it through and make it real.",
+      "Want a partner who actually does the work? That's me."
     ],
     "ctaPrimary": "Tell me where I can help",
     "ctaSecondary": "Call me"
   },
   "whenToCallMe": {
     "title": "When to Call Me",
-    "subtitle": "If any of these sound familiar, we should talk.",
+    "subtitle": "Whether you're building something new or fixing something broken — these are the moments I show up.",
     "symptomLabel": "Symptom",
     "triggers": [
-      "It's been 'almost done' for months",
-      "You're the founder doing all the things",
-      "Your tools don't talk to each other",
-      "Great ideas die in Notion",
-      "Nobody actually owns it",
-      "Someone left, and left a mess"
+      "You're launching something and need a digital partner from day one.",
+      "A project is stuck and nobody owns it.",
+      "You've got an idea but no idea how to build it.",
+      "Your tools and teams don't talk to each other.",
+      "You want a website or prototype that actually works.",
+      "You need someone who can sit with the developers and the board."
     ],
     "summary": "If it's messy, stuck, ownerless, or quietly draining your team -",
     "summaryEm": "that's where I come in.",
@@ -50,7 +51,7 @@
     "cta": "See it in action",
     "items": [
       {
-        "label": "The Fixer",
+        "label": "The Driver",
         "title": "Let's Get It Moving",
         "description": "That stuck project, that half-finished initiative, that thing nobody owns. I step in, take charge, and drive it forward until it actually ships."
       },
@@ -84,7 +85,7 @@
   },
   "effect": {
     "title": "The Es Venture Effect",
-    "subtitle": "I'm your project's personal caffeine shot.",
+    "subtitle": "I'm your digital partner — for whatever comes next.",
     "pillars": [
       {
         "title": "Absolute Clarity",
@@ -154,7 +155,7 @@
     "ctaCall": "Book a call"
   },
   "footer": {
-    "tagline": "Your digital fixer & creative sparring partner. Based in the Netherlands, working with founders and teams across Europe.",
+    "tagline": "Whatever it is — if it's digital, I've got it. Based in the Netherlands, working with founders and teams across Europe.",
     "getInTouch": "Get in touch",
     "more": "More",
     "linkedin": "LinkedIn - Esther Woerdman",

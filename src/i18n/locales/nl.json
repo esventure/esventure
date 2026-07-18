@@ -11,28 +11,29 @@
     "nl": "NL"
   },
   "hero": {
-    "titleStart": "Jouw digitale fixer &",
-    "titleEnd": "creatieve sparringpartner.",
-    "lead": "Een creatieve digitale projectmanager die IT en business verbindt - vastgelopen projecten vlot trekt, rommelige processen ontwart, en prototypes en websites oplevert die écht werken.",
+    "titleStart": "Wat het ook is — als het",
+    "titleEnd": "digitaal",
+    "titleAfter": "is, regel ik het.",
+    "lead": "Van gedurfde nieuwe ideeën tot vastgelopen projecten die nergens heen gaan — ik ben de digitale partner voor founders en teams die iemand nodig hebben die het kan bedenken, bouwen en opleveren.",
     "bullets": [
-      "Project vastgelopen? Ik neem het over en breng het over de finish.",
-      "IT en business op verschillende eilanden? Ik vertaal en breng ze samen.",
-      "Een idee? Ik bouw het prototype én de website."
+      "Een project? Ik breng het van idee tot live.",
+      "Een digitale strategie nodig? Ik denk het uit en maak het concreet.",
+      "Een partner die écht het werk doet? Dat ben ik."
     ],
     "ctaPrimary": "Vertel waar ik kan helpen",
     "ctaSecondary": "Bel me"
   },
   "whenToCallMe": {
     "title": "Wanneer mij te bellen",
-    "subtitle": "Klinkt iets hiervan bekend? Dan moeten we praten.",
+    "subtitle": "Of je nu iets nieuws bouwt of iets kapots herstelt — dit zijn de momenten waarop ik opduik.",
     "symptomLabel": "Symptoom",
     "triggers": [
-      "Al maanden 'bijna af'",
-      "Jij bent de founder die alles doet",
-      "Je tools praten niet met elkaar",
-      "Goede ideeën sterven in Notion",
-      "Niemand is écht eigenaar",
-      "Iemand vertrok en liet een chaos achter"
+      "Je lanceert iets en hebt vanaf dag één een digitale partner nodig.",
+      "Een project zit muurvast en niemand is eigenaar.",
+      "Je hebt een idee maar geen idee hoe je het bouwt.",
+      "Je tools en teams praten niet met elkaar.",
+      "Je wilt een website of prototype dat écht werkt.",
+      "Je hebt iemand nodig die zowel bij developers als bij het bestuur aan tafel zit."
     ],
     "summary": "Als het rommelig, vastgelopen of zonder eigenaar is, of stilletjes je team leegtrekt -",
     "summaryEm": "daar kom ik om de hoek.",
@@ -50,7 +51,7 @@
     "cta": "Zie het in actie",
     "items": [
       {
-        "label": "The Fixer",
+        "label": "The Driver",
         "title": "Laten we het in beweging krijgen",
         "description": "Dat vastgelopen project, dat half-afgemaakte initiatief, dat ding waarvan niemand eigenaar is. Ik stap in, neem de leiding en breng het écht over de finish."
       },
@@ -84,7 +85,7 @@
   },
   "effect": {
     "title": "Het Es Venture Effect",
-    "subtitle": "Ik ben de espresso-shot voor jouw project.",
+    "subtitle": "Ik ben je digitale partner — voor wat er ook komt.",
     "pillars": [
       {
         "title": "Absolute helderheid",
@@ -154,7 +155,7 @@
     "ctaCall": "Boek een gesprek"
   },
   "footer": {
-    "tagline": "Jouw digitale fixer & creatieve sparringpartner. Gevestigd in Nederland, werkend met founders en teams door heel Europa.",
+    "tagline": "Wat het ook is — als het digitaal is, regel ik het. Gevestigd in Nederland, werkend met founders en teams door heel Europa.",
     "getInTouch": "Contact",
     "more": "Meer",
     "linkedin": "LinkedIn - Esther Woerdman",

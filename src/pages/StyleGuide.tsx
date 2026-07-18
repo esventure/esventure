@@ -169,7 +169,7 @@ const StyleGuide = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { Icon: FixerIcon, label: "The Fixer", title: "Let's Get It Moving" },
+              { Icon: FixerIcon, label: "The Driver", title: "Let's Get It Moving" },
               { Icon: SparringIcon, label: "The Sparring Room", title: "Let's Think It Through" },
               { Icon: MapIcon, label: "The Map", title: "Let's Make It Flow" },
               { Icon: MirrorIcon, label: "The Mirror", title: "Let's Make It Yours" },
