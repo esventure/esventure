@@ -11,13 +11,14 @@
     "nl": "NL"
   },
   "hero": {
-    "titleStart": "Your digital fixer &",
-    "titleEnd": "creative sparring partner.",
-    "lead": "A creative digital project manager who connects IT and business - rescuing stuck projects, untangling messy processes, and shipping prototypes and websites that actually work.",
+    "titleStart": "Whatever it is — if it's",
+    "titleEnd": "digital",
+    "titleAfter": "I've got it.",
+    "lead": "From bold new ideas to stuck projects going nowhere — I'm the digital partner founders and teams call when they need someone who can think it, build it, and ship it.",
     "bullets": [
-      "Stuck project? I take it over and drive it to the finish line.",
-      "IT and business disconnected? I translate and align.",
-      "Got an idea? I build the prototype and the website."
+      "Got a project? I drive it from idea to live.",
+      "Need a digital strategy? I think it through and make it real.",
+      "Want a partner who actually does the work? That's me."
     ],
     "ctaPrimary": "Tell me where I can help",
     "ctaSecondary": "Call me"
