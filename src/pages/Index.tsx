@@ -96,11 +96,11 @@ const Index = () => {
   return (
     <StickyHeaderProvider>
       <Helmet>
-        <title>Es Venture - Jouw digitale fixer &amp; creatieve sparringpartner</title>
-        <meta name="description" content="Es Venture trekt vastgelopen projecten vlot, ontwart rommelige processen en levert prototypes en websites op die écht werken. Strategie, design en delivery in één." />
+        <title>Es Venture — Wat het ook is, als het digitaal is, regel ik het.</title>
+        <meta name="description" content="Van gedurfde nieuwe ideeën tot vastgelopen projecten: Es Venture is de digitale partner voor founders en teams die iemand nodig hebben die het bedenkt, bouwt en oplevert." />
         <link rel="canonical" href="https://esventure.nl/" />
-        <meta property="og:title" content="Es Venture - Jouw digitale fixer & creatieve sparringpartner" />
-        <meta property="og:description" content="Vastgelopen project, rommelig proces of idee dat nog gebouwd moet worden? Es Venture pakt door en levert op." />
+        <meta property="og:title" content="Es Venture — Wat het ook is, als het digitaal is, regel ik het." />
+        <meta property="og:description" content="Wat het ook is, als het digitaal is, regel ik het. Denken, bouwen, opleveren — samen." />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:image" content="https://esventure.nl/og-image.png" />
         <meta property="og:type" content="website" />
@@ -110,7 +110,7 @@ const Index = () => {
             "@type": "ProfessionalService",
             "name": "Es Venture",
             "url": "https://esventure.nl",
-            "description": "Jouw digitale fixer en creatieve sparringpartner voor strategie, design en delivery.",
+            "description": "Jouw digitale partner voor denken, bouwen en opleveren — van idee tot live.",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Amsterdam",
