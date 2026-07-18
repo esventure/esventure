@@ -25,15 +25,15 @@
   },
   "whenToCallMe": {
     "title": "Wanneer mij te bellen",
-    "subtitle": "Klinkt iets hiervan bekend? Dan moeten we praten.",
+    "subtitle": "Of je nu iets nieuws bouwt of iets kapots herstelt — dit zijn de momenten waarop ik opduik.",
     "symptomLabel": "Symptoom",
     "triggers": [
-      "Al maanden 'bijna af'",
-      "Jij bent de founder die alles doet",
-      "Je tools praten niet met elkaar",
-      "Goede ideeën sterven in Notion",
-      "Niemand is écht eigenaar",
-      "Iemand vertrok en liet een chaos achter"
+      "Je lanceert iets en hebt vanaf dag één een digitale partner nodig.",
+      "Een project zit muurvast en niemand is eigenaar.",
+      "Je hebt een idee maar geen idee hoe je het bouwt.",
+      "Je tools en teams praten niet met elkaar.",
+      "Je wilt een website of prototype dat écht werkt.",
+      "Je hebt iemand nodig die zowel bij developers als bij het bestuur aan tafel zit."
     ],
     "summary": "Als het rommelig, vastgelopen of zonder eigenaar is, of stilletjes je team leegtrekt -",
     "summaryEm": "daar kom ik om de hoek.",
