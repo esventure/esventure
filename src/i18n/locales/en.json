@@ -25,15 +25,15 @@
   },
   "whenToCallMe": {
     "title": "When to Call Me",
-    "subtitle": "If any of these sound familiar, we should talk.",
+    "subtitle": "Whether you're building something new or fixing something broken — these are the moments I show up.",
     "symptomLabel": "Symptom",
     "triggers": [
-      "It's been 'almost done' for months",
-      "You're the founder doing all the things",
-      "Your tools don't talk to each other",
-      "Great ideas die in Notion",
-      "Nobody actually owns it",
-      "Someone left, and left a mess"
+      "You're launching something and need a digital partner from day one.",
+      "A project is stuck and nobody owns it.",
+      "You've got an idea but no idea how to build it.",
+      "Your tools and teams don't talk to each other.",
+      "You want a website or prototype that actually works.",
+      "You need someone who can sit with the developers and the board."
     ],
     "summary": "If it's messy, stuck, ownerless, or quietly draining your team -",
     "summaryEm": "that's where I come in.",
