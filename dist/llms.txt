@@ -1,0 +1,11 @@
+# Es Venture
+
+> Whatever it is - if it's digital, I've got it. A digital partner for founders and teams who need someone to think it, build it, and ship it.
+
+Es Venture is the personal practice of Esther - a digital partner who helps founders and teams build new things, fix stuck projects, and ship work that actually matters. The site operates as a one-page "User Manual": visitors scroll through a structured narrative that explains when to reach out, what kinds of work Esther takes on, and how to start a project.
+
+## Pages
+
+- [Home](/): Overview of services, client logos, project planner, and contact.
+- [Privacy Policy](/privacy): Data handling and privacy terms.
+- [Style Guide](/styleguide): Brand colors, typography, and component reference.
