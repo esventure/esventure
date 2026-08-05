@@ -4,8 +4,11 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import en from "./locales/en.json";
 import nl from "./locales/nl.json";
 
-i18n
-  .use(LanguageDetector)
+const isBrowser = typeof window !== "undefined";
+
+const instance = i18n;
+if (isBrowser) instance.use(LanguageDetector);
+instance
   .use(initReactI18next)
   .init({
     resources: {
