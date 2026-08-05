@@ -50,7 +50,7 @@ const ServicesWorkbench = ({ onCta }: Props) => {
                 >
                   {/* Accent block peeking from behind */}
                   <div
-                    className={`absolute inset-0 rounded-3xl ${accents[i]} opacity-60 translate-x-2 translate-y-2 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4`}
+                    className={`absolute inset-0 rounded-3xl ${accents[i]} opacity-30 translate-x-1.5 translate-y-1.5 transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3`}
                   />
                   <div
                     className={`relative rounded-3xl bg-card border border-border/70 p-8 md:p-10 shadow-sm transition-all duration-300 ${tilts[i]} group-hover:rotate-0 group-hover:shadow-lg`}

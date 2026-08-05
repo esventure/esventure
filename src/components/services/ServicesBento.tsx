@@ -32,8 +32,8 @@ const ServicesBento = ({ onCta }: Props) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.5, delay: i * 0.08 }}
-        className={`group relative flex flex-col rounded-3xl border border-border/70 bg-card p-8 md:p-10 transition-colors hover:border-primary/40 ${
-          hero ? "md:row-span-2 justify-between" : ""
+        className={`group relative flex flex-col justify-between rounded-3xl border border-border/70 bg-card p-8 md:p-10 transition-colors hover:border-primary/40 ${
+          hero ? "md:bg-primary/[0.04]" : ""
         }`}
       >
         <div>
