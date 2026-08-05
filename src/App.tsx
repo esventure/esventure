@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import StyleGuide from "./pages/StyleGuide";
+import HowIHelpDirections from "./pages/HowIHelpDirections";
 import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/styleguide" element={<StyleGuide />} />
+          <Route path="/how-i-help-directions" element={<HowIHelpDirections />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
