@@ -1,18 +1,6 @@
-import { createRoot, hydrateRoot } from "react-dom/client";
-import { HelmetProvider } from "react-helmet-async";
-import App from "./App.tsx";
+import { ViteReactSSG } from "vite-react-ssg";
+import { routes } from "./routes";
 import "./index.css";
 import "./i18n";
 
-const rootElement = document.getElementById("root")!;
-const app = (
-  <HelmetProvider>
-    <App />
-  </HelmetProvider>
-);
-
-if (rootElement.hasChildNodes()) {
-  hydrateRoot(rootElement, app);
-} else {
-  createRoot(rootElement).render(app);
-}
+export const createRoot = ViteReactSSG({ routes });
