@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Mail, Check, AlertCircle, Star, Download } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import logoEV from "@/assets/logo-ev.svg";
 import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 
@@ -20,7 +20,7 @@ const ColorSwatch = ({ name, variable, cssVar }: { name: string; variable: strin
 const StyleGuide = () => {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Style Guide - Es Venture</title>
         <meta name="description" content="De Es Venture brand style guide. Ontdek onze kleuren, typografie, buttons, iconen, spacing en tone of voice." />
         <link rel="canonical" href="https://esventure.nl/styleguide" />
@@ -29,7 +29,7 @@ const StyleGuide = () => {
         <meta property="og:url" content="https://esventure.nl/styleguide" />
         <meta property="og:image" content="https://esventure.nl/og-image.png" />
         <meta property="og:type" content="website" />
-      </Helmet>
+      </Head>
       <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card sticky top-0 z-50">

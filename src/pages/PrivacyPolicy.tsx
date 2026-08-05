@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 
 const PrivacyPolicy = () => {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Privacybeleid - Es Venture</title>
         <meta name="description" content="Lees hoe Es Venture jouw persoonlijke gegevens verzamelt, gebruikt en beschermt. Inclusief jouw rechten onder de AVG en cookievoorkeuren." />
         <link rel="canonical" href="https://esventure.nl/privacy" />
@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
         <meta property="og:url" content="https://esventure.nl/privacy" />
         <meta property="og:image" content="https://esventure.nl/og-image.png" />
         <meta property="og:type" content="website" />
-      </Helmet>
+      </Head>
       <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <Link to="/">

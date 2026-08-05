@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ServicesBento from "@/components/services/ServicesBento";
@@ -51,10 +51,10 @@ const HowIHelpDirections = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
+      <Head>
         <title>How I Help - Design Directions | Es Venture</title>
         <meta name="robots" content="noindex, nofollow" />
-      </Helmet>
+      </Head>
 
       {/* Control bar */}
       <header className="sticky top-0 z-50 bg-background/90 backdrop-blur border-b border-border">
