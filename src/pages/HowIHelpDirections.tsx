@@ -9,16 +9,19 @@ import LanguageToggle from "@/components/LanguageToggle";
 
 const directions = [
   {
+    short: "Toolkit",
     name: "Direction 1 - Partner's Toolkit",
     blurb: "Bento grid with a hero tile and prominent line icons.",
     Component: ServicesBento,
   },
   {
+    short: "Journey",
     name: "Direction 2 - Journey Path",
     blurb: "Four stops along a connecting path, infographic style.",
     Component: ServicesJourney,
   },
   {
+    short: "Workbench",
     name: "Direction 3 - Modular Workbench",
     blurb: "Tactile offset cards with accent blocks peeking out.",
     Component: ServicesWorkbench,
@@ -31,7 +34,7 @@ const HowIHelpDirections = () => {
 
   const go = React.useCallback((next: number) => {
     setIndex((cur) => {
-      const clamped = Math.max(0, Math.min(directions.length - 1, next));
+      const clamped = (next + directions.length) % directions.length;
       setDir(clamped > cur ? 1 : clamped < cur ? -1 : 0);
       return clamped;
     });
@@ -45,6 +48,21 @@ const HowIHelpDirections = () => {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [index, go]);
+
+  // Native pointer/touch swipe: horizontal-dominant gestures only, so vertical scroll keeps working.
+  const start = React.useRef<{ x: number; y: number } | null>(null);
+  const onPointerDown = (e: React.PointerEvent) => {
+    start.current = { x: e.clientX, y: e.clientY };
+  };
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (!start.current) return;
+    const dx = e.clientX - start.current.x;
+    const dy = e.clientY - start.current.y;
+    start.current = null;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      go(index + (dx < 0 ? 1 : -1));
+    }
+  };
 
   const current = directions[index];
   const Current = current.Component;
@@ -70,29 +88,15 @@ const HowIHelpDirections = () => {
             <LanguageToggle />
             <button
               onClick={() => go(index - 1)}
-              disabled={index === 0}
               aria-label="Previous direction"
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground transition-colors hover:bg-muted disabled:opacity-40"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground transition-colors hover:bg-muted"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <div className="flex items-center gap-2">
-              {directions.map((d, i) => (
-                <button
-                  key={i}
-                  onClick={() => go(i)}
-                  aria-label={d.name}
-                  className={`h-2.5 rounded-full transition-all ${
-                    i === index ? "w-7 bg-primary" : "w-2.5 bg-border hover:bg-muted-foreground/50"
-                  }`}
-                />
-              ))}
-            </div>
             <button
               onClick={() => go(index + 1)}
-              disabled={index === directions.length - 1}
               aria-label="Next direction"
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground transition-colors hover:bg-muted disabled:opacity-40"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground transition-colors hover:bg-muted"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -100,7 +104,11 @@ const HowIHelpDirections = () => {
         </div>
       </header>
 
-      <main className="overflow-hidden">
+      <main
+        className="overflow-hidden touch-pan-y select-none"
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+      >
         <AnimatePresence mode="wait" custom={dir}>
           <motion.div
             key={index}
@@ -109,21 +117,47 @@ const HowIHelpDirections = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: dir >= 0 ? -80 : 80 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.2}
-            onDragEnd={(_, info) => {
-              if (info.offset.x < -80) go(index + 1);
-              else if (info.offset.x > 80) go(index - 1);
-            }}
           >
             <Current onCta={() => undefined} />
           </motion.div>
         </AnimatePresence>
       </main>
 
-      <footer className="container mx-auto px-4 py-10 text-center text-sm text-muted-foreground">
-        Swipe, drag, use the arrow keys or the dots to compare the three directions.
+      {/* Floating switcher */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <div className="flex items-center gap-1 rounded-full border border-border bg-background/95 backdrop-blur px-2 py-2 shadow-lg">
+          <button
+            onClick={() => go(index - 1)}
+            aria-label="Previous direction"
+            className="w-9 h-9 rounded-full flex items-center justify-center text-foreground transition-colors hover:bg-muted"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          {directions.map((d, i) => (
+            <button
+              key={i}
+              onClick={() => go(i)}
+              className={`px-4 py-2 rounded-full text-sm font-bold transition-colors ${
+                i === index
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:bg-muted"
+              }`}
+            >
+              {d.short}
+            </button>
+          ))}
+          <button
+            onClick={() => go(index + 1)}
+            aria-label="Next direction"
+            className="w-9 h-9 rounded-full flex items-center justify-center text-foreground transition-colors hover:bg-muted"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      <footer className="container mx-auto px-4 pt-10 pb-28 text-center text-sm text-muted-foreground">
+        Swipe horizontally, use the arrow keys, or tap a direction below to compare.
       </footer>
     </div>
   );
