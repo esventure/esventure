@@ -10,6 +10,7 @@ import { Head } from "vite-react-ssg";
 import { useTranslation } from "react-i18next";
 import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 import WhenToCallMe from "@/components/WhenToCallMe";
+import ServicesWorkbench from "@/components/services/ServicesWorkbench";
 import CollapsibleSection, { StickyHeaderProvider } from "@/components/CollapsibleSection";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
