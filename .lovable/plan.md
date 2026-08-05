@@ -1,60 +1,35 @@
-# Redesign Plan: How I Help Section
+# How I Help: Three Swipeable Design Directions
 
 ## Goal
-Make the **How I Help** (services) section more visually pleasing and distinctive. The current alternating editorial split layout is tidy but still feels repetitive and text-heavy. We want an out-of-the-box, creative layout that supports the four service offerings while keeping the brand voice bold and direct.
+Build all three redesign directions for the **How I Help** section as real, working variants you can swipe through side by side, then pick a winner. The live homepage section stays untouched until you choose.
 
-## Current State
-- Section lives in `src/pages/Index.tsx` inside the `CollapsibleSection id="how-i-help"` block.
-- It renders four services: The Driver, The Sparring Room, The Map, The Mirror.
-- Each service currently shows: chapter number, label, title, description, and a small CTA.
-- The current treatment uses a left/right alternating editorial split with large watermark numerals and top-border dividers.
+## What you'll get
+A preview page at `/how-i-help-directions` with:
+- Three full-width variants stacked in a horizontal carousel, one per screen.
+- Swipe on touch, drag with the mouse, arrow keys, and clickable dots plus prev/next buttons.
+- A small label per slide ("Direction 1 - Partner's Toolkit", etc.) with a one-line description of the idea.
+- Language toggle respected, so both EN and NL copy render correctly.
 
-## Constraints
-- Keep the four services and their existing descriptions (no copy changes beyond the current state).
-- Preserve the brand colors: primary purple (#BF5AF2) and secondary yellow (#EEF0A3).
-- Keep Poppins headings and Nunito Sans body.
-- Stay within the existing one-page layout and sticky-section system.
-- Maintain the current scroll-to-planner CTA behavior.
+## The three directions
 
-## Three Creative Directions
+### Direction 1 - Partner's Toolkit (bento)
+Four services as a mixed-size bento grid on a soft tinted surface. The Driver takes the large hero tile; the other three fill a 2x2 cluster. Each tile leads with a prominent outlined icon, a hairline border, and a yellow accent line that draws in on hover.
 
-### Direction 1: The Partner's Toolkit (bento-style grid)
-Arrange the four services as a **mixed-size bento grid** on a soft tinted background.
-- The Driver is the largest tile (top-left), signalling it as the flagship offer.
-- The remaining three tiles sit beside and below it in a 2x2 arrangement.
-- Each tile gets a large, outlined Lucide icon at the top, a tinted background, and a subtle border.
-- Hover reveals a secondary yellow accent line or shifts the icon slightly.
-- This breaks the repetition of the alternating split and gives the section a modern, tool-like feel.
+### Direction 2 - Journey Path (infographic)
+The four services become four stops along a connecting path. Circular icon markers sit on a dotted line that animates in as you scroll, with title and short description under each stop. Reads as a progression: unblock, shape, streamline, present. Folds into a vertical timeline on mobile.
 
-### Direction 2: The Journey Path (horizontal narrative)
-Present the four services as **four stops along a continuous path**.
-- A subtle horizontal line or dotted path connects the services across the viewport.
-- Each stop is a circular or pill-shaped marker containing the large line icon, with the title and short description below it.
-- The path gently implies a progression: from unblocking (Driver), to shaping (Sparring Room), to streamlining (Map), to presenting (Mirror).
-- On mobile, the path folds into a vertical timeline.
-- This gives the section a storytelling, infographic quality without extra copy.
+### Direction 3 - Modular Workbench (tactile cards)
+Four cards laid out like tools on a bench: soft shadows, slight offsets, prominent line icons, and purple or yellow color blocks peeking from behind each card on hover. A single shared CTA sits at the bottom instead of one per service.
 
-### Direction 3: The Modular Workbench (card-based masonry)
-Show the four services as **four tilted or stacked cards on a workbench surface**.
-- Each service is a card with a prominent line icon, title, and one-line description.
-- Cards sit on a slightly darker or tinted background, with a soft shadow and a subtle rotation or offset to feel tactile.
-- Accent color blocks (yellow or purple) peek out from behind each card on hover.
-- The CTA is a single floating button at the bottom of the section rather than repeated per card.
-- This feels more crafted and playful while still looking professional.
+All three keep the existing four services and their copy, Poppins headings, Nunito Sans body, purple and yellow accents, and airy spacing (density 4).
 
-## Recommended Approach
-I recommend **Direction 2: The Journey Path** because it answers the user's request for storytelling and infographic style while keeping the section clean and airy (visual density 4). It also aligns naturally with the existing service flow and avoids heavy text repetition.
+## Technical notes
+- New components: `src/components/services/ServicesBento.tsx`, `ServicesJourney.tsx`, `ServicesWorkbench.tsx` - each self-contained and drop-in ready for `Index.tsx`.
+- New page `src/pages/HowIHelpDirections.tsx` plus a route in `src/App.tsx`, marked `noindex` via Helmet so it stays out of search results.
+- Carousel built with the existing `framer-motion` drag support (no new dependency), with keyboard and dot navigation.
+- Icons: prominent Lucide line icons (for example `Rocket`, `MessagesSquare`, `Workflow`, `Sparkles`), sized large with a light stroke.
+- All colors via existing semantic tokens; no hardcoded hex values.
+- Reuse `t("services.*")` keys, so no copy or locale changes are needed.
 
-## Implementation Steps
-1. Refactor the service rendering in `src/pages/Index.tsx` to support the chosen direction.
-2. Introduce or reuse existing Lucide icons for the four services (prominent line-icon treatment requested).
-3. Add motion: staggered entrance animation for each service card, and subtle hover state transitions.
-4. Ensure responsive behavior works on mobile and desktop.
-5. Verify no layout shifts in the sticky collapsible section or on page reload.
-
-## Files to Touch
-- `src/pages/Index.tsx` — main service section layout.
-- `src/index.css` (optional) — new animation tokens if needed.
-- `src/i18n/locales/en.json` and `nl.json` (only if new labels are introduced).
-
-Which direction should I build?
+## After you pick
+I'll drop the chosen component into the `how-i-help` section of `src/pages/Index.tsx`, remove the preview route and the two unused variants.
