@@ -15,6 +15,7 @@ instance
       en: { translation: en },
       nl: { translation: nl },
     },
+    lng: isBrowser ? undefined : "nl",
     fallbackLng: "en",
     supportedLngs: ["en", "nl"],
     interpolation: { escapeValue: false },
