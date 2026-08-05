@@ -10,6 +10,7 @@ import { Head } from "vite-react-ssg";
 import { useTranslation } from "react-i18next";
 import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 import WhenToCallMe from "@/components/WhenToCallMe";
+import ServicesWorkbench from "@/components/services/ServicesWorkbench";
 import CollapsibleSection, { StickyHeaderProvider } from "@/components/CollapsibleSection";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherPhone from "@/assets/esther-phone.jpg";
@@ -203,104 +204,8 @@ const Index = () => {
 
       {/* ─── 3. How I Help ─── */}
       <CollapsibleSection id="how-i-help" title="🛠 How I Help" bgClass="bg-background">
-        <section id="services" className="bg-background py-24 md:py-32">
-          <div className="container mx-auto px-6 md:px-12">
-            <div className="max-w-7xl mx-auto">
-              {/* Editorial header */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="mb-24 md:mb-40"
-              >
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground font-poppins tracking-tight leading-[0.95] mb-6">
-                  {t("services.title")}
-                </h2>
-                <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
-                  {t("services.subtitle")}
-                </p>
-              </motion.div>
+        <ServicesWorkbench onCta={scrollToPlanner} />
 
-              {/* Editorial split flow */}
-              <div>
-                {services.map((service, i) => {
-                  const isReversed = i % 2 === 1;
-                  const num = String(i + 1).padStart(2, "0");
-                  return (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-80px" }}
-                      transition={{ duration: 0.6 }}
-                      className={`group relative pt-16 md:pt-24 pb-16 md:pb-24 ${
-                        i !== 0 ? "border-t border-border/40" : ""
-                      } flex flex-col gap-8 md:gap-12 items-start ${
-                        isReversed ? "md:flex-row-reverse" : "md:flex-row"
-                      }`}
-                    >
-                      {/* Chapter number marker on the divider */}
-                      {i !== 0 && (
-                        <span
-                          className={`absolute -top-4 md:-top-5 font-poppins text-xs md:text-sm font-bold tracking-[0.3em] text-muted-foreground/70 bg-background px-3 ${
-                            isReversed ? "right-0" : "left-0"
-                          }`}
-                        >
-                          CH. {num}
-                        </span>
-                      )}
-
-                      <div className={`md:w-1/3 pt-2 relative ${isReversed ? "md:text-right" : ""}`}>
-                        {/* Oversized outlined chapter numeral watermark */}
-                        <span
-                          aria-hidden
-                          className={`pointer-events-none select-none absolute -top-10 md:-top-14 font-poppins font-black leading-none text-[6rem] md:text-[9rem] text-transparent ${
-                            isReversed ? "right-0 md:-right-2" : "left-0 md:-left-2"
-                          }`}
-                          style={{ WebkitTextStroke: "1px hsl(var(--primary) / 0.18)" }}
-                        >
-                          {num}
-                        </span>
-                        <span className="relative block font-poppins text-primary font-semibold tracking-widest uppercase text-xs md:text-sm mb-4">
-                          {service.label}
-                        </span>
-                        <h3 className="relative font-poppins text-4xl md:text-5xl font-black text-foreground leading-[1.05] mb-6">
-                          {service.title}
-                        </h3>
-                      </div>
-                      <div
-                        className={`md:w-2/3 ${
-                          isReversed
-                            ? "md:pr-12 md:border-r md:text-right"
-                            : "md:pl-12 md:border-l"
-                        } border-border/60`}
-                      >
-                        <p
-                          className={`text-lg md:text-xl text-foreground/70 leading-relaxed mb-8 max-w-xl ${
-                            isReversed ? "md:ml-auto" : ""
-                          }`}
-                        >
-                          {service.description}
-                        </p>
-                        <button
-                          onClick={scrollToPlanner}
-                          className="inline-flex items-center text-primary font-bold text-sm md:text-base group-hover:gap-3 gap-2 transition-all duration-300"
-                        >
-                          {isReversed && (
-                            <ArrowRight className="w-5 h-5 rotate-180" />
-                          )}
-                          {t("services.cta")}
-                          {!isReversed && <ArrowRight className="w-5 h-5" />}
-                        </button>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
       </CollapsibleSection>
 
       {/* ─── 4. Sparring Partner ─── */}
