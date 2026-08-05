@@ -183,7 +183,7 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <div className="aspect-[3/4] max-h-[75vh] overflow-hidden shadow-2xl mx-auto">
-                  <img src={estherYellow} alt="Esther Woerdman" width={900} height={1200} fetchpriority="high" decoding="async" className="w-full h-full object-cover" />
+                  <img src={estherYellow} alt="Esther Woerdman" width={900} height={1200} decoding="async" className="w-full h-full object-cover" />
                 </div>
                 <motion.div
                   className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"
