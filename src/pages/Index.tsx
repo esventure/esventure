@@ -6,7 +6,7 @@ import Navigation from "@/components/Navigation";
 import ProjectPlanner from "@/components/ProjectPlanner";
 import { motion } from "framer-motion";
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { Head } from "vite-react-ssg";
 import { useTranslation } from "react-i18next";
 import { FixerIcon, SparringIcon, MapIcon, MirrorIcon } from "@/components/ServiceIcons";
 import WhenToCallMe from "@/components/WhenToCallMe";
@@ -95,7 +95,7 @@ const Index = () => {
 
   return (
     <StickyHeaderProvider>
-      <Helmet>
+      <Head>
         <title>Es Venture - Wat het ook is, als het digitaal is, regel ik het.</title>
         <meta name="description" content="Van gedurfde nieuwe ideeën tot vastgelopen projecten: Es Venture is de digitale partner voor founders en teams die iemand nodig hebben die het bedenkt, bouwt en oplevert." />
         <link rel="canonical" href="https://esventure.nl/" />
@@ -118,7 +118,7 @@ const Index = () => {
             }
           })}
         </script>
-      </Helmet>
+      </Head>
       <div className="min-h-screen bg-background">
       <Navigation />
 
