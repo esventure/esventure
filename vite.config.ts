@@ -14,7 +14,8 @@ export default defineConfig(({ mode }) => ({
     script: "async",
     formatting: "minify",
     dirStyle: "nested",
-    includedRoutes: (paths) => paths.filter((p) => !p.includes(":") && !p.includes("*")),
+    includedRoutes: (paths: string[]) =>
+      paths.filter((p: string) => !p.includes(":") && !p.includes("*")),
   },
   resolve: {
     alias: {
