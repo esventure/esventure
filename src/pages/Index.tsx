@@ -148,7 +148,8 @@ const Index = () => {
                   <ul className="space-y-2 text-sm md:text-base text-primary-foreground/85 max-w-xl">
                     {heroBullets.map((b, i) => (
                       <li key={i} className="flex gap-3">
-                        <span className="text-secondary font-black mt-0.5">✓</span> {b}
+                        <span className="text-secondary font-black mt-0.5">✓</span>
+                        <span><span className="font-bold text-primary-foreground">{b.label}:</span> {b.text}</span>
                       </li>
                     ))}
                   </ul>
