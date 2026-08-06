@@ -50,9 +50,12 @@ const WhenToCallMe = () => {
                 <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
                   {symptomLabel} {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins leading-tight mb-4">
-                  {tr}
+                <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins leading-tight mb-2">
+                  {tr.title}
                 </h3>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
+                  {tr.description}
+                </p>
                 <div className="w-8 h-1 bg-secondary group-hover:w-16 transition-all duration-300" />
               </motion.div>
             ))}
