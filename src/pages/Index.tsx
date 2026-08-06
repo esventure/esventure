@@ -86,7 +86,7 @@ const Index = () => {
     document.getElementById("project-planner")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const heroBullets = t("hero.bullets", { returnObjects: true }) as string[];
+  const heroBullets = t("hero.bullets", { returnObjects: true }) as Array<{ label: string; text: string }>;
   const services = (t("services.items", { returnObjects: true }) as Array<{ label: string; title: string; description: string }>).map(
     (s, i) => ({ ...s, icon: serviceIcons[i] })
   );
@@ -97,11 +97,11 @@ const Index = () => {
   return (
     <StickyHeaderProvider>
       <Head>
-        <title>Es Venture - Wat het ook is, als het digitaal is, regel ik het.</title>
-        <meta name="description" content="Van gedurfde nieuwe ideeën tot vastgelopen projecten: Es Venture is de digitale partner voor founders en teams die iemand nodig hebben die het bedenkt, bouwt en oplevert." />
+        <title>Es Venture - Jouw boutique digitale delivery partner</title>
+        <meta name="description" content="Van gedurfde nieuwe ideeën tot complexe digitale ecosystemen: Es Venture is de partner die founders en teams bellen om divers digitaal werk van briefing naar oplevering te brengen." />
         <link rel="canonical" href="https://esventure.nl/" />
-        <meta property="og:title" content="Es Venture - Wat het ook is, als het digitaal is, regel ik het." />
-        <meta property="og:description" content="Wat het ook is, als het digitaal is, regel ik het. Denken, bouwen, opleveren - samen." />
+        <meta property="og:title" content="Es Venture - Jouw boutique digitale delivery partner" />
+        <meta property="og:description" content="Van gedurfde ideeën tot complexe digitale ecosystemen - betrouwbaar van briefing naar oplevering." />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:image" content="https://esventure.nl/og-image.png" />
         <meta property="og:type" content="website" />
@@ -125,7 +125,7 @@ const Index = () => {
 
       <main>
       {/* ─── 1. Hero ─── */}
-      <CollapsibleSection id="hero" title="👋 Whatever it is - if it's digital, I've got it.">
+      <CollapsibleSection id="hero" title="👋 Your boutique digital delivery partner.">
         <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
           <div className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16 flex-1 flex items-center">
             <div className="grid md:grid-cols-[1.2fr_1fr] gap-8 md:gap-12 max-w-7xl mx-auto items-center w-full">
@@ -148,7 +148,8 @@ const Index = () => {
                   <ul className="space-y-2 text-sm md:text-base text-primary-foreground/85 max-w-xl">
                     {heroBullets.map((b, i) => (
                       <li key={i} className="flex gap-3">
-                        <span className="text-secondary font-black mt-0.5">✓</span> {b}
+                        <span className="text-secondary font-black mt-0.5">✓</span>
+                        <span><span className="font-bold text-primary-foreground">{b.label}:</span> {b.text}</span>
                       </li>
                     ))}
                   </ul>

@@ -11,31 +11,58 @@
     "nl": "NL"
   },
   "hero": {
-    "titleStart": "Wat het ook is - als het",
-    "titleEnd": "digitaal",
-    "titleAfter": "is, regel ik het.",
-    "lead": "Van gedurfde nieuwe ideeën tot vastgelopen projecten die nergens heen gaan - ik ben de digitale partner voor founders en teams die iemand nodig hebben die het kan bedenken, bouwen en opleveren.",
+    "titleStart": "Jouw boutique",
+    "titleEnd": "digitale",
+    "titleAfter": "delivery partner.",
+    "lead": "Van gedurfde nieuwe ideeën tot complexe digitale ecosystemen - ik ben de partner die founders en teams bellen als ze iemand nodig hebben die divers digitaal werk betrouwbaar van briefing naar oplevering brengt.",
     "bullets": [
-      "Een project? Ik breng het van idee tot live.",
-      "Een digitale strategie nodig? Ik denk het uit en maak het concreet.",
-      "Een partner die écht het werk doet? Dat ben ik."
+      {
+        "label": "De oplevering",
+        "text": "Ik neem eigenaarschap over het project, van kickoff tot livegang."
+      },
+      {
+        "label": "Het bindweefsel",
+        "text": "Ik lijn strategie, design en techniek uit zodat er niets tussendoor glipt."
+      },
+      {
+        "label": "Het vakwerk",
+        "text": "Ik bouw de systemen en het momentum om het echt te laten gebeuren."
+      }
     ],
-    "ctaPrimary": "Vertel waar ik kan helpen",
+    "ctaPrimary": "Vertel wat je bouwt",
     "ctaSecondary": "Bel me"
   },
   "whenToCallMe": {
     "title": "Wanneer mij te bellen",
-    "subtitle": "Of je nu iets nieuws bouwt of iets kapots herstelt - dit zijn de momenten waarop ik opduik.",
-    "symptomLabel": "Symptoom",
+    "subtitle": "Of je iets volledig nieuws bouwt of iets laat groeien dat er al staat, dit zijn de momenten waarop ik instap.",
+    "symptomLabel": "Scenario",
     "triggers": [
-      "Je lanceert iets en hebt vanaf dag één een digitale partner nodig.",
-      "Een project zit muurvast en niemand is eigenaar.",
-      "Je hebt een idee maar geen idee hoe je het bouwt.",
-      "Je tools en teams praten niet met elkaar.",
-      "Je wilt een website of prototype dat écht werkt.",
-      "Je hebt iemand nodig die zowel bij developers als bij het bestuur aan tafel zit."
+      {
+        "title": "Het blanke canvas",
+        "description": "Je hebt een gedurfde digitale ambitie, maar je hebt iemand nodig die het structureert en aanjaagt."
+      },
+      {
+        "title": "De ontbrekende schakel",
+        "description": "Je hebt iemand nodig die kan schakelen tussen bestuur, creatieven en developers."
+      },
+      {
+        "title": "Het bureau-alternatief",
+        "description": "Je wilt strategie en oplevering op studioniveau, zonder de overhead van een bureau."
+      },
+      {
+        "title": "Het vastgelopen project",
+        "description": "Het is al maanden \"bijna klaar\" en heeft iemand nodig die het over de streep trekt."
+      },
+      {
+        "title": "Het ecosysteem",
+        "description": "Je bouwt aan web, content en merk, en hebt één persoon nodig die de draad vasthoudt."
+      },
+      {
+        "title": "De founder-val",
+        "description": "Je doet alles zelf en hebt een betrouwbare partner nodig die digitaal van je bord haalt."
+      }
     ],
-    "summary": "Als het rommelig, vastgelopen of zonder eigenaar is, of stilletjes je team leegtrekt -",
+    "summary": "Als je iemand nodig hebt die georganiseerd is, aanspreekbaar en hongerig om dingen te laten gebeuren -",
     "summaryEm": "daar kom ik om de hoek.",
     "whyTitle": "Waarom mij bellen?",
     "differentiators": [
@@ -47,13 +74,13 @@
   },
   "services": {
     "title": "Hoe ik help",
-    "subtitle": "Vier manieren om mij in te zetten - kies wat past.",
+    "subtitle": "Vier manieren waarop we kunnen samenwerken - kies wat bij je ambitie past.",
     "cta": "Zie het in actie",
     "items": [
       {
         "label": "The Driver",
-        "title": "Laten we het in beweging krijgen",
-        "description": "Dat vastgelopen project, dat half-afgemaakte initiatief, dat ding waarvan niemand eigenaar is. Ik stap in, neem de leiding en breng het écht over de finish."
+        "title": "Laten we het opleveren",
+        "description": "Websites, campagnes of complexe digitale systemen. Ik neem eigenaarschap over de oplevering, lijn het team uit, beheer de afhankelijkheden en breng het werk van briefing naar livegang."
       },
       {
         "label": "The Sparring Room",
@@ -85,7 +112,7 @@
   },
   "effect": {
     "title": "Het Es Venture Effect",
-    "subtitle": "Ik ben je digitale partner - voor wat er ook komt.",
+    "subtitle": "Ik ben jouw digitale partner - voor wat er ook komt.",
     "pillars": [
       {
         "title": "Absolute helderheid",
@@ -108,20 +135,29 @@
     "title": "Hallo, ik ben",
     "name": "Esther.",
     "paragraphs": [
-      "Als creatieve digitale projectmanager ben ik de persoon die je belt als een project vastloopt, een proces onduidelijk is, of een idee nog niet gebouwd is.",
-      "Snel schakelen om je uitdagingen te begrijpen, dat gaat me makkelijk af. Een strategische whiteboard-sessie met je managementteam leiden of een technische review met je developers draaien, het voelt even vertrouwd. Mijn kracht zit in het overbruggen van IT en de rest van je organisatie, ruwe ideeën omzetten in werkende prototypes en live websites, en zorgen dat complexe projecten écht over de finish komen.",
-      "Heldere oplossingen en zichtbare actie winnen het bij mij altijd van dikke rapporten. Als we samenwerken weet je altijd waar je staat - en krijg je praktische strategieën die je operatie versimpelen en resultaat opleveren."
+      "Als digitaal projectmanager en delivery partner ben ik de persoon die je belt als je een digitale ambitie hebt die werkelijkheid moet worden.",
+      "Snel schakelen om je uitdagingen te begrijpen, dat gaat me makkelijk af. Een strategische whiteboard-sessie met je managementteam leiden of een technische review met je developers draaien, het voelt even vertrouwd. Mijn kracht zit in het zijn van het bindweefsel tussen disciplines - de brug tussen IT, creatie en business, en zorgen dat complex werk écht over de finish komt.",
+      "Heldere oplossingen en zichtbare actie winnen het bij mij altijd van dikke rapporten. Als we samenwerken weet je altijd waar je staat - en krijg je een partner die eigenaarschap neemt over het werk."
     ],
     "cta": "Laten we praten"
   },
   "planner": {
     "title": "Beschrijf je situatie.",
     "subtitle": "Ik laat je in minder dan een minuut zien hoe we het oplossen.",
-    "steps": { "describe": "Beschrijf", "handoff": "Overdracht", "details": "Details" },
+    "steps": {
+      "describe": "Beschrijf",
+      "handoff": "Overdracht",
+      "details": "Details"
+    },
     "situationLabel": "Wat speelt er?",
     "handoffLabel": "Wat mag ik van je bord nemen?",
     "urgencyLabel": "Hoe urgent?",
-    "urgencyOptions": ["Aan het verkennen", "Binnenkort", "Vraagt aandacht", "Het is urgent 🔥"],
+    "urgencyOptions": [
+      "Aan het verkennen",
+      "Binnenkort",
+      "Vraagt aandacht",
+      "Het is urgent 🔥"
+    ],
     "budgetLabel": "Budgetrange",
     "optional": "(optioneel)",
     "budgetOptions": {
