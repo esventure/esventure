@@ -125,7 +125,7 @@ const Index = () => {
 
       <main>
       {/* ─── 1. Hero ─── */}
-      <CollapsibleSection id="hero" title="👋 Whatever it is - if it's digital, I've got it.">
+      <CollapsibleSection id="hero" title="👋 Your boutique digital delivery partner.">
         <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
           <div className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16 flex-1 flex items-center">
             <div className="grid md:grid-cols-[1.2fr_1fr] gap-8 md:gap-12 max-w-7xl mx-auto items-center w-full">
