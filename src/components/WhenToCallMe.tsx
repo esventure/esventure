@@ -5,7 +5,7 @@ import { Zap, Scissors, CheckCircle2, HandHelping } from "lucide-react";
 
 const WhenToCallMe = () => {
   const { t } = useTranslation();
-  const triggers = t("whenToCallMe.triggers", { returnObjects: true }) as string[];
+  const triggers = t("whenToCallMe.triggers", { returnObjects: true }) as Array<{ title: string; description: string }>;
   const differentiators = t("whenToCallMe.differentiators", { returnObjects: true }) as string[];
   const symptomLabel = t("whenToCallMe.symptomLabel");
 
