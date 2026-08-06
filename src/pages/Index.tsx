@@ -86,7 +86,7 @@ const Index = () => {
     document.getElementById("project-planner")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const heroBullets = t("hero.bullets", { returnObjects: true }) as string[];
+  const heroBullets = t("hero.bullets", { returnObjects: true }) as Array<{ label: string; text: string }>;
   const services = (t("services.items", { returnObjects: true }) as Array<{ label: string; title: string; description: string }>).map(
     (s, i) => ({ ...s, icon: serviceIcons[i] })
   );
