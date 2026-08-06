@@ -97,11 +97,11 @@ const Index = () => {
   return (
     <StickyHeaderProvider>
       <Head>
-        <title>Es Venture - Wat het ook is, als het digitaal is, regel ik het.</title>
-        <meta name="description" content="Van gedurfde nieuwe ideeën tot vastgelopen projecten: Es Venture is de digitale partner voor founders en teams die iemand nodig hebben die het bedenkt, bouwt en oplevert." />
+        <title>Es Venture - Jouw boutique digitale delivery partner</title>
+        <meta name="description" content="Van gedurfde nieuwe ideeën tot complexe digitale ecosystemen: Es Venture is de partner die founders en teams bellen om divers digitaal werk van briefing naar oplevering te brengen." />
         <link rel="canonical" href="https://esventure.nl/" />
-        <meta property="og:title" content="Es Venture - Wat het ook is, als het digitaal is, regel ik het." />
-        <meta property="og:description" content="Wat het ook is, als het digitaal is, regel ik het. Denken, bouwen, opleveren - samen." />
+        <meta property="og:title" content="Es Venture - Jouw boutique digitale delivery partner" />
+        <meta property="og:description" content="Van gedurfde ideeën tot complexe digitale ecosystemen - betrouwbaar van briefing naar oplevering." />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:image" content="https://esventure.nl/og-image.png" />
         <meta property="og:type" content="website" />
