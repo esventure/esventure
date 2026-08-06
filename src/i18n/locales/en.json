@@ -11,31 +11,58 @@
     "nl": "NL"
   },
   "hero": {
-    "titleStart": "Whatever it is - if it's",
+    "titleStart": "Your boutique",
     "titleEnd": "digital",
-    "titleAfter": "I've got it.",
-    "lead": "From bold new ideas to stuck projects going nowhere - I'm the digital partner founders and teams call when they need someone who can think it, build it, and ship it.",
+    "titleAfter": "delivery partner.",
+    "lead": "From bold new ideas to complex digital ecosystems - I'm the partner founders and teams call when they need someone to take diverse digital work and reliably move it from brief to shipped.",
     "bullets": [
-      "Got a project? I drive it from idea to live.",
-      "Need a digital strategy? I think it through and make it real.",
-      "Want a partner who actually does the work? That's me."
+      {
+        "label": "The Delivery",
+        "text": "I take ownership of the project from kickoff to launch."
+      },
+      {
+        "label": "The Connective Tissue",
+        "text": "I align strategy, design, and tech so nothing falls through the cracks."
+      },
+      {
+        "label": "The Craft",
+        "text": "I build the systems and momentum to make it all happen."
+      }
     ],
-    "ctaPrimary": "Tell me where I can help",
+    "ctaPrimary": "Tell me what you're building",
     "ctaSecondary": "Call me"
   },
   "whenToCallMe": {
     "title": "When to Call Me",
-    "subtitle": "Whether you're building something new or fixing something broken - these are the moments I show up.",
-    "symptomLabel": "Symptom",
+    "subtitle": "Whether you are building something entirely new or scaling something that already exists, these are the moments I step in.",
+    "symptomLabel": "Scenario",
     "triggers": [
-      "You're launching something and need a digital partner from day one.",
-      "A project is stuck and nobody owns it.",
-      "You've got an idea but no idea how to build it.",
-      "Your tools and teams don't talk to each other.",
-      "You want a website or prototype that actually works.",
-      "You need someone who can sit with the developers and the board."
+      {
+        "title": "The Blank Canvas",
+        "description": "You have a bold digital ambition but need someone to structure and drive it."
+      },
+      {
+        "title": "The Missing Link",
+        "description": "You need someone who can translate between the board, the creatives, and the developers."
+      },
+      {
+        "title": "The Agency Alternative",
+        "description": "You want studio-level delivery and strategy, without the agency overhead."
+      },
+      {
+        "title": "The Stuck Project",
+        "description": "It's been \"almost done\" for months and needs someone to push it over the line."
+      },
+      {
+        "title": "The Ecosystem",
+        "description": "You are building across web, content, and brand, and need one person to hold the thread."
+      },
+      {
+        "title": "The Founder Trap",
+        "description": "You are doing all the things and need a reliable partner to take digital off your plate."
+      }
     ],
-    "summary": "If it's messy, stuck, ownerless, or quietly draining your team -",
+    "summary": "If you need someone organised, accountable, and hungry to make things happen -",
     "summaryEm": "that's where I come in.",
     "whyTitle": "Why Call Me?",
     "differentiators": [
@@ -47,13 +74,13 @@
   },
   "services": {
     "title": "How I Help",
-    "subtitle": "Four ways to put me to work - pick the one that fits.",
+    "subtitle": "Four ways we can work together - pick the one that fits your ambition.",
     "cta": "See it in action",
     "items": [
       {
         "label": "The Driver",
-        "title": "Let's Get It Moving",
-        "description": "That stuck project, that half-finished initiative, that thing nobody owns. I step in, take charge, and drive it forward until it actually ships."
+        "title": "Let's Get It Shipped",
+        "description": "Websites, campaigns, or complex digital systems. I take ownership of the delivery, align the team, manage the dependencies, and drive the work from brief to launch."
       },
       {
         "label": "The Sparring Room",
@@ -85,7 +112,7 @@
   },
   "effect": {
     "title": "The Es Venture Effect",
-    "subtitle": "I'm your digital partner - for whatever comes next.",
+    "subtitle": "I am your digital partner - for whatever comes next.",
     "pillars": [
       {
         "title": "Absolute Clarity",
@@ -108,20 +135,29 @@
     "title": "Hello, I'm",
     "name": "Esther.",
     "paragraphs": [
-      "As a creative digital project manager, I'm the person you call when a project is stuck, a process is unclear, or an idea hasn't yet been built.",
-      "Moving quickly to understand your unique challenges comes naturally to me. Leading a strategic whiteboard session with your management team or running a technical review with your developers, both feel equally at home. My core strength is bridging the gap between IT and the rest of your organisation, turning rough ideas into working prototypes and live websites, and making sure complex projects actually cross the finish line.",
-      "Straightforward solutions and tangible action win over lengthy reports, every time. When we work together, you'll always know where things stand - and you'll always get practical strategies that simplify your operations and drive results."
+      "As a digital project manager and delivery partner, I'm the person you call when you have a digital ambition that needs to become real.",
+      "Moving quickly to understand your unique challenges comes naturally to me. Leading a strategic whiteboard session with your management team or running a technical review with your developers, both feel equally at home. My core strength is acting as the connective tissue across disciplines - bridging the gap between IT, creative, and business, and making sure complex work actually crosses the finish line.",
+      "Straightforward solutions and tangible action win over lengthy reports, every time. When we work together, you will always know where things stand - and you will always get a partner who takes ownership of the work."
     ],
     "cta": "Let's talk"
   },
   "planner": {
     "title": "Describe your situation.",
     "subtitle": "I'll show you how we can fix it - in under a minute.",
-    "steps": { "describe": "Describe", "handoff": "Handoff", "details": "Details" },
+    "steps": {
+      "describe": "Describe",
+      "handoff": "Handoff",
+      "details": "Details"
+    },
     "situationLabel": "What's going on?",
     "handoffLabel": "What should I take off your plate?",
     "urgencyLabel": "How urgent?",
-    "urgencyOptions": ["Just exploring", "Soon", "Needs attention", "It's urgent 🔥"],
+    "urgencyOptions": [
+      "Just exploring",
+      "Soon",
+      "Needs attention",
+      "It's urgent 🔥"
+    ],
     "budgetLabel": "Budget range",
     "optional": "(optional)",
     "budgetOptions": {
