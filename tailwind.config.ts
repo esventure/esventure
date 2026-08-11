@@ -36,6 +36,10 @@ export default {
           DEFAULT: "hsl(var(--anchor))",
           foreground: "hsl(var(--anchor-foreground))",
         },
+        "section-yellow": {
+          DEFAULT: "hsl(var(--section-yellow))",
+          foreground: "hsl(var(--section-yellow-foreground))",
+        },
 
         primary: {
           DEFAULT: "hsl(var(--primary))",

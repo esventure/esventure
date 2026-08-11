@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Zap, Scissors, CheckCircle2, HandHelping } from "lucide-react";
-import CountUpNumber from "@/components/CountUpNumber";
 
 const WhenToCallMe = () => {
   const { t } = useTranslation();
@@ -23,7 +22,7 @@ const WhenToCallMe = () => {
   ];
 
   return (
-    <section className="bg-surface-warm text-surface-warm-foreground section-pad">
+    <section className="bg-section-yellow text-section-yellow-foreground section-pad">
       <div className="container mx-auto px-6 md:px-12">
         <div className="max-w-6xl mx-auto space-y-24 md:space-y-32">
           {/* Scenarios */}
@@ -38,7 +37,7 @@ const WhenToCallMe = () => {
               <h2 className="font-display text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-6">
                 {t("whenToCallMe.title")}
               </h2>
-              <p className="text-lg md:text-xl text-surface-warm-foreground/70 leading-relaxed">
+              <p className="text-lg md:text-xl text-section-yellow-foreground/70 leading-relaxed">
                 {t("whenToCallMe.subtitle")}
               </p>
             </motion.div>
@@ -54,18 +53,17 @@ const WhenToCallMe = () => {
                   transition={{ duration: 0.45, delay: (i % 3) * 0.06, ease: "easeOut" }}
                   className={`group w-[78vw] shrink-0 snap-start md:w-auto ${offsets[i]}`}
                 >
-                  <div className="h-full border-t border-surface-warm-foreground/20 pt-6">
+                  <div className="h-full border-t border-section-yellow-foreground/20 pt-6">
                     <div className="flex items-baseline gap-4 mb-4">
-                      <CountUpNumber
-                        value={i + 1}
-                        className="font-display text-3xl md:text-5xl font-extrabold leading-none text-surface-warm-foreground/25 transition-colors duration-300 group-hover:text-primary"
-                      />
-                      <span className="label-eyebrow text-surface-warm-foreground/50">{symptomLabel}</span>
+                      <span className="font-display text-3xl md:text-5xl font-extrabold leading-none text-section-yellow-foreground/25 transition-colors duration-300 group-hover:text-primary">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="label-eyebrow text-section-yellow-foreground/50">{symptomLabel}</span>
                     </div>
                     <h3 className="font-display text-2xl md:text-3xl font-extrabold leading-tight mb-3">
                       {tr.title}
                     </h3>
-                    <p className="text-sm md:text-base text-surface-warm-foreground/70 leading-relaxed mb-5">
+                    <p className="text-sm md:text-base text-section-yellow-foreground/70 leading-relaxed mb-5">
                       {tr.description}
                     </p>
                     <div className="h-[2px] w-8 bg-primary transition-all duration-300 group-hover:w-20" />
@@ -79,10 +77,10 @@ const WhenToCallMe = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="mt-16 md:mt-24 text-lg md:text-2xl text-surface-warm-foreground/70 leading-relaxed max-w-4xl"
+              className="mt-16 md:mt-24 text-lg md:text-2xl text-section-yellow-foreground/70 leading-relaxed max-w-4xl"
             >
               {t("whenToCallMe.summary")}{" "}
-              <span className="font-semibold text-surface-warm-foreground">{t("whenToCallMe.summaryEm")}</span>
+              <span className="font-semibold text-section-yellow-foreground">{t("whenToCallMe.summaryEm")}</span>
             </motion.p>
           </div>
 
@@ -97,7 +95,7 @@ const WhenToCallMe = () => {
               <h3 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight">
                 {t("whenToCallMe.whyTitle")}
               </h3>
-              <div className="hidden md:block h-px flex-grow ml-10 bg-surface-warm-foreground/20 mb-4" />
+              <div className="hidden md:block h-px flex-grow ml-10 bg-section-yellow-foreground/20 mb-4" />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
@@ -110,7 +108,7 @@ const WhenToCallMe = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.35, delay: i * 0.05 }}
-                    className="group flex items-start gap-5 border-t border-surface-warm-foreground/20 pt-6"
+                    className="group flex items-start gap-5 border-t border-section-yellow-foreground/20 pt-6"
                   >
                     <Icon
                       className="w-6 h-6 shrink-0 text-primary transition-transform duration-300 group-hover:scale-110"
