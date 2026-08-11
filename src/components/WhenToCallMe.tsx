@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Zap, Scissors, CheckCircle2, HandHelping } from "lucide-react";
+import CountUpNumber from "@/components/CountUpNumber";
 
 const WhenToCallMe = () => {
   const { t } = useTranslation();
@@ -10,109 +11,118 @@ const WhenToCallMe = () => {
   const symptomLabel = t("whenToCallMe.symptomLabel");
 
   const diffIcons = [Zap, Scissors, CheckCircle2, HandHelping];
-  const diffBg = [
-    "bg-primary text-primary-foreground",
-    "bg-secondary text-foreground",
-    "bg-secondary text-foreground",
-    "bg-primary text-primary-foreground",
+
+  // Art-directed offsets instead of a uniform grid
+  const offsets = [
+    "md:col-start-1 md:col-span-7",
+    "md:col-start-7 md:col-span-6 md:mt-16",
+    "md:col-start-2 md:col-span-6 md:mt-10",
+    "md:col-start-8 md:col-span-5 md:mt-20",
+    "md:col-start-1 md:col-span-6 md:mt-10",
+    "md:col-start-7 md:col-span-6 md:mt-20",
   ];
 
   return (
-    <section id="about" className="container mx-auto px-4 py-20">
-      <div className="max-w-5xl mx-auto space-y-20">
-        {/* Symptoms */}
-        <div>
+    <section className="bg-charcoal text-charcoal-foreground section-pad">
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="max-w-6xl mx-auto space-y-24 md:space-y-32">
+          {/* Scenarios */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="mb-14 md:mb-20 max-w-3xl"
+            >
+              <h2 className="font-display text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-6">
+                {t("whenToCallMe.title")}
+              </h2>
+              <p className="text-lg md:text-xl text-charcoal-foreground/70 leading-relaxed">
+                {t("whenToCallMe.subtitle")}
+              </p>
+            </motion.div>
+
+            {/* Mobile: horizontal snap scroll. Desktop: staggered editorial grid */}
+            <div className="-mx-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:mx-0 md:grid md:grid-cols-12 md:gap-x-8 md:gap-y-0 md:overflow-visible md:px-0 md:pb-0">
+              {triggers.map((tr, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: (i % 3) * 0.06, ease: "easeOut" }}
+                  className={`group w-[78vw] shrink-0 snap-start md:w-auto ${offsets[i]}`}
+                >
+                  <div className="h-full border-t border-charcoal-foreground/25 pt-6">
+                    <div className="flex items-baseline gap-4 mb-4">
+                      <CountUpNumber
+                        value={i + 1}
+                        className="font-display text-3xl md:text-5xl font-extrabold leading-none text-charcoal-foreground/25 transition-colors duration-300 group-hover:text-secondary"
+                      />
+                      <span className="label-eyebrow text-charcoal-foreground/50">{symptomLabel}</span>
+                    </div>
+                    <h3 className="font-display text-2xl md:text-3xl font-extrabold leading-tight mb-3">
+                      {tr.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-charcoal-foreground/65 leading-relaxed mb-5">
+                      {tr.description}
+                    </p>
+                    <div className="h-[2px] w-8 bg-secondary transition-all duration-300 group-hover:w-20" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="mt-16 md:mt-24 text-lg md:text-2xl text-charcoal-foreground/70 leading-relaxed max-w-4xl"
+            >
+              {t("whenToCallMe.summary")}{" "}
+              <span className="font-semibold text-charcoal-foreground">{t("whenToCallMe.summaryEm")}</span>
+            </motion.p>
+          </div>
+
+          {/* Why */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-10"
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h2 className="text-4xl md:text-6xl font-black text-foreground font-poppins tracking-tight mb-3">
-              {t("whenToCallMe.title")}
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              {t("whenToCallMe.subtitle")}
-            </p>
-          </motion.div>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+              <h3 className="font-display text-3xl md:text-5xl font-extrabold tracking-tight">
+                {t("whenToCallMe.whyTitle")}
+              </h3>
+              <div className="hidden md:block h-px flex-grow ml-10 bg-charcoal-foreground/20 mb-4" />
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/60 border border-border/60 overflow-hidden rounded-2xl">
-            {triggers.map((tr, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.35, delay: i * 0.05 }}
-                className="bg-card p-8 group hover:bg-muted/40 transition-colors"
-              >
-                <span className="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">
-                  {symptomLabel} {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-lg md:text-xl font-bold text-foreground font-poppins leading-tight mb-2">
-                  {tr.title}
-                </h3>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
-                  {tr.description}
-                </p>
-                <div className="w-8 h-1 bg-secondary group-hover:w-16 transition-all duration-300" />
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-10 text-base md:text-lg text-muted-foreground leading-relaxed"
-          >
-            {t("whenToCallMe.summary")}{" "}
-            <span className="font-bold text-foreground border-b-2 border-primary">
-              {t("whenToCallMe.summaryEm")}
-            </span>
-          </motion.p>
-        </div>
-
-        {/* Why */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-primary/5 rounded-3xl p-8 md:p-12 border border-primary/10"
-        >
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-            <h3 className="text-3xl md:text-4xl font-black text-foreground font-poppins">
-              {t("whenToCallMe.whyTitle")}
-            </h3>
-            <div className="hidden md:block h-px flex-grow mx-8 bg-border mb-4" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {differentiators.map((d, i) => {
-              const Icon = diffIcons[i % diffIcons.length];
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.35, delay: i * 0.05 }}
-                  className="flex items-start gap-4 p-6 bg-card rounded-2xl shadow-sm border border-border/60"
-                >
-                  <div
-                    className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${diffBg[i % diffBg.length]}`}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
+              {differentiators.map((d, i) => {
+                const Icon = diffIcons[i % diffIcons.length];
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.35, delay: i * 0.05 }}
+                    className="group flex items-start gap-5 border-t border-charcoal-foreground/20 pt-6"
                   >
-                    <Icon className="w-5 h-5" strokeWidth={2.5} />
-                  </div>
-                  <p className="text-base md:text-lg font-bold text-foreground pt-1">{d}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
+                    <Icon
+                      className="w-6 h-6 shrink-0 text-secondary transition-transform duration-300 group-hover:scale-110"
+                      strokeWidth={2}
+                    />
+                    <p className="font-display text-lg md:text-2xl font-bold leading-snug">{d}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

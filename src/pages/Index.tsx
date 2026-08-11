@@ -23,6 +23,10 @@ import rainforestLogo from "@/assets/clients/rainforest-alliance.png";
 import attractionworldLogo from "@/assets/clients/attractionworld.png";
 import landalLogo from "@/assets/clients/landal.png";
 import { analytics } from "@/lib/analytics";
+import Marquee from "@/components/Marquee";
+import SectionRule from "@/components/SectionRule";
+import CustomCursor from "@/components/CustomCursor";
+import CountUpNumber from "@/components/CountUpNumber";
 
 const ScrollDownArrow = () => {
   const [hide, setHide] = React.useState(false);
@@ -127,21 +131,21 @@ const Index = () => {
       {/* ─── 1. Hero ─── */}
       <CollapsibleSection id="hero" title="👋 Your boutique digital delivery partner.">
         <section className="relative overflow-hidden bg-primary min-h-screen flex flex-col">
-          <div className="container mx-auto px-4 pt-24 pb-12 md:pt-28 md:pb-16 flex-1 flex items-center">
-            <div className="grid md:grid-cols-[1.2fr_1fr] gap-8 md:gap-12 max-w-7xl mx-auto items-center w-full">
+          <div className="w-full pt-24 pb-10 md:pt-28 md:pb-12 flex-1 flex items-center">
+            <div className="grid md:grid-cols-[1.15fr_1fr] gap-10 md:gap-0 items-center w-full">
               <motion.div
-                className="flex flex-col justify-center text-left"
+                className="flex flex-col justify-center text-left container mx-auto px-6 md:px-12 md:mx-0 md:ml-auto md:max-w-[40rem] md:pr-12 lg:pr-16 relative z-10"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-primary-foreground tracking-tight leading-[0.92] font-display">
                   {t("hero.titleStart")}{" "}
                   <span className="text-secondary">{t("hero.titleEnd")}</span>{" "}
                   {t("hero.titleAfter")}
                 </h1>
 
-                <div className="space-y-4 mt-6">
+                <div className="space-y-4 mt-6 md:mt-8">
                   <p className="text-base md:text-lg text-primary-foreground/90 max-w-xl leading-relaxed font-medium">
                     {t("hero.lead")}
                   </p>
@@ -155,7 +159,7 @@ const Index = () => {
                   </ul>
                 </div>
 
-                <div className="mt-7 flex flex-col sm:flex-row gap-3">
+                <div className="mt-8 flex flex-col sm:flex-row gap-3">
                   <Button
                     size="lg"
                     className="text-base px-8 py-6 font-bold bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:scale-105 transition-all rounded-full shadow-lg"
@@ -179,18 +183,18 @@ const Index = () => {
               </motion.div>
 
               <motion.div
-                className="relative max-h-[75vh]"
+                className="relative md:-ml-6 lg:-ml-10"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <div className="aspect-[3/4] max-h-[75vh] overflow-hidden shadow-2xl mx-auto">
-                  <img src={estherYellow} alt="Esther Woerdman" width={900} height={1200} decoding="async" className="w-full h-full object-cover" />
-                </div>
-                <motion.div
-                  className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-50"
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.7, 0.5] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                <img
+                  src={estherYellow}
+                  alt="Esther Woerdman"
+                  width={900}
+                  height={1200}
+                  decoding="async"
+                  className="w-full max-h-[82vh] object-cover object-top"
                 />
               </motion.div>
             </div>
@@ -209,9 +213,12 @@ const Index = () => {
 
       </CollapsibleSection>
 
+      {/* ─── Marquee ticker ─── */}
+      <Marquee />
+
       {/* ─── 4. Sparring Partner ─── */}
       <CollapsibleSection id="sparring" title="🧠 Need a sparring partner?">
-        <section className="py-20 bg-secondary">
+        <section className="section-pad bg-surface-warm text-surface-warm-foreground">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-[1.3fr_1fr] gap-10 lg:gap-16 max-w-6xl mx-auto items-center">
               <motion.div
@@ -220,10 +227,10 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-secondary-foreground font-poppins mb-6 leading-[1.05]">
+                <h2 className="text-4xl md:text-6xl font-extrabold text-surface-warm-foreground font-display mb-6 leading-[0.95] tracking-tight">
                   {t("sparring.title")}
                 </h2>
-                <p className="text-lg md:text-xl text-secondary-foreground/80 leading-relaxed mb-8">
+                <p className="text-lg md:text-xl text-surface-warm-foreground/70 leading-relaxed mb-8">
                   {t("sparring.body")}
                 </p>
                 <Button
@@ -246,9 +253,9 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.15 }}
                 className="relative"
               >
-                <div className="bg-background/60 backdrop-blur-sm border-l-4 border-primary p-8 md:p-10 rounded-r-2xl">
-                  <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4">{t("sparring.walkAwayLabel")}</p>
-                  <ul className="space-y-3 text-base md:text-lg text-secondary-foreground">
+                <div className="border-l-2 border-primary pl-8 md:pl-10">
+                  <p className="label-eyebrow text-primary mb-5">{t("sparring.walkAwayLabel")}</p>
+                  <ul className="space-y-3 text-base md:text-lg text-surface-warm-foreground/80">
                     {sparringWalkAway.map((item, i) => (
                       <li key={i} className="flex gap-3">
                         <span className="text-primary font-black">→</span> {item}
@@ -263,8 +270,9 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 5. The Es Venture Effect ─── */}
+      <SectionRule className="text-foreground" />
       <CollapsibleSection id="effect" title="✨ The Es Venture Effect">
-        <section className="py-20">
+        <section className="section-pad bg-surface-warm text-surface-warm-foreground">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto text-center mb-14">
               <motion.h2
@@ -272,7 +280,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl md:text-6xl font-black text-foreground font-poppins mb-4"
+                className="text-4xl md:text-6xl font-extrabold text-surface-warm-foreground font-display mb-4 tracking-tight"
               >
                 {t("effect.title")}
               </motion.h2>
@@ -289,9 +297,9 @@ const Index = () => {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="md:px-4 md:border-l md:border-border/60 md:first:border-l-0"
                 >
-                  <div className="text-5xl font-black text-primary/30 font-poppins mb-2 leading-none">0{i + 1}</div>
-                  <h3 className="text-xl md:text-2xl font-black text-foreground font-poppins mb-3">{p.title}</h3>
-                  <p className="text-foreground/70 leading-relaxed">{p.description}</p>
+                  <CountUpNumber value={i + 1} className="block text-5xl md:text-6xl font-extrabold text-primary/30 font-display mb-3 leading-none" />
+                  <h3 className="text-xl md:text-2xl font-extrabold text-surface-warm-foreground font-display mb-3">{p.title}</h3>
+                  <p className="text-surface-warm-foreground/70 leading-relaxed">{p.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -300,7 +308,7 @@ const Index = () => {
             {/* Client logos */}
             <div className="relative overflow-hidden">
               <motion.p
-                className="text-sm text-muted-foreground text-center mb-8 uppercase tracking-widest"
+                className="label-eyebrow text-surface-warm-foreground/50 text-center mb-8"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -334,8 +342,9 @@ const Index = () => {
       </CollapsibleSection>
 
       {/* ─── 6. About Me ─── */}
-      <CollapsibleSection id="about" title="👤 About me" bgClass="bg-muted">
-        <section className="py-20 bg-muted/30">
+      <SectionRule className="text-foreground" />
+      <CollapsibleSection id="about-me" title="👤 About me" bgClass="bg-muted">
+        <section className="section-pad bg-surface-warm text-surface-warm-foreground">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-10 lg:gap-16 max-w-6xl mx-auto items-center">
               <motion.div
@@ -343,9 +352,10 @@ const Index = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="aspect-[3/4] overflow-hidden shadow-2xl"
+                className="relative aspect-[3/4] overflow-hidden"
               >
                 <img src={estherBw} alt="Esther Woerdman" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-primary opacity-[0.18] mix-blend-color" aria-hidden="true" />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
@@ -353,10 +363,10 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground font-poppins mb-6">
+                <h2 className="text-4xl md:text-6xl font-extrabold text-surface-warm-foreground font-display mb-6 tracking-tight">
                   {t("about.title")} <span className="text-primary">{t("about.name")}</span>
                 </h2>
-                <div className="space-y-4 text-base md:text-lg text-foreground/80 leading-relaxed">
+                <div className="space-y-5 text-base md:text-lg text-surface-warm-foreground/75 leading-relaxed">
                   {aboutParagraphs.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
@@ -403,7 +413,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-primary-foreground tracking-tight leading-[0.95] font-poppins">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary-foreground tracking-tight leading-[0.95] font-display">
                   {t("contactCta.titleStart")}<br />
                   <span className="text-secondary">{t("contactCta.titleEnd")}</span>
                 </h2>
@@ -443,56 +453,65 @@ const Index = () => {
       </main>
 
       {/* ─── 9. Footer ─── */}
-      <footer className="bg-foreground py-14">
+      <footer className="bg-charcoal text-charcoal-foreground py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto mb-16 md:mb-20">
+            <h2 className="font-display text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95] max-w-4xl">
+              {t("footer.bigTagline")}
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
             <div>
               <img src={logoEV} alt="Es Venture" className="h-10 brightness-0 invert mb-4" />
-              <p className="text-sm text-background/60 leading-relaxed max-w-xs">
+              <p className="text-sm text-charcoal-foreground/60 leading-relaxed max-w-xs">
                 {t("footer.tagline")}
               </p>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-background/70 mb-3">{t("footer.getInTouch")}</p>
+              <p className="label-eyebrow text-charcoal-foreground/50 mb-3">{t("footer.getInTouch")}</p>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="mailto:esther@esventure.nl" className="text-background/80 hover:text-secondary transition-colors">
+                  <a href="mailto:esther@esventure.nl" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
                     esther@esventure.nl
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/estherwoerdman/" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
+                  <a href="https://www.linkedin.com/in/estherwoerdman/" target="_blank" rel="noopener noreferrer" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
                     {t("footer.linkedin")}
                   </a>
                 </li>
                 <li>
-                  <a href="https://calendar.app.google/5GxNAzn7W3FJNMrh8" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
+                  <a href="https://calendar.app.google/5GxNAzn7W3FJNMrh8" target="_blank" rel="noopener noreferrer" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
                     {t("footer.bookCall")}
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-background/70 mb-3">{t("footer.more")}</p>
+              <p className="label-eyebrow text-charcoal-foreground/50 mb-3">{t("footer.more")}</p>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link to="/privacy" className="text-background/80 hover:text-secondary transition-colors">
+                  <Link to="/privacy" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
                     {t("footer.privacy")}
                   </Link>
                 </li>
                 <li>
-                  <a href="https://plaiwrks.com" target="_blank" rel="noopener noreferrer" className="text-background/80 hover:text-secondary transition-colors">
+                  <a href="https://plaiwrks.com" target="_blank" rel="noopener noreferrer" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
                     {t("footer.plaiwrks")}
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-background/10 mt-10 pt-6 text-center">
-            <p className="text-xs text-background/70">{t("footer.rights")}</p>
+          <div className="max-w-6xl mx-auto border-t border-charcoal-foreground/15 mt-14 pt-6 flex flex-col sm:flex-row justify-between gap-2">
+            <p className="text-xs text-charcoal-foreground/60">{t("footer.rights")}</p>
+            <p className="text-xs text-charcoal-foreground/60">{t("footer.legal")}</p>
           </div>
         </div>
       </footer>
+
+      {/* Boutique craft details */}
+      <CustomCursor />
 
       {/* Fixed scroll-down arrow */}
       <ScrollDownArrow />

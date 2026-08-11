@@ -80,24 +80,29 @@
       {
         "label": "The Driver",
         "title": "Let's Get It Shipped",
-        "description": "Websites, campaigns, or complex digital systems. I take ownership of the delivery, align the team, manage the dependencies, and drive the work from brief to launch."
+        "description": "Websites, campaigns, or complex digital systems. I take ownership of the delivery, align the team, manage the dependencies, and drive the work from brief to launch.",
+        "outcome": "From brief to live in six weeks"
       },
       {
         "label": "The Sparring Room",
         "title": "Let's Think It Through",
-        "description": "When you've got an idea but no shape yet. We sketch, challenge, prototype and pressure-test it together until it's clear enough to build."
+        "description": "When you've got an idea but no shape yet. We sketch, challenge, prototype and pressure-test it together until it's clear enough to build.",
+        "outcome": "An idea pressure-tested into a buildable plan"
       },
       {
         "label": "The Map",
         "title": "Let's Make It Flow",
-        "description": "Messy processes, double work, things falling between teams. I map what's actually happening, find the friction, and redesign it so your day-to-day just runs."
+        "description": "Messy processes, double work, things falling between teams. I map what's actually happening, find the friction, and redesign it so your day-to-day just runs.",
+        "outcome": "Double work removed from a weekly process"
       },
       {
         "label": "The Mirror",
         "title": "Let's Make It Yours",
-        "description": "Your brand or personal story deserves a visual that fits. I help shape how you (or your company) shows up - from positioning to a website that actually feels like you."
+        "description": "Your brand or personal story deserves a visual that fits. I help shape how you (or your company) shows up - from positioning to a website that actually feels like you.",
+        "outcome": "A brand that finally sounds like its founder"
       }
-    ]
+    ],
+    "outcomeLabel": "Recent outcome"
   },
   "sparring": {
     "title": "Need a sparring partner?",
@@ -198,12 +203,25 @@
     "bookCall": "Book a call",
     "privacy": "Privacy Policy",
     "plaiwrks": "AI-native projects? See Plaiwrks →",
-    "rights": "© 2025 Es Venture. All rights reserved."
+    "rights": "© 2025 Es Venture. All rights reserved.",
+    "bigTagline": "Your boutique digital delivery partner.",
+    "legal": "© Es Venture 2025 - Amsterdam"
   },
   "cookie": {
     "message": "We use cookies to analyze site traffic and improve your experience. By clicking \"Accept\", you consent to our use of analytics cookies.",
     "privacy": "Privacy Policy",
     "decline": "Decline",
     "accept": "Accept"
+  },
+  "marquee": {
+    "items": [
+      "Strategy",
+      "Delivery",
+      "Web",
+      "Brand",
+      "Process",
+      "AI",
+      "Brief to Shipped"
+    ]
   }
 }
