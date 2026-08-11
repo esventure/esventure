@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
-import CountUpNumber from "@/components/CountUpNumber";
 
 interface Props {
   onCta?: () => void;
@@ -58,10 +57,9 @@ const ServicesWorkbench = ({ onCta }: Props) => {
               >
                 <div className="relative transition-colors duration-300 group-hover:bg-section-yellow-foreground/[0.06] px-2 md:px-6 py-10 md:py-14">
                   <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-10">
-                    <CountUpNumber
-                      value={i + 1}
-                      className="font-display text-5xl md:text-7xl font-extrabold leading-none text-section-yellow-foreground/30 transition-colors duration-300 group-hover:text-primary md:w-48 lg:w-56 shrink-0"
-                    />
+                    <span className="font-display text-5xl md:text-7xl font-extrabold leading-none text-section-yellow-foreground/30 transition-colors duration-300 group-hover:text-primary md:w-48 lg:w-56 shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <div className="flex-1">
                       <span className="label-eyebrow block text-section-yellow-foreground/60 mb-3">
                         {s.label}
