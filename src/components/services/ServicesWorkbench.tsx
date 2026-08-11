@@ -18,8 +18,18 @@ const ServicesWorkbench = ({ onCta }: Props) => {
   }>;
 
   return (
-    <section className="bg-charcoal text-charcoal-foreground section-pad">
-      <div className="container mx-auto px-6 md:px-12">
+    <section className="relative overflow-hidden bg-anchor text-anchor-foreground section-pad">
+      {/* Subtle sparkle texture: deep radial glow + soft gradient sheen */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-secondary/5" />
+        <div className="absolute -top-1/2 -right-1/2 h-full w-full rounded-full bg-primary/20 blur-3xl opacity-60" />
+        <div className="absolute -bottom-1/2 -left-1/2 h-full w-full rounded-full bg-secondary/10 blur-3xl opacity-40" />
+      </div>
+
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -31,12 +41,12 @@ const ServicesWorkbench = ({ onCta }: Props) => {
             <h2 className="font-display text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.92] mb-6">
               {t("services.title")}
             </h2>
-            <p className="text-lg md:text-xl text-charcoal-foreground/70 leading-relaxed">
+            <p className="text-lg md:text-xl text-anchor-foreground/70 leading-relaxed">
               {t("services.subtitle")}
             </p>
           </motion.div>
 
-          <div className="border-t border-charcoal-foreground/20">
+          <div className="border-t border-anchor-foreground/20">
             {services.map((s, i) => (
               <motion.div
                 key={i}
@@ -44,16 +54,16 @@ const ServicesWorkbench = ({ onCta }: Props) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.06, ease: "easeOut" }}
-                className="group relative border-b border-charcoal-foreground/20"
+                className="group relative border-b border-anchor-foreground/20"
               >
-                <div className="relative transition-colors duration-300 group-hover:bg-charcoal-foreground/[0.04] px-2 md:px-6 py-10 md:py-14">
+                <div className="relative transition-colors duration-300 group-hover:bg-anchor-foreground/[0.06] px-2 md:px-6 py-10 md:py-14">
                   <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-10">
                     <CountUpNumber
                       value={i + 1}
-                      className="font-display text-5xl md:text-7xl font-extrabold leading-none text-charcoal-foreground/25 transition-colors duration-300 group-hover:text-secondary md:w-48 lg:w-56 shrink-0"
+                      className="font-display text-5xl md:text-7xl font-extrabold leading-none text-anchor-foreground/30 transition-colors duration-300 group-hover:text-secondary md:w-48 lg:w-56 shrink-0"
                     />
                     <div className="flex-1">
-                      <span className="label-eyebrow block text-charcoal-foreground/50 mb-3">
+                      <span className="label-eyebrow block text-anchor-foreground/60 mb-3">
                         {s.label}
                       </span>
                       <h3 className="font-display text-3xl md:text-5xl font-extrabold leading-[1.02] tracking-tight inline-block">
@@ -62,7 +72,7 @@ const ServicesWorkbench = ({ onCta }: Props) => {
                           <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-secondary transition-all duration-500 group-hover:w-full" />
                         </span>
                       </h3>
-                      <p className="mt-5 max-w-2xl text-sm md:text-base text-charcoal-foreground/65 leading-relaxed">
+                      <p className="mt-5 max-w-2xl text-sm md:text-base text-anchor-foreground/70 leading-relaxed">
                         {s.description}
                       </p>
                       {s.outcome && (

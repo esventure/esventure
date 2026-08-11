@@ -43,6 +43,8 @@ All colors MUST be HSL.
     --charcoal-foreground: 0 0% 98%;
     --surface-warm: 36 33% 97%;
     --surface-warm-foreground: 0 0% 10%;
+    --anchor: 280 50% 14%;
+    --anchor-foreground: 0 0% 98%;
 
     --sidebar-background: 0 0% 98%;
 
