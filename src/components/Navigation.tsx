@@ -7,7 +7,7 @@ import { analytics } from "@/lib/analytics";
 import { useTranslation } from "react-i18next";
 import LanguageToggle from "@/components/LanguageToggle";
 
-type NavZone = "hero" | "light" | "dark" | "purple";
+type NavZone = "hero" | "light" | "dark" | "purple" | "yellow";
 
 interface ZoneStyle {
   bg: string;
@@ -61,12 +61,22 @@ const zoneStyles: Record<NavZone, ZoneStyle> = {
     mobileBg: "bg-primary/95",
     langVariant: "light",
   },
+  yellow: {
+    bg: "bg-section-yellow/90 backdrop-blur-md",
+    text: "text-section-yellow-foreground/80",
+    textHover: "hover:text-primary",
+    logoInvert: false,
+    buttonBorder: "border-section-yellow-foreground/40 bg-transparent text-section-yellow-foreground",
+    buttonHover: "hover:bg-primary hover:text-primary-foreground hover:border-primary",
+    mobileBg: "bg-section-yellow/95",
+    langVariant: "dark",
+  },
 };
 
 const trackedSections: Array<{ id: string; zone: NavZone }> = [
   { id: "hero", zone: "hero" },
-  { id: "when-to-call", zone: "light" },
-  { id: "how-i-help", zone: "dark" },
+  { id: "when-to-call", zone: "yellow" },
+  { id: "how-i-help", zone: "yellow" },
   { id: "sparring", zone: "light" },
   { id: "effect", zone: "light" },
   { id: "about-me", zone: "light" },
