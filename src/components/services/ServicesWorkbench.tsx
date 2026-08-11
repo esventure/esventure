@@ -60,7 +60,7 @@ const ServicesWorkbench = ({ onCta }: Props) => {
                   <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-10">
                     <CountUpNumber
                       value={i + 1}
-                      className="font-display text-5xl md:text-7xl font-extrabold leading-none text-primary/30 transition-colors duration-300 group-hover:text-primary md:w-48 lg:w-56 shrink-0"
+                      className="font-display text-5xl md:text-7xl font-extrabold leading-none text-section-yellow-foreground/30 transition-colors duration-300 group-hover:text-primary md:w-48 lg:w-56 shrink-0"
                     />
                     <div className="flex-1">
                       <span className="label-eyebrow block text-section-yellow-foreground/60 mb-3">
