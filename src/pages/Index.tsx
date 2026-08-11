@@ -453,7 +453,7 @@ const Index = () => {
       </main>
 
       {/* ─── 9. Footer ─── */}
-      <footer className="bg-charcoal text-charcoal-foreground py-20 md:py-24">
+      <footer id="footer" className="bg-primary text-primary-foreground py-20 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto mb-16 md:mb-20">
             <h2 className="font-display text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95] max-w-4xl">
@@ -463,49 +463,49 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
             <div>
               <img src={logoEV} alt="Es Venture" className="h-10 brightness-0 invert mb-4" />
-              <p className="text-sm text-charcoal-foreground/60 leading-relaxed max-w-xs">
+              <p className="text-sm text-primary-foreground/70 leading-relaxed max-w-xs">
                 {t("footer.tagline")}
               </p>
             </div>
             <div>
-              <p className="label-eyebrow text-charcoal-foreground/50 mb-3">{t("footer.getInTouch")}</p>
+              <p className="label-eyebrow text-primary-foreground/50 mb-3">{t("footer.getInTouch")}</p>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="mailto:esther@esventure.nl" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
+                  <a href="mailto:esther@esventure.nl" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                     esther@esventure.nl
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/estherwoerdman/" target="_blank" rel="noopener noreferrer" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
+                  <a href="https://www.linkedin.com/in/estherwoerdman/" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                     {t("footer.linkedin")}
                   </a>
                 </li>
                 <li>
-                  <a href="https://calendar.app.google/5GxNAzn7W3FJNMrh8" target="_blank" rel="noopener noreferrer" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
+                  <a href="https://calendar.app.google/5GxNAzn7W3FJNMrh8" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                     {t("footer.bookCall")}
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <p className="label-eyebrow text-charcoal-foreground/50 mb-3">{t("footer.more")}</p>
+              <p className="label-eyebrow text-primary-foreground/50 mb-3">{t("footer.more")}</p>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link to="/privacy" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
+                  <Link to="/privacy" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                     {t("footer.privacy")}
                   </Link>
                 </li>
                 <li>
-                  <a href="https://plaiwrks.com" target="_blank" rel="noopener noreferrer" className="text-charcoal-foreground/80 hover:text-secondary transition-colors">
+                  <a href="https://plaiwrks.com" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                     {t("footer.plaiwrks")}
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="max-w-6xl mx-auto border-t border-charcoal-foreground/15 mt-14 pt-6 flex flex-col sm:flex-row justify-between gap-2">
-            <p className="text-xs text-charcoal-foreground/60">{t("footer.rights")}</p>
-            <p className="text-xs text-charcoal-foreground/60">{t("footer.legal")}</p>
+          <div className="max-w-6xl mx-auto border-t border-primary-foreground/20 mt-14 pt-6 flex flex-col sm:flex-row justify-between gap-2">
+            <p className="text-xs text-primary-foreground/70">{t("footer.rights")}</p>
+            <p className="text-xs text-primary-foreground/70">{t("footer.legal")}</p>
           </div>
         </div>
       </footer>
