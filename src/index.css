@@ -45,6 +45,8 @@ All colors MUST be HSL.
     --surface-warm-foreground: 0 0% 10%;
     --anchor: 280 50% 14%;
     --anchor-foreground: 0 0% 98%;
+    --section-yellow: 62 70% 82%;
+    --section-yellow-foreground: 0 0% 10%;
 
     --sidebar-background: 0 0% 98%;
 
