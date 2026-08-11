@@ -80,24 +80,29 @@
       {
         "label": "The Driver",
         "title": "Laten we het opleveren",
-        "description": "Websites, campagnes of complexe digitale systemen. Ik neem eigenaarschap over de oplevering, lijn het team uit, beheer de afhankelijkheden en breng het werk van briefing naar livegang."
+        "description": "Websites, campagnes of complexe digitale systemen. Ik neem eigenaarschap over de oplevering, lijn het team uit, beheer de afhankelijkheden en breng het werk van briefing naar livegang.",
+        "outcome": "Van briefing naar live in zes weken"
       },
       {
         "label": "The Sparring Room",
         "title": "Laten we het samen doordenken",
-        "description": "Als je een idee hebt maar nog geen vorm. We schetsen, dagen uit, prototypen en testen het samen tot het helder genoeg is om te bouwen."
+        "description": "Als je een idee hebt maar nog geen vorm. We schetsen, dagen uit, prototypen en testen het samen tot het helder genoeg is om te bouwen.",
+        "outcome": "Een idee getest tot een bouwbaar plan"
       },
       {
         "label": "The Map",
         "title": "Laten we het laten stromen",
-        "description": "Rommelige processen, dubbel werk, dingen die tussen teams vallen. Ik breng in kaart wat er echt gebeurt, vind de frictie en herontwerp het zodat je dagelijkse werk gewoon loopt."
+        "description": "Rommelige processen, dubbel werk, dingen die tussen teams vallen. Ik breng in kaart wat er echt gebeurt, vind de frictie en herontwerp het zodat je dagelijkse werk gewoon loopt.",
+        "outcome": "Dubbel werk uit een wekelijks proces gehaald"
       },
       {
         "label": "The Mirror",
         "title": "Laten we het van jou maken",
-        "description": "Jouw merk of persoonlijke verhaal verdient een visual die past. Ik help vormgeven hoe jij (of je bedrijf) verschijnt - van positionering tot een website die écht voelt als jou."
+        "description": "Jouw merk of persoonlijke verhaal verdient een visual die past. Ik help vormgeven hoe jij (of je bedrijf) verschijnt - van positionering tot een website die écht voelt als jou.",
+        "outcome": "Een merk dat eindelijk klinkt als zijn founder"
       }
-    ]
+    ],
+    "outcomeLabel": "Recent resultaat"
   },
   "sparring": {
     "title": "Behoefte aan een sparringpartner?",
@@ -198,12 +203,25 @@
     "bookCall": "Boek een gesprek",
     "privacy": "Privacybeleid",
     "plaiwrks": "AI-native projecten? Bekijk Plaiwrks →",
-    "rights": "© 2025 Es Venture. Alle rechten voorbehouden."
+    "rights": "© 2025 Es Venture. Alle rechten voorbehouden.",
+    "bigTagline": "Wat het ook is - als het digitaal is, regel ik het.",
+    "legal": "© Es Venture 2025 - Amsterdam"
   },
   "cookie": {
     "message": "We gebruiken cookies om sitegebruik te analyseren en je ervaring te verbeteren. Door op \"Accepteren\" te klikken, ga je akkoord met analytische cookies.",
     "privacy": "Privacybeleid",
     "decline": "Weigeren",
     "accept": "Accepteren"
+  },
+  "marquee": {
+    "items": [
+      "Strategie",
+      "Delivery",
+      "Web",
+      "Merk",
+      "Proces",
+      "AI",
+      "Van briefing naar live"
+    ]
   }
 }

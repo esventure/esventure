@@ -16,7 +16,7 @@ const LanguageToggle = ({ variant = "dark", className }: LanguageToggleProps) =>
   };
 
   const base =
-    "px-2 py-0.5 text-xs font-bold font-poppins rounded-full transition-colors";
+    "px-2 py-0.5 text-xs font-bold rounded-full transition-colors";
   const isLight = variant === "light";
 
   return (

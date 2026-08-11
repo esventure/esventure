@@ -34,8 +34,8 @@ const Navigation = () => {
 
   const navLinks = [
     { label: t("nav.whenToCallMe"), id: "when-to-call" },
-    { label: t("nav.services"), id: "services" },
-    { label: t("nav.about"), id: "about" },
+    { label: t("nav.services"), id: "how-i-help" },
+    { label: t("nav.about"), id: "about-me" },
   ];
 
   return (
@@ -44,7 +44,7 @@ const Navigation = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-lg py-2"
+            ? "bg-charcoal/95 backdrop-blur-md py-2"
             : "bg-transparent py-3"
         )}
       >
@@ -58,7 +58,7 @@ const Navigation = () => {
               <img
                 src={logoEV}
                 alt="Es Venture"
-                className={cn("h-12 transition-all", !isScrolled && "brightness-0 invert")}
+                className="h-12 transition-all brightness-0 invert"
               />
             </button>
 
@@ -69,9 +69,9 @@ const Navigation = () => {
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
                   className={cn(
-                    "text-base font-semibold font-poppins transition-colors",
+                    "text-base font-semibold transition-colors",
                     isScrolled
-                      ? "text-foreground/80 hover:text-primary"
+                      ? "text-charcoal-foreground/80 hover:text-secondary"
                       : "text-primary-foreground/90 hover:text-secondary"
                   )}
                 >
@@ -84,23 +84,23 @@ const Navigation = () => {
                 className={cn(
                   "rounded-full font-semibold px-5 py-1 text-base transition-colors",
                   isScrolled
-                    ? "border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary"
+                    ? "border border-charcoal-foreground/40 bg-transparent text-charcoal-foreground hover:bg-secondary hover:text-secondary-foreground hover:border-secondary"
                     : "border border-primary-foreground/60 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 )}
               >
                 {t("nav.planMyProject")}
               </Button>
-              <LanguageToggle variant={isScrolled ? "dark" : "light"} />
+              <LanguageToggle variant="light" />
             </div>
 
             {/* Mobile right side */}
             <div className="md:hidden flex items-center gap-2">
-              <LanguageToggle variant={isScrolled ? "dark" : "light"} />
+              <LanguageToggle variant="light" />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={cn(
                   "p-2 transition-colors",
-                  isScrolled ? "text-foreground hover:text-primary" : "text-primary-foreground hover:text-secondary"
+                  isScrolled ? "text-charcoal-foreground hover:text-secondary" : "text-primary-foreground hover:text-secondary"
                 )}
                 aria-label="Toggle menu"
               >
@@ -116,8 +116,8 @@ const Navigation = () => {
 
         <div
           className={cn(
-            "md:hidden bg-background/95 backdrop-blur-md transition-all duration-300 overflow-hidden",
-            isMobileMenuOpen ? "max-h-96 border-t border-border" : "max-h-0"
+            "md:hidden bg-charcoal/95 backdrop-blur-md transition-all duration-300 overflow-hidden",
+            isMobileMenuOpen ? "max-h-96 border-t border-charcoal-foreground/15" : "max-h-0"
           )}
         >
           <div className="container mx-auto px-4 py-4 space-y-2">
@@ -125,7 +125,7 @@ const Navigation = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left py-3 text-foreground hover:text-primary transition-colors font-semibold font-poppins text-lg"
+                className="block w-full text-left py-3 text-charcoal-foreground hover:text-secondary transition-colors font-semibold text-lg"
               >
                 {link.label}
               </button>
@@ -133,7 +133,7 @@ const Navigation = () => {
             <Button
               onClick={() => scrollToSection("project-planner")}
               variant="ghost"
-              className="w-full rounded-full border border-primary bg-transparent text-foreground hover:bg-primary/10 hover:text-primary font-semibold text-base py-3 transition-colors"
+              className="w-full rounded-full border border-charcoal-foreground/40 bg-transparent text-charcoal-foreground hover:bg-secondary hover:text-secondary-foreground font-semibold text-base py-3 transition-colors"
             >
               {t("nav.planMyProject")}
             </Button>

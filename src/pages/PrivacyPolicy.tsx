@@ -25,13 +25,13 @@ const PrivacyPolicy = () => {
           </Button>
         </Link>
 
-        <h1 className="font-poppins text-3xl md:text-4xl font-bold mb-8">Privacy Policy</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-bold mb-8">Privacy Policy</h1>
         
         <div className="prose prose-gray max-w-none space-y-6 text-foreground/80">
           <p className="text-sm text-muted-foreground">Last updated: December 11, 2025</p>
 
           <section className="space-y-4">
-            <h2 className="font-poppins text-xl font-semibold text-foreground">Introduction</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground">Introduction</h2>
             <p>
               Es Venture ("we", "our", or "us") respects your privacy and is committed to protecting your personal data. 
               This privacy policy explains how we collect, use, and safeguard your information when you visit our website.
@@ -39,7 +39,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-poppins text-xl font-semibold text-foreground">Information We Collect</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground">Information We Collect</h2>
             <p>We collect the following types of information:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-poppins text-xl font-semibold text-foreground">How We Use Your Information</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground">How We Use Your Information</h2>
             <p>We use the collected information to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Improve our website and services based on usage patterns</li>
@@ -70,7 +70,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-poppins text-xl font-semibold text-foreground">Cookies</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground">Cookies</h2>
             <p>
               We use cookies to analyze site traffic via Google Analytics. These cookies are only activated if you 
               click "Accept" on our cookie consent banner. You can change your preference at any time by clearing 
@@ -92,7 +92,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-poppins text-xl font-semibold text-foreground">Your Rights</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground">Your Rights</h2>
             <p>Under GDPR and other applicable privacy laws, you have the right to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Access the personal data we hold about you</li>
@@ -104,7 +104,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-poppins text-xl font-semibold text-foreground">Data Retention</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground">Data Retention</h2>
             <p>
               Analytics data is retained according to Google Analytics' default retention settings (14 months). 
               Contact information and project-related communications are retained for as long as necessary to 
@@ -113,7 +113,7 @@ const PrivacyPolicy = () => {
           </section>
 
           <section className="space-y-4">
-            <h2 className="font-poppins text-xl font-semibold text-foreground">Contact Us</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground">Contact Us</h2>
             <p>
               If you have questions about this privacy policy or want to exercise your data rights, please contact us at:{" "}
               <a href="mailto:esther@esventure.nl" className="text-primary hover:underline">

@@ -36,7 +36,7 @@ const StyleGuide = () => {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <img src={logoEV} alt="Es Venture" className="h-8" />
-            <h1 className="text-xl font-black font-poppins text-foreground">Style Guide</h1>
+            <h1 className="text-xl font-black font-display text-foreground">Style Guide</h1>
           </div>
           <div className="flex items-center gap-4">
             <Button
@@ -57,7 +57,7 @@ const StyleGuide = () => {
 
         {/* ─── Logo ─── */}
         <section>
-          <h2 className="text-3xl font-black font-poppins text-foreground mb-2">Logo</h2>
+          <h2 className="text-3xl font-black font-display text-foreground mb-2">Logo</h2>
           <p className="text-muted-foreground mb-8">Het Es Venture logo in verschillende toepassingen.</p>
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="p-8 flex items-center justify-center bg-background">
@@ -74,7 +74,7 @@ const StyleGuide = () => {
 
         {/* ─── Kleuren ─── */}
         <section>
-          <h2 className="text-3xl font-black font-poppins text-foreground mb-2">Kleuren</h2>
+          <h2 className="text-3xl font-black font-display text-foreground mb-2">Kleuren</h2>
           <p className="text-muted-foreground mb-8">Het kernkleurenpalet van Es Venture.</p>
           
           <h3 className="text-lg font-bold text-foreground mb-4">Primaire kleuren</h3>
@@ -96,17 +96,17 @@ const StyleGuide = () => {
 
         {/* ─── Typografie ─── */}
         <section>
-          <h2 className="text-3xl font-black font-poppins text-foreground mb-2">Typografie</h2>
+          <h2 className="text-3xl font-black font-display text-foreground mb-2">Typografie</h2>
           <p className="text-muted-foreground mb-8">Twee fontfamilies: Poppins voor koppen, Nunito Sans voor body.</p>
 
           <div className="space-y-8">
             <div className="space-y-4">
               <h3 className="text-lg font-bold text-foreground">Headings - Poppins</h3>
               <div className="space-y-3 border-l-4 border-primary pl-6">
-                <p className="text-6xl font-black font-poppins text-foreground">Heading 1</p>
-                <p className="text-4xl font-black font-poppins text-foreground">Heading 2</p>
-                <p className="text-2xl font-black font-poppins text-foreground">Heading 3</p>
-                <p className="text-xl font-bold font-poppins text-foreground">Heading 4</p>
+                <p className="text-6xl font-black font-display text-foreground">Heading 1</p>
+                <p className="text-4xl font-black font-display text-foreground">Heading 2</p>
+                <p className="text-2xl font-black font-display text-foreground">Heading 3</p>
+                <p className="text-xl font-bold font-display text-foreground">Heading 4</p>
               </div>
             </div>
 
@@ -129,7 +129,7 @@ const StyleGuide = () => {
 
         {/* ─── Buttons ─── */}
         <section>
-          <h2 className="text-3xl font-black font-poppins text-foreground mb-2">Buttons</h2>
+          <h2 className="text-3xl font-black font-display text-foreground mb-2">Buttons</h2>
           <p className="text-muted-foreground mb-8">Alle buttons zijn rounded-full met duidelijke hover states.</p>
 
           <div className="space-y-6">
@@ -164,7 +164,7 @@ const StyleGuide = () => {
 
         {/* ─── Cards ─── */}
         <section>
-          <h2 className="text-3xl font-black font-poppins text-foreground mb-2">Cards</h2>
+          <h2 className="text-3xl font-black font-display text-foreground mb-2">Cards</h2>
           <p className="text-muted-foreground mb-8">Service cards met iconen en beschrijvingen.</p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -179,7 +179,7 @@ const StyleGuide = () => {
                   <Icon size={28} className="text-primary" />
                 </div>
                 <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">{label}</span>
-                <h3 className="text-xl font-black text-foreground font-poppins">{title}</h3>
+                <h3 className="text-xl font-black text-foreground font-display">{title}</h3>
               </Card>
             ))}
           </div>
@@ -187,7 +187,7 @@ const StyleGuide = () => {
 
         {/* ─── Iconen ─── */}
         <section>
-          <h2 className="text-3xl font-black font-poppins text-foreground mb-2">Iconen</h2>
+          <h2 className="text-3xl font-black font-display text-foreground mb-2">Iconen</h2>
           <p className="text-muted-foreground mb-8">Custom service-iconen en Lucide UI-iconen.</p>
 
           <div className="flex flex-wrap gap-8 items-end">
@@ -216,7 +216,7 @@ const StyleGuide = () => {
 
         {/* ─── Spacing & Radius ─── */}
         <section>
-          <h2 className="text-3xl font-black font-poppins text-foreground mb-2">Spacing & Radius</h2>
+          <h2 className="text-3xl font-black font-display text-foreground mb-2">Spacing & Radius</h2>
           <p className="text-muted-foreground mb-8">Standaard border-radius: 1rem. Buttons: full rounded.</p>
 
           <div className="flex flex-wrap gap-6 items-end">
@@ -236,7 +236,7 @@ const StyleGuide = () => {
 
         {/* ─── Tone of Voice ─── */}
         <section>
-          <h2 className="text-3xl font-black font-poppins text-foreground mb-2">Tone of Voice</h2>
+          <h2 className="text-3xl font-black font-display text-foreground mb-2">Tone of Voice</h2>
           <p className="text-muted-foreground mb-8">De stem van Es Venture in tekst.</p>
 
           <div className="grid md:grid-cols-2 gap-6">

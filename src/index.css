@@ -38,6 +38,12 @@ All colors MUST be HSL.
 
     --radius: 1rem;
 
+    /* Colour rhythm zones */
+    --charcoal: 0 0% 10%;
+    --charcoal-foreground: 0 0% 98%;
+    --surface-warm: 36 33% 97%;
+    --surface-warm-foreground: 0 0% 10%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -114,6 +120,47 @@ All colors MUST be HSL.
 
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+@layer components {
+  /* Editorial section rhythm */
+  .section-pad {
+    @apply py-24 md:py-36;
+  }
+
+  .label-eyebrow {
+    @apply font-sans text-xs font-semibold uppercase tracking-[0.22em];
+  }
+
+  .hairline {
+    @apply border-t border-current opacity-20;
+  }
+}
+
+@layer base {
+  /* Custom cursor: only on precise pointers, respects reduced motion */
+  @media (hover: hover) and (pointer: fine) {
+    html.has-custom-cursor,
+    html.has-custom-cursor body,
+    html.has-custom-cursor a,
+    html.has-custom-cursor button,
+    html.has-custom-cursor [role="button"] {
+      cursor: none;
+    }
+
+    html.has-custom-cursor input,
+    html.has-custom-cursor textarea,
+    html.has-custom-cursor select,
+    html.has-custom-cursor [contenteditable="true"] {
+      cursor: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none !important;
+    }
   }
 }
 

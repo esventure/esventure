@@ -14,15 +14,25 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Nunito Sans', 'sans-serif'],
-        poppins: ['Poppins', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'sans-serif'],
+        display: ['Syne', 'Poppins', 'sans-serif'],
       },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        charcoal: {
+          DEFAULT: "hsl(var(--charcoal))",
+          foreground: "hsl(var(--charcoal-foreground))",
+        },
+        "surface-warm": {
+          DEFAULT: "hsl(var(--surface-warm))",
+          foreground: "hsl(var(--surface-warm-foreground))",
+        },
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -84,6 +94,10 @@ export default {
             height: "0",
           },
         },
+        "marquee": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
         "pulse-once": {
           "0%": { boxShadow: "0 0 0 0 hsl(var(--secondary) / 0.5)" },
           "70%": { boxShadow: "0 0 0 14px hsl(var(--secondary) / 0)" },
@@ -93,6 +107,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "marquee": "marquee 32s linear infinite",
         "pulse-once": "pulse-once 1.5s ease-out 0.5s 2",
       },
     },
