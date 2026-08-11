@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Zap, Scissors, CheckCircle2, HandHelping } from "lucide-react";
-import CountUpNumber from "@/components/CountUpNumber";
 
 const WhenToCallMe = () => {
   const { t } = useTranslation();
@@ -56,10 +55,9 @@ const WhenToCallMe = () => {
                 >
                   <div className="h-full border-t border-section-yellow-foreground/20 pt-6">
                     <div className="flex items-baseline gap-4 mb-4">
-                      <CountUpNumber
-                        value={i + 1}
-                        className="font-display text-3xl md:text-5xl font-extrabold leading-none text-section-yellow-foreground/25 transition-colors duration-300 group-hover:text-primary"
-                      />
+                      <span className="font-display text-3xl md:text-5xl font-extrabold leading-none text-section-yellow-foreground/25 transition-colors duration-300 group-hover:text-primary">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                       <span className="label-eyebrow text-section-yellow-foreground/50">{symptomLabel}</span>
                     </div>
                     <h3 className="font-display text-2xl md:text-3xl font-extrabold leading-tight mb-3">
