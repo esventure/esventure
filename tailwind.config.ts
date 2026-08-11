@@ -32,6 +32,10 @@ export default {
           DEFAULT: "hsl(var(--surface-warm))",
           foreground: "hsl(var(--surface-warm-foreground))",
         },
+        anchor: {
+          DEFAULT: "hsl(var(--anchor))",
+          foreground: "hsl(var(--anchor-foreground))",
+        },
 
         primary: {
           DEFAULT: "hsl(var(--primary))",
