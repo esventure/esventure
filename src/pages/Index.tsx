@@ -413,7 +413,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-primary-foreground tracking-tight leading-[0.92] font-display">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary-foreground tracking-tight leading-[0.95] font-display">
                   {t("contactCta.titleStart")}<br />
                   <span className="text-secondary">{t("contactCta.titleEnd")}</span>
                 </h2>
