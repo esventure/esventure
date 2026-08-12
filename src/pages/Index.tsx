@@ -385,9 +385,15 @@ const Index = () => {
             </div>
           </section>
 
-          {/* ─── 7. Final CTA - Deep Plum ─── */}
-          <section id="final-cta" className="bg-plum text-plum-foreground py-20 md:py-32">
-            <div className="container mx-auto px-4">
+          {/* ─── 7. Final CTA - Acid lime, the last visual surprise ─── */}
+          <section id="final-cta" className="relative overflow-hidden bg-lime text-lime-foreground py-20 md:py-32">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-10 -bottom-24 select-none font-display text-[20rem] leading-none text-primary md:-right-16 md:text-[28rem]"
+            >
+              *
+            </span>
+            <div className="container mx-auto px-4 relative">
               <div className="max-w-4xl">
                 <Reveal>
                   <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.0] text-[clamp(2.25rem,5.4vw,4rem)]">
@@ -395,7 +401,7 @@ const Index = () => {
                   </h2>
                 </Reveal>
                 <Reveal delay={0.06}>
-                  <p className="mt-6 max-w-[52ch] text-lg md:text-xl leading-relaxed text-plum-foreground/80">
+                  <p className="mt-6 max-w-[52ch] text-lg md:text-xl leading-relaxed text-plum/80">
                     {t("finalCta.copy")}
                   </p>
                 </Reveal>
@@ -404,7 +410,7 @@ const Index = () => {
                     <Button
                       asChild
                       size="lg"
-                      className="rounded-full px-8 py-6 text-base font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                      className="rounded-full px-8 py-6 text-base font-semibold bg-plum text-paper hover:bg-primary hover:text-primary-foreground"
                     >
                       <Link to="/start-a-project" onClick={() => analytics.ctaClick("final_start_project")}>
                         {t("finalCta.primary")}
@@ -415,7 +421,7 @@ const Index = () => {
                       size="lg"
                       variant="outline"
                       onClick={openBooking}
-                      className="rounded-full px-8 py-6 text-base font-semibold bg-transparent text-plum-foreground border-2 border-plum-foreground/50 hover:bg-plum-foreground/10 hover:text-plum-foreground"
+                      className="rounded-full px-8 py-6 text-base font-semibold bg-transparent text-plum border-2 border-plum/40 hover:bg-plum/10 hover:text-plum"
                     >
                       {t("finalCta.secondary")}
                     </Button>
