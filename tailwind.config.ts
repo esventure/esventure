@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'sans-serif'],
-        display: ['Syne', 'Poppins', 'sans-serif'],
+        sans: ['Instrument Sans', 'system-ui', 'sans-serif'],
+        display: ['Bricolage Grotesque', 'Instrument Sans', 'sans-serif'],
       },
 
       colors: {
@@ -40,6 +40,19 @@ export default {
           DEFAULT: "hsl(var(--section-yellow))",
           foreground: "hsl(var(--section-yellow-foreground))",
         },
+        plum: {
+          DEFAULT: "hsl(var(--plum))",
+          foreground: "hsl(var(--plum-foreground))",
+        },
+        paper: {
+          DEFAULT: "hsl(var(--paper))",
+          foreground: "hsl(var(--paper-foreground))",
+        },
+        lilac: {
+          DEFAULT: "hsl(var(--lilac))",
+          foreground: "hsl(var(--lilac-foreground))",
+        },
+
 
         primary: {
           DEFAULT: "hsl(var(--primary))",
