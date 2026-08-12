@@ -8,45 +8,54 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --background: 38 100% 97%;
+    --foreground: 276 58% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 276 58% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 276 58% 15%;
 
-    --primary: 280 85% 65%;
+    --primary: 269 100% 62%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 62 70% 82%;
-    --secondary-foreground: 0 0% 15%;
+    --secondary: 51 90% 65%;
+    --secondary-foreground: 276 58% 15%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 38 40% 93%;
+    --muted-foreground: 276 12% 38%;
 
-    --accent: 280 85% 65%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 263 100% 95%;
+    --accent-foreground: 276 58% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 280 85% 65%;
+    --border: 276 14% 86%;
+    --input: 276 14% 86%;
+    --ring: 269 100% 62%;
 
     --radius: 1rem;
 
     /* Colour rhythm zones */
-    --charcoal: 0 0% 10%;
-    --charcoal-foreground: 0 0% 98%;
-    --surface-warm: 36 33% 97%;
-    --surface-warm-foreground: 0 0% 10%;
-    --anchor: 280 50% 14%;
-    --anchor-foreground: 0 0% 98%;
-    --section-yellow: 62 70% 82%;
-    --section-yellow-foreground: 0 0% 10%;
+    --plum: 276 58% 15%;
+    --plum-foreground: 38 100% 97%;
+    --paper: 38 100% 97%;
+    --paper-foreground: 276 58% 15%;
+    --lilac: 263 100% 95%;
+    --lilac-foreground: 276 58% 15%;
+
+    /* Legacy aliases (kept for the style guide) */
+    --charcoal: 276 58% 15%;
+    --charcoal-foreground: 38 100% 97%;
+    --surface-warm: 38 100% 97%;
+    --surface-warm-foreground: 276 58% 15%;
+    --anchor: 276 58% 15%;
+    --anchor-foreground: 38 100% 97%;
+    --section-yellow: 51 90% 65%;
+    --section-yellow-foreground: 276 58% 15%;
+
 
     --sidebar-background: 0 0% 98%;
 
