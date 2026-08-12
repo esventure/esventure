@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -7,15 +8,14 @@ import { analytics } from "@/lib/analytics";
 import { useTranslation } from "react-i18next";
 import LanguageToggle from "@/components/LanguageToggle";
 
-type NavZone = "hero" | "light" | "dark" | "purple" | "yellow";
+type NavZone = "hero" | "paper" | "plum" | "purple";
 
 interface ZoneStyle {
   bg: string;
   text: string;
   textHover: string;
   logoInvert: boolean;
-  buttonBorder: string;
-  buttonHover: string;
+  button: string;
   mobileBg: string;
   langVariant: "light" | "dark";
 }
@@ -26,85 +26,73 @@ const zoneStyles: Record<NavZone, ZoneStyle> = {
     text: "text-primary-foreground/90",
     textHover: "hover:text-secondary",
     logoInvert: true,
-    buttonBorder: "border-primary-foreground/60 bg-transparent text-primary-foreground",
-    buttonHover: "hover:bg-primary-foreground/10 hover:text-primary-foreground hover:border-primary-foreground",
+    button: "bg-secondary text-secondary-foreground hover:bg-secondary/90 border-transparent",
     mobileBg: "bg-primary/95",
     langVariant: "light",
   },
-  light: {
-    bg: "bg-surface-warm/95 backdrop-blur-md",
-    text: "text-surface-warm-foreground/80",
+  paper: {
+    bg: "bg-paper/95 backdrop-blur-md border-b border-plum/10",
+    text: "text-plum/75",
     textHover: "hover:text-primary",
     logoInvert: false,
-    buttonBorder: "border-surface-warm-foreground/40 bg-transparent text-surface-warm-foreground",
-    buttonHover: "hover:bg-primary hover:text-primary-foreground hover:border-primary",
-    mobileBg: "bg-surface-warm/95",
+    button: "bg-plum text-paper hover:bg-primary hover:text-primary-foreground border-transparent",
+    mobileBg: "bg-paper/98",
     langVariant: "dark",
   },
-  dark: {
-    bg: "bg-anchor/95 backdrop-blur-md",
-    text: "text-anchor-foreground/80",
+  plum: {
+    bg: "bg-plum/95 backdrop-blur-md",
+    text: "text-plum-foreground/80",
     textHover: "hover:text-secondary",
     logoInvert: true,
-    buttonBorder: "border-anchor-foreground/40 bg-transparent text-anchor-foreground",
-    buttonHover: "hover:bg-secondary hover:text-secondary-foreground hover:border-secondary",
-    mobileBg: "bg-anchor/95",
+    button: "bg-secondary text-secondary-foreground hover:bg-secondary/90 border-transparent",
+    mobileBg: "bg-plum/98",
     langVariant: "light",
   },
   purple: {
     bg: "bg-primary/95 backdrop-blur-md",
-    text: "text-primary-foreground/80",
+    text: "text-primary-foreground/85",
     textHover: "hover:text-secondary",
     logoInvert: true,
-    buttonBorder: "border-primary-foreground/40 bg-transparent text-primary-foreground",
-    buttonHover: "hover:bg-primary-foreground/10 hover:text-primary-foreground hover:border-primary-foreground",
-    mobileBg: "bg-primary/95",
+    button: "bg-secondary text-secondary-foreground hover:bg-secondary/90 border-transparent",
+    mobileBg: "bg-primary/98",
     langVariant: "light",
-  },
-  yellow: {
-    bg: "bg-section-yellow/90 backdrop-blur-md",
-    text: "text-section-yellow-foreground/80",
-    textHover: "hover:text-primary",
-    logoInvert: false,
-    buttonBorder: "border-section-yellow-foreground/40 bg-transparent text-section-yellow-foreground",
-    buttonHover: "hover:bg-primary hover:text-primary-foreground hover:border-primary",
-    mobileBg: "bg-section-yellow/95",
-    langVariant: "dark",
   },
 };
 
 const trackedSections: Array<{ id: string; zone: NavZone }> = [
   { id: "hero", zone: "hero" },
-  { id: "when-to-call", zone: "yellow" },
-  { id: "how-i-help", zone: "yellow" },
-  { id: "sparring", zone: "light" },
-  { id: "effect", zone: "light" },
-  { id: "about-me", zone: "light" },
-  { id: "planner", zone: "light" },
-  { id: "contact-cta", zone: "purple" },
-  { id: "contact", zone: "purple" },
-  { id: "footer", zone: "purple" },
+  { id: "what-we-do", zone: "paper" },
+  { id: "work", zone: "plum" },
+  { id: "studio", zone: "paper" },
+  { id: "how-we-start", zone: "purple" },
+  { id: "trust", zone: "paper" },
+  { id: "final-cta", zone: "plum" },
+  { id: "footer", zone: "plum" },
 ];
 
 const Navigation = () => {
   const { t } = useTranslation();
-  const [zone, setZone] = useState<NavZone>("hero");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
+  const [zone, setZone] = useState<NavZone>(isHome ? "hero" : "paper");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    if (!isHome) {
+      setZone("paper");
+      return;
+    }
     const navHeight = 80;
 
     const updateZone = () => {
-      const scrollY = window.scrollY;
-      const probe = scrollY + navHeight + 1;
-
+      const probe = window.scrollY + navHeight + 1;
       let active: NavZone = "hero";
       for (const { id, zone } of trackedSections) {
         const el = document.getElementById(id);
         if (!el) continue;
         const top = el.offsetTop;
-        const bottom = top + el.offsetHeight;
-        if (probe >= top && probe < bottom) {
+        if (probe >= top && probe < top + el.offsetHeight) {
           active = zone;
           break;
         }
@@ -115,139 +103,121 @@ const Navigation = () => {
     window.addEventListener("scroll", updateZone, { passive: true });
     updateZone();
     return () => window.removeEventListener("scroll", updateZone);
-  }, []);
+  }, [isHome]);
 
-  const scrollToSection = (id: string) => {
+  const goToSection = (id: string) => {
     analytics.navClick(id);
+    setIsMobileMenuOpen(false);
+    if (!isHome) {
+      navigate("/");
+      window.setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 200);
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+      const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
   const navLinks = [
-    { label: t("nav.whenToCallMe"), id: "when-to-call" },
-    { label: t("nav.services"), id: "how-i-help" },
-    { label: t("nav.about"), id: "about-me" },
+    { label: t("nav.work"), id: "work" },
+    { label: t("nav.whatWeDo"), id: "what-we-do" },
+    { label: t("nav.studio"), id: "studio" },
   ];
 
   const current = zoneStyles[zone];
 
   return (
-    <>
-      <nav
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3",
-          current.bg
-        )}
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-14">
-            {/* Logo */}
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="hover:opacity-80 transition-opacity"
-            >
-              <img
-                src={logoEV}
-                alt="Es Venture"
-                className={cn(
-                  "h-12 transition-all",
-                  current.logoInvert && "brightness-0 invert"
-                )}
-              />
-            </button>
+    <nav
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-300 py-3",
+        current.bg
+      )}
+    >
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-14">
+          <Link
+            to="/"
+            onClick={() => isHome && window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hover:opacity-80 transition-opacity"
+            aria-label="Es Venture home"
+          >
+            <img
+              src={logoEV}
+              alt="Es Venture"
+              className={cn("h-11 transition-all", current.logoInvert && "brightness-0 invert")}
+            />
+          </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className={cn(
-                    "text-base font-semibold transition-colors",
-                    current.text,
-                    current.textHover
-                  )}
-                >
-                  {link.label}
-                </button>
-              ))}
-              <Button
-                onClick={() => scrollToSection("project-planner")}
-                variant="ghost"
-                className={cn(
-                  "rounded-full font-semibold px-5 py-1 text-base transition-colors",
-                  current.buttonBorder,
-                  current.buttonHover
-                )}
-              >
-                {t("nav.planMyProject")}
-              </Button>
-              <LanguageToggle variant={current.langVariant} />
-            </div>
-
-            {/* Mobile right side */}
-            <div className="md:hidden flex items-center gap-2">
-              <LanguageToggle variant={current.langVariant} />
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={cn(
-                  "p-2 transition-colors",
-                  current.text,
-                  current.textHover
-                )}
-                aria-label="Toggle menu"
-              >
-                {isMobileMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className={cn(
-            "md:hidden backdrop-blur-md transition-all duration-300 overflow-hidden",
-            current.mobileBg,
-            isMobileMenuOpen ? "max-h-96 border-t border-current opacity-20" : "max-h-0"
-          )}
-        >
-          <div className="container mx-auto px-4 py-4 space-y-2">
+          {/* Desktop */}
+          <div className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
               <button
                 key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className={cn(
-                  "block w-full text-left py-3 transition-colors font-semibold text-lg",
-                  current.text,
-                  current.textHover
-                )}
+                onClick={() => goToSection(link.id)}
+                className={cn("text-[15px] font-medium transition-colors", current.text, current.textHover)}
               >
                 {link.label}
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("project-planner")}
-              variant="ghost"
-              className={cn(
-                "w-full rounded-full bg-transparent font-semibold text-base py-3 transition-colors",
-                current.buttonBorder,
-                current.buttonHover
-              )}
+              asChild
+              className={cn("rounded-full font-semibold px-5 text-[15px] border transition-colors", current.button)}
             >
-              {t("nav.planMyProject")}
+              <Link to="/start-a-project">{t("nav.startProject")}</Link>
             </Button>
+            <LanguageToggle variant={current.langVariant} />
+          </div>
+
+          {/* Mobile */}
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageToggle variant={current.langVariant} />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={cn("p-2 transition-colors", current.text, current.textHover)}
+              aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
-      </nav>
-    </>
+      </div>
+
+      <div
+        className={cn(
+          "md:hidden backdrop-blur-md transition-all duration-300 overflow-hidden",
+          current.mobileBg,
+          isMobileMenuOpen ? "max-h-96" : "max-h-0"
+        )}
+      >
+        <div className="container mx-auto px-4 py-4 space-y-1">
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => goToSection(link.id)}
+              className={cn(
+                "block w-full text-left py-3 transition-colors font-medium text-lg",
+                current.text,
+                current.textHover
+              )}
+            >
+              {link.label}
+            </button>
+          ))}
+          <Button
+            asChild
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={cn("w-full rounded-full font-semibold text-base py-3 border transition-colors", current.button)}
+          >
+            <Link to="/start-a-project">{t("nav.startProject")}</Link>
+          </Button>
+        </div>
+      </div>
+    </nav>
   );
 };
 

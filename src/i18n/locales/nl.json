@@ -1,9 +1,9 @@
 {
   "nav": {
-    "whenToCallMe": "Wanneer mij te bellen",
-    "services": "Diensten",
-    "about": "Over mij",
-    "planMyProject": "Plan mijn project"
+    "work": "Werk",
+    "whatWeDo": "Wat we doen",
+    "studio": "Studio",
+    "startProject": "Start een project"
   },
   "language": {
     "switchTo": "Wissel taal",
@@ -11,26 +11,13 @@
     "nl": "NL"
   },
   "hero": {
-    "titleStart": "Jouw boutique",
-    "titleEnd": "digitale",
-    "titleAfter": "delivery partner.",
-    "lead": "Van gedurfde nieuwe ideeën tot complexe digitale ecosystemen - ik ben de partner die founders en teams bellen als ze iemand nodig hebben die divers digitaal werk betrouwbaar van briefing naar oplevering brengt.",
-    "bullets": [
-      {
-        "label": "De oplevering",
-        "text": "Ik neem eigenaarschap over het project, van kickoff tot livegang."
-      },
-      {
-        "label": "Het bindweefsel",
-        "text": "Ik lijn strategie, design en techniek uit zodat er niets tussendoor glipt."
-      },
-      {
-        "label": "Het vakwerk",
-        "text": "Ik bouw de systemen en het momentum om het echt te laten gebeuren."
-      }
-    ],
-    "ctaPrimary": "Vertel wat je bouwt",
-    "ctaSecondary": "Bel me"
+    "eyebrow": "ES VENTURE - CREATIEVE DIGITALE STUDIO",
+    "titleStart": "Digitaal werk dat echt",
+    "titleHighlight": "gemaakt wordt.",
+    "lead": "Ik maak van ruwe ideeën merken, websites en digitale ervaringen - en zorg dat ze klaar zijn voor de lancering.",
+    "ctaPrimary": "Bekijk het werk",
+    "ctaSecondary": "Start een project",
+    "ownership": "Onder leiding van Esther. Gemaakt met vertrouwde designers, developers en makers wanneer het project daarom vraagt."
   },
   "whenToCallMe": {
     "title": "Wanneer mij te bellen",
@@ -223,5 +210,111 @@
       "AI",
       "Van briefing naar live"
     ]
+  },
+  "whatWeDo": {
+    "eyebrow": "WAT WE DOEN",
+    "title": "Drie manieren om goed digitaal werk in beweging te krijgen.",
+    "items": [
+      {
+        "number": "01",
+        "title": "Maak het helder.",
+        "copy": "Vind het idee, geef het verhaal vorm en bepaal wat het waard is om te maken."
+      },
+      {
+        "number": "02",
+        "title": "Maak het echt.",
+        "copy": "Merken, websites en digitale ervaringen die er goed uitzien en gewoon werken."
+      },
+      {
+        "number": "03",
+        "title": "Breng het in beweging.",
+        "copy": "Ik leid het project, breng de juiste mensen samen en maak het klaar voor lancering."
+      }
+    ]
+  },
+  "work": {
+    "eyebrow": "GESELECTEERD WERK",
+    "title": "Een paar dingen die goed gemaakt zijn.",
+    "workedWith": "Gewerkt met",
+    "note": "Vraag naar relevante voorbeelden."
+  },
+  "studio": {
+    "eyebrow": "DE STUDIO",
+    "title": "Klein met opzet. Serieus over het werk.",
+    "paragraphs": [
+      "Je werkt met Esther, van het eerste gesprek tot de lancering. Zij zet de richting, houdt het werk in beweging en blijft dicht bij elk detail dat telt.",
+      "Heeft een project specialisten nodig, dan haalt ze de juiste vertrouwde mensen erbij - zonder dat je project een estafette van bureaus wordt."
+    ],
+    "link": "Maak kennis met Esther"
+  },
+  "start": {
+    "eyebrow": "ZO BEGINNEN WE",
+    "title": "Waar sta je nu?",
+    "cards": [
+      {
+        "title": "Ik heb een idee.",
+        "reveal": "We beginnen met een werksessie. We maken het helder, kiezen wat belangrijk is en bepalen de volgende praktische stap.",
+        "cta": "Boek een werksessie"
+      },
+      {
+        "title": "Ik heb een project.",
+        "reveal": "We beginnen met een projectplan. We spreken de scope, het team, de planning en de eerste stap af.",
+        "cta": "Start een project"
+      },
+      {
+        "title": "Ik heb een probleem.",
+        "reveal": "We beginnen met een reset. We vinden de knoop, bepalen wat eerst gefixt wordt en krijgen het werk weer in beweging.",
+        "cta": "Even sparren"
+      }
+    ]
+  },
+  "trust": {
+    "eyebrow": "VERTROUWD DOOR TEAMS BIJ",
+    "copy": "Van founder-teams tot gevestigde organisaties: Es Venture helpt goede ideeën uitgroeien tot bruikbaar, afgemaakt digitaal werk."
+  },
+  "finalCta": {
+    "title": "Heb je iets dat gemaakt moet worden?",
+    "copy": "Vertel me waar je nu staat. Ik vertel je de beste volgende stap.",
+    "primary": "Start een project",
+    "secondary": "Boek een gesprek van 20 minuten"
+  },
+  "startPage": {
+    "eyebrow": "START EEN PROJECT",
+    "title": "Vertel me wat je gaat maken.",
+    "intro": "Een paar aantekeningen zijn genoeg. Vertel wat er speelt en ik kom terug met de beste volgende stap.",
+    "fields": {
+      "goal": "Wat wil je maken of veranderen?",
+      "stage": "Waar sta je nu?",
+      "stageOptions": [
+        "Ik heb een idee",
+        "Ik heb een project",
+        "Ik heb een probleem"
+      ],
+      "useful": "Wat is handig om te weten?",
+      "timing": "Wanneer wil je van start?",
+      "timingOptions": [
+        "Zo snel mogelijk",
+        "Binnen een maand",
+        "Binnen een kwartaal",
+        "Nog aan het verkennen"
+      ],
+      "budget": "Budgetindicatie",
+      "optional": "(optioneel)",
+      "budgetOptions": [
+        "Nog geen idee",
+        "< €5.000",
+        "€5.000 - €15.000",
+        "€15.000 - €40.000",
+        "€40.000+"
+      ],
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "email": "E-mail"
+    },
+    "submit": "Stuur het door",
+    "submitting": "Versturen…",
+    "success": "Bedankt - Esther kijkt ernaar en komt snel bij je terug.",
+    "error": "Er ging iets mis. Probeer het opnieuw.",
+    "back": "Terug naar home"
   }
 }
