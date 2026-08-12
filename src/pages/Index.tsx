@@ -290,6 +290,7 @@ const Index = () => {
                   </div>
                 </Reveal>
                 <Reveal delay={0.08}>
+                  <span aria-hidden="true" className="mb-5 block h-1 w-16 rounded-full bg-coral" />
                   <Eyebrow className="text-primary mb-5">{t("studio.eyebrow")}</Eyebrow>
                   <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.03] text-[clamp(2rem,4.4vw,3.25rem)] max-w-[24ch]">
                     {t("studio.title")}
