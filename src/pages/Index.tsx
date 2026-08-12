@@ -325,7 +325,11 @@ const Index = () => {
               <div className="mt-12 grid gap-5 md:grid-cols-3">
                 {startCards.map((card, i) => (
                   <Reveal key={card.title} delay={i * 0.08} className="h-full">
-                    <div className="flex h-full flex-col rounded-[1.75rem] bg-paper p-7 text-paper-foreground shadow-[0_18px_40px_-24px_hsl(var(--plum)/0.5)] transition-transform duration-300 hover:-translate-y-1">
+                    <div
+                      className={`group flex h-full flex-col rounded-[1.75rem] bg-paper p-7 text-paper-foreground shadow-[0_18px_40px_-24px_hsl(var(--plum)/0.5)] border-t-4 border-transparent transition-all duration-300 hover:-translate-y-1 ${
+                        ["hover:border-secondary", "hover:border-coral", "hover:border-lime"][i % 3]
+                      }`}
+                    >
                       <h3 className="font-display text-2xl md:text-[1.7rem] font-bold tracking-[-0.01em]">
                         {card.title}
                       </h3>
