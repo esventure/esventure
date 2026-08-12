@@ -123,7 +123,17 @@ const Index = () => {
         <main>
           {/* ─── 1. Hero - Purple ─── */}
           <section id="hero" className="relative overflow-hidden bg-primary text-primary-foreground">
+            {/* Small coral + lime graphic details so the case palette does not feel disconnected. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute right-[-4rem] top-24 h-56 w-56 rounded-full bg-coral/30 blur-2xl md:right-[8%] md:top-16"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-16 left-[6%] hidden h-3 w-24 rounded-full bg-lime md:block"
+            />
             <div className="container mx-auto px-4 pt-28 pb-16 md:pt-32 md:pb-0 md:min-h-screen md:flex md:items-center">
+
               <div className="grid md:grid-cols-[1.05fr_0.95fr] gap-12 md:gap-8 items-center w-full">
                 <div className="relative z-10 md:py-24">
                   <span
