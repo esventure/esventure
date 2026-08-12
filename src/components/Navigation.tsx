@@ -62,11 +62,11 @@ const zoneStyles: Record<NavZone, ZoneStyle> = {
 const trackedSections: Array<{ id: string; zone: NavZone }> = [
   { id: "hero", zone: "hero" },
   { id: "what-we-do", zone: "paper" },
-  { id: "work", zone: "plum" },
+  { id: "work", zone: "paper" },
   { id: "studio", zone: "paper" },
   { id: "how-we-start", zone: "purple" },
   { id: "trust", zone: "paper" },
-  { id: "final-cta", zone: "plum" },
+  { id: "final-cta", zone: "paper" },
   { id: "footer", zone: "plum" },
 ];
 
