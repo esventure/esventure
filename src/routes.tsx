@@ -4,6 +4,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import StyleGuide from "./pages/StyleGuide";
+import StartProject from "./pages/StartProject";
 
 export const routes: RouteRecord[] = [
   {
@@ -11,6 +12,7 @@ export const routes: RouteRecord[] = [
     element: <RootLayout />,
     children: [
       { index: true, element: <Index />, entry: "src/pages/Index.tsx" },
+      { path: "start-a-project", element: <StartProject />, entry: "src/pages/StartProject.tsx" },
       { path: "privacy", element: <PrivacyPolicy />, entry: "src/pages/PrivacyPolicy.tsx" },
       { path: "styleguide", element: <StyleGuide />, entry: "src/pages/StyleGuide.tsx" },
       // ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE
@@ -18,5 +20,6 @@ export const routes: RouteRecord[] = [
     ],
   },
 ];
+
 
 export default routes;
