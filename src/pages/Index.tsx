@@ -7,6 +7,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
+import CaseGrid from "@/components/work/CaseGrid";
 import { analytics } from "@/lib/analytics";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherBw from "@/assets/esther-bw.jpg";
