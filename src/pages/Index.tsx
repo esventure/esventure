@@ -209,14 +209,24 @@ const Index = () => {
               <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
                 {whatWeDo.map((item, i) => (
                   <Reveal key={item.number} delay={i * 0.08}>
-                    <div className="group h-full border-t-2 border-plum/15 pt-6 transition-colors hover:border-primary">
+                    <div
+                      className={`group h-full border-t-2 pt-6 transition-colors ${
+                        ["border-primary/25 hover:border-primary", "border-coral/30 hover:border-coral", "border-plum/15 hover:border-secondary"][i % 3]
+                      }`}
+                    >
                       <div className="flex items-center gap-3">
-                        <span className="font-sans text-xs font-semibold tracking-[0.2em] text-plum/50">
+                        <span
+                          className={`font-sans text-xs font-semibold tracking-[0.2em] ${
+                            ["text-primary", "text-coral", "text-plum/60"][i % 3]
+                          }`}
+                        >
                           {item.number}
                         </span>
                         <span
                           aria-hidden="true"
-                          className="h-1.5 w-6 rounded-full bg-secondary transition-all duration-300 md:w-0 md:opacity-0 md:group-hover:w-6 md:group-hover:opacity-100"
+                          className={`h-1.5 w-6 rounded-full transition-all duration-300 md:w-0 md:opacity-0 md:group-hover:w-6 md:group-hover:opacity-100 ${
+                            ["bg-primary", "bg-coral", "bg-secondary"][i % 3]
+                          }`}
                         />
                       </div>
                       <h3 className="mt-4 font-display text-2xl md:text-3xl font-bold tracking-[-0.01em]">
