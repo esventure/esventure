@@ -1,9 +1,9 @@
 {
   "nav": {
-    "whenToCallMe": "When to call me",
-    "services": "Services",
-    "about": "About me",
-    "planMyProject": "Plan my project"
+    "work": "Work",
+    "whatWeDo": "What we do",
+    "studio": "Studio",
+    "startProject": "Start a project"
   },
   "language": {
     "switchTo": "Switch language",
@@ -11,26 +11,13 @@
     "nl": "NL"
   },
   "hero": {
-    "titleStart": "Your boutique",
-    "titleEnd": "digital",
-    "titleAfter": "delivery partner.",
-    "lead": "From bold new ideas to complex digital ecosystems - I'm the partner founders and teams call when they need someone to take diverse digital work and reliably move it from brief to shipped.",
-    "bullets": [
-      {
-        "label": "The Delivery",
-        "text": "I take ownership of the project from kickoff to launch."
-      },
-      {
-        "label": "The Connective Tissue",
-        "text": "I align strategy, design, and tech so nothing falls through the cracks."
-      },
-      {
-        "label": "The Craft",
-        "text": "I build the systems and momentum to make it all happen."
-      }
-    ],
-    "ctaPrimary": "Tell me what you're building",
-    "ctaSecondary": "Call me"
+    "eyebrow": "ES VENTURE - CREATIVE DIGITAL STUDIO",
+    "titleStart": "Digital work that gets",
+    "titleHighlight": "made.",
+    "lead": "I turn rough ideas into brands, websites and digital experiences - then make sure they are ready to launch.",
+    "ctaPrimary": "See the work",
+    "ctaSecondary": "Start a project",
+    "ownership": "Led by Esther. Made with trusted designers, developers and makers when the project calls for it."
   },
   "whenToCallMe": {
     "title": "When to Call Me",
@@ -223,5 +210,111 @@
       "AI",
       "Brief to Shipped"
     ]
+  },
+  "whatWeDo": {
+    "eyebrow": "WHAT WE DO",
+    "title": "Three ways we get good digital work moving.",
+    "items": [
+      {
+        "number": "01",
+        "title": "Make it clear.",
+        "copy": "Find the idea, shape the story and decide what is worth making."
+      },
+      {
+        "number": "02",
+        "title": "Make it real.",
+        "copy": "Create brands, websites and digital experiences that look right and work properly."
+      },
+      {
+        "number": "03",
+        "title": "Make it move.",
+        "copy": "Lead the project, bring the right people together and get it ready to launch."
+      }
+    ]
+  },
+  "work": {
+    "eyebrow": "SELECTED WORK",
+    "title": "A few things made properly.",
+    "workedWith": "Worked with",
+    "note": "Ask for relevant examples."
+  },
+  "studio": {
+    "eyebrow": "THE STUDIO",
+    "title": "Small by design. Serious about the work.",
+    "paragraphs": [
+      "You work with Esther from the first conversation to launch. She sets the direction, keeps the work moving and stays close to every detail that matters.",
+      "When a project needs specialist skills, she brings in the right trusted people - without turning your project into an agency relay race."
+    ],
+    "link": "Meet Esther"
+  },
+  "start": {
+    "eyebrow": "HOW WE START",
+    "title": "Where are you right now?",
+    "cards": [
+      {
+        "title": "I have an idea.",
+        "reveal": "Start with a working session. We will get it clear, choose what matters and decide the next practical step.",
+        "cta": "Book a working session"
+      },
+      {
+        "title": "I have a project.",
+        "reveal": "Start with a project plan. We will agree the scope, the team, the timing and the first move.",
+        "cta": "Start a project"
+      },
+      {
+        "title": "I have a problem.",
+        "reveal": "Start with a reset. We will find the knot, decide what to fix first and get the work moving again.",
+        "cta": "Talk it through"
+      }
+    ]
+  },
+  "trust": {
+    "eyebrow": "TRUSTED BY TEAMS AT",
+    "copy": "From founder-led teams to established organisations, Es Venture helps good ideas become useful, finished digital work."
+  },
+  "finalCta": {
+    "title": "Got something worth making?",
+    "copy": "Tell me where you are now. I will tell you the best next move.",
+    "primary": "Start a project",
+    "secondary": "Book a 20-minute call"
+  },
+  "startPage": {
+    "eyebrow": "START A PROJECT",
+    "title": "Tell me what you are making.",
+    "intro": "A few notes are enough. Tell me what is on your mind and I will come back with the best next step.",
+    "fields": {
+      "goal": "What are you hoping to make or change?",
+      "stage": "Where are you right now?",
+      "stageOptions": [
+        "I have an idea",
+        "I have a project",
+        "I have a problem"
+      ],
+      "useful": "What would be useful to know?",
+      "timing": "When would you like to get moving?",
+      "timingOptions": [
+        "As soon as possible",
+        "In the next month",
+        "In the next quarter",
+        "Still exploring"
+      ],
+      "budget": "Budget range",
+      "optional": "(optional)",
+      "budgetOptions": [
+        "No idea yet",
+        "< €5.000",
+        "€5.000 - €15.000",
+        "€15.000 - €40.000",
+        "€40.000+"
+      ],
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email"
+    },
+    "submit": "Send it over",
+    "submitting": "Sending…",
+    "success": "Thanks - Esther will take a look and get back to you soon.",
+    "error": "Something went wrong. Please try again.",
+    "back": "Back to home"
   }
 }
