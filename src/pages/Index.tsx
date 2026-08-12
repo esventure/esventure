@@ -242,26 +242,22 @@ const Index = () => {
               </Reveal>
 
               {/* Approved client marks only - no invented case studies. */}
-              <div className="mt-14 grid gap-4 md:grid-cols-3 md:auto-rows-[minmax(0,1fr)]">
+              <div className="mt-14 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {clients.map((client, i) => (
-                  <Reveal
-                    key={client.alt}
-                    delay={i * 0.06}
-                    className={i === 0 ? "md:col-span-2" : i === 3 ? "md:col-span-2" : ""}
-                  >
+                  <Reveal key={client.alt} delay={i * 0.06} className="h-full">
                     <a
                       href={client.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative flex h-40 md:h-52 items-center justify-center overflow-hidden rounded-2xl bg-plum-foreground/[0.06] ring-1 ring-plum-foreground/10 transition-colors hover:bg-secondary"
+                      className="group relative flex h-40 md:h-48 items-center justify-center overflow-hidden rounded-2xl bg-paper ring-1 ring-plum-foreground/10 transition-all duration-300 hover:-translate-y-1 hover:ring-secondary"
                     >
                       <img
                         src={client.src}
                         alt={client.alt}
                         loading="lazy"
-                        className="h-8 md:h-10 w-auto brightness-0 invert opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:brightness-0 group-hover:invert-0 group-hover:scale-105"
+                        className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
                       />
-                      <span className="absolute bottom-4 right-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.16em] text-plum opacity-0 transition-opacity group-hover:opacity-100">
+                      <span className="absolute bottom-4 right-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.16em] text-plum/60 opacity-0 transition-opacity group-hover:opacity-100">
                         {client.alt}
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </span>
@@ -269,6 +265,7 @@ const Index = () => {
                   </Reveal>
                 ))}
               </div>
+
 
               <Reveal delay={0.1}>
                 <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2">
