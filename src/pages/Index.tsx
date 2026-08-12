@@ -231,50 +231,27 @@ const Index = () => {
             </div>
           </section>
 
-          {/* ─── 3. Selected work - Deep Plum ─── */}
-          <section id="work" className="bg-plum text-plum-foreground py-20 md:py-32">
-            <div className="container mx-auto px-4">
+          {/* ─── 3. Selected work - Warm paper, case-led gallery ─── */}
+          <section id="work" className="relative overflow-hidden bg-paper text-paper-foreground py-20 md:py-32">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-6 top-10 select-none font-display text-[9rem] leading-none text-lime md:text-[13rem]"
+            >
+              *
+            </span>
+            <div className="container mx-auto px-4 relative">
               <Reveal>
-                <Eyebrow className="text-secondary mb-5">{t("work.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-coral mb-5">{t("work.eyebrow")}</Eyebrow>
                 <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.02] text-[clamp(2rem,4.6vw,3.5rem)] max-w-[20ch]">
                   {t("work.title")}
                 </h2>
+                <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-plum/75">{t("work.lead")}</p>
               </Reveal>
 
-              {/* Approved client marks only - no invented case studies. */}
-              <div className="mt-14 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-                {clients.map((client, i) => (
-                  <Reveal key={client.alt} delay={i * 0.06} className="h-full">
-                    <a
-                      href={client.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group relative flex h-40 md:h-48 items-center justify-center overflow-hidden rounded-2xl bg-paper ring-1 ring-plum-foreground/10 transition-all duration-300 hover:-translate-y-1 hover:ring-secondary"
-                    >
-                      <img
-                        src={client.src}
-                        alt={client.alt}
-                        loading="lazy"
-                        className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-                      />
-                      <span className="absolute bottom-4 right-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.16em] text-plum/60 opacity-0 transition-opacity group-hover:opacity-100">
-                        {client.alt}
-                        <ArrowUpRight className="h-3.5 w-3.5" />
-                      </span>
-                    </a>
-                  </Reveal>
-                ))}
-              </div>
-
-
-              <Reveal delay={0.1}>
-                <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2">
-                  <Eyebrow className="text-plum-foreground/60">{t("work.workedWith")}</Eyebrow>
-                  <span className="text-sm text-secondary">{t("work.note")}</span>
-                </div>
-              </Reveal>
+              <CaseGrid />
             </div>
           </section>
+
 
           {/* ─── 4. The studio - Pale Lilac ─── */}
           <section id="studio" className="bg-lilac text-lilac-foreground py-20 md:py-32">
