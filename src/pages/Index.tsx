@@ -365,13 +365,14 @@ const Index = () => {
               </Reveal>
               <Reveal delay={0.06}>
                 <div className="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 md:gap-x-16">
+                  {/* Quiet social proof: logos shown once, monochrome, not links. */}
                   {clients.map((client) => (
                     <img
                       key={client.alt}
                       src={client.src}
                       alt={client.alt}
                       loading="lazy"
-                      className="h-7 md:h-9 w-auto opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                      className="h-6 md:h-7 w-auto opacity-45 grayscale contrast-125 transition-opacity duration-300 hover:opacity-70"
                     />
                   ))}
                 </div>
