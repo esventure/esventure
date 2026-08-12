@@ -52,6 +52,14 @@ export default {
           DEFAULT: "hsl(var(--lilac))",
           foreground: "hsl(var(--lilac-foreground))",
         },
+        coral: {
+          DEFAULT: "hsl(var(--coral))",
+          foreground: "hsl(var(--coral-foreground))",
+        },
+        lime: {
+          DEFAULT: "hsl(var(--lime))",
+          foreground: "hsl(var(--lime-foreground))",
+        },
 
 
         primary: {

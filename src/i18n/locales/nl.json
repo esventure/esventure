@@ -235,8 +235,44 @@
   "work": {
     "eyebrow": "GESELECTEERD WERK",
     "title": "Een paar dingen die goed gemaakt zijn.",
-    "workedWith": "Gewerkt met",
-    "note": "Vraag naar relevante voorbeelden."
+    "lead": "Verschillende briefings. Eén opdracht: het digitale werk helder, bruikbaar en klaar voor gebruik maken.",
+    "cue": "Bekijk het verhaal",
+    "clientLabel": "Klant",
+    "scopeLabel": "Scope",
+    "items": [
+      {
+        "label": "01 / BRAND + WEBSITE",
+        "title": "Een premium Amsterdamse tourgids, klaar voor een beter digitaal welkom.",
+        "client": "Dennis Gerrits",
+        "scope": "Merkrichting · Website",
+        "modalHeading": "Merk- en websiterichting",
+        "summary": "Website en merkrichting voor Dennis Gerrits, een premium tourgids in Amsterdam."
+      },
+      {
+        "label": "02 / BRAND + WEBSITE",
+        "title": "Een digitaal thuis voor een fotograaf en digitale edit-expert.",
+        "client": "Studio Ingrid de Reuver",
+        "scope": "Merkrichting · Website",
+        "modalHeading": "Merk- en websiterichting",
+        "summary": "Website en merkrichting voor Studio Ingrid de Reuver, fotograaf en digitale edit-expert met een studio aan huis."
+      },
+      {
+        "label": "03 / UX + APP PROTOTYPE",
+        "title": "De eerste bruikbare versie van een receptenapp ontwerpen.",
+        "client": "HAP",
+        "scope": "UX-ontwerp · App-prototype",
+        "modalHeading": "UX-ontwerp en prototype",
+        "summary": "UX-ontwerpen gemaakt en het app-prototype gebouwd voor HAP, een receptenapp."
+      },
+      {
+        "label": "04 / PLATFORM + LAUNCH",
+        "title": "Een certificeringsplatform klaarmaken voor zijn gebruikers.",
+        "client": "Rainforest Alliance",
+        "scope": "Customer journey mapping · Testcoördinatie",
+        "modalHeading": "Platformjourney en launch-readiness",
+        "summary": "Gebruikersreizen in kaart gebracht en een uitgebreide testfase gecoördineerd voor de launch van een nieuw platform."
+      }
+    ]
   },
   "studio": {
     "eyebrow": "DE STUDIO",

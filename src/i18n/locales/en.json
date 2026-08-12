@@ -235,8 +235,44 @@
   "work": {
     "eyebrow": "SELECTED WORK",
     "title": "A few things made properly.",
-    "workedWith": "Worked with",
-    "note": "Ask for relevant examples."
+    "lead": "Different briefs. One job: make the digital work clear, useful and ready to go.",
+    "cue": "See the story",
+    "clientLabel": "Client",
+    "scopeLabel": "Scope",
+    "items": [
+      {
+        "label": "01 / BRAND + WEBSITE",
+        "title": "A premium Amsterdam tour guide, ready for a better digital welcome.",
+        "client": "Dennis Gerrits",
+        "scope": "Brand direction · Website",
+        "modalHeading": "Brand and website direction",
+        "summary": "Website and brand direction for Dennis Gerrits, a premium Amsterdam-based tour guide."
+      },
+      {
+        "label": "02 / BRAND + WEBSITE",
+        "title": "A digital home for a photographer and digital edit expert.",
+        "client": "Studio Ingrid de Reuver",
+        "scope": "Brand direction · Website",
+        "modalHeading": "Brand and website direction",
+        "summary": "Website and brand direction for Studio Ingrid de Reuver, a photographer and digital edit expert with a studio at home."
+      },
+      {
+        "label": "03 / UX + APP PROTOTYPE",
+        "title": "Designing the first usable version of a recipe app.",
+        "client": "HAP",
+        "scope": "UX design · App prototype",
+        "modalHeading": "UX design and prototype",
+        "summary": "Created UX designs and built the app prototype for HAP, a recipe app."
+      },
+      {
+        "label": "04 / PLATFORM + LAUNCH",
+        "title": "Getting a certification platform ready to meet its users.",
+        "client": "Rainforest Alliance",
+        "scope": "User journey mapping · Test coordination",
+        "modalHeading": "Platform journey and launch readiness",
+        "summary": "Mapped user journeys and coordinated an extensive test phase before the launch of a new platform."
+      }
+    ]
   },
   "studio": {
     "eyebrow": "THE STUDIO",

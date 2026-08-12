@@ -39,12 +39,18 @@ All colors MUST be HSL.
     --radius: 1rem;
 
     /* Colour rhythm zones */
-    --plum: 276 58% 15%;
+    --plum: 283 64% 21%;
     --plum-foreground: 38 100% 97%;
     --paper: 38 100% 97%;
-    --paper-foreground: 276 58% 15%;
+    --paper-foreground: 283 64% 21%;
     --lilac: 263 100% 95%;
-    --lilac-foreground: 276 58% 15%;
+    --lilac-foreground: 283 64% 21%;
+
+    /* High-energy case palette */
+    --coral: 11 100% 61%;
+    --coral-foreground: 38 100% 97%;
+    --lime: 72 100% 62%;
+    --lime-foreground: 283 64% 21%;
 
     /* Legacy aliases (kept for the style guide) */
     --charcoal: 276 58% 15%;

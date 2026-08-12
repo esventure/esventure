@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { Head } from "vite-react-ssg";
 import { useTranslation } from "react-i18next";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
+import CaseGrid from "@/components/work/CaseGrid";
 import { analytics } from "@/lib/analytics";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherBw from "@/assets/esther-bw.jpg";
@@ -122,7 +123,17 @@ const Index = () => {
         <main>
           {/* ─── 1. Hero - Purple ─── */}
           <section id="hero" className="relative overflow-hidden bg-primary text-primary-foreground">
+            {/* Small coral + lime graphic details so the case palette does not feel disconnected. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute right-[-4rem] top-24 h-56 w-56 rounded-full bg-coral/30 blur-2xl md:right-[8%] md:top-16"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-16 left-[6%] hidden h-3 w-24 rounded-full bg-lime md:block"
+            />
             <div className="container mx-auto px-4 pt-28 pb-16 md:pt-32 md:pb-0 md:min-h-screen md:flex md:items-center">
+
               <div className="grid md:grid-cols-[1.05fr_0.95fr] gap-12 md:gap-8 items-center w-full">
                 <div className="relative z-10 md:py-24">
                   <span
@@ -208,14 +219,24 @@ const Index = () => {
               <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
                 {whatWeDo.map((item, i) => (
                   <Reveal key={item.number} delay={i * 0.08}>
-                    <div className="group h-full border-t-2 border-plum/15 pt-6 transition-colors hover:border-primary">
+                    <div
+                      className={`group h-full border-t-2 pt-6 transition-colors ${
+                        ["border-primary/25 hover:border-primary", "border-coral/30 hover:border-coral", "border-plum/15 hover:border-secondary"][i % 3]
+                      }`}
+                    >
                       <div className="flex items-center gap-3">
-                        <span className="font-sans text-xs font-semibold tracking-[0.2em] text-plum/50">
+                        <span
+                          className={`font-sans text-xs font-semibold tracking-[0.2em] ${
+                            ["text-primary", "text-coral", "text-plum/60"][i % 3]
+                          }`}
+                        >
                           {item.number}
                         </span>
                         <span
                           aria-hidden="true"
-                          className="h-1.5 w-6 rounded-full bg-secondary transition-all duration-300 md:w-0 md:opacity-0 md:group-hover:w-6 md:group-hover:opacity-100"
+                          className={`h-1.5 w-6 rounded-full transition-all duration-300 md:w-0 md:opacity-0 md:group-hover:w-6 md:group-hover:opacity-100 ${
+                            ["bg-primary", "bg-coral", "bg-secondary"][i % 3]
+                          }`}
                         />
                       </div>
                       <h3 className="mt-4 font-display text-2xl md:text-3xl font-bold tracking-[-0.01em]">
@@ -231,50 +252,27 @@ const Index = () => {
             </div>
           </section>
 
-          {/* ─── 3. Selected work - Deep Plum ─── */}
-          <section id="work" className="bg-plum text-plum-foreground py-20 md:py-32">
-            <div className="container mx-auto px-4">
+          {/* ─── 3. Selected work - Warm paper, case-led gallery ─── */}
+          <section id="work" className="relative overflow-hidden bg-paper text-paper-foreground py-20 md:py-32">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-6 top-10 select-none font-display text-[9rem] leading-none text-lime md:text-[13rem]"
+            >
+              *
+            </span>
+            <div className="container mx-auto px-4 relative">
               <Reveal>
-                <Eyebrow className="text-secondary mb-5">{t("work.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-coral mb-5">{t("work.eyebrow")}</Eyebrow>
                 <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.02] text-[clamp(2rem,4.6vw,3.5rem)] max-w-[20ch]">
                   {t("work.title")}
                 </h2>
+                <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-plum/75">{t("work.lead")}</p>
               </Reveal>
 
-              {/* Approved client marks only - no invented case studies. */}
-              <div className="mt-14 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-                {clients.map((client, i) => (
-                  <Reveal key={client.alt} delay={i * 0.06} className="h-full">
-                    <a
-                      href={client.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group relative flex h-40 md:h-48 items-center justify-center overflow-hidden rounded-2xl bg-paper ring-1 ring-plum-foreground/10 transition-all duration-300 hover:-translate-y-1 hover:ring-secondary"
-                    >
-                      <img
-                        src={client.src}
-                        alt={client.alt}
-                        loading="lazy"
-                        className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-                      />
-                      <span className="absolute bottom-4 right-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.16em] text-plum/60 opacity-0 transition-opacity group-hover:opacity-100">
-                        {client.alt}
-                        <ArrowUpRight className="h-3.5 w-3.5" />
-                      </span>
-                    </a>
-                  </Reveal>
-                ))}
-              </div>
-
-
-              <Reveal delay={0.1}>
-                <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2">
-                  <Eyebrow className="text-plum-foreground/60">{t("work.workedWith")}</Eyebrow>
-                  <span className="text-sm text-secondary">{t("work.note")}</span>
-                </div>
-              </Reveal>
+              <CaseGrid />
             </div>
           </section>
+
 
           {/* ─── 4. The studio - Pale Lilac ─── */}
           <section id="studio" className="bg-lilac text-lilac-foreground py-20 md:py-32">
@@ -292,6 +290,7 @@ const Index = () => {
                   </div>
                 </Reveal>
                 <Reveal delay={0.08}>
+                  <span aria-hidden="true" className="mb-5 block h-1 w-16 rounded-full bg-coral" />
                   <Eyebrow className="text-primary mb-5">{t("studio.eyebrow")}</Eyebrow>
                   <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.03] text-[clamp(2rem,4.4vw,3.25rem)] max-w-[24ch]">
                     {t("studio.title")}
@@ -327,7 +326,11 @@ const Index = () => {
               <div className="mt-12 grid gap-5 md:grid-cols-3">
                 {startCards.map((card, i) => (
                   <Reveal key={card.title} delay={i * 0.08} className="h-full">
-                    <div className="flex h-full flex-col rounded-[1.75rem] bg-paper p-7 text-paper-foreground shadow-[0_18px_40px_-24px_hsl(var(--plum)/0.5)] transition-transform duration-300 hover:-translate-y-1">
+                    <div
+                      className={`group flex h-full flex-col rounded-[1.75rem] bg-paper p-7 text-paper-foreground shadow-[0_18px_40px_-24px_hsl(var(--plum)/0.5)] border-t-4 border-transparent transition-all duration-300 hover:-translate-y-1 ${
+                        ["hover:border-secondary", "hover:border-coral", "hover:border-lime"][i % 3]
+                      }`}
+                    >
                       <h3 className="font-display text-2xl md:text-[1.7rem] font-bold tracking-[-0.01em]">
                         {card.title}
                       </h3>
@@ -362,13 +365,14 @@ const Index = () => {
               </Reveal>
               <Reveal delay={0.06}>
                 <div className="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 md:gap-x-16">
+                  {/* Quiet social proof: logos shown once, monochrome, not links. */}
                   {clients.map((client) => (
                     <img
                       key={client.alt}
                       src={client.src}
                       alt={client.alt}
                       loading="lazy"
-                      className="h-7 md:h-9 w-auto opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                      className="h-6 md:h-7 w-auto opacity-45 grayscale contrast-125 transition-opacity duration-300 hover:opacity-70"
                     />
                   ))}
                 </div>
@@ -381,9 +385,15 @@ const Index = () => {
             </div>
           </section>
 
-          {/* ─── 7. Final CTA - Deep Plum ─── */}
-          <section id="final-cta" className="bg-plum text-plum-foreground py-20 md:py-32">
-            <div className="container mx-auto px-4">
+          {/* ─── 7. Final CTA - Acid lime, the last visual surprise ─── */}
+          <section id="final-cta" className="relative overflow-hidden bg-lime text-lime-foreground py-20 md:py-32">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-10 -bottom-24 select-none font-display text-[20rem] leading-none text-primary md:-right-16 md:text-[28rem]"
+            >
+              *
+            </span>
+            <div className="container mx-auto px-4 relative">
               <div className="max-w-4xl">
                 <Reveal>
                   <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.0] text-[clamp(2.25rem,5.4vw,4rem)]">
@@ -391,7 +401,7 @@ const Index = () => {
                   </h2>
                 </Reveal>
                 <Reveal delay={0.06}>
-                  <p className="mt-6 max-w-[52ch] text-lg md:text-xl leading-relaxed text-plum-foreground/80">
+                  <p className="mt-6 max-w-[52ch] text-lg md:text-xl leading-relaxed text-plum/80">
                     {t("finalCta.copy")}
                   </p>
                 </Reveal>
@@ -400,7 +410,7 @@ const Index = () => {
                     <Button
                       asChild
                       size="lg"
-                      className="rounded-full px-8 py-6 text-base font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                      className="rounded-full px-8 py-6 text-base font-semibold bg-plum text-paper hover:bg-primary hover:text-primary-foreground"
                     >
                       <Link to="/start-a-project" onClick={() => analytics.ctaClick("final_start_project")}>
                         {t("finalCta.primary")}
@@ -411,7 +421,7 @@ const Index = () => {
                       size="lg"
                       variant="outline"
                       onClick={openBooking}
-                      className="rounded-full px-8 py-6 text-base font-semibold bg-transparent text-plum-foreground border-2 border-plum-foreground/50 hover:bg-plum-foreground/10 hover:text-plum-foreground"
+                      className="rounded-full px-8 py-6 text-base font-semibold bg-transparent text-plum border-2 border-plum/40 hover:bg-plum/10 hover:text-plum"
                     >
                       {t("finalCta.secondary")}
                     </Button>
