@@ -353,19 +353,19 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="final-cta" className="bg-secondary text-secondary-foreground py-20 md:py-32">
+          <section id="final-cta" className="bg-primary text-primary-foreground py-20 md:py-32">
             <div className="container mx-auto px-4">
               <Reveal>
-                <Eyebrow className="text-plum/65 mb-5">{t("contactChoices.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-secondary mb-5">{t("contactChoices.eyebrow")}</Eyebrow>
                 <div className="grid gap-4 md:grid-cols-3">
                   {contactChoices.map((choice, i) => (
                     <Link
                       key={choice.title}
                       to={`/start-a-project?stage=${routeParams[i] ?? "brand"}`}
-                      className="group rounded-[1.5rem] border border-plum/16 bg-paper/55 p-5 text-plum transition-colors hover:bg-paper"
+                      className="group rounded-[1.5rem] border border-primary-foreground/25 bg-primary-foreground/10 p-5 text-primary-foreground transition-colors hover:border-secondary hover:bg-primary-foreground/16"
                     >
                       <p className="font-display text-2xl font-bold tracking-normal">{choice.title}</p>
-                      <p className="mt-2 text-sm leading-relaxed text-plum/70">{choice.copy}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-primary-foreground/78">{choice.copy}</p>
                     </Link>
                   ))}
                 </div>
@@ -378,11 +378,13 @@ const Index = () => {
                   </h2>
                 </Reveal>
                 <Reveal delay={0.06}>
-                  <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-plum/80 md:text-xl">{t("finalCta.copy")}</p>
+                  <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
+                    {t("finalCta.copy")}
+                  </p>
                 </Reveal>
                 <Reveal delay={0.12}>
                   <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                    <Button asChild size="lg" className="rounded-full bg-plum px-8 py-6 text-base font-semibold text-paper hover:bg-primary hover:text-primary-foreground">
+                    <Button asChild size="lg" className="rounded-full bg-secondary px-8 py-6 text-base font-semibold text-secondary-foreground hover:bg-secondary/90">
                       <Link to="/start-a-project" onClick={() => analytics.ctaClick("final_start_project")}>
                         {t("finalCta.primary")}
                         <ArrowRight className="ml-2 h-5 w-5" />
@@ -392,13 +394,14 @@ const Index = () => {
                       size="lg"
                       variant="outline"
                       onClick={openBooking}
-                      className="rounded-full border-2 border-plum/35 bg-transparent px-8 py-6 text-base font-semibold text-plum hover:bg-paper/60 hover:text-plum"
+                      className="rounded-full border-2 border-primary-foreground/45 bg-transparent px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                     >
                       {t("finalCta.secondary")}
                     </Button>
                   </div>
                 </Reveal>
               </div>
+
             </div>
           </section>
         </main>
