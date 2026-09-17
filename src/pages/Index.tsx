@@ -225,13 +225,14 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="services" className="bg-lilac text-lilac-foreground py-20 md:py-32">
+          <section id="services" className="bg-primary text-primary-foreground py-20 md:py-32">
             <div className="container mx-auto px-4">
               <Reveal>
-                <Eyebrow className="text-primary mb-5">{t("servicesRoutes.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-secondary mb-5">{t("servicesRoutes.eyebrow")}</Eyebrow>
                 <h2 className="max-w-[18ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
                   {t("servicesRoutes.title")}
                 </h2>
+
               </Reveal>
 
               <div className="mt-14 grid gap-6 lg:grid-cols-3">
