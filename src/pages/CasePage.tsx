@@ -21,6 +21,7 @@ const CasePage = ({ slug }: CasePageProps) => {
   const item = index >= 0 ? items[index] : undefined;
   const next = items.length > 0 && index >= 0 ? items[(index + 1) % items.length] : undefined;
   const Artwork = index >= 0 ? artworks[index] : undefined;
+  const media = caseMedia[slug];
 
   if (!item) {
     return (
