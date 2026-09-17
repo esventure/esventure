@@ -22,13 +22,13 @@ interface ZoneStyle {
 
 const zoneStyles: Record<NavZone, ZoneStyle> = {
   hero: {
-    bg: "bg-transparent",
-    text: "text-primary-foreground/90",
-    textHover: "hover:text-secondary",
-    logoInvert: true,
-    button: "bg-secondary text-secondary-foreground hover:bg-secondary/90 border-transparent",
-    mobileBg: "bg-primary/95",
-    langVariant: "light",
+    bg: "bg-paper/95 backdrop-blur-md border-b border-plum/10",
+    text: "text-plum/75",
+    textHover: "hover:text-primary",
+    logoInvert: false,
+    button: "bg-plum text-paper hover:bg-primary hover:text-primary-foreground border-transparent",
+    mobileBg: "bg-paper/98",
+    langVariant: "dark",
   },
   paper: {
     bg: "bg-paper/95 backdrop-blur-md border-b border-plum/10",
