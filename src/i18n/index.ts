@@ -45,10 +45,20 @@ export const applyStoredLanguage = () => {
   } catch {
     /* ignore */
   }
+  // A ?lang= parameter always wins, so shared and indexed language URLs
+  // resolve to the language they advertise.
+  let fromUrl: string | null = null;
+  try {
+    const param = new URLSearchParams(window.location.search).get("lang");
+    if (param && ["en", "nl"].includes(param.toLowerCase())) fromUrl = param.toLowerCase();
+  } catch {
+    /* ignore */
+  }
   const detected =
-    stored ?? (navigator.language?.toLowerCase().startsWith("nl") ? "nl" : "en");
+    fromUrl ?? stored ?? (navigator.language?.toLowerCase().startsWith("nl") ? "nl" : "en");
   const next = detected.startsWith("nl") ? "nl" : "en";
   if (next !== i18n.language) i18n.changeLanguage(next);
 };
+
 
 export default i18n;
