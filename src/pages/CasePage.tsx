@@ -7,6 +7,8 @@ import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import { artworks } from "@/components/work/CaseArtwork";
 import type { CaseStory } from "@/components/work/caseContent";
+import { caseMedia } from "@/components/work/caseMedia";
+import CaseProof from "@/components/work/CaseProof";
 
 interface CasePageProps {
   slug: string;
