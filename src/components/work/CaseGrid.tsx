@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { ArrowUpRight } from "lucide-react";
 import { artworks } from "./CaseArtwork";
+import { caseMedia } from "./caseMedia";
 import type { CaseStory } from "./caseContent";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,7 @@ const CaseGrid = () => {
     <div className="mt-14 space-y-16 md:mt-20 md:space-y-24">
       {featured.map((item, i) => {
         const Artwork = artworks[i];
+        const media = caseMedia[item.slug];
         const accent = accents[i] ?? accents[0];
         const reverse = i % 2 === 1;
 
