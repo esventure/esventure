@@ -77,7 +77,15 @@ const CasePage = ({ slug }: CasePageProps) => {
                 <p className="mt-6 max-w-[48ch] text-lg leading-relaxed text-plum/75 md:text-xl">{item.summary}</p>
               </div>
               <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-plum/10 md:rotate-1">
-                {Artwork ? <Artwork /> : null}
+                {media?.screens[0] ? (
+                  <img
+                    src={media.screens[0].src}
+                    alt={t(`casePage.captions.${media.screens[0].captionKey}`)}
+                    className="h-full w-full object-cover object-top"
+                  />
+                ) : Artwork ? (
+                  <Artwork />
+                ) : null}
               </div>
             </div>
           </section>
