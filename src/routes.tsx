@@ -4,6 +4,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import StyleGuide from "./pages/StyleGuide";
+import FontPreview from "./pages/FontPreview";
 import StartProject from "./pages/StartProject";
 import CasePage from "./pages/CasePage";
 
