@@ -8,7 +8,7 @@ import { analytics } from "@/lib/analytics";
 import { useTranslation } from "react-i18next";
 import LanguageToggle from "@/components/LanguageToggle";
 
-type NavZone = "hero" | "paper" | "plum" | "purple";
+type NavZone = "hero" | "paper" | "plum" | "purple" | "yellow";
 
 interface ZoneStyle {
   bg: string;
@@ -22,14 +22,15 @@ interface ZoneStyle {
 
 const zoneStyles: Record<NavZone, ZoneStyle> = {
   hero: {
-    bg: "bg-paper/95 backdrop-blur-md border-b border-plum/10",
-    text: "text-plum/75",
-    textHover: "hover:text-primary",
-    logoInvert: false,
-    button: "bg-plum text-paper hover:bg-primary hover:text-primary-foreground border-transparent",
-    mobileBg: "bg-paper/98",
-    langVariant: "dark",
+    bg: "bg-primary/95 backdrop-blur-md",
+    text: "text-primary-foreground/85",
+    textHover: "hover:text-secondary",
+    logoInvert: true,
+    button: "bg-secondary text-secondary-foreground hover:bg-secondary/90 border-transparent",
+    mobileBg: "bg-primary/98",
+    langVariant: "light",
   },
+
   paper: {
     bg: "bg-paper/95 backdrop-blur-md border-b border-plum/10",
     text: "text-plum/75",
@@ -57,18 +58,28 @@ const zoneStyles: Record<NavZone, ZoneStyle> = {
     mobileBg: "bg-primary/98",
     langVariant: "light",
   },
+  yellow: {
+    bg: "bg-secondary/95 backdrop-blur-md",
+    text: "text-plum/80",
+    textHover: "hover:text-primary",
+    logoInvert: false,
+    button: "bg-plum text-paper hover:bg-primary hover:text-primary-foreground border-transparent",
+    mobileBg: "bg-secondary/98",
+    langVariant: "dark",
+  },
 };
 
 const trackedSections: Array<{ id: string; zone: NavZone }> = [
   { id: "hero", zone: "hero" },
   { id: "work", zone: "paper" },
-  { id: "services", zone: "paper" },
-  { id: "approach", zone: "paper" },
+  { id: "services", zone: "purple" },
+  { id: "approach", zone: "yellow" },
   { id: "studio", zone: "paper" },
   { id: "trust", zone: "paper" },
-  { id: "final-cta", zone: "paper" },
+  { id: "final-cta", zone: "purple" },
   { id: "footer", zone: "plum" },
 ];
+
 
 const Navigation = () => {
   const { t } = useTranslation();
