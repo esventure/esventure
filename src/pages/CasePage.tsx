@@ -120,6 +120,29 @@ const CasePage = ({ slug }: CasePageProps) => {
             </div>
           </section>
 
+          <section className="bg-lilac text-lilac-foreground py-16 md:py-24">
+            <div className="container mx-auto px-4">
+              <h2 className="font-display text-4xl font-bold leading-tight tracking-normal md:text-5xl">
+                {t("casePage.inUseTitle")}
+              </h2>
+              <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-plum/75">{t("casePage.inUseLead")}</p>
+              <div className="mt-10 grid gap-5 md:grid-cols-3">
+                {item.made.slice(0, 3).map((made) => (
+                  <figure key={made} className="overflow-hidden rounded-[1.5rem] bg-paper ring-1 ring-plum/10">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-lilac">
+                      {Artwork ? <Artwork /> : null}
+                    </div>
+                    <figcaption className="p-5">
+                      <p className="font-display text-lg font-bold leading-snug text-plum">{made}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-plum/60">{t("casePage.inUsePlaceholder")}</p>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </section>
+
+
           <section className="container mx-auto px-4 py-16 md:py-24">
             <div className="grid gap-12 md:grid-cols-2">
               <div>
