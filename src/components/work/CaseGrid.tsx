@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { ArrowUpRight } from "lucide-react";
 import { artworks } from "./CaseArtwork";
+import { caseMedia } from "./caseMedia";
 import type { CaseStory } from "./caseContent";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,7 @@ const CaseGrid = () => {
     <div className="mt-14 space-y-16 md:mt-20 md:space-y-24">
       {featured.map((item, i) => {
         const Artwork = artworks[i];
+        const media = caseMedia[item.slug];
         const accent = accents[i] ?? accents[0];
         const reverse = i % 2 === 1;
 
@@ -42,13 +44,24 @@ const CaseGrid = () => {
               className={cn("md:col-span-7", reverse && "md:order-2")}
             >
               <div className="relative aspect-[16/11] overflow-hidden rounded-[1.75rem] bg-lilac ring-1 ring-plum/10 transition-transform duration-500 motion-safe:group-hover:-rotate-1">
-                {Artwork ? <Artwork /> : null}
-                <div className="absolute bottom-5 left-5 right-5 flex gap-3">
-                  <div className="relative h-16 flex-1 overflow-hidden rounded-2xl bg-paper/80 ring-1 ring-paper/40 backdrop-blur-sm">
+                {media?.screens[0] ? (
+                  <img
+                    src={media.screens[0].src}
+                    alt={`${item.client} website`}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top"
+                  />
+                ) : (
+                  <>
                     {Artwork ? <Artwork /> : null}
-                  </div>
-                  <div className={cn("h-16 w-20 rounded-2xl", accent.bg)} />
-                </div>
+                    <div className="absolute bottom-5 left-5 right-5 flex gap-3">
+                      <div className="relative h-16 flex-1 overflow-hidden rounded-2xl bg-paper/80 ring-1 ring-paper/40 backdrop-blur-sm">
+                        {Artwork ? <Artwork /> : null}
+                      </div>
+                      <div className={cn("h-16 w-20 rounded-2xl", accent.bg)} />
+                    </div>
+                  </>
+                )}
               </div>
             </Link>
 

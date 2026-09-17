@@ -7,6 +7,8 @@ import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import { artworks } from "@/components/work/CaseArtwork";
 import type { CaseStory } from "@/components/work/caseContent";
+import { caseMedia } from "@/components/work/caseMedia";
+import CaseProof from "@/components/work/CaseProof";
 
 interface CasePageProps {
   slug: string;
@@ -19,6 +21,7 @@ const CasePage = ({ slug }: CasePageProps) => {
   const item = index >= 0 ? items[index] : undefined;
   const next = items.length > 0 && index >= 0 ? items[(index + 1) % items.length] : undefined;
   const Artwork = index >= 0 ? artworks[index] : undefined;
+  const media = caseMedia[slug];
 
   if (!item) {
     return (
@@ -74,7 +77,15 @@ const CasePage = ({ slug }: CasePageProps) => {
                 <p className="mt-6 max-w-[48ch] text-lg leading-relaxed text-plum/75 md:text-xl">{item.summary}</p>
               </div>
               <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-plum/10 md:rotate-1">
-                {Artwork ? <Artwork /> : null}
+                {media?.screens[0] ? (
+                  <img
+                    src={media.screens[0].src}
+                    alt={t(`casePage.captions.${media.screens[0].captionKey}`)}
+                    className="h-full w-full object-cover object-top"
+                  />
+                ) : Artwork ? (
+                  <Artwork />
+                ) : null}
               </div>
             </div>
           </section>
@@ -126,22 +137,27 @@ const CasePage = ({ slug }: CasePageProps) => {
                 {t("casePage.inUseTitle")}
               </h2>
               <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-plum/75">{t("casePage.inUseLead")}</p>
-              <div className="mt-10 grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-lilac ring-1 ring-plum/10">
-                  {Artwork ? <Artwork /> : null}
-                </div>
-                <div className="rounded-[1.75rem] bg-paper p-6 ring-1 ring-plum/10 md:p-8">
-                  <ul className="space-y-3">
-                    {item.made.slice(0, 4).map((made) => (
-                      <li key={made} className="border-b border-plum/10 pb-3 font-display text-lg font-bold leading-snug text-plum last:border-0 last:pb-0">
-                        {made}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-6 text-sm leading-relaxed text-plum/60">{t("casePage.inUsePlaceholder")}</p>
-                </div>
+              <div className="mt-10">
+                {media ? (
+                  <CaseProof media={media} client={item.client} />
+                ) : (
+                  <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-lilac ring-1 ring-plum/10">
+                      {Artwork ? <Artwork /> : null}
+                    </div>
+                    <div className="rounded-[1.75rem] bg-paper p-6 ring-1 ring-plum/10 md:p-8">
+                      <ul className="space-y-3">
+                        {item.made.slice(0, 4).map((made) => (
+                          <li key={made} className="border-b border-plum/10 pb-3 font-display text-lg font-bold leading-snug text-plum last:border-0 last:pb-0">
+                            {made}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="mt-6 text-sm leading-relaxed text-plum/60">{t("casePage.inUsePlaceholder")}</p>
+                    </div>
+                  </div>
+                )}
               </div>
-
             </div>
           </section>
 
