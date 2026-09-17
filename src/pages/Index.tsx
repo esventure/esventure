@@ -242,9 +242,10 @@ const Index = () => {
                   return (
                     <Reveal key={route.title} delay={i * 0.08} className="h-full">
                       <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/12 bg-paper p-6 text-paper-foreground shadow-lg transition-transform duration-300 hover:-translate-y-1 md:p-7">
-                        <div className="relative aspect-[5/3] rotate-[-2deg] overflow-hidden rounded-[1.25rem] bg-lilac ring-1 ring-plum/10">
+                        <div className="relative aspect-[5/3] overflow-hidden rounded-[1.25rem] bg-lilac ring-1 ring-plum/10">
                           {Artwork ? <Artwork /> : null}
                         </div>
+
                         <h3 className="mt-8 font-display text-3xl font-bold leading-tight tracking-normal">{route.title}</h3>
                         <p className="mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-primary">{t("servicesRoutes.situationLabel")}</p>
                         <p className="mt-2 text-base leading-relaxed text-plum/74">{route.situation}</p>
@@ -260,7 +261,7 @@ const Index = () => {
                         <p className="mt-6 rounded-2xl bg-secondary p-4 text-sm leading-relaxed text-secondary-foreground">
                           {route.example}
                         </p>
-                        <Button asChild className="mt-6 rounded-full bg-plum text-paper hover:bg-primary hover:text-primary-foreground">
+                        <Button asChild className="mt-6 rounded-full bg-secondary text-secondary-foreground hover:bg-plum hover:text-paper">
                           <Link to={`/start-a-project?stage=${stage}`}>{t("servicesRoutes.cta")}</Link>
                         </Button>
                       </article>
@@ -271,27 +272,28 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="approach" className="bg-paper text-paper-foreground py-20 md:py-32">
+          <section id="approach" className="bg-secondary text-secondary-foreground py-20 md:py-32">
             <div className="container mx-auto grid gap-10 px-4 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
               <Reveal>
-                <Eyebrow className="text-coral mb-5">{t("usp.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-plum/70 mb-5">{t("usp.eyebrow")}</Eyebrow>
                 <h2 className="max-w-[14ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
                   {t("usp.title")}
                 </h2>
               </Reveal>
               <Reveal delay={0.08}>
-                <div className="border-t border-primary pt-7">
-                  <p className="text-xl leading-relaxed text-plum/80 md:text-2xl">{t("usp.copy")}</p>
+                <div className="border-t border-plum/25 pt-7">
+                  <p className="text-xl leading-relaxed text-plum/85 md:text-2xl">{t("usp.copy")}</p>
                   <div className="mt-10 grid gap-4 sm:grid-cols-3">
                     {(t("usp.steps", { returnObjects: true }) as string[]).map((step, i) => (
-                      <div key={step} className="rounded-2xl border border-plum/12 bg-lilac/55 p-5">
+                      <div key={step} className="rounded-2xl border border-plum/20 bg-paper/55 p-5">
                         <p className="font-display text-3xl font-bold text-primary">0{i + 1}</p>
-                        <p className="mt-3 text-sm leading-relaxed text-plum/75">{step}</p>
+                        <p className="mt-3 text-sm leading-relaxed text-plum/80">{step}</p>
                       </div>
                     ))}
                   </div>
                 </div>
               </Reveal>
+
             </div>
           </section>
 
