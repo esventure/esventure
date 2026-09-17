@@ -61,7 +61,7 @@
   },
   "services": {
     "title": "How I Help",
-    "subtitle": "Four ways we can work together - pick the one that fits your ambition.",
+    "subtitle": "Four ways I can work with you - pick the one that fits your ambition.",
     "cta": "See it in action",
     "items": [
       {
@@ -73,7 +73,7 @@
       {
         "label": "The Sparring Room",
         "title": "Let's Think It Through",
-        "description": "When you've got an idea but no shape yet. We sketch, challenge, prototype and pressure-test it together until it's clear enough to build.",
+        "description": "When you've got an idea but no shape yet. I sketch, challenge, prototype and pressure-test it with you until it's clear enough to build.",
         "outcome": "An idea pressure-tested into a buildable plan"
       },
       {
@@ -129,13 +129,13 @@
     "paragraphs": [
       "As a digital project manager and delivery partner, I'm the person you call when you have a digital ambition that needs to become real.",
       "Moving quickly to understand your unique challenges comes naturally to me. Leading a strategic whiteboard session with your management team or running a technical review with your developers, both feel equally at home. My core strength is acting as the connective tissue across disciplines - bridging the gap between IT, creative, and business, and making sure complex work actually crosses the finish line.",
-      "Straightforward solutions and tangible action win over lengthy reports, every time. When we work together, you will always know where things stand - and you will always get a partner who takes ownership of the work."
+      "Straightforward solutions and tangible action win over lengthy reports, every time. When I work with you, you will always know where things stand - and you will always get a partner who takes ownership of the work."
     ],
     "cta": "Let's talk"
   },
   "planner": {
     "title": "Describe your situation.",
-    "subtitle": "I'll show you how we can fix it - in under a minute.",
+    "subtitle": "I'll show you how I can fix it - in under a minute.",
     "steps": {
       "describe": "Describe",
       "handoff": "Handoff",
@@ -192,7 +192,7 @@
     "rights": "© Es Venture 2026 - Amsterdam"
   },
   "cookie": {
-    "message": "We use cookies to analyze site traffic and improve your experience. By clicking \"Accept\", you consent to our use of analytics cookies.",
+    "message": "I use cookies to analyze site traffic and improve your experience. By clicking \"Accept\", you consent to my use of analytics cookies.",
     "privacy": "Privacy Policy",
     "decline": "Decline",
     "accept": "Accept"
@@ -209,8 +209,8 @@
     ]
   },
   "whatWeDo": {
-    "eyebrow": "WHAT WE DO",
-    "title": "Three ways we get good digital work moving.",
+    "eyebrow": "WHAT I DO",
+    "title": "Three ways I get good digital work moving.",
     "items": [
       {
         "number": "01",
@@ -338,22 +338,22 @@
     "link": "Meet Esther"
   },
   "start": {
-    "eyebrow": "HOW WE START",
+    "eyebrow": "HOW I START",
     "title": "Where are you right now?",
     "cards": [
       {
         "title": "I have an idea.",
-        "reveal": "Start with a working session. We will get it clear, choose what matters and decide the next practical step.",
+        "reveal": "Start with a working session. I will get it clear, choose what matters and decide the next practical step.",
         "cta": "Book a working session"
       },
       {
         "title": "I have a project.",
-        "reveal": "Start with a project plan. We will agree the scope, the team, the timing and the first move.",
+        "reveal": "Start with a project plan. I will map out the scope, the team, the timing and the first move with you.",
         "cta": "Start a project"
       },
       {
         "title": "I have a problem.",
-        "reveal": "Start with a reset. We will find the knot, decide what to fix first and get the work moving again.",
+        "reveal": "Start with a reset. I will find the knot, decide what to fix first and get the work moving again.",
         "cta": "Talk it through"
       }
     ]
@@ -411,13 +411,13 @@
     "eyebrow": "SERVICES",
     "title": "Three useful ways to start.",
     "situationLabel": "Client situation",
-    "resultLabel": "What we do",
+    "resultLabel": "What I do",
     "cta": "Tell me about this",
     "items": [
       {
         "title": "I need a brand",
         "situation": "You have a good business or idea, but you do not yet know how to explain it or what it should look like.",
-        "result": "We clarify what you offer, what people should remember, and how the business should feel. I turn that into a visual identity you can use consistently.",
+        "result": "I clarify what you offer, what people should remember, and how the business should feel. I turn that into a visual identity you can use consistently.",
         "deliverables": [
           "Positioning and core story",
           "Visual direction or moodboard",
@@ -430,7 +430,7 @@
       {
         "title": "I need a website",
         "situation": "You need a website, or your current one no longer shows the quality or personality of the business.",
-        "result": "We decide what visitors need to understand, structure the pages, create the visual design and build a responsive website that is ready to use.",
+        "result": "I decide what visitors need to understand, structure the pages, create the visual design and build a responsive website that is ready to use.",
         "deliverables": [
           "Website strategy and page structure",
           "Wireframes and content guidance",
@@ -443,7 +443,7 @@
       {
         "title": "I want to test an idea",
         "situation": "You have an idea for an app, digital service or new feature, but you do not want full development before you know whether it works.",
-        "result": "We choose the most important user journey, work out how the idea should function and create a clickable prototype people can understand and try.",
+        "result": "I choose the most important user journey, work out how the idea should function and create a clickable prototype people can understand and try.",
         "deliverables": [
           "Sharpened concept and target user",
           "Core user journey",
@@ -489,7 +489,7 @@
     "scope": "Scope",
     "character": "Character",
     "needed": "What needed to come through",
-    "made": "What we made",
+    "made": "What I made",
     "direction": "The direction",
     "outcome": "What changed",
     "credits": "Credits",

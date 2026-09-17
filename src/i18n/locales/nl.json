@@ -61,30 +61,30 @@
   },
   "services": {
     "title": "Hoe ik help",
-    "subtitle": "Vier manieren waarop we kunnen samenwerken - kies wat bij je ambitie past.",
+    "subtitle": "Vier manieren waarop ik met je kan samenwerken - kies wat bij je ambitie past.",
     "cta": "Zie het in actie",
     "items": [
       {
         "label": "The Driver",
-        "title": "Laten we het opleveren",
+        "title": "Ik lever het op",
         "description": "Websites, campagnes of complexe digitale systemen. Ik neem eigenaarschap over de oplevering, lijn het team uit, beheer de afhankelijkheden en breng het werk van briefing naar livegang.",
         "outcome": "Van briefing naar live in zes weken"
       },
       {
         "label": "The Sparring Room",
-        "title": "Laten we het samen doordenken",
-        "description": "Als je een idee hebt maar nog geen vorm. We schetsen, dagen uit, prototypen en testen het samen tot het helder genoeg is om te bouwen.",
+        "title": "Ik denk het met je door",
+        "description": "Als je een idee hebt maar nog geen vorm. Ik schets, daag uit, prototype en test het samen met jou tot het helder genoeg is om te bouwen.",
         "outcome": "Een idee getest tot een bouwbaar plan"
       },
       {
         "label": "The Map",
-        "title": "Laten we het laten stromen",
+        "title": "Ik laat het stromen",
         "description": "Rommelige processen, dubbel werk, dingen die tussen teams vallen. Ik breng in kaart wat er echt gebeurt, vind de frictie en herontwerp het zodat je dagelijkse werk gewoon loopt.",
         "outcome": "Dubbel werk uit een wekelijks proces gehaald"
       },
       {
         "label": "The Mirror",
-        "title": "Laten we het van jou maken",
+        "title": "Ik maak het van jou",
         "description": "Jouw merk of persoonlijke verhaal verdient een visual die past. Ik help vormgeven hoe jij (of je bedrijf) verschijnt - van positionering tot een website die écht voelt als jou.",
         "outcome": "Een merk dat eindelijk klinkt als zijn founder"
       }
@@ -129,13 +129,13 @@
     "paragraphs": [
       "Als digitaal projectmanager en delivery partner ben ik de persoon die je belt als je een digitale ambitie hebt die werkelijkheid moet worden.",
       "Snel schakelen om je uitdagingen te begrijpen, dat gaat me makkelijk af. Een strategische whiteboard-sessie met je managementteam leiden of een technische review met je developers draaien, het voelt even vertrouwd. Mijn kracht zit in het zijn van het bindweefsel tussen disciplines - de brug tussen IT, creatie en business, en zorgen dat complex werk écht over de finish komt.",
-      "Heldere oplossingen en zichtbare actie winnen het bij mij altijd van dikke rapporten. Als we samenwerken weet je altijd waar je staat - en krijg je een partner die eigenaarschap neemt over het werk."
+      "Heldere oplossingen en zichtbare actie winnen het bij mij altijd van dikke rapporten. Als ik met je samenwerk weet je altijd waar je staat - en krijg je een partner die eigenaarschap neemt over het werk."
     ],
     "cta": "Laten we praten"
   },
   "planner": {
     "title": "Beschrijf je situatie.",
-    "subtitle": "Ik laat je in minder dan een minuut zien hoe we het oplossen.",
+    "subtitle": "Ik laat je in minder dan een minuut zien hoe ik het oplos.",
     "steps": {
       "describe": "Beschrijf",
       "handoff": "Overdracht",
@@ -192,7 +192,7 @@
     "rights": "© Es Venture 2026 - Amsterdam"
   },
   "cookie": {
-    "message": "We gebruiken cookies om sitegebruik te analyseren en je ervaring te verbeteren. Door op \"Accepteren\" te klikken, ga je akkoord met analytische cookies.",
+    "message": "Ik gebruik cookies om sitegebruik te analyseren en je ervaring te verbeteren. Door op \"Accepteren\" te klikken, ga je akkoord met analytische cookies.",
     "privacy": "Privacybeleid",
     "decline": "Weigeren",
     "accept": "Accepteren"
@@ -209,7 +209,7 @@
     ]
   },
   "whatWeDo": {
-    "eyebrow": "WAT WE DOEN",
+    "eyebrow": "WAT IK DOE",
     "title": "Drie manieren om goed digitaal werk in beweging te krijgen.",
     "items": [
       {
@@ -338,22 +338,22 @@
     "link": "Maak kennis met Esther"
   },
   "start": {
-    "eyebrow": "ZO BEGINNEN WE",
+    "eyebrow": "ZO BEGIN IK",
     "title": "Waar sta je nu?",
     "cards": [
       {
         "title": "Ik heb een idee.",
-        "reveal": "We beginnen met een werksessie. We maken het helder, kiezen wat belangrijk is en bepalen de volgende praktische stap.",
+        "reveal": "Ik begin met een werksessie. Ik maak het helder, kies wat belangrijk is en bepaal de volgende praktische stap.",
         "cta": "Boek een werksessie"
       },
       {
         "title": "Ik heb een project.",
-        "reveal": "We beginnen met een projectplan. We spreken de scope, het team, de planning en de eerste stap af.",
+        "reveal": "Ik begin met een projectplan. Ik leg de scope, het team, de planning en de eerste stap vast.",
         "cta": "Start een project"
       },
       {
         "title": "Ik heb een probleem.",
-        "reveal": "We beginnen met een reset. We vinden de knoop, bepalen wat eerst gefixt wordt en krijgen het werk weer in beweging.",
+        "reveal": "Ik begin met een reset. Ik vind de knoop, bepaal wat eerst gefixt wordt en krijg het werk weer in beweging.",
         "cta": "Even sparren"
       }
     ]
@@ -411,13 +411,13 @@
     "eyebrow": "SERVICES",
     "title": "Drie logische manieren om te starten.",
     "situationLabel": "Situatie",
-    "resultLabel": "Wat we doen",
+    "resultLabel": "Wat ik doe",
     "cta": "Vertel me hierover",
     "items": [
       {
         "title": "Ik heb een merk nodig",
         "situation": "Je hebt een goed bedrijf of idee, maar weet nog niet precies hoe je het uitlegt of hoe het eruit moet zien.",
-        "result": "We maken helder wat je aanbiedt, wat mensen moeten onthouden en hoe het bedrijf moet voelen. Ik vertaal dat naar een visuele identiteit die je consistent kunt gebruiken.",
+        "result": "Ik maak helder wat je aanbiedt, wat mensen moeten onthouden en hoe het bedrijf moet voelen. Daarna vertaal ik dat naar een visuele identiteit die je consistent kunt gebruiken.",
         "deliverables": [
           "Positionering en kernverhaal",
           "Visuele richting of moodboard",
@@ -430,7 +430,7 @@
       {
         "title": "Ik heb een website nodig",
         "situation": "Je hebt een website nodig, of je huidige site laat niet meer de kwaliteit of persoonlijkheid van je bedrijf zien.",
-        "result": "We bepalen wat bezoekers moeten begrijpen, structureren de pagina’s, maken het visuele ontwerp en bouwen een responsive website die klaar is voor gebruik.",
+        "result": "Ik bepaal wat bezoekers moeten begrijpen, structureer de pagina’s, maak het visuele ontwerp en bouw een responsive website die klaar is voor gebruik.",
         "deliverables": [
           "Websitestrategie en pagestructuur",
           "Wireframes en contentbegeleiding",
@@ -443,7 +443,7 @@
       {
         "title": "Ik wil een idee testen",
         "situation": "Je hebt een idee voor een app, digitale service of nieuwe feature, maar wilt niet volledig ontwikkelen voordat je weet of het werkt.",
-        "result": "We kiezen de belangrijkste user journey, werken uit hoe het idee moet functioneren en maken een clickable prototype dat mensen kunnen begrijpen en proberen.",
+        "result": "Ik kies de belangrijkste user journey, werk uit hoe het idee moet functioneren en maak een clickable prototype dat mensen kunnen begrijpen en proberen.",
         "deliverables": [
           "Aangescherpt concept en doelgroep",
           "Kernjourney",
@@ -489,7 +489,7 @@
     "scope": "Scope",
     "character": "Karakter",
     "needed": "Wat erdoorheen moest komen",
-    "made": "Wat we maakten",
+    "made": "Wat ik maakte",
     "direction": "De richting",
     "outcome": "Wat veranderde",
     "credits": "Credits",
