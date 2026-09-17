@@ -35,9 +35,7 @@ export const ArtworkRoutes = () => (
     <g stroke="hsl(var(--plum))" strokeOpacity="0.35" strokeWidth="1">
       <path d="M430 84 H580 M430 116 H580 M478 52 V148 M530 52 V148" />
     </g>
-    <text x="52" y="112" fill="hsl(var(--plum))" fontSize="86" fontFamily="serif" opacity="0.55">
-      *
-    </text>
+    <rect x="52" y="56" width="88" height="88" rx="18" fill="hsl(var(--paper))" fillOpacity="0.32" transform="rotate(-7 96 100)" />
   </svg>
 );
 

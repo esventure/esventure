@@ -191,7 +191,7 @@ const Index = () => {
                       />
                     </div>
                     <div className="absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-lilac shadow-xl ring-1 ring-plum/10 md:-left-12 md:w-72">
-                      <div className="aspect-[4/3] overflow-hidden">
+                      <div className="relative aspect-[4/3] overflow-hidden">
                         {FrameArtwork ? <FrameArtwork /> : null}
                       </div>
                       <div className="bg-paper p-4">
@@ -236,7 +236,7 @@ const Index = () => {
                   return (
                     <Reveal key={route.title} delay={i * 0.08} className="h-full">
                       <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/12 bg-paper p-6 text-paper-foreground shadow-lg transition-transform duration-300 hover:-translate-y-1 md:p-7">
-                        <div className="aspect-[5/3] rotate-[-2deg] overflow-hidden rounded-[1.25rem] bg-lilac ring-1 ring-plum/10">
+                        <div className="relative aspect-[5/3] rotate-[-2deg] overflow-hidden rounded-[1.25rem] bg-lilac ring-1 ring-plum/10">
                           {Artwork ? <Artwork /> : null}
                         </div>
                         <h3 className="mt-8 font-display text-3xl font-bold leading-tight tracking-normal">{route.title}</h3>

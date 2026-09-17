@@ -11,9 +11,24 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://esventure.nl/styleguide</loc>
+    <loc>https://esventure.nl/work/dennis-gerrits</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://esventure.nl/work/studio-ingrid-de-reuver</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://esventure.nl/work/hap</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://esventure.nl/work/rainforest-alliance</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://esventure.nl/privacy</loc>

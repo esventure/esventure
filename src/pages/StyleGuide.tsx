@@ -24,6 +24,7 @@ const StyleGuide = () => {
         <title>Style Guide - Es Venture</title>
         <meta name="description" content="De Es Venture brand style guide. Ontdek onze kleuren, typografie, buttons, iconen, spacing en tone of voice." />
         <link rel="canonical" href="https://esventure.nl/styleguide" />
+        <meta name="robots" content="noindex, nofollow" />
         <meta property="og:title" content="Style Guide - Es Venture" />
         <meta property="og:description" content="De Es Venture brand style guide. Ontdek onze kleuren, typografie, buttons, iconen, spacing en tone of voice." />
         <meta property="og:url" content="https://esventure.nl/styleguide" />
