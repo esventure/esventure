@@ -493,6 +493,10 @@
     "direction": "De richting",
     "outcome": "Wat veranderde",
     "credits": "Credits",
+    "inUseTitle": "Het werk in gebruik",
+    "inUseLead": "Schermen, merkdetails en fragmenten uit het opgeleverde werk.",
+    "inUsePlaceholder": "Goedgekeurde beelden van dit project worden voorbereid.",
     "next": "Volgende story"
+
   }
 }

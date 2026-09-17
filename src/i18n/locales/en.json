@@ -493,6 +493,10 @@
     "direction": "The direction",
     "outcome": "What changed",
     "credits": "Credits",
+    "inUseTitle": "The work in use",
+    "inUseLead": "Screens, brand details and fragments from the delivered work.",
+    "inUsePlaceholder": "Approved images from this project are being prepared.",
     "next": "Next story"
+
   }
 }
