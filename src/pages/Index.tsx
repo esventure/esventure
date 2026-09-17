@@ -101,6 +101,9 @@ const Index = () => {
           content="Es Venture helps entrepreneurs turn an idea into a clear brand, a distinctive website or a useful prototype, shaped around what makes the business worth noticing."
         />
         <link rel="canonical" href="https://esventure.nl/" />
+        <link rel="alternate" hrefLang="nl" href="https://esventure.nl/" />
+        <link rel="alternate" hrefLang="en" href="https://esventure.nl/?lang=en" />
+        <link rel="alternate" hrefLang="x-default" href="https://esventure.nl/" />
         <meta property="og:title" content="Es Venture - Creative digital studio for entrepreneurs" />
         <meta
           property="og:description"
@@ -108,6 +111,13 @@ const Index = () => {
         />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://esventure.nl/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Es Venture - From idea to something unmistakably yours." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://esventure.nl/og-image.jpg" />
+
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
