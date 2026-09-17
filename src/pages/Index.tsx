@@ -127,26 +127,28 @@ const Index = () => {
         <Navigation />
 
         <main>
-          <section id="hero" className="relative overflow-hidden bg-paper text-paper-foreground">
+          <section id="hero" className="relative overflow-hidden bg-primary text-primary-foreground">
             <div className="container mx-auto px-4 pt-28 pb-16 md:pt-32 md:pb-20">
               <div className="grid gap-12 md:grid-cols-[1fr_0.9fr] md:items-end">
                 <div className="relative z-10">
                   <Reveal>
-                    <Eyebrow className="text-primary mb-6">{t("hero.eyebrow")}</Eyebrow>
+                    <Eyebrow className="text-secondary mb-6">{t("hero.eyebrow")}</Eyebrow>
                   </Reveal>
                   <Reveal delay={0.05}>
                     <h1 className="max-w-[11ch] font-display text-5xl font-bold leading-none tracking-normal md:text-7xl lg:text-8xl">
-                      {t("hero.titleStart")} <span className="text-primary">{t("hero.titleHighlight")}</span>
+                      {t("hero.titleStart")} <span className="text-secondary">{t("hero.titleHighlight")}</span>
                     </h1>
                   </Reveal>
                   <Reveal delay={0.1}>
-                    <p className="mt-7 max-w-[42ch] text-lg leading-relaxed text-plum/78 md:text-xl">{t("hero.lead")}</p>
+                    <p className="mt-7 max-w-[42ch] text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
+                      {t("hero.lead")}
+                    </p>
                   </Reveal>
                   <Reveal delay={0.15}>
                     <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                       <Button
                         size="lg"
-                        className="rounded-full bg-primary px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary/90"
+                        className="rounded-full bg-secondary px-8 py-6 text-base font-semibold text-secondary-foreground hover:bg-secondary/90"
                         onClick={() => {
                           analytics.ctaClick("hero_see_work");
                           scrollTo("work");
@@ -159,7 +161,7 @@ const Index = () => {
                         asChild
                         size="lg"
                         variant="outline"
-                        className="rounded-full border-2 border-plum/25 bg-transparent px-8 py-6 text-base font-semibold text-plum hover:bg-lilac hover:text-plum"
+                        className="rounded-full border-2 border-primary-foreground/45 bg-transparent px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                       >
                         <Link to="/start-a-project" onClick={() => analytics.ctaClick("hero_start_project")}>
                           {t("hero.ctaSecondary")}
@@ -168,7 +170,9 @@ const Index = () => {
                     </div>
                   </Reveal>
                   <Reveal delay={0.2}>
-                    <p className="mt-8 max-w-[50ch] text-sm leading-relaxed text-plum/68">{t("hero.ownership")}</p>
+                    <p className="mt-8 max-w-[50ch] text-sm leading-relaxed text-primary-foreground/72">
+                      {t("hero.ownership")}
+                    </p>
                   </Reveal>
                 </div>
 
@@ -179,7 +183,7 @@ const Index = () => {
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="relative mx-auto max-w-[32rem]"
                   >
-                    <div className="overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-plum/10">
+                    <div className="overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-primary-foreground/25">
                       <img
                         src={estherYellow}
                         alt="Esther Woerdman, founder of Es Venture"
@@ -190,8 +194,8 @@ const Index = () => {
                         className="aspect-[4/5] w-full object-cover object-top"
                       />
                     </div>
-                    <div className="absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-lilac shadow-xl ring-1 ring-plum/10 md:-left-12 md:w-72">
-                      <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 md:-left-12 md:w-72">
+                      <div className="relative aspect-[4/3] overflow-hidden bg-lilac">
                         {FrameArtwork ? <FrameArtwork /> : null}
                       </div>
                       <div className="bg-paper p-4">
@@ -206,6 +210,7 @@ const Index = () => {
               </div>
             </div>
           </section>
+
 
           <section id="work" className="relative overflow-hidden bg-paper text-paper-foreground py-16 md:py-28">
             <div className="container mx-auto px-4">
