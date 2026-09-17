@@ -44,10 +44,17 @@ const CasePage = ({ slug }: CasePageProps) => {
         <title>{`${item.client} - ${item.scope} - Es Venture`}</title>
         <meta name="description" content={item.summary} />
         <link rel="canonical" href={`https://esventure.nl/work/${item.slug}`} />
+        <link rel="alternate" hrefLang="nl" href={`https://esventure.nl/work/${item.slug}`} />
+        <link rel="alternate" hrefLang="en" href={`https://esventure.nl/work/${item.slug}?lang=en`} />
+        <link rel="alternate" hrefLang="x-default" href={`https://esventure.nl/work/${item.slug}`} />
         <meta property="og:title" content={`${item.client} - Es Venture`} />
         <meta property="og:description" content={item.summary} />
         <meta property="og:url" content={`https://esventure.nl/work/${item.slug}`} />
         <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://esventure.nl/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://esventure.nl/og-image.jpg" />
+
       </Head>
 
       <div className="min-h-screen bg-paper text-paper-foreground font-sans">
@@ -112,6 +119,32 @@ const CasePage = ({ slug }: CasePageProps) => {
               </ul>
             </div>
           </section>
+
+          <section className="bg-lilac text-lilac-foreground py-16 md:py-24">
+            <div className="container mx-auto px-4">
+              <h2 className="font-display text-4xl font-bold leading-tight tracking-normal md:text-5xl">
+                {t("casePage.inUseTitle")}
+              </h2>
+              <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-plum/75">{t("casePage.inUseLead")}</p>
+              <div className="mt-10 grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-lilac ring-1 ring-plum/10">
+                  {Artwork ? <Artwork /> : null}
+                </div>
+                <div className="rounded-[1.75rem] bg-paper p-6 ring-1 ring-plum/10 md:p-8">
+                  <ul className="space-y-3">
+                    {item.made.slice(0, 4).map((made) => (
+                      <li key={made} className="border-b border-plum/10 pb-3 font-display text-lg font-bold leading-snug text-plum last:border-0 last:pb-0">
+                        {made}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-6 text-sm leading-relaxed text-plum/60">{t("casePage.inUsePlaceholder")}</p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
 
           <section className="container mx-auto px-4 py-16 md:py-24">
             <div className="grid gap-12 md:grid-cols-2">

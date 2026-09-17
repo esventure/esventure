@@ -101,6 +101,9 @@ const Index = () => {
           content="Es Venture helps entrepreneurs turn an idea into a clear brand, a distinctive website or a useful prototype, shaped around what makes the business worth noticing."
         />
         <link rel="canonical" href="https://esventure.nl/" />
+        <link rel="alternate" hrefLang="nl" href="https://esventure.nl/" />
+        <link rel="alternate" hrefLang="en" href="https://esventure.nl/?lang=en" />
+        <link rel="alternate" hrefLang="x-default" href="https://esventure.nl/" />
         <meta property="og:title" content="Es Venture - Creative digital studio for entrepreneurs" />
         <meta
           property="og:description"
@@ -108,6 +111,13 @@ const Index = () => {
         />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://esventure.nl/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Es Venture - From idea to something unmistakably yours." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://esventure.nl/og-image.jpg" />
+
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -127,26 +137,28 @@ const Index = () => {
         <Navigation />
 
         <main>
-          <section id="hero" className="relative overflow-hidden bg-paper text-paper-foreground">
+          <section id="hero" className="relative overflow-hidden bg-primary text-primary-foreground">
             <div className="container mx-auto px-4 pt-28 pb-16 md:pt-32 md:pb-20">
               <div className="grid gap-12 md:grid-cols-[1fr_0.9fr] md:items-end">
                 <div className="relative z-10">
                   <Reveal>
-                    <Eyebrow className="text-primary mb-6">{t("hero.eyebrow")}</Eyebrow>
+                    <Eyebrow className="text-secondary mb-6">{t("hero.eyebrow")}</Eyebrow>
                   </Reveal>
                   <Reveal delay={0.05}>
                     <h1 className="max-w-[11ch] font-display text-5xl font-bold leading-none tracking-normal md:text-7xl lg:text-8xl">
-                      {t("hero.titleStart")} <span className="text-primary">{t("hero.titleHighlight")}</span>
+                      {t("hero.titleStart")} <span className="text-secondary">{t("hero.titleHighlight")}</span>
                     </h1>
                   </Reveal>
                   <Reveal delay={0.1}>
-                    <p className="mt-7 max-w-[42ch] text-lg leading-relaxed text-plum/78 md:text-xl">{t("hero.lead")}</p>
+                    <p className="mt-7 max-w-[42ch] text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
+                      {t("hero.lead")}
+                    </p>
                   </Reveal>
                   <Reveal delay={0.15}>
                     <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                       <Button
                         size="lg"
-                        className="rounded-full bg-primary px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary/90"
+                        className="rounded-full bg-secondary px-8 py-6 text-base font-semibold text-secondary-foreground hover:bg-secondary/90"
                         onClick={() => {
                           analytics.ctaClick("hero_see_work");
                           scrollTo("work");
@@ -159,7 +171,7 @@ const Index = () => {
                         asChild
                         size="lg"
                         variant="outline"
-                        className="rounded-full border-2 border-plum/25 bg-transparent px-8 py-6 text-base font-semibold text-plum hover:bg-lilac hover:text-plum"
+                        className="rounded-full border-2 border-primary-foreground/45 bg-transparent px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                       >
                         <Link to="/start-a-project" onClick={() => analytics.ctaClick("hero_start_project")}>
                           {t("hero.ctaSecondary")}
@@ -168,7 +180,9 @@ const Index = () => {
                     </div>
                   </Reveal>
                   <Reveal delay={0.2}>
-                    <p className="mt-8 max-w-[50ch] text-sm leading-relaxed text-plum/68">{t("hero.ownership")}</p>
+                    <p className="mt-8 max-w-[50ch] text-sm leading-relaxed text-primary-foreground/72">
+                      {t("hero.ownership")}
+                    </p>
                   </Reveal>
                 </div>
 
@@ -179,7 +193,7 @@ const Index = () => {
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="relative mx-auto max-w-[32rem]"
                   >
-                    <div className="overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-plum/10">
+                    <div className="overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-primary-foreground/25">
                       <img
                         src={estherYellow}
                         alt="Esther Woerdman, founder of Es Venture"
@@ -190,11 +204,11 @@ const Index = () => {
                         className="aspect-[4/5] w-full object-cover object-top"
                       />
                     </div>
-                    <div className="absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-lilac shadow-xl ring-1 ring-plum/10 md:-left-12 md:w-72">
-                      <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 md:-left-12 md:w-72">
+                      <div className="relative aspect-[4/3] overflow-hidden bg-lilac">
                         {FrameArtwork ? <FrameArtwork /> : null}
                       </div>
-                      <div className="bg-paper p-4">
+                      <div className="relative z-10 bg-paper p-4">
                         <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
                           {frameCase?.client ?? t("work.eyebrow")}
                         </p>
@@ -206,6 +220,7 @@ const Index = () => {
               </div>
             </div>
           </section>
+
 
           <section id="work" className="relative overflow-hidden bg-paper text-paper-foreground py-16 md:py-28">
             <div className="container mx-auto px-4">
@@ -220,13 +235,14 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="services" className="bg-lilac text-lilac-foreground py-20 md:py-32">
+          <section id="services" className="bg-primary text-primary-foreground py-20 md:py-32">
             <div className="container mx-auto px-4">
               <Reveal>
-                <Eyebrow className="text-primary mb-5">{t("servicesRoutes.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-secondary mb-5">{t("servicesRoutes.eyebrow")}</Eyebrow>
                 <h2 className="max-w-[18ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
                   {t("servicesRoutes.title")}
                 </h2>
+
               </Reveal>
 
               <div className="mt-14 grid gap-6 lg:grid-cols-3">
@@ -236,9 +252,10 @@ const Index = () => {
                   return (
                     <Reveal key={route.title} delay={i * 0.08} className="h-full">
                       <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/12 bg-paper p-6 text-paper-foreground shadow-lg transition-transform duration-300 hover:-translate-y-1 md:p-7">
-                        <div className="relative aspect-[5/3] rotate-[-2deg] overflow-hidden rounded-[1.25rem] bg-lilac ring-1 ring-plum/10">
+                        <div className="relative aspect-[5/3] overflow-hidden rounded-[1.25rem] bg-lilac ring-1 ring-plum/10">
                           {Artwork ? <Artwork /> : null}
                         </div>
+
                         <h3 className="mt-8 font-display text-3xl font-bold leading-tight tracking-normal">{route.title}</h3>
                         <p className="mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-primary">{t("servicesRoutes.situationLabel")}</p>
                         <p className="mt-2 text-base leading-relaxed text-plum/74">{route.situation}</p>
@@ -254,7 +271,7 @@ const Index = () => {
                         <p className="mt-6 rounded-2xl bg-secondary p-4 text-sm leading-relaxed text-secondary-foreground">
                           {route.example}
                         </p>
-                        <Button asChild className="mt-6 rounded-full bg-plum text-paper hover:bg-primary hover:text-primary-foreground">
+                        <Button asChild className="mt-6 rounded-full bg-secondary text-secondary-foreground hover:bg-plum hover:text-paper">
                           <Link to={`/start-a-project?stage=${stage}`}>{t("servicesRoutes.cta")}</Link>
                         </Button>
                       </article>
@@ -265,27 +282,28 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="approach" className="bg-paper text-paper-foreground py-20 md:py-32">
+          <section id="approach" className="bg-secondary text-secondary-foreground py-20 md:py-32">
             <div className="container mx-auto grid gap-10 px-4 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
               <Reveal>
-                <Eyebrow className="text-coral mb-5">{t("usp.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-plum/70 mb-5">{t("usp.eyebrow")}</Eyebrow>
                 <h2 className="max-w-[14ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
                   {t("usp.title")}
                 </h2>
               </Reveal>
               <Reveal delay={0.08}>
-                <div className="border-t border-primary pt-7">
-                  <p className="text-xl leading-relaxed text-plum/80 md:text-2xl">{t("usp.copy")}</p>
+                <div className="border-t border-plum/25 pt-7">
+                  <p className="text-xl leading-relaxed text-plum/85 md:text-2xl">{t("usp.copy")}</p>
                   <div className="mt-10 grid gap-4 sm:grid-cols-3">
                     {(t("usp.steps", { returnObjects: true }) as string[]).map((step, i) => (
-                      <div key={step} className="rounded-2xl border border-plum/12 bg-lilac/55 p-5">
+                      <div key={step} className="rounded-2xl border border-plum/20 bg-paper/55 p-5">
                         <p className="font-display text-3xl font-bold text-primary">0{i + 1}</p>
-                        <p className="mt-3 text-sm leading-relaxed text-plum/75">{step}</p>
+                        <p className="mt-3 text-sm leading-relaxed text-plum/80">{step}</p>
                       </div>
                     ))}
                   </div>
                 </div>
               </Reveal>
+
             </div>
           </section>
 
@@ -345,19 +363,19 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="final-cta" className="bg-secondary text-secondary-foreground py-20 md:py-32">
+          <section id="final-cta" className="bg-primary text-primary-foreground py-20 md:py-32">
             <div className="container mx-auto px-4">
               <Reveal>
-                <Eyebrow className="text-plum/65 mb-5">{t("contactChoices.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-secondary mb-5">{t("contactChoices.eyebrow")}</Eyebrow>
                 <div className="grid gap-4 md:grid-cols-3">
                   {contactChoices.map((choice, i) => (
                     <Link
                       key={choice.title}
                       to={`/start-a-project?stage=${routeParams[i] ?? "brand"}`}
-                      className="group rounded-[1.5rem] border border-plum/16 bg-paper/55 p-5 text-plum transition-colors hover:bg-paper"
+                      className="group rounded-[1.5rem] border border-primary-foreground/25 bg-primary-foreground/10 p-5 text-primary-foreground transition-colors hover:border-secondary hover:bg-primary-foreground/16"
                     >
                       <p className="font-display text-2xl font-bold tracking-normal">{choice.title}</p>
-                      <p className="mt-2 text-sm leading-relaxed text-plum/70">{choice.copy}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-primary-foreground/78">{choice.copy}</p>
                     </Link>
                   ))}
                 </div>
@@ -370,11 +388,13 @@ const Index = () => {
                   </h2>
                 </Reveal>
                 <Reveal delay={0.06}>
-                  <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-plum/80 md:text-xl">{t("finalCta.copy")}</p>
+                  <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
+                    {t("finalCta.copy")}
+                  </p>
                 </Reveal>
                 <Reveal delay={0.12}>
                   <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                    <Button asChild size="lg" className="rounded-full bg-plum px-8 py-6 text-base font-semibold text-paper hover:bg-primary hover:text-primary-foreground">
+                    <Button asChild size="lg" className="rounded-full bg-secondary px-8 py-6 text-base font-semibold text-secondary-foreground hover:bg-secondary/90">
                       <Link to="/start-a-project" onClick={() => analytics.ctaClick("final_start_project")}>
                         {t("finalCta.primary")}
                         <ArrowRight className="ml-2 h-5 w-5" />
@@ -384,13 +404,14 @@ const Index = () => {
                       size="lg"
                       variant="outline"
                       onClick={openBooking}
-                      className="rounded-full border-2 border-plum/35 bg-transparent px-8 py-6 text-base font-semibold text-plum hover:bg-paper/60 hover:text-plum"
+                      className="rounded-full border-2 border-primary-foreground/45 bg-transparent px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                     >
                       {t("finalCta.secondary")}
                     </Button>
                   </div>
                 </Reveal>
               </div>
+
             </div>
           </section>
         </main>
