@@ -90,8 +90,13 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
         {rest.length > 0 && (
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             {rest.map((screen) => (
-              <figure key={screen.src} className={screen.ratio === "tall" ? "md:row-span-2" : undefined}>
-                <div className="overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12">
+              <figure key={screen.src}>
+                <div
+                  className={cn(
+                    "overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12",
+                    screen.ratio === "tall" && "mx-auto max-w-[300px]"
+                  )}
+                >
                   <img
                     src={screen.src}
                     alt={t(`casePage.captions.${screen.captionKey}`)}
