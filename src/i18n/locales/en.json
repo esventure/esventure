@@ -494,9 +494,23 @@
     "outcome": "What changed",
     "credits": "Credits",
     "inUseTitle": "The work in use",
-    "inUseLead": "Screens, brand details and fragments from the delivered work.",
+    "inUseLead": "No mockups. This is the brand and the site as they run today.",
     "inUsePlaceholder": "Approved images from this project are being prepared.",
-    "next": "Next story"
-
+    "next": "Next story",
+    "brandLabel": "BRAND DETAILS",
+    "logoLabel": "Logo and wordmark",
+    "paletteLabel": "Colours from the brand",
+    "typefacesLabel": "Typefaces in use",
+    "screensLabel": "SCREENS FROM THE LIVE SITE",
+    "typeUse": {
+      "ingridDisplay": "Headlines and titles",
+      "ingridText": "Body text, menu and buttons"
+    },
+    "captions": {
+      "ingridHero": "Homepage: her name, her field and a direct route to booking a shoot.",
+      "ingridMobile": "The same homepage on a phone, where most visitors meet it.",
+      "ingridPortfolio": "Portfolio filtered by type of shoot: children, maternity and newborn, family, women.",
+      "ingridContact": "Practical questions and the contact form people use to request a shoot."
+    }
   }
 }

@@ -494,9 +494,23 @@
     "outcome": "Wat veranderde",
     "credits": "Credits",
     "inUseTitle": "Het werk in gebruik",
-    "inUseLead": "Schermen, merkdetails en fragmenten uit het opgeleverde werk.",
+    "inUseLead": "Geen mockups. Dit is het merk en de site zoals ze nu live staan.",
     "inUsePlaceholder": "Goedgekeurde beelden van dit project worden voorbereid.",
-    "next": "Volgende story"
-
+    "next": "Volgende story",
+    "brandLabel": "MERKDETAILS",
+    "logoLabel": "Logo en woordmerk",
+    "paletteLabel": "Kleuren uit het merk",
+    "typefacesLabel": "Letters in gebruik",
+    "screensLabel": "SCHERMEN UIT DE LIVE SITE",
+    "typeUse": {
+      "ingridDisplay": "Koppen en titels",
+      "ingridText": "Lopende tekst, menu en knoppen"
+    },
+    "captions": {
+      "ingridHero": "Homepage: naam, vakgebied en direct de route naar een shoot plannen.",
+      "ingridMobile": "Dezelfde homepage op telefoon, waar de meeste bezoekers hem zien.",
+      "ingridPortfolio": "Portfolio met filters per soort shoot: kinderen, zwanger en newborn, familie, vrouw.",
+      "ingridContact": "Praktische vragen en het contactformulier waarmee mensen een shoot aanvragen."
+    }
   }
 }
