@@ -129,7 +129,7 @@ const Index = () => {
         <main>
           <section id="hero" className="relative overflow-hidden bg-paper text-paper-foreground">
             <div className="container mx-auto px-4 pt-28 pb-16 md:pt-32 md:pb-20">
-              <div className="grid min-h-[calc(100vh-8rem)] gap-12 md:grid-cols-[1fr_0.9fr] md:items-center">
+              <div className="grid gap-12 md:grid-cols-[1fr_0.9fr] md:items-end">
                 <div className="relative z-10">
                   <Reveal>
                     <Eyebrow className="text-primary mb-6">{t("hero.eyebrow")}</Eyebrow>
@@ -207,7 +207,7 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="work" className="relative overflow-hidden bg-paper text-paper-foreground py-20 md:py-32">
+          <section id="work" className="relative overflow-hidden bg-paper text-paper-foreground py-16 md:py-28">
             <div className="container mx-auto px-4">
               <Reveal>
                 <Eyebrow className="text-coral mb-5">{t("work.eyebrow")}</Eyebrow>
