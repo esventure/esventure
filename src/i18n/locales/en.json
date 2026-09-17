@@ -504,13 +504,21 @@
     "screensLabel": "SCREENS FROM THE LIVE SITE",
     "typeUse": {
       "ingridDisplay": "Headlines and titles",
-      "ingridText": "Body text, menu and buttons"
+      "ingridText": "Body text, menu and buttons",
+      "dennisDisplay": "Big headlines, in heavy capitals",
+      "dennisText": "Body text, menu and forms",
+      "dennisAccent": "Handwritten accents"
     },
     "captions": {
       "ingridHero": "Homepage: her name, her field and a direct route to booking a shoot.",
       "ingridMobile": "The same homepage on a phone, where most visitors meet it.",
       "ingridPortfolio": "Portfolio filtered by type of shoot: children, maternity and newborn, family, women.",
-      "ingridContact": "Practical questions and the contact form people use to request a shoot."
+      "ingridContact": "Practical questions and the contact form people use to request a shoot.",
+      "dennisHero": "Homepage: 'A friend who knows the city', with Dennis in an Amsterdam street.",
+      "dennisAbout": "About Dennis: the person and the guide, side by side.",
+      "dennisExperiences": "The experiences as photo cards: the neighbourhood, food, architecture and the water.",
+      "dennisContact": "Contact in deep green: 'Let's see if we're a good match', with form and WhatsApp.",
+      "dennisMobile": "The homepage on a phone."
     }
   }
 }

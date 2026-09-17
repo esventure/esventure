@@ -504,13 +504,21 @@
     "screensLabel": "SCHERMEN UIT DE LIVE SITE",
     "typeUse": {
       "ingridDisplay": "Koppen en titels",
-      "ingridText": "Lopende tekst, menu en knoppen"
+      "ingridText": "Lopende tekst, menu en knoppen",
+      "dennisDisplay": "Grote koppen, in zware hoofdletters",
+      "dennisText": "Lopende tekst, menu en formulieren",
+      "dennisAccent": "Handgeschreven accenten"
     },
     "captions": {
       "ingridHero": "Homepage: naam, vakgebied en direct de route naar een shoot plannen.",
       "ingridMobile": "Dezelfde homepage op telefoon, waar de meeste bezoekers hem zien.",
       "ingridPortfolio": "Portfolio met filters per soort shoot: kinderen, zwanger en newborn, familie, vrouw.",
-      "ingridContact": "Praktische vragen en het contactformulier waarmee mensen een shoot aanvragen."
+      "ingridContact": "Praktische vragen en het contactformulier waarmee mensen een shoot aanvragen.",
+      "dennisHero": "Homepage: 'A friend who knows the city', met Dennis in een Amsterdamse straat.",
+      "dennisAbout": "Over Dennis: de persoon en de gids, naast elkaar.",
+      "dennisExperiences": "De ervaringen als fotokaarten: de buurt, food, architectuur en het water.",
+      "dennisContact": "Contact in het diepgroen: 'Let's see if we're a good match', met formulier en WhatsApp.",
+      "dennisMobile": "De homepage op telefoon."
     }
   }
 }

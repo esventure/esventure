@@ -3,6 +3,12 @@ import ingridPortfolio from "@/assets/work/ingrid/site-portfolio.jpg";
 import ingridMobile from "@/assets/work/ingrid/site-mobile.jpg";
 import ingridContact from "@/assets/work/ingrid/site-contact.jpg";
 import ingridLogo from "@/assets/work/ingrid/logo.svg";
+import dennisHero from "@/assets/work/dennis/site-hero.jpg";
+import dennisAbout from "@/assets/work/dennis/site-about.jpg";
+import dennisExperiences from "@/assets/work/dennis/site-experiences.jpg";
+import dennisContact from "@/assets/work/dennis/site-contact.jpg";
+import dennisMobile from "@/assets/work/dennis/site-mobile.jpg";
+import dennisLogo from "@/assets/work/dennis/logo.png";
 
 export interface CaseScreen {
   src: string;
@@ -52,6 +58,31 @@ export const caseMedia: Record<string, CaseMedia> = {
     typefaces: [
       { name: "Fraunces", useKey: "ingridDisplay", className: "font-serif italic" },
       { name: "Inter", useKey: "ingridText", className: "font-sans" },
+    ],
+  },
+  "dennis-gerrits": {
+    liveUrl: "https://dennisgerrits.com",
+    liveLabel: "dennisgerrits.com",
+    logo: dennisLogo,
+    logoBg: "#FAFAFA",
+    screens: [
+      { src: dennisHero, captionKey: "dennisHero", ratio: "wide" },
+      { src: dennisAbout, captionKey: "dennisAbout", ratio: "wide" },
+      { src: dennisExperiences, captionKey: "dennisExperiences", ratio: "wide" },
+      { src: dennisContact, captionKey: "dennisContact", ratio: "wide" },
+      { src: dennisMobile, captionKey: "dennisMobile", ratio: "tall" },
+    ],
+    palette: [
+      { hex: "#1C3F30", nameKey: "dennisGreen" },
+      { hex: "#E65C00", nameKey: "dennisOrange" },
+      { hex: "#2E0038", nameKey: "dennisPlum" },
+      { hex: "#BFADA6", nameKey: "dennisTaupe" },
+      { hex: "#FAFAFA", nameKey: "dennisPaper" },
+    ],
+    typefaces: [
+      { name: "Bebas Neue", useKey: "dennisDisplay", className: "font-sans uppercase tracking-wide" },
+      { name: "Outfit", useKey: "dennisText", className: "font-sans" },
+      { name: "Caveat", useKey: "dennisAccent", className: "font-serif italic" },
     ],
   },
 };
