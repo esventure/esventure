@@ -208,7 +208,7 @@ const Index = () => {
                       <div className="relative aspect-[4/3] overflow-hidden bg-lilac">
                         {FrameArtwork ? <FrameArtwork /> : null}
                       </div>
-                      <div className="bg-paper p-4">
+                      <div className="relative z-10 bg-paper p-4">
                         <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
                           {frameCase?.client ?? t("work.eyebrow")}
                         </p>
