@@ -39,9 +39,9 @@ export const caseMedia: Record<string, CaseMedia> = {
     logoBg: "#FAF8F5",
     screens: [
       { src: ingridHero, captionKey: "ingridHero", ratio: "wide" },
-      { src: ingridMobile, captionKey: "ingridMobile", ratio: "tall" },
       { src: ingridPortfolio, captionKey: "ingridPortfolio", ratio: "wide" },
       { src: ingridContact, captionKey: "ingridContact", ratio: "wide" },
+      { src: ingridMobile, captionKey: "ingridMobile", ratio: "tall" },
     ],
     palette: [
       { hex: "#FF2D87", nameKey: "ingridPink" },
