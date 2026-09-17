@@ -22,13 +22,13 @@ interface ZoneStyle {
 
 const zoneStyles: Record<NavZone, ZoneStyle> = {
   hero: {
-    bg: "bg-transparent",
-    text: "text-primary-foreground/90",
-    textHover: "hover:text-secondary",
-    logoInvert: true,
-    button: "bg-secondary text-secondary-foreground hover:bg-secondary/90 border-transparent",
-    mobileBg: "bg-primary/95",
-    langVariant: "light",
+    bg: "bg-paper/95 backdrop-blur-md border-b border-plum/10",
+    text: "text-plum/75",
+    textHover: "hover:text-primary",
+    logoInvert: false,
+    button: "bg-plum text-paper hover:bg-primary hover:text-primary-foreground border-transparent",
+    mobileBg: "bg-paper/98",
+    langVariant: "dark",
   },
   paper: {
     bg: "bg-paper/95 backdrop-blur-md border-b border-plum/10",
@@ -61,10 +61,10 @@ const zoneStyles: Record<NavZone, ZoneStyle> = {
 
 const trackedSections: Array<{ id: string; zone: NavZone }> = [
   { id: "hero", zone: "hero" },
-  { id: "what-we-do", zone: "paper" },
   { id: "work", zone: "paper" },
+  { id: "services", zone: "paper" },
+  { id: "approach", zone: "paper" },
   { id: "studio", zone: "paper" },
-  { id: "how-we-start", zone: "purple" },
   { id: "trust", zone: "paper" },
   { id: "final-cta", zone: "paper" },
   { id: "footer", zone: "plum" },
@@ -124,7 +124,7 @@ const Navigation = () => {
 
   const navLinks = [
     { label: t("nav.work"), id: "work" },
-    { label: t("nav.whatWeDo"), id: "what-we-do" },
+    { label: t("nav.services"), id: "services" },
     { label: t("nav.studio"), id: "studio" },
   ];
 

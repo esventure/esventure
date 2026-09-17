@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import CaseGrid from "@/components/work/CaseGrid";
+import { artworks } from "@/components/work/CaseArtwork";
+import type { CaseServiceRoute, CaseStory } from "@/components/work/caseContent";
 import { analytics } from "@/lib/analytics";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherBw from "@/assets/esther-bw.jpg";
@@ -22,15 +24,16 @@ import landalLogo from "@/assets/clients/landal.png";
 const BOOKING_URL = "https://calendar.app.google/5GxNAzn7W3FJNMrh8";
 
 const clients = [
-  { src: vanmoofLogo, alt: "VanMoof", url: "https://www.vanmoof.com/" },
-  { src: lovensLogo, alt: "Lovens", url: "https://lovensbikes.com/en/" },
-  { src: prioticketLogo, alt: "Prioticket", url: "https://www.prioticket.com/" },
-  { src: rainforestLogo, alt: "Rainforest Alliance", url: "https://www.rainforest-alliance.org/" },
-  { src: attractionworldLogo, alt: "Attractionworld", url: "https://www.attractionworldgroup.com/" },
-  { src: landalLogo, alt: "Landal", url: "https://www.landal.com/" },
+  { src: vanmoofLogo, alt: "VanMoof" },
+  { src: lovensLogo, alt: "Lovens" },
+  { src: prioticketLogo, alt: "Prioticket" },
+  { src: rainforestLogo, alt: "Rainforest Alliance" },
+  { src: attractionworldLogo, alt: "Attractionworld" },
+  { src: landalLogo, alt: "Landal" },
 ];
 
-/** Short upward fade for headlines and blocks. Respects reduced motion. */
+const routeParams = ["brand", "website", "prototype"];
+
 const Reveal = ({
   children,
   delay = 0,
@@ -61,20 +64,22 @@ const Eyebrow = ({ children, className = "" }: { children: React.ReactNode; clas
 
 const Index = () => {
   const { t } = useTranslation();
+  const reduce = useReducedMotion();
+  const [activeFrame, setActiveFrame] = React.useState(0);
 
   React.useEffect(() => analytics.initScrollTracking(), []);
+  React.useEffect(() => {
+    if (reduce) return;
+    const timer = window.setInterval(() => setActiveFrame((current) => (current + 1) % 3), 3200);
+    return () => window.clearInterval(timer);
+  }, [reduce]);
 
-  const whatWeDo = t("whatWeDo.items", { returnObjects: true }) as Array<{
-    number: string;
-    title: string;
-    copy: string;
-  }>;
-  const startCards = t("start.cards", { returnObjects: true }) as Array<{
-    title: string;
-    reveal: string;
-    cta: string;
-  }>;
+  const workItems = t("work.items", { returnObjects: true }) as CaseStory[];
+  const serviceRoutes = t("servicesRoutes.items", { returnObjects: true }) as CaseServiceRoute[];
   const studioParagraphs = t("studio.paragraphs", { returnObjects: true }) as string[];
+  const contactChoices = t("contactChoices.items", { returnObjects: true }) as Array<{ title: string; copy: string }>;
+  const FrameArtwork = artworks[activeFrame];
+  const frameCase = workItems[activeFrame];
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -90,16 +95,16 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>Es Venture - Creative digital studio by Esther Woerdman</title>
+        <title>Es Venture - Creative digital studio for entrepreneurs</title>
         <meta
           name="description"
-          content="Es Venture is Esther Woerdman's small creative digital studio in the Netherlands. Brands, websites and digital experiences, made properly and ready to launch."
+          content="Es Venture helps entrepreneurs turn an idea into a clear brand, a distinctive website or a useful prototype, shaped around what makes the business worth noticing."
         />
         <link rel="canonical" href="https://esventure.nl/" />
-        <meta property="og:title" content="Es Venture - Digital work that gets made." />
+        <meta property="og:title" content="Es Venture - Creative digital studio for entrepreneurs" />
         <meta
           property="og:description"
-          content="A small creative digital studio: brands, websites and digital experiences, made properly and ready to launch."
+          content="Brands, websites and prototypes for entrepreneurs, made to feel specific and ready to show, test or launch."
         />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:type" content="website" />
@@ -110,8 +115,9 @@ const Index = () => {
             name: "Es Venture",
             url: "https://esventure.nl",
             description:
-              "Creative digital studio led by Esther Woerdman. Brands, websites and digital experiences, made and ready to launch.",
+              "Creative digital studio for entrepreneurs. Es Venture creates brands, websites and prototypes shaped around what makes each business worth noticing.",
             founder: { "@type": "Person", name: "Esther Woerdman" },
+            sameAs: ["https://www.linkedin.com/in/estherwoerdman/"],
             address: { "@type": "PostalAddress", addressCountry: "NL" },
           })}
         </script>
@@ -121,46 +127,26 @@ const Index = () => {
         <Navigation />
 
         <main>
-          {/* ─── 1. Hero - Purple ─── */}
-          <section id="hero" className="relative overflow-hidden bg-primary text-primary-foreground">
-            {/* Small coral + lime graphic details so the case palette does not feel disconnected. */}
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute right-[-4rem] top-24 h-56 w-56 rounded-full bg-coral/30 blur-2xl md:right-[8%] md:top-16"
-            />
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute bottom-16 left-[6%] hidden h-3 w-24 rounded-full bg-lime md:block"
-            />
-            <div className="container mx-auto px-4 pt-28 pb-16 md:pt-32 md:pb-0 md:min-h-screen md:flex md:items-center">
-
-              <div className="grid md:grid-cols-[1.05fr_0.95fr] gap-12 md:gap-8 items-center w-full">
-                <div className="relative z-10 md:py-24">
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute -top-10 -left-4 select-none font-display text-[7rem] leading-none text-secondary/90 md:text-[9rem]"
-                  >
-                    *
-                  </span>
+          <section id="hero" className="relative overflow-hidden bg-paper text-paper-foreground">
+            <div className="container mx-auto px-4 pt-28 pb-16 md:pt-32 md:pb-20">
+              <div className="grid gap-12 md:grid-cols-[1fr_0.9fr] md:items-end">
+                <div className="relative z-10">
                   <Reveal>
-                    <Eyebrow className="text-secondary mb-6">{t("hero.eyebrow")}</Eyebrow>
+                    <Eyebrow className="text-primary mb-6">{t("hero.eyebrow")}</Eyebrow>
                   </Reveal>
                   <Reveal delay={0.05}>
-                    <h1 className="font-display font-bold tracking-[-0.02em] leading-[0.95] text-[clamp(2.75rem,7vw,5.25rem)]">
-                      {t("hero.titleStart")}{" "}
-                      <span className="text-secondary">{t("hero.titleHighlight")}</span>
+                    <h1 className="max-w-[11ch] font-display text-5xl font-bold leading-none tracking-normal md:text-7xl lg:text-8xl">
+                      {t("hero.titleStart")} <span className="text-primary">{t("hero.titleHighlight")}</span>
                     </h1>
                   </Reveal>
                   <Reveal delay={0.1}>
-                    <p className="mt-6 max-w-[38ch] text-lg md:text-xl leading-relaxed text-primary-foreground/90">
-                      {t("hero.lead")}
-                    </p>
+                    <p className="mt-7 max-w-[42ch] text-lg leading-relaxed text-plum/78 md:text-xl">{t("hero.lead")}</p>
                   </Reveal>
                   <Reveal delay={0.15}>
-                    <div className="mt-9 flex flex-col sm:flex-row gap-3">
+                    <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                       <Button
                         size="lg"
-                        className="rounded-full px-8 py-6 text-base font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                        className="rounded-full bg-primary px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary/90"
                         onClick={() => {
                           analytics.ctaClick("hero_see_work");
                           scrollTo("work");
@@ -173,7 +159,7 @@ const Index = () => {
                         asChild
                         size="lg"
                         variant="outline"
-                        className="rounded-full px-8 py-6 text-base font-semibold bg-transparent text-primary-foreground border-2 border-primary-foreground/60 hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                        className="rounded-full border-2 border-plum/25 bg-transparent px-8 py-6 text-base font-semibold text-plum hover:bg-lilac hover:text-plum"
                       >
                         <Link to="/start-a-project" onClick={() => analytics.ctaClick("hero_start_project")}>
                           {t("hero.ctaSecondary")}
@@ -182,236 +168,213 @@ const Index = () => {
                     </div>
                   </Reveal>
                   <Reveal delay={0.2}>
-                    <p className="mt-8 max-w-[46ch] text-sm leading-relaxed text-primary-foreground/85">
-                      {t("hero.ownership")}
-                    </p>
+                    <p className="mt-8 max-w-[50ch] text-sm leading-relaxed text-plum/68">{t("hero.ownership")}</p>
                   </Reveal>
                 </div>
 
                 <div className="relative md:self-end">
-                  <motion.img
-                    src={estherYellow}
-                    alt="Esther Woerdman, founder of Es Venture"
-                    width={900}
-                    height={1200}
-                    loading="eager"
-                    decoding="async"
-                    className="w-full object-cover object-top max-h-[60vh] md:max-h-[88vh] md:scale-105 md:origin-bottom"
+                  <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  />
+                    className="relative mx-auto max-w-[32rem]"
+                  >
+                    <div className="overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-plum/10">
+                      <img
+                        src={estherYellow}
+                        alt="Esther Woerdman, founder of Es Venture"
+                        width={900}
+                        height={1200}
+                        loading="eager"
+                        decoding="async"
+                        className="aspect-[4/5] w-full object-cover object-top"
+                      />
+                    </div>
+                    <div className="absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-lilac shadow-xl ring-1 ring-plum/10 md:-left-12 md:w-72">
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        {FrameArtwork ? <FrameArtwork /> : null}
+                      </div>
+                      <div className="bg-paper p-4">
+                        <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                          {frameCase?.client ?? t("work.eyebrow")}
+                        </p>
+                        <p className="mt-1 text-sm font-semibold leading-snug text-plum/82">{frameCase?.scope ?? t("work.title")}</p>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* ─── 2. What we do - Warm Paper ─── */}
-          <section id="what-we-do" className="bg-paper text-paper-foreground py-20 md:py-32">
+          <section id="work" className="relative overflow-hidden bg-paper text-paper-foreground py-16 md:py-28">
             <div className="container mx-auto px-4">
               <Reveal>
-                <Eyebrow className="text-primary mb-5">{t("whatWeDo.eyebrow")}</Eyebrow>
-                <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.02] text-[clamp(2rem,4.6vw,3.5rem)] max-w-[22ch]">
-                  {t("whatWeDo.title")}
-                </h2>
-              </Reveal>
-
-              <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
-                {whatWeDo.map((item, i) => (
-                  <Reveal key={item.number} delay={i * 0.08}>
-                    <div
-                      className={`group h-full border-t-2 pt-6 transition-colors ${
-                        ["border-primary/25 hover:border-primary", "border-coral/30 hover:border-coral", "border-plum/15 hover:border-secondary"][i % 3]
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span
-                          className={`font-sans text-xs font-semibold tracking-[0.2em] ${
-                            ["text-primary", "text-coral", "text-plum/60"][i % 3]
-                          }`}
-                        >
-                          {item.number}
-                        </span>
-                        <span
-                          aria-hidden="true"
-                          className={`h-1.5 w-6 rounded-full transition-all duration-300 md:w-0 md:opacity-0 md:group-hover:w-6 md:group-hover:opacity-100 ${
-                            ["bg-primary", "bg-coral", "bg-secondary"][i % 3]
-                          }`}
-                        />
-                      </div>
-                      <h3 className="mt-4 font-display text-2xl md:text-3xl font-bold tracking-[-0.01em]">
-                        {item.title}
-                      </h3>
-                      <p className="mt-3 max-w-[34ch] text-base md:text-lg leading-relaxed text-plum/75">
-                        {item.copy}
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* ─── 3. Selected work - Warm paper, case-led gallery ─── */}
-          <section id="work" className="relative overflow-hidden bg-paper text-paper-foreground py-20 md:py-32">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-6 top-10 select-none font-display text-[9rem] leading-none text-lime md:text-[13rem]"
-            >
-              *
-            </span>
-            <div className="container mx-auto px-4 relative">
-              <Reveal>
                 <Eyebrow className="text-coral mb-5">{t("work.eyebrow")}</Eyebrow>
-                <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.02] text-[clamp(2rem,4.6vw,3.5rem)] max-w-[20ch]">
+                <h2 className="max-w-[16ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
                   {t("work.title")}
                 </h2>
-                <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-plum/75">{t("work.lead")}</p>
+                <p className="mt-5 max-w-[54ch] text-lg leading-relaxed text-plum/75">{t("work.lead")}</p>
               </Reveal>
-
               <CaseGrid />
             </div>
           </section>
 
-
-          {/* ─── 4. The studio - Pale Lilac ─── */}
-          <section id="studio" className="bg-lilac text-lilac-foreground py-20 md:py-32">
+          <section id="services" className="bg-lilac text-lilac-foreground py-20 md:py-32">
             <div className="container mx-auto px-4">
-              <div className="grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16 items-center max-w-6xl mx-auto">
+              <Reveal>
+                <Eyebrow className="text-primary mb-5">{t("servicesRoutes.eyebrow")}</Eyebrow>
+                <h2 className="max-w-[18ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
+                  {t("servicesRoutes.title")}
+                </h2>
+              </Reveal>
+
+              <div className="mt-14 grid gap-6 lg:grid-cols-3">
+                {serviceRoutes.map((route, i) => {
+                  const Artwork = artworks[i];
+                  const stage = routeParams[i] ?? "brand";
+                  return (
+                    <Reveal key={route.title} delay={i * 0.08} className="h-full">
+                      <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/12 bg-paper p-6 text-paper-foreground shadow-lg transition-transform duration-300 hover:-translate-y-1 md:p-7">
+                        <div className="relative aspect-[5/3] rotate-[-2deg] overflow-hidden rounded-[1.25rem] bg-lilac ring-1 ring-plum/10">
+                          {Artwork ? <Artwork /> : null}
+                        </div>
+                        <h3 className="mt-8 font-display text-3xl font-bold leading-tight tracking-normal">{route.title}</h3>
+                        <p className="mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-primary">{t("servicesRoutes.situationLabel")}</p>
+                        <p className="mt-2 text-base leading-relaxed text-plum/74">{route.situation}</p>
+                        <p className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-primary">{t("servicesRoutes.resultLabel")}</p>
+                        <p className="mt-2 text-base leading-relaxed text-plum/82">{route.result}</p>
+                        <ul className="mt-6 space-y-2 border-t border-plum/12 pt-5">
+                          {route.deliverables.map((deliverable) => (
+                            <li key={deliverable} className="text-sm leading-relaxed text-plum/72">
+                              {deliverable}
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="mt-6 rounded-2xl bg-secondary p-4 text-sm leading-relaxed text-secondary-foreground">
+                          {route.example}
+                        </p>
+                        <Button asChild className="mt-6 rounded-full bg-plum text-paper hover:bg-primary hover:text-primary-foreground">
+                          <Link to={`/start-a-project?stage=${stage}`}>{t("servicesRoutes.cta")}</Link>
+                        </Button>
+                      </article>
+                    </Reveal>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          <section id="approach" className="bg-paper text-paper-foreground py-20 md:py-32">
+            <div className="container mx-auto grid gap-10 px-4 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
+              <Reveal>
+                <Eyebrow className="text-coral mb-5">{t("usp.eyebrow")}</Eyebrow>
+                <h2 className="max-w-[14ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
+                  {t("usp.title")}
+                </h2>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <div className="border-t border-primary pt-7">
+                  <p className="text-xl leading-relaxed text-plum/80 md:text-2xl">{t("usp.copy")}</p>
+                  <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                    {(t("usp.steps", { returnObjects: true }) as string[]).map((step, i) => (
+                      <div key={step} className="rounded-2xl border border-plum/12 bg-lilac/55 p-5">
+                        <p className="font-display text-3xl font-bold text-primary">0{i + 1}</p>
+                        <p className="mt-3 text-sm leading-relaxed text-plum/75">{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+
+          <section id="studio" className="bg-paper text-paper-foreground py-20 md:py-32">
+            <div className="container mx-auto px-4">
+              <div className="grid max-w-6xl items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
                 <Reveal>
-                  <div className="relative overflow-hidden rounded-[2rem]">
+                  <div className="relative overflow-hidden rounded-[2rem] bg-lilac">
                     <img
                       src={estherBw}
                       alt="Esther Woerdman at work"
                       loading="lazy"
-                      className="w-full aspect-[4/5] object-cover grayscale"
+                      className="aspect-[4/5] w-full object-cover grayscale"
                     />
-                    <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" aria-hidden="true" />
+                    <div className="absolute inset-0 bg-primary/15 mix-blend-multiply" aria-hidden="true" />
                   </div>
                 </Reveal>
                 <Reveal delay={0.08}>
                   <span aria-hidden="true" className="mb-5 block h-1 w-16 rounded-full bg-coral" />
                   <Eyebrow className="text-primary mb-5">{t("studio.eyebrow")}</Eyebrow>
-                  <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.03] text-[clamp(2rem,4.4vw,3.25rem)] max-w-[24ch]">
+                  <h2 className="max-w-[18ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
                     {t("studio.title")}
                   </h2>
-                  <div className="mt-6 space-y-5 text-base md:text-lg leading-relaxed text-plum/80 max-w-[65ch]">
-                    {studioParagraphs.map((p, i) => (
-                      <p key={i}>{p}</p>
+                  <div className="mt-6 max-w-[64ch] space-y-5 text-base leading-relaxed text-plum/80 md:text-lg">
+                    {studioParagraphs.map((p) => (
+                      <p key={p}>{p}</p>
                     ))}
                   </div>
-                  <a
-                    href="mailto:esther@esventure.nl"
-                    onClick={() => analytics.emailClick()}
-                    className="mt-7 inline-flex items-center gap-2 text-base font-semibold text-primary underline decoration-secondary decoration-2 underline-offset-4 hover:text-plum transition-colors"
-                  >
-                    {t("studio.link")}
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
                 </Reveal>
               </div>
             </div>
           </section>
 
-          {/* ─── 5. How projects start - Purple ─── */}
-          <section id="how-we-start" className="bg-primary text-primary-foreground py-20 md:py-32">
-            <div className="container mx-auto px-4">
-              <Reveal>
-                <Eyebrow className="text-secondary mb-5">{t("start.eyebrow")}</Eyebrow>
-                <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.02] text-[clamp(2rem,4.6vw,3.5rem)]">
-                  {t("start.title")}
-                </h2>
-              </Reveal>
-
-              <div className="mt-12 grid gap-5 md:grid-cols-3">
-                {startCards.map((card, i) => (
-                  <Reveal key={card.title} delay={i * 0.08} className="h-full">
-                    <div
-                      className={`group flex h-full flex-col rounded-[1.75rem] bg-paper p-7 text-paper-foreground shadow-[0_18px_40px_-24px_hsl(var(--plum)/0.5)] border-t-4 border-transparent transition-all duration-300 hover:-translate-y-1 ${
-                        ["hover:border-secondary", "hover:border-coral", "hover:border-lime"][i % 3]
-                      }`}
-                    >
-                      <h3 className="font-display text-2xl md:text-[1.7rem] font-bold tracking-[-0.01em]">
-                        {card.title}
-                      </h3>
-                      <p className="mt-4 flex-1 text-base leading-relaxed text-plum/75">{card.reveal}</p>
-                      {i === 1 ? (
-                        <Button
-                          asChild
-                          className="mt-6 w-full rounded-full py-6 text-base font-semibold bg-plum text-paper hover:bg-primary hover:text-primary-foreground"
-                        >
-                          <Link to="/start-a-project?stage=project">{card.cta}</Link>
-                        </Button>
-                      ) : (
-                        <Button
-                          onClick={i === 0 ? openBooking : () => (window.location.href = "mailto:esther@esventure.nl")}
-                          className="mt-6 w-full rounded-full py-6 text-base font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90"
-                        >
-                          {card.cta}
-                        </Button>
-                      )}
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* ─── 6. Trust - Warm Paper ─── */}
           <section id="trust" className="bg-paper text-paper-foreground py-16 md:py-24">
             <div className="container mx-auto px-4">
               <Reveal>
                 <Eyebrow className="text-plum/55 text-center">{t("trust.eyebrow")}</Eyebrow>
               </Reveal>
               <Reveal delay={0.06}>
-                <div className="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 md:gap-x-16">
-                  {/* Quiet social proof: logos shown once, monochrome, not links. */}
+                <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 items-center gap-x-10 gap-y-8 sm:grid-cols-3 md:grid-cols-6">
                   {clients.map((client) => (
                     <img
                       key={client.alt}
                       src={client.src}
                       alt={client.alt}
                       loading="lazy"
-                      className="h-6 md:h-7 w-auto opacity-45 grayscale contrast-125 transition-opacity duration-300 hover:opacity-70"
+                      className="mx-auto max-h-9 w-auto max-w-[8rem] opacity-70 grayscale contrast-125 transition-opacity duration-300 hover:opacity-95"
                     />
                   ))}
                 </div>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="mx-auto mt-12 max-w-[62ch] text-center text-base md:text-lg leading-relaxed text-plum/75">
+                <p className="mx-auto mt-10 max-w-[60ch] text-center text-base leading-relaxed text-plum/70 md:text-lg">
                   {t("trust.copy")}
                 </p>
               </Reveal>
             </div>
           </section>
 
-          {/* ─── 7. Final CTA - Acid lime, the last visual surprise ─── */}
-          <section id="final-cta" className="relative overflow-hidden bg-lime text-lime-foreground py-20 md:py-32">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-10 -bottom-24 select-none font-display text-[20rem] leading-none text-primary md:-right-16 md:text-[28rem]"
-            >
-              *
-            </span>
-            <div className="container mx-auto px-4 relative">
-              <div className="max-w-4xl">
+          <section id="final-cta" className="bg-secondary text-secondary-foreground py-20 md:py-32">
+            <div className="container mx-auto px-4">
+              <Reveal>
+                <Eyebrow className="text-plum/65 mb-5">{t("contactChoices.eyebrow")}</Eyebrow>
+                <div className="grid gap-4 md:grid-cols-3">
+                  {contactChoices.map((choice, i) => (
+                    <Link
+                      key={choice.title}
+                      to={`/start-a-project?stage=${routeParams[i] ?? "brand"}`}
+                      className="group rounded-[1.5rem] border border-plum/16 bg-paper/55 p-5 text-plum transition-colors hover:bg-paper"
+                    >
+                      <p className="font-display text-2xl font-bold tracking-normal">{choice.title}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-plum/70">{choice.copy}</p>
+                    </Link>
+                  ))}
+                </div>
+              </Reveal>
+
+              <div className="mt-16 max-w-4xl">
                 <Reveal>
-                  <h2 className="font-display font-bold tracking-[-0.02em] leading-[1.0] text-[clamp(2.25rem,5.4vw,4rem)]">
+                  <h2 className="font-display text-5xl font-bold leading-none tracking-normal md:text-7xl">
                     {t("finalCta.title")}
                   </h2>
                 </Reveal>
                 <Reveal delay={0.06}>
-                  <p className="mt-6 max-w-[52ch] text-lg md:text-xl leading-relaxed text-plum/80">
-                    {t("finalCta.copy")}
-                  </p>
+                  <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-plum/80 md:text-xl">{t("finalCta.copy")}</p>
                 </Reveal>
                 <Reveal delay={0.12}>
-                  <div className="mt-9 flex flex-col sm:flex-row gap-3">
-                    <Button
-                      asChild
-                      size="lg"
-                      className="rounded-full px-8 py-6 text-base font-semibold bg-plum text-paper hover:bg-primary hover:text-primary-foreground"
-                    >
+                  <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                    <Button asChild size="lg" className="rounded-full bg-plum px-8 py-6 text-base font-semibold text-paper hover:bg-primary hover:text-primary-foreground">
                       <Link to="/start-a-project" onClick={() => analytics.ctaClick("final_start_project")}>
                         {t("finalCta.primary")}
                         <ArrowRight className="ml-2 h-5 w-5" />
@@ -421,7 +384,7 @@ const Index = () => {
                       size="lg"
                       variant="outline"
                       onClick={openBooking}
-                      className="rounded-full px-8 py-6 text-base font-semibold bg-transparent text-plum border-2 border-plum/40 hover:bg-plum/10 hover:text-plum"
+                      className="rounded-full border-2 border-plum/35 bg-transparent px-8 py-6 text-base font-semibold text-plum hover:bg-paper/60 hover:text-plum"
                     >
                       {t("finalCta.secondary")}
                     </Button>
@@ -432,24 +395,18 @@ const Index = () => {
           </section>
         </main>
 
-        {/* ─── Footer ─── */}
-        <footer id="footer" className="bg-plum text-plum-foreground border-t border-plum-foreground/15 py-16">
+        <footer id="footer" className="bg-plum text-plum-foreground border-t border-plum-foreground/15 py-14">
           <div className="container mx-auto px-4">
             <div className="grid gap-10 md:grid-cols-3">
               <div>
-                <img src={logoEV} alt="Es Venture" className="h-10 brightness-0 invert mb-4" />
-                <p className="max-w-xs text-sm leading-relaxed text-plum-foreground/70">
-                  {t("hero.eyebrow")}
-                </p>
+                <img src={logoEV} alt="Es Venture" className="mb-4 h-10 brightness-0 invert" />
+                <p className="max-w-xs text-sm leading-relaxed text-plum-foreground/70">{t("footer.tagline")}</p>
               </div>
               <div>
                 <Eyebrow className="text-plum-foreground/50 mb-3">{t("footer.getInTouch")}</Eyebrow>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <a
-                      href="mailto:esther@esventure.nl"
-                      className="text-plum-foreground/80 hover:text-secondary transition-colors"
-                    >
+                    <a href="mailto:esther@esventure.nl" className="text-plum-foreground/80 hover:text-secondary transition-colors">
                       esther@esventure.nl
                     </a>
                   </li>
@@ -464,12 +421,7 @@ const Index = () => {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href={BOOKING_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-plum-foreground/80 hover:text-secondary transition-colors"
-                    >
+                    <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-plum-foreground/80 hover:text-secondary transition-colors">
                       {t("footer.bookCall")}
                     </a>
                   </li>
@@ -488,22 +440,11 @@ const Index = () => {
                       {t("footer.privacy")}
                     </Link>
                   </li>
-                  <li>
-                    <a
-                      href="https://plaiwrks.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-plum-foreground/80 hover:text-secondary transition-colors"
-                    >
-                      {t("footer.plaiwrks")}
-                    </a>
-                  </li>
                 </ul>
               </div>
             </div>
-            <div className="mt-14 flex flex-col gap-2 border-t border-plum-foreground/15 pt-6 sm:flex-row sm:justify-between">
+            <div className="mt-12 border-t border-plum-foreground/15 pt-6">
               <p className="text-xs text-plum-foreground/70">{t("footer.rights")}</p>
-              <p className="text-xs text-plum-foreground/70">{t("footer.legal")}</p>
             </div>
           </div>
         </footer>

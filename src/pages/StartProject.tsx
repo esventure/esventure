@@ -20,7 +20,13 @@ const StartProject = () => {
 
   const stageParam = searchParams.get("stage");
   const presetStage =
-    stageParam === "idea" ? stageOptions[0] : stageParam === "problem" ? stageOptions[2] : stageParam === "project" ? stageOptions[1] : "";
+    stageParam === "brand"
+      ? stageOptions[0]
+      : stageParam === "website"
+        ? stageOptions[1]
+        : stageParam === "prototype"
+          ? stageOptions[2]
+          : "";
 
   const [form, setForm] = useState({
     goal: "",
