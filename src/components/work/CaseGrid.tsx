@@ -42,13 +42,24 @@ const CaseGrid = () => {
               className={cn("md:col-span-7", reverse && "md:order-2")}
             >
               <div className="relative aspect-[16/11] overflow-hidden rounded-[1.75rem] bg-lilac ring-1 ring-plum/10 transition-transform duration-500 motion-safe:group-hover:-rotate-1">
-                {Artwork ? <Artwork /> : null}
-                <div className="absolute bottom-5 left-5 right-5 flex gap-3">
-                  <div className="relative h-16 flex-1 overflow-hidden rounded-2xl bg-paper/80 ring-1 ring-paper/40 backdrop-blur-sm">
+                {media?.screens[0] ? (
+                  <img
+                    src={media.screens[0].src}
+                    alt={`${item.client} website`}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top"
+                  />
+                ) : (
+                  <>
                     {Artwork ? <Artwork /> : null}
-                  </div>
-                  <div className={cn("h-16 w-20 rounded-2xl", accent.bg)} />
-                </div>
+                    <div className="absolute bottom-5 left-5 right-5 flex gap-3">
+                      <div className="relative h-16 flex-1 overflow-hidden rounded-2xl bg-paper/80 ring-1 ring-paper/40 backdrop-blur-sm">
+                        {Artwork ? <Artwork /> : null}
+                      </div>
+                      <div className={cn("h-16 w-20 rounded-2xl", accent.bg)} />
+                    </div>
+                  </>
+                )}
               </div>
             </Link>
 
