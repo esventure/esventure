@@ -126,22 +126,27 @@ const CasePage = ({ slug }: CasePageProps) => {
                 {t("casePage.inUseTitle")}
               </h2>
               <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-plum/75">{t("casePage.inUseLead")}</p>
-              <div className="mt-10 grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-lilac ring-1 ring-plum/10">
-                  {Artwork ? <Artwork /> : null}
-                </div>
-                <div className="rounded-[1.75rem] bg-paper p-6 ring-1 ring-plum/10 md:p-8">
-                  <ul className="space-y-3">
-                    {item.made.slice(0, 4).map((made) => (
-                      <li key={made} className="border-b border-plum/10 pb-3 font-display text-lg font-bold leading-snug text-plum last:border-0 last:pb-0">
-                        {made}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-6 text-sm leading-relaxed text-plum/60">{t("casePage.inUsePlaceholder")}</p>
-                </div>
+              <div className="mt-10">
+                {media ? (
+                  <CaseProof media={media} client={item.client} />
+                ) : (
+                  <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-lilac ring-1 ring-plum/10">
+                      {Artwork ? <Artwork /> : null}
+                    </div>
+                    <div className="rounded-[1.75rem] bg-paper p-6 ring-1 ring-plum/10 md:p-8">
+                      <ul className="space-y-3">
+                        {item.made.slice(0, 4).map((made) => (
+                          <li key={made} className="border-b border-plum/10 pb-3 font-display text-lg font-bold leading-snug text-plum last:border-0 last:pb-0">
+                            {made}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="mt-6 text-sm leading-relaxed text-plum/60">{t("casePage.inUsePlaceholder")}</p>
+                    </div>
+                  </div>
+                )}
               </div>
-
             </div>
           </section>
 
