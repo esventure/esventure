@@ -44,10 +44,17 @@ const CasePage = ({ slug }: CasePageProps) => {
         <title>{`${item.client} - ${item.scope} - Es Venture`}</title>
         <meta name="description" content={item.summary} />
         <link rel="canonical" href={`https://esventure.nl/work/${item.slug}`} />
+        <link rel="alternate" hrefLang="nl" href={`https://esventure.nl/work/${item.slug}`} />
+        <link rel="alternate" hrefLang="en" href={`https://esventure.nl/work/${item.slug}?lang=en`} />
+        <link rel="alternate" hrefLang="x-default" href={`https://esventure.nl/work/${item.slug}`} />
         <meta property="og:title" content={`${item.client} - Es Venture`} />
         <meta property="og:description" content={item.summary} />
         <meta property="og:url" content={`https://esventure.nl/work/${item.slug}`} />
         <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://esventure.nl/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://esventure.nl/og-image.jpg" />
+
       </Head>
 
       <div className="min-h-screen bg-paper text-paper-foreground font-sans">
