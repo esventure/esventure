@@ -1,5 +1,5 @@
 import ingridHero from "@/assets/work/ingrid/site-hero.jpg";
-import ingridPortfolio from "@/assets/work/ingrid/site-portfolio.jpg";
+import ingridPortfolioAsset from "@/assets/work/ingrid/site-portfolio-newborn.png.asset.json";
 import ingridMobile from "@/assets/work/ingrid/site-mobile.jpg";
 import ingridContact from "@/assets/work/ingrid/site-contact.jpg";
 import ingridLogo from "@/assets/work/ingrid/logo.svg";
@@ -50,7 +50,7 @@ export const caseMedia: Record<string, CaseMedia> = {
     logoBg: "#FAF8F5",
     screens: [
       { src: ingridHero, captionKey: "ingridHero", ratio: "wide" },
-      { src: ingridPortfolio, captionKey: "ingridPortfolio", ratio: "wide" },
+      { src: ingridPortfolioAsset.url, captionKey: "ingridPortfolio", ratio: "wide" },
       { src: ingridContact, captionKey: "ingridContact", ratio: "wide" },
       { src: ingridMobile, captionKey: "ingridMobile", ratio: "tall" },
     ],
