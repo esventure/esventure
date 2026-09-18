@@ -87,7 +87,7 @@ const CasePage = ({ slug }: CasePageProps) => {
                   <img
                     src={media.screens[0].src}
                     alt={t(`casePage.captions.${media.screens[0].captionKey}`)}
-                    className="h-full w-full object-cover object-top"
+                    className={media.screens[0].ratio === "tall" ? "h-full w-full bg-paper object-contain p-3" : "h-full w-full object-cover object-top"}
                   />
                 ) : Artwork ? (
                   <Artwork />
