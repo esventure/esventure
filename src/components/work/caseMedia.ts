@@ -55,6 +55,8 @@ export interface CaseMedia {
   typefaces?: CaseTypeface[];
 }
 
+const hostedAsset = (path: string) => `https://esventure.lovable.app${path}`;
+
 export const caseMedia: Record<string, CaseMedia> = {
   "studio-ingrid-de-reuver": {
     liveUrl: "https://www.studioingriddereuver.nl",
@@ -63,7 +65,7 @@ export const caseMedia: Record<string, CaseMedia> = {
     logoBg: "#FAF8F5",
     screens: [
       { src: ingridHero, captionKey: "ingridHero", ratio: "wide" },
-      { src: ingridPortfolioAsset.url, captionKey: "ingridPortfolio", ratio: "wide" },
+      { src: hostedAsset(ingridPortfolioAsset.url), captionKey: "ingridPortfolio", ratio: "wide" },
       { src: ingridContact, captionKey: "ingridContact", ratio: "wide" },
       { src: ingridMobile, captionKey: "ingridMobile", ratio: "tall" },
     ],
@@ -81,7 +83,7 @@ export const caseMedia: Record<string, CaseMedia> = {
   "dennis-gerrits": {
     liveUrl: "https://dennisgerrits.com",
     liveLabel: "dennisgerrits.com",
-    logo: dennisLogoAsset.url,
+    logo: hostedAsset(dennisLogoAsset.url),
     logoBg: "#2D0036",
     screens: [
       { src: dennisHero, captionKey: "dennisHero", ratio: "wide" },
@@ -91,10 +93,10 @@ export const caseMedia: Record<string, CaseMedia> = {
       { src: dennisMobile, captionKey: "dennisMobile", ratio: "tall" },
     ],
     brandbook: [
-      { src: dennisBookLogoAsset.url, captionKey: "dennisBookLogo", ratio: "wide" },
-      { src: dennisBookColorAsset.url, captionKey: "dennisBookColor", ratio: "wide" },
-      { src: dennisBookTypeAsset.url, captionKey: "dennisBookType", ratio: "wide" },
-      { src: dennisBookCardAsset.url, captionKey: "dennisBookCard", ratio: "wide" },
+      { src: hostedAsset(dennisBookLogoAsset.url), captionKey: "dennisBookLogo", ratio: "wide" },
+      { src: hostedAsset(dennisBookColorAsset.url), captionKey: "dennisBookColor", ratio: "wide" },
+      { src: hostedAsset(dennisBookTypeAsset.url), captionKey: "dennisBookType", ratio: "wide" },
+      { src: hostedAsset(dennisBookCardAsset.url), captionKey: "dennisBookCard", ratio: "wide" },
     ],
     palette: [
       { hex: "#2D0036", nameKey: "dennisPlum" },
@@ -113,16 +115,16 @@ export const caseMedia: Record<string, CaseMedia> = {
     liveUrl: "https://haprecipes.lovable.app",
     liveLabel: "haprecipes.lovable.app",
     video: {
-      src: hapVideoAsset.url,
-      poster: hapHomeAsset.url,
+      src: hostedAsset(hapVideoAsset.url),
+      poster: hostedAsset(hapHomeAsset.url),
       captionKey: "hapWalkthrough",
     },
     screens: [
-      { src: hapHomeAsset.url, captionKey: "hapHome", ratio: "tall" },
-      { src: hapSkillAsset.url, captionKey: "hapSkill", ratio: "tall" },
-      { src: hapIngredientsAsset.url, captionKey: "hapIngredients", ratio: "tall" },
-      { src: hapReviewAsset.url, captionKey: "hapReview", ratio: "tall" },
-      { src: hapResultsAsset.url, captionKey: "hapResults", ratio: "tall" },
+      { src: hostedAsset(hapHomeAsset.url), captionKey: "hapHome", ratio: "tall" },
+      { src: hostedAsset(hapSkillAsset.url), captionKey: "hapSkill", ratio: "tall" },
+      { src: hostedAsset(hapIngredientsAsset.url), captionKey: "hapIngredients", ratio: "tall" },
+      { src: hostedAsset(hapReviewAsset.url), captionKey: "hapReview", ratio: "tall" },
+      { src: hostedAsset(hapResultsAsset.url), captionKey: "hapResults", ratio: "tall" },
     ],
   },
 };
