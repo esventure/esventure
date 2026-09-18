@@ -511,14 +511,14 @@
     "audienceLabel": "VOOR WIE HET IS",
     "voiceLabel": "HOE HET KLINKT",
     "inUseTitle": "Het werk in gebruik",
-    "inUseLead": "Geen mockups. Dit is het merk en de site zoals ze nu live staan.",
+    "inUseLead": "Geen mockups. Dit is het werk zoals het nu live staat.",
     "inUsePlaceholder": "Goedgekeurde beelden van dit project worden voorbereid.",
     "next": "Volgende story",
     "brandLabel": "MERKDETAILS",
     "logoLabel": "Logo en woordmerk",
     "paletteLabel": "Kleuren uit het merk",
     "typefacesLabel": "Letters in gebruik",
-    "screensLabel": "SCHERMEN UIT DE LIVE SITE",
+    "screensLabel": "SCHERMEN UIT HET LIVE WERK",
     "typeUse": {
       "ingridDisplay": "Koppen en titels",
       "ingridText": "Lopende tekst, menu en knoppen",
@@ -535,7 +535,12 @@
       "dennisAbout": "Over Dennis: de persoon en de gids, naast elkaar.",
       "dennisExperiences": "De ervaringen als fotokaarten: de buurt, food, architectuur en het water.",
       "dennisContact": "Contact in het diepgroen: 'Let's see if we're a good match', met formulier en WhatsApp.",
-      "dennisMobile": "De homepage op telefoon."
+      "dennisMobile": "De homepage op telefoon.",
+      "hapHome": "Het mobiele startscherm introduceert het receptidee en start de journey.",
+      "hapSkill": "De eerste stap stemt de ervaring af op iemands vertrouwen in de keuken.",
+      "hapIngredients": "Mensen kiezen wat al in hun koelkast ligt voordat ze een recept kiezen.",
+      "hapReview": "Een laatste check brengt alle keuzes samen voordat de recepten worden gegenereerd.",
+      "hapResults": "Drie gegenereerde recepten maken van de gekozen ingrediënten, tijd en mood concrete opties."
     }
   }
 }

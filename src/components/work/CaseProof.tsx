@@ -79,7 +79,7 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
         </p>
 
         {lead && (
-          <figure className="mt-6">
+          <figure className={cn("mt-6", lead.ratio === "tall" && "mx-auto max-w-[390px]")}>
             <div className="overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12">
               <img src={lead.src} alt={t(`casePage.captions.${lead.captionKey}`)} loading="lazy" className="w-full" />
             </div>
