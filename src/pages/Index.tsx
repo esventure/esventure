@@ -308,19 +308,21 @@ const Index = () => {
           <section id="studio" className="bg-paper text-paper-foreground py-20 md:py-28">
             <div className="container mx-auto px-4">
               <div className="grid max-w-6xl gap-12 md:grid-cols-12 md:gap-16">
-                <Reveal className="md:col-span-5">
-                  <div className="relative group md:sticky md:top-24">
-                    <div className="absolute -inset-3 -rotate-2 rounded-[1.25rem] bg-secondary transition-transform duration-500 group-hover:rotate-0 md:-inset-4" aria-hidden="true" />
-                    <div className="relative overflow-hidden rounded-[1rem] bg-muted shadow-xl">
-                      <img
-                        src={estherStudio}
-                        alt={t("studio.portraitAlt")}
-                        loading="lazy"
-                        className="aspect-[4/5] w-full object-cover grayscale transition-transform duration-500 group-hover:scale-[1.02]"
-                      />
+                <div className="self-start md:sticky md:top-24 md:col-span-5">
+                  <Reveal>
+                    <div className="relative group">
+                      <div className="absolute -inset-3 -rotate-2 rounded-[1.25rem] bg-secondary transition-transform duration-500 group-hover:rotate-0 md:-inset-4" aria-hidden="true" />
+                      <div className="relative overflow-hidden rounded-[1rem] bg-muted shadow-xl">
+                        <img
+                          src={estherStudio}
+                          alt={t("studio.portraitAlt")}
+                          loading="lazy"
+                          className="aspect-[4/5] w-full object-cover grayscale transition-transform duration-500 group-hover:scale-[1.02]"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </Reveal>
+                  </Reveal>
+                </div>
                 <Reveal delay={0.08} className="md:col-span-7">
                   <div>
                     <span aria-hidden="true" className="mb-5 block h-1 w-16 rounded-full bg-coral" />
