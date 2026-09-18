@@ -13,7 +13,7 @@ import dennisBookLogoAsset from "@/assets/work/dennis/brandbook-logo.png.asset.j
 import dennisBookColorAsset from "@/assets/work/dennis/brandbook-color.png.asset.json";
 import dennisBookTypeAsset from "@/assets/work/dennis/brandbook-type.png.asset.json";
 import dennisBookCardAsset from "@/assets/work/dennis/brandbook-card.png.asset.json";
-import hapHomeAsset from "@/assets/work/hap/start.png.asset.json";
+import hapHomeAsset from "@/assets/work/hap/start-portrait-v2.png.asset.json";
 import hapVideoAsset from "@/assets/work/hap/walkthrough.mp4.asset.json";
 import hapSkillAsset from "@/assets/work/hap/skill.png.asset.json";
 import hapIngredientsAsset from "@/assets/work/hap/ingredients.png.asset.json";
