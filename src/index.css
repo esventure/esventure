@@ -125,13 +125,20 @@ All colors MUST be HSL.
   }
 
   html {
-    @apply overflow-x-hidden;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
     scroll-behavior: smooth;
   }
 
 
   body {
     @apply bg-background text-foreground;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
   }
 
   *:focus-visible {
