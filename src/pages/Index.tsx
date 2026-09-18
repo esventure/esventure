@@ -64,30 +64,15 @@ const Eyebrow = ({ children, className = "" }: { children: React.ReactNode; clas
 );
 
 type HeroPortraitProps = {
-  frameCase?: { slug: string; client: string; cardCopy?: string; title: string; scope: string };
-  frameScreen?: { src: string; ratio: "wide" | "tall" };
-  frameVideo?: { src: string; poster?: string };
   reduce: boolean | null;
   t: (key: string) => string;
   className: string;
   boxClassName: string;
   imgClassName: string;
-  frameClassName: string;
   from?: { opacity: number; x?: number; y?: number };
 };
 
-const HeroPortrait = ({
-  frameCase,
-  frameScreen,
-  frameVideo,
-  reduce,
-  t,
-  className,
-  boxClassName,
-  imgClassName,
-  frameClassName,
-  from,
-}: HeroPortraitProps) => (
+const HeroPortrait = ({ reduce, t, className, boxClassName, imgClassName, from }: HeroPortraitProps) => (
   <motion.div
     initial={reduce ? false : from ?? { opacity: 0, y: 24 }}
     animate={{ opacity: 1, x: 0, y: 0 }}
@@ -105,48 +90,6 @@ const HeroPortrait = ({
         className={imgClassName}
       />
     </div>
-    {frameCase ? (
-      <Link
-        to={`/work/${frameCase.slug}`}
-        aria-label={`${frameCase.client}: ${frameCase.cardCopy ?? frameCase.title}`}
-        className={`group ${frameClassName} overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 transition-transform duration-300 hover:rotate-[-3deg] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary`}
-      >
-        <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-          {frameVideo ? (
-            <motion.video
-              key={frameVideo.src}
-              src={frameVideo.src}
-              poster={frameVideo.poster}
-              autoPlay={!reduce}
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.45 }}
-              className="h-full w-full bg-paper object-contain p-2"
-            />
-          ) : frameScreen ? (
-            <motion.img
-              key={frameScreen.src}
-              src={frameScreen.src}
-              alt=""
-              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.45 }}
-              className={`h-full w-full ${frameScreen.ratio === "tall" ? "object-contain bg-paper p-2" : "object-cover object-top"}`}
-            />
-          ) : null}
-        </div>
-        <div className="relative z-10 bg-paper p-4">
-          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
-            {frameCase.client}
-          </p>
-          <p className="mt-1 text-sm font-semibold leading-snug text-plum/82">{frameCase.scope}</p>
-        </div>
-      </Link>
-    ) : null}
   </motion.div>
 );
 
