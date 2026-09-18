@@ -17,10 +17,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
 
-    --primary: 269 100% 62%;
+    --primary: 280 85% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 51 90% 65%;
+    --secondary: 62 72% 79%;
     --secondary-foreground: 0 0% 7%;
 
     --muted: 0 0% 95%;
@@ -34,7 +34,7 @@ All colors MUST be HSL.
 
     --border: 0 0% 84%;
     --input: 0 0% 84%;
-    --ring: 269 100% 62%;
+    --ring: 280 85% 65%;
 
     --radius: 1rem;
 
@@ -49,7 +49,7 @@ All colors MUST be HSL.
     /* High-energy case palette */
     --coral: 11 100% 61%;
     --coral-foreground: 0 0% 7%;
-    --lime: 51 90% 65%;
+    --lime: 62 72% 79%;
     --lime-foreground: 0 0% 7%;
 
     /* Legacy aliases (kept for the style guide) */
@@ -59,7 +59,7 @@ All colors MUST be HSL.
     --surface-warm-foreground: 0 0% 7%;
     --anchor: 0 0% 7%;
     --anchor-foreground: 0 0% 100%;
-    --section-yellow: 51 90% 65%;
+    --section-yellow: 62 72% 79%;
     --section-yellow-foreground: 0 0% 7%;
 
 
@@ -93,7 +93,7 @@ All colors MUST be HSL.
     --primary: 280 85% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 62 70% 82%;
+    --secondary: 62 72% 79%;
     --secondary-foreground: 0 0% 15%;
 
     --muted: 0 0% 20%;
