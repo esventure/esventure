@@ -31,7 +31,7 @@ const LanguageToggle = ({ variant = "dark", className }: LanguageToggleProps) =>
         className
       )}
     >
-      {(["en", "nl"] as const).map((lng) => {
+      {(["nl", "en"] as const).map((lng) => {
         const active = current === lng;
         return (
           <button
