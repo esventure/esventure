@@ -193,7 +193,7 @@ const Index = () => {
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="relative mx-auto max-w-[32rem]"
                   >
-                    <div className="overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-primary-foreground/25">
+                    <div className="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25">
                       <img
                         src={estherYellow}
                         alt="Esther Woerdman, founder of Es Venture"
@@ -205,7 +205,7 @@ const Index = () => {
                       />
                     </div>
                     <div className="absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 md:-left-12 md:w-72">
-                      <div className="relative aspect-[4/3] overflow-hidden bg-lilac">
+                      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                         {FrameArtwork ? <FrameArtwork /> : null}
                       </div>
                       <div className="relative z-10 bg-paper p-4">
@@ -222,23 +222,23 @@ const Index = () => {
           </section>
 
 
-          <section id="work" className="relative overflow-hidden bg-paper text-paper-foreground py-16 md:py-28">
+          <section id="work" className="relative overflow-hidden border-t-8 border-secondary bg-plum py-16 text-plum-foreground md:py-28">
             <div className="container mx-auto px-4">
               <Reveal>
                 <Eyebrow className="text-coral mb-5">{t("work.eyebrow")}</Eyebrow>
                 <h2 className="max-w-[16ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
                   {t("work.title")}
                 </h2>
-                <p className="mt-5 max-w-[54ch] text-lg leading-relaxed text-plum/75">{t("work.lead")}</p>
+                <p className="mt-5 max-w-[54ch] text-lg leading-relaxed text-plum-foreground/70">{t("work.lead")}</p>
               </Reveal>
               <CaseGrid />
             </div>
           </section>
 
-          <section id="services" className="bg-primary text-primary-foreground py-20 md:py-32">
+          <section id="services" className="bg-paper py-20 text-paper-foreground md:py-32">
             <div className="container mx-auto px-4">
               <Reveal>
-                <Eyebrow className="text-secondary mb-5">{t("servicesRoutes.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-primary mb-5">{t("servicesRoutes.eyebrow")}</Eyebrow>
                 <h2 className="max-w-[18ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
                   {t("servicesRoutes.title")}
                 </h2>
@@ -251,8 +251,8 @@ const Index = () => {
                   const stage = routeParams[i] ?? "brand";
                   return (
                     <Reveal key={route.title} delay={i * 0.08} className="h-full">
-                      <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/12 bg-paper p-6 text-paper-foreground shadow-lg transition-transform duration-300 hover:-translate-y-1 md:p-7">
-                        <div className="relative aspect-[5/3] overflow-hidden rounded-[1.25rem] bg-lilac ring-1 ring-plum/10">
+                      <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/15 bg-paper p-6 text-paper-foreground transition-transform duration-300 hover:-translate-y-1 md:p-7">
+                        <div className="relative aspect-[5/3] overflow-hidden rounded-[1.25rem] bg-muted ring-1 ring-plum/10">
                           {Artwork ? <Artwork /> : null}
                         </div>
 
@@ -271,7 +271,7 @@ const Index = () => {
                         <p className="mt-6 rounded-2xl bg-secondary p-4 text-sm leading-relaxed text-secondary-foreground">
                           {route.example}
                         </p>
-                        <Button asChild className="mt-6 rounded-full bg-secondary text-secondary-foreground hover:bg-plum hover:text-paper">
+                        <Button asChild className="mt-6 rounded-full bg-primary text-primary-foreground hover:bg-coral hover:text-coral-foreground">
                           <Link to={`/start-a-project?stage=${stage}`}>{t("servicesRoutes.cta")}</Link>
                         </Button>
                       </article>
@@ -295,7 +295,7 @@ const Index = () => {
                   <p className="text-xl leading-relaxed text-plum/85 md:text-2xl">{t("usp.copy")}</p>
                   <div className="mt-10 grid gap-4 sm:grid-cols-3">
                     {(t("usp.steps", { returnObjects: true }) as string[]).map((step, i) => (
-                      <div key={step} className="rounded-2xl border border-plum/20 bg-paper/55 p-5">
+                      <div key={step} className="rounded-2xl border border-plum/20 bg-paper p-5">
                         <p className="font-display text-3xl font-bold text-primary">0{i + 1}</p>
                         <p className="mt-3 text-sm leading-relaxed text-plum/80">{step}</p>
                       </div>
@@ -311,7 +311,7 @@ const Index = () => {
             <div className="container mx-auto px-4">
               <div className="grid max-w-6xl items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
                 <Reveal>
-                  <div className="relative overflow-hidden rounded-[2rem] bg-lilac">
+                  <div className="relative overflow-hidden rounded-[2rem] bg-secondary">
                     <img
                       src={estherBw}
                       alt="Esther Woerdman at work"
@@ -363,19 +363,19 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="final-cta" className="bg-primary text-primary-foreground py-20 md:py-32">
+          <section id="final-cta" className="bg-coral py-20 text-coral-foreground md:py-32">
             <div className="container mx-auto px-4">
               <Reveal>
-                <Eyebrow className="text-secondary mb-5">{t("contactChoices.eyebrow")}</Eyebrow>
+                <Eyebrow className="text-plum/70 mb-5">{t("contactChoices.eyebrow")}</Eyebrow>
                 <div className="grid gap-4 md:grid-cols-3">
                   {contactChoices.map((choice, i) => (
                     <Link
                       key={choice.title}
                       to={`/start-a-project?stage=${routeParams[i] ?? "brand"}`}
-                      className="group rounded-[1.5rem] border border-primary-foreground/25 bg-primary-foreground/10 p-5 text-primary-foreground transition-colors hover:border-secondary hover:bg-primary-foreground/16"
+                      className="group rounded-[1.5rem] border border-plum/20 bg-paper p-5 text-paper-foreground transition-colors hover:border-primary"
                     >
                       <p className="font-display text-2xl font-bold tracking-normal">{choice.title}</p>
-                      <p className="mt-2 text-sm leading-relaxed text-primary-foreground/78">{choice.copy}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-plum/70">{choice.copy}</p>
                     </Link>
                   ))}
                 </div>
@@ -388,13 +388,13 @@ const Index = () => {
                   </h2>
                 </Reveal>
                 <Reveal delay={0.06}>
-                  <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
+                  <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-plum/80 md:text-xl">
                     {t("finalCta.copy")}
                   </p>
                 </Reveal>
                 <Reveal delay={0.12}>
                   <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                    <Button asChild size="lg" className="rounded-full bg-secondary px-8 py-6 text-base font-semibold text-secondary-foreground hover:bg-secondary/90">
+                    <Button asChild size="lg" className="rounded-full bg-primary px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-plum">
                       <Link to="/start-a-project" onClick={() => analytics.ctaClick("final_start_project")}>
                         {t("finalCta.primary")}
                         <ArrowRight className="ml-2 h-5 w-5" />
@@ -404,7 +404,7 @@ const Index = () => {
                       size="lg"
                       variant="outline"
                       onClick={openBooking}
-                      className="rounded-full border-2 border-primary-foreground/45 bg-transparent px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                      className="rounded-full border-2 border-plum/40 bg-transparent px-8 py-6 text-base font-semibold text-plum hover:bg-plum hover:text-paper"
                     >
                       {t("finalCta.secondary")}
                     </Button>
@@ -416,7 +416,7 @@ const Index = () => {
           </section>
         </main>
 
-        <footer id="footer" className="bg-plum text-plum-foreground border-t border-plum-foreground/15 py-14">
+        <footer id="footer" className="border-t border-plum-foreground/15 bg-plum py-14 text-plum-foreground">
           <div className="container mx-auto px-4">
             <div className="grid gap-10 md:grid-cols-3">
               <div>
