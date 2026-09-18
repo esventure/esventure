@@ -96,15 +96,6 @@ const HeroPortrait = ({ reduce, t, className, boxClassName, imgClassName, from }
 const Index = () => {
   const { t } = useTranslation();
   const reduce = useReducedMotion();
-  const [activeFrame, setActiveFrame] = React.useState(0);
-
-  React.useEffect(() => analytics.initScrollTracking(), []);
-  React.useEffect(() => {
-    if (reduce) return;
-    const timer = window.setInterval(() => setActiveFrame((current) => (current + 1) % 3), 3200);
-    return () => window.clearInterval(timer);
-  }, [reduce]);
-
   const workItems = t("work.items", { returnObjects: true }) as CaseStory[];
   const serviceRoutes = t("servicesRoutes.items", { returnObjects: true }) as CaseServiceRoute[];
   const studioParagraphs = t("studio.paragraphs", { returnObjects: true }) as string[];
