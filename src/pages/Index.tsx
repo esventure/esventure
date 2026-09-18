@@ -309,7 +309,7 @@ const Index = () => {
             <div className="container mx-auto px-4">
               <div className="grid max-w-6xl items-start gap-12 md:grid-cols-12 md:gap-16">
                 <Reveal className="md:col-span-5">
-                  <div className="relative group">
+                  <div className="relative group md:sticky md:top-24">
                     <div className="absolute -inset-3 -rotate-2 rounded-[1.25rem] bg-secondary transition-transform duration-500 group-hover:rotate-0 md:-inset-4" aria-hidden="true" />
                     <div className="relative overflow-hidden rounded-[1rem] bg-muted shadow-xl">
                       <img
