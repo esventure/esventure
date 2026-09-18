@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Instrument Sans', 'system-ui', 'sans-serif'],
-        display: ['Bricolage Grotesque', 'Instrument Sans', 'sans-serif'],
+        display: ['Gabarito', 'Instrument Sans', 'sans-serif'],
       },
 
       colors: {
