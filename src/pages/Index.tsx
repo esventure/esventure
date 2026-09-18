@@ -319,9 +319,6 @@ const Index = () => {
                         className="aspect-[4/5] w-full object-cover grayscale transition-transform duration-500 group-hover:scale-[1.02]"
                       />
                     </div>
-                    <p className="absolute -bottom-4 right-4 rounded-[0.5rem] bg-coral px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-coral-foreground shadow-lg">
-                      {t("studio.tag")}
-                    </p>
                   </div>
                 </Reveal>
                 <Reveal delay={0.08} className="md:col-span-7">
