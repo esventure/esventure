@@ -329,8 +329,8 @@ const Index = () => {
                     <span aria-hidden="true" className="mb-5 block h-1 w-16 rounded-full bg-coral" />
                     <Eyebrow className="text-coral mb-5">{t("studio.eyebrow")}</Eyebrow>
                     <h2 className="max-w-[18ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
-                      {studioTitle[0]}
-                      {studioTitle[1] ? <span className="text-primary"> {studioTitle[1]}</span> : null}
+                      {studioTitleFirst}
+                      {studioTitleRest ? <span className="text-primary"> {studioTitleRest}</span> : null}
                     </h2>
                     <div className="mt-8 max-w-[64ch] space-y-6 text-base leading-relaxed md:text-lg">
                       {studioParagraphs.map((p, i) =>
