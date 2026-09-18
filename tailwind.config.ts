@@ -16,6 +16,9 @@ export default {
       fontFamily: {
         sans: ['Instrument Sans', 'system-ui', 'sans-serif'],
         display: ['Gabarito', 'Instrument Sans', 'sans-serif'],
+        'dennis-display': ['Bebas Neue', 'Impact', 'sans-serif'],
+        'dennis-text': ['Outfit', 'Arial', 'sans-serif'],
+        'dennis-accent': ['Caveat', 'cursive'],
       },
 
       colors: {

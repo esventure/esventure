@@ -57,6 +57,12 @@ const CasePage = ({ slug }: CasePageProps) => {
         <meta property="og:image" content="https://esventure.nl/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://esventure.nl/og-image.jpg" />
+        {slug === "dennis-gerrits" && (
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;600&family=Outfit:wght@300;400;500;600&display=swap"
+          />
+        )}
 
       </Head>
 

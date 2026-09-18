@@ -73,16 +73,16 @@ export const caseMedia: Record<string, CaseMedia> = {
       { src: dennisMobile, captionKey: "dennisMobile", ratio: "tall" },
     ],
     palette: [
-      { hex: "#1C3F30", nameKey: "dennisGreen" },
-      { hex: "#E65C00", nameKey: "dennisOrange" },
-      { hex: "#2E0038", nameKey: "dennisPlum" },
-      { hex: "#BFADA6", nameKey: "dennisTaupe" },
+      { hex: "#2D0036", nameKey: "dennisPlum" },
+      { hex: "#E66300", nameKey: "dennisOrange" },
+      { hex: "#1C4A36", nameKey: "dennisGreen" },
+      { hex: "#B09E94", nameKey: "dennisTaupe" },
       { hex: "#FAFAFA", nameKey: "dennisPaper" },
     ],
     typefaces: [
-      { name: "Bebas Neue", useKey: "dennisDisplay", className: "font-sans uppercase tracking-wide" },
-      { name: "Outfit", useKey: "dennisText", className: "font-sans" },
-      { name: "Caveat", useKey: "dennisAccent", className: "font-serif italic" },
+      { name: "Bebas Neue", useKey: "dennisDisplay", className: "font-dennis-display uppercase tracking-normal" },
+      { name: "Outfit", useKey: "dennisText", className: "font-dennis-text" },
+      { name: "Caveat", useKey: "dennisAccent", className: "font-dennis-accent" },
     ],
   },
 };
