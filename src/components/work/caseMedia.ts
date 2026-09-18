@@ -90,6 +90,12 @@ export const caseMedia: Record<string, CaseMedia> = {
       { src: dennisContact, captionKey: "dennisContact", ratio: "wide" },
       { src: dennisMobile, captionKey: "dennisMobile", ratio: "tall" },
     ],
+    brandbook: [
+      { src: dennisBookLogoAsset.url, captionKey: "dennisBookLogo", ratio: "wide" },
+      { src: dennisBookColorAsset.url, captionKey: "dennisBookColor", ratio: "wide" },
+      { src: dennisBookTypeAsset.url, captionKey: "dennisBookType", ratio: "wide" },
+      { src: dennisBookCardAsset.url, captionKey: "dennisBookCard", ratio: "wide" },
+    ],
     palette: [
       { hex: "#2D0036", nameKey: "dennisPlum" },
       { hex: "#E66300", nameKey: "dennisOrange" },

@@ -73,6 +73,32 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
         </div>
       )}
 
+      {media.brandbook && media.brandbook.length > 0 && (
+        <div>
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            {t("casePage.brandbookLabel")}
+          </p>
+          <p className="mt-3 max-w-[60ch] text-base leading-relaxed text-plum/72">{t("casePage.brandbookLead")}</p>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            {media.brandbook.map((page) => (
+              <figure key={page.src}>
+                <div className="overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12">
+                  <img
+                    src={page.src}
+                    alt={t(`casePage.captions.${page.captionKey}`)}
+                    loading="lazy"
+                    className="w-full"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-plum/60">
+                  {t(`casePage.captions.${page.captionKey}`)}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div>
         <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">
           {t("casePage.screensLabel")}
