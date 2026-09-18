@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import CaseGrid from "@/components/work/CaseGrid";
-import { artworks } from "@/components/work/CaseArtwork";
 import type { CaseServiceRoute, CaseStory } from "@/components/work/caseContent";
 import { caseMedia } from "@/components/work/caseMedia";
 import { analytics } from "@/lib/analytics";
@@ -285,7 +284,7 @@ const Index = () => {
                       <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/15 bg-paper p-6 text-paper-foreground transition-transform duration-300 hover:-translate-y-1 md:p-7">
                         <Link
                           to={`/work/${routeCaseSlugs[i]}`}
-                          aria-label={t("work.cardLink")}
+                          aria-label={t("work.cue")}
                           className="relative block aspect-[5/3] overflow-hidden rounded-[1.25rem] bg-muted ring-1 ring-plum/10"
                         >
                           {screen ? (
