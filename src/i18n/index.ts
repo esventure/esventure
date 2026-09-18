@@ -54,8 +54,9 @@ export const applyStoredLanguage = () => {
   } catch {
     /* ignore */
   }
-  const detected =
-    fromUrl ?? stored ?? (navigator.language?.toLowerCase().startsWith("nl") ? "nl" : "en");
+  // Dutch is the default language. English stays available via the
+  // language switcher (persisted in localStorage) or a ?lang= parameter.
+  const detected = fromUrl ?? stored ?? "nl";
   const next = detected.startsWith("nl") ? "nl" : "en";
   if (next !== i18n.language) i18n.changeLanguage(next);
 };
