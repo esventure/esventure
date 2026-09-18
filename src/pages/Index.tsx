@@ -277,7 +277,7 @@ const Index = () => {
                   frameVideo={frameVideo}
                   reduce={reduce}
                   t={t}
-                  className="relative mx-auto w-full max-w-[32rem]"
+                  className="relative mx-auto w-full max-w-[32rem] md:hidden"
                   boxClassName="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
                   imgClassName="aspect-[4/5] w-full object-cover object-top"
                   frameClassName="absolute -bottom-8 -left-4 w-56 rotate-[-5deg]"
