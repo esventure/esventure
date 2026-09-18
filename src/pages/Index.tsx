@@ -290,7 +290,7 @@ const Index = () => {
                           {screen ? (
                             <img
                               src={screen.src}
-                              alt={t(`caseMedia.captions.${screen.captionKey}`)}
+                              alt={t(`casePage.captions.${screen.captionKey}`)}
                               loading="lazy"
                               className={
                                 screen.ratio === "tall"
