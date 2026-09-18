@@ -209,7 +209,22 @@ const Index = () => {
                         className="group absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 transition-transform duration-300 hover:rotate-[-3deg] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary md:-left-12 md:w-72"
                       >
                         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                          {frameScreen ? (
+                          {frameVideo ? (
+                            <motion.video
+                              key={frameVideo.src}
+                              src={frameVideo.src}
+                              poster={frameVideo.poster}
+                              autoPlay={!reduce}
+                              muted
+                              loop
+                              playsInline
+                              preload="metadata"
+                              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ duration: 0.45 }}
+                              className="h-full w-full bg-paper object-contain p-2"
+                            />
+                          ) : frameScreen ? (
                             <motion.img
                               key={frameScreen.src}
                               src={frameScreen.src}
