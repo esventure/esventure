@@ -43,7 +43,7 @@ const CaseGrid = () => {
               aria-label={`${item.client} - ${item.title}`}
               className={cn("md:col-span-7", reverse && "md:order-2")}
             >
-              <div className="relative aspect-[16/11] overflow-hidden rounded-[1.75rem] bg-lilac ring-1 ring-plum/10 transition-transform duration-500 motion-safe:group-hover:-rotate-1">
+              <div className="relative aspect-[16/11] overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum-foreground/15 transition-transform duration-500 motion-safe:group-hover:-rotate-1">
                 {media?.screens[0] ? (
                   <img
                     src={media.screens[0].src}

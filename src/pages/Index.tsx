@@ -193,7 +193,7 @@ const Index = () => {
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="relative mx-auto max-w-[32rem]"
                   >
-                    <div className="overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-primary-foreground/25">
+                    <div className="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25">
                       <img
                         src={estherYellow}
                         alt="Esther Woerdman, founder of Es Venture"
@@ -205,7 +205,7 @@ const Index = () => {
                       />
                     </div>
                     <div className="absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 md:-left-12 md:w-72">
-                      <div className="relative aspect-[4/3] overflow-hidden bg-lilac">
+                      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                         {FrameArtwork ? <FrameArtwork /> : null}
                       </div>
                       <div className="relative z-10 bg-paper p-4">
@@ -252,7 +252,7 @@ const Index = () => {
                   return (
                     <Reveal key={route.title} delay={i * 0.08} className="h-full">
                       <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/15 bg-paper p-6 text-paper-foreground transition-transform duration-300 hover:-translate-y-1 md:p-7">
-                        <div className="relative aspect-[5/3] overflow-hidden rounded-[1.25rem] bg-lilac ring-1 ring-plum/10">
+                        <div className="relative aspect-[5/3] overflow-hidden rounded-[1.25rem] bg-muted ring-1 ring-plum/10">
                           {Artwork ? <Artwork /> : null}
                         </div>
 
@@ -311,7 +311,7 @@ const Index = () => {
             <div className="container mx-auto px-4">
               <div className="grid max-w-6xl items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
                 <Reveal>
-                  <div className="relative overflow-hidden rounded-[2rem] bg-lilac">
+                  <div className="relative overflow-hidden rounded-[2rem] bg-secondary">
                     <img
                       src={estherBw}
                       alt="Esther Woerdman at work"

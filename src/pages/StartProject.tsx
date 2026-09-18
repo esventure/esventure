@@ -118,7 +118,7 @@ const StartProject = () => {
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-12 rounded-[1.75rem] bg-lilac p-8 text-lilac-foreground"
+                className="mt-12 rounded-[1.75rem] bg-secondary p-8 text-secondary-foreground"
               >
                 <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">

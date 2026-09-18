@@ -82,7 +82,7 @@ const CasePage = ({ slug }: CasePageProps) => {
                 </h1>
                 <p className="mt-6 max-w-[48ch] text-lg leading-relaxed text-plum/75 md:text-xl">{item.summary}</p>
               </div>
-              <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] bg-lilac ring-1 ring-plum/10 md:rotate-1">
+              <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] bg-muted ring-1 ring-plum/10 md:rotate-1">
                 {media?.screens[0] ? (
                   <img
                     src={media.screens[0].src}
@@ -96,7 +96,7 @@ const CasePage = ({ slug }: CasePageProps) => {
             </div>
           </section>
 
-          <section className="bg-lilac text-lilac-foreground py-16 md:py-24">
+          <section className="bg-secondary py-16 text-secondary-foreground md:py-24">
             <div className="container mx-auto grid gap-8 px-4 md:grid-cols-3">
               <div>
                 <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">{t("casePage.client")}</p>
@@ -168,7 +168,7 @@ const CasePage = ({ slug }: CasePageProps) => {
               </h2>
               <ul className="grid gap-3 sm:grid-cols-2">
                 {item.made.map((made) => (
-                  <li key={made} className="rounded-2xl border border-plum/12 bg-lilac/45 p-4 text-base font-medium text-plum/82">
+                  <li key={made} className="rounded-2xl border border-plum/15 bg-paper p-4 text-base font-medium text-plum/82">
                     {made}
                   </li>
                 ))}
@@ -176,7 +176,7 @@ const CasePage = ({ slug }: CasePageProps) => {
             </div>
           </section>
 
-          <section className="bg-lilac text-lilac-foreground py-16 md:py-24">
+          <section className="bg-muted py-16 text-foreground md:py-24">
             <div className="container mx-auto px-4">
               <h2 className="font-display text-4xl font-bold leading-tight tracking-normal md:text-5xl">
                 {t("casePage.inUseTitle")}
@@ -187,7 +187,7 @@ const CasePage = ({ slug }: CasePageProps) => {
                   <CaseProof media={media} client={item.client} />
                 ) : (
                   <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-                    <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-lilac ring-1 ring-plum/10">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/10">
                       {Artwork ? <Artwork /> : null}
                     </div>
                     <div className="rounded-[1.75rem] bg-paper p-6 ring-1 ring-plum/10 md:p-8">
