@@ -216,8 +216,8 @@ const Index = () => {
             <HeroPortrait
               reduce={reduce}
               t={t}
-              className="absolute bottom-0 right-[-4rem] top-24 hidden w-[44%] max-w-[42rem] md:block lg:right-[-6rem] lg:w-[40%]"
-              boxClassName="h-full overflow-hidden rounded-l-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
+              className="absolute bottom-0 right-[-4rem] top-0 hidden w-[44%] max-w-[42rem] md:block lg:right-[-6rem] lg:w-[40%]"
+              boxClassName="h-full overflow-hidden rounded-bl-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
               imgClassName="h-full w-full object-cover object-top"
               from={{ opacity: 0, x: 64 }}
             />
