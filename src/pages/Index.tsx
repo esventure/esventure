@@ -12,7 +12,7 @@ import type { CaseServiceRoute } from "@/components/work/caseContent";
 import { caseMedia } from "@/components/work/caseMedia";
 import { analytics } from "@/lib/analytics";
 import estherYellow from "@/assets/esther-yellow.jpg";
-import estherBw from "@/assets/esther-bw.jpg";
+import estherStudio from "@/assets/esther-studio.jpg";
 import logoEV from "@/assets/logo-ev.svg";
 import vanmoofLogo from "@/assets/clients/vanmoof.png";
 import lovensLogo from "@/assets/clients/lovens.png";
@@ -307,7 +307,7 @@ const Index = () => {
                 <Reveal>
                   <div className="relative overflow-hidden rounded-[2rem] bg-secondary">
                     <img
-                      src={estherBw}
+                      src={estherStudio}
                       alt={t("studio.portraitAlt")}
                       loading="lazy"
                       className="aspect-[4/5] w-full object-cover grayscale"
