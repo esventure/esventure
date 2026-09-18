@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import CaseGrid from "@/components/work/CaseGrid";
-import { artworks } from "@/components/work/CaseArtwork";
 import type { CaseServiceRoute, CaseStory } from "@/components/work/caseContent";
+import { caseMedia } from "@/components/work/caseMedia";
 import { analytics } from "@/lib/analytics";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherBw from "@/assets/esther-bw.jpg";
@@ -78,8 +78,8 @@ const Index = () => {
   const serviceRoutes = t("servicesRoutes.items", { returnObjects: true }) as CaseServiceRoute[];
   const studioParagraphs = t("studio.paragraphs", { returnObjects: true }) as string[];
   const contactChoices = t("contactChoices.items", { returnObjects: true }) as Array<{ title: string; copy: string }>;
-  const FrameArtwork = artworks[activeFrame];
   const frameCase = workItems[activeFrame];
+  const frameScreen = frameCase ? caseMedia[frameCase.slug]?.screens[0] : undefined;
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -204,17 +204,33 @@ const Index = () => {
                         className="aspect-[4/5] w-full object-cover object-top"
                       />
                     </div>
-                    <div className="absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 md:-left-12 md:w-72">
-                      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                        {FrameArtwork ? <FrameArtwork /> : null}
-                      </div>
-                      <div className="relative z-10 bg-paper p-4">
-                        <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
-                          {frameCase?.client ?? t("work.eyebrow")}
-                        </p>
-                        <p className="mt-1 text-sm font-semibold leading-snug text-plum/82">{frameCase?.scope ?? t("work.title")}</p>
-                      </div>
-                    </div>
+                    {frameCase ? (
+                      <Link
+                        to={`/work/${frameCase.slug}`}
+                        aria-label={`${frameCase.client}: ${frameCase.title}`}
+                        className="group absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 transition-transform duration-300 hover:rotate-[-3deg] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary md:-left-12 md:w-72"
+                      >
+                        <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                          {frameScreen ? (
+                            <motion.img
+                              key={frameScreen.src}
+                              src={frameScreen.src}
+                              alt=""
+                              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ duration: 0.45 }}
+                              className={`h-full w-full ${frameScreen.ratio === "tall" ? "object-contain bg-paper p-2" : "object-cover object-top"}`}
+                            />
+                          ) : null}
+                        </div>
+                        <div className="relative z-10 bg-paper p-4">
+                          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                            {frameCase.client}
+                          </p>
+                          <p className="mt-1 text-sm font-semibold leading-snug text-plum/82">{frameCase.scope}</p>
+                        </div>
+                      </Link>
+                    ) : null}
                   </motion.div>
                 </div>
               </div>
