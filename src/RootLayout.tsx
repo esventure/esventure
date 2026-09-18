@@ -10,9 +10,15 @@ import { applyStoredLanguage } from "./i18n";
 const queryClient = new QueryClient();
 
 const RootLayout = () => {
+  const { pathname } = useLocation();
+
   useEffect(() => {
     applyStoredLanguage();
   }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+  }, [pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
