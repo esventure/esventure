@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import CaseGrid from "@/components/work/CaseGrid";
-import { artworks } from "@/components/work/CaseArtwork";
 import type { CaseServiceRoute, CaseStory } from "@/components/work/caseContent";
 import { caseMedia } from "@/components/work/caseMedia";
 import { analytics } from "@/lib/analytics";
@@ -34,6 +33,7 @@ const clients = [
 ];
 
 const routeParams = ["brand", "website", "prototype"];
+const routeCaseSlugs = ["dennis-gerrits", "studio-ingrid-de-reuver", "hap"];
 
 const Reveal = ({
   children,
@@ -276,14 +276,30 @@ const Index = () => {
 
               <div className="mt-14 grid gap-6 lg:grid-cols-3">
                 {serviceRoutes.map((route, i) => {
-                  const Artwork = artworks[i];
                   const stage = routeParams[i] ?? "brand";
+                  const media = caseMedia[routeCaseSlugs[i]];
+                  const screen = media?.screens[0];
                   return (
                     <Reveal key={route.title} delay={i * 0.08} className="h-full">
                       <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/15 bg-paper p-6 text-paper-foreground transition-transform duration-300 hover:-translate-y-1 md:p-7">
-                        <div className="relative aspect-[5/3] overflow-hidden rounded-[1.25rem] bg-muted ring-1 ring-plum/10">
-                          {Artwork ? <Artwork /> : null}
-                        </div>
+                        <Link
+                          to={`/work/${routeCaseSlugs[i]}`}
+                          aria-label={t("work.cue")}
+                          className="relative block aspect-[5/3] overflow-hidden rounded-[1.25rem] bg-muted ring-1 ring-plum/10"
+                        >
+                          {screen ? (
+                            <img
+                              src={screen.src}
+                              alt={t(`casePage.captions.${screen.captionKey}`)}
+                              loading="lazy"
+                              className={
+                                screen.ratio === "tall"
+                                  ? "h-full w-full bg-paper object-contain p-2"
+                                  : "h-full w-full object-cover object-top"
+                              }
+                            />
+                          ) : null}
+                        </Link>
 
                         <h3 className="mt-8 font-display text-3xl font-bold leading-tight tracking-normal">{route.title}</h3>
                         <p className="mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-primary">{t("servicesRoutes.situationLabel")}</p>
