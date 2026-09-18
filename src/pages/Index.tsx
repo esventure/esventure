@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import CaseGrid from "@/components/work/CaseGrid";
+import { artworks } from "@/components/work/CaseArtwork";
 import type { CaseServiceRoute, CaseStory } from "@/components/work/caseContent";
 import { caseMedia } from "@/components/work/caseMedia";
 import { analytics } from "@/lib/analytics";
