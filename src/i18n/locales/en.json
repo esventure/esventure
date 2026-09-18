@@ -535,7 +535,12 @@
       "dennisAbout": "About Dennis: the person and the guide, side by side.",
       "dennisExperiences": "The experiences as photo cards: the neighbourhood, food, architecture and the water.",
       "dennisContact": "Contact in deep green: 'Let's see if we're a good match', with form and WhatsApp.",
-      "dennisMobile": "The homepage on a phone."
+      "dennisMobile": "The homepage on a phone.",
+      "hapHome": "The mobile landing screen introduces the recipe idea and starts the journey.",
+      "hapSkill": "The first step adapts the experience to someone’s cooking confidence.",
+      "hapIngredients": "People select what is already in their fridge before choosing a recipe.",
+      "hapReview": "A final check brings every choice together before recipes are generated.",
+      "hapResults": "Three generated recipes turn the selected ingredients, time and mood into concrete options."
     }
   }
 }

@@ -9,6 +9,11 @@ import dennisExperiences from "@/assets/work/dennis/site-experiences.jpg";
 import dennisContact from "@/assets/work/dennis/site-contact.jpg";
 import dennisMobile from "@/assets/work/dennis/site-mobile.jpg";
 import dennisLogo from "@/assets/work/dennis/logo.png";
+import hapHomeAsset from "@/assets/work/hap/home.png.asset.json";
+import hapSkillAsset from "@/assets/work/hap/skill.png.asset.json";
+import hapIngredientsAsset from "@/assets/work/hap/ingredients.png.asset.json";
+import hapReviewAsset from "@/assets/work/hap/review.png.asset.json";
+import hapResultsAsset from "@/assets/work/hap/results.png.asset.json";
 
 export interface CaseScreen {
   src: string;
@@ -83,6 +88,17 @@ export const caseMedia: Record<string, CaseMedia> = {
       { name: "Bebas Neue", useKey: "dennisDisplay", className: "font-dennis-display uppercase tracking-normal" },
       { name: "Outfit", useKey: "dennisText", className: "font-dennis-text" },
       { name: "Caveat", useKey: "dennisAccent", className: "font-dennis-accent" },
+    ],
+  },
+  hap: {
+    liveUrl: "https://haprecipes.lovable.app",
+    liveLabel: "haprecipes.lovable.app",
+    screens: [
+      { src: hapHomeAsset.url, captionKey: "hapHome", ratio: "tall" },
+      { src: hapSkillAsset.url, captionKey: "hapSkill", ratio: "tall" },
+      { src: hapIngredientsAsset.url, captionKey: "hapIngredients", ratio: "tall" },
+      { src: hapReviewAsset.url, captionKey: "hapReview", ratio: "tall" },
+      { src: hapResultsAsset.url, captionKey: "hapResults", ratio: "tall" },
     ],
   },
 };
