@@ -74,7 +74,7 @@
       {
         "label": "The Sparring Room",
         "title": "Ik denk het met je door",
-        "description": "Als je een idee hebt maar nog geen vorm. Ik schets, daag uit, prototype en test het samen met jou tot het helder genoeg is om te bouwen.",
+        "description": "Als je een idee hebt maar nog geen vorm. Ik schets, daag uit, prototype en test het samen met jou tot het duidelijk genoeg is om te bouwen.",
         "outcome": "Een idee getest tot een bouwbaar plan"
       },
       {
@@ -94,11 +94,11 @@
   },
   "sparring": {
     "title": "Behoefte aan een sparringpartner?",
-    "body": "Soms bestaat de briefing nog niet - je hebt gewoon iemand met ervaring nodig om mee door te denken. Boek een sparringsessie om aannames uit te dagen, je ideeën te structureren en een heldere richting te bepalen vóór het echte werk begint.",
+    "body": "Soms bestaat de briefing nog niet - je hebt gewoon iemand met ervaring nodig om mee door te denken. Boek een sparringsessie om aannames uit te dagen, je ideeën te structureren en een duidelijke richting te bepalen vóór het echte werk begint.",
     "cta": "Boek een sparringsessie",
     "walkAwayLabel": "Je loopt naar buiten met",
     "walkAwayItems": [
-      "Helderheid over wat het probleem nu écht is.",
+      "Duidelijkheid over wat het probleem nu écht is.",
       "Een ruwe structuur om het aan te pakken.",
       "Een concrete volgende stap voor deze week."
     ]
@@ -108,7 +108,7 @@
     "subtitle": "Ik ben jouw digitale partner - voor wat er ook komt.",
     "pillars": [
       {
-        "title": "Absolute helderheid",
+        "title": "Absolute duidelijkheid",
         "description": "Je weet altijd precies waar het project staat - geen verrassingen, geen giswerk."
       },
       {
@@ -130,7 +130,7 @@
     "paragraphs": [
       "Als digitaal projectmanager en delivery partner ben ik de persoon die je belt als je een digitale ambitie hebt die werkelijkheid moet worden.",
       "Snel schakelen om je uitdagingen te begrijpen, dat gaat me makkelijk af. Een strategische whiteboard-sessie met je managementteam leiden of een technische review met je developers draaien, het voelt even vertrouwd. Mijn kracht zit in het zijn van het bindweefsel tussen disciplines - de brug tussen IT, creatie en business, en zorgen dat complex werk écht over de finish komt.",
-      "Heldere oplossingen en zichtbare actie winnen het bij mij altijd van dikke rapporten. Als ik met je samenwerk weet je altijd waar je staat - en krijg je een partner die eigenaarschap neemt over het werk."
+      "Directe antwoorden en zichtbare actie winnen het bij mij altijd van dikke rapporten. Als ik met je samenwerk weet je altijd waar je staat - en krijg je een partner die eigenaarschap neemt over het werk."
     ],
     "cta": "Laten we praten"
   },
@@ -211,21 +211,21 @@
   },
   "whatWeDo": {
     "eyebrow": "WAT IK DOE",
-    "title": "Drie manieren om goed digitaal werk in beweging te krijgen.",
+    "title": "Drie manieren om goed digitaal werk vooruit te krijgen.",
     "items": [
       {
         "number": "01",
-        "title": "Maak het helder.",
+        "title": "Maak het duidelijk.",
         "copy": "Vind het idee, geef het verhaal vorm en bepaal wat het waard is om te maken."
       },
       {
         "number": "02",
         "title": "Maak het echt.",
-        "copy": "Merken, websites en digitale ervaringen die er goed uitzien en gewoon werken."
+        "copy": "Merken, websites en digitaal werk die er goed uitzien en gewoon werken."
       },
       {
         "number": "03",
-        "title": "Breng het in beweging.",
+        "title": "Breng het vooruit.",
         "copy": "Ik leid het project, breng de juiste mensen samen en maak het klaar voor lancering."
       }
     ]
@@ -235,7 +235,7 @@
     "title": "Verschillende mensen. Verschillende ideeen. Niks van de plank.",
     "lead": "Drie projecten die er totaal anders uitzien. Precies de bedoeling.",
     "cue": "Bekijk het project",
-    "archiveTitle": "Meer dingen helder, bruikbaar en echt gemaakt",
+    "archiveTitle": "Meer dingen duidelijk, praktisch en echt gemaakt",
     "clientLabel": "Klant",
     "scopeLabel": "Scope",
     "items": [
@@ -243,7 +243,7 @@
         "slug": "dennis-gerrits",
         "accent": "secondary",
         "label": "01 / MERK + WEBSITE",
-        "title": "Warm, belezen en persoonlijk. Meer stadsvriend dan touroperator.",
+        "title": "Een travel companion, geen zoveelste tourguide.",
         "client": "Dennis Gerrits",
         "scope": "Merk + website",
         "character": "",
@@ -273,13 +273,14 @@
             "Wees eerlijk over grenzen"
           ],
           "voice": "Rustig, persoonlijk en direct. Altijd 'ik', geschreven aan één persoon, met concrete taal en één heldere volgende stap."
-        }
+        },
+        "cardCopy": "Warm, belezen en persoonlijk. Meer stadsvriend dan touroperator."
       },
       {
         "slug": "studio-ingrid-de-reuver",
         "accent": "coral",
         "label": "02 / MERK + WEBSITE",
-        "title": "Redactioneel, direct en fel roze. Precies zoals de vrouw achter de camera.",
+        "title": "Een bold, open digitaal thuis voor een fotograaf die mensen op hun gemak stelt.",
         "client": "Studio Ingrid de Reuver",
         "scope": "Merk + website",
         "character": "",
@@ -293,15 +294,16 @@
           "Services en portfolio-presentatie",
           "Praktische vragen en contactroute"
         ],
-        "direction": "Candid portretten, editorial typografie en felle actiemomenten maken de site persoonlijk, bruikbaar en onmiskenbaar Ingrid.",
+        "direction": "Candid portretten, editorial typografie en felle actiemomenten maken de site persoonlijk, praktisch en typisch Ingrid.",
         "outcome": "De richting geeft Ingrid een digitaal thuis dat haar verhaal, werk, praktische info en boekingsroute samenbrengt.",
-        "credits": "Rol en credits van samenwerkingen moeten nog definitief bevestigd worden voordat ze publiek gedetailleerd worden genoemd."
+        "credits": "Rol en credits van samenwerkingen moeten nog definitief bevestigd worden voordat ze publiek gedetailleerd worden genoemd.",
+        "cardCopy": "Redactioneel, direct en fel roze. Precies zoals de vrouw achter de camera."
       },
       {
         "slug": "hap",
         "accent": "lime",
         "label": "03 / UX + APP-PROTOTYPE",
-        "title": "Van los idee naar een klikbare versie die je kon voorleggen.",
+        "title": "Een receptidee omzetten naar iets dat mensen konden zien, begrijpen en proberen.",
         "client": "HAP",
         "scope": "UX + prototype",
         "character": "",
@@ -315,9 +317,10 @@
           "Visuele interfacerichting",
           "Clickable eerste prototype"
         ],
-        "direction": "De focus lag op de eerste bruikbare loop: wat iemand ziet, kiest, volgt en leert in de receptervaring.",
+        "direction": "De focus lag op de eerste praktische route: wat iemand ziet, kiest, volgt en leert in de receptervaring.",
         "outcome": "Het prototype maakte de discussie concreet genoeg om te tonen, proberen en verbeteren vóór een grotere investering.",
-        "credits": "Rol en credits van samenwerkingen moeten nog definitief bevestigd worden voordat ze publiek gedetailleerd worden genoemd."
+        "credits": "Rol en credits van samenwerkingen moeten nog definitief bevestigd worden voordat ze publiek gedetailleerd worden genoemd.",
+        "cardCopy": "Van los idee naar een klikbare versie die je kon voorleggen."
       },
       {
         "slug": "rainforest-alliance",
@@ -328,7 +331,7 @@
         "scope": "Journey mapping en launch-readiness",
         "character": "Complexe onderdelen begrijpelijker gemaakt en voorbereid op gebruik.",
         "modalHeading": "Platformjourney en launch-readiness",
-        "summary": "Een complexe certificeringsjourney had helderdere overdrachten, testing en launchvoorbereiding nodig.",
+        "summary": "Een complexe certificeringsjourney had duidelijkere overdrachten, testing en launchvoorbereiding nodig.",
         "needed": "Het werk moest journeys, overdrachten en onboardingdetails verbinden zodat de ervaring begrijpelijk werd voordat gebruikers ermee aan de slag gingen.",
         "made": [
           "Journey mapping",
@@ -337,7 +340,7 @@
           "Testcoördinatie",
           "Launch-readiness support"
         ],
-        "direction": "De focus lag op helderheid boven decoratie: in kaart brengen wat gebruikers en teams bij elke stap moesten begrijpen.",
+        "direction": "De focus lag op duidelijkheid boven decoratie: in kaart brengen wat gebruikers en teams bij elke stap moesten begrijpen.",
         "outcome": "Het werk hielp een complexe platformjourney voorbereiden op testen, onboarding en lancering.",
         "credits": "Sommige details moeten mogelijk geredigeerd blijven. Publiek casemateriaal gebruikt alleen goedgekeurde, niet-vertrouwelijke artifacts."
       }
@@ -369,7 +372,7 @@
       },
       {
         "title": "Ik heb een probleem.",
-        "reveal": "Ik begin met een reset. Ik vind de knoop, bepaal wat eerst gefixt wordt en krijg het werk weer in beweging.",
+        "reveal": "Ik begin met een reset. Ik vind de knoop, bepaal wat eerst gefixt wordt en krijg het werk weer vooruit.",
         "cta": "Even sparren"
       }
     ]
@@ -387,7 +390,7 @@
   "startPage": {
     "eyebrow": "START EEN PROJECT",
     "title": "Vertel me wat je wilt maken.",
-    "intro": "Een paar aantekeningen zijn genoeg. Vertel wat je voor je ziet en ik kom terug met de helderste volgende stap.",
+    "intro": "Een paar aantekeningen zijn genoeg. Vertel wat je voor je ziet en ik kom terug met de beste volgende stap.",
     "fields": {
       "goal": "Wat wil je maken?",
       "stage": "Welke route voelt het dichtstbij?",
@@ -483,7 +486,7 @@
     "copy": "De juiste visuele richting begint meestal vóór de kleuren en typografie. Ik zoek naar de details, toon en blik die een bedrijf herkenbaar maken. Dat wordt de draad door de identiteit, de website en elke interactie.",
     "steps": [
       "Luisteren naar het bruikbare detail, niet naar de hardste claim.",
-      "Het gesprek vertalen naar heldere keuzes.",
+      "Het gesprek vertalen naar duidelijke keuzes.",
       "Iets maken dat concreet genoeg is om te tonen, testen of lanceren."
     ],
     "paragraphs": [

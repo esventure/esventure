@@ -130,7 +130,7 @@
     "paragraphs": [
       "As a digital project manager and delivery partner, I'm the person you call when you have a digital ambition that needs to become real.",
       "Moving quickly to understand your unique challenges comes naturally to me. Leading a strategic whiteboard session with your management team or running a technical review with your developers, both feel equally at home. My core strength is acting as the connective tissue across disciplines - bridging the gap between IT, creative, and business, and making sure complex work actually crosses the finish line.",
-      "Straightforward solutions and tangible action win over lengthy reports, every time. When I work with you, you will always know where things stand - and you will always get a partner who takes ownership of the work."
+      "Straightforward answers and tangible action win over lengthy reports, every time. When I work with you, you will always know where things stand - and you will always get a partner who takes ownership of the work."
     ],
     "cta": "Let's talk"
   },
@@ -243,7 +243,7 @@
         "slug": "dennis-gerrits",
         "accent": "secondary",
         "label": "01 / BRAND + WEBSITE",
-        "title": "Warm, worldly and personal. More local friend than tour operator.",
+        "title": "A travel companion, not another tour guide.",
         "client": "Dennis Gerrits",
         "scope": "Strategy, identity, website and brand system",
         "character": "",
@@ -273,13 +273,14 @@
             "Be honest about limits"
           ],
           "voice": "Calm, personal and direct. Always 'I', written to one person, with concrete language and one clear next step."
-        }
+        },
+        "cardCopy": "Warm, worldly and personal. More local friend than tour operator."
       },
       {
         "slug": "studio-ingrid-de-reuver",
         "accent": "coral",
         "label": "02 / BRAND + WEBSITE",
-        "title": "Editorial, direct and bright pink. Exactly like the woman behind the camera.",
+        "title": "A bold, candid digital home for a photographer who puts people at ease.",
         "client": "Studio Ingrid de Reuver",
         "scope": "Identity and website",
         "character": "",
@@ -295,13 +296,14 @@
         ],
         "direction": "Candid portraits, editorial typography and vivid action moments make the site feel personal, useful and unmistakably Ingrid.",
         "outcome": "The finished direction gives Ingrid a digital home that connects her story, work, practical information and booking path in one place.",
-        "credits": "Role and collaborator credits still need final confirmation before detailed public attribution."
+        "credits": "Role and collaborator credits still need final confirmation before detailed public attribution.",
+        "cardCopy": "Editorial, direct and bright pink. Exactly like the woman behind the camera."
       },
       {
         "slug": "hap",
         "accent": "lime",
         "label": "03 / UX + APP PROTOTYPE",
-        "title": "From a loose idea to a clickable version you could actually put in front of people.",
+        "title": "Turning a recipe idea into something people could see, understand and try.",
         "client": "HAP",
         "scope": "UX and clickable prototype",
         "character": "",
@@ -317,7 +319,8 @@
         ],
         "direction": "The work focused on the first useful loop: what someone sees, chooses, follows and learns from in the recipe experience.",
         "outcome": "The prototype turned discussion into something concrete enough to show, try and improve before a larger investment.",
-        "credits": "Role and collaborator credits still need final confirmation before detailed public attribution."
+        "credits": "Role and collaborator credits still need final confirmation before detailed public attribution.",
+        "cardCopy": "From a loose idea to a clickable version you could actually put in front of people."
       },
       {
         "slug": "rainforest-alliance",
