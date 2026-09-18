@@ -114,7 +114,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>{`${t("hero.titleStart")} - Es Venture`}</title>
+        <title>{t("meta.title")}</title>
         <meta
           name="description"
           content={t("hero.lead")}
@@ -123,14 +123,14 @@ const Index = () => {
         <link rel="alternate" hrefLang="nl" href="https://esventure.nl/" />
         <link rel="alternate" hrefLang="en" href="https://esventure.nl/?lang=en" />
         <link rel="alternate" hrefLang="x-default" href="https://esventure.nl/" />
-        <meta property="og:title" content={`${t("hero.titleStart")} - Es Venture`} />
+        <meta property="og:title" content={t("meta.title")} />
         <meta property="og:description" content={t("hero.lead")} />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://esventure.nl/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content={`${t("hero.titleStart")} - Es Venture`} />
+        <meta property="og:image:alt" content={t("meta.title")} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://esventure.nl/og-image.jpg" />
 
