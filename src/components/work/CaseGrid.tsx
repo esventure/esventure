@@ -8,9 +8,9 @@ import type { CaseStory } from "./caseContent";
 import { cn } from "@/lib/utils";
 
 const accents = [
-  { label: "text-secondary", rule: "border-secondary", bg: "bg-secondary", text: "text-secondary" },
   { label: "text-coral", rule: "border-coral", bg: "bg-coral", text: "text-coral" },
-  { label: "text-secondary", rule: "border-secondary", bg: "bg-secondary", text: "text-secondary" },
+  { label: "text-coral", rule: "border-coral", bg: "bg-coral", text: "text-coral" },
+  { label: "text-coral", rule: "border-coral", bg: "bg-coral", text: "text-coral" },
   { label: "text-primary", rule: "border-primary", bg: "bg-primary", text: "text-primary" },
 ];
 
