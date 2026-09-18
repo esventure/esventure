@@ -154,14 +154,14 @@ const StartProject = () => {
                 <fieldset className="space-y-3">
                   <legend className="text-base font-semibold">{t("startPage.fields.stage")}</legend>
                   <div className="flex flex-wrap gap-2">
-                    {stageOptions.map((option) => {
-                      const selected = form.stage === option;
+                    {stageOptions.map((option, index) => {
+                      const selected = form.stageIndex === index;
                       return (
                         <button
                           key={option}
                           type="button"
                           aria-pressed={selected}
-                          onClick={() => setForm({ ...form, stage: option })}
+                          onClick={() => setForm({ ...form, stageIndex: index })}
                           className={`min-h-[44px] rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                             selected
                               ? "bg-primary text-primary-foreground"
@@ -197,12 +197,12 @@ const StartProject = () => {
                     <div className="relative">
                       <select
                         id="timing"
-                        value={form.timing}
-                        onChange={(e) => setForm({ ...form, timing: e.target.value })}
+                        value={form.timingIndex}
+                        onChange={(e) => setForm({ ...form, timingIndex: Number(e.target.value) })}
                         className={`${fieldClass} appearance-none pr-10`}
                       >
-                        {timingOptions.map((option) => (
-                          <option key={option} value={option}>
+                        {timingOptions.map((option, index) => (
+                          <option key={option} value={index}>
                             {option}
                           </option>
                         ))}
@@ -219,12 +219,12 @@ const StartProject = () => {
                     <div className="relative">
                       <select
                         id="budget"
-                        value={form.budget}
-                        onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                        value={form.budgetIndex}
+                        onChange={(e) => setForm({ ...form, budgetIndex: Number(e.target.value) })}
                         className={`${fieldClass} appearance-none pr-10`}
                       >
-                        {budgetOptions.map((option) => (
-                          <option key={option} value={option}>
+                        {budgetOptions.map((option, index) => (
+                          <option key={option} value={index}>
                             {option}
                           </option>
                         ))}
