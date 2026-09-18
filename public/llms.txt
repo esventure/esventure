@@ -11,5 +11,4 @@ I make brands, websites and prototypes for entrepreneurs. Every project starts f
 - [Dennis Gerrits case](/work/dennis-gerrits): Identity and website case story.
 - [Studio Ingrid de Reuver case](/work/studio-ingrid-de-reuver): Identity and website case story.
 - [HAP case](/work/hap): UX and prototype case story.
-- [Rainforest Alliance case](/work/rainforest-alliance): Journey mapping and launch-readiness case story.
 - [Privacy Policy](/privacy): Data handling and privacy terms.

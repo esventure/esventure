@@ -17,7 +17,6 @@ export const routes: RouteRecord[] = [
       { path: "work/dennis-gerrits", element: <CasePage slug="dennis-gerrits" />, entry: "src/pages/CasePage.tsx" },
       { path: "work/studio-ingrid-de-reuver", element: <CasePage slug="studio-ingrid-de-reuver" />, entry: "src/pages/CasePage.tsx" },
       { path: "work/hap", element: <CasePage slug="hap" />, entry: "src/pages/CasePage.tsx" },
-      { path: "work/rainforest-alliance", element: <CasePage slug="rainforest-alliance" />, entry: "src/pages/CasePage.tsx" },
       { path: "privacy", element: <PrivacyPolicy />, entry: "src/pages/PrivacyPolicy.tsx" },
       { path: "styleguide", element: <StyleGuide />, entry: "src/pages/StyleGuide.tsx" },
       // ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE

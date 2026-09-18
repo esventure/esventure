@@ -17,7 +17,9 @@ const accents = [
 const CaseGrid = () => {
   const { t } = useTranslation();
   const reduce = useReducedMotion();
-  const items = t("work.items", { returnObjects: true }) as CaseStory[];
+  const items = (t("work.items", { returnObjects: true }) as CaseStory[]).filter(
+    (item) => item.slug !== "rainforest-alliance"
+  );
   const featured = items.slice(0, 3);
   const archive = items.slice(3);
 
