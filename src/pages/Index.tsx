@@ -99,6 +99,10 @@ const Index = () => {
   React.useEffect(() => analytics.initScrollTracking(), []);
   const serviceRoutes = t("servicesRoutes.items", { returnObjects: true }) as CaseServiceRoute[];
   const studioParagraphs = t("studio.paragraphs", { returnObjects: true }) as string[];
+  const studioTitleRaw = t("studio.title") as string;
+  const titleBreak = studioTitleRaw.indexOf(". ");
+  const studioTitleFirst = titleBreak === -1 ? studioTitleRaw : studioTitleRaw.slice(0, titleBreak + 1);
+  const studioTitleRest = titleBreak === -1 ? "" : studioTitleRaw.slice(titleBreak + 2);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
