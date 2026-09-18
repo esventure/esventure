@@ -322,7 +322,7 @@ const Index = () => {
                   </div>
                 </Reveal>
                 <Reveal delay={0.08} className="md:col-span-7">
-                  <div className="md:sticky md:top-24">
+                  <div>
                     <span aria-hidden="true" className="mb-5 block h-1 w-16 rounded-full bg-coral" />
                     <Eyebrow className="text-coral mb-5">{t("studio.eyebrow")}</Eyebrow>
                     <h2 className="max-w-[18ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
