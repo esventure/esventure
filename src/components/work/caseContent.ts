@@ -21,6 +21,13 @@ export interface CaseStory {
   direction: string;
   outcome: string;
   credits: string;
+  brandbook?: {
+    title: string;
+    foundation: string;
+    audience: string;
+    principles: string[];
+    voice: string;
+  };
 }
 
 export const caseSlugs = ["dennis-gerrits", "studio-ingrid-de-reuver", "hap", "rainforest-alliance"] as const;
