@@ -166,10 +166,6 @@ const CasePage = ({ slug }: CasePageProps) => {
                 <h2 className="font-display text-3xl font-bold leading-tight tracking-normal md:text-4xl">{t("casePage.outcome")}</h2>
                 <div>
                   <p className="text-lg leading-relaxed text-plum/78">{item.outcome}</p>
-                  <div className="mt-7 border-t border-plum/15 pt-5">
-                    <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">{t("casePage.credits")}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-plum/70">{item.credits}</p>
-                  </div>
                 </div>
               </div>
             </div>
