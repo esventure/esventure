@@ -131,12 +131,12 @@ const Index = () => {
         <meta property="og:description" content={t("hero.lead")} />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://esventure.nl/og-image.jpg" />
+        <meta property="og:image" content="https://esventure.lovable.app/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content={t("meta.title")} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://esventure.nl/og-image.jpg" />
+        <meta name="twitter:image" content="https://esventure.lovable.app/og-image.jpg" />
 
         <script type="application/ld+json">
           {JSON.stringify({
