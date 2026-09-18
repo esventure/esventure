@@ -78,6 +78,28 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
           {t("casePage.screensLabel")}
         </p>
 
+        {media.video && (
+          <figure className="mx-auto mt-6 max-w-[390px]">
+            <div className="overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12">
+              <video
+                src={media.video.src}
+                poster={media.video.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+                aria-label={t(`casePage.captions.${media.video.captionKey}`)}
+                className="w-full"
+              />
+            </div>
+            <figcaption className="mt-3 text-sm text-plum/60">
+              {t(`casePage.captions.${media.video.captionKey}`)}
+            </figcaption>
+          </figure>
+        )}
+
         {lead && (
           <figure className={cn("mt-6", lead.ratio === "tall" && "mx-auto max-w-[390px]")}>
             <div className="overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12">
