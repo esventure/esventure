@@ -19,21 +19,17 @@ const StartProject = () => {
   const budgetOptions = t("startPage.fields.budgetOptions", { returnObjects: true }) as string[];
 
   const stageParam = searchParams.get("stage");
-  const presetStage =
-    stageParam === "brand"
-      ? stageOptions[0]
-      : stageParam === "website"
-        ? stageOptions[1]
-        : stageParam === "prototype"
-          ? stageOptions[2]
-          : "";
+  const presetStageIndex =
+    stageParam === "brand" ? 0 : stageParam === "website" ? 1 : stageParam === "prototype" ? 2 : -1;
 
+  // Store the selected option as an index, not as a translated label, so the
+  // selection survives a language switch (the bundle is applied after mount).
   const [form, setForm] = useState({
     goal: "",
-    stage: presetStage,
+    stageIndex: presetStageIndex,
     useful: "",
-    timing: timingOptions[0],
-    budget: budgetOptions[0],
+    timingIndex: 0,
+    budgetIndex: 0,
     firstName: "",
     lastName: "",
     email: "",
@@ -42,7 +38,12 @@ const StartProject = () => {
   const [isDone, setIsDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const canSubmit = form.goal.trim() && form.stage && form.firstName.trim() && form.lastName.trim() && form.email.trim();
+  const selectedStage = stageOptions[form.stageIndex] ?? "";
+  const selectedTiming = timingOptions[form.timingIndex] ?? timingOptions[0];
+  const selectedBudget = budgetOptions[form.budgetIndex] ?? budgetOptions[0];
+
+  const canSubmit =
+    form.goal.trim() && selectedStage && form.firstName.trim() && form.lastName.trim() && form.email.trim();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,10 +53,10 @@ const StartProject = () => {
 
     const summary = [
       `${t("startPage.fields.goal")}\n${form.goal.trim()}`,
-      `${t("startPage.fields.stage")} ${form.stage}`,
+      `${t("startPage.fields.stage")} ${selectedStage}`,
       form.useful.trim() ? `${t("startPage.fields.useful")}\n${form.useful.trim()}` : null,
-      `${t("startPage.fields.timing")} ${form.timing}`,
-      `${t("startPage.fields.budget")} ${form.budget}`,
+      `${t("startPage.fields.timing")} ${selectedTiming}`,
+      `${t("startPage.fields.budget")} ${selectedBudget}`,
     ]
       .filter(Boolean)
       .join("\n\n")
@@ -153,14 +154,14 @@ const StartProject = () => {
                 <fieldset className="space-y-3">
                   <legend className="text-base font-semibold">{t("startPage.fields.stage")}</legend>
                   <div className="flex flex-wrap gap-2">
-                    {stageOptions.map((option) => {
-                      const selected = form.stage === option;
+                    {stageOptions.map((option, index) => {
+                      const selected = form.stageIndex === index;
                       return (
                         <button
                           key={option}
                           type="button"
                           aria-pressed={selected}
-                          onClick={() => setForm({ ...form, stage: option })}
+                          onClick={() => setForm({ ...form, stageIndex: index })}
                           className={`min-h-[44px] rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                             selected
                               ? "bg-primary text-primary-foreground"
@@ -196,12 +197,12 @@ const StartProject = () => {
                     <div className="relative">
                       <select
                         id="timing"
-                        value={form.timing}
-                        onChange={(e) => setForm({ ...form, timing: e.target.value })}
+                        value={form.timingIndex}
+                        onChange={(e) => setForm({ ...form, timingIndex: Number(e.target.value) })}
                         className={`${fieldClass} appearance-none pr-10`}
                       >
-                        {timingOptions.map((option) => (
-                          <option key={option} value={option}>
+                        {timingOptions.map((option, index) => (
+                          <option key={option} value={index}>
                             {option}
                           </option>
                         ))}
@@ -218,12 +219,12 @@ const StartProject = () => {
                     <div className="relative">
                       <select
                         id="budget"
-                        value={form.budget}
-                        onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                        value={form.budgetIndex}
+                        onChange={(e) => setForm({ ...form, budgetIndex: Number(e.target.value) })}
                         className={`${fieldClass} appearance-none pr-10`}
                       >
-                        {budgetOptions.map((option) => (
-                          <option key={option} value={option}>
+                        {budgetOptions.map((option, index) => (
+                          <option key={option} value={index}>
                             {option}
                           </option>
                         ))}
