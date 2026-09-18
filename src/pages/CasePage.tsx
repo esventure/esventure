@@ -56,9 +56,9 @@ const CasePage = ({ slug }: CasePageProps) => {
         <meta property="og:description" content={item.summary} />
         <meta property="og:url" content={`https://esventure.nl/work/${item.slug}`} />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="https://esventure.nl/og-image.jpg" />
+        <meta property="og:image" content="https://esventure.lovable.app/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://esventure.nl/og-image.jpg" />
+        <meta name="twitter:image" content="https://esventure.lovable.app/og-image.jpg" />
         {slug === "dennis-gerrits" && (
           <link
             rel="stylesheet"
