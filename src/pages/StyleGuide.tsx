@@ -75,22 +75,23 @@ const StyleGuide = () => {
         {/* ─── Kleuren ─── */}
         <section>
           <h2 className="text-3xl font-black font-display text-foreground mb-2">Kleuren</h2>
-          <p className="text-muted-foreground mb-8">Het kernkleurenpalet van Es Venture.</p>
+          <p className="text-muted-foreground mb-8">Het actuele kleurenpalet van de website: paars en geel als basis, met oranje als energiek accent.</p>
           
-          <h3 className="text-lg font-bold text-foreground mb-4">Primaire kleuren</h3>
+          <h3 className="text-lg font-bold text-foreground mb-4">Merkkleuren</h3>
           <div className="flex flex-wrap gap-6 mb-10">
-            <ColorSwatch name="Primary (Paars)" variable="#BF5AF2" cssVar="primary" />
-            <ColorSwatch name="Secondary (Geel)" variable="#EEF0A3" cssVar="secondary" />
-            <ColorSwatch name="Background" variable="#FFFFFF" cssVar="background" />
-            <ColorSwatch name="Foreground" variable="#1A1A1A" cssVar="foreground" />
+            <ColorSwatch name="Es Venture Paars" variable="#BF5AF2" cssVar="primary" />
+            <ColorSwatch name="Es Venture Geel" variable="#EEF0A3" cssVar="secondary" />
+            <ColorSwatch name="Accent Oranje" variable="#FF5738" cssVar="coral" />
+            <ColorSwatch name="Inkt" variable="#121212" cssVar="plum" />
+            <ColorSwatch name="Papier" variable="#FFFFFF" cssVar="paper" />
           </div>
 
           <h3 className="text-lg font-bold text-foreground mb-4">UI kleuren</h3>
           <div className="flex flex-wrap gap-6">
-            <ColorSwatch name="Muted" variable="--muted" cssVar="muted" />
-            <ColorSwatch name="Muted FG" variable="--muted-foreground" cssVar="muted-foreground" />
-            <ColorSwatch name="Border" variable="--border" cssVar="border" />
-            <ColorSwatch name="Destructive" variable="--destructive" cssVar="destructive" />
+            <ColorSwatch name="Zacht Grijs" variable="#F2F2F2" cssVar="muted" />
+            <ColorSwatch name="Gedempte Tekst" variable="#616161" cssVar="muted-foreground" />
+            <ColorSwatch name="Rand" variable="#D6D6D6" cssVar="border" />
+            <ColorSwatch name="Foutmelding" variable="#EF4444" cssVar="destructive" />
           </div>
         </section>
 
