@@ -114,7 +114,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>{`${t("hero.titleStart")} - Es Venture`}</title>
+        <title>{t("meta.title")}</title>
         <meta
           name="description"
           content={t("hero.lead")}
