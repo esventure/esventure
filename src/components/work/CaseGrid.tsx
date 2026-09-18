@@ -49,7 +49,7 @@ const CaseGrid = () => {
                     src={media.screens[0].src}
                     alt={`${item.client} website`}
                     loading="lazy"
-                    className="h-full w-full object-cover object-top"
+                    className={media.screens[0].ratio === "tall" ? "h-full w-full object-contain p-3" : "h-full w-full object-cover object-top"}
                   />
                 ) : (
                   <>
