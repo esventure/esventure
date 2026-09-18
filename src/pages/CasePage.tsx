@@ -69,18 +69,18 @@ const CasePage = ({ slug }: CasePageProps) => {
       <div className="min-h-screen bg-paper text-paper-foreground font-sans">
         <Navigation />
         <main>
-          <section className="container mx-auto px-4 pt-32 pb-16 md:pt-40 md:pb-24">
+          <section className="container mx-auto px-4 pb-12 pt-28 md:pb-16 md:pt-36">
             <Link to="/#work" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-plum transition-colors">
               <ArrowLeft className="h-4 w-4" />
               {t("casePage.back")}
             </Link>
-            <div className="mt-10 grid gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-end">
+            <div className="mt-8 grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-end">
               <div>
                 <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-coral">{item.label}</p>
                 <h1 className="mt-5 max-w-[12ch] font-display text-5xl font-bold leading-none tracking-normal md:text-7xl">
                   {item.title}
                 </h1>
-                <p className="mt-6 max-w-[48ch] text-lg leading-relaxed text-plum/75 md:text-xl">{item.summary}</p>
+                {item.summary && <p className="mt-5 max-w-[48ch] text-lg leading-relaxed text-plum/75">{item.summary}</p>}
               </div>
               <div className="relative aspect-[16/11] overflow-hidden rounded-[2rem] bg-muted ring-1 ring-plum/10 md:rotate-1">
                 {media?.screens[0] ? (
@@ -96,136 +96,85 @@ const CasePage = ({ slug }: CasePageProps) => {
             </div>
           </section>
 
-          <section className="bg-secondary py-16 text-secondary-foreground md:py-24">
-            <div className="container mx-auto grid gap-8 px-4 md:grid-cols-3">
+          <section className="border-y border-plum/10 bg-secondary py-7 text-secondary-foreground">
+            <div className="container mx-auto grid gap-5 px-4 sm:grid-cols-2 md:grid-cols-3">
               <div>
                 <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">{t("casePage.client")}</p>
-                <p className="mt-3 font-display text-2xl font-bold tracking-normal">{item.client}</p>
+                <p className="mt-1 font-display text-xl font-bold tracking-normal">{item.client}</p>
               </div>
               <div>
                 <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">{t("casePage.scope")}</p>
-                <p className="mt-3 font-display text-2xl font-bold tracking-normal">{item.scope}</p>
+                <p className="mt-1 font-display text-xl font-bold tracking-normal">{item.scope}</p>
               </div>
-              <div>
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">{t("casePage.character")}</p>
-                <p className="mt-3 font-display text-2xl font-bold tracking-normal">{item.character}</p>
-              </div>
+              {item.character && (
+                <div>
+                  <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">{t("casePage.character")}</p>
+                  <p className="mt-1 font-display text-xl font-bold tracking-normal">{item.character}</p>
+                </div>
+              )}
             </div>
           </section>
 
-          <section className="container mx-auto px-4 py-16 md:py-24">
-            <div className="grid gap-12 md:grid-cols-[0.8fr_1.2fr]">
-              <h2 className="font-display text-4xl font-bold leading-tight tracking-normal md:text-5xl">
-                {t("casePage.needed")}
-              </h2>
-              <p className="text-xl leading-relaxed text-plum/78">{item.needed}</p>
-            </div>
-          </section>
+          <section className="container mx-auto px-4 py-12 md:py-16">
+            <div className="mx-auto max-w-6xl border-l border-plum/20 pl-6 md:pl-10">
+              <div className="relative grid gap-5 pb-12 md:grid-cols-[0.7fr_1.3fr] md:gap-12 md:pb-16">
+                <span className="absolute -left-[2.4rem] top-0 flex h-7 w-7 items-center justify-center rounded-full bg-coral font-display text-xs font-bold text-coral-foreground md:-left-[3.35rem]">01</span>
+                <h2 className="font-display text-3xl font-bold leading-tight tracking-normal md:text-4xl">{t("casePage.needed")}</h2>
+                <p className="text-lg leading-relaxed text-plum/78">{item.needed}</p>
+              </div>
 
-          {item.brandbook && (
-            <section className="bg-secondary py-16 text-secondary-foreground md:py-24">
-              <div className="container mx-auto px-4">
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-plum/65">
-                  {t("casePage.strategyLabel")}
-                </p>
-                <div className="mt-5 grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
-                  <h2 className="max-w-[12ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-5xl">
-                    {item.brandbook.title}
-                  </h2>
-                  <div className="space-y-8">
-                    <p className="text-xl leading-relaxed text-plum/85">{item.brandbook.foundation}</p>
-                    <div className="grid gap-5 sm:grid-cols-2">
-                      <div className="border-t border-plum/25 pt-4">
-                        <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-plum/60">
-                          {t("casePage.audienceLabel")}
-                        </p>
-                        <p className="mt-3 leading-relaxed text-plum/80">{item.brandbook.audience}</p>
-                      </div>
-                      <div className="border-t border-plum/25 pt-4">
-                        <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-plum/60">
-                          {t("casePage.voiceLabel")}
-                        </p>
-                        <p className="mt-3 leading-relaxed text-plum/80">{item.brandbook.voice}</p>
+              <div className="relative grid gap-7 border-t border-plum/10 py-12 md:grid-cols-[0.7fr_1.3fr] md:gap-12 md:py-16">
+                <span className="absolute -left-[2.4rem] top-12 flex h-7 w-7 items-center justify-center rounded-full bg-primary font-display text-xs font-bold text-primary-foreground md:-left-[3.35rem] md:top-16">02</span>
+                <div>
+                  <h2 className="font-display text-3xl font-bold leading-tight tracking-normal md:text-4xl">{t("casePage.direction")}</h2>
+                  <p className="mt-4 text-base leading-relaxed text-plum/75">{item.direction}</p>
+                </div>
+                <div>
+                  <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">{t("casePage.made")}</p>
+                  <ul className="mt-4 grid gap-x-8 sm:grid-cols-2">
+                    {item.made.map((made) => (
+                      <li key={made} className="border-t border-plum/15 py-3 text-sm font-medium leading-relaxed text-plum/82">{made}</li>
+                    ))}
+                  </ul>
+                  {item.brandbook && (
+                    <div className="mt-7 border-t border-plum/15 pt-6">
+                      <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-coral">{t("casePage.strategyLabel")}</p>
+                      <h3 className="mt-3 font-display text-2xl font-bold leading-tight">{item.brandbook.title}</h3>
+                      <p className="mt-3 leading-relaxed text-plum/78">{item.brandbook.foundation}</p>
+                      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+                        <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-plum/55">{t("casePage.audienceLabel")}</p><p className="mt-2 text-sm leading-relaxed text-plum/75">{item.brandbook.audience}</p></div>
+                        <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-plum/55">{t("casePage.voiceLabel")}</p><p className="mt-2 text-sm leading-relaxed text-plum/75">{item.brandbook.voice}</p></div>
                       </div>
                     </div>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {item.brandbook.principles.map((principle) => (
-                        <p key={principle} className="border-t border-plum/25 pt-3 font-display text-xl font-bold text-plum">
-                          {principle}
-                        </p>
-                      ))}
-                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="relative border-t border-plum/10 py-12 md:py-16">
+                <span className="absolute -left-[2.4rem] top-12 flex h-7 w-7 items-center justify-center rounded-full bg-secondary font-display text-xs font-bold text-secondary-foreground ring-1 ring-plum/15 md:-left-[3.35rem] md:top-16">03</span>
+                <h2 className="font-display text-3xl font-bold leading-tight tracking-normal md:text-4xl">{t("casePage.inUseTitle")}</h2>
+                <p className="mt-3 max-w-[52ch] leading-relaxed text-plum/70">{t("casePage.inUseLead")}</p>
+                <div className="mt-7">
+                  {media ? <CaseProof media={media} client={item.client} /> : <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] bg-muted ring-1 ring-plum/10">{Artwork ? <Artwork /> : null}</div>}
+                </div>
+              </div>
+
+              <div className="relative grid gap-7 border-t border-plum/10 pt-12 md:grid-cols-[0.7fr_1.3fr] md:gap-12 md:pt-16">
+                <span className="absolute -left-[2.4rem] top-12 flex h-7 w-7 items-center justify-center rounded-full bg-coral font-display text-xs font-bold text-coral-foreground md:-left-[3.35rem] md:top-16">04</span>
+                <h2 className="font-display text-3xl font-bold leading-tight tracking-normal md:text-4xl">{t("casePage.outcome")}</h2>
+                <div>
+                  <p className="text-lg leading-relaxed text-plum/78">{item.outcome}</p>
+                  <div className="mt-7 border-t border-plum/15 pt-5">
+                    <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">{t("casePage.credits")}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-plum/70">{item.credits}</p>
                   </div>
                 </div>
               </div>
-            </section>
-          )}
-
-          <section className="border-y border-plum/10 bg-paper py-16 md:py-24">
-            <div className="container mx-auto grid gap-12 px-4 md:grid-cols-[0.8fr_1.2fr]">
-              <h2 className="font-display text-4xl font-bold leading-tight tracking-normal md:text-5xl">
-                {t("casePage.made")}
-              </h2>
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {item.made.map((made) => (
-                  <li key={made} className="rounded-2xl border border-plum/15 bg-paper p-4 text-base font-medium text-plum/82">
-                    {made}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-
-          <section className="bg-muted py-16 text-foreground md:py-24">
-            <div className="container mx-auto px-4">
-              <h2 className="font-display text-4xl font-bold leading-tight tracking-normal md:text-5xl">
-                {t("casePage.inUseTitle")}
-              </h2>
-              <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-plum/75">{t("casePage.inUseLead")}</p>
-              <div className="mt-10">
-                {media ? (
-                  <CaseProof media={media} client={item.client} />
-                ) : (
-                  <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-                    <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/10">
-                      {Artwork ? <Artwork /> : null}
-                    </div>
-                    <div className="rounded-[1.75rem] bg-paper p-6 ring-1 ring-plum/10 md:p-8">
-                      <ul className="space-y-3">
-                        {item.made.slice(0, 4).map((made) => (
-                          <li key={made} className="border-b border-plum/10 pb-3 font-display text-lg font-bold leading-snug text-plum last:border-0 last:pb-0">
-                            {made}
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="mt-6 text-sm leading-relaxed text-plum/60">{t("casePage.inUsePlaceholder")}</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </section>
-
-
-          <section className="container mx-auto px-4 py-16 md:py-24">
-            <div className="grid gap-12 md:grid-cols-2">
-              <div>
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-coral">{t("casePage.direction")}</p>
-                <p className="mt-5 text-lg leading-relaxed text-plum/78">{item.direction}</p>
-              </div>
-              <div>
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-coral">{t("casePage.outcome")}</p>
-                <p className="mt-5 text-lg leading-relaxed text-plum/78">{item.outcome}</p>
-              </div>
-            </div>
-            <div className="mt-12 rounded-[1.75rem] bg-secondary p-6 text-secondary-foreground md:p-8">
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-plum/65">{t("casePage.credits")}</p>
-              <p className="mt-4 text-lg leading-relaxed text-plum/82">{item.credits}</p>
             </div>
           </section>
 
           {next && (
-            <section className="bg-primary text-primary-foreground py-16 md:py-24">
+            <section className="bg-primary py-12 text-primary-foreground md:py-16">
               <div className="container mx-auto px-4">
                 <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-secondary">{t("casePage.next")}</p>
                 <Link to={`/work/${next.slug}`} className="mt-5 inline-flex max-w-3xl items-end gap-4 font-display text-4xl font-bold leading-tight tracking-normal text-primary-foreground hover:text-secondary md:text-6xl">

@@ -13,16 +13,16 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
   const [lead, ...rest] = media.screens;
 
   return (
-    <div className="space-y-14 md:space-y-20">
+    <div className="space-y-10 md:space-y-12">
       {(media.logo || media.palette || media.typefaces) && (
         <div>
           <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             {t("casePage.brandLabel")}
           </p>
-          <div className="mt-6 grid gap-5 md:grid-cols-3">
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
             {media.logo && (
               <figure
-                className="flex flex-col justify-between rounded-[1.5rem] p-6 ring-1 ring-plum/12"
+                className="flex flex-col justify-between rounded-[1.25rem] p-5 ring-1 ring-plum/12"
                 style={{ backgroundColor: media.logoBg ?? "#ffffff" }}
               >
                 <img src={media.logo} alt={`${client} logo`} className="h-24 w-full object-contain object-left" />
@@ -33,7 +33,7 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
             )}
 
             {media.palette && (
-              <div className="rounded-[1.5rem] bg-paper p-6 ring-1 ring-plum/12">
+              <div className="rounded-[1.25rem] bg-paper p-5 ring-1 ring-plum/12">
                 <div className="flex gap-3">
                   {media.palette.map((swatch) => (
                     <div key={swatch.hex} className="flex-1">
@@ -55,7 +55,7 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
             )}
 
             {media.typefaces && (
-              <div className="flex flex-col justify-between rounded-[1.5rem] bg-paper p-6 ring-1 ring-plum/12">
+              <div className="flex flex-col justify-between rounded-[1.25rem] bg-paper p-5 ring-1 ring-plum/12">
                 <div className="space-y-4">
                   {media.typefaces.map((face) => (
                     <div key={face.name} className="border-b border-plum/10 pb-3 last:border-0 last:pb-0">
@@ -79,10 +79,10 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
             {t("casePage.brandbookLabel")}
           </p>
           <p className="mt-3 max-w-[60ch] text-base leading-relaxed text-plum/72">{t("casePage.brandbookLead")}</p>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
             {media.brandbook.map((page) => (
               <figure key={page.src}>
-                <div className="overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12">
+                <div className="overflow-hidden rounded-[1.25rem] bg-paper ring-1 ring-plum/12">
                   <img
                     src={page.src}
                     alt={t(`casePage.captions.${page.captionKey}`)}
@@ -105,8 +105,8 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
         </p>
 
         {media.video && (
-          <figure className="mx-auto mt-6 max-w-[390px]">
-            <div className="overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12">
+          <figure className="mx-auto mt-5 max-w-[360px]">
+            <div className="overflow-hidden rounded-[1.25rem] bg-paper ring-1 ring-plum/12">
               <video
                 src={media.video.src}
                 poster={media.video.poster}
@@ -127,8 +127,8 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
         )}
 
         {lead && (
-          <figure className={cn("mt-6", lead.ratio === "tall" && "mx-auto max-w-[390px]")}>
-            <div className="overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12">
+          <figure className={cn("mt-5", lead.ratio === "tall" && "mx-auto max-w-[360px]")}>
+            <div className="overflow-hidden rounded-[1.25rem] bg-paper ring-1 ring-plum/12">
               <img src={lead.src} alt={t(`casePage.captions.${lead.captionKey}`)} loading="lazy" className="w-full" />
             </div>
             <figcaption className="mt-3 text-sm text-plum/60">{t(`casePage.captions.${lead.captionKey}`)}</figcaption>
@@ -136,13 +136,13 @@ const CaseProof = ({ media, client }: CaseProofProps) => {
         )}
 
         {rest.length > 0 && (
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
             {rest.map((screen) => (
               <figure key={screen.src}>
                 <div
                   className={cn(
-                    "overflow-hidden rounded-[1.75rem] bg-paper ring-1 ring-plum/12",
-                    screen.ratio === "tall" && "mx-auto max-w-[300px]"
+                    "overflow-hidden rounded-[1.25rem] bg-paper ring-1 ring-plum/12",
+                    screen.ratio === "tall" && "mx-auto max-w-[280px]"
                   )}
                 >
                   <img
