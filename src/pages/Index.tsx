@@ -99,6 +99,10 @@ const Index = () => {
   React.useEffect(() => analytics.initScrollTracking(), []);
   const serviceRoutes = t("servicesRoutes.items", { returnObjects: true }) as CaseServiceRoute[];
   const studioParagraphs = t("studio.paragraphs", { returnObjects: true }) as string[];
+  const studioTitleRaw = t("studio.title") as string;
+  const titleBreak = studioTitleRaw.indexOf(". ");
+  const studioTitleFirst = titleBreak === -1 ? studioTitleRaw : studioTitleRaw.slice(0, titleBreak + 1);
+  const studioTitleRest = titleBreak === -1 ? "" : studioTitleRaw.slice(titleBreak + 2);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -301,34 +305,53 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="studio" className="bg-paper text-paper-foreground py-20 md:py-32">
+          <section id="studio" className="bg-paper text-paper-foreground py-20 md:py-28">
             <div className="container mx-auto px-4">
-              <div className="grid max-w-6xl items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
-                <Reveal>
-                  <div className="relative overflow-hidden rounded-[2rem] bg-secondary">
-                    <img
-                      src={estherStudio}
-                      alt={t("studio.portraitAlt")}
-                      loading="lazy"
-                      className="aspect-[4/5] w-full object-cover grayscale"
-                    />
-                    <div className="absolute inset-0 bg-primary/15 mix-blend-multiply" aria-hidden="true" />
+              <div className="grid max-w-6xl items-start gap-12 md:grid-cols-12 md:gap-16">
+                <Reveal className="md:col-span-5">
+                  <div className="relative group">
+                    <div className="absolute -inset-3 -rotate-2 rounded-[1.25rem] bg-secondary transition-transform duration-500 group-hover:rotate-0 md:-inset-4" aria-hidden="true" />
+                    <div className="relative overflow-hidden rounded-[1rem] bg-muted shadow-xl">
+                      <img
+                        src={estherStudio}
+                        alt={t("studio.portraitAlt")}
+                        loading="lazy"
+                        className="aspect-[4/5] w-full object-cover grayscale transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                    <p className="absolute -bottom-4 right-4 rounded-[0.5rem] bg-coral px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-coral-foreground shadow-lg">
+                      {t("studio.tag")}
+                    </p>
                   </div>
                 </Reveal>
-                <Reveal delay={0.08}>
-                  <span aria-hidden="true" className="mb-5 block h-1 w-16 rounded-full bg-coral" />
-                  <Eyebrow className="text-primary mb-5">{t("studio.eyebrow")}</Eyebrow>
-                  <h2 className="max-w-[18ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
-                    {t("studio.title")}
-                  </h2>
-                  <div className="mt-6 max-w-[64ch] space-y-5 text-base leading-relaxed text-plum/80 md:text-lg">
-                    {studioParagraphs.map((p) => (
-                      <p key={p}>{p}</p>
-                    ))}
+                <Reveal delay={0.08} className="md:col-span-7">
+                  <div className="md:sticky md:top-24">
+                    <span aria-hidden="true" className="mb-5 block h-1 w-16 rounded-full bg-coral" />
+                    <Eyebrow className="text-coral mb-5">{t("studio.eyebrow")}</Eyebrow>
+                    <h2 className="max-w-[18ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
+                      {studioTitleFirst}
+                      {studioTitleRest ? <span className="text-primary"> {studioTitleRest}</span> : null}
+                    </h2>
+                    <div className="mt-8 max-w-[64ch] space-y-6 text-base leading-relaxed md:text-lg">
+                      {studioParagraphs.map((p, i) =>
+                        i === 3 ? (
+                          <p key={p} className="rounded-[1rem] bg-secondary/50 p-5 font-medium text-secondary-foreground shadow-sm">
+                            {p}
+                          </p>
+                        ) : (
+                          <p
+                            key={p}
+                            className="cursor-default border-l-2 border-transparent pl-0 text-plum/80 opacity-85 transition-all duration-300 hover:border-primary hover:pl-4 hover:text-plum hover:opacity-100"
+                          >
+                            {p}
+                          </p>
+                        )
+                      )}
+                    </div>
+                    <Button asChild className="mt-8 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 hover:-translate-y-0.5 hover:bg-primary/90">
+                      <Link to="/start-a-project">{t("studio.link")}</Link>
+                    </Button>
                   </div>
-                   <Button asChild className="mt-7 rounded-full bg-primary text-primary-foreground hover:bg-coral hover:text-coral-foreground">
-                     <Link to="/start-a-project">{t("studio.link")}</Link>
-                   </Button>
                 </Reveal>
               </div>
             </div>
