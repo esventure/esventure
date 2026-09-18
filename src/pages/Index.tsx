@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import CaseGrid from "@/components/work/CaseGrid";
-import type { CaseServiceRoute, CaseStory } from "@/components/work/caseContent";
+import type { CaseServiceRoute } from "@/components/work/caseContent";
 import { caseMedia } from "@/components/work/caseMedia";
 import { analytics } from "@/lib/analytics";
 import estherYellow from "@/assets/esther-yellow.jpg";
@@ -64,30 +64,15 @@ const Eyebrow = ({ children, className = "" }: { children: React.ReactNode; clas
 );
 
 type HeroPortraitProps = {
-  frameCase?: { slug: string; client: string; cardCopy?: string; title: string; scope: string };
-  frameScreen?: { src: string; ratio: "wide" | "tall" };
-  frameVideo?: { src: string; poster?: string };
   reduce: boolean | null;
   t: (key: string) => string;
   className: string;
   boxClassName: string;
   imgClassName: string;
-  frameClassName: string;
   from?: { opacity: number; x?: number; y?: number };
 };
 
-const HeroPortrait = ({
-  frameCase,
-  frameScreen,
-  frameVideo,
-  reduce,
-  t,
-  className,
-  boxClassName,
-  imgClassName,
-  frameClassName,
-  from,
-}: HeroPortraitProps) => (
+const HeroPortrait = ({ reduce, t, className, boxClassName, imgClassName, from }: HeroPortraitProps) => (
   <motion.div
     initial={reduce ? false : from ?? { opacity: 0, y: 24 }}
     animate={{ opacity: 1, x: 0, y: 0 }}
@@ -105,69 +90,15 @@ const HeroPortrait = ({
         className={imgClassName}
       />
     </div>
-    {frameCase ? (
-      <Link
-        to={`/work/${frameCase.slug}`}
-        aria-label={`${frameCase.client}: ${frameCase.cardCopy ?? frameCase.title}`}
-        className={`group ${frameClassName} overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 transition-transform duration-300 hover:rotate-[-3deg] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary`}
-      >
-        <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-          {frameVideo ? (
-            <motion.video
-              key={frameVideo.src}
-              src={frameVideo.src}
-              poster={frameVideo.poster}
-              autoPlay={!reduce}
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.45 }}
-              className="h-full w-full bg-paper object-contain p-2"
-            />
-          ) : frameScreen ? (
-            <motion.img
-              key={frameScreen.src}
-              src={frameScreen.src}
-              alt=""
-              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.45 }}
-              className={`h-full w-full ${frameScreen.ratio === "tall" ? "object-contain bg-paper p-2" : "object-cover object-top"}`}
-            />
-          ) : null}
-        </div>
-        <div className="relative z-10 bg-paper p-4">
-          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
-            {frameCase.client}
-          </p>
-          <p className="mt-1 text-sm font-semibold leading-snug text-plum/82">{frameCase.scope}</p>
-        </div>
-      </Link>
-    ) : null}
   </motion.div>
 );
 
 const Index = () => {
   const { t } = useTranslation();
   const reduce = useReducedMotion();
-  const [activeFrame, setActiveFrame] = React.useState(0);
-
   React.useEffect(() => analytics.initScrollTracking(), []);
-  React.useEffect(() => {
-    if (reduce) return;
-    const timer = window.setInterval(() => setActiveFrame((current) => (current + 1) % 3), 3200);
-    return () => window.clearInterval(timer);
-  }, [reduce]);
-
-  const workItems = t("work.items", { returnObjects: true }) as CaseStory[];
   const serviceRoutes = t("servicesRoutes.items", { returnObjects: true }) as CaseServiceRoute[];
   const studioParagraphs = t("studio.paragraphs", { returnObjects: true }) as string[];
-  const frameCase = workItems[activeFrame];
-  const frameScreen = frameCase ? caseMedia[frameCase.slug]?.screens[0] : undefined;
-  const frameVideo = frameCase ? caseMedia[frameCase.slug]?.video : undefined;
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -272,30 +203,22 @@ const Index = () => {
                 </div>
 
                 <HeroPortrait
-                  frameCase={frameCase}
-                  frameScreen={frameScreen}
-                  frameVideo={frameVideo}
                   reduce={reduce}
                   t={t}
                   className="relative mx-auto w-full max-w-[32rem] md:hidden"
                   boxClassName="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
                   imgClassName="aspect-[4/5] w-full object-cover object-top"
-                  frameClassName="absolute -bottom-8 -left-4 w-56 rotate-[-5deg]"
                   from={{ opacity: 0, y: 24 }}
                 />
               </div>
             </div>
 
             <HeroPortrait
-              frameCase={frameCase}
-              frameScreen={frameScreen}
-              frameVideo={frameVideo}
               reduce={reduce}
               t={t}
               className="absolute bottom-0 right-[-4rem] top-24 hidden w-[44%] max-w-[42rem] md:block lg:right-[-6rem] lg:w-[40%]"
               boxClassName="h-full overflow-hidden rounded-l-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
               imgClassName="h-full w-full object-cover object-top"
-              frameClassName="absolute -left-12 bottom-20 w-56 rotate-[-5deg] lg:-left-16 lg:w-72"
               from={{ opacity: 0, x: 64 }}
             />
           </section>
