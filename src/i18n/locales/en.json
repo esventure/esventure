@@ -12,12 +12,13 @@
   },
   "hero": {
     "eyebrow": "CREATIVE DIGITAL STUDIO FOR ENTREPRENEURS",
-    "titleStart": "From idea to something",
-    "titleHighlight": "unmistakably yours.",
-    "lead": "I shape the story and translate it into a brand, website or prototype that feels right and is ready to put into the world.",
-    "ctaPrimary": "See selected work",
+    "titleStart": "No two projects look alike.",
+    "titleHighlight": "",
+    "lead": "I make brands, websites and prototypes for entrepreneurs. Every project starts from what makes that business different from the rest.",
+    "ctaPrimary": "See the work",
     "ctaSecondary": "Start a project",
-    "ownership": "Led by Esther. Built directly with you, with trusted specialists joining when the work calls for them."
+    "ownership": "You work with me directly. On bigger projects I bring in a specialist I have worked with for years.",
+    "portraitAlt": "Me, founder of Es Venture"
   },
   "whenToCallMe": {
     "title": "When to Call Me",
@@ -129,7 +130,7 @@
     "paragraphs": [
       "As a digital project manager and delivery partner, I'm the person you call when you have a digital ambition that needs to become real.",
       "Moving quickly to understand your unique challenges comes naturally to me. Leading a strategic whiteboard session with your management team or running a technical review with your developers, both feel equally at home. My core strength is acting as the connective tissue across disciplines - bridging the gap between IT, creative, and business, and making sure complex work actually crosses the finish line.",
-      "Straightforward solutions and tangible action win over lengthy reports, every time. When I work with you, you will always know where things stand - and you will always get a partner who takes ownership of the work."
+      "Straightforward answers and tangible action win over lengthy reports, every time. When I work with you, you will always know where things stand - and you will always get a partner who takes ownership of the work."
     ],
     "cta": "Let's talk"
   },
@@ -232,8 +233,8 @@
   "work": {
     "eyebrow": "SELECTED WORK",
     "title": "Different people. Different ideas. Nothing off the shelf.",
-    "lead": "Brands, websites and prototypes shaped around what each project needed to become.",
-    "cue": "Read the case",
+    "lead": "Three projects that look nothing like each other. That is the point.",
+    "cue": "See the project",
     "archiveTitle": "More things made clear, useful and real",
     "clientLabel": "Client",
     "scopeLabel": "Scope",
@@ -244,10 +245,10 @@
         "label": "01 / BRAND + WEBSITE",
         "title": "A travel companion, not another tour guide.",
         "client": "Dennis Gerrits",
-        "scope": "Strategy, identity, website and brand system",
-        "character": "Different, calm, trusted and human.",
+        "scope": "Brand + website",
+        "character": "",
         "modalHeading": "Brand and website direction",
-        "summary": "A personal brand built around the feeling of spending a day with someone who knows the city, not buying a standard tour.",
+        "summary": "",
         "needed": "Dennis writes, answers and shows up himself. The brand needed to make that personal trust visible, while giving culturally curious travelers the context and calm they look for before choosing a day together.",
         "made": [
           "Positioning and core story",
@@ -272,7 +273,8 @@
             "Be honest about limits"
           ],
           "voice": "Calm, personal and direct. Always 'I', written to one person, with concrete language and one clear next step."
-        }
+        },
+        "cardCopy": "Warm, worldly and personal. More local friend than tour operator."
       },
       {
         "slug": "studio-ingrid-de-reuver",
@@ -280,10 +282,10 @@
         "label": "02 / BRAND + WEBSITE",
         "title": "A bold, candid digital home for a photographer who puts people at ease.",
         "client": "Studio Ingrid de Reuver",
-        "scope": "Identity and website",
-        "character": "Editorial, playful and direct - just like the person behind the camera.",
+        "scope": "Brand + website",
+        "character": "",
         "modalHeading": "Brand and website direction",
-        "summary": "Ingrid needed to feel warm and personal without becoming soft, beige or predictable.",
+        "summary": "",
         "needed": "The site needed to carry Ingrid’s warmth, humour and directness while still helping visitors quickly understand her services and booking route.",
         "made": [
           "Brand and web direction",
@@ -294,7 +296,8 @@
         ],
         "direction": "Candid portraits, editorial typography and vivid action moments make the site feel personal, useful and unmistakably Ingrid.",
         "outcome": "The finished direction gives Ingrid a digital home that connects her story, work, practical information and booking path in one place.",
-        "credits": "Role and collaborator credits still need final confirmation before detailed public attribution."
+        "credits": "Role and collaborator credits still need final confirmation before detailed public attribution.",
+        "cardCopy": "Editorial, direct and bright pink. Exactly like the woman behind the camera."
       },
       {
         "slug": "hap",
@@ -302,10 +305,10 @@
         "label": "03 / UX + APP PROTOTYPE",
         "title": "Turning a recipe idea into something people could see, understand and try.",
         "client": "HAP",
-        "scope": "UX and clickable prototype",
-        "character": "From loose idea to a first experience people could test.",
+        "scope": "UX + prototype",
+        "character": "",
         "modalHeading": "UX design and prototype",
-        "summary": "The recipe-app idea needed a clear first experience before full development made sense.",
+        "summary": "",
         "needed": "The idea needed one understandable journey, not a complete future product. The prototype had to make the core experience visible and testable.",
         "made": [
           "Sharpened concept and target user",
@@ -316,7 +319,8 @@
         ],
         "direction": "The work focused on the first useful loop: what someone sees, chooses, follows and learns from in the recipe experience.",
         "outcome": "The prototype turned discussion into something concrete enough to show, try and improve before a larger investment.",
-        "credits": "Role and collaborator credits still need final confirmation before detailed public attribution."
+        "credits": "Role and collaborator credits still need final confirmation before detailed public attribution.",
+        "cardCopy": "From a loose idea to a clickable version you could actually put in front of people."
       },
       {
         "slug": "rainforest-alliance",
@@ -344,12 +348,13 @@
   },
   "studio": {
     "eyebrow": "THE STUDIO",
-    "title": "Small by design. Serious about the work.",
+    "title": "Small on purpose. Serious about the work.",
     "paragraphs": [
-      "You work directly with me from the first conversation to launch. I shape the direction, make the important design decisions and stay close to the details that make the result feel right.",
-      "When the work needs another specialist, I bring in someone I trust. You still have one clear point of contact and a project that feels joined up."
+      "From the first conversation to launch, you work with me. I set the direction, make the decisions that matter and stay close to the details.",
+      "If a project needs a photographer, developer or copywriter, I bring in someone I have known for years. You keep one point of contact and no relay race of agencies."
     ],
-    "link": "Meet Esther"
+    "link": "Tell me what you want to make",
+    "portraitAlt": "Me at work"
   },
   "start": {
     "eyebrow": "HOW I START",
@@ -373,14 +378,14 @@
     ]
   },
   "trust": {
-    "eyebrow": "EXPERIENCE ALSO INCLUDES WORK WITH",
-    "copy": "Large-company experience sits in the background. The main proof is the work itself: specific, useful and made around the people behind it."
+    "eyebrow": "PREVIOUSLY WORKED WITH TEAMS AT",
+    "copy": "From founders starting out to large organisations."
   },
   "finalCta": {
-    "title": "Have something in mind?",
-    "copy": "Tell me what you want to make. I will help you find the clearest way to bring it to life.",
-    "primary": "Tell me what you want to make",
-    "secondary": "Book a 20-minute conversation"
+    "title": "Got something in mind?",
+    "copy": "Tell me what you want to make. I will tell you the clearest route to get there.",
+    "primary": "Start a project",
+    "secondary": "Book a 20-minute call"
   },
   "startPage": {
     "eyebrow": "START A PROJECT",
@@ -415,69 +420,79 @@
       "lastName": "Last name",
       "email": "Email"
     },
-    "submit": "Tell Esther",
+    "submit": "Tell me",
     "submitting": "Sending…",
-    "success": "Thanks - Esther will take a look and get back to you soon.",
+    "success": "Thanks. I will take a look and get back to you soon.",
     "error": "Something went wrong. Please try again.",
     "back": "Back to home"
   },
   "servicesRoutes": {
-    "eyebrow": "SERVICES",
-    "title": "Three useful ways to start.",
-    "situationLabel": "Client situation",
+    "eyebrow": "WHAT I MAKE",
+    "title": "Three ways to start with me.",
+    "situationLabel": "Situation",
     "resultLabel": "What I do",
     "cta": "Tell me about this",
     "items": [
       {
-        "title": "I need a brand",
-        "situation": "You have a good business or idea, but you do not yet know how to explain it or what it should look like.",
-        "result": "I clarify what you offer, what people should remember, and how the business should feel. I turn that into a visual identity you can use consistently.",
+        "title": "I need a brand.",
+        "situation": "You have a good business or a good idea, but you do not yet know how to explain it or what it should look like.",
+        "result": "We work out what you offer, what people should remember, and how it should feel. I turn that into an identity you can keep using for years.",
         "deliverables": [
-          "Positioning and core story",
-          "Visual direction or moodboard",
-          "Logo or wordmark",
-          "Colour and typography system",
-          "Starter guide and essential applications"
+          "positioning and core story",
+          "visual direction",
+          "logo or wordmark",
+          "colour and typography",
+          "the applications you need right away"
         ],
-        "example": "Dennis Gerrits needed to feel like a knowledgeable Amsterdam friend, not a conventional tour operator."
+        "example": "Dennis Gerrits did not want to be a tour operator, but the Amsterdammer who shows you the city. That became an illustrated portrait mark, editorial typography and a palette of deep green, bordeaux and orange."
       },
       {
-        "title": "I need a website",
-        "situation": "You need a website, or your current one no longer shows the quality or personality of the business.",
-        "result": "I decide what visitors need to understand, structure the pages, create the visual design and build a responsive website that is ready to use.",
+        "title": "I need a website.",
+        "situation": "You do not have a site yet, or the one you have does not show how good the work is.",
+        "result": "We decide what a visitor needs to understand. I make the structure, the design and the site itself. Ready to use, at any size.",
         "deliverables": [
-          "Website strategy and page structure",
-          "Wireframes and content guidance",
-          "Visual web design",
-          "Responsive development",
-          "Contact, booking or portfolio functionality"
+          "page structure",
+          "wireframes",
+          "help with the content",
+          "visual design",
+          "the built site",
+          "contact or booking functionality",
+          "launch support"
         ],
-        "example": "Studio Ingrid de Reuver needed a site that felt warm and personal without looking like a predictable photography template."
+        "example": "Studio Ingrid de Reuver had to feel warm and personal without the soft, beige photography template. That became an editorial serif, candid portraits and bright pink buttons, with a clear route from her story to her services and bookings."
       },
       {
-        "title": "I want to test an idea",
-        "situation": "You have an idea for an app, digital service or new feature, but you do not want full development before you know whether it works.",
-        "result": "I choose the most important user journey, work out how the idea should function and create a clickable prototype people can understand and try.",
+        "title": "I want to test an idea.",
+        "situation": "You have an idea for an app or a service, and you do not want to pay for development before you know whether it works.",
+        "result": "We pick the most important route someone takes through your product, work out how it should behave, and make a clickable prototype people can actually try.",
         "deliverables": [
-          "Sharpened concept and target user",
-          "Core user journey",
-          "Wireframes",
-          "Visual interface direction",
-          "Clickable prototype",
-          "Recommendation for the next version"
+          "a sharper concept",
+          "the core user",
+          "the main user flow",
+          "wireframes",
+          "a visual direction",
+          "a clickable prototype",
+          "a recommendation for the next version"
         ],
-        "example": "For HAP, the recipe-app idea became a concrete flow and clickable first version."
+        "example": "HAP was a recipe app idea. Instead of discussing the whole product, we made the first version clickable so you could see where people got stuck."
       }
-    ]
+    ],
+    "approachLabel": "Approach",
+    "deliverablesLabel": "You get"
   },
   "usp": {
     "eyebrow": "HOW I THINK",
-    "title": "First, I look for what needs to come through.",
+    "title": "What it came down to",
     "copy": "The right visual direction usually starts before the colours and type. I look for the details, tone and point of view that make the business recognizable. That becomes the thread through the identity, the website and every interaction.",
     "steps": [
       "Listen for the useful detail, not the loudest claim.",
       "Turn the conversation into clear choices.",
       "Make the thing tangible enough to show, test or launch."
+    ],
+    "paragraphs": [
+      "The right direction does not start with colour or typography. First I look for the detail that makes a business recognisable.",
+      "For Dennis that was \"a friend who knows the city, not a guide\". For Ingrid it was that people feel at ease with her within two minutes.",
+      "That one thing becomes the thread through the brand, the site and every button."
     ]
   },
   "contactChoices": {

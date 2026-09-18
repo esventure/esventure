@@ -70,12 +70,16 @@ const CaseGrid = () => {
                 {item.label}
               </p>
               <h3 className="mt-4 max-w-[24ch] font-display text-3xl font-bold leading-tight tracking-normal md:text-5xl">
-                {item.title}
+                {item.cardCopy ?? item.title}
               </h3>
-              <p className="mt-5 max-w-[42ch] text-base leading-relaxed text-plum-foreground/70 md:text-lg">{item.summary}</p>
-              <p className="mt-5 max-w-[38ch] font-display text-xl font-semibold leading-snug text-plum-foreground">
-                {item.character}
-              </p>
+              {item.summary ? (
+                <p className="mt-5 max-w-[42ch] text-base leading-relaxed text-plum-foreground/70 md:text-lg">{item.summary}</p>
+              ) : null}
+              {item.character ? (
+                <p className="mt-5 max-w-[38ch] font-display text-xl font-semibold leading-snug text-plum-foreground">
+                  {item.character}
+                </p>
+              ) : null}
               <div className={cn("mt-7 border-t pt-5", accent.rule)}>
                 <p className="text-sm text-plum-foreground/60">
                   {item.client} <span className="text-plum-foreground/35">/</span> {item.scope}

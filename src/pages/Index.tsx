@@ -78,7 +78,6 @@ const Index = () => {
   const workItems = t("work.items", { returnObjects: true }) as CaseStory[];
   const serviceRoutes = t("servicesRoutes.items", { returnObjects: true }) as CaseServiceRoute[];
   const studioParagraphs = t("studio.paragraphs", { returnObjects: true }) as string[];
-  const contactChoices = t("contactChoices.items", { returnObjects: true }) as Array<{ title: string; copy: string }>;
   const frameCase = workItems[activeFrame];
   const frameScreen = frameCase ? caseMedia[frameCase.slug]?.screens[0] : undefined;
 
@@ -96,26 +95,23 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>Es Venture - Creative digital studio for entrepreneurs</title>
+        <title>{`${t("hero.titleStart")} - Es Venture`}</title>
         <meta
           name="description"
-          content="Es Venture helps entrepreneurs turn an idea into a clear brand, a distinctive website or a useful prototype, shaped around what makes the business worth noticing."
+          content={t("hero.lead")}
         />
         <link rel="canonical" href="https://esventure.nl/" />
         <link rel="alternate" hrefLang="nl" href="https://esventure.nl/" />
         <link rel="alternate" hrefLang="en" href="https://esventure.nl/?lang=en" />
         <link rel="alternate" hrefLang="x-default" href="https://esventure.nl/" />
-        <meta property="og:title" content="Es Venture - Creative digital studio for entrepreneurs" />
-        <meta
-          property="og:description"
-          content="Brands, websites and prototypes for entrepreneurs, made to feel specific and ready to show, test or launch."
-        />
+        <meta property="og:title" content={`${t("hero.titleStart")} - Es Venture`} />
+        <meta property="og:description" content={t("hero.lead")} />
         <meta property="og:url" content="https://esventure.nl/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://esventure.nl/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Es Venture - From idea to something unmistakably yours." />
+        <meta property="og:image:alt" content={`${t("hero.titleStart")} - Es Venture`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://esventure.nl/og-image.jpg" />
 
@@ -125,8 +121,7 @@ const Index = () => {
             "@type": "ProfessionalService",
             name: "Es Venture",
             url: "https://esventure.nl",
-            description:
-              "Creative digital studio for entrepreneurs. Es Venture creates brands, websites and prototypes shaped around what makes each business worth noticing.",
+              description: t("hero.lead"),
             founder: { "@type": "Person", name: "Esther Woerdman" },
             sameAs: ["https://www.linkedin.com/in/estherwoerdman/"],
             address: { "@type": "PostalAddress", addressCountry: "NL" },
@@ -147,7 +142,8 @@ const Index = () => {
                   </Reveal>
                   <Reveal delay={0.05}>
                     <h1 className="max-w-[11ch] font-display text-5xl font-bold leading-none tracking-normal md:text-7xl lg:text-8xl">
-                      {t("hero.titleStart")} <span className="text-secondary">{t("hero.titleHighlight")}</span>
+                      {t("hero.titleStart")}
+                      {t("hero.titleHighlight") ? <span className="text-secondary"> {t("hero.titleHighlight")}</span> : null}
                     </h1>
                   </Reveal>
                   <Reveal delay={0.1}>
@@ -197,7 +193,7 @@ const Index = () => {
                     <div className="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25">
                       <img
                         src={estherYellow}
-                        alt="Esther Woerdman, founder of Es Venture"
+                        alt={t("hero.portraitAlt")}
                         width={900}
                         height={1200}
                         loading="eager"
@@ -208,7 +204,7 @@ const Index = () => {
                     {frameCase ? (
                       <Link
                         to={`/work/${frameCase.slug}`}
-                        aria-label={`${frameCase.client}: ${frameCase.title}`}
+                        aria-label={`${frameCase.client}: ${frameCase.cardCopy ?? frameCase.title}`}
                         className="group absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 transition-transform duration-300 hover:rotate-[-3deg] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary md:-left-12 md:w-72"
                       >
                         <div className="relative aspect-[4/3] overflow-hidden bg-muted">
@@ -276,8 +272,9 @@ const Index = () => {
                         <h3 className="mt-8 font-display text-3xl font-bold leading-tight tracking-normal">{route.title}</h3>
                         <p className="mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-primary">{t("servicesRoutes.situationLabel")}</p>
                         <p className="mt-2 text-base leading-relaxed text-plum/74">{route.situation}</p>
-                        <p className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-primary">{t("servicesRoutes.resultLabel")}</p>
+                        <p className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-primary">{t("servicesRoutes.approachLabel")}</p>
                         <p className="mt-2 text-base leading-relaxed text-plum/82">{route.result}</p>
+                        <p className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-primary">{t("servicesRoutes.deliverablesLabel")}</p>
                         <ul className="mt-6 space-y-2 border-t border-plum/12 pt-5">
                           {route.deliverables.map((deliverable) => (
                             <li key={deliverable} className="text-sm leading-relaxed text-plum/72">
@@ -302,19 +299,16 @@ const Index = () => {
           <section id="approach" className="bg-secondary text-secondary-foreground py-20 md:py-32">
             <div className="container mx-auto grid gap-10 px-4 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
               <Reveal>
-                <Eyebrow className="text-plum/70 mb-5">{t("usp.eyebrow")}</Eyebrow>
                 <h2 className="max-w-[14ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
                   {t("usp.title")}
                 </h2>
               </Reveal>
               <Reveal delay={0.08}>
                 <div className="border-t border-plum/25 pt-7">
-                  <p className="text-xl leading-relaxed text-plum/85 md:text-2xl">{t("usp.copy")}</p>
                   <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                    {(t("usp.steps", { returnObjects: true }) as string[]).map((step, i) => (
-                      <div key={step} className="rounded-2xl border border-plum/20 bg-paper p-5">
-                        <p className="font-display text-3xl font-bold text-primary">0{i + 1}</p>
-                        <p className="mt-3 text-sm leading-relaxed text-plum/80">{step}</p>
+                    {(t("usp.paragraphs", { returnObjects: true }) as string[]).map((paragraph) => (
+                      <div key={paragraph} className="rounded-2xl border border-plum/20 bg-paper p-5">
+                        <p className="text-sm leading-relaxed text-plum/80">{paragraph}</p>
                       </div>
                     ))}
                   </div>
@@ -331,7 +325,7 @@ const Index = () => {
                   <div className="relative overflow-hidden rounded-[2rem] bg-secondary">
                     <img
                       src={estherBw}
-                      alt="Esther Woerdman at work"
+                      alt={t("studio.portraitAlt")}
                       loading="lazy"
                       className="aspect-[4/5] w-full object-cover grayscale"
                     />
@@ -349,6 +343,9 @@ const Index = () => {
                       <p key={p}>{p}</p>
                     ))}
                   </div>
+                   <Button asChild className="mt-7 rounded-full bg-primary text-primary-foreground hover:bg-coral hover:text-coral-foreground">
+                     <Link to="/start-a-project">{t("studio.link")}</Link>
+                   </Button>
                 </Reveal>
               </div>
             </div>
@@ -382,23 +379,7 @@ const Index = () => {
 
           <section id="final-cta" className="bg-coral py-20 text-coral-foreground md:py-32">
             <div className="container mx-auto px-4">
-              <Reveal>
-                <Eyebrow className="text-plum/70 mb-5">{t("contactChoices.eyebrow")}</Eyebrow>
-                <div className="grid gap-4 md:grid-cols-3">
-                  {contactChoices.map((choice, i) => (
-                    <Link
-                      key={choice.title}
-                      to={`/start-a-project?stage=${routeParams[i] ?? "brand"}`}
-                      className="group rounded-[1.5rem] border border-plum/20 bg-paper p-5 text-paper-foreground transition-colors hover:border-primary"
-                    >
-                      <p className="font-display text-2xl font-bold tracking-normal">{choice.title}</p>
-                      <p className="mt-2 text-sm leading-relaxed text-plum/70">{choice.copy}</p>
-                    </Link>
-                  ))}
-                </div>
-              </Reveal>
-
-              <div className="mt-16 max-w-4xl">
+              <div className="max-w-4xl">
                 <Reveal>
                   <h2 className="font-display text-5xl font-bold leading-none tracking-normal md:text-7xl">
                     {t("finalCta.title")}

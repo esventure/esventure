@@ -11,6 +11,7 @@ export interface CaseStory {
   accent: "secondary" | "coral" | "lime" | "primary";
   label: string;
   title: string;
+  cardCopy?: string;
   client: string;
   scope: string;
   character: string;

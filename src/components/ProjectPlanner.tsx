@@ -63,7 +63,7 @@ const HANDOFF_PLACEHOLDERS_BY_LANG: Record<string, string[]> = {
     "Bouw een prototype dat ik kan testen en pitchen.",
     "Zoek uit wat er kapot is in ons proces en fix het.",
     "Coördineer deze launch en houd iedereen op één lijn.",
-    "Maak een heldere roadmap van deze chaos aan ideeën.",
+    "Maak een duidelijke roadmap van deze chaos aan ideeën.",
     "Breng dit project over de finish.",
     "Help me bepalen wat prioriteit heeft en hoe we het uitvoeren.",
   ],

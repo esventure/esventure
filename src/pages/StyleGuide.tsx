@@ -247,7 +247,7 @@ const StyleGuide = () => {
               <ul className="space-y-2 text-foreground/80 text-sm">
                 <li>Direct en persoonlijk - "jij/je" taalgebruik</li>
                 <li>Energiek en actiegericht</li>
-                <li>Helder, zelfverzekerd, no-nonsense</li>
+                <li>Duidelijk, zelfverzekerd, no-nonsense</li>
                 <li>Menselijk en benaderbaar</li>
                 <li>"Your project's personal caffeine shot"</li>
               </ul>
