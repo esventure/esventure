@@ -53,10 +53,10 @@ const StartProject = () => {
 
     const summary = [
       `${t("startPage.fields.goal")}\n${form.goal.trim()}`,
-      `${t("startPage.fields.stage")} ${form.stage}`,
+      `${t("startPage.fields.stage")} ${selectedStage}`,
       form.useful.trim() ? `${t("startPage.fields.useful")}\n${form.useful.trim()}` : null,
-      `${t("startPage.fields.timing")} ${form.timing}`,
-      `${t("startPage.fields.budget")} ${form.budget}`,
+      `${t("startPage.fields.timing")} ${selectedTiming}`,
+      `${t("startPage.fields.budget")} ${selectedBudget}`,
     ]
       .filter(Boolean)
       .join("\n\n")
