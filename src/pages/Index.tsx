@@ -96,12 +96,9 @@ const HeroPortrait = ({ reduce, t, className, boxClassName, imgClassName, from }
 const Index = () => {
   const { t } = useTranslation();
   const reduce = useReducedMotion();
-  const workItems = t("work.items", { returnObjects: true }) as CaseStory[];
+  React.useEffect(() => analytics.initScrollTracking(), []);
   const serviceRoutes = t("servicesRoutes.items", { returnObjects: true }) as CaseServiceRoute[];
   const studioParagraphs = t("studio.paragraphs", { returnObjects: true }) as string[];
-  const frameCase = workItems[activeFrame];
-  const frameScreen = frameCase ? caseMedia[frameCase.slug]?.screens[0] : undefined;
-  const frameVideo = frameCase ? caseMedia[frameCase.slug]?.video : undefined;
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
