@@ -22,7 +22,7 @@ interface ZoneStyle {
 
 const zoneStyles: Record<NavZone, ZoneStyle> = {
   hero: {
-    bg: "bg-transparent",
+    bg: "bg-primary/70 backdrop-blur-md",
     text: "text-primary-foreground/85",
     textHover: "hover:text-secondary",
     logoInvert: true,
