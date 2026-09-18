@@ -121,8 +121,7 @@ const Index = () => {
             "@type": "ProfessionalService",
             name: "Es Venture",
             url: "https://esventure.nl",
-            description:
-              "Creative digital studio for entrepreneurs. Es Venture creates brands, websites and prototypes shaped around what makes each business worth noticing.",
+              description: t("hero.lead"),
             founder: { "@type": "Person", name: "Esther Woerdman" },
             sameAs: ["https://www.linkedin.com/in/estherwoerdman/"],
             address: { "@type": "PostalAddress", addressCountry: "NL" },
@@ -143,7 +142,8 @@ const Index = () => {
                   </Reveal>
                   <Reveal delay={0.05}>
                     <h1 className="max-w-[11ch] font-display text-5xl font-bold leading-none tracking-normal md:text-7xl lg:text-8xl">
-                      {t("hero.titleStart")} <span className="text-secondary">{t("hero.titleHighlight")}</span>
+                      {t("hero.titleStart")}
+                      {t("hero.titleHighlight") ? <span className="text-secondary"> {t("hero.titleHighlight")}</span> : null}
                     </h1>
                   </Reveal>
                   <Reveal delay={0.1}>

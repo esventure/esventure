@@ -92,7 +92,7 @@ const StartProject = () => {
         <title>Start a project - Es Venture</title>
         <meta
           name="description"
-          content="Tell Es Venture what you are making. A few notes are enough and Esther comes back with the best next step."
+          content="Tell me what you are making. A few notes are enough and I will come back with the best next step."
         />
         <link rel="canonical" href="https://esventure.nl/start-a-project" />
         <meta property="og:title" content="Start a project - Es Venture" />
