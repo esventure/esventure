@@ -82,7 +82,6 @@ const trackedSections: Array<{ id: string; zone: NavZone }> = [
   { id: "hero", zone: "hero" },
   { id: "work", zone: "ink" },
   { id: "services", zone: "paper" },
-  { id: "approach", zone: "yellow" },
   { id: "studio", zone: "paper" },
   { id: "trust", zone: "paper" },
   { id: "final-cta", zone: "orange" },
