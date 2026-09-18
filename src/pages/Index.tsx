@@ -34,6 +34,7 @@ const clients = [
 ];
 
 const routeParams = ["brand", "website", "prototype"];
+const routeCaseSlugs = ["dennis-gerrits", "studio-ingrid-de-reuver", "hap"];
 
 const Reveal = ({
   children,
