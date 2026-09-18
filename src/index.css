@@ -8,59 +8,59 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 38 100% 97%;
-    --foreground: 276 58% 15%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
-    --card-foreground: 276 58% 15%;
+    --card-foreground: 0 0% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 276 58% 15%;
+    --popover-foreground: 0 0% 7%;
 
     --primary: 269 100% 62%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 51 90% 65%;
-    --secondary-foreground: 276 58% 15%;
+    --secondary-foreground: 0 0% 7%;
 
-    --muted: 38 40% 93%;
-    --muted-foreground: 276 12% 38%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 38%;
 
-    --accent: 263 100% 95%;
-    --accent-foreground: 276 58% 15%;
+    --accent: 0 0% 95%;
+    --accent-foreground: 0 0% 7%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 276 14% 86%;
-    --input: 276 14% 86%;
+    --border: 0 0% 84%;
+    --input: 0 0% 84%;
     --ring: 269 100% 62%;
 
     --radius: 1rem;
 
     /* Colour rhythm zones */
-    --plum: 283 64% 21%;
-    --plum-foreground: 38 100% 97%;
-    --paper: 38 100% 97%;
-    --paper-foreground: 283 64% 21%;
-    --lilac: 263 100% 95%;
-    --lilac-foreground: 283 64% 21%;
+    --plum: 0 0% 7%;
+    --plum-foreground: 0 0% 100%;
+    --paper: 0 0% 100%;
+    --paper-foreground: 0 0% 7%;
+    --lilac: 0 0% 95%;
+    --lilac-foreground: 0 0% 7%;
 
     /* High-energy case palette */
     --coral: 11 100% 61%;
-    --coral-foreground: 38 100% 97%;
-    --lime: 72 100% 62%;
-    --lime-foreground: 283 64% 21%;
+    --coral-foreground: 0 0% 7%;
+    --lime: 51 90% 65%;
+    --lime-foreground: 0 0% 7%;
 
     /* Legacy aliases (kept for the style guide) */
-    --charcoal: 276 58% 15%;
-    --charcoal-foreground: 38 100% 97%;
-    --surface-warm: 38 100% 97%;
-    --surface-warm-foreground: 276 58% 15%;
-    --anchor: 276 58% 15%;
-    --anchor-foreground: 38 100% 97%;
+    --charcoal: 0 0% 7%;
+    --charcoal-foreground: 0 0% 100%;
+    --surface-warm: 0 0% 100%;
+    --surface-warm-foreground: 0 0% 7%;
+    --anchor: 0 0% 7%;
+    --anchor-foreground: 0 0% 100%;
     --section-yellow: 51 90% 65%;
-    --section-yellow-foreground: 276 58% 15%;
+    --section-yellow-foreground: 0 0% 7%;
 
 
     --sidebar-background: 0 0% 98%;

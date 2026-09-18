@@ -8,7 +8,7 @@ import { analytics } from "@/lib/analytics";
 import { useTranslation } from "react-i18next";
 import LanguageToggle from "@/components/LanguageToggle";
 
-type NavZone = "hero" | "paper" | "plum" | "purple" | "yellow";
+type NavZone = "hero" | "paper" | "ink" | "purple" | "yellow" | "orange";
 
 interface ZoneStyle {
   bg: string;
@@ -40,7 +40,7 @@ const zoneStyles: Record<NavZone, ZoneStyle> = {
     mobileBg: "bg-paper/98",
     langVariant: "dark",
   },
-  plum: {
+  ink: {
     bg: "bg-plum/95 backdrop-blur-md",
     text: "text-plum-foreground/80",
     textHover: "hover:text-secondary",
@@ -67,17 +67,26 @@ const zoneStyles: Record<NavZone, ZoneStyle> = {
     mobileBg: "bg-secondary/98",
     langVariant: "dark",
   },
+  orange: {
+    bg: "bg-coral/95 backdrop-blur-md",
+    text: "text-coral-foreground/85",
+    textHover: "hover:text-primary",
+    logoInvert: false,
+    button: "bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground border-transparent",
+    mobileBg: "bg-coral/98",
+    langVariant: "dark",
+  },
 };
 
 const trackedSections: Array<{ id: string; zone: NavZone }> = [
   { id: "hero", zone: "hero" },
-  { id: "work", zone: "paper" },
-  { id: "services", zone: "purple" },
+  { id: "work", zone: "ink" },
+  { id: "services", zone: "paper" },
   { id: "approach", zone: "yellow" },
   { id: "studio", zone: "paper" },
   { id: "trust", zone: "paper" },
-  { id: "final-cta", zone: "purple" },
-  { id: "footer", zone: "plum" },
+  { id: "final-cta", zone: "orange" },
+  { id: "footer", zone: "ink" },
 ];
 
 

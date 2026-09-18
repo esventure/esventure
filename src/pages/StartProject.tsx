@@ -163,7 +163,7 @@ const StartProject = () => {
                           onClick={() => setForm({ ...form, stage: option })}
                           className={`min-h-[44px] rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                             selected
-                              ? "bg-plum text-paper"
+                              ? "bg-primary text-primary-foreground"
                               : "border border-plum/25 bg-transparent text-plum/80 hover:border-primary hover:text-primary"
                           }`}
                         >
@@ -269,7 +269,7 @@ const StartProject = () => {
                 <Button
                   type="submit"
                   disabled={!canSubmit || isSubmitting}
-                  className="w-full rounded-full bg-plum py-6 text-base font-semibold text-paper hover:bg-primary hover:text-primary-foreground disabled:opacity-40"
+                  className="w-full rounded-full bg-primary py-6 text-base font-semibold text-primary-foreground hover:bg-coral hover:text-coral-foreground disabled:opacity-40"
                 >
                   {isSubmitting ? (
                     <>

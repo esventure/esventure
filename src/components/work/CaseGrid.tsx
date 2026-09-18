@@ -8,9 +8,9 @@ import type { CaseStory } from "./caseContent";
 import { cn } from "@/lib/utils";
 
 const accents = [
-  { label: "text-plum/65", rule: "border-secondary", bg: "bg-secondary", text: "text-plum" },
+  { label: "text-secondary", rule: "border-secondary", bg: "bg-secondary", text: "text-secondary" },
   { label: "text-coral", rule: "border-coral", bg: "bg-coral", text: "text-coral" },
-  { label: "text-plum/65", rule: "border-lime", bg: "bg-lime", text: "text-plum" },
+  { label: "text-secondary", rule: "border-secondary", bg: "bg-secondary", text: "text-secondary" },
   { label: "text-primary", rule: "border-primary", bg: "bg-primary", text: "text-primary" },
 ];
 
@@ -36,7 +36,7 @@ const CaseGrid = () => {
             whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-            className="group grid gap-8 border-t border-plum/15 pt-8 md:grid-cols-12 md:gap-10 md:pt-10"
+            className="group grid gap-8 border-t border-plum-foreground/20 pt-8 md:grid-cols-12 md:gap-10 md:pt-10"
           >
             <Link
               to={`/work/${item.slug}`}
@@ -72,13 +72,13 @@ const CaseGrid = () => {
               <h3 className="mt-4 max-w-[24ch] font-display text-3xl font-bold leading-tight tracking-normal md:text-5xl">
                 {item.title}
               </h3>
-              <p className="mt-5 max-w-[42ch] text-base leading-relaxed text-plum/75 md:text-lg">{item.summary}</p>
-              <p className="mt-5 max-w-[38ch] font-display text-xl font-semibold leading-snug text-plum">
+              <p className="mt-5 max-w-[42ch] text-base leading-relaxed text-plum-foreground/70 md:text-lg">{item.summary}</p>
+              <p className="mt-5 max-w-[38ch] font-display text-xl font-semibold leading-snug text-plum-foreground">
                 {item.character}
               </p>
               <div className={cn("mt-7 border-t pt-5", accent.rule)}>
-                <p className="text-sm text-plum/60">
-                  {item.client} <span className="text-plum/35">/</span> {item.scope}
+                <p className="text-sm text-plum-foreground/60">
+                  {item.client} <span className="text-plum-foreground/35">/</span> {item.scope}
                 </p>
                 <Link
                   to={`/work/${item.slug}`}
@@ -97,8 +97,8 @@ const CaseGrid = () => {
       })}
 
       {archive.length > 0 && (
-        <div className="border-t border-plum/15 pt-10">
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-plum/55">
+        <div className="border-t border-plum-foreground/20 pt-10">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-plum-foreground/55">
             {t("work.archiveTitle")}
           </p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -106,7 +106,7 @@ const CaseGrid = () => {
               <Link
                 key={item.slug}
                 to={`/work/${item.slug}`}
-                className="group rounded-[1.5rem] border border-plum/12 bg-paper p-6 transition-colors hover:border-primary/35 hover:bg-lilac/60"
+                className="group rounded-[1.5rem] border border-plum-foreground/20 bg-paper p-6 text-paper-foreground transition-colors hover:border-secondary"
               >
                 <p className={cn("font-sans text-[11px] font-semibold uppercase tracking-[0.2em]", accents[i + 3]?.label ?? "text-primary")}>
                   {item.label}
