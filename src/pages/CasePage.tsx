@@ -16,7 +16,9 @@ interface CasePageProps {
 
 const CasePage = ({ slug }: CasePageProps) => {
   const { t } = useTranslation();
-  const items = t("work.items", { returnObjects: true }) as CaseStory[];
+  const items = (t("work.items", { returnObjects: true }) as CaseStory[]).filter(
+    (caseItem) => caseItem.slug !== "rainforest-alliance"
+  );
   const index = items.findIndex((item) => item.slug === slug);
   const item = index >= 0 ? items[index] : undefined;
   const next = items.length > 0 && index >= 0 ? items[(index + 1) % items.length] : undefined;

@@ -31,6 +31,6 @@ export interface CaseStory {
   };
 }
 
-export const caseSlugs = ["dennis-gerrits", "studio-ingrid-de-reuver", "hap", "rainforest-alliance"] as const;
+export const caseSlugs = ["dennis-gerrits", "studio-ingrid-de-reuver", "hap"] as const;
 
 export const caseRoutes = ["brand", "website", "prototype"] as const;
