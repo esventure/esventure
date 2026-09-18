@@ -125,13 +125,10 @@ All colors MUST be HSL.
   }
 
   html {
+    @apply overflow-x-hidden;
     scroll-behavior: smooth;
   }
 
-  html, body {
-    @apply overflow-x-hidden;
-    -webkit-overflow-scrolling: touch;
-  }
 
   body {
     @apply bg-background text-foreground;
