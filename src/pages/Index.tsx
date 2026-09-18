@@ -203,30 +203,22 @@ const Index = () => {
                 </div>
 
                 <HeroPortrait
-                  frameCase={frameCase}
-                  frameScreen={frameScreen}
-                  frameVideo={frameVideo}
                   reduce={reduce}
                   t={t}
                   className="relative mx-auto w-full max-w-[32rem] md:hidden"
                   boxClassName="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
                   imgClassName="aspect-[4/5] w-full object-cover object-top"
-                  frameClassName="absolute -bottom-8 -left-4 w-56 rotate-[-5deg]"
                   from={{ opacity: 0, y: 24 }}
                 />
               </div>
             </div>
 
             <HeroPortrait
-              frameCase={frameCase}
-              frameScreen={frameScreen}
-              frameVideo={frameVideo}
               reduce={reduce}
               t={t}
               className="absolute bottom-0 right-[-4rem] top-24 hidden w-[44%] max-w-[42rem] md:block lg:right-[-6rem] lg:w-[40%]"
               boxClassName="h-full overflow-hidden rounded-l-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
               imgClassName="h-full w-full object-cover object-top"
-              frameClassName="absolute -left-12 bottom-20 w-56 rotate-[-5deg] lg:-left-16 lg:w-72"
               from={{ opacity: 0, x: 64 }}
             />
           </section>
