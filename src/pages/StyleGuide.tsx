@@ -80,7 +80,7 @@ const StyleGuide = () => {
           <h3 className="text-lg font-bold text-foreground mb-4">Merkkleuren</h3>
           <div className="flex flex-wrap gap-6 mb-10">
             <ColorSwatch name="Es Venture Paars" variable="#BF5AF2" cssVar="primary" />
-            <ColorSwatch name="Es Venture Geel" variable="#EEF0A3" cssVar="secondary" />
+            <ColorSwatch name="Es Venture Geel" variable="#EDF0A3" cssVar="secondary" />
             <ColorSwatch name="Accent Oranje" variable="#FF5D38" cssVar="coral" />
             <ColorSwatch name="Inkt" variable="#121212" cssVar="plum" />
             <ColorSwatch name="Papier" variable="#FFFFFF" cssVar="paper" />
