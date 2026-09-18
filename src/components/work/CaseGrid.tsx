@@ -70,7 +70,7 @@ const CaseGrid = () => {
                 {item.label}
               </p>
               <h3 className="mt-4 max-w-[24ch] font-display text-3xl font-bold leading-tight tracking-normal md:text-5xl">
-                {item.title}
+                {item.cardCopy ?? item.title}
               </h3>
               {item.summary ? (
                 <p className="mt-5 max-w-[42ch] text-base leading-relaxed text-plum-foreground/70 md:text-lg">{item.summary}</p>
