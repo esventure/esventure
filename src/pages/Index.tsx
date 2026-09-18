@@ -80,6 +80,7 @@ const Index = () => {
   const studioParagraphs = t("studio.paragraphs", { returnObjects: true }) as string[];
   const frameCase = workItems[activeFrame];
   const frameScreen = frameCase ? caseMedia[frameCase.slug]?.screens[0] : undefined;
+  const frameVideo = frameCase ? caseMedia[frameCase.slug]?.video : undefined;
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);

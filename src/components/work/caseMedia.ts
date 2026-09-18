@@ -9,7 +9,8 @@ import dennisExperiences from "@/assets/work/dennis/site-experiences.jpg";
 import dennisContact from "@/assets/work/dennis/site-contact.jpg";
 import dennisMobile from "@/assets/work/dennis/site-mobile.jpg";
 import dennisLogo from "@/assets/work/dennis/logo.png";
-import hapHomeAsset from "@/assets/work/hap/home.png.asset.json";
+import hapHomeAsset from "@/assets/work/hap/start.png.asset.json";
+import hapVideoAsset from "@/assets/work/hap/walkthrough.mp4.asset.json";
 import hapSkillAsset from "@/assets/work/hap/skill.png.asset.json";
 import hapIngredientsAsset from "@/assets/work/hap/ingredients.png.asset.json";
 import hapReviewAsset from "@/assets/work/hap/review.png.asset.json";
@@ -19,6 +20,12 @@ export interface CaseScreen {
   src: string;
   captionKey: string;
   ratio: "wide" | "tall";
+}
+
+export interface CaseVideo {
+  src: string;
+  poster?: string;
+  captionKey: string;
 }
 
 export interface CaseSwatch {
@@ -37,6 +44,7 @@ export interface CaseMedia {
   liveLabel?: string;
   logo?: string;
   logoBg?: string;
+  video?: CaseVideo;
   screens: CaseScreen[];
   palette?: CaseSwatch[];
   typefaces?: CaseTypeface[];
@@ -93,6 +101,11 @@ export const caseMedia: Record<string, CaseMedia> = {
   hap: {
     liveUrl: "https://haprecipes.lovable.app",
     liveLabel: "haprecipes.lovable.app",
+    video: {
+      src: hapVideoAsset.url,
+      poster: hapHomeAsset.url,
+      captionKey: "hapWalkthrough",
+    },
     screens: [
       { src: hapHomeAsset.url, captionKey: "hapHome", ratio: "tall" },
       { src: hapSkillAsset.url, captionKey: "hapSkill", ratio: "tall" },
