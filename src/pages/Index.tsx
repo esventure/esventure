@@ -328,28 +328,6 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="approach" className="bg-secondary text-secondary-foreground py-20 md:py-32">
-            <div className="container mx-auto grid gap-10 px-4 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
-              <Reveal>
-                <h2 className="max-w-[14ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-6xl">
-                  {t("usp.title")}
-                </h2>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <div className="border-t border-plum/25 pt-7">
-                  <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                    {(t("usp.paragraphs", { returnObjects: true }) as string[]).map((paragraph) => (
-                      <div key={paragraph} className="rounded-2xl border border-plum/20 bg-paper p-5">
-                        <p className="text-sm leading-relaxed text-plum/80">{paragraph}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-
-            </div>
-          </section>
-
           <section id="studio" className="bg-paper text-paper-foreground py-20 md:py-32">
             <div className="container mx-auto px-4">
               <div className="grid max-w-6xl items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
