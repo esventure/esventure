@@ -63,6 +63,93 @@ const Eyebrow = ({ children, className = "" }: { children: React.ReactNode; clas
   <p className={`font-sans text-xs font-semibold uppercase tracking-[0.2em] ${className}`}>{children}</p>
 );
 
+type HeroPortraitProps = {
+  frameCase?: { slug: string; client: string; cardCopy?: string; title: string; scope: string };
+  frameScreen?: { src: string; ratio: "wide" | "tall" };
+  frameVideo?: { src: string; poster?: string };
+  reduce: boolean | null;
+  t: (key: string) => string;
+  className: string;
+  boxClassName: string;
+  imgClassName: string;
+  frameClassName: string;
+  from?: { opacity: number; x?: number; y?: number };
+};
+
+const HeroPortrait = ({
+  frameCase,
+  frameScreen,
+  frameVideo,
+  reduce,
+  t,
+  className,
+  boxClassName,
+  imgClassName,
+  frameClassName,
+  from,
+}: HeroPortraitProps) => (
+  <motion.div
+    initial={reduce ? false : from ?? { opacity: 0, y: 24 }}
+    animate={{ opacity: 1, x: 0, y: 0 }}
+    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    className={className}
+  >
+    <div className={boxClassName}>
+      <img
+        src={estherYellow}
+        alt={t("hero.portraitAlt")}
+        width={900}
+        height={1200}
+        loading="eager"
+        decoding="async"
+        className={imgClassName}
+      />
+    </div>
+    {frameCase ? (
+      <Link
+        to={`/work/${frameCase.slug}`}
+        aria-label={`${frameCase.client}: ${frameCase.cardCopy ?? frameCase.title}`}
+        className={`group ${frameClassName} overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 transition-transform duration-300 hover:rotate-[-3deg] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary`}
+      >
+        <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+          {frameVideo ? (
+            <motion.video
+              key={frameVideo.src}
+              src={frameVideo.src}
+              poster={frameVideo.poster}
+              autoPlay={!reduce}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.45 }}
+              className="h-full w-full bg-paper object-contain p-2"
+            />
+          ) : frameScreen ? (
+            <motion.img
+              key={frameScreen.src}
+              src={frameScreen.src}
+              alt=""
+              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.45 }}
+              className={`h-full w-full ${frameScreen.ratio === "tall" ? "object-contain bg-paper p-2" : "object-cover object-top"}`}
+            />
+          ) : null}
+        </div>
+        <div className="relative z-10 bg-paper p-4">
+          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+            {frameCase.client}
+          </p>
+          <p className="mt-1 text-sm font-semibold leading-snug text-plum/82">{frameCase.scope}</p>
+        </div>
+      </Link>
+    ) : null}
+  </motion.div>
+);
+
 const Index = () => {
   const { t } = useTranslation();
   const reduce = useReducedMotion();
@@ -184,70 +271,33 @@ const Index = () => {
                   </Reveal>
                 </div>
 
-                <div className="relative md:self-end">
-                  <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative mx-auto max-w-[32rem]"
-                  >
-                    <div className="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25">
-                      <img
-                        src={estherYellow}
-                        alt={t("hero.portraitAlt")}
-                        width={900}
-                        height={1200}
-                        loading="eager"
-                        decoding="async"
-                        className="aspect-[4/5] w-full object-cover object-top"
-                      />
-                    </div>
-                    {frameCase ? (
-                      <Link
-                        to={`/work/${frameCase.slug}`}
-                        aria-label={`${frameCase.client}: ${frameCase.cardCopy ?? frameCase.title}`}
-                        className="group absolute -bottom-8 -left-4 w-56 rotate-[-5deg] overflow-hidden rounded-[1.5rem] bg-paper shadow-xl ring-1 ring-plum/10 transition-transform duration-300 hover:rotate-[-3deg] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-secondary md:-left-12 md:w-72"
-                      >
-                        <div className="relative aspect-[4/3] overflow-hidden bg-muted">
-                          {frameVideo ? (
-                            <motion.video
-                              key={frameVideo.src}
-                              src={frameVideo.src}
-                              poster={frameVideo.poster}
-                              autoPlay={!reduce}
-                              muted
-                              loop
-                              playsInline
-                              preload="metadata"
-                              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ duration: 0.45 }}
-                              className="h-full w-full bg-paper object-contain p-2"
-                            />
-                          ) : frameScreen ? (
-                            <motion.img
-                              key={frameScreen.src}
-                              src={frameScreen.src}
-                              alt=""
-                              initial={reduce ? false : { opacity: 0, scale: 1.03 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ duration: 0.45 }}
-                              className={`h-full w-full ${frameScreen.ratio === "tall" ? "object-contain bg-paper p-2" : "object-cover object-top"}`}
-                            />
-                          ) : null}
-                        </div>
-                        <div className="relative z-10 bg-paper p-4">
-                          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
-                            {frameCase.client}
-                          </p>
-                          <p className="mt-1 text-sm font-semibold leading-snug text-plum/82">{frameCase.scope}</p>
-                        </div>
-                      </Link>
-                    ) : null}
-                  </motion.div>
-                </div>
+                <HeroPortrait
+                  frameCase={frameCase}
+                  frameScreen={frameScreen}
+                  frameVideo={frameVideo}
+                  reduce={reduce}
+                  t={t}
+                  className="relative mx-auto w-full max-w-[32rem] md:hidden"
+                  boxClassName="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
+                  imgClassName="aspect-[4/5] w-full object-cover object-top"
+                  frameClassName="absolute -bottom-8 -left-4 w-56 rotate-[-5deg]"
+                  from={{ opacity: 0, y: 24 }}
+                />
               </div>
             </div>
+
+            <HeroPortrait
+              frameCase={frameCase}
+              frameScreen={frameScreen}
+              frameVideo={frameVideo}
+              reduce={reduce}
+              t={t}
+              className="absolute bottom-0 right-[-4rem] top-24 hidden w-[44%] max-w-[42rem] md:block lg:right-[-6rem] lg:w-[40%]"
+              boxClassName="h-full overflow-hidden rounded-l-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
+              imgClassName="h-full w-full object-cover object-top"
+              frameClassName="absolute -left-12 bottom-20 w-56 rotate-[-5deg] lg:-left-16 lg:w-72"
+              from={{ opacity: 0, x: 64 }}
+            />
           </section>
 
 
