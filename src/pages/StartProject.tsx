@@ -19,21 +19,17 @@ const StartProject = () => {
   const budgetOptions = t("startPage.fields.budgetOptions", { returnObjects: true }) as string[];
 
   const stageParam = searchParams.get("stage");
-  const presetStage =
-    stageParam === "brand"
-      ? stageOptions[0]
-      : stageParam === "website"
-        ? stageOptions[1]
-        : stageParam === "prototype"
-          ? stageOptions[2]
-          : "";
+  const presetStageIndex =
+    stageParam === "brand" ? 0 : stageParam === "website" ? 1 : stageParam === "prototype" ? 2 : -1;
 
+  // Store the selected option as an index, not as a translated label, so the
+  // selection survives a language switch (the bundle is applied after mount).
   const [form, setForm] = useState({
     goal: "",
-    stage: presetStage,
+    stageIndex: presetStageIndex,
     useful: "",
-    timing: timingOptions[0],
-    budget: budgetOptions[0],
+    timingIndex: 0,
+    budgetIndex: 0,
     firstName: "",
     lastName: "",
     email: "",
@@ -42,7 +38,12 @@ const StartProject = () => {
   const [isDone, setIsDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const canSubmit = form.goal.trim() && form.stage && form.firstName.trim() && form.lastName.trim() && form.email.trim();
+  const selectedStage = stageOptions[form.stageIndex] ?? "";
+  const selectedTiming = timingOptions[form.timingIndex] ?? timingOptions[0];
+  const selectedBudget = budgetOptions[form.budgetIndex] ?? budgetOptions[0];
+
+  const canSubmit =
+    form.goal.trim() && selectedStage && form.firstName.trim() && form.lastName.trim() && form.email.trim();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
