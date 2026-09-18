@@ -9,6 +9,10 @@ import dennisExperiences from "@/assets/work/dennis/site-experiences.jpg";
 import dennisContact from "@/assets/work/dennis/site-contact.jpg";
 import dennisMobile from "@/assets/work/dennis/site-mobile.jpg";
 import dennisLogo from "@/assets/work/dennis/logo.png";
+import dennisBookLogoAsset from "@/assets/work/dennis/brandbook-logo.png.asset.json";
+import dennisBookColorAsset from "@/assets/work/dennis/brandbook-color.png.asset.json";
+import dennisBookTypeAsset from "@/assets/work/dennis/brandbook-type.png.asset.json";
+import dennisBookCardAsset from "@/assets/work/dennis/brandbook-card.png.asset.json";
 import hapHomeAsset from "@/assets/work/hap/start.png.asset.json";
 import hapVideoAsset from "@/assets/work/hap/walkthrough.mp4.asset.json";
 import hapSkillAsset from "@/assets/work/hap/skill.png.asset.json";
@@ -46,6 +50,7 @@ export interface CaseMedia {
   logoBg?: string;
   video?: CaseVideo;
   screens: CaseScreen[];
+  brandbook?: CaseScreen[];
   palette?: CaseSwatch[];
   typefaces?: CaseTypeface[];
 }
@@ -84,6 +89,12 @@ export const caseMedia: Record<string, CaseMedia> = {
       { src: dennisExperiences, captionKey: "dennisExperiences", ratio: "wide" },
       { src: dennisContact, captionKey: "dennisContact", ratio: "wide" },
       { src: dennisMobile, captionKey: "dennisMobile", ratio: "tall" },
+    ],
+    brandbook: [
+      { src: dennisBookLogoAsset.url, captionKey: "dennisBookLogo", ratio: "wide" },
+      { src: dennisBookColorAsset.url, captionKey: "dennisBookColor", ratio: "wide" },
+      { src: dennisBookTypeAsset.url, captionKey: "dennisBookType", ratio: "wide" },
+      { src: dennisBookCardAsset.url, captionKey: "dennisBookCard", ratio: "wide" },
     ],
     palette: [
       { hex: "#2D0036", nameKey: "dennisPlum" },

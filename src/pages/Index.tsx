@@ -251,7 +251,7 @@ const Index = () => {
                 {serviceRoutes.map((route, i) => {
                   const stage = routeParams[i] ?? "brand";
                   const media = caseMedia[routeCaseSlugs[i]];
-                  const screen = media?.screens[0];
+                  const screen = (stage === "brand" ? media?.brandbook?.[0] : undefined) ?? media?.screens[0];
                   return (
                     <Reveal key={route.title} delay={i * 0.08} className="h-full">
                       <article className="flex h-full flex-col rounded-[1.75rem] border border-plum/15 bg-paper p-6 text-paper-foreground transition-transform duration-300 hover:-translate-y-1 md:p-7">
