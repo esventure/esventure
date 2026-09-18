@@ -387,7 +387,7 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="final-cta" className="bg-coral py-20 text-coral-foreground md:py-32">
+          <section id="final-cta" className="bg-primary py-20 text-primary-foreground md:py-32">
             <div className="container mx-auto px-4">
               <div className="max-w-4xl">
                 <Reveal>
@@ -396,13 +396,13 @@ const Index = () => {
                   </h2>
                 </Reveal>
                 <Reveal delay={0.06}>
-                  <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-plum/80 md:text-xl">
+                  <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
                     {t("finalCta.copy")}
                   </p>
                 </Reveal>
                 <Reveal delay={0.12}>
                   <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                    <Button asChild size="lg" className="rounded-full bg-primary px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-plum">
+                    <Button asChild size="lg" className="rounded-full bg-secondary px-8 py-6 text-base font-semibold text-secondary-foreground hover:bg-secondary/90">
                       <Link to="/start-a-project" onClick={() => analytics.ctaClick("final_start_project")}>
                         {t("finalCta.primary")}
                         <ArrowRight className="ml-2 h-5 w-5" />
@@ -412,7 +412,7 @@ const Index = () => {
                       size="lg"
                       variant="outline"
                       onClick={openBooking}
-                      className="rounded-full border-2 border-plum/40 bg-transparent px-8 py-6 text-base font-semibold text-plum hover:bg-plum hover:text-paper"
+                      className="rounded-full border-2 border-primary-foreground/45 bg-transparent px-8 py-6 text-base font-semibold text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                     >
                       {t("finalCta.secondary")}
                     </Button>
