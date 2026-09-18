@@ -8,7 +8,7 @@ import dennisAbout from "@/assets/work/dennis/site-about.jpg";
 import dennisExperiences from "@/assets/work/dennis/site-experiences.jpg";
 import dennisContact from "@/assets/work/dennis/site-contact.jpg";
 import dennisMobile from "@/assets/work/dennis/site-mobile.jpg";
-import dennisLogo from "@/assets/work/dennis/logo.png";
+import dennisLogoAsset from "@/assets/work/dennis/lockup-horizontal-cream.png.asset.json";
 import dennisBookLogoAsset from "@/assets/work/dennis/brandbook-logo.png.asset.json";
 import dennisBookColorAsset from "@/assets/work/dennis/brandbook-color.png.asset.json";
 import dennisBookTypeAsset from "@/assets/work/dennis/brandbook-type.png.asset.json";
@@ -81,8 +81,8 @@ export const caseMedia: Record<string, CaseMedia> = {
   "dennis-gerrits": {
     liveUrl: "https://dennisgerrits.com",
     liveLabel: "dennisgerrits.com",
-    logo: dennisLogo,
-    logoBg: "#FAFAFA",
+    logo: dennisLogoAsset.url,
+    logoBg: "#2D0036",
     screens: [
       { src: dennisHero, captionKey: "dennisHero", ratio: "wide" },
       { src: dennisAbout, captionKey: "dennisAbout", ratio: "wide" },
