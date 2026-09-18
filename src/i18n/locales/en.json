@@ -242,23 +242,37 @@
         "slug": "dennis-gerrits",
         "accent": "secondary",
         "label": "01 / BRAND + WEBSITE",
-        "title": "A personal brand for experiencing Amsterdam with a knowledgeable local friend.",
+        "title": "A travel companion, not another tour guide.",
         "client": "Dennis Gerrits",
-        "scope": "Identity and website",
-        "character": "Warm, worldly and personal - more local companion than tour operator.",
+        "scope": "Strategy, identity, website and brand system",
+        "character": "Different, calm, trusted and human.",
         "modalHeading": "Brand and website direction",
-        "summary": "Dennis needed to feel like a cultured, welcoming host rather than a standard tour operator.",
-        "needed": "The project needed to make Dennis feel knowledgeable, personal and distinctly Amsterdam, without falling into the usual tour-guide language.",
+        "summary": "A personal brand built around the feeling of spending a day with someone who knows the city, not buying a standard tour.",
+        "needed": "Dennis writes, answers and shows up himself. The brand needed to make that personal trust visible, while giving culturally curious travelers the context and calm they look for before choosing a day together.",
         "made": [
           "Positioning and core story",
-          "Visual identity direction",
+          "Portrait mark and visual identity",
           "Website structure and design",
-          "Editorial typography and colour system",
-          "Experience categories and contact flow"
+          "Typography and colour system",
+          "Tone of voice and reply templates",
+          "Email, print and social applications",
+          "Practical brandbook and asset library"
         ],
-        "direction": "The identity leans into warmth, editorial detail and Amsterdam-inspired cues so the site feels like meeting a local companion before booking a tour.",
-        "outcome": "The result gives Dennis a sharper digital welcome and a clearer way to show the kind of Amsterdam experience he offers.",
-        "credits": "Role and collaborator credits still need final confirmation before detailed public attribution."
+        "direction": "Cream creates the feeling of paper, deep purple carries the story and orange appears only where it matters. A hand-drawn portrait behaves like Dennis's signature. Bebas Neue, Outfit and Caveat keep the system direct, readable and personal.",
+        "outcome": "Dennis now has one coherent system for the website, email, replies, business cards, LinkedIn, Instagram and listings. Every touchpoint follows the same test: different, calm, trusted and human.",
+        "credits": "Brand strategy, identity, website and brandbook by Es Venture.",
+        "brandbook": {
+          "title": "Built around one human promise.",
+          "foundation": "A personal, trust-based way of experiencing places, guided by someone who feels like a friend.",
+          "audience": "Culturally curious travelers, mostly over 55, who want context, a good walk and a human pace rather than a fixed route.",
+          "principles": [
+            "One person, not a company",
+            "Invite, never push",
+            "Nothing is fixed",
+            "Be honest about limits"
+          ],
+          "voice": "Calm, personal and direct. Always 'I', written to one person, with concrete language and one clear next step."
+        }
       },
       {
         "slug": "studio-ingrid-de-reuver",
@@ -493,6 +507,9 @@
     "direction": "The direction",
     "outcome": "What changed",
     "credits": "Credits",
+    "strategyLabel": "THE BRAND FOUNDATION",
+    "audienceLabel": "WHO IT IS FOR",
+    "voiceLabel": "HOW IT SPEAKS",
     "inUseTitle": "The work in use",
     "inUseLead": "No mockups. This is the brand and the site as they run today.",
     "inUsePlaceholder": "Approved images from this project are being prepared.",

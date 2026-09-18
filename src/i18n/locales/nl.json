@@ -242,23 +242,37 @@
         "slug": "dennis-gerrits",
         "accent": "secondary",
         "label": "01 / MERK + WEBSITE",
-        "title": "Een persoonlijk merk voor Amsterdam beleven met een kundige lokale vriend.",
+        "title": "Een travel companion, geen zoveelste tourguide.",
         "client": "Dennis Gerrits",
-        "scope": "Identiteit en website",
-        "character": "Warm, werelds en persoonlijk - meer lokale companion dan tour operator.",
+        "scope": "Strategie, identiteit, website en merksysteem",
+        "character": "Anders, rustig, vertrouwd en menselijk.",
         "modalHeading": "Merk- en websiterichting",
-        "summary": "Dennis moest voelen als een culturele, gastvrije host in plaats van een standaard tour operator.",
-        "needed": "Het project moest Dennis kundig, persoonlijk en duidelijk Amsterdams laten voelen, zonder in standaard tourtaal te vallen.",
+        "summary": "Een persoonlijk merk rond het gevoel dat je een dag doorbrengt met iemand die de stad kent, in plaats van een standaard tour koopt.",
+        "needed": "Dennis schrijft, antwoordt en staat er zelf. Het merk moest dat persoonlijke vertrouwen zichtbaar maken en cultureel nieuwsgierige reizigers de context en rust geven die ze zoeken voordat ze voor een dag samen kiezen.",
         "made": [
           "Positionering en kernverhaal",
-          "Visuele identiteitsrichting",
+          "Portretmerk en visuele identiteit",
           "Websitestructuur en ontwerp",
-          "Editorial typografie en kleursysteem",
-          "Experience-categorieën en contactflow"
+          "Typografie- en kleursysteem",
+          "Tone of voice en antwoordtemplates",
+          "E-mail-, print- en social toepassingen",
+          "Praktisch brandbook en asset library"
         ],
-        "direction": "De identiteit gebruikt warmte, editorial detail en Amsterdamse cues zodat de site voelt als kennismaken met een lokale companion vóór je boekt.",
-        "outcome": "Het resultaat geeft Dennis een scherper digitaal welkom en een helderdere manier om zijn Amsterdam-ervaring te laten zien.",
-        "credits": "Rol en credits van samenwerkingen moeten nog definitief bevestigd worden voordat ze publiek gedetailleerd worden genoemd."
+        "direction": "Cream geeft het gevoel van papier, dieppaars draagt het verhaal en oranje verschijnt alleen waar het telt. Een handgetekend portret werkt als Dennis' signatuur. Bebas Neue, Outfit en Caveat houden het systeem direct, leesbaar en persoonlijk.",
+        "outcome": "Dennis heeft nu één samenhangend systeem voor de website, e-mail, antwoorden, visitekaartjes, LinkedIn, Instagram en listings. Elk contactmoment volgt dezelfde test: anders, rustig, vertrouwd en menselijk.",
+        "credits": "Merkstrategie, identiteit, website en brandbook door Es Venture.",
+        "brandbook": {
+          "title": "Gebouwd rond één menselijke belofte.",
+          "foundation": "Een persoonlijke, op vertrouwen gebaseerde manier om plekken te ervaren, begeleid door iemand die als een vriend voelt.",
+          "audience": "Cultureel nieuwsgierige reizigers, meestal 55+, die context, een goede wandeling en een menselijk tempo zoeken in plaats van een vaste route.",
+          "principles": [
+            "Eén persoon, geen bedrijf",
+            "Nodig uit, zet nooit druk",
+            "Niets ligt vast",
+            "Wees eerlijk over grenzen"
+          ],
+          "voice": "Rustig, persoonlijk en direct. Altijd 'ik', geschreven aan één persoon, met concrete taal en één heldere volgende stap."
+        }
       },
       {
         "slug": "studio-ingrid-de-reuver",
@@ -493,6 +507,9 @@
     "direction": "De richting",
     "outcome": "Wat veranderde",
     "credits": "Credits",
+    "strategyLabel": "DE BASIS VAN HET MERK",
+    "audienceLabel": "VOOR WIE HET IS",
+    "voiceLabel": "HOE HET KLINKT",
     "inUseTitle": "Het werk in gebruik",
     "inUseLead": "Geen mockups. Dit is het merk en de site zoals ze nu live staan.",
     "inUsePlaceholder": "Goedgekeurde beelden van dit project worden voorbereid.",

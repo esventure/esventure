@@ -116,6 +116,45 @@ const CasePage = ({ slug }: CasePageProps) => {
             </div>
           </section>
 
+          {item.brandbook && (
+            <section className="bg-secondary py-16 text-secondary-foreground md:py-24">
+              <div className="container mx-auto px-4">
+                <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-plum/65">
+                  {t("casePage.strategyLabel")}
+                </p>
+                <div className="mt-5 grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
+                  <h2 className="max-w-[12ch] font-display text-4xl font-bold leading-tight tracking-normal md:text-5xl">
+                    {item.brandbook.title}
+                  </h2>
+                  <div className="space-y-8">
+                    <p className="text-xl leading-relaxed text-plum/85">{item.brandbook.foundation}</p>
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <div className="border-t border-plum/25 pt-4">
+                        <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-plum/60">
+                          {t("casePage.audienceLabel")}
+                        </p>
+                        <p className="mt-3 leading-relaxed text-plum/80">{item.brandbook.audience}</p>
+                      </div>
+                      <div className="border-t border-plum/25 pt-4">
+                        <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-plum/60">
+                          {t("casePage.voiceLabel")}
+                        </p>
+                        <p className="mt-3 leading-relaxed text-plum/80">{item.brandbook.voice}</p>
+                      </div>
+                    </div>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {item.brandbook.principles.map((principle) => (
+                        <p key={principle} className="border-t border-plum/25 pt-3 font-display text-xl font-bold text-plum">
+                          {principle}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
           <section className="border-y border-plum/10 bg-paper py-16 md:py-24">
             <div className="container mx-auto grid gap-12 px-4 md:grid-cols-[0.8fr_1.2fr]">
               <h2 className="font-display text-4xl font-bold leading-tight tracking-normal md:text-5xl">
