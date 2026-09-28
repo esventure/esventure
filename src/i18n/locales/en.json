@@ -572,5 +572,46 @@
       "hapReview": "A final check brings every choice together before recipes are generated.",
       "hapResults": "Three generated recipes turn the selected ingredients, time and mood into concrete options."
     }
+  },
+  "plan": {
+    "eyebrow": "A plan in a minute",
+    "title": "Want a plan and a price range first?",
+    "intro": "Tell me in a few lines what you want to make. You get a plan right away with the steps, what you get, how long it takes and a price range.",
+    "situationLabel": "What do you want to make?",
+    "placeholders": [
+      "I have a new business and no brand yet.",
+      "My website no longer feels like my business.",
+      "I have an idea for an app and want to test it.",
+      "I want a site where people can book right away.",
+      "My logo and colours do not match what I do.",
+      "I want to stand out online at last."
+    ],
+    "routeLabel": "What are you thinking of?",
+    "routeOptions": [
+      "A brand",
+      "A website",
+      "A prototype"
+    ],
+    "timingLabel": "When do you want to start?",
+    "timingOptions": [
+      "I am exploring",
+      "Within a few months",
+      "As soon as possible"
+    ],
+    "budgetLabel": "Budget comfort",
+    "budgetOptions": [
+      "No idea yet",
+      "Up to 2,000 euro",
+      "2,000 to 5,000 euro",
+      "5,000 euro or more"
+    ],
+    "optional": "(optional)",
+    "submit": "Show me my plan",
+    "submitting": "Working",
+    "hint": "The more concrete you write it, the sharper the plan.",
+    "loading": "Writing up your plan",
+    "note": "This is a first indication. We set the real price together once I know exactly what you need.",
+    "continue": "Looks right, send it to Esther",
+    "error": "Something went wrong. Please try again."
   }
 }

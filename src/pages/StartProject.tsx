@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Head } from "vite-react-ssg";
 import { useTranslation } from "react-i18next";
@@ -8,7 +8,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
+import ProjectPlanner from "@/components/ProjectPlanner";
 import { analytics } from "@/lib/analytics";
+
 
 const StartProject = () => {
   const { t } = useTranslation();
@@ -37,6 +39,15 @@ const StartProject = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [plan, setPlan] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const scrollToForm = () => {
+    if (!formRef.current) return;
+    const y = formRef.current.getBoundingClientRect().top + window.scrollY - 110;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
 
   const selectedStage = stageOptions[form.stageIndex] ?? "";
   const selectedTiming = timingOptions[form.timingIndex] ?? timingOptions[0];
@@ -57,7 +68,9 @@ const StartProject = () => {
       form.useful.trim() ? `${t("startPage.fields.useful")}\n${form.useful.trim()}` : null,
       `${t("startPage.fields.timing")} ${selectedTiming}`,
       `${t("startPage.fields.budget")} ${selectedBudget}`,
+      plan ? `${t("plan.title")}\n${plan}` : null,
     ]
+
       .filter(Boolean)
       .join("\n\n")
       .slice(0, 9000);
@@ -115,7 +128,10 @@ const StartProject = () => {
             </h1>
             <p className="mt-5 max-w-[62ch] text-lg leading-relaxed text-plum/75">{t("startPage.intro")}</p>
 
+            {!isDone && <ProjectPlanner onPlan={setPlan} onContinue={scrollToForm} />}
+
             {isDone ? (
+
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -136,7 +152,7 @@ const StartProject = () => {
                 </Link>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-12 space-y-8">
+              <form ref={formRef} onSubmit={handleSubmit} className="mt-12 space-y-8">
                 <div className="space-y-2">
                   <label htmlFor="goal" className="block text-base font-semibold">
                     {t("startPage.fields.goal")}
