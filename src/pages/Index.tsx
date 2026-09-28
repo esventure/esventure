@@ -357,16 +357,22 @@ const Index = () => {
                 <Eyebrow className="text-plum/55 text-center">{t("trust.eyebrow")}</Eyebrow>
               </Reveal>
               <Reveal delay={0.06}>
-                <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 items-center gap-x-10 gap-y-8 sm:grid-cols-3 md:grid-cols-6">
-                  {clients.map((client) => (
-                    <img
-                      key={client.alt}
-                      src={client.src}
-                      alt={client.alt}
-                      loading="lazy"
-                      className="mx-auto max-h-9 w-auto max-w-[8rem] opacity-70 grayscale contrast-125 transition-opacity duration-300 hover:opacity-95"
-                    />
-                  ))}
+                <div className="relative mt-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+                  <div className="flex w-max animate-marquee items-center gap-14 pr-14 hover:[animation-play-state:paused] md:gap-20 md:pr-20">
+                    {[...clients, ...clients].map((client, i) => (
+                      <div
+                        key={`${client.alt}-${i}`}
+                        className="flex h-14 w-36 shrink-0 items-center justify-center md:h-16 md:w-44"
+                      >
+                        <img
+                          src={client.src}
+                          alt={client.alt}
+                          loading="lazy"
+                          className="h-10 max-w-full w-auto object-contain opacity-70 grayscale contrast-125 transition-opacity duration-300 hover:opacity-95"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </Reveal>
               <Reveal delay={0.1}>
