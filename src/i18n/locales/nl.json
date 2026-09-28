@@ -572,5 +572,46 @@
       "hapReview": "Een laatste check brengt alle keuzes samen voordat de recepten worden gegenereerd.",
       "hapResults": "Drie gegenereerde recepten maken van de gekozen ingrediënten, tijd en mood concrete opties."
     }
+  },
+  "plan": {
+    "eyebrow": "Plan in een minuut",
+    "title": "Wil je eerst een plan en een prijsindicatie?",
+    "intro": "Vertel in een paar regels wat je wil maken. Je krijgt direct een plan met de stappen, wat je krijgt, hoe lang het duurt en een indicatie van de kosten.",
+    "situationLabel": "Wat wil je maken?",
+    "placeholders": [
+      "Ik heb een nieuw bedrijf en nog geen merk.",
+      "Mijn website voelt niet meer als mijn bedrijf.",
+      "Ik heb een idee voor een app en wil het testen.",
+      "Ik wil een site waar mensen direct kunnen boeken.",
+      "Mijn logo en kleuren kloppen niet bij wat ik doe.",
+      "Ik wil online eindelijk opvallen tussen de rest."
+    ],
+    "routeLabel": "Waar denk je aan?",
+    "routeOptions": [
+      "Een merk",
+      "Een website",
+      "Een prototype"
+    ],
+    "timingLabel": "Wanneer wil je starten?",
+    "timingOptions": [
+      "Ik ben aan het verkennen",
+      "Binnen een paar maanden",
+      "Zo snel mogelijk"
+    ],
+    "budgetLabel": "Budgetgevoel",
+    "budgetOptions": [
+      "Nog geen idee",
+      "Tot 2.000 euro",
+      "2.000 tot 5.000 euro",
+      "5.000 euro of meer"
+    ],
+    "optional": "(optioneel)",
+    "submit": "Laat mijn plan zien",
+    "submitting": "Bezig",
+    "hint": "Hoe concreter je het opschrijft, hoe scherper het plan.",
+    "loading": "Ik zet je plan op papier",
+    "note": "Dit is een eerste indicatie. De echte prijs bepalen we samen als ik precies weet wat je nodig hebt.",
+    "continue": "Dit klopt wel, stuur het naar Esther",
+    "error": "Er ging iets mis. Probeer het nog een keer."
   }
 }
