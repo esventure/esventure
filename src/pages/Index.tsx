@@ -199,11 +199,6 @@ const Index = () => {
                       </Button>
                     </div>
                   </Reveal>
-                  <Reveal delay={0.2}>
-                    <p className="mt-8 max-w-[50ch] text-sm leading-relaxed text-primary-foreground/72">
-                      {t("hero.ownership")}
-                    </p>
-                  </Reveal>
                 </div>
 
                 <HeroPortrait
