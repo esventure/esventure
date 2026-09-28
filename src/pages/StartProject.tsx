@@ -128,7 +128,10 @@ const StartProject = () => {
             </h1>
             <p className="mt-5 max-w-[62ch] text-lg leading-relaxed text-plum/75">{t("startPage.intro")}</p>
 
+            {!isDone && <ProjectPlanner onPlan={setPlan} onContinue={scrollToForm} />}
+
             {isDone ? (
+
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
