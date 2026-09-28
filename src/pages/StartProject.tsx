@@ -152,7 +152,7 @@ const StartProject = () => {
                 </Link>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-12 space-y-8">
+              <form ref={formRef} onSubmit={handleSubmit} className="mt-12 space-y-8">
                 <div className="space-y-2">
                   <label htmlFor="goal" className="block text-base font-semibold">
                     {t("startPage.fields.goal")}
