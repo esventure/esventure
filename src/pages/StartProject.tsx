@@ -68,7 +68,9 @@ const StartProject = () => {
       form.useful.trim() ? `${t("startPage.fields.useful")}\n${form.useful.trim()}` : null,
       `${t("startPage.fields.timing")} ${selectedTiming}`,
       `${t("startPage.fields.budget")} ${selectedBudget}`,
+      plan ? `${t("plan.title")}\n${plan}` : null,
     ]
+
       .filter(Boolean)
       .join("\n\n")
       .slice(0, 9000);
