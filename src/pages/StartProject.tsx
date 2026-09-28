@@ -39,6 +39,15 @@ const StartProject = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [plan, setPlan] = useState<string | null>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+
+  const scrollToForm = () => {
+    if (!formRef.current) return;
+    const y = formRef.current.getBoundingClientRect().top + window.scrollY - 110;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
 
   const selectedStage = stageOptions[form.stageIndex] ?? "";
   const selectedTiming = timingOptions[form.timingIndex] ?? timingOptions[0];
