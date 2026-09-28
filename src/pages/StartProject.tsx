@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Head } from "vite-react-ssg";
 import { useTranslation } from "react-i18next";
@@ -8,7 +8,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
+import ProjectPlanner from "@/components/ProjectPlanner";
 import { analytics } from "@/lib/analytics";
+
 
 const StartProject = () => {
   const { t } = useTranslation();
