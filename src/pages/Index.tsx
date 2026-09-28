@@ -368,7 +368,7 @@ const Index = () => {
                           src={client.src}
                           alt={client.alt}
                           loading="lazy"
-                          className="max-h-10 w-auto object-contain opacity-70 grayscale contrast-125 transition-opacity duration-300 hover:opacity-95"
+                          className="h-10 max-w-full w-auto object-contain opacity-70 grayscale contrast-125 transition-opacity duration-300 hover:opacity-95"
                         />
                       </div>
                     ))}
