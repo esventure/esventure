@@ -2,909 +2,263 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// ============================================================================
-// CLASSIFICATION KEYWORDS - Priority order: Clear Path > Make It Happen > Quick Fix
-// ============================================================================
+// ---------------------------------------------------------------------------
+// Routes: brand, website, prototype (the three ways of working with Esther)
+// ---------------------------------------------------------------------------
 
-// A. CLEAR PATH / STRATEGIC CLARITY WORK (highest priority)
-const CLEAR_PATH_KEYWORDS = [
-  'workflow', 'process', 'clarity', 'overview', 'structure', 'templates',
-  'consistency', 'optimize', 'optimise', 'notion', 'airtable', 'tool setup',
-  'mapping', 'cleaning up', 'clean up', 'everyone does it differently',
-  'scattered tools', 'we lose track', 'lose track', 'inconsistent',
-  'organise', 'organize', 'documentation', 'messy', 'strategy', 'roadmap',
-  'vision', 'plan', 'actionable', 'bottleneck', 'simplify'
+type Route = "brand" | "website" | "prototype";
+type Size = "small" | "medium" | "large" | "very-large";
+
+const BRAND_KEYWORDS = [
+  "merk", "merknaam", "brand", "branding", "identiteit", "identity", "logo", "huisstijl",
+  "brandbook", "kleuren", "colours", "colors", "typografie", "typography", "positionering",
+  "positioning", "verhaal", "story", "tone of voice", "uitstraling", "rebrand", "naam",
+  "visitekaart", "visual identity", "look and feel",
 ];
 
-// B. MAKE IT HAPPEN / HANDS-ON SUPPORT (type of support, not urgency)
-const MAKE_IT_HAPPEN_KEYWORDS = [
-  'launch', 'delays', 'delay', 'stalled', 'slipping', 'slip', 'slips', 'slipped',
-  'blocked', 'too many stakeholders', 'stakeholders', 'waiting on each other',
-  'no clear owner', 'meetings with no progress', 'lost direction',
-  'need structure', 'need movement', 'stuck', 'deadline', 'drifting',
-  'coordination', 'execution', 'too many people', 'nobody knows',
-  'decisions not being made', 'priorities unclear', 'responsibilities unclear',
-  'coordination missing', 'chaotic', 'confusion', 'take charge', 'step in',
-  'leadership', 'interim', 'hands-on', 'take over', 'get it done',
-  // Calendar / plan / marketing drift
-  'calendar', 'content calendar', 'marketing calendar',
-  'stick to the plan', 'stick to it',
-  'never follow the plan', 'never follow the calendar',
-  'planning but not doing', 'arguing about priorities',
-  'meetings turn into debates', 'planning meetings turn into debates',
-  'planning meetings always turn into debates',
-  // Coordination / ownership / role clarity
-  'unclear roles', 'unclear responsibilities', 'roles unclear', 
-  'responsibilities unclear', 'role confusion', 'who does what',
-  'nobody knows who does what', 'ownership unclear', 'unclear ownership',
-  'duplicated work', 'doing things twice', 'things done twice',
-  'missed tasks', 'tasks slipping', 'tasks not getting done',
-  'lack of coordination', 'coordination all over the place',
-  'inconsistent interpretation', 'everyone interprets it differently'
+const WEBSITE_KEYWORDS = [
+  "website", "site", "webshop", "shop", "webpagina", "landingspagina", "landing page",
+  "portfolio", "onepager", "one-pager", "homepage", "pagina", "pages", "seo", "online",
+  "webdesign", "web design", "boeking", "booking", "formulier", "form", "blog",
 ];
 
-// MOMENTUM OVERRIDE KEYWORDS (critical - these override Structure classification)
-// If ANY of these appear, classify as Momentum even if structure keywords are present
-// Structure = how work flows. Momentum = why work ISN'T flowing.
-// If user's pain is about progress/movement/deadlines → ALWAYS Momentum
-const MOMENTUM_OVERRIDE_KEYWORDS = [
-  // Progress-blocking signals - calendar/plan not followed
-  'calendar not being followed', 'not following calendar',
-  'ignore the calendar', 'never stick to the plan',
-  "don't stick to the plan", 'never stick to our plan',
-  'never stick to our calendar', 'never stick to our marketing calendar',
-  'never stick to it', 'we never stick to it', 'we never stick to the calendar',
-  'we never stick to our calendar',
-  
-  // Things slipping variations
-  'things keep slipping', 'things slipping', 'things slip',
-  'things are slipping', 'things keep slipping through',
-  'keep missing', 'keep slipping', 'keeps slipping',
-  
-  // Priority variations
-  'priorities unclear', 'unclear priorities', 'priority unclear',
-  'priorities get unclear', 'priorities get fuzzy',
-  'priorities keep shifting', 'shifting priorities',
-  
-  // Planning not working variations
-  'planning not translating', 'plans not translating',
-  'plan not working', 'plan looks good but doesn\'t happen',
-  'plan exists but we don\'t follow it',
-  'calendar exists but we don\'t follow it',
-  
-  // Meeting variations
-  'meetings unproductive', 'unproductive meetings',
-  'meetings going nowhere', 'meetings go nowhere',
-  'planning meetings turn into debates',
-  'planning meetings always turn into debates',
-  'meetings turn into debates', 'debating instead of deciding',
-  'we debate instead of deciding',
-  
-  // Discussion stuck variations
-  'team stuck in discussion', 'stuck in discussion',
-  'endless discussions', 'all talk no action',
-  'we talk but nothing happens', 'no progress', 'no movement',
-  'not moving forward', "we're not moving forward",
-  'lack of progress', 'nothing gets done',
-  
-  // Deadline and schedule signals
-  'slipping deadline', 'deadline slipping', 'deadlines slipping',
-  'missed deadline', 'missed deadlines',
-  'behind schedule', 'we are behind', "we're behind", 'falling behind',
-  'need to catch up', 'catch up', 'catching up', 'running late',
-  
-  // Team behavior signals  
-  'team is improvising', 'improvising', 'making it up', 'winging it',
-  'deliverables are drifting', 'deliverables drifting',
-  'scope drifting', 'drifting',
-  'onboarding is unstable', 'onboarding unstable', 'unstable onboarding',
-  
-  // Coordination signals
-  'multiple teams', 'multi-team', 'many teams', 'several teams',
-  'time-sensitive', 'time sensitive', 'tight timeline', 'tight deadline',
-  'someone needs to coordinate', 'need coordination', 'needs coordination',
-  'nobody is coordinating', 'no coordination', 'coordination missing',
-  
-  // Ownership / role clarity signals
-  'ownership unclear', 'unclear ownership', 'nobody owns it', 
-  'duplicated work', 'things get done twice', 'doing things twice',
-  'missed tasks', 'tasks not getting done',
-  'everyone interprets it differently', 'plan interpreted differently',
-  'coordination all over the place', 'lack of coordination',
-  'who does what is unclear', 'unclear roles', 'roles unclear',
-  
-  // Original signals
-  'waiting on each other', 'people waiting', 'blocked by others',
-  'abandon the plan'
+const PROTOTYPE_KEYWORDS = [
+  "prototype", "proto", "idee", "idea", "app", "mvp", "concept", "testen", "test", "valideren",
+  "validate", "klikbaar", "clickable", "flow", "screens", "schermen", "pitch", "demo",
+  "wireframe", "user flow", "ux", "tool",
 ];
 
-// C. QUICK FIX / RAPID SOLUTIONS WORK
-const QUICK_FIX_KEYWORDS = [
-  'idea', 'concept', 'prototype', 'ux', 'ui', 'user flow', 'screens',
-  'mockup', 'mvp', 'pitch', 'wireframe', 'design', 'validate',
-  'quick fix', 'fast', 'diagnose', 'urgent issue', 'broken', 'bug',
-  'yesterday', 'asap', 'quick win', 'unblock'
+const BIG_SCOPE_KEYWORDS = [
+  "webshop", "shop", "e-commerce", "ecommerce", "meerdere talen", "tweetalig", "multilingual",
+  "integratie", "integraties", "integration", "api", "koppeling", "boekingssysteem",
+  "booking system", "betalen", "payments", "veel pagina's", "veel paginas", "many pages",
+  "compleet merk", "hele merk", "from scratch", "vanaf nul", "helemaal nieuw", "naamgeving",
+  "brandbook", "campagne", "campaign", "fotografie", "video", "cms", "dashboard", "login",
+  "accounts", "database",
 ];
 
-// ============================================================================
-// MOMENTUM SUB-TYPE DETECTION
-// ============================================================================
+const SMALL_SCOPE_KEYWORDS = [
+  "klein", "small", "simpel", "simple", "een pagina", "één pagina", "one page", "onepager",
+  "alleen een logo", "alleen logo", "opfrissen", "refresh", "snel", "quick", "eerste versie",
+  "first version", "ruwe", "rough",
+];
 
-type MomentumSubType = 'calendar_drift' | 'deadline_pressure' | 'coordination_issues' | 'progress_blocked' | 'general';
-
-interface DetectedSignals {
-  matchedOverrideKeywords: string[];
-  matchedMomentumKeywords: string[];
-  matchedStructureKeywords: string[];
-  matchedPrototypeKeywords: string[];
-  complexityIndicators: string[];
-  momentumSubType: MomentumSubType;
-  userPainPoints: string[];
-}
-
-function extractDetectedSignals(text: string): DetectedSignals {
-  const lowerText = text.toLowerCase();
-  
-  // Extract matched keywords
-  const matchedOverrideKeywords = MOMENTUM_OVERRIDE_KEYWORDS.filter(kw => lowerText.includes(kw));
-  const matchedMomentumKeywords = MAKE_IT_HAPPEN_KEYWORDS.filter(kw => lowerText.includes(kw));
-  const matchedStructureKeywords = CLEAR_PATH_KEYWORDS.filter(kw => lowerText.includes(kw));
-  const matchedPrototypeKeywords = QUICK_FIX_KEYWORDS.filter(kw => lowerText.includes(kw));
-  
-  // Extract complexity indicators
-  const complexityKeywords = [
-    'multiple teams', 'multi-team', 'stakeholders', 'integration', 'integrations',
-    'api', 'apis', 'testing', 'uat', 'migration', 'complex', 'unclear scope',
-    'launch', 'many teams', 'enterprise', 'organization-wide', 'company-wide'
-  ];
-  const complexityIndicators = complexityKeywords.filter(kw => lowerText.includes(kw));
-  
-  // Detect momentum sub-type
-  let momentumSubType: MomentumSubType = 'general';
-  
-  // Calendar/Planning Drift signals
-  const calendarDriftSignals = [
-    'calendar', 'content calendar', 'marketing calendar', 'never stick to',
-    'not following', 'ignore the calendar', 'planning but not doing',
-    'meetings turn into debates', 'debating instead of deciding'
-  ];
-  const hasCalendarDrift = calendarDriftSignals.some(s => lowerText.includes(s));
-  
-  // Deadline/Schedule Pressure signals
-  const deadlineSignals = [
-    'deadline', 'behind schedule', 'slipping', 'catch up', 'running late',
-    'time-sensitive', 'tight timeline', 'launch', 'falling behind'
-  ];
-  const hasDeadlinePressure = deadlineSignals.some(s => lowerText.includes(s));
-  
-  // Coordination/Ownership Issues signals
-  const coordinationSignals = [
-    'unclear roles', 'unclear ownership', 'who does what', 'duplicated work',
-    'missed tasks', 'nobody owns', 'lack of coordination', 'coordination',
-    'multiple teams', 'no clear owner', 'responsibilities unclear'
-  ];
-  const hasCoordinationIssues = coordinationSignals.some(s => lowerText.includes(s));
-  
-  // Progress Blocked signals
-  const progressBlockedSignals = [
-    'stuck', 'stalled', 'blocked', 'no progress', 'no movement',
-    'nothing gets done', 'waiting on each other', 'not moving forward'
-  ];
-  const hasProgressBlocked = progressBlockedSignals.some(s => lowerText.includes(s));
-  
-  // Prioritize sub-type (most specific first)
-  if (hasCoordinationIssues) momentumSubType = 'coordination_issues';
-  else if (hasCalendarDrift) momentumSubType = 'calendar_drift';
-  else if (hasDeadlinePressure) momentumSubType = 'deadline_pressure';
-  else if (hasProgressBlocked) momentumSubType = 'progress_blocked';
-  
-  // Extract user pain points (key phrases that describe their specific situation)
-  const painPointPatterns = [
-    /we (never|don't|can't|aren't) [^.!?]+/gi,
-    /things (keep|are|get) [^.!?]+/gi,
-    /nobody (knows|owns|is) [^.!?]+/gi,
-    /no one (knows|owns|is) [^.!?]+/gi,
-    /everyone (does|interprets) [^.!?]+/gi,
-    /meetings [^.!?]+/gi,
-    /team is [^.!?]+/gi,
-    /priorities [^.!?]+/gi,
-    /deadlines? [^.!?]+/gi
-  ];
-  
-  const userPainPoints: string[] = [];
-  for (const pattern of painPointPatterns) {
-    const matches = text.match(pattern);
-    if (matches) {
-      userPainPoints.push(...matches.slice(0, 2)); // Limit to 2 per pattern
-    }
-  }
-  
-  return {
-    matchedOverrideKeywords: matchedOverrideKeywords.slice(0, 5), // Top 5
-    matchedMomentumKeywords: matchedMomentumKeywords.slice(0, 5),
-    matchedStructureKeywords: matchedStructureKeywords.slice(0, 5),
-    matchedPrototypeKeywords: matchedPrototypeKeywords.slice(0, 5),
-    complexityIndicators: complexityIndicators.slice(0, 5),
-    momentumSubType,
-    userPainPoints: userPainPoints.slice(0, 4) // Top 4 pain points
-  };
-}
-
-// ============================================================================
-// SUPPORT TYPE DETECTION
-// ============================================================================
-
-function detectSupportType(text: string, urgency: string): 'make-it-happen' | 'clear-path' | 'quick-fix' {
-  const lowerText = text.toLowerCase();
-  
-  // CRITICAL: MAKE IT HAPPEN PRIORITY OVERRIDE
-  // Clear Path = how work flows. Make It Happen = why work ISN'T flowing.
-  // If user's pain is about progress/movement/deadlines → ALWAYS Make It Happen
-  
-  // Check 1: Explicit momentum override keywords
-  const hasMomentumOverride = MOMENTUM_OVERRIDE_KEYWORDS.some(kw => lowerText.includes(kw));
-  if (hasMomentumOverride) {
-    console.log('Make It Happen override triggered - explicit progress/deadline keywords');
-    return 'make-it-happen';
-  }
-  
-  // Check 2: "It's urgent 🔥" + any drift/coordination signals → Momentum
-  // When user selects urgent AND mentions ANY project complexity, assume they need movement not structure
-  if (urgency === "It's urgent 🔥") {
-    const urgentMomentumSignals = [
-      'deadline', 'launch', 'team', 'stakeholder', 'coordinate', 'coordination',
-      'behind', 'slipping', 'stuck', 'blocked', 'stalled', 'delay', 'drifting',
-      'unclear', 'waiting', 'multiple', 'several', 'busy', 'complex'
-    ];
-    const hasUrgentMomentumSignal = urgentMomentumSignals.some(signal => lowerText.includes(signal));
-    if (hasUrgentMomentumSignal) {
-      console.log('Make It Happen override triggered - urgent + drift/coordination signals');
-      return 'make-it-happen';
-    }
-  }
-  
-  // Check 3: Even with structure keywords, if ANY momentum signal exists alongside urgency → Momentum
-  // "workflow unclear AND we are behind schedule" → Momentum (not Structure)
-  const hasMomentumKeyword = MAKE_IT_HAPPEN_KEYWORDS.some(kw => lowerText.includes(kw));
-  const hasStructureKeyword = CLEAR_PATH_KEYWORDS.some(kw => lowerText.includes(kw));
-  
-  if (hasStructureKeyword && hasMomentumKeyword) {
-    // Mixed signals - check if the pain is about movement/deadlines
-    const driftSignals = [
-      'behind', 'deadline', 'slipping', 'stuck', 'stalled', 'blocked', 
-      'delay', 'drifting', 'improvising', 'catch up', 'urgent', 'launch'
-    ];
-    const hasDriftPain = driftSignals.some(signal => lowerText.includes(signal));
-    if (hasDriftPain) {
-      console.log('Make It Happen override triggered - mixed signals but drift pain detected');
-      return 'make-it-happen';
-    }
-  }
-  
-  // Check 3.5: Planning / calendar drift fallback (Momentum bias)
-  // If text mentions planning/scheduling concepts with "not following" signals → prefer Momentum
-  const planningDriftSignals = [
-    'calendar', 'content calendar', 'marketing calendar',
-    'plan', 'planning', 'priorities', 'priority', 'meeting'
-  ];
-  const hasPlanningDrift = planningDriftSignals.some(signal => lowerText.includes(signal));
-  
-  // Only apply if NOT a very strong, explicit structure-only signal
-  const strongStructureOnly = ['documenting a process', 'mapping a workflow', 'creating templates', 'building a template']
-    .some(phrase => lowerText.includes(phrase));
-  
-  if (hasPlanningDrift && !strongStructureOnly) {
-    // Check if there are ANY delay/slip/not-following signals
-    const notFollowingSignals = ['not follow', 'never stick', "don't stick", 'arguing', 'debates', 'not working', 'slipping', 'behind', 'shifting'];
-    if (notFollowingSignals.some(sig => lowerText.includes(sig))) {
-      console.log('Make It Happen override triggered - planning/calendar drift fallback');
-      return 'make-it-happen';
-    }
-  }
-  
-  // Check 3.6: Coordination / Ownership Drift Bias
-  // If text mentions duplicated work, missed work, unclear ownership, unclear roles, or coordination breakdown → Momentum
-  const coordinationDriftSignals = [
-    'duplicated work', 'doing things twice', 'things done twice', 'things get done twice',
-    'missed tasks', 'tasks not getting done', 'tasks slipping',
-    'ownership unclear', 'unclear ownership', 'nobody owns it',
-    'unclear roles', 'roles unclear', 'who does what',
-    'coordination all over the place', 'lack of coordination',
-    'everyone interprets it differently', 'plan interpreted differently'
-  ];
-  const hasCoordinationDrift = coordinationDriftSignals.some(signal => lowerText.includes(signal));
-  if (hasCoordinationDrift) {
-    console.log('Make It Happen override triggered - coordination/ownership drift fallback');
-    return 'make-it-happen';
-  }
-  
-  // CLEAR PATH has priority (if no make-it-happen override)
-  if (hasStructureKeyword) {
-    return 'clear-path';
-  }
-  
-  // QUICK FIX beats MAKE IT HAPPEN only if explicitly describing building a prototype/quick fix
-  const hasPrototypeKeyword = QUICK_FIX_KEYWORDS.some(kw => lowerText.includes(kw));
-  
-  // Check for explicit quick fix / prototype context
-  const explicitPrototype = ['build a prototype', 'create a prototype', 'make a prototype', 
-    'design a prototype', 'need a prototype', 'want a prototype', 'prototype for',
-    'quick fix', 'quick win', 'need it yesterday', 'fast fix']
-    .some(phrase => lowerText.includes(phrase));
-  
-  if (hasPrototypeKeyword && (explicitPrototype || !hasMomentumKeyword)) {
-    return 'quick-fix';
-  }
-  
-  if (hasMomentumKeyword) {
-    return 'make-it-happen';
-  }
-  
-  // Ambiguous → default to Clear Path
-  return 'clear-path';
-}
-
-// ============================================================================
-// PROJECT SIZING - Fixed buckets, not calculated
-// ============================================================================
-
-type ProjectSize = 'small' | 'medium' | 'large' | 'very-large';
-
-interface SizeConfig {
-  size: ProjectSize;
-  hoursMin: number;
-  hoursMax: number;
-  weeks: string;
-  costMin: number;
-  costMax: number;
-}
-
-// FIXED COST BUCKETS - Must ALWAYS use these exact ranges
-const SIZE_CONFIGS: Record<ProjectSize, SizeConfig> = {
-  'small': {
-    size: 'small',
-    hoursMin: 8,
-    hoursMax: 12,
-    weeks: '1–2 weeks',
-    costMin: 1000,
-    costMax: 1800
-  },
-  'medium': {
-    size: 'medium',
-    hoursMin: 12,
-    hoursMax: 20,
-    weeks: '2–4 weeks',
-    costMin: 1800,
-    costMax: 3200
-  },
-  'large': {
-    size: 'large',
-    hoursMin: 20,
-    hoursMax: 35,
-    weeks: '3–6 weeks',
-    costMin: 3200,
-    costMax: 5000
-  },
-  'very-large': {
-    size: 'very-large',
-    hoursMin: 35,
-    hoursMax: 50,
-    weeks: '5–8 weeks',
-    costMin: 5000,
-    costMax: 8000
-  }
+const SIZES: Record<Size, { weeks: { nl: string; en: string }; costMin: number; costMax: number }> = {
+  small: { weeks: { nl: "1 tot 2 weken", en: "1 to 2 weeks" }, costMin: 1000, costMax: 1800 },
+  medium: { weeks: { nl: "2 tot 4 weken", en: "2 to 4 weeks" }, costMin: 1800, costMax: 3200 },
+  large: { weeks: { nl: "3 tot 6 weken", en: "3 to 6 weeks" }, costMin: 3200, costMax: 5000 },
+  "very-large": { weeks: { nl: "5 tot 8 weken", en: "5 to 8 weeks" }, costMin: 5000, costMax: 8000 },
 };
 
-function determineProjectSize(inputs: {
-  situation: string;
-  handoff: string;
-  urgency: string;
-  budget: string;
-  supportType: 'make-it-happen' | 'clear-path' | 'quick-fix';
-}): SizeConfig {
-  const fullText = `${inputs.situation} ${inputs.handoff}`.toLowerCase();
-  
-  // Complexity indicators
-  const largeIndicators = [
-    'multiple teams', 'multi-team', 'stakeholders', 'integration', 'integrations', 
-    'api', 'apis', 'testing', 'uat', 'e2e', 'migration', 'complex', 'unclear scope',
-    'launch', 'slipping', 'deadline', 'priorities unclear', 'responsibilities unclear',
-    'lost direction', 'coordination missing'
-  ];
-  
-  const veryLargeIndicators = [
-    'many teams', 'enterprise', 'organization-wide', 'company-wide', 
-    'long-term', 'months', 'technical debt'
-  ];
-  
-  const smallIndicators = [
-    'simple', 'quick', 'single', 'just one', 'one deliverable', 'tiny',
-    'small task', 'quick fix', 'founder', 'solo'
-  ];
-  
-  let complexityScore = 0;
-  
-  // Count complexity signals
-  largeIndicators.forEach(indicator => {
-    if (fullText.includes(indicator)) complexityScore += 1;
-  });
-  
-  veryLargeIndicators.forEach(indicator => {
-    if (fullText.includes(indicator)) complexityScore += 2;
-  });
-  
-  smallIndicators.forEach(indicator => {
-    if (fullText.includes(indicator)) complexityScore -= 1;
-  });
-  
-  // Budget signals
-  if (inputs.budget === '€6.000+') complexityScore += 2;
-  else if (inputs.budget === '€3.000–€6.000') complexityScore += 1;
-  else if (inputs.budget === '< €1.000') complexityScore -= 1;
-  
-  // URGENCY-BASED SIZING (affects sizing, not classification)
-  // "It's urgent 🔥" with complexity indicators → push towards Large
-  if (inputs.urgency === "It's urgent 🔥") {
-    const urgentLargeIndicators = ['deadline', 'multiple', 'team', 'stalled', 'stuck', 'blocked', 'launch'];
-    const hasUrgentComplexity = urgentLargeIndicators.some(indicator => fullText.includes(indicator));
-    if (hasUrgentComplexity) {
-      complexityScore += 1;
-    }
-  }
-  
-  // CLEAR PATH WORK: Defaults to Medium
-  if (inputs.supportType === 'clear-path') {
-    // Only Small if very explicitly tiny
-    const isTiny = ['just one template', 'single template', 'one simple document', 'very quick', 'tiny']
-      .some(indicator => fullText.includes(indicator));
-    
-    if (complexityScore >= 5) return SIZE_CONFIGS['very-large'];
-    if (complexityScore >= 3) return SIZE_CONFIGS['large'];
-    if (isTiny && complexityScore <= -2) return SIZE_CONFIGS['small'];
-    return SIZE_CONFIGS['medium']; // DEFAULT
-  }
-  
-  // MAKE IT HAPPEN WORK: Defaults to Medium, upsize to Large on complexity
-  if (inputs.supportType === 'make-it-happen') {
-    const isTiny = ['just one task', 'single task', 'one quick call', 'very quick', 'tiny']
-      .some(indicator => fullText.includes(indicator));
-    
-    const momentumLargeIndicators = [
-      'launch', 'multiple team', 'multi-team', 'deadline', 'slipping',
-      'priorities unclear', 'responsibilities unclear', 'coordination missing',
-      'lost direction', 'scope unclear'
-    ];
-    const hasLargeIndicator = momentumLargeIndicators.some(indicator => fullText.includes(indicator));
-    
-    if (complexityScore >= 5) return SIZE_CONFIGS['very-large'];
-    if (complexityScore >= 3 || hasLargeIndicator) return SIZE_CONFIGS['large'];
-    if (isTiny && complexityScore <= -2) return SIZE_CONFIGS['small'];
-    return SIZE_CONFIGS['medium']; // DEFAULT
-  }
-  
-  // QUICK FIX WORK: Small–Medium depending on complexity
-  if (complexityScore >= 5) return SIZE_CONFIGS['very-large'];
-  if (complexityScore >= 3) return SIZE_CONFIGS['large'];
-  if (complexityScore >= 1) return SIZE_CONFIGS['medium'];
-  return SIZE_CONFIGS['small'];
+const SIZE_ORDER: Size[] = ["small", "medium", "large", "very-large"];
+
+const bump = (size: Size, steps: number): Size => {
+  const index = Math.min(SIZE_ORDER.length - 1, Math.max(0, SIZE_ORDER.indexOf(size) + steps));
+  return SIZE_ORDER[index];
+};
+
+const countMatches = (text: string, list: string[]) => list.filter((word) => text.includes(word)).length;
+
+function detectRoute(text: string, given?: string): Route {
+  if (given === "brand" || given === "website" || given === "prototype") return given;
+  const brand = countMatches(text, BRAND_KEYWORDS);
+  const website = countMatches(text, WEBSITE_KEYWORDS);
+  const prototype = countMatches(text, PROTOTYPE_KEYWORDS);
+  if (prototype > brand && prototype >= website) return "prototype";
+  if (website >= brand && website > 0) return "website";
+  if (brand > 0) return "brand";
+  return "website";
 }
 
-// ============================================================================
-// MODIFIERS - Only affect hours, NOT cost buckets
-// ============================================================================
+function detectSize(text: string, route: Route): Size {
+  // Default per route: a prototype is the smallest piece of work, a brand the broadest.
+  let size: Size = route === "prototype" ? "small" : route === "website" ? "medium" : "medium";
 
-function calculateHourModifier(inputs: {
-  urgency: string;
-  situation: string;
-  handoff: string;
-}): number {
-  let modifier = 0;
-  const fullText = `${inputs.situation} ${inputs.handoff}`.toLowerCase();
-  
-  // URGENCY MODIFIERS
-  switch (inputs.urgency) {
-    case 'Just exploring':
-      // No modifier
-      break;
-    case 'Soon':
-      // Baseline, no modifier
-      break;
-    case 'Needs attention':
-      modifier += 10;
-      break;
-    case "It's urgent 🔥":
-      modifier += 20;
-      break;
-  }
-  
-  // COMPLEXITY MODIFIERS
-  if (fullText.includes('testing') || fullText.includes('uat') || fullText.includes('e2e')) {
-    modifier += 20;
-  }
-  if (fullText.includes('integration') || fullText.includes('api')) {
-    modifier += 15;
-  }
-  if (fullText.includes('multiple team') || fullText.includes('multi-team')) {
-    modifier += 15;
-  }
-  if (fullText.includes('unclear') || fullText.includes("don't know what") || fullText.includes('scope unclear')) {
-    modifier += 10;
-  }
-  
-  // Cap at 40%
-  return Math.min(modifier, 40);
+  const big = countMatches(text, BIG_SCOPE_KEYWORDS);
+  const small = countMatches(text, SMALL_SCOPE_KEYWORDS);
+
+  if (big >= 3) size = bump(size, 2);
+  else if (big >= 1) size = bump(size, 1);
+
+  if (small >= 1 && big === 0) size = bump(size, -1);
+
+  // A full brand rarely lands in the smallest bucket.
+  if (route === "brand" && size === "small") size = "medium";
+
+  return size;
 }
 
-// ============================================================================
-// FORMATTING
-// ============================================================================
+const formatCurrency = (amount: number) =>
+  `\u20ac${amount.toLocaleString("nl-NL", { maximumFractionDigits: 0 })}`;
 
-function formatCurrency(amount: number): string {
-  return `€${amount.toLocaleString('de-DE')}`;
-}
+const ROUTE_LABEL: Record<Route, { nl: string; en: string }> = {
+  brand: { nl: "Merk", en: "Brand" },
+  website: { nl: "Website", en: "Website" },
+  prototype: { nl: "Prototype", en: "Prototype" },
+};
 
-// ============================================================================
-// DYNAMIC APPROACH GUIDANCE (replaces static templates)
-// ============================================================================
+const ROUTE_GUIDANCE: Record<Route, string> = {
+  brand:
+    "This is brand work: what the business stands for, how it sounds and how it looks. Steps move from conversation and positioning, to a visual direction, to a small brand system they can actually use (logo, colour, type, examples).",
+  website:
+    "This is website work: structure, copy direction, design and build. Steps move from what the site has to do, to structure and content, to design and build, to going live.",
+  prototype:
+    "This is prototype work: turning a loose idea into something clickable they can test or show. Steps move from sharpening the idea, to the main flow, to clickable screens, to testing it with real people.",
+};
 
-function getMakeItHappenApproachGuidance(subType: MomentumSubType, painPoints: string[]): string {
-  const painContext = painPoints.length > 0 
-    ? `\nUser's specific pain points to address: "${painPoints.join('", "')}"` 
-    : '';
-  
-  const subTypeGuidance: Record<MomentumSubType, string> = {
-    calendar_drift: `The user is struggling with plans/calendars not being followed. Focus step 2 on why the calendar isn't sticking and how to make planning realistic and actually followed.`,
-    deadline_pressure: `The user has deadline/schedule pressure. Focus step 2 on stabilising what's in scope NOW and cutting what can wait. Emphasize speed and focus.`,
-    coordination_issues: `The user has ownership/coordination confusion. Focus step 2 on clarifying who owns what, eliminating duplicate work, and setting clear handoffs.`,
-    progress_blocked: `The user feels stuck or blocked. Focus step 2 on identifying and removing specific blockers, getting quick wins to rebuild momentum.`,
-    general: `Focus on general momentum restoration with clear ownership and visible progress.`
-  };
-
-  return `Write 4 numbered steps tailored to THIS specific situation. Reference their actual problem.
-${subTypeGuidance[subType]}
-${painContext}
-
-Your steps should follow this structure but use THEIR language and situation:
-1. Diagnostic step - understand what's specifically blocking them (reference their situation)
-2. [Sub-type specific action] - the core fix for their type of problem
-3. Ownership & coordination - clarify who does what and how decisions get made
-4. Visible progress - establish weekly rhythm so they SEE things moving
-
-Do NOT use generic language. Reference specifics from their input.`;
-}
-
-function getClearPathApproachGuidance(painPoints: string[]): string {
-  const painContext = painPoints.length > 0 
-    ? `\nUser's specific pain points to address: "${painPoints.join('", "')}"` 
-    : '';
-
-  return `Write 4 numbered steps tailored to THIS specific situation. Reference their actual problem.
-${painContext}
-
-Your steps should follow this structure but use THEIR language and situation:
-1. Discovery step - understand their current state and where the friction is
-2. Mapping step - document and simplify the workflow into something usable
-3. Tools/templates - set up lightweight structure (Notion, templates, etc.) if helpful
-4. Handover - deliver something they can actually use day-to-day
-
-Do NOT use generic language. Reference specifics from their input.`;
-}
-
-function getQuickFixApproachGuidance(painPoints: string[]): string {
-  const painContext = painPoints.length > 0 
-    ? `\nUser's specific goals: "${painPoints.join('", "')}"` 
-    : '';
-
-  return `Write 4 numbered steps tailored to THIS specific concept. Reference their actual idea or issue.
-${painContext}
-
-Your steps should follow this structure but use THEIR language and situation:
-1. Diagnose - quickly understand the core issue or idea
-2. User flow / solution design - map out the fix or key interactions
-3. Build / deliver - create a working prototype, fix, or tangible solution
-4. Ready for next steps - prepare it for testing, alignment, or handoff
-
-Do NOT use generic language. Reference specifics from their input.`;
-}
-
-// ============================================================================
-// DYNAMIC WALK-AWAY GUIDANCE (replaces static templates)
-// ============================================================================
-
-function getWalkAwayGuidance(supportType: 'make-it-happen' | 'clear-path' | 'quick-fix', subType: MomentumSubType): string {
-  const baseGuidance = `List 3-4 tangible outcomes they'd walk away with, tailored to their specific situation.
-Use bullets (-). Reference what they actually mentioned needing.
-Keep each bullet short (5-10 words max).`;
-
-  const typeHints: Record<string, string> = {
-    'clear-path': `Focus on: clarity, usable workflows, templates, reduced confusion, actionable roadmap.`,
-    'make-it-happen_calendar_drift': `Focus on: a calendar that sticks, realistic planning rhythm, decisions that get made.`,
-    'make-it-happen_deadline_pressure': `Focus on: clear priorities, protected timeline, focused scope, visible progress.`,
-    'make-it-happen_coordination_issues': `Focus on: clear ownership, no duplicate work, smooth handoffs, everyone knowing their role.`,
-    'make-it-happen_progress_blocked': `Focus on: blockers removed, momentum restored, quick wins, forward movement.`,
-    'make-it-happen_general': `Focus on: ownership, momentum, weekly progress, clear next steps.`,
-    'quick-fix': `Focus on: working prototype, diagnosed issue, tangible fix, something to test/pitch, breathing room.`
-  };
-
-  const key = supportType === 'make-it-happen' ? `make-it-happen_${subType}` : supportType;
-  return `${baseGuidance}\n${typeHints[key] || ''}`;
-}
-
-// ============================================================================
-// MAIN HANDLER
-// ============================================================================
+const HEADINGS = {
+  nl: {
+    summary: "## Wat ik eruit haal",
+    approach: "## Zo pak ik het aan",
+    deliver: "## Wat je krijgt",
+    weeks: "## Doorlooptijd",
+    cost: "## Indicatie kosten",
+  },
+  en: {
+    summary: "## What I take from this",
+    approach: "## How I would do it",
+    deliver: "## What you get",
+    weeks: "## Time needed",
+    cost: "## Ballpark cost",
+  },
+};
 
 serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
   }
 
   try {
-    const { situation, handoff, urgency, budget, language } = await req.json();
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not set");
 
-    // Server-side input validation
-    if (typeof situation !== 'string' || typeof handoff !== 'string' ||
-        situation.trim().length === 0 || handoff.trim().length === 0) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
-        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-    if (situation.length > 2000 || handoff.length > 1000) {
-      return new Response(JSON.stringify({ error: 'Input too long' }), {
-        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-    const allowedUrgency = ['Just exploring', 'Soon', 'Needs attention', "It's urgent 🔥", '', undefined, null];
-    const allowedBudget = ['< €1.000', '€1.000–€3.000', '€3.000–€6.000', '€6.000+', '', undefined, null];
-    if (urgency != null && !allowedUrgency.includes(urgency)) {
-      return new Response(JSON.stringify({ error: 'Invalid urgency value' }), {
-        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-    if (budget != null && !allowedBudget.includes(budget)) {
-      return new Response(JSON.stringify({ error: 'Invalid budget value' }), {
-        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    const body = await req.json();
+    const situation = String(body.situation ?? "").slice(0, 3000);
+    const handoff = String(body.handoff ?? "").slice(0, 3000);
+    const route = String(body.route ?? "");
+    const urgency = String(body.urgency ?? "").slice(0, 120);
+    const budget = String(body.budget ?? "").slice(0, 120);
+    const lang = String(body.language ?? "nl").startsWith("nl") ? "nl" : "en";
+
+    if (!situation.trim()) {
+      return new Response(JSON.stringify({ error: "Missing situation" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    const responseLanguage = language === 'nl' ? 'nl' : 'en';
-    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
+    const text = `${situation} ${handoff}`.toLowerCase();
+    const detectedRoute = detectRoute(text, route);
+    const size = detectSize(text, detectedRoute);
+    const sizeConfig = SIZES[size];
+    const headings = HEADINGS[lang];
 
-    if (!LOVABLE_API_KEY) {
-      throw new Error('LOVABLE_API_KEY is not configured');
-    }
+    console.log("project-outline", { route: detectedRoute, size, urgency, budget, lang });
 
+    const systemPrompt = `You are Esther Woerdman of Es Venture, writing a short first plan for someone who just described what they want to make. You work solo, direct and personal. You make brands, websites and prototypes for entrepreneurs, and every project starts from what makes that business different.
 
-    // 1. CLASSIFY SUPPORT TYPE (urgency can trigger Momentum override)
-    const fullText = `${situation} ${handoff}`;
-    const supportType = detectSupportType(fullText, urgency);
-    
-    // 2. EXTRACT DETECTED SIGNALS for contextual output
-    const detectedSignals = extractDetectedSignals(fullText);
-    
-    // 3. DETERMINE PROJECT SIZE (includes urgency-based sizing)
-    const sizeConfig = determineProjectSize({ situation, handoff, urgency, budget, supportType });
-    
-    // 4. CALCULATE HOUR MODIFIER (urgency + complexity)
-    const hourModifier = calculateHourModifier({ urgency, situation, handoff });
-    
-    // 5. ADJUST HOURS (modifiers apply to hours, NOT to cost buckets)
-    const adjustedHoursMin = Math.round(sizeConfig.hoursMin * (1 + hourModifier / 100));
-    const adjustedHoursMax = Math.round(sizeConfig.hoursMax * (1 + hourModifier / 100));
-    
-    // 6. COST COMES FROM FIXED BUCKET (never calculated from hours)
-    const costMin = sizeConfig.costMin;
-    const costMax = sizeConfig.costMax;
+VOICE
+- First person: I, me. Speak to the reader as je/jij (Dutch) or you (English).
+- Short sentences. Warm, energetic, concrete. No corporate language, no hype words.
+- Never use double hyphens or em dashes.
+- Never mention an hourly rate, hours, or how you calculated anything.
+- Do not invent client names, results or numbers.
+${lang === "nl" ? "- Write the ENTIRE answer in Dutch." : "- Write the ENTIRE answer in English."}
 
-    console.log('=== Project Plan Generator ===');
-    console.log('Support type:', supportType);
-    console.log('Momentum sub-type:', detectedSignals.momentumSubType);
-    console.log('Project size:', sizeConfig.size);
-    console.log('Hour modifier:', hourModifier + '%');
-    console.log('Adjusted hours:', adjustedHoursMin, '-', adjustedHoursMax);
-    console.log('Cost bucket:', formatCurrency(costMin), '-', formatCurrency(costMax));
-    console.log('Detected signals:', JSON.stringify(detectedSignals, null, 2));
+ROUTE: ${ROUTE_LABEL[detectedRoute][lang]}
+${ROUTE_GUIDANCE[detectedRoute]}
 
-    // Get dynamic approach guidance based on support type and sub-type
-    let approachGuidance: string;
-    if (supportType === 'make-it-happen') {
-      approachGuidance = getMakeItHappenApproachGuidance(detectedSignals.momentumSubType, detectedSignals.userPainPoints);
-    } else if (supportType === 'clear-path') {
-      approachGuidance = getClearPathApproachGuidance(detectedSignals.userPainPoints);
-    } else {
-      approachGuidance = getQuickFixApproachGuidance(detectedSignals.userPainPoints);
-    }
+Mirror the reader's own words where it fits naturally.
 
-    // Get dynamic walk-away guidance
-    const walkAwayGuidance = getWalkAwayGuidance(supportType, detectedSignals.momentumSubType);
+OUTPUT FORMAT, exactly these five sections in this order, no extra sections, no nesting:
 
-    // Urgency-based tone guidance
-    let toneGuidance = '';
-    switch (urgency) {
-      case 'Just exploring':
-        toneGuidance = 'Use the softest, calmest tone. No pressure.';
-        break;
-      case 'Soon':
-        toneGuidance = 'Neutral professional tone.';
-        break;
-      case 'Needs attention':
-        toneGuidance = 'Confident and proactive tone. The project is active but stuck.';
-        break;
-      case "It's urgent 🔥":
-        toneGuidance = 'Direct, decisive tone (still warm, never dramatic). Immediate attention needed.';
-        break;
-      default:
-        toneGuidance = 'Warm, professional tone.';
-    }
+${headings.summary}
+One or two sentences that show you understood, in their own words.
 
-    // Build context block for AI
-    const contextBlock = `
-DETECTED CONTEXT (use this to tailor your response):
-- Support Type: ${supportType === 'make-it-happen' ? 'Let\'s Make It Happen (Hands-On Support)' : supportType === 'clear-path' ? 'Your Clear Path Forward (Strategic Clarity)' : 'Quick Fixes & Fast Starts (Rapid Solutions)'}
-- Sub-Type: ${supportType === 'make-it-happen' ? detectedSignals.momentumSubType.replace('_', ' ') : 'N/A'}
-- Matched Signals: ${[...detectedSignals.matchedOverrideKeywords, ...detectedSignals.matchedMomentumKeywords].slice(0, 5).join(', ') || 'none specific'}
-- Complexity Factors: ${detectedSignals.complexityIndicators.join(', ') || 'none detected'}
-- User Pain Points: ${detectedSignals.userPainPoints.join(' | ') || 'not extracted'}
+${headings.approach}
+A markdown numbered list of exactly 4 steps (1. 2. 3. 4.). One short sentence each, max 12 words.
 
-LANGUAGE MIRRORING RULE:
-Mirror key phrases from the user's input where natural. If they said "calendar chaos", acknowledge "the calendar chaos" in your response. If they said "nobody knows who does what", reference that exact phrase. This makes the response feel personal and understood.
-`;
+${headings.deliver}
+A markdown bullet list of 3 or 4 items (- item). Concrete things they end up with, max 8 words each.
 
-    const systemPrompt = `You are Esther, a warm, energetic, hands-on freelance partner writing a project plan. You're the kind of person who rolls up their sleeves and makes things happen.
+${headings.weeks}
+**${sizeConfig.weeks[lang]}**
 
-CRITICAL BREVITY RULES:
-- BE CONCISE. Every sentence must earn its place.
-- NO fluff, filler words, or unnecessary qualifiers
-- Short sentences. Punchy. Direct.
-- If you can say it in 5 words, don't use 10
-- This is a FIRST IMPRESSION - light but sharp
+${headings.cost}
+**${formatCurrency(sizeConfig.costMin)} - ${formatCurrency(sizeConfig.costMax)}**
 
-VOICE & TONE:
-- Super personal and approachable - like talking to a trusted friend who happens to be amazing at getting things done
-- Energetic and action-oriented - "Let's go!", "Consider it done!", convey momentum
-- Direct, no padding - no corporate jargon allowed
-- ${toneGuidance}
-- NEVER use double hyphens (--)
+The time and cost lines must be copied exactly as given above.`;
 
-YOUR THREE SERVICES (reference the relevant one naturally):
-- "Let's Make It Happen" - hands-on project leadership and operational support
-- "Your Clear Path Forward" - turning complex problems into actionable plans and strategy
-- "Quick Fixes & Fast Starts" - rapid problem solving, prototypes, and quick wins
+    const userPrompt = `${lang === "nl" ? "Wat ze willen maken" : "What they want to make"}: ${situation}
+${handoff ? `${lang === "nl" ? "Extra context" : "Extra context"}: ${handoff}` : ""}
+${lang === "nl" ? "Wanneer" : "Timing"}: ${urgency || "-"}
+${lang === "nl" ? "Budgetgevoel" : "Budget comfort"}: ${budget || "-"}`;
 
-${contextBlock}
-
-PROJECT SIZE: ${sizeConfig.size}
-
-OUTPUT FORMAT (strict order, no nesting):
-
-## Short summary
-1-2 sentences max. Show you get it. Start with "So..." or "Sounds like..." and reference their specific situation. No fluff.
-
-## Here's how I'd tackle this
-IMPORTANT: Use markdown numbered list syntax (1. 2. 3. 4.) - NOT plain text!
-4 numbered steps. Each step: ONE short sentence (max 12 words). Action-focused.
-Format EXACTLY like this:
-1. First step here
-2. Second step here
-3. Third step here
-4. Fourth step here
-${approachGuidance}
-
-## What you'd walk away with
-IMPORTANT: Use markdown bullet syntax (- item) - NOT plain text!
-3-4 bullet points. Each bullet: 4-8 words max. Concrete outcomes only.
-Format EXACTLY like this:
-- First outcome
-- Second outcome
-- Third outcome
-${walkAwayGuidance}
-
-## Timeline
-**${sizeConfig.weeks}**
-
-## Ballpark cost
-**${formatCurrency(costMin)}–${formatCurrency(costMax)}**
-
-RULES:
-- Sections in this EXACT order, no skipping
-- Mirror their language where natural
-- No hourly rates mentioned
-- Keep it scannable - this is a quick read, not a proposal
-${responseLanguage === 'nl' ? `
-LANGUAGE: Write the ENTIRE response in Dutch (Nederlands). Use informal "je"/"jij" form, warm and energetic.
-Translate the section headings as follows:
-- "## Short summary" → "## Korte samenvatting"
-- "## Here's how I'd tackle this" → "## Zo zou ik dit aanpakken"
-- "## What you'd walk away with" → "## Wat je eraan overhoudt"
-- "## Timeline" → "## Doorlooptijd"
-- "## Ballpark cost" → "## Indicatieve kosten"
-Keep all formatting, numbered/bulleted list syntax, and bold/markdown structure identical. Mirror Dutch phrases from the user where natural. Do NOT use double hyphens (--).` : ''}`;
-
-    const userPrompt = `User input:
-- Situation: ${situation}
-- What they need handled: ${handoff}
-- Urgency: ${urgency || "not specified"}
-- Budget comfort zone: ${budget || "not specified"}
-
-Generate the project plan using the structure above. Be human, warm, and direct. Reference their specific situation, don't be generic.`;
-
-    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
-      method: 'POST',
+    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
+        model: "google/gemini-2.5-flash",
         messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt }
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt },
         ],
       }),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('AI Gateway error:', response.status, errorText);
-      
+      console.error("AI Gateway error:", response.status, errorText);
       if (response.status === 429) {
-        return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
+        return new Response(JSON.stringify({ error: "Rate limit exceeded" }), {
           status: 429,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
       if (response.status === 402) {
-        return new Response(JSON.stringify({ error: 'Payment required' }), {
+        return new Response(JSON.stringify({ error: "Payment required" }), {
           status: 402,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      
       throw new Error(`AI Gateway error: ${response.status}`);
     }
 
     const data = await response.json();
     const reply = data.choices?.[0]?.message?.content;
+    if (!reply) throw new Error("No response from AI");
 
-    if (!reply) {
-      throw new Error('No response from AI');
-    }
-
-    console.log('Successfully generated project plan');
-
-    // Store the inquiry in the database
     try {
-      const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-      const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-      const supabase = createClient(supabaseUrl, supabaseServiceKey);
-      
-      await supabase.from('project_inquiries').insert({
+      const supabase = createClient(
+        Deno.env.get("SUPABASE_URL")!,
+        Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+      );
+      await supabase.from("project_inquiries").insert({
         situation,
-        handoff,
+        handoff: handoff || detectedRoute,
         urgency,
         budget,
-        ai_response: reply
+        ai_response: reply,
       });
-      console.log('Project inquiry stored successfully');
     } catch (dbError) {
-      // Log but don't fail the request if storage fails
-      console.error('Failed to store project inquiry:', dbError);
+      console.error("Failed to store project inquiry:", dbError);
     }
 
-    return new Response(JSON.stringify({ reply }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    return new Response(JSON.stringify({ reply, route: detectedRoute }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
-
   } catch (error) {
-    console.error('Error in project-outline function:', error);
-    return new Response(JSON.stringify({ error: 'Failed to generate plan. Please try again.' }), {
+    console.error("Error in project-outline function:", error);
+    return new Response(JSON.stringify({ error: "Failed to generate plan. Please try again." }), {
       status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
-
 });
