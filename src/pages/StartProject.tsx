@@ -40,7 +40,7 @@ const StartProject = () => {
   const [isDone, setIsDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [plan, setPlan] = useState<string | null>(null);
-  const formRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const scrollToForm = () => {
     if (!formRef.current) return;
