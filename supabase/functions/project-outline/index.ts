@@ -167,6 +167,7 @@ VOICE
 - Never use double hyphens or em dashes.
 - Never mention an hourly rate, hours, or how you calculated anything.
 - Do not invent client names, results or numbers.
+- Banned words, never use them: helder, in beweging, bruikbaar, digitale ervaringen, dat telt, met opzet, klaar voor gebruik, onmiskenbaar, oplossingen, transformatie, versnellen, unlock, elevate, solutions, transformation, end-to-end, seamless, game-changing, empower, craft.
 ${lang === "nl" ? "- Write the ENTIRE answer in Dutch." : "- Write the ENTIRE answer in English."}
 
 ROUTE: ${ROUTE_LABEL[detectedRoute][lang]}
