@@ -368,7 +368,7 @@ const Index = () => {
                           src={client.src}
                           alt={client.alt}
                           loading="lazy"
-                          className="h-10 max-w-full w-auto object-contain opacity-70 grayscale contrast-125 transition-opacity duration-300 hover:opacity-95"
+                          className={`max-w-full w-auto object-contain opacity-70 grayscale contrast-125 transition-opacity duration-300 hover:opacity-95 ${client.alt === "Landal" ? "h-16 md:h-20" : "h-10"}`}
                         />
                       </div>
                     ))}
