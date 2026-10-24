@@ -394,9 +394,8 @@ const Index = () => {
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center md:origin-right md:scale-110"
             />
-            <div className="pointer-events-none absolute inset-0 bg-primary/20" aria-hidden="true" />
             <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary from-0% via-primary/95 via-55% to-primary/60 to-100% md:to-primary/35"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary from-0% via-primary/95 via-60% to-primary/55 to-100% md:to-primary/10"
               aria-hidden="true"
             />
             <div className="container relative mx-auto px-4">
