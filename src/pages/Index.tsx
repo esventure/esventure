@@ -201,15 +201,6 @@ const Index = () => {
                     </div>
                   </Reveal>
                 </div>
-
-                <HeroPortrait
-                  reduce={reduce}
-                  t={t}
-                  className="relative mx-auto w-full max-w-[32rem] md:hidden"
-                  boxClassName="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
-                  imgClassName="aspect-[4/5] w-full object-cover object-top"
-                  from={{ opacity: 0, y: 24 }}
-                />
               </div>
             </div>
 
