@@ -276,7 +276,7 @@
           ],
           "voice": "Rustig, persoonlijk en direct. Altijd 'ik', geschreven aan één persoon, met concrete taal en één duidelijke volgende stap."
         },
-        "cardCopy": "Warm, vriendelijk en persoonlijk. Meer een vriend in de stad dan touroperator."
+        "cardCopy": "Dennis, de beste private guide van Amsterdam, wilde een website die echt \"Dennis\" uitstraalde. En dat is gelukt! "
       },
       {
         "slug": "studio-ingrid-de-reuver",
@@ -322,7 +322,7 @@
         "direction": "De focus lag op de eerste praktische route: wat iemand ziet, kiest, volgt en leert in de receptervaring.",
         "outcome": "Het prototype maakte de discussie concreet genoeg om te tonen, proberen en verbeteren vóór een grotere investering.",
         "credits": "Rol en credits van samenwerkingen moeten nog definitief bevestigd worden voordat ze publiek gedetailleerd worden genoemd.",
-        "cardCopy": "Van los idee naar een klikbare versie die je kan doortesten."
+        "cardCopy": "Van een los idee naar een prototype wat je op je telefoon kan testen."
       },
       {
         "slug": "rainforest-alliance",
@@ -350,9 +350,9 @@
   },
   "studio": {
     "eyebrow": "DE STUDIO",
-    "title": "Bewust klein. Serieus over het werk.",
+    "title": "Klein. Maar serieus over het werk.",
     "paragraphs": [
-      "Ik ben Esther. Ik heb jaren binnen bedrijven gewerkt aan digitale projecten. Boekingssystemen, platformen, migraties. Mijn werk was zorgen dat het ding ook echt af kwam, met alle partijen die daarbij horen. Dat doe ik nog steeds als Digital Delivery Manager.",
+      "Hoi! Ik ben Esther. Ik heb jaren binnen bedrijven gewerkt aan digitale projecten. Boekingssystemen, platformen, migraties. Mijn werk was zorgen dat het ding ook echt af kwam, met alle partijen die daarbij horen. Dat doe ik nog steeds als Digital Delivery Manager.",
       "Wat me daar opviel: hoe langer een project duurde, hoe verder het af kwam te staan van waar het over ging. Maanden aan documenten, en pas op het laatst iets om naar te kijken. Terwijl ik het liefst juist dát doe. Iets wat in iemands hoofd zit op een scherm zetten, zodat je er samen wat van kunt vinden.",
       "Daarvoor is Es Venture er. Hier werk ik klein en snel, met ondernemers die zelf het gezicht van hun bedrijf zijn. Geen stuurgroep, geen maandenlange trajecten. Je zit met de persoon die het ook maakt.",
       "Hoe dat gaat: we beginnen met een gesprek waarin ik waarschijnlijk te veel vraag. Hoe praten je klanten over je, waar ben je stiekem trots op, welke concurrentensite irriteert je en waarom precies. Daar komt bijna altijd het idee uit waar de rest op gaat leunen.",
@@ -360,7 +360,7 @@
       "Mijn beste ideeën krijg ik trouwens zelden achter mijn bureau. Meestal tijdens het hardlopen langs het Westerpark.",
       "Heeft een project een fotograaf, developer of tekstschrijver nodig, dan haal ik iemand erbij die ik al jaren ken. Jij houdt één aanspreekpunt."
     ],
-    "link": "Vertel me wat je wil maken",
+    "link": "Vertel me wat je wil",
     "portraitAlt": "Ik aan het werk",
     "tag": "Solo fixer"
   },
@@ -436,7 +436,7 @@
   },
   "servicesRoutes": {
     "eyebrow": "WAT IK MAAK",
-    "title": "Drie manieren om met mij te werken.",
+    "title": "Verschillende manieren om met mij te werken.",
     "situationLabel": "Situatie",
     "resultLabel": "Wat ik doe",
     "cta": "Vertel me hierover",
