@@ -9,7 +9,7 @@ import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import CaseGrid from "@/components/work/CaseGrid";
 import type { CaseServiceRoute } from "@/components/work/caseContent";
-import { caseMedia } from "@/components/work/caseMedia";
+import { caseMedia, hostedAsset } from "@/components/work/caseMedia";
 import { analytics } from "@/lib/analytics";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherStudio from "@/assets/esther-studio.jpg";

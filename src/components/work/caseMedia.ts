@@ -55,7 +55,7 @@ export interface CaseMedia {
   typefaces?: CaseTypeface[];
 }
 
-const hostedAsset = (path: string) => `https://esventure.lovable.app${path}`;
+export const hostedAsset = (path: string) => `https://esventure.lovable.app${path}`;
 
 export const caseMedia: Record<string, CaseMedia> = {
   "studio-ingrid-de-reuver": {
