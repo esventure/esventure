@@ -170,6 +170,14 @@ const Index = () => {
                       {t("hero.titleHighlight") ? <span className="text-secondary"> {t("hero.titleHighlight")}</span> : null}
                     </h1>
                   </Reveal>
+                  <HeroPortrait
+                    reduce={reduce}
+                    t={t}
+                    className="relative mx-auto mt-8 w-full max-w-[32rem] md:hidden"
+                    boxClassName="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
+                    imgClassName="aspect-[4/5] w-full object-cover object-top"
+                    from={{ opacity: 0, y: 24 }}
+                  />
                   <Reveal delay={0.1}>
                     <p className="mt-7 max-w-[42ch] text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
                       {t("hero.lead")}
@@ -201,15 +209,6 @@ const Index = () => {
                     </div>
                   </Reveal>
                 </div>
-
-                <HeroPortrait
-                  reduce={reduce}
-                  t={t}
-                  className="relative mx-auto w-full max-w-[32rem] md:hidden"
-                  boxClassName="overflow-hidden rounded-[2rem] bg-secondary ring-1 ring-primary-foreground/25"
-                  imgClassName="aspect-[4/5] w-full object-cover object-top"
-                  from={{ opacity: 0, y: 24 }}
-                />
               </div>
             </div>
 
