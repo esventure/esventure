@@ -411,22 +411,23 @@ const Index = () => {
               src={hostedAsset(estherFinalCtaAsset.url)}
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] object-cover object-[45%_center] [mask-image:linear-gradient(to_top,black_35%,transparent_78%)] md:hidden"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[46%] object-cover object-[45%_center] [mask-image:linear-gradient(to_top,black_18%,transparent_88%)] md:hidden"
             />
             <div
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-transparent via-primary/45 via-45% to-primary md:hidden"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[46%] bg-[linear-gradient(to_top,hsl(var(--primary)/0)_0%,hsl(var(--primary)/0.3)_26%,hsl(var(--primary)/0.68)_56%,hsl(var(--primary)/0.92)_82%,hsl(var(--primary))_100%)] md:hidden"
               aria-hidden="true"
             />
             <img
               src={hostedAsset(estherFinalCtaAsset.url)}
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-[34%] object-cover object-[35%_center] [mask-image:linear-gradient(to_right,transparent,black_16%)] md:block"
+              className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-[34%] object-cover object-[35%_center] [mask-image:linear-gradient(to_right,transparent_0%,black_48%)] md:block"
             />
             <div
-              className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-primary from-0% via-primary/92 via-62% to-primary/25 md:block"
+              className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(to_right,hsl(var(--primary))_0%,hsl(var(--primary))_26%,hsl(var(--primary)/0.95)_42%,hsl(var(--primary)/0.8)_58%,hsl(var(--primary)/0.58)_72%,hsl(var(--primary)/0.36)_85%,hsl(var(--primary)/0.14)_100%)] md:block"
               aria-hidden="true"
             />
+
             <div className="container relative mx-auto px-4">
               <div className="max-w-4xl">
                 <Reveal>
