@@ -437,6 +437,12 @@
   "servicesRoutes": {
     "eyebrow": "WAT IK MAAK",
     "title": "Verschillende manieren om met mij te werken.",
+    "digital": {
+      "label": "OOK ALS HET NIET IN EEN HOKJE PAST",
+      "title": "Iets met AI, of iets anders digitaals.",
+      "copy": "Je wil iets met AI proberen, een terugkerende taak slimmer aanpakken of een digitaal idee uitzoeken. Ook als je nog niet precies weet wat je nodig hebt. Ik denk met je mee en maak een eerste versie die je kunt proberen.",
+      "cta": "Even samen kijken"
+    },
     "situationLabel": "Situatie",
     "resultLabel": "Wat ik doe",
     "cta": "Vertel me hierover",

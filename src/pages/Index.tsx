@@ -298,6 +298,25 @@ const Index = () => {
                   );
                 })}
               </div>
+              <Reveal delay={0.08}>
+                <div className="mt-8 border-t border-plum/15 pt-8 md:mt-10 md:pt-10">
+                  <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto] lg:gap-12">
+                    <div>
+                      <Eyebrow className="mb-4 text-coral">{t("servicesRoutes.digital.label")}</Eyebrow>
+                      <h3 className="font-display text-3xl font-bold leading-tight md:text-4xl">
+                        {t("servicesRoutes.digital.title")}
+                      </h3>
+                      <p className="mt-4 max-w-[72ch] text-base leading-relaxed text-plum/75 md:text-lg">
+                        {t("servicesRoutes.digital.copy")}
+                      </p>
+                    </div>
+                    <Button onClick={openBooking} className="justify-self-start rounded-full bg-primary text-primary-foreground hover:bg-coral hover:text-coral-foreground">
+                      {t("servicesRoutes.digital.cta")}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </Reveal>
             </div>
           </section>
 

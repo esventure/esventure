@@ -436,7 +436,13 @@
   },
   "servicesRoutes": {
     "eyebrow": "WHAT I MAKE",
-    "title": "Three ways to start with me.",
+    "title": "Different ways to work with me.",
+    "digital": {
+      "label": "EVEN IF IT DOESN’T FIT A CATEGORY",
+      "title": "Something with AI, or something else digital.",
+      "copy": "You want to try something with AI, make a recurring task easier or explore a digital idea. Even if you don’t know exactly what you need yet. I’ll think it through with you and make a first version you can try.",
+      "cta": "Let’s take a look"
+    },
     "situationLabel": "Situation",
     "resultLabel": "What I do",
     "cta": "Tell me about this",
