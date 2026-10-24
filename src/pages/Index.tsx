@@ -386,7 +386,7 @@ const Index = () => {
 
           <section
             id="final-cta"
-            className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-32"
+            className="relative overflow-hidden bg-primary pb-28 pt-20 text-primary-foreground md:pb-32 md:pt-32"
           >
             <img
               src={hostedAsset(estherFinalCtaAsset.url)}
@@ -396,6 +396,10 @@ const Index = () => {
             />
             <div
               className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary from-0% via-primary/95 via-60% to-primary/55 md:hidden"
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-transparent via-primary/90 via-22% to-primary md:hidden"
               aria-hidden="true"
             />
             <img
