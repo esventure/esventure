@@ -9,10 +9,11 @@ import Navigation from "@/components/Navigation";
 import CustomCursor from "@/components/CustomCursor";
 import CaseGrid from "@/components/work/CaseGrid";
 import type { CaseServiceRoute } from "@/components/work/caseContent";
-import { caseMedia } from "@/components/work/caseMedia";
+import { caseMedia, hostedAsset } from "@/components/work/caseMedia";
 import { analytics } from "@/lib/analytics";
 import estherYellow from "@/assets/esther-yellow.jpg";
 import estherStudio from "@/assets/esther-studio.jpg";
+import estherFinalCtaAsset from "@/assets/esther-final-cta.jpg.asset.json";
 import logoEV from "@/assets/logo-ev.svg";
 import vanmoofLogo from "@/assets/clients/vanmoof.png";
 import lovensLogo from "@/assets/clients/lovens.png";
@@ -383,8 +384,31 @@ const Index = () => {
             </div>
           </section>
 
-          <section id="final-cta" className="bg-primary py-20 text-primary-foreground md:py-32">
-            <div className="container mx-auto px-4">
+          <section
+            id="final-cta"
+            className="relative overflow-hidden bg-primary pb-52 pt-20 text-primary-foreground md:pb-32 md:pt-32"
+          >
+            <img
+              src={hostedAsset(estherFinalCtaAsset.url)}
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] object-cover object-[45%_center] [mask-image:linear-gradient(to_top,black_35%,transparent_78%)] md:hidden"
+            />
+            <div
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-transparent via-primary/45 via-45% to-primary md:hidden"
+              aria-hidden="true"
+            />
+            <img
+              src={hostedAsset(estherFinalCtaAsset.url)}
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-[34%] object-cover object-[35%_center] [mask-image:linear-gradient(to_right,transparent,black_16%)] md:block"
+            />
+            <div
+              className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-primary from-0% via-primary/92 via-62% to-primary/25 md:block"
+              aria-hidden="true"
+            />
+            <div className="container relative mx-auto px-4">
               <div className="max-w-4xl">
                 <Reveal>
                   <h2 className="font-display text-5xl font-bold leading-none tracking-normal md:text-7xl">
