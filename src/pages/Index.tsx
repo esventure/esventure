@@ -392,10 +392,20 @@ const Index = () => {
               src={hostedAsset(estherFinalCtaAsset.url)}
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center md:origin-right md:scale-110"
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center md:hidden"
             />
             <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary from-0% via-primary/95 via-60% to-primary/55 to-100% md:to-primary/10"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary from-0% via-primary/95 via-60% to-primary/55 md:hidden"
+              aria-hidden="true"
+            />
+            <img
+              src={hostedAsset(estherFinalCtaAsset.url)}
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-[34%] object-cover object-[35%_center] [mask-image:linear-gradient(to_right,transparent,black_16%)] md:block"
+            />
+            <div
+              className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-primary from-0% via-primary/92 via-62% to-primary/25 md:block"
               aria-hidden="true"
             />
             <div className="container relative mx-auto px-4">
